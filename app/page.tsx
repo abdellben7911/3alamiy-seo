@@ -1,65 +1,39 @@
-import Image from "next/image";
+import Link from "next/link";
+
+const airdrops = [
+  { slug: "arbitrum", name: "Arbitrum", roi: "High", status: "Active", category: "Layer 2" },
+  { slug: "optimism", name: "Optimism", roi: "High", status: "Active", category: "Layer 2" },
+  { slug: "zksync", name: "zkSync", roi: "Medium", status: "Active", category: "Layer 2" },
+  { slug: "starknet", name: "Starknet", roi: "Medium", status: "Upcoming", category: "Layer 2" },
+  { slug: "linea", name: "Linea", roi: "Low", status: "Active", category: "Layer 2" },
+  { slug: "scroll", name: "Scroll", roi: "Medium", status: "Active", category: "Layer 2" },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main style={{ maxWidth: "1100px", margin: "0 auto", padding: "40px 20px" }}>
+      <h1 style={{ fontSize: "32px", fontWeight: "bold", marginBottom: "8px" }}>
+        🪂 3alamiy Web3 — Airdrop Tracker
+      </h1>
+      <p style={{ color: "#666", marginBottom: "40px" }}>
+        Track the most profitable crypto airdrops and Web3 alpha
+      </p>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
+        {airdrops.map((a) => (
+          <Link key={a.slug} href={`/airdrops/${a.slug}`} style={{ textDecoration: "none" }}>
+            <div style={{ border: "1px solid #e5e7eb", borderRadius: "12px", padding: "24px", background: "#fff", cursor: "pointer" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
+                <h2 style={{ fontSize: "20px", fontWeight: "600", color: "#111" }}>{a.name}</h2>
+                <span style={{ background: a.status === "Active" ? "#dcfce7" : "#fef9c3", color: a.status === "Active" ? "#166534" : "#854d0e", padding: "4px 10px", borderRadius: "20px", fontSize: "12px" }}>
+                  {a.status}
+                </span>
+              </div>
+              <p style={{ color: "#666", fontSize: "14px", marginBottom: "8px" }}>Category: {a.category}</p>
+              <p style={{ color: "#666", fontSize: "14px" }}>ROI Potential: <strong style={{ color: a.roi === "High" ? "#16a34a" : a.roi === "Medium" ? "#d97706" : "#6b7280" }}>{a.roi}</strong></p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </main>
   );
 }
