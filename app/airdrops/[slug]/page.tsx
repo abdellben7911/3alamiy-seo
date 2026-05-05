@@ -55,9 +55,9 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
   const worthPercent = total ? Math.round((worthIt / total) * 100) : 0;
   const costLabel = a.cost === 'Paid' ? 'Mainnet (Paid)' : a.cost === 'Low' ? 'Mainnet (Low)' : 'Testnet (Free)';
   const costColor = a.cost === 'Paid' ? '#f43f5e' : a.cost === 'Low' ? '#f59e0b' : '#10b981';
-  const steps: string[] = Array.isArray(a.guide_steps) ? a.guide_steps : (a.guideSteps || []);
+  const steps: string[] = Array.isArray(a.guide_steps) ? a.guide_steps : Array.isArray(a.guideSteps) ? a.guideSteps : [];
   const tags: string[] = Array.isArray(a.tags) ? a.tags : [];
-  const links: Record<string, string> = typeof a.links === 'object' ? a.links : {};
+  const links: Record<string, string> = (a.links && typeof a.links === 'object' && !Array.isArray(a.links)) ? a.links : {};
 
   return (
     <div style={{ minHeight: '100vh', background: '#030712', fontFamily: 'system-ui, -apple-system, sans-serif', color: '#fff' }}>
