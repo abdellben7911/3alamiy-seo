@@ -16,7 +16,7 @@ async function getAllAirdrops() {
 }
 
 async function getAirdropBySlug(slug: string) {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/airdrops?id=eq.${slug}&select=*`, {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/airdrops?slug=eq.${slug}&select=*`, {
     headers: {
       'apikey': SUPABASE_ANON_KEY,
       'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
@@ -30,7 +30,7 @@ async function getAirdropBySlug(slug: string) {
 
 export async function generateStaticParams() {
   const airdrops = await getAllAirdrops();
-  return airdrops.map((a: any) => ({ slug: a.id }));
+  return airdrops.map((a: any) => ({ slug: a.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
