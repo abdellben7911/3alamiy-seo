@@ -28,132 +28,160 @@ export default async function Home() {
     c === 'Free' ? '#10b981' : c === 'Paid' ? '#f43f5e' : '#f59e0b';
 
   return (
-    <div style={{ minHeight: '100vh', background: '#030712', fontFamily: 'system-ui, -apple-system, sans-serif', color: '#fff' }}>
+    <>
+      <style>{`
+        * { box-sizing: border-box; }
+        @media (max-width: 640px) {
+          .desktop-nav { display: none !important; }
+          .header-inner { padding: 0 16px !important; }
+          .hero-section { padding: 40px 16px 36px !important; }
+          .hero-title { font-size: 30px !important; }
+          .hero-desc { font-size: 14px !important; }
+          .hero-buttons { flex-direction: column !important; }
+          .hero-buttons a { text-align: center !important; }
+          .stats-section { gap: 16px !important; padding: 24px 16px !important; }
+          .main-section { padding: 28px 16px 48px !important; }
+          .section-header { flex-direction: column !important; align-items: flex-start !important; }
+          .airdrops-grid { grid-template-columns: 1fr !important; }
+          .learn-grid { grid-template-columns: 1fr !important; }
+          .learn-section { padding: 36px 16px !important; }
+          .sign-up-btn { padding: 8px 14px !important; font-size: 13px !important; }
+        }
+        @media (min-width: 641px) and (max-width: 1024px) {
+          .airdrops-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .learn-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+      `}</style>
 
-      {/* Header */}
-      <header style={{ borderBottom: '1px solid #18181b', padding: '0 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, background: '#0a0a0f', zIndex: 50, height: '64px' }}>
-        <a href="https://3alamiyweb3.online" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: '#fff' }}>
-          <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #6366f1, #4f46e5)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>🪂</div>
-          <span style={{ fontWeight: '800', fontSize: '16px' }}>3alamiy Web3</span>
-        </a>
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-          {['Discover', 'Market', 'Community', 'Learn'].map((label) => (
-            <a key={label} href="https://3alamiyweb3.online" style={{ color: '#71717a', textDecoration: 'none', fontSize: '15px', fontWeight: '500' }}>{label}</a>
+      <div style={{ minHeight: '100vh', background: '#030712', fontFamily: 'system-ui, -apple-system, sans-serif', color: '#fff' }}>
+
+        {/* Header */}
+        <header style={{ borderBottom: '1px solid #18181b', position: 'sticky', top: 0, background: '#0a0a0f', zIndex: 50, height: '60px' }}>
+          <div className="header-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <a href="https://3alamiyweb3.online" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', color: '#fff', flexShrink: 0 }}>
+              <div style={{ width: '32px', height: '32px', background: 'linear-gradient(135deg, #6366f1, #4f46e5)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px' }}>🪂</div>
+              <span style={{ fontWeight: '800', fontSize: '15px' }}>3alamiy Web3</span>
+            </a>
+            <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+              {['Discover', 'Market', 'Community', 'Learn'].map((label) => (
+                <a key={label} href="https://3alamiyweb3.online" style={{ color: '#71717a', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>{label}</a>
+              ))}
+            </nav>
+            <a href="https://3alamiyweb3.online/profile" className="sign-up-btn" style={{ background: '#6366f1', color: '#fff', padding: '9px 18px', borderRadius: '10px', textDecoration: 'none', fontSize: '14px', fontWeight: '700', flexShrink: 0, whiteSpace: 'nowrap' }}>Sign Up</a>
+          </div>
+        </header>
+
+        {/* Hero */}
+        <section className="hero-section" style={{ textAlign: 'center', padding: '64px 24px 48px', background: 'radial-gradient(ellipse at top, #1e1b4b 0%, #030712 70%)' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: '99px', padding: '5px 14px', fontSize: '12px', color: '#818cf8', marginBottom: '20px' }}>
+            🔥 {airdrops.length}+ Active Airdrops Tracked
+          </div>
+          <h1 className="hero-title" style={{ fontSize: '44px', fontWeight: '900', margin: '0 0 16px', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+            Best Crypto Airdrops<br />
+            <span style={{ background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Guide {year}</span>
+          </h1>
+          <p className="hero-desc" style={{ fontSize: '16px', color: '#a1a1aa', maxWidth: '560px', margin: '0 auto 28px', lineHeight: 1.7 }}>
+            Step-by-step guides for the most profitable crypto airdrops. Track, participate, and earn free crypto in {year}.
+          </p>
+          <div className="hero-buttons" style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="https://3alamiyweb3.online" style={{ background: '#6366f1', color: '#fff', padding: '13px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: '800', fontSize: '15px' }}>
+              🚀 Open Dashboard
+            </a>
+            <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" style={{ background: '#18181b', color: '#fff', padding: '13px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: '800', fontSize: '15px', border: '1px solid #27272a' }}>
+              ✈️ Join Telegram
+            </a>
+          </div>
+        </section>
+
+        {/* Stats */}
+        <section className="stats-section" style={{ display: 'flex', justifyContent: 'center', gap: '32px', padding: '32px 24px', borderBottom: '1px solid #18181b', flexWrap: 'wrap' }}>
+          {[
+            ['🪂', `${airdrops.length}+`, 'Airdrops Tracked'],
+            ['✅', `${airdrops.filter((a: any) => a.status === 'Active').length}`, 'Active Now'],
+            ['🆓', `${airdrops.filter((a: any) => a.cost === 'Free').length}`, 'Free Airdrops'],
+            ['📈', 'Daily', 'Updated'],
+          ].map(([icon, value, label]) => (
+            <div key={label as string} style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '22px', fontWeight: '900', color: '#fff' }}>{icon} {value}</div>
+              <div style={{ fontSize: '12px', color: '#71717a', marginTop: '4px' }}>{label}</div>
+            </div>
           ))}
-        </nav>
-        <a href="https://3alamiyweb3.online/profile" style={{ background: '#6366f1', color: '#fff', padding: '10px 22px', borderRadius: '12px', textDecoration: 'none', fontSize: '14px', fontWeight: '700' }}>Sign Up</a>
-      </header>
+        </section>
 
-      {/* Hero */}
-      <section style={{ textAlign: 'center', padding: '80px 24px 60px', background: 'radial-gradient(ellipse at top, #1e1b4b 0%, #030712 70%)' }}>
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: '99px', padding: '6px 16px', fontSize: '13px', color: '#818cf8', marginBottom: '24px' }}>
-          🔥 {airdrops.length}+ Active Airdrops Tracked
-        </div>
-        <h1 style={{ fontSize: '52px', fontWeight: '900', margin: '0 0 20px', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-          Best Crypto Airdrops<br />
-          <span style={{ background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Guide {year}</span>
-        </h1>
-        <p style={{ fontSize: '18px', color: '#a1a1aa', maxWidth: '600px', margin: '0 auto 36px', lineHeight: 1.7 }}>
-          Step-by-step guides for the most profitable crypto airdrops. Track, participate, and earn free crypto in {year}.
-        </p>
-        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a href="https://3alamiyweb3.online" style={{ background: '#6366f1', color: '#fff', padding: '14px 28px', borderRadius: '14px', textDecoration: 'none', fontWeight: '800', fontSize: '15px' }}>
-            🚀 Open Dashboard
-          </a>
-          <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" style={{ background: '#18181b', color: '#fff', padding: '14px 28px', borderRadius: '14px', textDecoration: 'none', fontWeight: '800', fontSize: '15px', border: '1px solid #27272a' }}>
-            ✈️ Join Telegram
-          </a>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section style={{ display: 'flex', justifyContent: 'center', gap: '40px', padding: '40px 24px', borderBottom: '1px solid #18181b', flexWrap: 'wrap' }}>
-        {[
-          ['🪂', `${airdrops.length}+`, 'Airdrops Tracked'],
-          ['✅', `${airdrops.filter((a: any) => a.status === 'Active').length}`, 'Active Now'],
-          ['🆓', `${airdrops.filter((a: any) => a.cost === 'Free').length}`, 'Free Airdrops'],
-          ['📈', 'Daily', 'Updated'],
-        ].map(([icon, value, label]) => (
-          <div key={label} style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '28px', fontWeight: '900', color: '#fff' }}>{icon} {value}</div>
-            <div style={{ fontSize: '13px', color: '#71717a', marginTop: '4px' }}>{label}</div>
+        {/* Airdrops Grid */}
+        <main className="main-section" style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 24px 60px' }}>
+          <div className="section-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px', gap: '12px' }}>
+            <div>
+              <h2 style={{ fontSize: '22px', fontWeight: '900', margin: '0 0 4px' }}>All Crypto Airdrops {year}</h2>
+              <p style={{ fontSize: '13px', color: '#71717a', margin: 0 }}>Updated daily — {airdrops.length} airdrops with step-by-step guides</p>
+            </div>
+            <a href="https://3alamiyweb3.online" style={{ background: '#18181b', color: '#a1a1aa', padding: '8px 14px', borderRadius: '10px', textDecoration: 'none', fontSize: '12px', fontWeight: '700', border: '1px solid #27272a', whiteSpace: 'nowrap', flexShrink: 0 }}>
+              View All →
+            </a>
           </div>
-        ))}
-      </section>
 
-      {/* Airdrops Grid */}
-      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '60px 24px 80px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '32px', flexWrap: 'wrap', gap: '12px' }}>
-          <div>
-            <h2 style={{ fontSize: '28px', fontWeight: '900', margin: '0 0 8px' }}>All Crypto Airdrops {year}</h2>
-            <p style={{ fontSize: '14px', color: '#71717a', margin: 0 }}>Updated daily — {airdrops.length} airdrops with step-by-step guides</p>
-          </div>
-          <a href="https://3alamiyweb3.online" style={{ background: '#18181b', color: '#a1a1aa', padding: '10px 18px', borderRadius: '12px', textDecoration: 'none', fontSize: '13px', fontWeight: '700', border: '1px solid #27272a' }}>
-            View Full Dashboard →
-          </a>
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '16px' }}>
-          {airdrops.map((a: any) => (
-            <Link key={a.slug} href={`/airdrops/${a.slug}`} style={{ textDecoration: 'none' }}>
-              <div style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '20px', padding: '20px', cursor: 'pointer', transition: 'border-color 0.2s' }}>
-                <div style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                  {a.logo && (
-                    <img src={a.logo} alt={a.name} width={52} height={52} style={{ borderRadius: '14px', border: '1px solid rgba(255,255,255,0.08)', flexShrink: 0, objectFit: 'cover' }} />
-                  )}
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
-                      <h3 style={{ fontSize: '16px', fontWeight: '800', margin: 0, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{a.name}</h3>
-                      <span style={{ background: a.status === 'Active' ? 'rgba(16,185,129,0.1)' : 'rgba(113,113,122,0.1)', color: a.status === 'Active' ? '#10b981' : '#71717a', padding: '2px 8px', borderRadius: '99px', fontSize: '10px', fontWeight: '700', flexShrink: 0, marginLeft: '8px' }}>{a.status}</span>
-                    </div>
-                    <p style={{ fontSize: '13px', color: '#71717a', margin: '0 0 10px', lineHeight: 1.5, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{a.description}</p>
-                    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                      <span style={{ fontSize: '11px', fontWeight: '700', color: costColor(a.cost), background: `${costColor(a.cost)}15`, padding: '3px 8px', borderRadius: '6px' }}>{a.cost}</span>
-                      <span style={{ fontSize: '11px', fontWeight: '700', color: difficultyColor(a.difficulty), background: `${difficultyColor(a.difficulty)}15`, padding: '3px 8px', borderRadius: '6px' }}>{a.difficulty}</span>
-                      {a.blockchain && <span style={{ fontSize: '11px', fontWeight: '700', color: '#818cf8', background: 'rgba(99,102,241,0.1)', padding: '3px 8px', borderRadius: '6px' }}>{a.blockchain}</span>}
+          <div className="airdrops-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '10px' }}>
+            {airdrops.map((a: any) => (
+              <Link key={a.slug} href={`/airdrops/${a.slug}`} style={{ textDecoration: 'none' }}>
+                <div style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '14px', padding: '14px', cursor: 'pointer' }}>
+                  <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                    {a.logo && (
+                      <img src={a.logo} alt={a.name} width={44} height={44} style={{ borderRadius: '10px', border: '1px solid rgba(255,255,255,0.08)', flexShrink: 0, objectFit: 'cover' }} />
+                    )}
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
+                        <h3 style={{ fontSize: '14px', fontWeight: '800', margin: 0, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '150px' }}>{a.name}</h3>
+                        <span style={{ background: a.status === 'Active' ? 'rgba(16,185,129,0.1)' : 'rgba(113,113,122,0.1)', color: a.status === 'Active' ? '#10b981' : '#71717a', padding: '2px 7px', borderRadius: '99px', fontSize: '9px', fontWeight: '700', flexShrink: 0, marginLeft: '6px' }}>{a.status}</span>
+                      </div>
+                      <p style={{ fontSize: '12px', color: '#71717a', margin: '0 0 8px', lineHeight: 1.4, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{a.description}</p>
+                      <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
+                        <span style={{ fontSize: '10px', fontWeight: '700', color: costColor(a.cost), background: `${costColor(a.cost)}15`, padding: '2px 6px', borderRadius: '4px' }}>{a.cost}</span>
+                        <span style={{ fontSize: '10px', fontWeight: '700', color: difficultyColor(a.difficulty), background: `${difficultyColor(a.difficulty)}15`, padding: '2px 6px', borderRadius: '4px' }}>{a.difficulty}</span>
+                        {a.blockchain && <span style={{ fontSize: '10px', fontWeight: '700', color: '#818cf8', background: 'rgba(99,102,241,0.1)', padding: '2px 6px', borderRadius: '4px' }}>{a.blockchain}</span>}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </main>
-
-      {/* Learn Section */}
-      <section style={{ background: '#0a0a0f', borderTop: '1px solid #18181b', padding: '60px 24px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '28px', fontWeight: '900', margin: '0 0 8px' }}>Learn About Crypto Airdrops</h2>
-          <p style={{ fontSize: '14px', color: '#71717a', margin: '0 0 32px' }}>Everything you need to know to qualify for the best airdrops</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '14px' }}>
-            {[
-              { slug: 'why-crypto-airdrops-are-becoming-harder-to-qualify-for', title: 'Why Crypto Airdrops Are Harder in 2026', desc: 'The golden era of easy airdrops is over. Learn how to adapt.' },
-              { slug: 'how-to-build-onchain-activity-that-actually-matters', title: 'How to Build Onchain Activity That Matters', desc: 'Quality over quantity — build a wallet narrative that wins airdrops.' },
-              { slug: 'news-report-the-2-trillion-wipeout', title: 'The $2 Trillion Crypto Wipeout', desc: 'What happened and what it means for airdrop hunters.' },
-              { slug: 'solanas-institutional-firedancer-era', title: "Solana's Firedancer Era", desc: 'How Firedancer changed Solana and what it means for you.' },
-              { slug: 'crypto-airdrops-in-2026-what-to-expect-and-how-they-will-evolve', title: 'Crypto Airdrops in 2026', desc: 'What to expect and how airdrops will evolve this year.' },
-              { slug: 'how-a-100-domain-became-70-million', title: 'How a $100 Domain Became $70M', desc: 'Lessons for Web3 investors from the AI.com story.' },
-            ].map((article) => (
-              <Link key={article.slug} href={`/learn/${article.slug}`} style={{ textDecoration: 'none' }}>
-                <div style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '16px', padding: '20px' }}>
-                  <h3 style={{ fontSize: '15px', fontWeight: '700', margin: '0 0 8px', color: '#fff' }}>{article.title}</h3>
-                  <p style={{ fontSize: '13px', color: '#71717a', margin: 0, lineHeight: 1.5 }}>{article.desc}</p>
                 </div>
               </Link>
             ))}
           </div>
-        </div>
-      </section>
+        </main>
 
-      {/* Footer */}
-      <footer style={{ borderTop: '1px solid #18181b', padding: '32px 24px', textAlign: 'center', color: '#52525b', fontSize: '13px' }}>
-        <p style={{ margin: '0 0 8px' }}>© {year} <a href="https://3alamiyweb3.online" style={{ color: '#6366f1', textDecoration: 'none' }}>3alamiy Web3</a> — Crypto Airdrop Tracker</p>
-        <p style={{ margin: 0 }}>
-          <a href="https://seo.3alamiyweb3.online" style={{ color: '#52525b', textDecoration: 'none', marginRight: '16px' }}>All Airdrops</a>
-          <a href="https://3alamiyweb3.online" style={{ color: '#52525b', textDecoration: 'none', marginRight: '16px' }}>Dashboard</a>
-          <a href="https://t.me/web33alamiy" style={{ color: '#52525b', textDecoration: 'none' }}>Telegram</a>
-        </p>
-      </footer>
-    </div>
+        {/* Learn Section */}
+        <section className="learn-section" style={{ background: '#0a0a0f', borderTop: '1px solid #18181b', padding: '48px 24px' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <h2 style={{ fontSize: '22px', fontWeight: '900', margin: '0 0 6px' }}>Learn About Crypto Airdrops</h2>
+            <p style={{ fontSize: '13px', color: '#71717a', margin: '0 0 20px' }}>Everything you need to know to qualify for the best airdrops</p>
+            <div className="learn-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '10px' }}>
+              {[
+                { slug: 'why-crypto-airdrops-are-becoming-harder-to-qualify-for', title: 'Why Crypto Airdrops Are Harder in 2026', desc: 'The golden era of easy airdrops is over. Learn how to adapt.' },
+                { slug: 'how-to-build-onchain-activity-that-actually-matters', title: 'How to Build Onchain Activity That Matters', desc: 'Quality over quantity — build a wallet narrative that wins airdrops.' },
+                { slug: 'best-free-crypto-airdrops-2026', title: 'Best Free Crypto Airdrops 2026', desc: 'Discover the best free airdrops available right now.' },
+                { slug: 'how-to-set-up-metamask-for-airdrops', title: 'How to Set Up MetaMask for Airdrops', desc: 'Complete beginner guide to getting started with airdrops.' },
+                { slug: 'what-is-depin-crypto-airdrops', title: 'What is DePIN? Earn Passive Crypto', desc: 'The hottest crypto trend paying users in 2026.' },
+                { slug: 'how-to-avoid-crypto-airdrop-scams-2026', title: 'How to Avoid Airdrop Scams', desc: 'Stay safe while hunting for legitimate airdrops.' },
+              ].map((article) => (
+                <Link key={article.slug} href={`/learn/${article.slug}`} style={{ textDecoration: 'none' }}>
+                  <div style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '12px', padding: '14px' }}>
+                    <h3 style={{ fontSize: '13px', fontWeight: '700', margin: '0 0 5px', color: '#fff' }}>{article.title}</h3>
+                    <p style={{ fontSize: '12px', color: '#71717a', margin: 0, lineHeight: 1.5 }}>{article.desc}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer style={{ borderTop: '1px solid #18181b', padding: '24px 16px', textAlign: 'center', color: '#52525b', fontSize: '13px' }}>
+          <p style={{ margin: '0 0 8px' }}>© {year} <a href="https://3alamiyweb3.online" style={{ color: '#6366f1', textDecoration: 'none' }}>3alamiy Web3</a> — Crypto Airdrop Tracker</p>
+          <p style={{ margin: 0 }}>
+            <a href="https://seo.3alamiyweb3.online" style={{ color: '#52525b', textDecoration: 'none', marginRight: '16px' }}>All Airdrops</a>
+            <a href="https://3alamiyweb3.online" style={{ color: '#52525b', textDecoration: 'none', marginRight: '16px' }}>Dashboard</a>
+            <a href="https://t.me/web33alamiy" style={{ color: '#52525b', textDecoration: 'none' }}>Telegram</a>
+          </p>
+        </footer>
+      </div>
+    </>
   );
 }
