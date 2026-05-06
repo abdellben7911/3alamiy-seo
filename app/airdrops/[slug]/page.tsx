@@ -90,23 +90,41 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <style>{`
+        * { box-sizing: border-box; }
+        @media (max-width: 768px) {
+          .desktop-nav { display: none !important; }
+          .header-inner { padding: 0 16px !important; }
+          .page-grid { grid-template-columns: 1fr !important; }
+          .sidebar { position: static !important; }
+          .hero-flex { flex-direction: column !important; }
+          .hero-img { width: 72px !important; height: 72px !important; }
+          .hero-title { font-size: 26px !important; }
+          .related-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .main-pad { padding: 24px 16px 48px !important; }
+          .breadcrumb { padding: 16px 16px 0 !important; }
+          .sign-up-btn { padding: 8px 14px !important; font-size: 13px !important; }
+        }
+      `}</style>
       <div style={{ minHeight: '100vh', background: '#030712', fontFamily: 'system-ui, -apple-system, sans-serif', color: '#fff' }}>
 
         {/* Header */}
-        <header style={{ borderBottom: '1px solid #18181b', padding: '0 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, background: '#0a0a0f', zIndex: 50, height: '64px' }}>
-          <a href="https://3alamiyweb3.online" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: '#fff' }}>
-            <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #6366f1, #4f46e5)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>🪂</div>
-            <span style={{ fontWeight: '800', fontSize: '16px' }}>3alamiy Web3</span>
-          </a>
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-            {['Discover', 'Market', 'Community', 'Learn'].map((label) => (
-              <a key={label} href="https://3alamiyweb3.online" style={{ color: label === 'Discover' ? '#fff' : '#71717a', textDecoration: 'none', fontSize: '15px', fontWeight: label === 'Discover' ? '700' : '500' }}>{label}</a>
-            ))}
-          </nav>
-          <a href="https://3alamiyweb3.online/profile" style={{ background: '#6366f1', color: '#fff', padding: '10px 22px', borderRadius: '12px', textDecoration: 'none', fontSize: '14px', fontWeight: '700' }}>Sign Up</a>
+        <header style={{ borderBottom: '1px solid #18181b', position: 'sticky', top: 0, background: '#0a0a0f', zIndex: 50, height: '60px' }}>
+          <div className="header-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <a href="https://3alamiyweb3.online" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', color: '#fff', flexShrink: 0 }}>
+              <div style={{ width: '32px', height: '32px', background: 'linear-gradient(135deg, #6366f1, #4f46e5)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px' }}>🪂</div>
+              <span style={{ fontWeight: '800', fontSize: '15px' }}>3alamiy Web3</span>
+            </a>
+            <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+              {['Discover', 'Market', 'Community', 'Learn'].map((label) => (
+                <a key={label} href="https://3alamiyweb3.online" style={{ color: label === 'Discover' ? '#fff' : '#71717a', textDecoration: 'none', fontSize: '14px', fontWeight: label === 'Discover' ? '700' : '500' }}>{label}</a>
+              ))}
+            </nav>
+            <a href="https://3alamiyweb3.online/profile" className="sign-up-btn" style={{ background: '#6366f1', color: '#fff', padding: '9px 18px', borderRadius: '10px', textDecoration: 'none', fontSize: '14px', fontWeight: '700', flexShrink: 0, whiteSpace: 'nowrap' }}>Sign Up</a>
+          </div>
         </header>
 
-        <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '32px 24px 80px' }}>
+        <main className="main-pad" style={{ maxWidth: '1200px', margin: '0 auto', padding: '32px 24px 80px' }}>
 
           {/* Breadcrumbs */}
           <nav aria-label="breadcrumb" style={{ marginBottom: '28px', fontSize: '13px', color: '#52525b' }}>
@@ -117,19 +135,19 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
             <span>{a.name}</span>
           </nav>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: '40px', alignItems: 'start' }}>
+          <div className="page-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: '32px', alignItems: 'start' }}>
             {/* LEFT */}
             <div>
               {/* Hero */}
-              <div style={{ display: 'flex', gap: '28px', alignItems: 'flex-start', marginBottom: '36px' }}>
-                {a.logo && <img src={a.logo} alt={`${a.name} logo`} width={96} height={96} style={{ borderRadius: '22px', border: '1px solid rgba(255,255,255,0.1)', flexShrink: 0 }} />}
+              <div className="hero-flex" style={{ display: 'flex', gap: '20px', alignItems: 'flex-start', marginBottom: '32px' }}>
+                {a.logo && <img className="hero-img" src={a.logo} alt={`${a.name} logo`} width={96} height={96} style={{ borderRadius: '20px', border: '1px solid rgba(255,255,255,0.1)', flexShrink: 0 }} />}
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '12px' }}>
                     <span style={{ background: 'rgba(99,102,241,0.1)', color: '#818cf8', border: '1px solid rgba(99,102,241,0.2)', padding: '3px 10px', borderRadius: '99px', fontSize: '11px', fontWeight: '700' }}>{a.blockchain}</span>
                     <span style={{ background: a.status === 'Active' ? 'rgba(16,185,129,0.1)' : 'rgba(113,113,122,0.1)', color: a.status === 'Active' ? '#10b981' : '#71717a', border: `1px solid ${a.status === 'Active' ? 'rgba(16,185,129,0.2)' : 'rgba(113,113,122,0.2)'}`, padding: '3px 10px', borderRadius: '99px', fontSize: '11px', fontWeight: '700' }}>{a.status}</span>
                     <span style={{ background: `${costColor}15`, color: costColor, border: `1px solid ${costColor}30`, padding: '3px 10px', borderRadius: '99px', fontSize: '11px', fontWeight: '700' }}>{costLabel}</span>
                   </div>
-                  <h1 style={{ fontSize: '34px', fontWeight: '900', margin: '0 0 12px', letterSpacing: '-0.02em', lineHeight: 1.15 }}>{a.name.replace(/\s*airdrop\s*/gi, ' ').trim()} Airdrop Guide {year}</h1>
+                  <h1 className="hero-title" style={{ fontSize: '30px', fontWeight: '900', margin: '0 0 12px', letterSpacing: '-0.02em', lineHeight: 1.15 }}>{a.name.replace(/\s*airdrop\s*/gi, ' ').trim()} Airdrop Guide {year}</h1>
                   <p style={{ fontSize: '16px', color: '#a1a1aa', lineHeight: 1.7, margin: '0 0 20px' }}>{a.description}</p>
                   <a href="#guide" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#6366f1', color: '#fff', padding: '12px 24px', borderRadius: '14px', textDecoration: 'none', fontWeight: '800', fontSize: '14px' }}>Start Guide →</a>
                 </div>
@@ -199,7 +217,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
               {relatedAirdrops.length > 0 && (
                 <section>
                   <h2 style={{ fontSize: '20px', fontWeight: '800', margin: '0 0 16px' }}>More {a.blockchain} Airdrops</h2>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
+                  <div className="related-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
                     {relatedAirdrops.map((r: any) => (
                       <a key={r.slug} href={`/airdrops/${r.slug}`} style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '14px', padding: '16px', textDecoration: 'none', color: '#fff', display: 'block' }}>
                         {r.logo && <img src={r.logo} alt={r.name} width={36} height={36} style={{ borderRadius: '8px', marginBottom: '10px' }} />}
@@ -213,7 +231,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
             </div>
 
             {/* SIDEBAR */}
-            <aside style={{ position: 'sticky', top: '80px' }}>
+            <aside className="sidebar" style={{ position: 'sticky', top: '80px' }}>
               <div style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '24px', padding: '24px', marginBottom: '14px' }}>
                 <h3 style={{ fontSize: '18px', fontWeight: '800', margin: '0 0 20px' }}>📊 Quick Stats</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
