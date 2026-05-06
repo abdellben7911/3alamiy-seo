@@ -127,19 +127,19 @@ export default async function Home() {
           <p style={{ fontSize: '14px', color: '#71717a', margin: '0 0 32px' }}>Everything you need to know to qualify for the best airdrops</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '14px' }}>
             {[
-              { slug: 'what-is-a-crypto-airdrop', title: 'What is a Crypto Airdrop?', desc: 'Learn the basics of crypto airdrops and how they work.' },
-              { slug: 'how-to-qualify-for-airdrops', title: 'How to Qualify for Airdrops', desc: 'Tips and strategies to maximize your airdrop eligibility.' },
-              { slug: 'best-wallets-for-airdrops', title: 'Best Wallets for Airdrops', desc: 'Which wallets to use for the best airdrop results.' },
-              { slug: 'how-to-avoid-airdrop-scams', title: 'How to Avoid Airdrop Scams', desc: 'Stay safe and protect your assets from scammers.' },
-              { slug: 'top-airdrop-strategies', title: 'Top Airdrop Strategies', desc: 'Advanced strategies used by top airdrop hunters.' },
-              { slug: 'airdrop-tax-guide', title: 'Airdrop Tax Guide', desc: 'Understand the tax implications of crypto airdrops.' },
+              { slug: 'why-crypto-airdrops-are-becoming-harder-to-qualify-for', title: 'Why Crypto Airdrops Are Harder in 2026', desc: 'The golden era of easy airdrops is over. Learn how to adapt.' },
+              { slug: 'how-to-build-onchain-activity-that-actually-matters', title: 'How to Build Onchain Activity That Matters', desc: 'Quality over quantity — build a wallet narrative that wins airdrops.' },
+              { slug: 'news-report-the-2-trillion-wipeout', title: 'The $2 Trillion Crypto Wipeout', desc: 'What happened and what it means for airdrop hunters.' },
+              { slug: 'solanas-institutional-firedancer-era', title: "Solana's Firedancer Era", desc: 'How Firedancer changed Solana and what it means for you.' },
+              { slug: 'crypto-airdrops-in-2026-what-to-expect-and-how-they-will-evolve', title: 'Crypto Airdrops in 2026', desc: 'What to expect and how airdrops will evolve this year.' },
+              { slug: 'how-a-100-domain-became-70-million', title: 'How a $100 Domain Became $70M', desc: 'Lessons for Web3 investors from the AI.com story.' },
             ].map((article) => (
-              <a key={article.slug} href="https://3alamiyweb3.online/learn" style={{ textDecoration: 'none' }}>
+              <Link key={article.slug} href={`/learn/${article.slug}`} style={{ textDecoration: 'none' }}>
                 <div style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '16px', padding: '20px' }}>
                   <h3 style={{ fontSize: '15px', fontWeight: '700', margin: '0 0 8px', color: '#fff' }}>{article.title}</h3>
                   <p style={{ fontSize: '13px', color: '#71717a', margin: 0, lineHeight: 1.5 }}>{article.desc}</p>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

@@ -266,6 +266,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${a.title} | 3alamiy Web3`,
     description: a.excerpt,
+    keywords: `${a.title}, crypto airdrop guide, Web3 learn, blockchain ${a.category}`,
+    openGraph: {
+      title: a.title,
+      description: a.excerpt,
+      url: `https://seo.3alamiyweb3.online/learn/${slug}`,
+      siteName: '3alamiy Web3',
+      images: a.image ? [{ url: a.image, width: 1200, height: 630, alt: a.title }] : [],
+      type: 'article',
+    },
+    twitter: { card: 'summary_large_image', title: a.title, description: a.excerpt },
+    alternates: { canonical: `https://seo.3alamiyweb3.online/learn/${slug}` },
   };
 }
 
@@ -306,7 +317,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <a key={label} href="https://3alamiyweb3.online" style={{ color: label === 'Learn' ? '#fff' : '#71717a', textDecoration: 'none', fontSize: '15px', fontWeight: label === 'Learn' ? '700' : '500' }}>{label}</a>
           ))}
         </nav>
-        <a href="https://3alamiyweb3.online" style={{ background: '#6366f1', color: '#fff', padding: '10px 22px', borderRadius: '12px', textDecoration: 'none', fontSize: '14px', fontWeight: '700' }}>Sign Up</a>
+        <a href="https://3alamiyweb3.online/profile" style={{ background: '#6366f1', color: '#fff', padding: '10px 22px', borderRadius: '12px', textDecoration: 'none', fontSize: '14px', fontWeight: '700' }}>Sign Up</a>
       </header>
 
       <main style={{ maxWidth: '800px', margin: '0 auto', padding: '48px 24px 80px' }}>
