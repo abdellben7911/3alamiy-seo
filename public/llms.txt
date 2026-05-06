@@ -1,0 +1,15 @@
+# 3alamiy Web3 - Crypto Airdrop Tracker
+> The ultimate platform for tracking and participating in the best crypto airdrops in 2026.
+
+## About
+3alamiy Web3 is a crypto airdrop tracker providing step-by-step guides for free and paid airdrops on Ethereum, Solana, Arbitrum, and more.
+
+## Pages
+- Homepage: https://seo.3alamiyweb3.online
+- Airdrops: https://seo.3alamiyweb3.online/airdrops/[slug]
+- Learn: https://seo.3alamiyweb3.online/learn/[slug]
+- Sitemap: https://seo.3alamiyweb3.online/sitemap.xml
+
+## Contact
+- Telegram: https://t.me/web33alamiy
+- Main site: https://3alamiyweb3.online

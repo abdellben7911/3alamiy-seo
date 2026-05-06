@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://seo.3alamiyweb3.online/sitemap.xml
