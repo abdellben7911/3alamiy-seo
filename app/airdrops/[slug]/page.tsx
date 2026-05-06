@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const reward = a.reward_min && a.reward_max ? `$${a.reward_min} - $${a.reward_max}` : a.value || '';
   const desc = `${a.description} ${reward ? `Potential reward: ${reward}.` : ''} Difficulty: ${a.difficulty}. Free step-by-step guide for ${new Date().getFullYear()}.`.slice(0, 160);
   return {
-    title: `${a.name} Airdrop Guide ${new Date().getFullYear()} | How to Qualify | 3alamiy Web3`,
+    title: `${a.name.replace(/\s*airdrop\s*/gi, ' ').trim()} Airdrop Guide ${new Date().getFullYear()} | How to Qualify | 3alamiy Web3`,
     description: desc,
     keywords: `${a.name}, ${a.name} airdrop, ${a.blockchain} airdrop, crypto airdrop ${new Date().getFullYear()}, free crypto, ${a.name} guide`,
     openGraph: {
@@ -103,7 +103,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
               <a key={label} href="https://3alamiyweb3.online" style={{ color: label === 'Discover' ? '#fff' : '#71717a', textDecoration: 'none', fontSize: '15px', fontWeight: label === 'Discover' ? '700' : '500' }}>{label}</a>
             ))}
           </nav>
-          <a href="https://3alamiyweb3.online" style={{ background: '#6366f1', color: '#fff', padding: '10px 22px', borderRadius: '12px', textDecoration: 'none', fontSize: '14px', fontWeight: '700' }}>Sign Up</a>
+          <a href="https://3alamiyweb3.online/profile" style={{ background: '#6366f1', color: '#fff', padding: '10px 22px', borderRadius: '12px', textDecoration: 'none', fontSize: '14px', fontWeight: '700' }}>Sign Up</a>
         </header>
 
         <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '32px 24px 80px' }}>
@@ -129,7 +129,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
                     <span style={{ background: a.status === 'Active' ? 'rgba(16,185,129,0.1)' : 'rgba(113,113,122,0.1)', color: a.status === 'Active' ? '#10b981' : '#71717a', border: `1px solid ${a.status === 'Active' ? 'rgba(16,185,129,0.2)' : 'rgba(113,113,122,0.2)'}`, padding: '3px 10px', borderRadius: '99px', fontSize: '11px', fontWeight: '700' }}>{a.status}</span>
                     <span style={{ background: `${costColor}15`, color: costColor, border: `1px solid ${costColor}30`, padding: '3px 10px', borderRadius: '99px', fontSize: '11px', fontWeight: '700' }}>{costLabel}</span>
                   </div>
-                  <h1 style={{ fontSize: '34px', fontWeight: '900', margin: '0 0 12px', letterSpacing: '-0.02em', lineHeight: 1.15 }}>{a.name} Airdrop Guide {year}</h1>
+                  <h1 style={{ fontSize: '34px', fontWeight: '900', margin: '0 0 12px', letterSpacing: '-0.02em', lineHeight: 1.15 }}>{a.name.replace(/\s*airdrop\s*/gi, ' ').trim()} Airdrop Guide {year}</h1>
                   <p style={{ fontSize: '16px', color: '#a1a1aa', lineHeight: 1.7, margin: '0 0 20px' }}>{a.description}</p>
                   <a href="#guide" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#6366f1', color: '#fff', padding: '12px 24px', borderRadius: '14px', textDecoration: 'none', fontWeight: '800', fontSize: '14px' }}>Start Guide →</a>
                 </div>
