@@ -134,12 +134,12 @@ export default async function Home() {
               { slug: 'top-airdrop-strategies', title: 'Top Airdrop Strategies', desc: 'Advanced strategies used by top airdrop hunters.' },
               { slug: 'airdrop-tax-guide', title: 'Airdrop Tax Guide', desc: 'Understand the tax implications of crypto airdrops.' },
             ].map((article) => (
-              <Link key={article.slug} href={`/learn/${article.slug}`} style={{ textDecoration: 'none' }}>
+              <a key={article.slug} href="https://3alamiyweb3.online/learn" style={{ textDecoration: 'none' }}>
                 <div style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '16px', padding: '20px' }}>
                   <h3 style={{ fontSize: '15px', fontWeight: '700', margin: '0 0 8px', color: '#fff' }}>{article.title}</h3>
                   <p style={{ fontSize: '13px', color: '#71717a', margin: 0, lineHeight: 1.5 }}>{article.desc}</p>
                 </div>
-              </Link>
+              </a>
             ))}
           </div>
         </div>
