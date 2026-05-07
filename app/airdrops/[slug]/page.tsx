@@ -274,13 +274,47 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
           </div>
         </main>
 
-        <footer style={{ borderTop: '1px solid #18181b', padding: '28px 24px', textAlign: 'center', color: '#52525b', fontSize: '13px' }}>
-          <p style={{ margin: '0 0 8px' }}>© {year} <a href="https://3alamiyweb3.online" style={{ color: '#6366f1', textDecoration: 'none' }}>3alamiy Web3</a> — Crypto Airdrop Tracker</p>
-          <p style={{ margin: 0 }}>
-            <a href="https://seo.3alamiyweb3.online" style={{ color: '#52525b', textDecoration: 'none', marginRight: '16px' }}>All Airdrops</a>
-            <a href="https://3alamiyweb3.online" style={{ color: '#52525b', textDecoration: 'none', marginRight: '16px' }}>Dashboard</a>
-            <a href="https://t.me/web33alamiy" style={{ color: '#52525b', textDecoration: 'none' }}>Telegram</a>
-          </p>
+        <footer style={{ borderTop: '1px solid #18181b', background: '#0a0a0f', padding: '60px 24px 32px' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr auto auto', gap: '60px', marginBottom: '48px' }}>
+              <div>
+                <a href="https://3alamiyweb3.online" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: '#fff', marginBottom: '16px' }}>
+                  <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #6366f1, #4f46e5)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>🪂</div>
+                  <span style={{ fontWeight: '800', fontSize: '16px' }}>3alamiy Web3</span>
+                </a>
+                <p style={{ fontSize: '14px', color: '#71717a', lineHeight: 1.7, maxWidth: '280px', margin: '0 0 24px' }}>
+                  The world's most comprehensive airdrop tracker and Web3 discovery platform. Stay ahead of the curve with verified alpha.
+                </p>
+                <div style={{ display: 'flex', gap: '10px' }}>
+                  <a href="https://x.com/3alamiyweb3" target="_blank" rel="noopener noreferrer" style={{ width: '40px', height: '40px', background: '#18181b', border: '1px solid #27272a', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', color: '#a1a1aa', fontSize: '14px', fontWeight: '900' }}>𝕏</a>
+                  <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" style={{ width: '40px', height: '40px', background: '#18181b', border: '1px solid #27272a', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', color: '#a1a1aa', fontSize: '16px' }}>✈️</a>
+                </div>
+              </div>
+              <div>
+                <p style={{ fontSize: '11px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#52525b', margin: '0 0 20px' }}>Platform</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                  {[['Airdrops', 'https://3alamiyweb3.online'], ['Market', 'https://3alamiyweb3.online/market'], ['Learn', 'https://3alamiyweb3.online/learn'], ['Community', 'https://3alamiyweb3.online/community']].map(([label, href]) => (
+                    <a key={label} href={href} style={{ color: '#71717a', textDecoration: 'none', fontSize: '14px' }}>{label}</a>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p style={{ fontSize: '11px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.1em', color: '#52525b', margin: '0 0 20px' }}>Support</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                  {[['About Us', 'https://3alamiyweb3.online/about'], ['FAQ', 'https://3alamiyweb3.online/faq'], ['Privacy Policy', 'https://3alamiyweb3.online/privacy'], ['Contact', 'https://t.me/web33alamiy']].map(([label, href]) => (
+                    <a key={label} href={href} style={{ color: '#71717a', textDecoration: 'none', fontSize: '14px' }}>{label}</a>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div style={{ borderTop: '1px solid #18181b', paddingTop: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+              <p style={{ fontSize: '13px', color: '#52525b', margin: 0 }}>© {year} 3alamiyweb3.online. All rights reserved.</p>
+              <div style={{ display: 'flex', gap: '24px' }}>
+                <span style={{ fontSize: '13px', color: '#52525b' }}>○ Secure Platform</span>
+                <span style={{ fontSize: '13px', color: '#52525b' }}>⚡ Real-time Data</span>
+              </div>
+            </div>
+          </div>
         </footer>
       </div>
     </>
