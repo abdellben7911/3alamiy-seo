@@ -33,6 +33,9 @@ export default function AuthButton() {
               <p style={{ fontSize: '11px', color: '#52525b', margin: '0 0 2px' }}>Signed in as</p>
               <p style={{ fontSize: '12px', color: '#a1a1aa', margin: 0, fontWeight: '600', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{user.email}</p>
             </div>
+            <a href="/profile" style={{ width: '100%', background: 'transparent', border: 'none', color: '#e4e4e7', fontSize: '13px', fontWeight: '600', cursor: 'pointer', padding: '8px 12px', borderRadius: '8px', textAlign: 'left', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', marginBottom: '4px' }}>
+              👤 My Profile
+            </a>
             <button onClick={() => { signOut(); setShowMenu(false); }} style={{ width: '100%', background: 'transparent', border: 'none', color: '#f43f5e', fontSize: '13px', fontWeight: '600', cursor: 'pointer', padding: '8px 12px', borderRadius: '8px', textAlign: 'left', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: '8px' }}>
               🚪 Sign Out
             </button>
