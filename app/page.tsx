@@ -83,22 +83,14 @@ export default async function Home() {
           .desktop-nav { display: none !important; }
           .header-inner { padding: 0 16px !important; }
           .hero-section { padding: 36px 16px 28px !important; }
-          .hero-title { font-size: 28px !important; }
+          .hero-title { font-size: 28px !important; line-height: 1.15 !important; }
           .hero-buttons { flex-direction: column !important; }
-          .stats-row { flex-wrap: wrap !important; }
-          .stat-item { min-width: calc(50% - 6px) !important; }
+          .hero-buttons a { text-align: center !important; }
           .content-pad { padding: 0 16px 60px !important; }
-          .big-grid { grid-template-columns: 1fr !important; }
-          .small-grid { grid-template-columns: 1fr !important; }
           .learn-grid { grid-template-columns: 1fr !important; }
           .learn-section { padding: 36px 16px !important; }
           .sign-up-btn { padding: 8px 14px !important; font-size: 13px !important; }
           .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-        }
-        @media (min-width: 641px) and (max-width: 1024px) {
-          .big-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          .small-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          .learn-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
       `}</style>
 

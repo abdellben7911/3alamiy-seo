@@ -139,8 +139,19 @@ export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
 
   return (
     <div>
+      <style>{`
+        .filter-bar-wrap { flex-direction: row; }
+        .filter-tabs { flex-wrap: wrap; }
+        @media (max-width: 640px) {
+          .filter-bar-wrap { flex-direction: column !important; }
+          .filter-tabs { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; }
+          .filter-tab-btn { justify-content: center !important; }
+          .section-title { font-size: 16px !important; }
+        }
+      `}</style>
+
       {/* Filter bar */}
-      <div style={{ background: '#0d1117', border: '1px solid #1a1f2e', borderRadius: '14px', padding: '12px 16px', marginBottom: '32px', display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+      <div className="filter-bar-wrap" style={{ background: '#0d1117', border: '1px solid #1a1f2e', borderRadius: '14px', padding: '12px 16px', marginBottom: '32px', display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
         <div style={{ flex: 1, minWidth: '180px', position: 'relative' }}>
           <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#52525b', fontSize: '13px' }}>🔍</span>
           <input
@@ -150,9 +161,9 @@ export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
             style={{ width: '100%', background: '#18181b', border: '1px solid #27272a', borderRadius: '10px', padding: '10px 12px 10px 34px', color: '#e4e4e7', fontSize: '13px', outline: 'none', fontFamily: 'inherit' }}
           />
         </div>
-        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+        <div className="filter-tabs" style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', width: '100%' }}>
           {tabs.map((tab) => (
-            <button key={tab.label} onClick={() => setActive(tab.label)} style={{
+            <button key={tab.label} className="filter-tab-btn" onClick={() => setActive(tab.label)} style={{
               display: 'flex', alignItems: 'center', gap: '7px',
               background: active === tab.label ? 'linear-gradient(135deg, #6366f1, #4f46e5)' : '#18181b',
               border: `1px solid ${active === tab.label ? 'transparent' : '#27272a'}`,
