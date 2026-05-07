@@ -115,9 +115,18 @@ export default async function Home() {
               <h2 style={{ fontSize: '22px', fontWeight: '900', margin: '0 0 4px' }}>All Crypto Airdrops {year}</h2>
               <p style={{ fontSize: '13px', color: '#71717a', margin: 0 }}>Updated daily — {airdrops.length} airdrops with step-by-step guides</p>
             </div>
-            <a href="https://3alamiyweb3.online" style={{ background: '#18181b', color: '#a1a1aa', padding: '8px 14px', borderRadius: '10px', textDecoration: 'none', fontSize: '12px', fontWeight: '700', border: '1px solid #27272a', whiteSpace: 'nowrap', flexShrink: 0 }}>
+            <Link href="/airdrops" style={{ background: '#18181b', color: '#a1a1aa', padding: '8px 14px', borderRadius: '10px', textDecoration: 'none', fontSize: '12px', fontWeight: '700', border: '1px solid #27272a', whiteSpace: 'nowrap', flexShrink: 0 }}>
               View All →
-            </a>
+            </Link>
+          </div>
+
+          {/* Blockchain filter links — SEO internal linking */}
+          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '20px' }}>
+            {['All', 'Ethereum', 'Solana', 'Arbitrum', 'Base', 'ZKSync', 'Starknet'].map((chain) => (
+              <Link key={chain} href={chain === 'All' ? '/airdrops' : `/airdrops?blockchain=${chain.toLowerCase()}`} style={{ background: '#0d1117', border: '1px solid #27272a', color: '#a1a1aa', padding: '5px 12px', borderRadius: '99px', fontSize: '12px', fontWeight: '600', textDecoration: 'none' }}>
+                {chain}
+              </Link>
+            ))}
           </div>
 
           <div className="airdrops-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '10px' }}>
@@ -150,8 +159,15 @@ export default async function Home() {
         {/* Learn Section */}
         <section className="learn-section" style={{ background: '#0a0a0f', borderTop: '1px solid #18181b', padding: '48px 24px' }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <h2 style={{ fontSize: '22px', fontWeight: '900', margin: '0 0 6px' }}>Learn About Crypto Airdrops</h2>
-            <p style={{ fontSize: '13px', color: '#71717a', margin: '0 0 20px' }}>Everything you need to know to qualify for the best airdrops</p>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px', flexWrap: 'wrap', gap: '10px' }}>
+              <div>
+                <h2 style={{ fontSize: '22px', fontWeight: '900', margin: '0 0 4px' }}>Learn About Crypto Airdrops</h2>
+                <p style={{ fontSize: '13px', color: '#71717a', margin: 0 }}>Everything you need to know to qualify for the best airdrops</p>
+              </div>
+              <Link href="/learn" style={{ background: '#18181b', color: '#a1a1aa', padding: '8px 14px', borderRadius: '10px', textDecoration: 'none', fontSize: '12px', fontWeight: '700', border: '1px solid #27272a', whiteSpace: 'nowrap' }}>
+                All Articles →
+              </Link>
+            </div>
             <div className="learn-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '10px' }}>
               {[
                 { slug: 'why-crypto-airdrops-are-becoming-harder-to-qualify-for', title: 'Why Crypto Airdrops Are Harder in 2026', desc: 'The golden era of easy airdrops is over. Learn how to adapt.' },
@@ -160,6 +176,13 @@ export default async function Home() {
                 { slug: 'how-to-set-up-metamask-for-airdrops', title: 'How to Set Up MetaMask for Airdrops', desc: 'Complete beginner guide to getting started with airdrops.' },
                 { slug: 'what-is-depin-crypto-airdrops', title: 'What is DePIN? Earn Passive Crypto', desc: 'The hottest crypto trend paying users in 2026.' },
                 { slug: 'how-to-avoid-crypto-airdrop-scams-2026', title: 'How to Avoid Airdrop Scams', desc: 'Stay safe while hunting for legitimate airdrops.' },
+                { slug: 'what-is-a-crypto-airdrop', title: 'What is a Crypto Airdrop?', desc: 'A complete beginner guide to understanding crypto airdrops.' },
+                { slug: 'how-to-use-multiple-wallets-for-airdrops', title: 'How to Use Multiple Wallets for Airdrops', desc: 'Maximize your airdrop rewards with a multi-wallet strategy.' },
+                { slug: 'best-wallets-for-crypto-airdrops', title: 'Best Wallets for Crypto Airdrops', desc: 'The top wallets to use when participating in airdrops.' },
+                { slug: 'how-to-track-crypto-airdrops', title: 'How to Track Crypto Airdrops', desc: 'Never miss a valuable airdrop with these tracking strategies.' },
+                { slug: 'layer2-airdrops-guide', title: 'Layer 2 Airdrops Guide', desc: 'How to qualify for the biggest Layer 2 airdrop opportunities.' },
+                { slug: 'defi-airdrop-strategies', title: 'DeFi Airdrop Strategies', desc: 'Advanced strategies for maximizing DeFi airdrop rewards.' },
+                { slug: 'testnet-airdrop-guide', title: 'Testnet Airdrop Guide', desc: 'How to participate in testnets to earn real token rewards.' },
               ].map((article) => (
                 <Link key={article.slug} href={`/learn/${article.slug}`} style={{ textDecoration: 'none' }}>
                   <div style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '12px', padding: '14px' }}>

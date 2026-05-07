@@ -131,7 +131,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
           <nav aria-label="breadcrumb" style={{ marginBottom: '28px', fontSize: '13px', color: '#52525b' }}>
             <a href="https://seo.3alamiyweb3.online" style={{ color: '#6366f1', textDecoration: 'none' }}>Home</a>
             <span style={{ margin: '0 8px' }}>›</span>
-            <a href="https://3alamiyweb3.online" style={{ color: '#6366f1', textDecoration: 'none' }}>Airdrops</a>
+            <a href="https://seo.3alamiyweb3.online/airdrops" style={{ color: '#6366f1', textDecoration: 'none' }}>Airdrops</a>
             <span style={{ margin: '0 8px' }}>›</span>
             <span>{a.name}</span>
           </nav>
@@ -198,6 +198,29 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
                 </div>
               </section>
 
+              {/* Related Learn Articles */}
+              <section style={{ marginBottom: '24px' }}>
+                <h2 style={{ fontSize: '18px', fontWeight: '800', margin: '0 0 14px' }}>📚 Learn More</h2>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {[
+                    { slug: 'what-is-a-crypto-airdrop', title: 'What is a Crypto Airdrop?' },
+                    { slug: 'how-to-avoid-crypto-airdrop-scams-2026', title: 'How to Avoid Airdrop Scams' },
+                    { slug: 'how-to-build-onchain-activity-that-actually-matters', title: 'How to Build Onchain Activity That Matters' },
+                    { slug: 'best-wallets-for-crypto-airdrops', title: 'Best Wallets for Crypto Airdrops' },
+                    ...(a.blockchain?.toLowerCase().includes('layer2') || ['arbitrum','base','zksync','starknet','optimism'].includes(a.blockchain?.toLowerCase())
+                      ? [{ slug: 'layer2-airdrops-guide', title: 'Layer 2 Airdrops Complete Guide' }]
+                      : []),
+                    ...(a.cost === 'Free'
+                      ? [{ slug: 'best-free-crypto-airdrops-2026', title: 'Best Free Crypto Airdrops 2026' }]
+                      : []),
+                  ].slice(0, 4).map((article) => (
+                    <a key={article.slug} href={`/learn/${article.slug}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 14px', background: '#0d1117', border: '1px solid #18181b', borderRadius: '10px', textDecoration: 'none', color: '#a1a1aa', fontSize: '13px', fontWeight: '600' }}>
+                      <span>→ {article.title}</span>
+                    </a>
+                  ))}
+                </div>
+              </section>
+
               {/* Related */}
               {relatedAirdrops.length > 0 && (
                 <section>
@@ -251,6 +274,12 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
                 <h4 style={{ fontSize: '17px', fontWeight: '800', margin: '0 0 8px' }}>Need Help?</h4>
                 <p style={{ color: 'rgba(199,210,254,0.8)', fontSize: '13px', lineHeight: 1.6, margin: '0 0 18px' }}>Join our community for real-time airdrop alerts.</p>
                 <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: '#fff', color: '#4f46e5', padding: '12px', borderRadius: '12px', textDecoration: 'none', fontWeight: '800', fontSize: '14px' }}>✈️ Join Telegram</a>
+              </div>
+              <div style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '14px', padding: '14px', textAlign: 'center', marginBottom: '14px' }}>
+                <a href="https://seo.3alamiyweb3.online/airdrops" style={{ display: 'block', color: '#6366f1', textDecoration: 'none', fontWeight: '700', fontSize: '14px', marginBottom: '6px' }}>
+                  🪂 Browse All Airdrops →
+                </a>
+                <p style={{ fontSize: '11px', color: '#52525b', margin: 0 }}>{`${allAirdrops.length}+ guides available`}</p>
               </div>
               <div style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '14px', padding: '14px', textAlign: 'center' }}>
                 <p style={{ fontSize: '12px', color: '#52525b', margin: 0 }}>Last updated: <span style={{ color: '#71717a', fontWeight: '600' }}>{new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span></p>
