@@ -203,15 +203,15 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
                 <h2 style={{ fontSize: '18px', fontWeight: '800', margin: '0 0 14px' }}>📚 Learn More</h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {[
-                    { slug: 'what-is-a-crypto-airdrop', title: 'What is a Crypto Airdrop?' },
+                    { slug: 'how-to-set-up-metamask-for-airdrops', title: 'How to Set Up MetaMask for Airdrops' },
                     { slug: 'how-to-avoid-crypto-airdrop-scams-2026', title: 'How to Avoid Airdrop Scams' },
                     { slug: 'how-to-build-onchain-activity-that-actually-matters', title: 'How to Build Onchain Activity That Matters' },
-                    { slug: 'best-wallets-for-crypto-airdrops', title: 'Best Wallets for Crypto Airdrops' },
-                    ...(a.blockchain?.toLowerCase().includes('layer2') || ['arbitrum','base','zksync','starknet','optimism'].includes(a.blockchain?.toLowerCase())
-                      ? [{ slug: 'layer2-airdrops-guide', title: 'Layer 2 Airdrops Complete Guide' }]
-                      : []),
+                    { slug: 'top-crypto-airdrop-wallets-2026', title: 'Best Wallets for Crypto Airdrops 2026' },
                     ...(a.cost === 'Free'
                       ? [{ slug: 'best-free-crypto-airdrops-2026', title: 'Best Free Crypto Airdrops 2026' }]
+                      : []),
+                    ...(a.category === 'DePIN' || (a.tags && a.tags.includes('DePIN'))
+                      ? [{ slug: 'what-is-depin-crypto-airdrops', title: 'What is DePIN? Earn Passive Crypto' }]
                       : []),
                   ].slice(0, 4).map((article) => (
                     <a key={article.slug} href={`/learn/${article.slug}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 14px', background: '#0d1117', border: '1px solid #18181b', borderRadius: '10px', textDecoration: 'none', color: '#a1a1aa', fontSize: '13px', fontWeight: '600' }}>
