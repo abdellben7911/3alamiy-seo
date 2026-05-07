@@ -1,5 +1,6 @@
 import Link from "next/link";
 import FilterBar from "./FilterBar";
+import AuthButton from "./auth/AuthButton";
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -108,7 +109,7 @@ export default async function Home() {
                 <a key={label} href="https://3alamiyweb3.online" style={{ color: label === 'Discover' ? '#e4e4e7' : '#52525b', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>{label}</a>
               ))}
             </nav>
-            <a href="https://3alamiyweb3.online/profile" className="sign-up-btn" style={{ background: 'linear-gradient(135deg, #6366f1, #4f46e5)', color: '#fff', padding: '9px 20px', borderRadius: '10px', textDecoration: 'none', fontSize: '13px', fontWeight: '700', flexShrink: 0, boxShadow: '0 4px 12px rgba(99,102,241,0.25)' }}>Sign Up</a>
+            <AuthButton />
           </div>
         </header>
 

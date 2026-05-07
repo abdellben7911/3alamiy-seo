@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useAuth } from './auth/AuthProvider';
+import { createClient } from './auth/supabase';
 
 type Airdrop = {
   slug: string;
@@ -21,22 +23,55 @@ const STORAGE_KEY = '3alamiy_liked_airdrops';
 
 export function useLikes() {
   const [liked, setLiked] = useState<Record<string, boolean>>({});
+  const { user } = useAuth();
+  const supabase = createClient();
 
+  // Load likes on mount
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) setLiked(JSON.parse(stored));
-    } catch {}
-  }, []);
+    if (user) {
+      // Load from Supabase
+      supabase.from('favorites').select('airdrop_slug').eq('user_id', user.id)
+        .then(({ data }) => {
+          if (data) {
+            const likedMap: Record<string, boolean> = {};
+            data.forEach(row => { likedMap[row.airdrop_slug] = true; });
+            setLiked(likedMap);
+          }
+        });
+    } else {
+      // Load from localStorage
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) setLiked(JSON.parse(stored));
+      } catch {}
+    }
+  }, [user]);
 
-  const toggleLike = (slug: string, airdrop: Airdrop) => {
-    setLiked(prev => {
-      const next = { ...prev, [slug]: !prev[slug] };
+  const toggleLike = async (slug: string, airdrop: Airdrop) => {
+    const isLiked = liked[slug];
+    const next = { ...liked, [slug]: !isLiked };
+    setLiked(next);
+
+    if (user) {
+      // Sync with Supabase
+      if (!isLiked) {
+        await supabase.from('favorites').upsert({
+          user_id: user.id,
+          airdrop_slug: slug,
+          airdrop_name: airdrop.name,
+          airdrop_blockchain: airdrop.blockchain,
+          airdrop_tags: airdrop.tags,
+        });
+      } else {
+        await supabase.from('favorites').delete()
+          .eq('user_id', user.id).eq('airdrop_slug', slug);
+      }
+    } else {
+      // Save to localStorage
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-        // Also store airdrop metadata for recommendations
         const metaKey = `3alamiy_meta_${slug}`;
-        if (!prev[slug]) {
+        if (!isLiked) {
           localStorage.setItem(metaKey, JSON.stringify({
             blockchain: airdrop.blockchain,
             tags: airdrop.tags,
@@ -44,8 +79,7 @@ export function useLikes() {
           }));
         }
       } catch {}
-      return next;
-    });
+    }
   };
 
   const likedCount = Object.values(liked).filter(Boolean).length;
