@@ -176,13 +176,13 @@ export default async function Home() {
                 { slug: 'how-to-set-up-metamask-for-airdrops', title: 'How to Set Up MetaMask for Airdrops', desc: 'Complete beginner guide to getting started with airdrops.' },
                 { slug: 'what-is-depin-crypto-airdrops', title: 'What is DePIN? Earn Passive Crypto', desc: 'The hottest crypto trend paying users in 2026.' },
                 { slug: 'how-to-avoid-crypto-airdrop-scams-2026', title: 'How to Avoid Airdrop Scams', desc: 'Stay safe while hunting for legitimate airdrops.' },
-                { slug: 'what-is-a-crypto-airdrop', title: 'What is a Crypto Airdrop?', desc: 'A complete beginner guide to understanding crypto airdrops.' },
-                { slug: 'how-to-use-multiple-wallets-for-airdrops', title: 'How to Use Multiple Wallets for Airdrops', desc: 'Maximize your airdrop rewards with a multi-wallet strategy.' },
-                { slug: 'best-wallets-for-crypto-airdrops', title: 'Best Wallets for Crypto Airdrops', desc: 'The top wallets to use when participating in airdrops.' },
-                { slug: 'how-to-track-crypto-airdrops', title: 'How to Track Crypto Airdrops', desc: 'Never miss a valuable airdrop with these tracking strategies.' },
-                { slug: 'layer2-airdrops-guide', title: 'Layer 2 Airdrops Guide', desc: 'How to qualify for the biggest Layer 2 airdrop opportunities.' },
-                { slug: 'defi-airdrop-strategies', title: 'DeFi Airdrop Strategies', desc: 'Advanced strategies for maximizing DeFi airdrop rewards.' },
-                { slug: 'testnet-airdrop-guide', title: 'Testnet Airdrop Guide', desc: 'How to participate in testnets to earn real token rewards.' },
+                { slug: 'top-crypto-airdrop-wallets-2026', title: 'Best Wallets for Crypto Airdrops 2026', desc: 'MetaMask, Rabby, Phantom — which wallet wins airdrops?' },
+                { slug: 'crypto-airdrops-2026-evolution', title: 'How Crypto Airdrops Are Evolving in 2026', desc: 'Strategic, data-driven, utility-focused — the new airdrop era.' },
+                { slug: 'news-report-the-2-trillion-wipeout', title: 'The $2 Trillion Crypto Wipeout', desc: 'What happened and what it means for airdrop hunters.' },
+                { slug: 'solanas-institutional-firedancer-era', title: "Solana's Firedancer Era", desc: 'How Firedancer is transforming Solana into institutional-grade infrastructure.' },
+                { slug: 'can-solana-reach-1000-deep-dive', title: 'Can Solana Reach $1,000?', desc: 'A deep dive into SOL fundamentals and future potential.' },
+                { slug: 'nfts-flex-bayc-kidney-moment', title: 'When NFTs Were a Flex: The BAYC Era', desc: 'A look back at the viral NFT bull market culture.' },
+                { slug: 'how-a-100-domain-became-a-70-million-digital-asset-the-story-behind-ai-com', title: 'How a $100 Domain Became $70 Million', desc: 'The story of AI.com and lessons for Web3 investors.' },
               ].map((article) => (
                 <Link key={article.slug} href={`/learn/${article.slug}`} style={{ textDecoration: 'none' }}>
                   <div style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '12px', padding: '14px' }}>
