@@ -219,11 +219,34 @@ export default async function Home() {
         {/* Main content */}
         <div className="content-pad" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px 80px' }}>
 
-          {/* Filters */}
-          <div style={{ display: 'flex', gap: '8px', marginBottom: '32px', flexWrap: 'wrap' }}>
-            {['All', 'Free', 'Ethereum', 'Solana', 'Arbitrum', 'Base', 'ZKSync'].map((f) => (
-              <Link key={f} href={f === 'All' ? '/airdrops' : f === 'Free' ? '/airdrops?cost=free' : `/airdrops?blockchain=${f.toLowerCase()}`} className="filter-pill">{f}</Link>
-            ))}
+          {/* Filter bar */}
+          <div style={{ display: 'flex', gap: '10px', marginBottom: '32px', flexWrap: 'wrap', alignItems: 'center' }}>
+            {/* Search */}
+            <div style={{ position: 'relative', flex: 1, minWidth: '200px', maxWidth: '380px' }}>
+              <span style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#52525b', fontSize: '14px' }}>🔍</span>
+              <input disabled placeholder="Search by name, category or blockchain..." style={{ width: '100%', background: '#0d1117', border: '1px solid #1a1f2e', borderRadius: '12px', padding: '11px 14px 11px 40px', color: '#71717a', fontSize: '13px', outline: 'none', fontFamily: 'inherit' }} />
+            </div>
+            {/* Filter tabs */}
+            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+              {[
+                { label: 'All', count: airdrops.length, icon: '⚡', active: true },
+                { label: 'Free', count: airdrops.filter((a: any) => a.cost === 'Free').length, icon: '★', active: false },
+                { label: 'Paid', count: airdrops.filter((a: any) => a.cost === 'Paid').length, icon: '🗂', active: false },
+                { label: 'End / Claim', count: airdrops.filter((a: any) => a.status === 'Ended').length, icon: '✦', active: false },
+              ].map((tab) => (
+                <div key={tab.label} style={{
+                  display: 'flex', alignItems: 'center', gap: '7px',
+                  background: tab.active ? 'linear-gradient(135deg, #6366f1, #4f46e5)' : '#0d1117',
+                  border: `1px solid ${tab.active ? 'transparent' : '#1a1f2e'}`,
+                  borderRadius: '10px', padding: '8px 14px', cursor: 'pointer',
+                  boxShadow: tab.active ? '0 4px 12px rgba(99,102,241,0.3)' : 'none',
+                }}>
+                  <span style={{ fontSize: '12px', opacity: 0.8 }}>{tab.icon}</span>
+                  <span style={{ fontSize: '13px', fontWeight: '700', color: tab.active ? '#fff' : '#71717a' }}>{tab.label}</span>
+                  <span style={{ background: tab.active ? 'rgba(255,255,255,0.2)' : '#18181b', color: tab.active ? '#fff' : '#52525b', fontSize: '11px', fontWeight: '700', padding: '1px 7px', borderRadius: '6px', minWidth: '22px', textAlign: 'center' }}>{tab.count}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* ⭐ Featured Alpha */}
