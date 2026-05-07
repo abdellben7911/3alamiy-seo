@@ -276,7 +276,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
                 <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: '#fff', color: '#4f46e5', padding: '12px', borderRadius: '12px', textDecoration: 'none', fontWeight: '800', fontSize: '14px' }}>✈️ Join Telegram</a>
               </div>
               <div style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '14px', padding: '14px', textAlign: 'center', marginBottom: '14px' }}>
-                <a href="https://seo.3alamiyweb3.online/airdrops" style={{ display: 'block', color: '#6366f1', textDecoration: 'none', fontWeight: '700', fontSize: '14px', marginBottom: '6px' }}>
+                <a href="https://seo.3alamiyweb3.online" style={{ display: 'block', color: '#6366f1', textDecoration: 'none', fontWeight: '700', fontSize: '14px', marginBottom: '6px' }}>
                   🪂 Browse All Airdrops →
                 </a>
                 <p style={{ fontSize: '11px', color: '#52525b', margin: 0 }}>{`${allAirdrops.length}+ guides available`}</p>
