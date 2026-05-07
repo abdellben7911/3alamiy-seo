@@ -30,10 +30,9 @@ export default async function Home() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body { font-family: 'DM Sans', sans-serif; }
+        body { font-family: 'Inter', system-ui, sans-serif; }
 
         .airdrop-card {
           background: #0d1117;
@@ -129,14 +128,14 @@ export default async function Home() {
         }
       `}</style>
 
-      <div style={{ minHeight: '100vh', background: '#060910', fontFamily: "'DM Sans', sans-serif", color: '#fff' }}>
+      <div style={{ minHeight: '100vh', background: '#060910', color: '#fff' }}>
 
         {/* Header */}
         <header style={{ borderBottom: '1px solid #1a1f2e', position: 'sticky', top: 0, background: 'rgba(6,9,16,0.92)', backdropFilter: 'blur(12px)', zIndex: 50, height: '62px' }}>
           <div className="header-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <a href="https://3alamiyweb3.online" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: '#fff', flexShrink: 0 }}>
               <div style={{ width: '34px', height: '34px', background: 'linear-gradient(135deg, #6366f1, #4f46e5)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', boxShadow: '0 4px 12px rgba(99,102,241,0.3)' }}>🪂</div>
-              <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: '800', fontSize: '15px', letterSpacing: '-0.01em' }}>3alamiy Web3</span>
+              <span style={{ fontWeight: '800', fontSize: '15px', letterSpacing: '-0.01em' }}>3alamiy Web3</span>
             </a>
             <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
               {['Discover', 'Market', 'Community', 'Learn'].map((label) => (
@@ -160,7 +159,7 @@ export default async function Home() {
               🔥 {airdrops.length}+ Active Airdrops Tracked
             </div>
 
-            <h1 className="hero-title" style={{ fontFamily: "'Syne', sans-serif", fontSize: '52px', fontWeight: '800', margin: '0 0 18px', letterSpacing: '-0.03em', lineHeight: 1.08 }}>
+            <h1 className="hero-title" style={{ fontSize: '48px', fontWeight: '900', margin: '0 0 18px', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
               Best Crypto Airdrops<br />
               <span style={{ background: 'linear-gradient(135deg, #818cf8, #6366f1, #4f46e5)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Guide {year}</span>
             </h1>
@@ -191,7 +190,7 @@ export default async function Home() {
             ].map((stat) => (
               <div key={stat.label} className="stat-card">
                 <div style={{ fontSize: '22px', marginBottom: '6px' }}>{stat.icon}</div>
-                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: '22px', fontWeight: '800', color: stat.color, marginBottom: '2px' }}>{stat.value}</div>
+                <div style={{ fontSize: '22px', fontWeight: '800', color: stat.color, marginBottom: '2px' }}>{stat.value}</div>
                 <div style={{ fontSize: '11px', color: '#52525b', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{stat.label}</div>
               </div>
             ))}
@@ -204,7 +203,7 @@ export default async function Home() {
           {/* Section header */}
           <div className="section-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
             <div>
-              <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: '22px', fontWeight: '800', margin: '0 0 4px', letterSpacing: '-0.01em' }}>All Crypto Airdrops {year}</h2>
+              <h2 style={{ fontSize: '22px', fontWeight: '800', margin: '0 0 4px', letterSpacing: '-0.01em' }}>All Crypto Airdrops {year}</h2>
               <p style={{ fontSize: '13px', color: '#52525b', margin: 0 }}>Updated daily — {airdrops.length} airdrops with step-by-step guides</p>
             </div>
             <Link href="/airdrops" style={{ background: '#0d1117', color: '#818cf8', padding: '8px 16px', borderRadius: '10px', textDecoration: 'none', fontSize: '12px', fontWeight: '700', border: '1px solid rgba(99,102,241,0.2)', whiteSpace: 'nowrap', flexShrink: 0 }}>
@@ -233,7 +232,7 @@ export default async function Home() {
                   )}
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '5px' }}>
-                      <h3 style={{ fontSize: '14px', fontFamily: "'Syne', sans-serif", fontWeight: '700', margin: 0, color: '#f4f4f5', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '160px' }}>{a.name}</h3>
+                      <h3 style={{ fontSize: '14px', fontWeight: '700', margin: 0, color: '#f4f4f5', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '160px' }}>{a.name}</h3>
                       <span style={{
                         background: a.status === 'Active' ? 'rgba(16,185,129,0.1)' : 'rgba(113,113,122,0.1)',
                         color: a.status === 'Active' ? '#10b981' : '#71717a',
@@ -259,7 +258,7 @@ export default async function Home() {
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
               <div>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: '22px', fontWeight: '800', margin: '0 0 4px', letterSpacing: '-0.01em' }}>Learn About Crypto Airdrops</h2>
+                <h2 style={{ fontSize: '22px', fontWeight: '800', margin: '0 0 4px', letterSpacing: '-0.01em' }}>Learn About Crypto Airdrops</h2>
                 <p style={{ fontSize: '13px', color: '#52525b', margin: 0 }}>Everything you need to know to qualify for the best airdrops</p>
               </div>
               <Link href="/learn" style={{ background: '#0d1117', color: '#818cf8', padding: '8px 16px', borderRadius: '10px', textDecoration: 'none', fontSize: '12px', fontWeight: '700', border: '1px solid rgba(99,102,241,0.2)', whiteSpace: 'nowrap' }}>
@@ -286,7 +285,7 @@ export default async function Home() {
                 return (
                   <Link key={article.slug} href={`/learn/${article.slug}`} className="learn-card">
                     <span style={{ fontSize: '10px', fontWeight: '800', color: catColors[article.cat] || '#818cf8', textTransform: 'uppercase', letterSpacing: '0.06em', display: 'block', marginBottom: '8px' }}>{article.cat}</span>
-                    <h3 style={{ fontSize: '13px', fontFamily: "'Syne', sans-serif", fontWeight: '700', margin: '0 0 6px', color: '#f4f4f5', lineHeight: 1.4 }}>{article.title}</h3>
+                    <h3 style={{ fontSize: '13px', fontWeight: '700', margin: '0 0 6px', color: '#f4f4f5', lineHeight: 1.4 }}>{article.title}</h3>
                     <p style={{ fontSize: '12px', color: '#52525b', margin: 0, lineHeight: 1.5 }}>{article.desc}</p>
                   </Link>
                 );
@@ -302,7 +301,7 @@ export default async function Home() {
               <div>
                 <a href="https://3alamiyweb3.online" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: '#fff', marginBottom: '14px' }}>
                   <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #6366f1, #4f46e5)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>🪂</div>
-                  <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: '800', fontSize: '16px' }}>3alamiy Web3</span>
+                  <span style={{ fontWeight: '800', fontSize: '16px' }}>3alamiy Web3</span>
                 </a>
                 <p style={{ fontSize: '13px', color: '#3f3f46', lineHeight: 1.7, maxWidth: '260px', margin: '0 0 20px' }}>
                   The world's most comprehensive airdrop tracker and Web3 discovery platform.
