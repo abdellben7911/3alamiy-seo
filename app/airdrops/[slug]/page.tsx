@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import ParticipationGuide from './ParticipationGuide';
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -165,23 +166,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
               </section>
 
               {/* Guide */}
-              <section id="guide" style={{ marginBottom: '24px' }}>
-                <h2 style={{ fontSize: '22px', fontWeight: '900', margin: '0 0 20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <span style={{ background: 'rgba(16,185,129,0.1)', padding: '6px', borderRadius: '10px' }}>✓</span>
-                  How to Participate in {a.name} Airdrop
-                </h2>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  {steps.map((step: string, idx: number) => (
-                    <div key={idx} style={{ display: 'flex', gap: '16px', padding: '18px 20px', borderRadius: '18px', border: '1px solid #27272a', background: '#0d1117' }}>
-                      <div style={{ width: '34px', height: '34px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontWeight: '800', fontSize: '14px', background: '#18181b', color: '#6366f1', border: '1px solid #27272a' }}>{idx + 1}</div>
-                      <div style={{ flex: 1 }}>
-                        <h3 style={{ fontSize: '15px', fontWeight: '700', margin: '0 0 4px', color: '#fff', lineHeight: 1.4 }}>{step}</h3>
-                        <p style={{ fontSize: '12px', color: '#52525b', margin: 0 }}>Complete this step to improve your eligibility for the {a.name} airdrop snapshot.</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
+              <ParticipationGuide steps={steps} airdropName={a.name} />
 
               {/* Tags */}
               {tags.length > 0 && (
