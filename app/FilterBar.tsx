@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import RecommendedForYou, { useLikes } from './RecommendedForYou';
 
 type Airdrop = {
   slug: string;
@@ -20,6 +21,7 @@ type Airdrop = {
 export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
   const [active, setActive] = useState('All');
   const [search, setSearch] = useState('');
+  const { liked, toggleLike } = useLikes();
 
   const difficultyColor = (d: string) =>
     d === 'Easy' ? '#10b981' : d === 'Hard' ? '#f43f5e' : '#f59e0b';
@@ -69,7 +71,14 @@ export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
           <span style={{ background: 'rgba(99,102,241,0.15)', color: '#818cf8', border: '1px solid rgba(99,102,241,0.2)', padding: '2px 8px', borderRadius: '5px', fontSize: '10px', fontWeight: '800' }}>3ALAMIY</span>
           <span style={{ background: 'rgba(16,185,129,0.1)', color: '#10b981', border: '1px solid rgba(16,185,129,0.2)', padding: '2px 8px', borderRadius: '5px', fontSize: '10px', fontWeight: '800' }}>✦ NEW</span>
         </div>
-        <span style={{ fontSize: '16px', color: '#3f3f46' }}>♡</span>
+        <button onClick={(e) => { e.preventDefault(); toggleLike(a.slug, a); }} style={{
+          background: liked[a.slug] ? 'rgba(239,68,68,0.1)' : 'transparent',
+          border: `1px solid ${liked[a.slug] ? 'rgba(239,68,68,0.3)' : '#27272a'}`,
+          borderRadius: '8px', width: '32px', height: '32px', cursor: 'pointer',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', transition: 'all 0.2s',
+        }}>
+          {liked[a.slug] ? '❤️' : '🤍'}
+        </button>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         {a.logo ? (
@@ -191,6 +200,9 @@ export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
           </div>
         </section>
       )}
+
+      {/* ✨ Recommended For You */}
+      <RecommendedForYou airdrops={airdrops} />
 
       {/* 🆕 Newly Added */}
       <section style={{ marginBottom: '48px' }}>
