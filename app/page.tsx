@@ -25,53 +25,6 @@ export default async function Home() {
 
   const allActive = airdrops.filter((a: any) => a.status === 'Active');
 
-  const BigCard = ({ a }: { a: any }) => (
-    <Link href={`/airdrops/${a.slug}`} className="airdrop-card" style={{ textDecoration: 'none' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', gap: '6px' }}>
-          <span style={{ background: 'rgba(99,102,241,0.15)', color: '#818cf8', border: '1px solid rgba(99,102,241,0.2)', padding: '2px 8px', borderRadius: '5px', fontSize: '10px', fontWeight: '800' }}>3ALAMIY</span>
-          <span style={{ background: 'rgba(16,185,129,0.1)', color: '#10b981', border: '1px solid rgba(16,185,129,0.2)', padding: '2px 8px', borderRadius: '5px', fontSize: '10px', fontWeight: '800' }}>✦ NEW</span>
-        </div>
-        <span style={{ fontSize: '16px', color: '#3f3f46' }}>♡</span>
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        {a.logo ? (
-          <img src={a.logo} alt={a.name} width={44} height={44} style={{ borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)', flexShrink: 0, objectFit: 'cover' }} />
-        ) : (
-          <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: '#1a1f2e', flexShrink: 0 }} />
-        )}
-        <div>
-          <h3 style={{ fontSize: '15px', fontWeight: '800', margin: '0 0 2px', color: '#f4f4f5' }}>{a.name}</h3>
-          <span style={{ fontSize: '11px', color: '#52525b', fontWeight: '600', textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>{a.blockchain}</span>
-        </div>
-      </div>
-      <p style={{ fontSize: '13px', color: '#52525b', lineHeight: 1.6, display: '-webkit-box' as any, WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' as any, overflow: 'hidden', margin: 0 }}>{a.description}</p>
-      <div style={{ display: 'flex', gap: '24px' }}>
-        <div>
-          <div style={{ fontSize: '10px', color: '#3f3f46', fontWeight: '700', textTransform: 'uppercase' as const, letterSpacing: '0.06em', marginBottom: '3px' }}>⚡ DIFFICULTY</div>
-          <div style={{ fontSize: '13px', fontWeight: '700', color: difficultyColor(a.difficulty) }}>{a.difficulty}</div>
-        </div>
-        <div>
-          <div style={{ fontSize: '10px', color: '#3f3f46', fontWeight: '700', textTransform: 'uppercase' as const, letterSpacing: '0.06em', marginBottom: '3px' }}>💰 REWARD</div>
-          <div style={{ fontSize: '13px', fontWeight: '700', color: '#10b981' }}>{rewardLabel(a)}</div>
-        </div>
-      </div>
-      {Array.isArray(a.tags) && a.tags.length > 0 && (
-        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' as const }}>
-          {a.tags.slice(0, 3).map((tag: string) => (
-            <span key={tag} style={{ background: '#18181b', border: '1px solid #27272a', color: '#71717a', padding: '3px 10px', borderRadius: '6px', fontSize: '11px', fontWeight: '600' }}>{tag}</span>
-          ))}
-        </div>
-      )}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <div style={{ height: '3px', flex: 1, background: '#1a1f2e', borderRadius: '99px', overflow: 'hidden' }}>
-          <div style={{ height: '100%', width: '97%', background: 'linear-gradient(90deg, #6366f1, #818cf8)', borderRadius: '99px' }} />
-        </div>
-        <span style={{ fontSize: '10px', fontWeight: '800', color: '#818cf8', whiteSpace: 'nowrap' as const }}>97% WORTH IT</span>
-      </div>
-    </Link>
-  );
-
   return (
     <>
       <style>{`
