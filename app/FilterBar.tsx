@@ -19,6 +19,7 @@ type Airdrop = {
 
 export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
   const [active, setActive] = useState('All');
+  const [search, setSearch] = useState('');
 
   const difficultyColor = (d: string) =>
     d === 'Easy' ? '#10b981' : d === 'Hard' ? '#f43f5e' : '#f59e0b';
@@ -35,11 +36,19 @@ export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
   ];
 
   const filtered = airdrops.filter(a => {
-    if (active === 'All') return true;
-    if (active === 'Free') return a.cost === 'Free';
-    if (active === 'Paid') return a.cost === 'Paid';
-    if (active === 'End / Claim') return a.status === 'Ended';
-    return true;
+    const matchesTab =
+      active === 'All' ? true :
+      active === 'Free' ? a.cost === 'Free' :
+      active === 'Paid' ? a.cost === 'Paid' :
+      active === 'End / Claim' ? a.status === 'Ended' : true;
+
+    const matchesSearch = search.trim() === '' ? true :
+      a.name.toLowerCase().includes(search.toLowerCase()) ||
+      a.blockchain?.toLowerCase().includes(search.toLowerCase()) ||
+      a.description?.toLowerCase().includes(search.toLowerCase()) ||
+      (Array.isArray(a.tags) && a.tags.some((t: string) => t.toLowerCase().includes(search.toLowerCase())));
+
+    return matchesTab && matchesSearch;
   });
 
   const featured = filtered.filter(a => a.reward_min >= 500).slice(0, 6);
@@ -134,7 +143,12 @@ export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
       <div style={{ background: '#0d1117', border: '1px solid #1a1f2e', borderRadius: '14px', padding: '12px 16px', marginBottom: '32px', display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
         <div style={{ flex: 1, minWidth: '180px', position: 'relative' }}>
           <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#52525b', fontSize: '13px' }}>🔍</span>
-          <input disabled placeholder="Search by name, category or blockchain..." style={{ width: '100%', background: '#18181b', border: '1px solid #27272a', borderRadius: '10px', padding: '10px 12px 10px 34px', color: '#71717a', fontSize: '13px', outline: 'none', fontFamily: 'inherit' }} />
+          <input
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            placeholder="Search by name, category or blockchain..."
+            style={{ width: '100%', background: '#18181b', border: '1px solid #27272a', borderRadius: '10px', padding: '10px 12px 10px 34px', color: '#e4e4e7', fontSize: '13px', outline: 'none', fontFamily: 'inherit' }}
+          />
         </div>
         <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
           {tabs.map((tab) => (

@@ -23,8 +23,6 @@ export default async function Home() {
   const airdrops = await getAllAirdrops();
   const year = new Date().getFullYear();
 
-  const allActive = airdrops.filter((a: any) => a.status === 'Active');
-
   return (
     <>
       <style>{`
@@ -143,23 +141,6 @@ export default async function Home() {
             </div>
           </div>
         </section>
-
-        {/* Stats */}
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px 40px' }}>
-          <div className="stats-row" style={{ display: 'flex', gap: '12px' }}>
-            {[
-              { value: `${airdrops.length}+`, label: 'Airdrops Tracked', color: '#818cf8' },
-              { value: `${allActive.length}`, label: 'Active Now', color: '#10b981' },
-              { value: `${airdrops.filter((a: any) => a.cost === 'Free').length}`, label: 'Free Airdrops', color: '#10b981' },
-              { value: 'Daily', label: 'Updated', color: '#f59e0b' },
-            ].map((stat) => (
-              <div key={stat.label} className="stat-item" style={{ background: '#0d1117', border: '1px solid #1a1f2e', borderRadius: '14px', padding: '16px 20px', flex: 1, textAlign: 'center' }}>
-                <div style={{ fontSize: '20px', fontWeight: '800', color: stat.color, marginBottom: '2px' }}>{stat.value}</div>
-                <div style={{ fontSize: '11px', color: '#52525b', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* Main content */}
         <div className="content-pad" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px 80px' }}>
