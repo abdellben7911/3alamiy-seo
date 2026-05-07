@@ -188,11 +188,11 @@ export default async function Home() {
               { icon: '✅', value: `${airdrops.filter((a: any) => a.status === 'Active').length}`, label: 'Active Now', color: '#10b981' },
               { icon: '🆓', value: `${airdrops.filter((a: any) => a.cost === 'Free').length}`, label: 'Free Airdrops', color: '#10b981' },
               { icon: '📈', value: 'Daily', label: 'Updated', color: '#f59e0b' },
-            ].map(([icon, value, label, color]: any) => (
-              <div key={label} className="stat-card">
-                <div style={{ fontSize: '22px', marginBottom: '6px' }}>{icon}</div>
-                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: '22px', fontWeight: '800', color, marginBottom: '2px' }}>{value}</div>
-                <div style={{ fontSize: '11px', color: '#52525b', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{label}</div>
+            ].map((stat) => (
+              <div key={stat.label} className="stat-card">
+                <div style={{ fontSize: '22px', marginBottom: '6px' }}>{stat.icon}</div>
+                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: '22px', fontWeight: '800', color: stat.color, marginBottom: '2px' }}>{stat.value}</div>
+                <div style={{ fontSize: '11px', color: '#52525b', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{stat.label}</div>
               </div>
             ))}
           </div>
