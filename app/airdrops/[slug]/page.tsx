@@ -128,13 +128,21 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
         <main className="main-pad" style={{ maxWidth: '1200px', margin: '0 auto', padding: '32px 24px 80px' }}>
 
           {/* Breadcrumbs */}
-          <nav aria-label="breadcrumb" style={{ marginBottom: '28px', fontSize: '13px', color: '#52525b' }}>
+          <nav aria-label="breadcrumb" style={{ marginBottom: '16px', fontSize: '13px', color: '#52525b' }}>
             <a href="https://seo.3alamiyweb3.online" style={{ color: '#6366f1', textDecoration: 'none' }}>Home</a>
             <span style={{ margin: '0 8px' }}>›</span>
             <a href="https://seo.3alamiyweb3.online/airdrops" style={{ color: '#6366f1', textDecoration: 'none' }}>Airdrops</a>
             <span style={{ margin: '0 8px' }}>›</span>
             <span>{a.name}</span>
           </nav>
+
+          {/* Quick Answer Block — for Google AI Overviews + ChatGPT citations */}
+          <div style={{ background: 'rgba(99,102,241,0.06)', border: '1px solid rgba(99,102,241,0.2)', borderRadius: '14px', padding: '16px 20px', marginBottom: '28px', borderLeft: '3px solid #6366f1' }}>
+            <p style={{ fontSize: '11px', fontWeight: '800', color: '#6366f1', textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>⚡ Quick Answer</p>
+            <p style={{ fontSize: '14px', color: '#a1a1aa', lineHeight: 1.7, margin: 0 }}>
+              <strong style={{ color: '#fff' }}>{a.name}</strong> is a {a.status === 'Active' ? 'live' : a.status.toLowerCase()} crypto airdrop on the <strong style={{ color: '#fff' }}>{a.blockchain}</strong> blockchain. It is <strong style={{ color: '#fff' }}>{a.cost}</strong> to participate and rated <strong style={{ color: '#fff' }}>{a.difficulty}</strong> difficulty. Users can complete {steps.length} steps to qualify for the token distribution. {a.reward_min ? `Estimated reward: $${a.reward_min}${a.reward_max ? ` - $${a.reward_max}` : '+'}.` : 'Reward amount is to be announced.'}
+            </p>
+          </div>
 
           <div className="page-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: '32px', alignItems: 'start' }}>
             {/* LEFT */}
