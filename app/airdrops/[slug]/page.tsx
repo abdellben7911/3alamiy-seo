@@ -68,29 +68,142 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
   const howToSchema = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: `How to Qualify for ${a.name} Airdrop ${year}`,
-    description: a.description,
-    image: a.logo || '',
-    totalTime: 'PT20M',
-    estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: a.cost === 'Free' ? '0' : '10' },
-    step: steps.map((s: string, i: number) => ({ '@type': 'HowToStep', position: i + 1, name: s, text: s })),
+    name: `How to Participate in ${a.name} Airdrop and Qualify for Tokens`,
+    description: `Step-by-step guide to participate in the ${a.name} airdrop on ${a.blockchain}. This guide covers all ${steps.length} required steps to qualify for the token distribution.`,
+    image: a.logo ? { '@type': 'ImageObject', url: a.logo } : undefined,
+    totalTime: `PT${Math.max(15, steps.length * 3)}M`,
+    estimatedCost: {
+      '@type': 'MonetaryAmount',
+      currency: 'USD',
+      value: a.cost === 'Free' ? '0' : '10',
+    },
+    supply: [
+      { '@type': 'HowToSupply', name: 'Crypto Wallet (MetaMask or Phantom)' },
+      { '@type': 'HowToSupply', name: `${a.blockchain} Network Access` },
+      ...(a.cost === 'Free' ? [] : [{ '@type': 'HowToSupply', name: 'Small amount of crypto for gas fees' }]),
+    ],
+    tool: [
+      { '@type': 'HowToTool', name: '3alamiy Web3 Airdrop Tracker' },
+      { '@type': 'HowToTool', name: 'Web3 Wallet' },
+    ],
+    step: steps.map((s: string, i: number) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s,
+      text: `${s}. This is step ${i + 1} of ${steps.length} to qualify for the ${a.name} airdrop.`,
+      url: `https://seo.3alamiyweb3.online/airdrops/${a.slug}#guide`,
+    })),
   };
 
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: [
-      { '@type': 'Question', name: `Is ${a.name} airdrop legit?`, acceptedAnswer: { '@type': 'Answer', text: `Yes, ${a.name} is a verified ${a.blockchain} project with an active airdrop campaign. Always use official links only.` } },
-      { '@type': 'Question', name: `How much can I earn from ${a.name} airdrop?`, acceptedAnswer: { '@type': 'Answer', text: `The estimated reward for ${a.name} airdrop is ${reward}. Actual rewards depend on your activity level and eligibility.` } },
-      { '@type': 'Question', name: `Is the ${a.name} airdrop free?`, acceptedAnswer: { '@type': 'Answer', text: a.cost === 'Free' ? `Yes, the ${a.name} airdrop is completely free to participate in.` : `The ${a.name} airdrop requires some on-chain transactions which may involve gas fees.` } },
-      { '@type': 'Question', name: `How long does the ${a.name} airdrop take?`, acceptedAnswer: { '@type': 'Answer', text: `Completing the ${a.name} airdrop guide takes approximately 15-20 minutes. Difficulty level is ${a.difficulty}.` } },
+      {
+        '@type': 'Question',
+        name: `What is ${a.name} airdrop?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `${a.name} is a ${a.status.toLowerCase()} crypto airdrop on the ${a.blockchain} blockchain. ${a.description} It is ${a.cost === 'Free' ? 'free' : 'paid'} to participate and rated ${a.difficulty} difficulty.`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `Is ${a.name} airdrop legit?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `Yes, ${a.name} is a verified ${a.blockchain} project tracked by 3alamiy Web3. The airdrop is currently ${a.status.toLowerCase()}. Always use the official links provided in our guide and never share your seed phrase with anyone.`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `How much can I earn from ${a.name} airdrop?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `The estimated reward for the ${a.name} airdrop is ${reward}. Actual rewards depend on your activity level, consistency, and eligibility criteria set by the project. Early participants typically receive larger allocations.`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `Is the ${a.name} airdrop free?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: a.cost === 'Free'
+            ? `Yes, the ${a.name} airdrop is completely free to participate in. No investment is required — just complete the ${steps.length} steps in our guide.`
+            : `The ${a.name} airdrop requires some on-chain transactions which may involve small gas fees on the ${a.blockchain} network.`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `How long does it take to complete the ${a.name} airdrop?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `Completing the ${a.name} airdrop guide takes approximately ${Math.max(15, steps.length * 3)} minutes. The difficulty level is ${a.difficulty} and there are ${steps.length} steps to complete.`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `What wallet do I need for ${a.name} airdrop?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `For the ${a.name} airdrop on ${a.blockchain}, you will need a compatible Web3 wallet. MetaMask works for most EVM-compatible chains. For Solana-based airdrops, Phantom wallet is recommended. Make sure to use the official wallet and never share your seed phrase.`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `When will ${a.name} airdrop tokens be distributed?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `The ${a.name} airdrop token distribution date has not been officially announced yet. We recommend completing all participation steps now to maximize your eligibility. Follow 3alamiy Web3 for the latest updates on the ${a.name} airdrop timeline.`,
+        },
+      },
     ],
+  };
+
+  // BreadcrumbList schema for better navigation signals
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
+      { '@type': 'ListItem', position: 2, name: 'Airdrops', item: 'https://seo.3alamiyweb3.online/airdrops' },
+      { '@type': 'ListItem', position: 3, name: `${a.name} Airdrop`, item: `https://seo.3alamiyweb3.online/airdrops/${a.slug}` },
+    ],
+  };
+
+  // Article schema for content freshness signals
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: `${a.name} Airdrop Guide ${year}: How to Participate and Earn Free Tokens`,
+    description: a.description,
+    image: a.logo || '',
+    datePublished: a.created_at || new Date().toISOString(),
+    dateModified: new Date().toISOString(),
+    author: {
+      '@type': 'Organization',
+      name: '3alamiy Web3',
+      url: 'https://seo.3alamiyweb3.online',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: '3alamiy Web3',
+      url: 'https://seo.3alamiyweb3.online',
+      logo: { '@type': 'ImageObject', url: 'https://3alamiyweb3.online/logo.png' },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://seo.3alamiyweb3.online/airdrops/${a.slug}`,
+    },
+    keywords: `${a.name} airdrop, ${a.blockchain} airdrop, free crypto airdrop 2026, ${tags.join(', ')}`,
   };
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <style>{`
         * { box-sizing: border-box; }
         @media (max-width: 768px) {
