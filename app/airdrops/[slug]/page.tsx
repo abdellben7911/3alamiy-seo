@@ -32,21 +32,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const a = await getAirdropBySlug(slug);
   if (!a) return { title: 'Airdrop Not Found | 3alamiy Web3' };
-  const reward = a.reward_min && a.reward_max ? `$${a.reward_min} - $${a.reward_max}` : a.value || '';
-  const desc = `${a.description} ${reward ? `Potential reward: ${reward}.` : ''} Difficulty: ${a.difficulty}. Free step-by-step guide for ${new Date().getFullYear()}.`.slice(0, 160);
+  const year = new Date().getFullYear();
+  const reward = a.reward_min && a.reward_max ? `$${a.reward_min} - $${a.reward_max}` : a.reward_min ? `$${a.reward_min}+` : a.value || '';
+  const rewardText = reward ? `Earn ${reward}.` : 'High reward potential.';
+  const costText = a.cost === 'Free' ? '🆓 Free to join.' : '💰 Low cost.';
+  const desc = `${costText} ${a.difficulty} difficulty. ${rewardText} Step-by-step guide to qualify for the ${a.name} airdrop on ${a.blockchain}. Updated ${year}.`.slice(0, 160);
   return {
-    title: `${a.name.replace(/\s*airdrop\s*/gi, ' ').trim()} Airdrop Guide ${new Date().getFullYear()} | How to Qualify | 3alamiy Web3`,
+    title: `${a.name} Airdrop — ${a.cost === 'Free' ? 'Free' : 'Low Cost'}, ${a.difficulty} Difficulty | How to Qualify ${year}`,
     description: desc,
-    keywords: `${a.name}, ${a.name} airdrop, ${a.blockchain} airdrop, crypto airdrop ${new Date().getFullYear()}, free crypto, ${a.name} guide`,
+    keywords: `${a.name} airdrop, ${a.name} airdrop guide, how to get ${a.name} airdrop, ${a.blockchain} airdrop ${year}, free crypto airdrop, ${a.name} tokens`,
     openGraph: {
-      title: `${a.name} Airdrop Guide ${new Date().getFullYear()}`,
+      title: `${a.name} Airdrop Guide ${year} — ${a.cost === 'Free' ? 'Free' : 'Low Cost'} & ${a.difficulty}`,
       description: desc,
       url: `https://seo.3alamiyweb3.online/airdrops/${slug}`,
       siteName: '3alamiy Web3',
-      images: a.logo ? [{ url: a.logo, width: 400, height: 400, alt: `${a.name} logo` }] : [],
+      images: a.logo ? [{ url: a.logo, width: 400, height: 400, alt: `${a.name} airdrop logo` }] : [],
       type: 'article',
     },
-    twitter: { card: 'summary_large_image', title: `${a.name} Airdrop Guide ${new Date().getFullYear()}`, description: desc },
+    twitter: { card: 'summary_large_image', title: `${a.name} Airdrop — Free Guide ${year}`, description: desc },
     alternates: { canonical: `https://seo.3alamiyweb3.online/airdrops/${slug}` },
   };
 }

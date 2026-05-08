@@ -15,9 +15,9 @@ async function getAllAirdrops() {
 }
 
 export const metadata = {
-  title: 'Crypto Airdrop Tracker 2026 | Free Airdrop Guides | 3alamiy Web3',
-  description: 'Find and track the best crypto airdrops in 2026. Step-by-step guides for free and paid airdrops on Ethereum, Solana, Arbitrum and more.',
-  keywords: 'crypto airdrop, free airdrop 2026, airdrop tracker, Web3 airdrop, DeFi airdrop guide',
+  title: 'Best Crypto Airdrops 2026 — Free Step-by-Step Guides | 3alamiy Web3',
+  description: 'Find and track the best free crypto airdrops in 2026. Step-by-step guides for Ethereum, Solana, Arbitrum airdrops. Updated daily. Easy to follow, no experience needed.',
+  keywords: 'best crypto airdrops 2026, free crypto airdrop, airdrop tracker, how to get free crypto, ethereum airdrop, solana airdrop',
 };
 
 export default async function Home() {
