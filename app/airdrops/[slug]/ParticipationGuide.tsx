@@ -32,7 +32,7 @@ export default function ParticipationGuide({ steps, airdropName }: { steps: stri
             {allDone ? '✓' : '📋'}
           </div>
           <div>
-            <h2 style={{ fontSize: '20px', fontWeight: '900', margin: 0, letterSpacing: '-0.01em' }}>Participation Guide</h2>
+            <h2 style={{ fontSize: '20px', fontWeight: '900', margin: 0, letterSpacing: '-0.01em' }}>How to Participate in {airdropName} Airdrop?</h2>
             <p style={{ fontSize: '12px', fontWeight: '700', color: allDone ? '#10b981' : '#6366f1', margin: 0, textTransform: 'uppercase', letterSpacing: '0.05em', transition: 'color 0.3s' }}>
               Step {completedCount} of {steps.length} {allDone ? 'finished' : 'completed'}
             </p>

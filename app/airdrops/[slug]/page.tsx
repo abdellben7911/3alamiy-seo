@@ -164,7 +164,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
 
               {/* What is section */}
               <section style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '20px', padding: '24px', marginBottom: '24px' }}>
-                <h2 style={{ fontSize: '20px', fontWeight: '800', margin: '0 0 14px' }}>What is {a.name}?</h2>
+                <h2 style={{ fontSize: '20px', fontWeight: '800', margin: '0 0 14px' }}>What is {a.name} Airdrop?</h2>
                 <p style={{ fontSize: '15px', color: '#a1a1aa', lineHeight: 1.8, margin: '0 0 14px' }}>{a.description}</p>
                 <p style={{ fontSize: '15px', color: '#a1a1aa', lineHeight: 1.8, margin: 0 }}>
                   The {a.name} airdrop is currently <strong style={{ color: '#10b981' }}>{a.status}</strong> on the {a.blockchain} blockchain.
@@ -190,7 +190,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
 
               {/* FAQ */}
               <section style={{ marginBottom: '24px' }}>
-                <h2 style={{ fontSize: '22px', fontWeight: '900', margin: '0 0 18px' }}>Frequently Asked Questions</h2>
+                <h2 style={{ fontSize: '22px', fontWeight: '900', margin: '0 0 18px' }}>Frequently Asked Questions About {a.name}</h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {[
                     { q: `Is ${a.name} airdrop legit?`, a: `Yes, ${a.name} is a verified ${a.blockchain} project. Always use official links and never share your private keys.` },
@@ -208,7 +208,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
 
               {/* Related Learn Articles */}
               <section style={{ marginBottom: '24px' }}>
-                <h2 style={{ fontSize: '18px', fontWeight: '800', margin: '0 0 14px' }}>📚 Learn More</h2>
+                <h2 style={{ fontSize: '18px', fontWeight: '800', margin: '0 0 14px' }}>📚 Want to Learn More About Crypto Airdrops?</h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {[
                     { slug: 'how-to-set-up-metamask-for-airdrops', title: 'How to Set Up MetaMask for Airdrops' },
@@ -232,7 +232,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
               {/* Related */}
               {relatedAirdrops.length > 0 && (
                 <section>
-                  <h2 style={{ fontSize: '20px', fontWeight: '800', margin: '0 0 16px' }}>More {a.blockchain} Airdrops</h2>
+                  <h2 style={{ fontSize: '20px', fontWeight: '800', margin: '0 0 16px' }}>What Other {a.blockchain} Airdrops Are Available?</h2>
                   <div className="related-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
                     {relatedAirdrops.map((r: any) => (
                       <a key={r.slug} href={`/airdrops/${r.slug}`} style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '14px', padding: '16px', textDecoration: 'none', color: '#fff', display: 'block' }}>
