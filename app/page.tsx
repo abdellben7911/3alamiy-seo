@@ -152,6 +152,8 @@ export default async function Home() {
             </div>
             <div className="learn-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '10px' }}>
               {[
+                { slug: 'best-no-kyc-crypto-airdrops-2026', title: 'Best No-KYC Crypto Airdrops 2026', desc: 'Participate with just a wallet — no ID verification required.', cat: 'Airdrops' },
+                { slug: 'best-low-gas-crypto-airdrops-2026', title: 'Best Low Gas Crypto Airdrops 2026', desc: 'Maximize returns without burning money on gas fees.', cat: 'Airdrops' },
                 { slug: 'how-to-find-airdrops-before-everyone-else', title: 'How to Find Airdrops Before Everyone Else', desc: 'The exact system top hunters use to find airdrops weeks early.', cat: 'Airdrops' },
                 { slug: 'why-crypto-airdrops-are-becoming-harder-to-qualify-for', title: 'Why Crypto Airdrops Are Harder in 2026', desc: 'The golden era of easy airdrops is over.', cat: 'Airdrops' },
                 { slug: 'how-to-build-onchain-activity-that-actually-matters', title: 'How to Build Onchain Activity That Matters', desc: 'Quality over quantity — build a wallet narrative.', cat: 'Onchain' },
