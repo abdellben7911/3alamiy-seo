@@ -85,23 +85,6 @@ export default async function AirdropsPage() {
 
       <div style={{ minHeight: '100vh', background: '#060910', fontFamily: 'system-ui, -apple-system, sans-serif', color: '#fff' }}>
 
-        {/* Header */}
-        <header style={{ borderBottom: '1px solid #1a1f2e', position: 'sticky', top: 0, background: 'rgba(6,9,16,0.95)', backdropFilter: 'blur(12px)', zIndex: 50, height: '62px' }}>
-          <div className="header-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: '#fff' }}>
-              <div style={{ width: '34px', height: '34px', background: 'linear-gradient(135deg, #6366f1, #4f46e5)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', boxShadow: '0 4px 12px rgba(99,102,241,0.3)' }}>🪂</div>
-              <span style={{ fontWeight: '800', fontSize: '15px', letterSpacing: '-0.01em' }}>3alamiy Web3</span>
-            </Link>
-            <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
-              <Link href="/" style={{ color: '#71717a', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>Home</Link>
-              <Link href="/airdrops" style={{ color: '#fff', textDecoration: 'none', fontSize: '14px', fontWeight: '700' }}>Airdrops</Link>
-              <Link href="/learn/how-to-find-airdrops-before-everyone-else" style={{ color: '#71717a', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>Learn</Link>
-              <Link href="/about" style={{ color: '#71717a', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>About</Link>
-            </nav>
-            <a href="https://3alamiyweb3.online" style={{ background: 'linear-gradient(135deg, #6366f1, #4f46e5)', color: '#fff', padding: '9px 20px', borderRadius: '10px', textDecoration: 'none', fontSize: '13px', fontWeight: '700', boxShadow: '0 4px 12px rgba(99,102,241,0.25)' }}>Open App</a>
-          </div>
-        </header>
-
         <main className="main-content" style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 24px 80px' }}>
 
           {/* Breadcrumb */}
@@ -167,7 +150,6 @@ export default async function AirdropsPage() {
           <div className="cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
             {airdrops.map((a: any) => (
               <Link key={a.slug} href={`/airdrops/${a.slug}`} className="airdrop-card">
-                {/* Top row */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <div style={{ display: 'flex', gap: '6px' }}>
                     <span style={{ background: 'rgba(99,102,241,0.15)', color: '#818cf8', border: '1px solid rgba(99,102,241,0.2)', padding: '2px 8px', borderRadius: '5px', fontSize: '10px', fontWeight: '800' }}>3ALAMIY</span>
@@ -176,7 +158,6 @@ export default async function AirdropsPage() {
                   <span style={{ fontSize: '16px', color: '#3f3f46' }}>♡</span>
                 </div>
 
-                {/* Logo + name */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                   {a.logo ? (
                     <img src={a.logo} alt={a.name} width={44} height={44} style={{ borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)', flexShrink: 0, objectFit: 'cover' }} />
@@ -189,10 +170,8 @@ export default async function AirdropsPage() {
                   </div>
                 </div>
 
-                {/* Description */}
                 <p style={{ fontSize: '13px', color: '#52525b', lineHeight: 1.6, margin: 0, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' } as any}>{a.description}</p>
 
-                {/* Stats */}
                 <div style={{ display: 'flex', gap: '20px' }}>
                   <div>
                     <div style={{ fontSize: '10px', color: '#3f3f46', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '3px' }}>⚡ DIFFICULTY</div>
@@ -206,7 +185,6 @@ export default async function AirdropsPage() {
                   </div>
                 </div>
 
-                {/* Tags */}
                 {Array.isArray(a.tags) && a.tags.length > 0 && (
                   <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                     {a.tags.slice(0, 3).map((tag: string) => (
@@ -215,7 +193,6 @@ export default async function AirdropsPage() {
                   </div>
                 )}
 
-                {/* Worth it bar */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <div style={{ height: '3px', flex: 1, background: '#1a1f2e', borderRadius: '99px', overflow: 'hidden' }}>
                     <div style={{ height: '100%', width: '97%', background: 'linear-gradient(90deg, #6366f1, #818cf8)', borderRadius: '99px' }} />
