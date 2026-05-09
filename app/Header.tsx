@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import AuthButton from '../auth/AuthButton';
+import AuthButton from './auth/AuthButton';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
