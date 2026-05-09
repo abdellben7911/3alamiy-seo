@@ -1,6 +1,5 @@
 import Link from "next/link";
 import FilterBar from "./FilterBar";
-import AuthButton from "./auth/AuthButton";
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -96,22 +95,6 @@ export default async function Home() {
       `}</style>
 
       <div style={{ minHeight: '100vh', background: '#060910', fontFamily: 'system-ui, -apple-system, sans-serif', color: '#fff' }}>
-
-        {/* Header */}
-        <header style={{ borderBottom: '1px solid #1a1f2e', position: 'sticky', top: 0, background: 'rgba(6,9,16,0.95)', backdropFilter: 'blur(12px)', zIndex: 50, height: '62px' }}>
-          <div className="header-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <a href="https://3alamiyweb3.online" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: '#fff', flexShrink: 0 }}>
-              <div style={{ width: '34px', height: '34px', background: 'linear-gradient(135deg, #6366f1, #4f46e5)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', boxShadow: '0 4px 12px rgba(99,102,241,0.3)' }}>🪂</div>
-              <span style={{ fontWeight: '800', fontSize: '15px', letterSpacing: '-0.01em' }}>3alamiy Web3</span>
-            </a>
-            <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '28px' }}>
-              {['Discover', 'Market', 'Community', 'Learn'].map((label) => (
-                <a key={label} href="https://3alamiyweb3.online" style={{ color: label === 'Discover' ? '#e4e4e7' : '#52525b', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>{label}</a>
-              ))}
-            </nav>
-            <AuthButton />
-          </div>
-        </header>
 
         {/* Hero */}
         <section className="hero-section" style={{ padding: '60px 24px 40px', position: 'relative', overflow: 'hidden' }}>
