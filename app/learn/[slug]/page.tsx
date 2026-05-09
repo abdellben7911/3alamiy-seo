@@ -707,19 +707,6 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   return (
     <div style={{ minHeight: '100vh', background: '#030712', fontFamily: 'system-ui, -apple-system, sans-serif', color: '#fff' }}>
-      <header style={{ borderBottom: '1px solid #18181b', padding: '0 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'sticky', top: 0, background: '#0a0a0f', zIndex: 50, height: '64px' }}>
-        <a href="https://3alamiyweb3.online" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: '#fff' }}>
-          <div style={{ width: '36px', height: '36px', background: 'linear-gradient(135deg, #6366f1, #4f46e5)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>🪂</div>
-          <span style={{ fontWeight: '800', fontSize: '16px', letterSpacing: '-0.01em' }}>3alamiy Web3</span>
-        </a>
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-          {['Discover', 'Market', 'Community', 'Learn'].map((label) => (
-            <a key={label} href="https://3alamiyweb3.online" style={{ color: label === 'Learn' ? '#fff' : '#71717a', textDecoration: 'none', fontSize: '15px', fontWeight: label === 'Learn' ? '700' : '500' }}>{label}</a>
-          ))}
-        </nav>
-        <a href="https://3alamiyweb3.online/profile" style={{ background: '#6366f1', color: '#fff', padding: '10px 22px', borderRadius: '12px', textDecoration: 'none', fontSize: '14px', fontWeight: '700' }}>Sign Up</a>
-      </header>
-
       <main style={{ maxWidth: '800px', margin: '0 auto', padding: '48px 24px 80px' }}>
         <a href="https://seo.3alamiyweb3.online" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#71717a', textDecoration: 'none', fontSize: '14px', fontWeight: '700', marginBottom: '40px', padding: '8px 14px', background: '#18181b', borderRadius: '12px', border: '1px solid #27272a' }}>
           ← Back to Airdrops
