@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { AuthProvider } from './auth/AuthProvider';
+import Header from './Header';
 
 export const metadata: Metadata = {
   title: '3alamiy Web3 - Crypto Airdrop Tracker 2026',
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <AuthProvider>
+          <Header />
           {children}
         </AuthProvider>
       </body>
