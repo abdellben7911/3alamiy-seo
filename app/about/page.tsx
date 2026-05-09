@@ -110,22 +110,6 @@ export default function AboutPage() {
 
       <div style={{ minHeight: '100vh', background: '#060910', fontFamily: 'system-ui, -apple-system, sans-serif', color: '#fff' }}>
 
-        {/* Header */}
-        <header style={{ borderBottom: '1px solid #1a1f2e', position: 'sticky', top: 0, background: 'rgba(6,9,16,0.95)', backdropFilter: 'blur(12px)', zIndex: 50, height: '62px' }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: '#fff' }}>
-              <div style={{ width: '34px', height: '34px', background: 'linear-gradient(135deg, #6366f1, #4f46e5)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', boxShadow: '0 4px 12px rgba(99,102,241,0.3)' }}>🪂</div>
-              <span style={{ fontWeight: '800', fontSize: '15px', letterSpacing: '-0.01em' }}>3alamiy Web3</span>
-            </Link>
-            <nav style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-              <Link href="/" style={{ color: '#71717a', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>Airdrops</Link>
-              <Link href="/learn/how-to-find-airdrops-before-everyone-else" style={{ color: '#71717a', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>Learn</Link>
-              <Link href="/about" style={{ color: '#fff', textDecoration: 'none', fontSize: '14px', fontWeight: '700' }}>About</Link>
-            </nav>
-            <a href="https://3alamiyweb3.online" style={{ background: 'linear-gradient(135deg, #6366f1, #4f46e5)', color: '#fff', padding: '9px 20px', borderRadius: '10px', textDecoration: 'none', fontSize: '13px', fontWeight: '700', boxShadow: '0 4px 12px rgba(99,102,241,0.25)' }}>Open App</a>
-          </div>
-        </header>
-
         <main style={{ maxWidth: '800px', margin: '0 auto', padding: '60px 24px 80px' }}>
 
           {/* Hero */}
