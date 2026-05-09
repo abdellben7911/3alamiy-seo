@@ -225,22 +225,6 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
       `}</style>
       <div style={{ minHeight: '100vh', background: '#030712', fontFamily: 'system-ui, -apple-system, sans-serif', color: '#fff' }}>
 
-        {/* Header */}
-        <header style={{ borderBottom: '1px solid #18181b', position: 'sticky', top: 0, background: '#0a0a0f', zIndex: 50, height: '60px' }}>
-          <div className="header-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <a href="https://3alamiyweb3.online" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', color: '#fff', flexShrink: 0 }}>
-              <div style={{ width: '32px', height: '32px', background: 'linear-gradient(135deg, #6366f1, #4f46e5)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px' }}>🪂</div>
-              <span style={{ fontWeight: '800', fontSize: '15px' }}>3alamiy Web3</span>
-            </a>
-            <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-              {['Discover', 'Market', 'Community', 'Learn'].map((label) => (
-                <a key={label} href="https://3alamiyweb3.online" style={{ color: label === 'Discover' ? '#fff' : '#71717a', textDecoration: 'none', fontSize: '14px', fontWeight: label === 'Discover' ? '700' : '500' }}>{label}</a>
-              ))}
-            </nav>
-            <a href="https://3alamiyweb3.online/profile" className="sign-up-btn" style={{ background: '#6366f1', color: '#fff', padding: '9px 18px', borderRadius: '10px', textDecoration: 'none', fontSize: '14px', fontWeight: '700', flexShrink: 0, whiteSpace: 'nowrap' }}>Sign Up</a>
-          </div>
-        </header>
-
         <main className="main-pad" style={{ maxWidth: '1200px', margin: '0 auto', padding: '32px 24px 80px' }}>
 
           {/* Breadcrumbs */}
