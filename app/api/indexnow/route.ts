@@ -29,7 +29,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'slug is required' }, { status: 400 });
     }
 
-    // Fetch airdrop details from Supabase
     const res = await fetch(
       `${SUPABASE_URL}/rest/v1/airdrops?slug=eq.${slug}&select=*&limit=1`,
       {
@@ -52,47 +51,32 @@ export async function POST(request: Request) {
     const reward = a.reward_min && a.reward_max
       ? `$${a.reward_min} - $${a.reward_max}`
       : a.reward_min ? `$${a.reward_min}+` : 'TBA';
-
     const tags = Array.isArray(a.tags) ? a.tags.map((t: string) => `#${t}`).join(' ') : '';
 
     const message = `
-🪂 <b>New Airdrop Alert!</b>
+🪂 <b>${a.name}</b> — New Airdrop!
 
-<b>${a.name}</b>
-${a.description}
+${costEmoji} ${a.cost}  ${diffEmoji} ${a.difficulty}  ⛓ ${a.blockchain}
+💰 Reward: <b>${reward}</b>
 
-${costEmoji} <b>Cost:</b> ${a.cost}
-${diffEmoji} <b>Difficulty:</b> ${a.difficulty}
-💰 <b>Reward:</b> ${reward}
-⛓ <b>Blockchain:</b> ${a.blockchain}
-📊 <b>Status:</b> ${a.status}
-
-📖 <b>Step-by-step guide:</b>
-<a href="https://seo.3alamiyweb3.online/airdrops/${a.slug}">seo.3alamiyweb3.online/airdrops/${a.slug}</a>
+👉 <a href="https://seo.3alamiyweb3.online/airdrops/${a.slug}">View Full Guide</a>
 
 ${tags}
-
-<i>Track all airdrops → @alamiyweb3_bot</i>
 `.trim();
 
     const result = await sendTelegramMessage(message);
 
-    return NextResponse.json({
-      success: true,
-      telegram: result,
-      airdrop: a.name,
-    });
+    return NextResponse.json({ success: true, telegram: result, airdrop: a.name });
 
   } catch (error) {
     return NextResponse.json({ success: false, error: String(error) }, { status: 500 });
   }
 }
 
-// GET endpoint to test the bot
 export async function GET() {
   try {
     const result = await sendTelegramMessage(
-      '✅ 3alamiy Web3 Bot is connected and ready!\n\nNew airdrops will be posted here automatically. 🪂\n\nseo.3alamiyweb3.online'
+      '✅ <b>3alamiy Web3 Bot</b> is connected and ready!\n\n🪂 New airdrops posted here daily.\n\n👉 <a href="https://seo.3alamiyweb3.online">seo.3alamiyweb3.online</a>'
     );
     return NextResponse.json({ success: true, result });
   } catch (error) {
