@@ -47,10 +47,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="alternate" hrefLang="en" href="https://seo.3alamiyweb3.online" />
-        <link rel="alternate" hrefLang="x-default" href="https://seo.3alamiyweb3.online" />
-      </head>
       <body>
         <Providers>
           <AuthProvider>
