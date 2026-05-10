@@ -12,6 +12,7 @@ export default function Header() {
     { label: 'Learn', href: '/learn/how-to-find-airdrops-before-everyone-else', badge: 'New', badgeColor: '#10b981', badgeBg: 'rgba(16,185,129,0.15)' },
     { label: 'About', href: '/about', badge: null, badgeColor: null, badgeBg: null },
     { label: 'Telegram', href: 'https://t.me/web33alamiy', badge: 'Live', badgeColor: '#818cf8', badgeBg: 'rgba(99,102,241,0.15)', external: true },
+    { label: 'GM Station', href: '/gm', badge: 'GM', badgeColor: '#000', badgeBg: '#c8ff00' },
   ];
 
   return (
