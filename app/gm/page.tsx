@@ -23,7 +23,7 @@ const CHAINS = [
 
 type GMRecord = { chain: string; tx: string; time: string; date: string };
 
-export default function GMPage() {
+function GMStation() {
   const { address, isConnected } = useAccount();
   const { data: walletClient } = useWalletClient();
   const [gmDone, setGmDone] = useState<Record<string, 'loading' | 'done' | 'error'>>({});
@@ -41,19 +41,25 @@ export default function GMPage() {
   const [favs, setFavs] = useState<string[]>([]);
   const [search, setSearch] = useState('');
   const [tab, setTab] = useState<'gm' | 'activity'>('gm');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
-    if (isConnected && address) {
-      const count = localStorage.getItem(`gm_count_${address}`);
-      setTotalGM(count ? parseInt(count) : 0);
-      const s = localStorage.getItem(`gm_streak_${address}`);
-      setStreak(s ? parseInt(s) : 1);
-      const f = localStorage.getItem(`gm_favs_${address}`);
-      setFavs(f ? JSON.parse(f) : []);
-      const acts = localStorage.getItem(`gm_activity_${address}`);
-      setMyActivity(acts ? JSON.parse(acts) : []);
-    }
-  }, [isConnected, address]);
+    if (!mounted) return;
+    try {
+      if (isConnected && address) {
+        const count = localStorage.getItem(`gm_count_${address}`);
+        setTotalGM(count ? parseInt(count) : 0);
+        const s = localStorage.getItem(`gm_streak_${address}`);
+        setStreak(s ? parseInt(s) : 1);
+        const f = localStorage.getItem(`gm_favs_${address}`);
+        setFavs(f ? JSON.parse(f) : []);
+        const acts = localStorage.getItem(`gm_activity_${address}`);
+        setMyActivity(acts ? JSON.parse(acts) : []);
+      }
+    } catch (e) { console.error(e); }
+  }, [isConnected, address, mounted]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -65,9 +71,11 @@ export default function GMPage() {
   }, []);
 
   const toggleFav = (id: string) => {
-    const next = favs.includes(id) ? favs.filter(f => f !== id) : [...favs, id];
-    setFavs(next);
-    if (address) localStorage.setItem(`gm_favs_${address}`, JSON.stringify(next));
+    try {
+      const next = favs.includes(id) ? favs.filter(f => f !== id) : [...favs, id];
+      setFavs(next);
+      if (address) localStorage.setItem(`gm_favs_${address}`, JSON.stringify(next));
+    } catch (e) { console.error(e); }
   };
 
   const sayGM = async (chain: typeof CHAINS[0]) => {
@@ -82,12 +90,7 @@ export default function GMPage() {
       setGmDone(prev => ({ ...prev, [chain.id]: 'done' }));
       const newTotal = totalGM + 1;
       setTotalGM(newTotal);
-      const newRecord: GMRecord = {
-        chain: chain.name,
-        tx: hash,
-        time: new Date().toLocaleTimeString(),
-        date: new Date().toLocaleDateString(),
-      };
+      const newRecord: GMRecord = { chain: chain.name, tx: hash, time: new Date().toLocaleTimeString(), date: new Date().toLocaleDateString() };
       const newActivity = [newRecord, ...myActivity].slice(0, 50);
       setMyActivity(newActivity);
       if (address) {
@@ -106,6 +109,143 @@ export default function GMPage() {
     .filter(c => filter === 'hot' ? c.hot : filter === 'fav' ? favs.includes(c.id) : true)
     .filter(c => c.name.toLowerCase().includes(search.toLowerCase()));
 
+  if (!mounted) return null;
+
+  return (
+    <div className="gm-root">
+      <div className="gm-hero">
+        <h1>Good Morning, <span>Blockchain</span> ☀️</h1>
+        <p>Say GM on-chain daily across every EVM chain — farm potential airdrops</p>
+        <div className="connect-row"><ConnectButton /></div>
+      </div>
+
+      <div className="tabs-wrap">
+        <button className={`tab-btn ${tab === 'gm' ? 'active' : ''}`} onClick={() => setTab('gm')}>☀️ Say GM</button>
+        <button className={`tab-btn ${tab === 'activity' ? 'active' : ''}`} onClick={() => setTab('activity')}>📋 My Activity</button>
+      </div>
+
+      <div className="inner">
+        {tab === 'gm' ? (
+          <>
+            <div className="top-bar">
+              {(['all', 'hot', 'fav'] as const).map(f => (
+                <button key={f} className={`f-btn ${filter === f ? 'active' : ''}`} onClick={() => setFilter(f)}>
+                  {f === 'all' ? '⚡ All' : f === 'hot' ? '🔥 Hot' : '⭐ Favourites'}
+                </button>
+              ))}
+              <input className="search-box" placeholder="Search chains..." value={search} onChange={e => setSearch(e.target.value)} />
+            </div>
+
+            <div className="layout">
+              <div className="chains-grid">
+                {filtered.map(chain => {
+                  const state = gmDone[chain.id];
+                  const isFav = favs.includes(chain.id);
+                  return (
+                    <div key={chain.id} className={`chain-card ${chain.hot ? 'hot' : ''}`}>
+                      <div className="chain-header">
+                        <div className="chain-left">
+                          <img src={chain.icon} alt={chain.name} className="chain-logo" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+                          <div className="chain-name">{chain.name}</div>
+                        </div>
+                        <div className="chain-right">
+                          {chain.hot && <div className="hot-dot" />}
+                          <button className={`fav-btn ${isFav ? 'active' : ''}`} onClick={() => toggleFav(chain.id)}>{isFav ? '★' : '☆'}</button>
+                        </div>
+                      </div>
+                      <div className="gm-gn-row">
+                        <div className="badge-tag">GM</div>
+                        <div className="badge-tag">GN</div>
+                      </div>
+                      <button
+                        className={`say-btn ${state === 'loading' ? 'loading' : state === 'done' ? 'done' : state === 'error' ? 'error' : 'idle'}`}
+                        onClick={() => sayGM(chain)}
+                        disabled={!isConnected || state === 'loading' || state === 'done'}
+                      >
+                        {state === 'loading' ? '⏳ Sending...' : state === 'done' ? '✅ GM Sent!' : state === 'error' ? '❌ Failed — Retry' : !isConnected ? '🔒 Connect Wallet' : '☀️ Say GM & GN'}
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="sidebar">
+                <div className="side-card">
+                  <div className="side-title"><span className="live-dot" /> Live Activity</div>
+                  {liveActivity.map((a, i) => (
+                    <div key={i} className="act-item">
+                      <div className="act-icon">☀️</div>
+                      <div className="act-body">
+                        <div className="act-addr">{a.addr}</div>
+                        <div className="act-info">{a.action} · {a.chain}</div>
+                      </div>
+                      <div className="act-time">{a.time}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="side-card">
+                  <div className="side-title">📊 My Stats</div>
+                  {isConnected ? (
+                    <>
+                      <div className="stats-grid">
+                        <div className="stat-box"><div className="stat-val">{totalGM}</div><div className="stat-lbl">GMs Sent</div></div>
+                        <div className="stat-box"><div className="stat-val">{streak}</div><div className="stat-lbl">Day Streak</div></div>
+                      </div>
+                      <div style={{ fontSize: '11px', color: '#27272a', textAlign: 'center', fontFamily: 'monospace' }}>{address?.slice(0, 8)}...{address?.slice(-6)}</div>
+                    </>
+                  ) : (
+                    <div className="no-wallet">Connect wallet to track your GM streak 🔒</div>
+                  )}
+                </div>
+
+                <div className="side-card" style={{ borderColor: 'rgba(99,102,241,0.2)' }}>
+                  <div className="side-title">🪂 3alamiy Web3</div>
+                  <p style={{ fontSize: '12px', color: '#3f3f46', marginBottom: '12px', lineHeight: 1.7 }}>Track crypto airdrops with step-by-step guides. Daily GM = airdrop farming!</p>
+                  <Link href="/airdrops" style={{ display: 'block', textAlign: 'center', background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', color: '#818cf8', padding: '10px', borderRadius: '10px', textDecoration: 'none', fontSize: '12px', fontWeight: '800' }}>
+                    Browse Airdrops →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="activity-page">
+            <div className="side-title" style={{ marginBottom: '20px', fontSize: '13px' }}>📋 My GM Activity</div>
+            {!isConnected ? (
+              <div className="empty-state">
+                <div className="empty-icon">🔒</div>
+                <p>Connect your wallet to see your GM history</p>
+              </div>
+            ) : myActivity.length === 0 ? (
+              <div className="empty-state">
+                <div className="empty-icon">☀️</div>
+                <p>No GMs sent yet — go say GM on some chains!</p>
+                <button className="go-gm-btn" onClick={() => setTab('gm')}>Say GM Now →</button>
+              </div>
+            ) : (
+              myActivity.map((a, i) => (
+                <div key={i} className="my-act-item">
+                  <div className="act-icon" style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(99,102,241,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', flexShrink: 0 }}>☀️</div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div className="my-act-chain">GM on {a.chain}</div>
+                    <div className="my-act-tx">{a.tx.slice(0, 16)}...{a.tx.slice(-8)}</div>
+                  </div>
+                  <div className="my-act-time">
+                    <div style={{ color: '#52525b', fontSize: '12px' }}>{a.time}</div>
+                    <div style={{ color: '#27272a', fontSize: '11px' }}>{a.date}</div>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default function GMPage() {
   return (
     <>
       <style>{`
@@ -139,13 +279,12 @@ export default function GMPage() {
         .chain-right { display: flex; align-items: center; gap: 6px; }
         .fav-btn { background: none; border: none; cursor: pointer; color: #3f3f46; font-size: 15px; padding: 0; transition: color 0.2s; line-height: 1; }
         .fav-btn.active { color: #f59e0b; }
-        .fav-btn:hover { color: #71717a; }
         .hot-dot { width: 6px; height: 6px; background: #f43f5e; border-radius: 50%; }
         .gm-gn-row { display: flex; gap: 6px; margin-bottom: 12px; }
-        .badge-tag { flex: 1; background: #141b2d; border: 1px solid #1e2a3a; color: #3f4f6e; padding: 5px; border-radius: 8px; font-size: 11px; font-weight: 800; text-align: center; letter-spacing: 0.05em; }
+        .badge-tag { flex: 1; background: #141b2d; border: 1px solid #1e2a3a; color: #3f4f6e; padding: 5px; border-radius: 8px; font-size: 11px; font-weight: 800; text-align: center; }
         .say-btn { width: 100%; border: none; padding: 11px; border-radius: 11px; font-size: 13px; font-weight: 800; cursor: pointer; transition: all 0.18s; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 6px; }
         .say-btn.idle { background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; box-shadow: 0 4px 12px rgba(99,102,241,0.25); }
-        .say-btn.idle:hover { background: linear-gradient(135deg, #818cf8, #6366f1); box-shadow: 0 6px 20px rgba(99,102,241,0.4); }
+        .say-btn.idle:hover { box-shadow: 0 6px 20px rgba(99,102,241,0.4); }
         .say-btn.loading { background: #141b2d; color: #3f4f6e; cursor: not-allowed; }
         .say-btn.done { background: rgba(16,185,129,0.1); color: #10b981; border: 1px solid rgba(16,185,129,0.2); cursor: default; }
         .say-btn.error { background: rgba(244,63,94,0.1); color: #f43f5e; border: 1px solid rgba(244,63,94,0.2); }
@@ -168,153 +307,20 @@ export default function GMPage() {
         .stat-lbl { font-size: 10px; color: #3f3f46; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
         .no-wallet { text-align: center; padding: 16px; color: #27272a; font-size: 12px; }
         .activity-page { background: #0d1117; border: 1px solid #1a1f2e; border-radius: 16px; padding: 24px; }
-        .my-act-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #0f1520; }
+        .my-act-item { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid #0f1520; }
         .my-act-item:last-child { border-bottom: none; }
-        .my-act-chain { font-size: 14px; font-weight: 800; color: #e4e4e7; }
-        .my-act-tx { font-size: 11px; color: #3f3f46; font-family: monospace; margin-top: 2px; }
-        .my-act-time { margin-left: auto; font-size: 11px; color: #3f3f46; text-align: right; }
-        .empty-state { text-align: center; padding: 60px 24px; color: #27272a; }
-        .empty-state .icon { font-size: 48px; margin-bottom: 16px; }
-        .empty-state p { font-size: 14px; color: #3f3f46; }
+        .my-act-chain { font-size: 14px; font-weight: 800; color: #e4e4e7; margin-bottom: 3px; }
+        .my-act-tx { font-size: 11px; color: #3f3f46; font-family: monospace; }
+        .my-act-time { margin-left: auto; text-align: right; flex-shrink: 0; }
+        .empty-state { text-align: center; padding: 60px 24px; }
+        .empty-icon { font-size: 48px; margin-bottom: 16px; }
+        .empty-state p { font-size: 14px; color: #3f3f46; margin-bottom: 20px; }
+        .go-gm-btn { background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; border: none; padding: 10px 24px; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; }
         @media (max-width: 1024px) { .chains-grid { grid-template-columns: repeat(3,1fr); } .layout { grid-template-columns: 1fr; } .sidebar { display: none; } }
         @media (max-width: 700px) { .chains-grid { grid-template-columns: repeat(2,1fr); } .gm-hero h1 { font-size: 30px; } }
         @media (max-width: 480px) { .chains-grid { grid-template-columns: 1fr; } }
       `}</style>
-
-      <div className="gm-root">
-        <div className="gm-hero">
-          <h1>Good Morning, <span>Blockchain</span> ☀️</h1>
-          <p>Say GM on-chain daily across every EVM chain — farm potential airdrops</p>
-          <div className="connect-row">
-            <ConnectButton />
-          </div>
-        </div>
-
-        <div className="tabs-wrap">
-          <button className={`tab-btn ${tab === 'gm' ? 'active' : ''}`} onClick={() => setTab('gm')}>☀️ Say GM</button>
-          <button className={`tab-btn ${tab === 'activity' ? 'active' : ''}`} onClick={() => setTab('activity')}>📋 My Activity</button>
-        </div>
-
-        <div className="inner">
-          {tab === 'gm' ? (
-            <>
-              <div className="top-bar">
-                {(['all', 'hot', 'fav'] as const).map(f => (
-                  <button key={f} className={`f-btn ${filter === f ? 'active' : ''}`} onClick={() => setFilter(f)}>
-                    {f === 'all' ? '⚡ All' : f === 'hot' ? '🔥 Hot' : '⭐ Favourites'}
-                  </button>
-                ))}
-                <input className="search-box" placeholder="Search chains..." value={search} onChange={e => setSearch(e.target.value)} />
-              </div>
-
-              <div className="layout">
-                <div className="chains-grid">
-                  {filtered.map(chain => {
-                    const state = gmDone[chain.id];
-                    const isFav = favs.includes(chain.id);
-                    return (
-                      <div key={chain.id} className={`chain-card ${chain.hot ? 'hot' : ''}`}>
-                        <div className="chain-header">
-                          <div className="chain-left">
-                            <img src={chain.icon} alt={chain.name} className="chain-logo" onError={(e) => { (e.target as HTMLImageElement).style.display='none'; }} />
-                            <div className="chain-name">{chain.name}</div>
-                          </div>
-                          <div className="chain-right">
-                            {chain.hot && <div className="hot-dot" />}
-                            <button className={`fav-btn ${isFav ? 'active' : ''}`} onClick={() => toggleFav(chain.id)}>{isFav ? '★' : '☆'}</button>
-                          </div>
-                        </div>
-                        <div className="gm-gn-row">
-                          <div className="badge-tag">GM</div>
-                          <div className="badge-tag">GN</div>
-                        </div>
-                        <button
-                          className={`say-btn ${state === 'loading' ? 'loading' : state === 'done' ? 'done' : state === 'error' ? 'error' : 'idle'}`}
-                          onClick={() => sayGM(chain)}
-                          disabled={!isConnected || state === 'loading' || state === 'done'}
-                        >
-                          {state === 'loading' ? '⏳ Sending...' : state === 'done' ? '✅ GM Sent!' : state === 'error' ? '❌ Failed — Retry' : !isConnected ? '🔒 Connect Wallet' : '☀️ Say GM & GN'}
-                        </button>
-                      </div>
-                    );
-                  })}
-                  {filtered.length === 0 && (
-                    <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '60px', color: '#27272a' }}>No chains found</div>
-                  )}
-                </div>
-
-                <div className="sidebar">
-                  <div className="side-card">
-                    <div className="side-title"><span className="live-dot" /> Live Activity</div>
-                    {liveActivity.map((a, i) => (
-                      <div key={i} className="act-item">
-                        <div className="act-icon">☀️</div>
-                        <div className="act-body">
-                          <div className="act-addr">{a.addr}</div>
-                          <div className="act-info">{a.action} · {a.chain}</div>
-                        </div>
-                        <div className="act-time">{a.time}</div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="side-card">
-                    <div className="side-title">📊 My Stats</div>
-                    {isConnected ? (
-                      <>
-                        <div className="stats-grid">
-                          <div className="stat-box"><div className="stat-val">{totalGM}</div><div className="stat-lbl">GMs Sent</div></div>
-                          <div className="stat-box"><div className="stat-val">{streak}</div><div className="stat-lbl">Day Streak</div></div>
-                        </div>
-                        <div style={{ fontSize: '11px', color: '#27272a', textAlign: 'center', fontFamily: 'monospace' }}>{address?.slice(0,8)}...{address?.slice(-6)}</div>
-                      </>
-                    ) : (
-                      <div className="no-wallet">Connect wallet to track your GM streak 🔒</div>
-                    )}
-                  </div>
-
-                  <div className="side-card" style={{ borderColor: 'rgba(99,102,241,0.2)' }}>
-                    <div className="side-title">🪂 3alamiy Web3</div>
-                    <p style={{ fontSize: '12px', color: '#3f3f46', marginBottom: '12px', lineHeight: 1.7 }}>Track crypto airdrops with step-by-step guides. Daily GM = airdrop farming!</p>
-                    <Link href="/airdrops" style={{ display: 'block', textAlign: 'center', background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', color: '#818cf8', padding: '10px', borderRadius: '10px', textDecoration: 'none', fontSize: '12px', fontWeight: '800' }}>
-                      Browse Airdrops →
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </>
-          ) : (
-            <div className="activity-page">
-              <div className="side-title" style={{ marginBottom: '20px' }}>📋 My GM Activity</div>
-              {!isConnected ? (
-                <div className="empty-state">
-                  <div className="icon">🔒</div>
-                  <p>Connect your wallet to see your GM history</p>
-                </div>
-              ) : myActivity.length === 0 ? (
-                <div className="empty-state">
-                  <div className="icon">☀️</div>
-                  <p>No GMs sent yet — go say GM on some chains!</p>
-                </div>
-              ) : (
-                myActivity.map((a, i) => (
-                  <div key={i} className="my-act-item">
-                    <div className="act-icon" style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(99,102,241,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', flexShrink: 0 }}>☀️</div>
-                    <div>
-                      <div className="my-act-chain">GM on {a.chain}</div>
-                      <div className="my-act-tx">{a.tx.slice(0, 20)}...{a.tx.slice(-8)}</div>
-                    </div>
-                    <div className="my-act-time">
-                      <div style={{ color: '#52525b', fontSize: '12px' }}>{a.time}</div>
-                      <div style={{ color: '#27272a', fontSize: '11px' }}>{a.date}</div>
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-          )}
-        </div>
-      </div>
+      <GMStation />
     </>
   );
 }
