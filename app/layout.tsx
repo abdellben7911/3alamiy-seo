@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { AuthProvider } from './auth/AuthProvider';
+import { Providers } from './providers';
 import Header from './Header';
 
 export const metadata: Metadata = {
@@ -47,15 +48,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        {/* hreflang for global English targeting */}
         <link rel="alternate" hrefLang="en" href="https://seo.3alamiyweb3.online" />
         <link rel="alternate" hrefLang="x-default" href="https://seo.3alamiyweb3.online" />
       </head>
       <body>
-        <AuthProvider>
-          <Header />
-          {children}
-        </AuthProvider>
+        <Providers>
+          <AuthProvider>
+            <Header />
+            {children}
+          </AuthProvider>
+        </Providers>
       </body>
     </html>
   );
