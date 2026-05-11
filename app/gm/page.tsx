@@ -334,21 +334,6 @@ export default function GMPage() {
                 )}
               </div>
 
-              {/* Refer & Earn */}
-              <div className="ref-card">
-                <div className="ref-icon">👥</div>
-                <div className="ref-title">Refer & Earn!</div>
-                <div className="ref-sub">Invite friends to 3alamiy Web3 and earn rewards from every airdrop they find!</div>
-                <div className="ref-box">
-                  <span>{isConnected ? `seo.3alamiyweb3.online/gm?ref=${address?.slice(0,8)}` : 'Connect wallet to get link'}</span>
-                  {isConnected && (
-                    <button className={`copy-btn ${copied?'copied':''}`} onClick={copyRef}>
-                      {copied?'Copied!':'Copy'}
-                    </button>
-                  )}
-                </div>
-              </div>
-
               {/* ZNS Referral */}
               <div className="side-card" style={{background:'linear-gradient(135deg,#0a1a0a,#111118)',borderColor:'rgba(163,230,53,0.2)'}}>
                 <div style={{display:'flex',alignItems:'center',gap:'10px',marginBottom:'12px'}}>
