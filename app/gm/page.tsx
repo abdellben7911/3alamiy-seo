@@ -1,6 +1,29 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Component, ReactNode } from 'react';
+
+class ErrorBoundary extends Component<{children: ReactNode; fallback?: ReactNode}, {hasError: boolean}> {
+  constructor(props: any) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError() { return { hasError: true }; }
+  componentDidCatch(error: any) { console.error('GM page error:', error); }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{textAlign:'center',padding:'60px 24px'}}>
+          <div style={{fontSize:'48px',marginBottom:'16px'}}>⚠️</div>
+          <p style={{color:'#52525b',fontSize:'14px',marginBottom:'20px'}}>Something went wrong loading this section.</p>
+          <button onClick={() => this.setState({hasError:false})} style={{background:'linear-gradient(135deg,#6366f1,#4f46e5)',color:'#fff',border:'none',padding:'10px 24px',borderRadius:'10px',cursor:'pointer',fontFamily:'inherit',fontWeight:700,fontSize:'13px'}}>
+            Try Again
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount, useWalletClient } from 'wagmi';
 import { parseEther } from 'viem';
@@ -319,6 +342,7 @@ function GMStation() {
               ))
             )}
           </div>
+        </ErrorBoundary>
         )}
       </div>
     </div>
