@@ -349,6 +349,23 @@ export default function GMPage() {
                 </div>
               </div>
 
+              {/* ZNS Referral */}
+              <div className="side-card" style={{background:'linear-gradient(135deg,#0a1a0a,#111118)',borderColor:'rgba(163,230,53,0.2)'}}>
+                <div style={{display:'flex',alignItems:'center',gap:'10px',marginBottom:'12px'}}>
+                  <div style={{width:'36px',height:'36px',background:'#c8ff00',borderRadius:'10px',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'18px',fontWeight:900,color:'#000',flexShrink:0}}>Z</div>
+                  <div>
+                    <div style={{fontSize:'13px',fontWeight:800,color:'#fff'}}>ZNS Connect</div>
+                    <div style={{fontSize:'10px',color:'#4a6a4a',fontWeight:600}}>Web3 Domain Registration</div>
+                  </div>
+                </div>
+                <p style={{fontSize:'12px',color:'#4a6a4a',marginBottom:'4px',lineHeight:1.6}}>Register your Web3 domain on <b style={{color:'#c8ff00'}}>100+ chains</b>. Build your on-chain identity.</p>
+                <div style={{fontSize:'11px',color:'#3a5a3a',marginBottom:'12px'}}>From <b style={{color:'#a3e635'}}>$8</b> · .id · .ink · .boss · .hype · .defi</div>
+                <a href="https://zns.bio?ref=OTNiMTlhZT" target="_blank" rel="noopener noreferrer"
+                  style={{display:'block',textAlign:'center',background:'#c8ff00',color:'#000',padding:'10px',borderRadius:'10px',textDecoration:'none',fontSize:'12px',fontWeight:900,transition:'all 0.2s'}}>
+                  🌐 Register Domain →
+                </a>
+              </div>
+
               {/* Airdrop tracker */}
               <div className="side-card" style={{borderColor:'rgba(99,102,241,0.15)'}}>
                 <div className="side-title">🪂 Airdrop Tracker</div>
