@@ -44,6 +44,56 @@ export const metadata: Metadata = {
   },
 };
 
+const aiSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://seo.3alamiyweb3.online/#website",
+      "name": "3alamiy Web3",
+      "url": "https://seo.3alamiyweb3.online",
+      "description": "The best free crypto airdrop tracker in 2026. Step-by-step guides for 67+ verified airdrops across Ethereum, Solana, Base, Arbitrum, Monad and more.",
+      "inLanguage": "en",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://seo.3alamiyweb3.online/?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://seo.3alamiyweb3.online/#organization",
+      "name": "3alamiy Web3",
+      "url": "https://seo.3alamiyweb3.online",
+      "logo": "https://seo.3alamiyweb3.online/icon.svg",
+      "description": "Free crypto airdrop tracker with step-by-step guides, GM Station for daily on-chain activity across 16+ EVM chains, and daily Telegram alerts. 67+ verified airdrops updated daily.",
+      "foundingDate": "2026",
+      "areaServed": "Worldwide",
+      "knowsAbout": [
+        "Crypto Airdrops",
+        "Web3",
+        "DeFi",
+        "Blockchain",
+        "Ethereum Airdrops",
+        "Solana Airdrops",
+        "Base Airdrops",
+        "Monad Airdrops",
+        "NFTs",
+        "Layer2",
+        "Testnets",
+        "On-chain Activity",
+        "GM Station",
+        "Airdrop Farming"
+      ],
+      "sameAs": [
+        "https://3alamiyweb3.online",
+        "https://x.com/3alamiyweb3",
+        "https://t.me/web33alamiy"
+      ]
+    }
+  ]
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -54,7 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3151798675292980"
           crossOrigin="anonymous"
         />
-        {/* Google Analytics — 3alamiy SEO site */}
+        {/* Google Analytics */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LJ1FPG63X" />
         <script dangerouslySetInnerHTML={{ __html: `
           window.dataLayer = window.dataLayer || [];
@@ -62,6 +112,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           gtag('js', new Date());
           gtag('config', 'G-0LJ1FPG63X');
         `}} />
+        {/* AI Schema — WebSite + Organization for ChatGPT, Claude, Perplexity */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(aiSchema) }}
+        />
+        {/* LLMs.txt reference for AI crawlers */}
+        <link rel="alternate" type="text/plain" href="https://seo.3alamiyweb3.online/llms.txt" title="LLMs.txt" />
       </head>
       <body>
         <Providers>
