@@ -20,40 +20,30 @@ async function sendTelegramMessage(message: string) {
   return res.json();
 }
 
-export async function POST(request: Request) {
-  try {
-    const body = await request.json();
-    const { slug } = body;
-
-    if (!slug) {
-      return NextResponse.json({ error: 'slug is required' }, { status: 400 });
+async function notifyAirdrop(slug: string) {
+  const res = await fetch(
+    `${SUPABASE_URL}/rest/v1/airdrops?slug=eq.${slug}&select=*&limit=1`,
+    {
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+      },
     }
+  );
 
-    const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/airdrops?slug=eq.${slug}&select=*&limit=1`,
-      {
-        headers: {
-          'apikey': SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-        },
-      }
-    );
+  const data = await res.json();
+  const a = data[0];
 
-    const data = await res.json();
-    const a = data[0];
+  if (!a) return { error: 'Airdrop not found' };
 
-    if (!a) {
-      return NextResponse.json({ error: 'Airdrop not found' }, { status: 404 });
-    }
+  const diffEmoji = a.difficulty === 'Easy' ? '🟢' : a.difficulty === 'Medium' ? '🟡' : '🔴';
+  const costEmoji = a.cost === 'Free' ? '🆓' : '💰';
+  const reward = a.reward_min && a.reward_max
+    ? `$${a.reward_min} - $${a.reward_max}`
+    : a.reward_min ? `$${a.reward_min}+` : 'TBA';
+  const tags = Array.isArray(a.tags) ? a.tags.map((t: string) => `#${t}`).join(' ') : '';
 
-    const diffEmoji = a.difficulty === 'Easy' ? '🟢' : a.difficulty === 'Medium' ? '🟡' : '🔴';
-    const costEmoji = a.cost === 'Free' ? '🆓' : '💰';
-    const reward = a.reward_min && a.reward_max
-      ? `$${a.reward_min} - $${a.reward_max}`
-      : a.reward_min ? `$${a.reward_min}+` : 'TBA';
-    const tags = Array.isArray(a.tags) ? a.tags.map((t: string) => `#${t}`).join(' ') : '';
-
-    const message = `
+  const message = `
 🪂 <b>${a.name}</b> — New Airdrop!
 
 ${costEmoji} ${a.cost}  ${diffEmoji} ${a.difficulty}  ⛓ ${a.blockchain}
@@ -64,21 +54,44 @@ ${costEmoji} ${a.cost}  ${diffEmoji} ${a.difficulty}  ⛓ ${a.blockchain}
 ${tags}
 `.trim();
 
-    const result = await sendTelegramMessage(message);
+  const result = await sendTelegramMessage(message);
+  return { success: true, telegram: result, airdrop: a.name };
+}
 
-    return NextResponse.json({ success: true, telegram: result, airdrop: a.name });
+// GET — handles browser visits: /api/indexnow?slug=xxx
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const slug = searchParams.get('slug');
 
+    if (slug) {
+      const result = await notifyAirdrop(slug);
+      return NextResponse.json(result);
+    }
+
+    // No slug = test message
+    const result = await sendTelegramMessage(
+      '✅ <b>3alamiy Web3 Bot</b> is connected and ready!\n\n🪂 New airdrops posted here daily.\n\n👉 <a href="https://seo.3alamiyweb3.online">seo.3alamiyweb3.online</a>'
+    );
+    return NextResponse.json({ success: true, result });
   } catch (error) {
     return NextResponse.json({ success: false, error: String(error) }, { status: 500 });
   }
 }
 
-export async function GET() {
+// POST — handles programmatic calls
+export async function POST(request: Request) {
   try {
-    const result = await sendTelegramMessage(
-      '✅ <b>3alamiy Web3 Bot</b> is connected and ready!\n\n🪂 New airdrops posted here daily.\n\n👉 <a href="https://seo.3alamiyweb3.online">seo.3alamiyweb3.online</a>'
-    );
-    return NextResponse.json({ success: true, result });
+    const body = await request.json();
+    const { slug } = body;
+
+    if (!slug) {
+      return NextResponse.json({ error: 'slug is required' }, { status: 400 });
+    }
+
+    const result = await notifyAirdrop(slug);
+    return NextResponse.json(result);
+
   } catch (error) {
     return NextResponse.json({ success: false, error: String(error) }, { status: 500 });
   }
