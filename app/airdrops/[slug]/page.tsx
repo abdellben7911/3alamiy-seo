@@ -383,6 +383,22 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
                 <p style={{ color: 'rgba(199,210,254,0.8)', fontSize: '13px', lineHeight: 1.6, margin: '0 0 18px' }}>Join our community for real-time airdrop alerts.</p>
                 <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: '#fff', color: '#4f46e5', padding: '12px', borderRadius: '12px', textDecoration: 'none', fontWeight: '800', fontSize: '14px' }}>✈️ Join Telegram</a>
               </div>
+
+              {/* Similar Rewards Widget */}
+              <div style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '16px', padding: '20px', marginBottom: '14px', textAlign: 'center' }}>
+                <p style={{ fontSize: '10px', fontWeight: '800', color: '#52525b', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 10px' }}>SIMILAR REWARDS <span style={{ background: '#1a1f2e', color: '#52525b', fontSize: '9px', padding: '2px 6px', borderRadius: '99px', marginLeft: '4px' }}>ⓘ</span></p>
+                <p style={{ fontSize: '32px', fontWeight: '900', color: '#10b981', margin: '0 0 6px', letterSpacing: '-0.02em' }}>
+                  {a.reward_min && a.reward_max
+                    ? `$${a.reward_min >= 1000 ? (a.reward_min/1000).toFixed(0)+'K' : a.reward_min}–$${a.reward_max >= 1000 ? (a.reward_max/1000).toFixed(0)+'K' : a.reward_max}`
+                    : a.reward_min
+                    ? `$${a.reward_min >= 1000 ? (a.reward_min/1000).toFixed(0)+'K' : a.reward_min}+`
+                    : a.difficulty === 'Easy' ? '$50–$500'
+                    : a.difficulty === 'Medium' ? '$200–$2K'
+                    : '$500–$5K'}
+                </p>
+                <p style={{ fontSize: '12px', color: '#52525b', margin: 0 }}>past similar projects</p>
+              </div>
+
               <div style={{ background: '#0d1117', border: '1px solid #18181b', borderRadius: '14px', padding: '14px', textAlign: 'center', marginBottom: '14px' }}>
                 <a href="https://seo.3alamiyweb3.online" style={{ display: 'block', color: '#6366f1', textDecoration: 'none', fontWeight: '700', fontSize: '14px', marginBottom: '6px' }}>
                   🪂 Browse All Airdrops →
