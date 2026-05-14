@@ -196,6 +196,25 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* Email Newsletter Signup */}
+        <section style={{ padding: '64px 24px', background: 'linear-gradient(135deg, #0f0c29, #060910, #0f0c29)' }}>
+          <div style={{ maxWidth: '560px', margin: '0 auto', textAlign: 'center' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', color: '#818cf8', padding: '6px 16px', borderRadius: '99px', fontSize: '12px', fontWeight: 800, marginBottom: '20px', letterSpacing: '0.05em' }}>
+              📧 FREE DAILY ALERTS
+            </div>
+            <h2 style={{ fontSize: '32px', fontWeight: 900, margin: '0 0 12px', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+              Never Miss a New Airdrop
+            </h2>
+            <p style={{ fontSize: '15px', color: '#71717a', margin: '0 0 32px', lineHeight: 1.7 }}>
+              Get the best new airdrops delivered to your inbox every day. Free, no spam, unsubscribe anytime.
+            </p>
+            <EmailSignup />
+            <p style={{ fontSize: '12px', color: '#3f3f46', margin: '16px 0 0' }}>
+              Join 500+ Web3 farmers · No spam · Unsubscribe anytime
+            </p>
+          </div>
+        </section>
+
         {/* Footer */}
         <footer style={{ background: '#060910', padding: '56px 24px 32px', borderTop: '1px solid #1a1f2e' }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
