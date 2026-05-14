@@ -167,36 +167,7 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Internal Links — SEO Section */}
-        <section style={{ background: '#060910', padding: '48px 24px', borderTop: '1px solid #1a1f2e' }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <h2 style={{ fontSize: '13px', fontWeight: '800', color: '#3f3f46', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '20px' }}>
-              All Crypto Airdrops — {airdrops.length} Guides
-            </h2>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-              {airdrops.map((a: any) => (
-                <Link
-                  key={a.slug}
-                  href={`/airdrops/${a.slug}`}
-                  style={{
-                    background: '#0d1117',
-                    border: '1px solid #1a1f2e',
-                    color: '#71717a',
-                    padding: '5px 12px',
-                    borderRadius: '8px',
-                    fontSize: '12px',
-                    fontWeight: '600',
-                    textDecoration: 'none',
-                    transition: 'color 0.2s',
-                  }}
-                >
-                  {a.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
+        
         {/* Email Newsletter Signup */}
         <section style={{ padding: '64px 24px', background: 'linear-gradient(135deg, #0f0c29, #060910, #0f0c29)' }}>
           <div style={{ maxWidth: '560px', margin: '0 auto', textAlign: 'center' }}>
