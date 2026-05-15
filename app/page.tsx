@@ -88,13 +88,7 @@ export default async function Home() {
         .newsletter-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(99,102,241,0.08) 0%, transparent 70%); pointer-events: none; }
         .newsletter-inner { max-width: 560px; margin: 0 auto; text-align: center; position: relative; }
 
-        /* Footer */
-        .footer { background: #030712; padding: 56px 24px 32px; border-top: 1px solid #1a1f2e; }
-        .footer-inner { max-width: 1200px; margin: 0 auto; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 40px; }
-        .footer-lbl { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #3f3f46; margin: 0 0 16px; }
-        .footer-link { color: #52525b; text-decoration: none; font-size: 13px; transition: color 0.2s; display: block; margin-bottom: 12px; }
-        .footer-link:hover { color: #a1a1aa; }
+
 
         /* Divider */
         .divider { height: 1px; background: linear-gradient(90deg, transparent, #1a1f2e 20%, #1a1f2e 80%, transparent); margin: 0; }
@@ -103,7 +97,6 @@ export default async function Home() {
           .hero-inner { grid-template-columns: 1fr; gap: 40px; }
           .stats-grid { grid-template-columns: repeat(3, 1fr); }
           .learn-grid { grid-template-columns: repeat(2, 1fr); }
-          .footer-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 640px) {
           .hero { padding: 48px 16px 36px; }
@@ -112,7 +105,6 @@ export default async function Home() {
           .hero-btns { flex-direction: column; }
           .content { padding: 0 16px 60px; }
           .learn-grid { grid-template-columns: 1fr; }
-          .footer-grid { grid-template-columns: 1fr; gap: 32px; }
         }
       `}</style>
 
@@ -234,44 +226,7 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="footer">
-          <div className="footer-inner">
-            <div className="footer-grid">
-              <div>
-                <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: '#fff', marginBottom: '14px' }}>
-                  <div style={{ width: '34px', height: '34px', background: 'linear-gradient(135deg, #6366f1, #4f46e5)', borderRadius: '9px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px' }}>🪂</div>
-                  <span style={{ fontWeight: '800', fontSize: '15px' }}>3alamiy Web3</span>
-                </Link>
-                <p style={{ fontSize: '13px', color: '#3f3f46', lineHeight: 1.7, maxWidth: '260px', margin: '0 0 18px' }}>The best free crypto airdrop tracker in 2026. Step-by-step guides updated daily.</p>
-                <div style={{ display: 'flex', gap: '8px' }}>
-                  <a href="https://x.com/3alamiyweb3" target="_blank" rel="noopener noreferrer" style={{ width: '34px', height: '34px', background: '#0d1117', border: '1px solid #1a1f2e', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', color: '#71717a', fontSize: '12px', fontWeight: '900' }}>𝕏</a>
-                  <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" style={{ width: '34px', height: '34px', background: '#0d1117', border: '1px solid #1a1f2e', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none', fontSize: '14px' }}>✈️</a>
-                </div>
-              </div>
-              <div>
-                <p className="footer-lbl">Platform</p>
-                {[['🪂 Airdrops', '/airdrops'], ['☀️ GM Station', '/gm'], ['📚 Learn', '/learn/how-to-find-airdrops-before-everyone-else'], ['ℹ️ About', '/about']].map(([label, href]) => (
-                  <Link key={label} href={href} className="footer-link">{label}</Link>
-                ))}
-              </div>
-              <div>
-                <p className="footer-lbl">Community</p>
-                {[['✈️ Telegram', 'https://t.me/web33alamiy'], ['𝕏 Twitter', 'https://x.com/3alamiyweb3'], ['🌐 Main App', 'https://3alamiyweb3.online']].map(([label, href]) => (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="footer-link">{label}</a>
-                ))}
-              </div>
-            </div>
-            <div style={{ borderTop: '1px solid #1a1f2e', paddingTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
-              <p style={{ fontSize: '12px', color: '#3f3f46', margin: 0 }}>© {year} 3alamiyweb3.online — All rights reserved.</p>
-              <div style={{ display: 'flex', gap: '20px' }}>
-                <span style={{ fontSize: '12px', color: '#3f3f46' }}>🔒 Secure</span>
-                <span style={{ fontSize: '12px', color: '#3f3f46' }}>⚡ Daily Updates</span>
-                <span style={{ fontSize: '12px', color: '#3f3f46' }}>🆓 100% Free</span>
-              </div>
-            </div>
-          </div>
-        </footer>
+
       </div>
     </>
   );
