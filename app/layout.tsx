@@ -3,6 +3,7 @@ import './globals.css';
 import { AuthProvider } from './auth/AuthProvider';
 import { Providers } from './providers';
 import Header from './Header';
+import Footer from './Footer';
 
 export const metadata: Metadata = {
   title: '3alamiy Web3 - Crypto Airdrop Tracker 2026',
@@ -125,6 +126,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <AuthProvider>
             <Header />
             {children}
+            <Footer />
           </AuthProvider>
         </Providers>
       </body>
