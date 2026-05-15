@@ -57,11 +57,11 @@ function useCountdown() {
 function ChainLogo({ icon, name, color }: { icon: string; name: string; color: string }) {
   const [err, setErr] = useState(false);
   if (err) return (
-    <div style={{ width:72, height:72, borderRadius:20, background:color+'33', border:`2px solid ${color}44`, display:'flex', alignItems:'center', justifyContent:'center', fontSize:28, fontWeight:900, color }}>
+    <div style={{ width:56, height:56, borderRadius:16, background:color+'22', border:`1.5px solid ${color}33`, display:'flex', alignItems:'center', justifyContent:'center', fontSize:22, fontWeight:900, color }}>
       {name[0]}
     </div>
   );
-  return <img src={icon} alt={name} onError={() => setErr(true)} style={{ width:72, height:72, borderRadius:20, objectFit:'cover' }} />;
+  return <img src={icon} alt={name} onError={() => setErr(true)} style={{ width:56, height:56, borderRadius:16, objectFit:'cover' }} />;
 }
 
 export default function GMPage() {
@@ -82,7 +82,6 @@ export default function GMPage() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => { setMounted(true); }, []);
-
   useEffect(() => {
     if (!mounted||!isConnected||!address) return;
     try {
@@ -145,253 +144,277 @@ export default function GMPage() {
 
   if (!mounted) return null;
 
+  const actionLabels: Record<Action, string> = { gm: 'GM', gn: 'GN', nft: 'NFT', counter: 'Counter', token: 'Token' };
+
   return (
     <>
       <style>{`
         *{box-sizing:border-box;}
-        .gm-root{min-height:100vh;background:#0a0a0f;color:#fff;font-family:system-ui,-apple-system,sans-serif;padding-bottom:80px;}
-        .gm-header{padding:28px 28px 0;}
-        .gm-title{font-size:26px;font-weight:900;margin:0 0 20px;letter-spacing:-0.02em;}
-        .gm-title span{color:#00e5c0;}
-        .search-full{width:100%;background:#13131a;border:1px solid #1e1e2e;color:#fff;padding:12px 16px;border-radius:12px;font-size:14px;outline:none;font-family:inherit;margin-bottom:12px;}
-        .search-full::placeholder{color:#3f3f52;}
-        .filter-row{display:flex;gap:8px;margin-bottom:16px;}
-        .filter-tag{background:#13131a;border:1px solid #1e1e2e;color:#6b6b8a;padding:7px 16px;border-radius:99px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.2s;}
-        .filter-tag.active{background:#1e1e2e;border-color:#3b3b52;color:#fff;}
-        .countdown-bar{display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#111118,#0d0d16);border:1px solid #1e1e2e;border-radius:14px;padding:14px 20px;margin-bottom:20px;}
-        .cd-left{display:flex;align-items:center;gap:10px;}
-        .cd-dot{width:8px;height:8px;background:#00e5c0;border-radius:50%;animation:pulse 1.5s infinite;box-shadow:0 0 8px #00e5c0;}
-        .cd-title{font-size:13px;font-weight:700;color:#e4e4e7;}
-        .cd-sub{font-size:11px;color:#3f3f52;margin-top:1px;}
-        .cd-timer{font-size:20px;font-weight:900;color:#00e5c0;font-family:monospace;background:#0d1f1c;border:1px solid #00e5c044;padding:8px 16px;border-radius:10px;}
+        .gm-root{min-height:100vh;background:#060910;color:#fff;font-family:system-ui,-apple-system,sans-serif;padding-bottom:80px;}
+
+        /* Header */
+        .gm-header{padding:32px 28px 0;border-bottom:1px solid #1a1f2e;margin-bottom:0;}
+        .gm-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;}
+        .gm-title{font-size:22px;font-weight:900;margin:0;letter-spacing:-0.02em;color:#fff;}
+        .gm-title span{color:#6366f1;}
+
+        /* Tabs */
+        .tab-row{display:flex;gap:0;margin-bottom:-1px;}
+        .tab-btn{background:transparent;border:none;border-bottom:2px solid transparent;color:#52525b;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.2s;letter-spacing:0.01em;}
+        .tab-btn.active{color:#fff;border-bottom-color:#6366f1;}
+        .tab-btn:hover:not(.active){color:#a1a1aa;}
+
+        /* Controls bar */
+        .controls-bar{display:flex;align-items:center;gap:10px;padding:16px 28px;border-bottom:1px solid #1a1f2e;flex-wrap:wrap;}
+        .search-input{background:#0d1117;border:1px solid #1a1f2e;color:#fff;padding:9px 14px;border-radius:10px;font-size:13px;outline:none;font-family:inherit;width:200px;transition:border-color 0.2s;}
+        .search-input:focus{border-color:#2a2f3e;}
+        .search-input::placeholder{color:#3f3f46;}
+        .seg-group{display:flex;background:#0d1117;border:1px solid #1a1f2e;border-radius:10px;overflow:hidden;}
+        .seg-btn{background:transparent;border:none;color:#52525b;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.15s;}
+        .seg-btn.active{background:#1a1f2e;color:#fff;}
+        .filter-pill{background:transparent;border:1px solid #1a1f2e;color:#52525b;padding:7px 14px;border-radius:99px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+        .filter-pill.active{background:#1a1f2e;border-color:#2a2f3e;color:#fff;}
+
+        /* Countdown */
+        .countdown-strip{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;background:#0d1117;border-bottom:1px solid #1a1f2e;}
+        .cd-left{display:flex;align-items:center;gap:8px;}
+        .cd-dot{width:6px;height:6px;background:#10b981;border-radius:50%;animation:pulse 1.5s infinite;}
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-        .main-layout{display:grid;grid-template-columns:1fr 300px;gap:20px;padding:0 28px;}
-        .chains-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
-        .chain-card{background:#13131a;border:1px solid #1e1e2e;border-radius:16px;padding:20px 16px;transition:all 0.2s;position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;}
-        .chain-card:hover{border-color:#2e2e42;transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.4);}
+        .cd-label{font-size:12px;color:#52525b;font-weight:600;}
+        .cd-timer{font-size:15px;font-weight:900;color:#fff;font-family:monospace;letter-spacing:0.05em;}
+
+        /* Main layout */
+        .main-layout{display:grid;grid-template-columns:1fr 280px;gap:0;padding:0;}
+        .chains-area{padding:20px 28px;border-right:1px solid #1a1f2e;}
+        .chains-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+
+        /* Chain card */
+        .chain-card{background:#0d1117;border:1px solid #1a1f2e;border-radius:14px;padding:16px 14px;transition:all 0.2s;position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;}
+        .chain-card:hover{border-color:#2a2f3e;box-shadow:0 4px 20px rgba(0,0,0,0.3);}
         .card-top-row{width:100%;display:flex;align-items:flex-start;justify-content:space-between;}
-        .card-badges{display:flex;gap:4px;flex-wrap:wrap;}
-        .b-new{background:rgba(0,229,192,0.12);border:1px solid rgba(0,229,192,0.25);color:#00e5c0;font-size:9px;font-weight:800;padding:2px 7px;border-radius:99px;}
-        .b-hot{background:rgba(255,107,0,0.12);border:1px solid rgba(255,107,0,0.25);color:#ff6b00;font-size:9px;font-weight:800;padding:2px 7px;border-radius:99px;}
-        .fav-btn{background:none;border:none;cursor:pointer;color:#2e2e42;font-size:18px;padding:0;line-height:1;transition:color 0.2s;}
-        .fav-btn.active{color:#ff4466;}
-        .chain-name{font-size:15px;font-weight:800;color:#e4e4e7;text-align:center;}
-        .action-row{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;width:100%;}
-        .action-tag{background:#0d0d16;border:1px solid #1e1e2e;color:#4a4a6a;padding:4px 8px;border-radius:7px;font-size:10px;font-weight:700;cursor:pointer;transition:all 0.15s;font-family:inherit;}
-        .action-tag:hover:not(.done){background:#1a1a28;color:#8888aa;}
-        .action-tag.done{background:rgba(0,229,192,0.08);border-color:rgba(0,229,192,0.2);color:#00e5c0;}
-        .action-tag.loading{opacity:0.5;}
+        .card-badges{display:flex;gap:3px;flex-wrap:wrap;}
+        .b-new{background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2);color:#818cf8;font-size:8px;font-weight:800;padding:2px 6px;border-radius:99px;letter-spacing:0.04em;}
+        .b-hot{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#f87171;font-size:8px;font-weight:800;padding:2px 6px;border-radius:99px;letter-spacing:0.04em;}
+        .fav-btn{background:none;border:none;cursor:pointer;color:#1a1f2e;font-size:14px;padding:0;line-height:1;transition:color 0.2s;}
+        .fav-btn.active{color:#f43f5e;}
+        .chain-name{font-size:13px;font-weight:800;color:#e4e4e7;text-align:center;letter-spacing:-0.01em;}
+
+        /* Action tags */
+        .action-row{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;width:100%;}
+        .action-tag{background:#060910;border:1px solid #1a1f2e;color:#3f3f46;padding:3px 7px;border-radius:6px;font-size:9px;font-weight:700;cursor:pointer;transition:all 0.15s;font-family:inherit;letter-spacing:0.02em;}
+        .action-tag:hover:not(.done):not(:disabled){background:#0d1117;color:#71717a;border-color:#2a2f3e;}
+        .action-tag.done{background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.2);color:#10b981;}
+        .action-tag.loading{opacity:0.4;}
+        .action-tag:disabled{cursor:not-allowed;}
+
+        /* Buttons */
         .btn-row{display:flex;gap:6px;width:100%;}
-        .btn-all{flex:1;background:#1e1e2e;border:1px solid #2e2e42;color:#fff;padding:9px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:4px;}
-        .btn-all:hover:not(:disabled){background:#2e2e42;}
-        .btn-all:disabled{opacity:0.4;cursor:not-allowed;}
-        .btn-bridge{flex:1;background:#0d1f1c;border:1px solid #00e5c033;color:#00e5c0;padding:9px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:4px;}
-        .btn-bridge:hover{background:#0f2820;border-color:#00e5c055;}
-        .sidebar{display:flex;flex-direction:column;gap:14px;position:sticky;top:80px;}
-        .side-card{background:#13131a;border:1px solid #1e1e2e;border-radius:16px;padding:18px;}
-        .streak-card{background:linear-gradient(135deg,#0d1f1c,#111118);border:1px solid rgba(0,229,192,0.15);border-radius:16px;padding:18px;}
-        .streak-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
-        .streak-label{font-size:11px;font-weight:800;color:#3f5f5a;text-transform:uppercase;letter-spacing:0.1em;}
-        .streak-chain{display:flex;align-items:center;gap:6px;background:#0a1a17;border:1px solid rgba(0,229,192,0.2);padding:4px 10px;border-radius:99px;font-size:11px;color:#00e5c0;font-weight:700;}
-        .streak-num{font-size:36px;font-weight:900;color:#fff;line-height:1;}
-        .streak-num span{font-size:15px;color:#3f5f5a;font-weight:600;}
-        .streak-sub{font-size:11px;color:#3f5f5a;margin-top:4px;}
-        .ref-card{background:linear-gradient(135deg,#0f0f1f,#13131a);border:1px solid #2e2e42;border-radius:16px;padding:18px;}
-        .ref-icon{width:40px;height:40px;background:#1e1e3a;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px;}
-        .ref-title{font-size:14px;font-weight:800;color:#fff;margin-bottom:4px;}
-        .ref-sub{font-size:12px;color:#4a4a6a;margin-bottom:12px;line-height:1.5;}
-        .ref-box{background:#0d0d16;border:1px solid #1e1e2e;border-radius:10px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:#4a4a6a;font-family:monospace;}
-        .copy-btn{background:#1e1e2e;border:none;color:#8888aa;padding:4px 10px;border-radius:7px;cursor:pointer;font-size:11px;font-weight:700;font-family:inherit;}
-        .copy-btn.copied{background:rgba(0,229,192,0.15);color:#00e5c0;}
-        .net-tabs{display:flex;gap:8px;margin-bottom:16px;}
-        .net-tab{background:#13131a;border:1px solid #1e1e2e;color:#4a4a6a;padding:7px 18px;border-radius:99px;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit;transition:all 0.2s;}
-        .net-tab.active{background:#1e1e2e;border-color:#3b3b52;color:#fff;}
-        .activity-wrap{background:#13131a;border:1px solid #1e1e2e;border-radius:16px;padding:24px;}
-        .act-item{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid #0d0d16;}
+        .btn-all{flex:1;background:#0d1117;border:1px solid #1a1f2e;color:#a1a1aa;padding:8px;border-radius:9px;font-size:11px;font-weight:800;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+        .btn-all:hover:not(:disabled){background:#1a1f2e;color:#fff;}
+        .btn-all:disabled{opacity:0.3;cursor:not-allowed;}
+        .btn-gm{flex:1;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2);color:#818cf8;padding:8px;border-radius:9px;font-size:11px;font-weight:800;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+        .btn-gm:hover:not(:disabled){background:rgba(99,102,241,0.2);border-color:rgba(99,102,241,0.4);}
+        .btn-gm:disabled{opacity:0.3;cursor:not-allowed;}
+
+        /* Sidebar */
+        .sidebar{padding:20px 20px;display:flex;flex-direction:column;gap:12px;position:sticky;top:62px;height:fit-content;}
+        .side-card{background:#0d1117;border:1px solid #1a1f2e;border-radius:14px;padding:16px;}
+        .side-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:#3f3f46;margin-bottom:12px;}
+
+        /* Streak */
+        .streak-card{background:linear-gradient(135deg,#0d1117,#0f1520);border:1px solid rgba(99,102,241,0.15);border-radius:14px;padding:16px;}
+        .streak-num{font-size:40px;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.03em;}
+        .streak-num span{font-size:14px;color:#3f3f46;font-weight:600;letter-spacing:0;}
+
+        /* Stats grid */
+        .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+        .stat-box{background:#060910;border:1px solid #1a1f2e;border-radius:10px;padding:10px;text-align:center;}
+        .stat-val{font-size:20px;font-weight:900;color:#6366f1;}
+        .stat-lbl{font-size:8px;color:#3f3f46;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-top:2px;}
+
+        /* Activity */
+        .activity-area{padding:20px 28px;}
+        .act-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #0d1117;}
         .act-item:last-child{border-bottom:none;}
-        .act-icon{width:40px;height:40px;background:#0d0d16;border:1px solid #1e1e2e;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-        .empty-state{text-align:center;padding:60px 24px;}
-        .empty-state p{color:#3f3f52;font-size:14px;margin-bottom:20px;}
-        .go-btn{background:#1e1e2e;border:1px solid #3b3b52;color:#fff;padding:10px 24px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;}
-        .side-title{font-size:11px;font-weight:800;color:#3f3f52;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px;}
-        .connect-row{padding:0 28px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+        .act-dot{width:8px;height:8px;background:#6366f1;border-radius:50%;flex-shrink:0;}
+        .empty-state{text-align:center;padding:60px 24px;color:#3f3f46;}
+
         @media(max-width:1100px){.chains-grid{grid-template-columns:repeat(3,1fr);}.main-layout{grid-template-columns:1fr;}.sidebar{display:none;}}
-        @media(max-width:700px){.chains-grid{grid-template-columns:repeat(2,1fr);}.gm-title{font-size:20px;}}
+        @media(max-width:700px){.chains-grid{grid-template-columns:repeat(2,1fr);}.gm-title{font-size:18px;}.controls-bar{gap:8px;}.search-input{width:100%;}}
         @media(max-width:440px){.chains-grid{grid-template-columns:1fr;}}
       `}</style>
 
       <div className="gm-root">
+
+        {/* Header */}
         <div className="gm-header">
-          <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:'20px',flexWrap:'wrap',gap:'12px'}}>
-            <h1 className="gm-title">Say GM & Deploy Contracts <span>in one-click!</span></h1>
+          <div className="gm-topbar">
+            <div>
+              <p style={{fontSize:'10px',fontWeight:800,textTransform:'uppercase',letterSpacing:'0.12em',color:'#3f3f46',margin:'0 0 4px'}}>Daily Activity</p>
+              <h1 className="gm-title">GM Station <span>·</span> <span style={{color:'#6366f1'}}>One-click onchain</span></h1>
+            </div>
             <ConnectButton />
           </div>
 
-          <input className="search-full" placeholder="Search networks..." value={search} onChange={e=>setSearch(e.target.value)} />
-
-          <div className="filter-row">
-            <div className="net-tabs" style={{margin:0}}>
-              <button className={`net-tab ${network==='mainnet'?'active':''}`} onClick={()=>setNetwork('mainnet')}>🌐 Mainnet</button>
-              <button className={`net-tab ${network==='testnet'?'active':''}`} onClick={()=>setNetwork('testnet')}>⚗️ Testnet</button>
-            </div>
-            <button className={`filter-tag ${filter==='all'?'active':''}`} onClick={()=>setFilter('all')}>All</button>
-            <button className={`filter-tag ${filter==='new'?'active':''}`} onClick={()=>setFilter('new')}>✨ New Networks</button>
-            <button className={`filter-tag ${filter==='hot'?'active':''}`} onClick={()=>setFilter('hot')}>🔥 Hot Networks</button>
+          {/* Tabs */}
+          <div className="tab-row">
+            <button className={`tab-btn ${tab==='gm'?'active':''}`} onClick={()=>setTab('gm')}>Say GM</button>
+            <button className={`tab-btn ${tab==='activity'?'active':''}`} onClick={()=>setTab('activity')}>My Activity {myActivity.length > 0 && `(${myActivity.length})`}</button>
           </div>
+        </div>
 
-          <div className="countdown-bar">
-            <div className="cd-left">
-              <div className="cd-dot" />
-              <div>
-                <div className="cd-title">Daily Tasks Reset</div>
-                <div className="cd-sub">All completed actions reset in</div>
-              </div>
-            </div>
-            <div className="cd-timer">{countdown}</div>
+        {/* Controls */}
+        <div className="controls-bar">
+          <input className="search-input" placeholder="Search chains..." value={search} onChange={e=>setSearch(e.target.value)} />
+          <div className="seg-group">
+            <button className={`seg-btn ${network==='mainnet'?'active':''}`} onClick={()=>setNetwork('mainnet')}>Mainnet</button>
+            <button className={`seg-btn ${network==='testnet'?'active':''}`} onClick={()=>setNetwork('testnet')}>Testnet</button>
           </div>
+          <button className={`filter-pill ${filter==='all'?'active':''}`} onClick={()=>setFilter('all')}>All</button>
+          <button className={`filter-pill ${filter==='new'?'active':''}`} onClick={()=>setFilter('new')}>New</button>
+          <button className={`filter-pill ${filter==='hot'?'active':''}`} onClick={()=>setFilter('hot')}>Hot</button>
+        </div>
 
-          {/* Tab switcher */}
-          <div style={{display:'flex',gap:'8px',marginBottom:'20px'}}>
-            <button className={`filter-tag ${tab==='gm'?'active':''}`} onClick={()=>setTab('gm')}>☀️ Say GM</button>
-            <button className={`filter-tag ${tab==='activity'?'active':''}`} onClick={()=>setTab('activity')}>📋 My Activity ({myActivity.length})</button>
+        {/* Countdown */}
+        <div className="countdown-strip">
+          <div className="cd-left">
+            <div className="cd-dot" />
+            <span className="cd-label">Daily reset in</span>
           </div>
+          <span className="cd-timer">{countdown}</span>
         </div>
 
         {tab === 'gm' ? (
           <div className="main-layout">
-            <div className="chains-grid">
-              {filtered.map(chain => (
-                <div key={chain.id} className="chain-card">
-                  <div className="card-top-row">
-                    <div className="card-badges">
-                      {chain.isNew && <span className="b-new">✨ New</span>}
-                      {chain.hot && <span className="b-hot">🔥 Hot</span>}
-                    </div>
-                    <button className={`fav-btn ${favs.includes(chain.id)?'active':''}`} onClick={()=>toggleFav(chain.id)}>
-                      {favs.includes(chain.id)?'♥':'♡'}
-                    </button>
-                  </div>
-
-                  <ChainLogo icon={chain.icon} name={chain.name} color={chain.color} />
-                  <div className="chain-name">{chain.name}</div>
-
-                  <div className="action-row">
-                    {(['gm','gn','nft','counter','token'] as Action[]).map(a => (
-                      <button
-                        key={a}
-                        className={`action-tag ${gs(chain.id,a)==='done'?'done':''} ${gs(chain.id,a)==='loading'?'loading':''}`}
-                        onClick={()=>doAction(chain,a)}
-                        disabled={!isConnected||gs(chain.id,a)==='done'||gs(chain.id,a)==='loading'}
-                      >
-                        {gs(chain.id,a)==='loading'?'⏳':gs(chain.id,a)==='done'?'✓ ':''}{a==='gm'?'GM':a==='gn'?'GN':a==='nft'?'Deploy NFT':a==='counter'?'Deploy Counter':'Deploy Token'}
+            {/* Chains */}
+            <div className="chains-area">
+              <div className="chains-grid">
+                {filtered.map(chain => (
+                  <div key={chain.id} className="chain-card">
+                    <div className="card-top-row">
+                      <div className="card-badges">
+                        {chain.isNew && <span className="b-new">NEW</span>}
+                        {chain.hot && <span className="b-hot">HOT</span>}
+                      </div>
+                      <button className={`fav-btn ${favs.includes(chain.id)?'active':''}`} onClick={()=>toggleFav(chain.id)}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill={favs.includes(chain.id)?'currentColor':'none'} stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                       </button>
-                    ))}
-                  </div>
+                    </div>
 
-                  <div className="btn-row">
-                    <button className="btn-all" onClick={()=>doAll(chain)} disabled={!isConnected}>
-                      ⚡ All
-                    </button>
-                    <button className="btn-bridge" onClick={()=>doAction(chain,'gm')} disabled={!isConnected}>
-                      ☀️ GM
-                    </button>
+                    <ChainLogo icon={chain.icon} name={chain.name} color={chain.color} />
+                    <div className="chain-name">{chain.name}</div>
+
+                    <div className="action-row">
+                      {(['gm','gn','nft','counter','token'] as Action[]).map(a => (
+                        <button
+                          key={a}
+                          className={`action-tag ${gs(chain.id,a)==='done'?'done':''} ${gs(chain.id,a)==='loading'?'loading':''}`}
+                          onClick={()=>doAction(chain,a)}
+                          disabled={!isConnected||gs(chain.id,a)==='done'||gs(chain.id,a)==='loading'}
+                        >
+                          {gs(chain.id,a)==='done'?'✓ ':''}{actionLabels[a]}
+                        </button>
+                      ))}
+                    </div>
+
+                    <div className="btn-row">
+                      <button className="btn-all" onClick={()=>doAll(chain)} disabled={!isConnected}>All</button>
+                      <button className="btn-gm" onClick={()=>doAction(chain,'gm')} disabled={!isConnected}>GM</button>
+                    </div>
                   </div>
-                </div>
-              ))}
-              {filtered.length===0 && <div style={{gridColumn:'1/-1',textAlign:'center',padding:'60px',color:'#3f3f52'}}>No chains found</div>}
+                ))}
+                {filtered.length===0 && <div style={{gridColumn:'1/-1',textAlign:'center',padding:'60px',color:'#3f3f46',fontSize:'14px'}}>No chains found</div>}
+              </div>
             </div>
 
+            {/* Sidebar */}
             <div className="sidebar">
-              {/* GM Streak */}
+
+              {/* Streak */}
               <div className="streak-card">
-                <div className="streak-top">
-                  <div className="streak-label">GM Streak</div>
-                  <div className="streak-chain">🔥 {streakChain}</div>
-                </div>
+                <div className="side-label">GM Streak</div>
                 <div className="streak-num">{streak} <span>days</span></div>
-                <div className="streak-sub">Keep your streak alive!</div>
+                <div style={{fontSize:'11px',color:'#3f3f46',marginTop:'6px'}}>{streakChain} · Keep it going</div>
               </div>
 
               {/* Stats */}
               <div className="side-card">
-                <div className="side-title">📊 My Stats</div>
+                <div className="side-label">My Stats</div>
                 {isConnected ? (
-                  <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'8px'}}>
+                  <div className="stats-grid">
                     {[
                       {val:totalGM, lbl:'GMs Sent'},
                       {val:myActivity.length, lbl:'Total Txs'},
                       {val:streak, lbl:'Streak'},
                       {val:favs.length, lbl:'Saved'},
                     ].map(s=>(
-                      <div key={s.lbl} style={{background:'#0d0d16',border:'1px solid #1e1e2e',borderRadius:'10px',padding:'12px',textAlign:'center'}}>
-                        <div style={{fontSize:'22px',fontWeight:900,color:'#00e5c0'}}>{s.val}</div>
-                        <div style={{fontSize:'9px',color:'#3f3f52',fontWeight:700,textTransform:'uppercase',letterSpacing:'0.06em',marginTop:3}}>{s.lbl}</div>
+                      <div key={s.lbl} className="stat-box">
+                        <div className="stat-val">{s.val}</div>
+                        <div className="stat-lbl">{s.lbl}</div>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <div style={{textAlign:'center',color:'#3f3f52',fontSize:'12px',padding:'12px'}}>Connect wallet to track stats 🔒</div>
+                  <div style={{textAlign:'center',color:'#3f3f46',fontSize:'12px',padding:'8px 0'}}>Connect wallet to track stats</div>
                 )}
               </div>
 
-              {/* ZNS Referral */}
-              <div className="side-card" style={{background:'linear-gradient(135deg,#0a1a0a,#111118)',borderColor:'rgba(163,230,53,0.2)'}}>
+              {/* ZNS */}
+              <div className="side-card" style={{background:'linear-gradient(135deg,#0a120a,#0d1117)',borderColor:'rgba(163,230,53,0.15)'}}>
                 <div style={{display:'flex',alignItems:'center',gap:'10px',marginBottom:'12px'}}>
-                  <div style={{width:'36px',height:'36px',background:'#c8ff00',borderRadius:'10px',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'18px',fontWeight:900,color:'#000',flexShrink:0}}>Z</div>
+                  <div style={{width:'32px',height:'32px',background:'#c8ff00',borderRadius:'8px',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'14px',fontWeight:900,color:'#000',flexShrink:0}}>Z</div>
                   <div>
-                    <div style={{fontSize:'13px',fontWeight:800,color:'#fff'}}>ZNS Connect</div>
-                    <div style={{fontSize:'10px',color:'#4a6a4a',fontWeight:600}}>Web3 Domain Registration</div>
+                    <div style={{fontSize:'12px',fontWeight:800,color:'#fff'}}>ZNS Connect</div>
+                    <div style={{fontSize:'10px',color:'#3a5a3a'}}>Web3 Domain Registration</div>
                   </div>
                 </div>
-                <p style={{fontSize:'12px',color:'#4a6a4a',marginBottom:'4px',lineHeight:1.6}}>Register your Web3 domain on <b style={{color:'#c8ff00'}}>100+ chains</b>. Build your on-chain identity.</p>
-                <div style={{fontSize:'11px',color:'#3a5a3a',marginBottom:'12px'}}>From <b style={{color:'#a3e635'}}>$8</b> · .id · .ink · .boss · .hype · .defi</div>
+                <p style={{fontSize:'11px',color:'#3a5a3a',marginBottom:'10px',lineHeight:1.6}}>Register your Web3 domain on <b style={{color:'#a3e635'}}>100+ chains</b>. From <b style={{color:'#a3e635'}}>$8</b>.</p>
                 <a href="https://zns.bio?ref=OTNiMTlhZT" target="_blank" rel="noopener noreferrer"
-                  style={{display:'block',textAlign:'center',background:'#c8ff00',color:'#000',padding:'10px',borderRadius:'10px',textDecoration:'none',fontSize:'12px',fontWeight:900,transition:'all 0.2s'}}>
-                  🌐 Register Domain →
+                  style={{display:'block',textAlign:'center',background:'#c8ff00',color:'#000',padding:'9px',borderRadius:'9px',textDecoration:'none',fontSize:'11px',fontWeight:900}}>
+                  Register Domain →
                 </a>
               </div>
 
               {/* Airdrop tracker */}
-              <div className="side-card" style={{borderColor:'rgba(99,102,241,0.15)'}}>
-                <div className="side-title">🪂 Airdrop Tracker</div>
-                <p style={{fontSize:'12px',color:'#4a4a6a',marginBottom:'12px',lineHeight:1.7}}>GM daily = on-chain activity = better airdrop eligibility!</p>
-                <Link href="/airdrops" style={{display:'block',textAlign:'center',background:'rgba(99,102,241,0.1)',border:'1px solid rgba(99,102,241,0.2)',color:'#818cf8',padding:'10px',borderRadius:'10px',textDecoration:'none',fontSize:'12px',fontWeight:800}}>
+              <div className="side-card">
+                <div className="side-label">Airdrop Tracker</div>
+                <p style={{fontSize:'11px',color:'#3f3f46',marginBottom:'10px',lineHeight:1.6}}>GM daily = on-chain activity = better airdrop eligibility.</p>
+                <Link href="/airdrops" style={{display:'block',textAlign:'center',background:'rgba(99,102,241,0.1)',border:'1px solid rgba(99,102,241,0.2)',color:'#818cf8',padding:'9px',borderRadius:'9px',textDecoration:'none',fontSize:'11px',fontWeight:800}}>
                   Browse Airdrops →
                 </Link>
               </div>
             </div>
           </div>
         ) : (
-          <div style={{padding:'0 28px'}}>
-            <div className="activity-wrap">
-              <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:'20px'}}>
-                <div style={{fontSize:'16px',fontWeight:800,color:'#e4e4e7'}}>📋 My Activity</div>
-                <div style={{fontSize:'12px',color:'#3f3f52',background:'#0d0d16',border:'1px solid #1e1e2e',padding:'4px 12px',borderRadius:'99px'}}>{myActivity.length} transactions</div>
+          <div className="activity-area">
+            <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:'20px'}}>
+              <div style={{fontSize:'14px',fontWeight:800,color:'#e4e4e7'}}>Transaction History</div>
+              <div style={{fontSize:'11px',color:'#3f3f46',background:'#0d1117',border:'1px solid #1a1f2e',padding:'4px 12px',borderRadius:'99px'}}>{myActivity.length} txs</div>
+            </div>
+            {!isConnected ? (
+              <div className="empty-state"><p>Connect your wallet to see your activity</p></div>
+            ) : myActivity.length===0 ? (
+              <div className="empty-state">
+                <p>No activity yet — go say GM on some chains!</p>
+                <button style={{background:'rgba(99,102,241,0.1)',border:'1px solid rgba(99,102,241,0.2)',color:'#818cf8',padding:'10px 24px',borderRadius:'10px',fontSize:'13px',fontWeight:700,cursor:'pointer',fontFamily:'inherit'}} onClick={()=>setTab('gm')}>Say GM Now →</button>
               </div>
-              {!isConnected ? (
-                <div className="empty-state"><div style={{fontSize:'48px',marginBottom:'16px'}}>🔒</div><p>Connect your wallet to see your activity</p></div>
-              ) : myActivity.length===0 ? (
-                <div className="empty-state">
-                  <div style={{fontSize:'48px',marginBottom:'16px'}}>☀️</div>
-                  <p>No actions yet — go say GM on some chains!</p>
-                  <button className="go-btn" onClick={()=>setTab('gm')}>Say GM Now →</button>
-                </div>
-              ) : (
-                myActivity.map((a,i) => (
+            ) : (
+              <div style={{background:'#0d1117',border:'1px solid #1a1f2e',borderRadius:'14px',padding:'8px 20px'}}>
+                {myActivity.map((a,i) => (
                   <div key={i} className="act-item">
-                    <div className="act-icon">⚡</div>
+                    <div className="act-dot" />
                     <div style={{flex:1}}>
-                      <div style={{fontSize:'14px',fontWeight:700,color:'#e4e4e7',marginBottom:3}}>{a.action} on {a.chain}</div>
-                      <div style={{fontSize:'11px',color:'#3f3f52',fontFamily:'monospace'}}>{a.tx.slice(0,20)}...{a.tx.slice(-8)}</div>
+                      <div style={{fontSize:'13px',fontWeight:700,color:'#e4e4e7'}}>{a.action} <span style={{color:'#52525b'}}>on</span> {a.chain}</div>
+                      <div style={{fontSize:'11px',color:'#3f3f46',fontFamily:'monospace',marginTop:'2px'}}>{a.tx.slice(0,18)}...{a.tx.slice(-6)}</div>
                     </div>
                     <div style={{textAlign:'right',flexShrink:0}}>
-                      <div style={{color:'#4a4a6a',fontSize:'12px'}}>{a.time}</div>
-                      <div style={{color:'#27272a',fontSize:'10px'}}>{a.date}</div>
+                      <div style={{color:'#52525b',fontSize:'11px'}}>{a.time}</div>
+                      <div style={{color:'#3f3f46',fontSize:'10px'}}>{a.date}</div>
                     </div>
                   </div>
-                ))
-              )}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         )}
       </div>
