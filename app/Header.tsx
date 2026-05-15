@@ -9,7 +9,7 @@ export default function Header() {
 
   const navItems = [
     { label: 'Airdrops', href: '/airdrops', badge: 'Hot', badgeColor: '#f43f5e', badgeBg: 'rgba(244,63,94,0.15)' },
-    { label: 'Learn', href: '/learn/how-to-find-airdrops-before-everyone-else', badge: 'New', badgeColor: '#10b981', badgeBg: 'rgba(16,185,129,0.15)' },
+    { label: 'Learn', href: '/learn', badge: 'New', badgeColor: '#10b981', badgeBg: 'rgba(16,185,129,0.15)' },
     { label: 'GM Station', href: '/gm', badge: 'GM', badgeColor: '#000', badgeBg: '#818cf8' },
     { label: 'About', href: '/about', badge: null, badgeColor: null, badgeBg: null },
   ];
