@@ -119,7 +119,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(aiSchema) }}
         />
         {/* LLMs.txt reference for AI crawlers */}
-        <link rel="alternate" type="text/plain" href="https://seo.3alamiyweb3.online/llms.txt" title="LLMs.txt" />
+        <link rel="alternate" type="text/markdown" href="https://seo.3alamiyweb3.online/llms.txt" />
       </head>
       <body>
         <Providers>
