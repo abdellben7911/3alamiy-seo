@@ -78,7 +78,7 @@ export default function GMPage() {
   const [filter, setFilter] = useState<'all'|'hot'|'favs'>('all');
   const [search, setSearch] = useState('');
   const [tab, setTab] = useState<'gm'|'activity'>('gm');
-  const [action, setAction] = useState<'all'|'gm'|'gn'|'nft'|'counter'|'token'>('gm');
+  const [action, setAction] = useState<'all'|'gm'|'gn'|'nft'|'counter'|'token'>('all');
   const [network, setNetwork] = useState<'mainnet'|'testnet'>('mainnet');
   const [mounted, setMounted] = useState(false);
 
@@ -166,7 +166,7 @@ export default function GMPage() {
         .tab-row{display:flex;gap:4px;background:#0d1117;border:1px solid #1a1f2e;border-radius:14px;padding:4px;flex-wrap:wrap;justify-content:center;}
         .tab-btn{background:transparent;border:none;color:#52525b;padding:8px 18px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;border-radius:10px;transition:all 0.15s;white-space:nowrap;display:flex;align-items:center;gap:6px;}
         .tab-btn:hover:not(.active){color:#a1a1aa;background:rgba(255,255,255,0.03);}
-        .tab-btn.active{background:#c8ff00;color:#000;}
+        .tab-btn.active{background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;box-shadow:0 4px 14px rgba(99,102,241,0.35);}
         .controls-bar{display:flex;align-items:center;gap:8px;max-width:1300px;margin:0 auto;padding:12px 24px;border-bottom:1px solid #1a1f2e;flex-wrap:wrap;}
         .srch{background:#0d1117;border:1px solid #1a1f2e;color:#fff;padding:8px 14px;border-radius:10px;font-size:13px;outline:none;font-family:inherit;width:190px;}
         .srch::placeholder{color:#3f3f46;}
@@ -249,7 +249,12 @@ export default function GMPage() {
               { id: 'token', label: 'Create Token', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> },
               { id: 'activity', label: 'My Activity', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> },
             ].map(t => (
-              <button key={t.id} className={`tab-btn ${tab===t.id||(t.id==='all'&&tab==='gm'&&action==='all')?'active':tab===t.id?'active':''}`}
+              <button key={t.id}
+                className={`tab-btn ${
+                  (t.id === 'activity' && tab === 'activity') ||
+                  (t.id !== 'activity' && tab === 'gm' && action === t.id)
+                    ? 'active' : ''
+                }`}
                 onClick={() => {
                   if (t.id === 'activity') { setTab('activity'); }
                   else { setTab('gm'); setAction(t.id as any); }
