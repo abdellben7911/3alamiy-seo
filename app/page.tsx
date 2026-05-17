@@ -90,6 +90,13 @@ export default async function Home() {
 
 
 
+        /* Starter banner */
+        .starter-banner { background: linear-gradient(135deg, rgba(16,185,129,0.05) 0%, rgba(99,102,241,0.05) 100%); border-top: 1px solid rgba(16,185,129,0.12); border-bottom: 1px solid rgba(16,185,129,0.12); padding: 28px 24px; }
+        .starter-inner { max-width: 1200px; margin: 0 auto; }
+        .starter-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+        .starter-card { background: #0d1117; border: 1px solid #1a1f2e; border-radius: 14px; padding: 16px; text-decoration: none; color: #fff; display: flex; align-items: center; gap: 14px; transition: all 0.2s; }
+        .starter-card:hover { border-color: rgba(16,185,129,0.3); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+
         /* Divider */
         .divider { height: 1px; background: linear-gradient(90deg, transparent, #1a1f2e 20%, #1a1f2e 80%, transparent); margin: 0; }
 
@@ -97,6 +104,7 @@ export default async function Home() {
           .hero-inner { grid-template-columns: 1fr; gap: 40px; }
           .stats-grid { grid-template-columns: repeat(3, 1fr); }
           .learn-grid { grid-template-columns: repeat(2, 1fr); }
+          .starter-cards { grid-template-columns: 1fr; }
         }
         @media (max-width: 640px) {
           .hero { padding: 48px 16px 36px; }
@@ -105,6 +113,7 @@ export default async function Home() {
           .hero-btns { flex-direction: column; }
           .content { padding: 0 16px 60px; }
           .learn-grid { grid-template-columns: 1fr; }
+          .starter-cards { grid-template-columns: 1fr; }
         }
       `}</style>
 
@@ -158,6 +167,56 @@ export default async function Home() {
                   </Link>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="divider" />
+
+        {/* Starter Banner — New to airdrops */}
+        <section className="starter-banner">
+          <div className="starter-inner">
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                  <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 6px #10b981' }} />
+                  <span style={{ fontSize: '11px', fontWeight: 800, color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.08em' }}>New to airdrops?</span>
+                </div>
+                <p style={{ fontSize: '15px', fontWeight: 800, color: '#fff', margin: 0 }}>Start with these 3 — free, easy, under 10 minutes each</p>
+              </div>
+              <Link href="/learn/how-to-get-crypto-airdrops-2026" style={{ fontSize: '12px', color: '#10b981', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                Full beginner guide
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </Link>
+            </div>
+
+            <div className="starter-cards">
+              {[
+                { name: 'nof1 Early Waitlist', chain: 'Sui', time: '1 min', cost: 'Free', slug: 'nof1-early-waitlist', desc: 'Email signup only. $15M raised, AI + financial markets.', color: '#818cf8' },
+                { name: 'xStocksFi OG Role', chain: 'Multi-chain', time: '2 min', cost: 'Free', slug: 'xstocksfi-og-role', desc: 'Suggest a stock in Discord. $25B+ trading volume platform.', color: '#10b981' },
+                { name: 'Beep AI Galxe Campaign', chain: 'Sui', time: '5 min', cost: 'Free', slug: 'beep-ai-galxe-campaign', desc: 'Complete 3 Galxe quests. Quiz answers: BACB. Confirmed rewards.', color: '#f59e0b' },
+              ].map((a, i) => (
+                <Link key={a.slug} href={`/airdrops/${a.slug}`} className="starter-card">
+                  {/* Number */}
+                  <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: `${a.color}15`, border: `1px solid ${a.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '15px', fontWeight: 900, color: a.color, flexShrink: 0 }}>
+                    {i + 1}
+                  </div>
+                  {/* Content */}
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '3px', flexWrap: 'wrap' }}>
+                      <span style={{ fontSize: '13px', fontWeight: 800, color: '#f4f4f5' }}>{a.name}</span>
+                      <span style={{ fontSize: '9px', fontWeight: 700, color: '#10b981', background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.2)', padding: '1px 6px', borderRadius: '99px' }}>FREE</span>
+                    </div>
+                    <p style={{ fontSize: '11px', color: '#52525b', margin: '0 0 4px', lineHeight: 1.5 }}>{a.desc}</p>
+                    <div style={{ display: 'flex', gap: '12px' }}>
+                      <span style={{ fontSize: '10px', color: '#3f3f46', fontWeight: 600 }}>{a.chain}</span>
+                      <span style={{ fontSize: '10px', color: a.color, fontWeight: 700 }}>{a.time}</span>
+                    </div>
+                  </div>
+                  {/* Arrow */}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3f3f46" strokeWidth="2" style={{ flexShrink: 0 }}><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
