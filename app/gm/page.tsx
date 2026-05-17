@@ -78,6 +78,7 @@ export default function GMPage() {
   const [filter, setFilter] = useState<'all'|'hot'|'favs'>('all');
   const [search, setSearch] = useState('');
   const [tab, setTab] = useState<'gm'|'activity'>('gm');
+  const [action, setAction] = useState<'all'|'gm'|'gn'|'nft'|'counter'|'token'>('gm');
   const [network, setNetwork] = useState<'mainnet'|'testnet'>('mainnet');
   const [mounted, setMounted] = useState(false);
 
@@ -161,10 +162,11 @@ export default function GMPage() {
         .gm-hero h1{font-size:30px;font-weight:900;margin:0 0 8px;letter-spacing:-0.02em;}
         .gm-hero h1 em{font-style:normal;color:#6366f1;}
         .gm-hero p{font-size:13px;color:#71717a;margin:0 0 20px;}
-        .top-strip{display:flex;align-items:center;justify-content:space-between;max-width:1300px;margin:0 auto;padding:10px 24px;border-bottom:1px solid #1a1f2e;flex-wrap:wrap;gap:10px;}
-        .tab-row{display:flex;gap:4px;background:#0d1117;border:1px solid #1a1f2e;border-radius:11px;padding:3px;}
-        .tab-btn{background:transparent;border:none;color:#52525b;padding:7px 16px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;border-radius:8px;transition:all 0.15s;white-space:nowrap;}
-        .tab-btn.active{background:#1a1f2e;color:#fff;}
+        .top-strip{display:flex;align-items:center;justify-content:center;max-width:1300px;margin:0 auto;padding:16px 24px;border-bottom:1px solid #1a1f2e;flex-wrap:wrap;gap:10px;}
+        .tab-row{display:flex;gap:4px;background:#0d1117;border:1px solid #1a1f2e;border-radius:14px;padding:4px;flex-wrap:wrap;justify-content:center;}
+        .tab-btn{background:transparent;border:none;color:#52525b;padding:8px 18px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;border-radius:10px;transition:all 0.15s;white-space:nowrap;display:flex;align-items:center;gap:6px;}
+        .tab-btn:hover:not(.active){color:#a1a1aa;background:rgba(255,255,255,0.03);}
+        .tab-btn.active{background:#c8ff00;color:#000;}
         .controls-bar{display:flex;align-items:center;gap:8px;max-width:1300px;margin:0 auto;padding:12px 24px;border-bottom:1px solid #1a1f2e;flex-wrap:wrap;}
         .srch{background:#0d1117;border:1px solid #1a1f2e;color:#fff;padding:8px 14px;border-radius:10px;font-size:13px;outline:none;font-family:inherit;width:190px;}
         .srch::placeholder{color:#3f3f46;}
@@ -236,13 +238,25 @@ export default function GMPage() {
           <ConnectButton />
         </div>
 
-        {/* Tabs */}
+        {/* Action Tabs — competitor style */}
         <div className="top-strip">
           <div className="tab-row">
-            <button className={`tab-btn ${tab==='gm'?'active':''}`} onClick={()=>setTab('gm')}>Say GM</button>
-            <button className={`tab-btn ${tab==='activity'?'active':''}`} onClick={()=>setTab('activity')}>
-              My Activity{myActivity.length > 0 ? ` (${myActivity.length})` : ''}
-            </button>
+            {[
+              { id: 'all', label: '7-in-1', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> },
+              { id: 'gm', label: 'Say GM', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg> },
+              { id: 'nft', label: 'Deploy NFTs', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2l9 4.9V17L12 22l-9-5.1V7z"/></svg> },
+              { id: 'counter', label: 'Deploy Contract', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg> },
+              { id: 'token', label: 'Create Token', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> },
+              { id: 'activity', label: 'My Activity', icon: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> },
+            ].map(t => (
+              <button key={t.id} className={`tab-btn ${tab===t.id||(t.id==='all'&&tab==='gm'&&action==='all')?'active':tab===t.id?'active':''}`}
+                onClick={() => {
+                  if (t.id === 'activity') { setTab('activity'); }
+                  else { setTab('gm'); setAction(t.id as any); }
+                }}>
+                {t.icon}{t.label}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -313,8 +327,18 @@ export default function GMPage() {
                           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
                           All Actions
                         </button>
-                        <button className={`bgm-btn ${gmDone?'done':''}`} onClick={()=>doAction(chain,'gm')} disabled={!isConnected||gmDone}>
-                          {gmDone ? '✓ GM Sent' : 'Say GM'}
+                        <button
+                          className={`bgm-btn ${gs(chain.id, action==='all'?'gm':action as Action)==='done'?'done':''}`}
+                          onClick={()=>doAction(chain, action==='all'?'gm':action as Action)}
+                          disabled={!isConnected||gs(chain.id, action==='all'?'gm':action as Action)==='done'}
+                        >
+                          {gs(chain.id, action==='all'?'gm':action as Action)==='done'
+                            ? `✓ Done`
+                            : action==='all'||action==='gm' ? 'Say GM'
+                            : action==='gn' ? 'Say GN'
+                            : action==='nft' ? 'Deploy NFT'
+                            : action==='counter' ? 'Deploy Contract'
+                            : 'Create Token'}
                         </button>
                       </div>
                     </div>
