@@ -1,9 +1,24 @@
 import type { Metadata } from 'next';
+import { Syne, DM_Sans } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from './auth/AuthProvider';
 import { Providers } from './providers';
 import Header from './Header';
 import Footer from './Footer';
+
+const syne = Syne({
+  subsets: ['latin'],
+  weight: ['400', '600', '700', '800'],
+  variable: '--font-syne',
+  display: 'swap',
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500'],
+  variable: '--font-dm',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: '3alamiy Web3 - Crypto Airdrop Tracker 2026',
@@ -97,7 +112,7 @@ const aiSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${syne.variable} ${dmSans.variable}`}>
       <head>
         {/* Google AdSense */}
         <script
