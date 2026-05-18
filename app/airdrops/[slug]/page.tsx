@@ -67,6 +67,12 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
   const reward = a.reward_min && a.reward_max ? `$${a.reward_min}–$${a.reward_max}` : a.reward_min ? `$${a.reward_min}+` : 'TBA';
   const relatedAirdrops = allAirdrops.filter((x: any) => x.slug !== slug && x.blockchain === a.blockchain).slice(0, 3);
   const year = new Date().getFullYear();
+  const difficultyColor = a.difficulty === 'Easy' ? '#7CF5C0' : a.difficulty === 'Medium' ? '#FFD264' : '#f43f5e';
+
+  const rewardDisplay = a.reward_min && a.reward_max
+    ? `$${a.reward_min >= 1000 ? (a.reward_min / 1000).toFixed(0) + 'K' : a.reward_min}–$${a.reward_max >= 1000 ? (a.reward_max / 1000).toFixed(0) + 'K' : a.reward_max}`
+    : a.reward_min ? `$${a.reward_min >= 1000 ? (a.reward_min / 1000).toFixed(0) + 'K' : a.reward_min}+`
+    : a.difficulty === 'Easy' ? '$50–$500' : a.difficulty === 'Medium' ? '$200–$2K' : '$500–$5K';
 
   const howToSchema = {
     '@context': 'https://schema.org', '@type': 'HowTo',
@@ -81,9 +87,9 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
   const faqSchema = {
     '@context': 'https://schema.org', '@type': 'FAQPage',
     mainEntity: [
-      { '@type': 'Question', name: `Is ${a.name} airdrop legit?`, acceptedAnswer: { '@type': 'Answer', text: `Yes, ${a.name} is a verified ${a.blockchain} project tracked by 3alamiy Web3. Always use official links and never share your seed phrase.` } },
+      { '@type': 'Question', name: `Is ${a.name} airdrop legit?`, acceptedAnswer: { '@type': 'Answer', text: `Yes, ${a.name} is a verified ${a.blockchain} project tracked by 3alamiy Web3.` } },
       { '@type': 'Question', name: `How much can I earn from ${a.name} airdrop?`, acceptedAnswer: { '@type': 'Answer', text: `The estimated reward is ${reward}. Actual rewards depend on your activity level and eligibility.` } },
-      { '@type': 'Question', name: `Is the ${a.name} airdrop free?`, acceptedAnswer: { '@type': 'Answer', text: a.cost === 'Free' ? `Yes, completely free — no investment required.` : `Small gas fees may apply.` } },
+      { '@type': 'Question', name: `Is the ${a.name} airdrop free?`, acceptedAnswer: { '@type': 'Answer', text: a.cost === 'Free' ? `Yes, completely free.` : `Small gas fees may apply.` } },
       { '@type': 'Question', name: `How long does it take?`, acceptedAnswer: { '@type': 'Answer', text: `Approximately ${Math.max(15, steps.length * 3)} minutes. Difficulty is rated ${a.difficulty}.` } },
     ],
   };
@@ -97,13 +103,6 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
     ],
   };
 
-  const rewardDisplay = a.reward_min && a.reward_max
-    ? `$${a.reward_min >= 1000 ? (a.reward_min/1000).toFixed(0)+'K' : a.reward_min}–$${a.reward_max >= 1000 ? (a.reward_max/1000).toFixed(0)+'K' : a.reward_max}`
-    : a.reward_min ? `$${a.reward_min >= 1000 ? (a.reward_min/1000).toFixed(0)+'K' : a.reward_min}+`
-    : a.difficulty === 'Easy' ? '$50–$500' : a.difficulty === 'Medium' ? '$200–$2K' : '$500–$5K';
-
-  const difficultyColor = a.difficulty === 'Easy' ? '#7CF5C0' : a.difficulty === 'Medium' ? '#FFD264' : '#f43f5e';
-
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
@@ -111,359 +110,379 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap');
-
-        * { box-sizing: border-box; }
-
-        .dp-root {
+        /* ── Base — uses Space Grotesk loaded in layout.tsx ── */
+        .dp * { box-sizing: border-box; }
+        .dp {
           min-height: 100vh;
           background: #080C14;
-          font-family: 'DM Sans', system-ui, sans-serif;
-          color: #E2E4EC;
+          font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
+          color: #D8DAE5;
         }
 
-        /* ── Topbar breadcrumb ── */
-        .dp-topbar {
-          background: rgba(8,12,20,0.95);
-          border-bottom: 0.5px solid rgba(255,255,255,0.06);
-          padding: 13px 28px;
-          display: flex;
-          align-items: center;
-          gap: 7px;
-          font-size: 12px;
+        /* Breadcrumb */
+        .dp-bc {
+          padding: 14px 28px;
+          border-bottom: 1px solid rgba(255,255,255,0.05);
+          display: flex; align-items: center; gap: 6px;
+          font-size: 12px; font-weight: 500;
           color: rgba(255,255,255,0.3);
+          max-width: 1200px; margin: 0 auto;
         }
-        .dp-topbar a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.15s; }
-        .dp-topbar a:hover { color: rgba(255,255,255,0.7); }
-        .dp-topbar .bc-cur { color: #7CF5C0; }
-        .dp-topbar .bc-sep { font-size: 10px; }
+        .dp-bc a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.15s; }
+        .dp-bc a:hover { color: rgba(255,255,255,0.75); }
+        .dp-bc-active { color: #7CF5C0; }
 
-        /* ── Hero ── */
+        /* Hero */
         .dp-hero {
           position: relative;
-          padding: 36px 28px 0;
-          max-width: 1200px;
-          margin: 0 auto;
-          overflow: hidden;
+          max-width: 1200px; margin: 0 auto;
+          padding: 40px 28px 32px;
         }
-        .dp-hero::before {
-          content: '';
-          position: absolute;
-          top: -60px; right: -80px;
-          width: 480px; height: 360px;
-          background: radial-gradient(ellipse, rgba(124,245,192,0.055) 0%, transparent 70%);
-          pointer-events: none;
+        .dp-hero-glow-r {
+          position: absolute; top: -40px; right: 0;
+          width: 500px; height: 400px; pointer-events: none;
+          background: radial-gradient(ellipse at top right, rgba(124,245,192,0.06) 0%, transparent 65%);
         }
-        .dp-hero::after {
-          content: '';
-          position: absolute;
-          bottom: 0; left: -60px;
-          width: 340px; height: 280px;
-          background: radial-gradient(ellipse, rgba(99,130,255,0.04) 0%, transparent 70%);
-          pointer-events: none;
+        .dp-hero-glow-l {
+          position: absolute; bottom: 0; left: 0;
+          width: 360px; height: 300px; pointer-events: none;
+          background: radial-gradient(ellipse at bottom left, rgba(99,120,255,0.05) 0%, transparent 65%);
         }
 
         /* Badges */
-        .dp-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+        .dp-badges { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 24px; position: relative; }
         .dp-badge {
-          font-size: 10px; font-weight: 500; letter-spacing: 0.07em;
-          text-transform: uppercase; padding: 5px 13px; border-radius: 100px;
-          font-family: 'DM Sans', sans-serif;
+          font-size: 10px; font-weight: 600; letter-spacing: 0.06em;
+          text-transform: uppercase; padding: 4px 12px; border-radius: 100px;
+          font-family: var(--font-space), system-ui, sans-serif;
         }
-        .badge-chain  { background: rgba(99,130,255,0.1);  color: #90AAFF; border: 0.5px solid rgba(99,130,255,0.22); }
-        .badge-active { background: rgba(124,245,192,0.09); color: #7CF5C0; border: 0.5px solid rgba(124,245,192,0.22); }
-        .badge-ended  { background: rgba(113,113,122,0.1);  color: #71717a; border: 0.5px solid rgba(113,113,122,0.2); }
-        .badge-free   { background: rgba(255,210,100,0.09); color: #FFD264; border: 0.5px solid rgba(255,210,100,0.2); }
-        .badge-paid   { background: rgba(244,63,94,0.09);   color: #f87171; border: 0.5px solid rgba(244,63,94,0.2); }
+        .badge-chain  { background: rgba(99,120,255,0.1);   color: #8FA8FF; border: 1px solid rgba(99,120,255,0.2); }
+        .badge-active { background: rgba(124,245,192,0.08); color: #7CF5C0; border: 1px solid rgba(124,245,192,0.2); }
+        .badge-ended  { background: rgba(100,100,120,0.08); color: #6b7280; border: 1px solid rgba(100,100,120,0.18); }
+        .badge-free   { background: rgba(255,210,80,0.08);  color: #FFD264; border: 1px solid rgba(255,210,80,0.18); }
+        .badge-paid   { background: rgba(244,63,94,0.08);   color: #f87171; border: 1px solid rgba(244,63,94,0.18); }
 
-        /* Identity row */
-        .dp-identity { display: flex; gap: 22px; align-items: flex-start; margin-bottom: 26px; }
+        /* Identity */
+        .dp-identity { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 24px; position: relative; }
         .dp-logo {
-          width: 76px; height: 76px; border-radius: 20px;
+          width: 72px; height: 72px; border-radius: 18px;
           object-fit: cover; flex-shrink: 0;
-          border: 0.5px solid rgba(255,255,255,0.1);
+          border: 1px solid rgba(255,255,255,0.09);
+          box-shadow: 0 4px 24px rgba(0,0,0,0.3);
         }
         .dp-logo-fb {
-          width: 76px; height: 76px; border-radius: 20px;
-          background: linear-gradient(135deg, #131C2E, #1A2540);
-          flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-          font-family: 'Syne', sans-serif; font-weight: 800; font-size: 28px; color: #3B4A6B;
-          border: 0.5px solid rgba(255,255,255,0.06);
+          width: 72px; height: 72px; border-radius: 18px; flex-shrink: 0;
+          background: linear-gradient(135deg, #111827, #1e2d45);
+          display: flex; align-items: center; justify-content: center;
+          font-weight: 700; font-size: 26px; color: rgba(255,255,255,0.2);
+          border: 1px solid rgba(255,255,255,0.06);
         }
         .dp-title {
-          font-family: 'Syne', sans-serif; font-weight: 800; font-size: 30px;
-          color: #fff; line-height: 1.1; margin: 0 0 11px; letter-spacing: -0.02em;
+          font-weight: 700; font-size: 28px; letter-spacing: -0.025em;
+          color: #fff; line-height: 1.15; margin: 0 0 10px;
         }
-        .dp-desc { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.75; margin: 0 0 20px; max-width: 580px; }
+        .dp-desc {
+          font-size: 14px; font-weight: 400;
+          color: rgba(255,255,255,0.42); line-height: 1.75;
+          margin: 0 0 20px; max-width: 560px;
+        }
 
-        /* CTA row */
-        .dp-cta-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        /* CTAs */
+        .dp-cta-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; position: relative; }
         .btn-start {
           display: inline-flex; align-items: center; gap: 8px;
-          background: #7CF5C0; color: #061710;
-          font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 14px;
-          padding: 12px 26px; border-radius: 12px; border: none;
+          background: #7CF5C0; color: #04120A;
+          font-family: var(--font-space), system-ui, sans-serif;
+          font-weight: 600; font-size: 14px; letter-spacing: -0.01em;
+          padding: 11px 24px; border-radius: 12px; border: none;
           text-decoration: none; cursor: pointer;
           transition: opacity 0.15s, transform 0.15s;
+          box-shadow: 0 0 20px rgba(124,245,192,0.2);
         }
-        .btn-start:hover { opacity: 0.88; transform: translateY(-1px); }
+        .btn-start:hover { opacity: 0.9; transform: translateY(-1px); }
         .btn-ghost {
           display: inline-flex; align-items: center; gap: 7px;
-          background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.55);
-          font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+          background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.5);
+          font-family: var(--font-space), system-ui, sans-serif;
+          font-size: 13px; font-weight: 500;
           padding: 10px 18px; border-radius: 10px;
-          border: 0.5px solid rgba(255,255,255,0.1);
+          border: 1px solid rgba(255,255,255,0.09);
           text-decoration: none; cursor: pointer;
-          transition: background 0.15s, border-color 0.15s;
+          transition: background 0.15s, border-color 0.15s, color 0.15s;
         }
-        .btn-ghost:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.16); }
+        .btn-ghost:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.75); }
 
         /* Stats strip */
-        .dp-stats-strip {
+        .dp-strip-wrap {
+          max-width: 1200px; margin: 0 auto; padding: 0 28px;
+        }
+        .dp-strip {
           display: grid; grid-template-columns: repeat(3, 1fr);
-          gap: 1px; background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.07);
           border-radius: 16px; overflow: hidden;
-          margin: 0 28px; max-width: calc(1200px - 56px);
-          /* center inside max-width container */
-          position: relative; left: 50%; transform: translateX(-50%);
-          width: calc(100% - 56px);
+          background: rgba(255,255,255,0.03);
         }
-        .dp-stat-cell {
-          background: #0C1120; padding: 20px 24px; text-align: center;
+        .dp-strip-cell {
+          padding: 20px 16px; text-align: center;
+          border-right: 1px solid rgba(255,255,255,0.06);
         }
-        .dp-stat-val {
-          font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px;
-          color: #fff; margin-bottom: 4px;
+        .dp-strip-cell:last-child { border-right: none; }
+        .dp-strip-val {
+          font-weight: 700; font-size: 20px; letter-spacing: -0.02em;
+          margin-bottom: 4px; line-height: 1;
         }
-        .dp-stat-lbl {
-          font-size: 10px; text-transform: uppercase; letter-spacing: 0.09em;
-          color: rgba(255,255,255,0.28); font-weight: 500;
+        .dp-strip-lbl {
+          font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+          color: rgba(255,255,255,0.25); font-weight: 600;
         }
 
-        /* ── Body grid ── */
+        /* Body */
         .dp-body {
-          display: grid; grid-template-columns: 1fr 308px; gap: 24px;
+          display: grid; grid-template-columns: 1fr 300px; gap: 20px;
           max-width: 1200px; margin: 0 auto;
-          padding: 28px 28px 80px; align-items: start;
+          padding: 24px 28px 80px;
+          align-items: start;
         }
-        .dp-main { display: flex; flex-direction: column; gap: 16px; }
+        .dp-main { display: flex; flex-direction: column; gap: 14px; }
 
-        /* Cards */
+        /* Card base */
         .dp-card {
-          background: #0C1120;
-          border: 0.5px solid rgba(255,255,255,0.07);
+          background: #0D1221;
+          border: 1px solid rgba(255,255,255,0.06);
           border-radius: 16px; overflow: hidden;
         }
         .dp-card-inner { padding: 22px; }
-        .dp-sec-label {
-          font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
-          color: rgba(255,255,255,0.28); font-weight: 500; margin-bottom: 8px;
+        .dp-eyebrow {
+          font-size: 10px; font-weight: 600; text-transform: uppercase;
+          letter-spacing: 0.1em; color: rgba(255,255,255,0.25);
+          margin: 0 0 7px;
         }
-        .dp-card-title {
-          font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px;
+        .dp-heading {
+          font-weight: 600; font-size: 17px; letter-spacing: -0.02em;
           color: #fff; margin: 0 0 16px;
         }
 
-        /* Quick Answer */
-        .dp-quick-answer {
-          background: linear-gradient(135deg, rgba(124,245,192,0.04), rgba(99,130,255,0.04));
-          border: 0.5px solid rgba(124,245,192,0.14);
-          border-radius: 16px; padding: 20px 22px;
+        /* Quick answer */
+        .dp-qa {
+          background: linear-gradient(120deg, rgba(124,245,192,0.03) 0%, rgba(99,120,255,0.03) 100%);
+          border: 1px solid rgba(124,245,192,0.12);
+          border-radius: 16px; padding: 18px 20px;
           display: flex; gap: 14px; align-items: flex-start;
         }
-        .qa-icon-wrap {
-          width: 38px; height: 38px; border-radius: 11px; flex-shrink: 0;
-          background: rgba(124,245,192,0.1);
+        .dp-qa-icon {
+          width: 36px; height: 36px; flex-shrink: 0; border-radius: 10px;
+          background: rgba(124,245,192,0.09);
           display: flex; align-items: center; justify-content: center;
         }
-        .qa-icon-wrap svg { width: 16px; height: 16px; color: #7CF5C0; }
-        .qa-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: #7CF5C0; font-weight: 500; margin-bottom: 7px; }
-        .qa-text { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; margin: 0; }
-        .qa-text strong { color: #fff; font-weight: 500; }
+        .dp-qa-icon svg { width: 15px; height: 15px; color: #7CF5C0; }
+        .dp-qa-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #7CF5C0; margin: 0 0 6px; }
+        .dp-qa-text { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.7; margin: 0; }
+        .dp-qa-text strong { color: #fff; font-weight: 600; }
 
-        /* Overview tags */
-        .ov-body { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.8; margin: 0 0 14px; }
-        .ov-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-        .ov-tag {
-          font-size: 12px; background: rgba(255,255,255,0.03);
-          border: 0.5px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.45);
-          padding: 5px 13px; border-radius: 8px;
+        /* Overview */
+        .dp-ov-text { font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.8; margin: 0 0 12px; }
+        .dp-ov-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+        .dp-ov-tag {
+          font-size: 11.5px; font-weight: 500;
+          background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+          color: rgba(255,255,255,0.4); padding: 4px 12px; border-radius: 8px;
         }
-        .ov-tag span { color: rgba(255,255,255,0.8); margin-left: 4px; }
+        .dp-ov-tag span { color: rgba(255,255,255,0.78); margin-left: 4px; }
 
         /* CTA banner */
-        .dp-cta-banner {
-          background: linear-gradient(135deg, #0C1120, #0D1628);
-          border: 0.5px solid rgba(124,245,192,0.12);
-          border-radius: 16px; padding: 22px;
+        .dp-banner {
+          background: #0D1221;
+          border: 1px solid rgba(124,245,192,0.1);
+          border-radius: 16px; padding: 20px 22px;
           display: flex; align-items: center; justify-content: space-between;
-          flex-wrap: wrap; gap: 16px;
+          gap: 16px; flex-wrap: wrap;
         }
-        .cta-pulse {
-          display: flex; align-items: center; gap: 8px; margin-bottom: 5px;
+        .dp-banner-dot {
+          width: 6px; height: 6px; border-radius: 50%;
+          background: #7CF5C0; box-shadow: 0 0 8px rgba(124,245,192,0.5);
+          animation: bdot 2s ease-in-out infinite; flex-shrink: 0;
         }
-        .cta-dot {
-          width: 7px; height: 7px; border-radius: 50%; background: #7CF5C0;
-          box-shadow: 0 0 7px rgba(124,245,192,0.6);
-          animation: pulse-dot 2s ease-in-out infinite;
-        }
-        @keyframes pulse-dot {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.6; transform: scale(0.85); }
-        }
-        .cta-eyebrow { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: #7CF5C0; }
-        .cta-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; color: #fff; margin: 0 0 4px; }
-        .cta-sub { font-size: 12px; color: rgba(255,255,255,0.3); margin: 0; }
-        .btn-tg {
-          display: inline-flex; align-items: center; gap: 8px;
-          background: linear-gradient(135deg, #7CF5C0, #4ECDA4);
-          color: #061710; font-weight: 600; font-size: 13px;
-          padding: 11px 20px; border-radius: 11px;
+        @keyframes bdot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+        .dp-banner-eye { display: flex; align-items: center; gap: 7px; margin-bottom: 4px; }
+        .dp-banner-eyetxt { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #7CF5C0; }
+        .dp-banner-title { font-weight: 600; font-size: 15px; letter-spacing: -0.01em; color: #fff; margin: 0 0 3px; }
+        .dp-banner-sub { font-size: 12px; color: rgba(255,255,255,0.3); margin: 0; }
+        .dp-banner-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+        .btn-tg-green {
+          display: inline-flex; align-items: center; gap: 7px;
+          background: #7CF5C0; color: #04120A;
+          font-family: var(--font-space), system-ui, sans-serif;
+          font-weight: 600; font-size: 13px;
+          padding: 10px 18px; border-radius: 10px;
           text-decoration: none; white-space: nowrap;
           transition: opacity 0.15s, transform 0.15s;
         }
-        .btn-tg:hover { opacity: 0.88; transform: translateY(-1px); }
+        .btn-tg-green:hover { opacity: 0.88; transform: translateY(-1px); }
+        .btn-more {
+          display: inline-flex; align-items: center; gap: 6px;
+          background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.5);
+          font-family: var(--font-space), system-ui, sans-serif;
+          font-size: 13px; font-weight: 500;
+          padding: 10px 16px; border-radius: 10px;
+          border: 1px solid rgba(255,255,255,0.08);
+          text-decoration: none; white-space: nowrap;
+          transition: background 0.15s;
+        }
+        .btn-more:hover { background: rgba(255,255,255,0.07); }
 
         /* FAQ */
-        .faq-item {
+        .dp-faq-item {
           background: rgba(255,255,255,0.02);
-          border: 0.5px solid rgba(255,255,255,0.06);
-          border-radius: 12px; padding: 16px 18px; margin-bottom: 8px;
+          border: 1px solid rgba(255,255,255,0.05);
+          border-radius: 11px; padding: 15px 17px; margin-bottom: 8px;
         }
-        .faq-item:last-child { margin-bottom: 0; }
-        .faq-q { font-size: 14px; font-weight: 500; color: #E2E4EC; margin: 0 0 8px; }
-        .faq-a { font-size: 13px; color: rgba(255,255,255,0.42); margin: 0; line-height: 1.75; }
+        .dp-faq-item:last-child { margin-bottom: 0; }
+        .dp-faq-q { font-size: 13.5px; font-weight: 600; color: #E2E4EC; margin: 0 0 7px; letter-spacing: -0.01em; }
+        .dp-faq-a { font-size: 13px; color: rgba(255,255,255,0.4); margin: 0; line-height: 1.75; }
 
         /* Tags */
         .dp-tag {
-          background: rgba(255,255,255,0.03);
-          border: 0.5px solid rgba(255,255,255,0.07);
-          color: rgba(255,255,255,0.4); padding: 5px 13px; border-radius: 8px;
-          font-size: 11px; font-weight: 500;
+          background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+          color: rgba(255,255,255,0.38); padding: 4px 12px; border-radius: 8px;
+          font-size: 11px; font-weight: 600; letter-spacing: 0.01em;
         }
 
         /* Learn links */
-        .learn-link {
+        .dp-learn-link {
           display: flex; align-items: center; justify-content: space-between;
-          padding: 13px 16px; background: rgba(255,255,255,0.02);
-          border: 0.5px solid rgba(255,255,255,0.06); border-radius: 11px;
-          text-decoration: none; color: rgba(255,255,255,0.45); font-size: 13px; font-weight: 500;
-          transition: background 0.15s, border-color 0.15s, color 0.15s;
-          margin-bottom: 7px;
+          padding: 12px 15px;
+          background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+          border-radius: 11px; text-decoration: none;
+          color: rgba(255,255,255,0.45); font-size: 13px; font-weight: 500;
+          transition: all 0.15s; margin-bottom: 7px;
         }
-        .learn-link:last-child { margin-bottom: 0; }
-        .learn-link:hover { background: rgba(255,255,255,0.04); border-color: rgba(124,245,192,0.15); color: rgba(255,255,255,0.7); }
-        .learn-link svg { flex-shrink: 0; opacity: 0.4; transition: opacity 0.15s, transform 0.15s; }
-        .learn-link:hover svg { opacity: 0.7; transform: translateX(2px); }
+        .dp-learn-link:last-child { margin-bottom: 0; }
+        .dp-learn-link:hover { background: rgba(255,255,255,0.04); border-color: rgba(124,245,192,0.14); color: rgba(255,255,255,0.75); }
+        .dp-learn-link svg { opacity: 0.3; flex-shrink: 0; transition: opacity 0.15s, transform 0.15s; }
+        .dp-learn-link:hover svg { opacity: 0.6; transform: translateX(2px); }
 
         /* Related */
-        .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .related-card {
-          background: rgba(255,255,255,0.02); border: 0.5px solid rgba(255,255,255,0.07);
-          border-radius: 12px; padding: 14px; text-decoration: none; color: #fff;
-          display: flex; flex-direction: column; gap: 8px;
+        .dp-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+        .dp-related-card {
+          background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+          border-radius: 12px; padding: 13px; text-decoration: none;
+          display: flex; flex-direction: column; gap: 7px;
           transition: border-color 0.15s, background 0.15s;
         }
-        .related-card:hover { border-color: rgba(124,245,192,0.18); background: rgba(124,245,192,0.02); }
+        .dp-related-card:hover { border-color: rgba(124,245,192,0.15); background: rgba(124,245,192,0.02); }
 
         /* ── Sidebar ── */
-        .dp-sidebar { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 12px; }
+        .dp-sidebar { position: sticky; top: 76px; display: flex; flex-direction: column; gap: 12px; }
 
-        .reward-card {
-          background: linear-gradient(135deg, #0B1B14, #0C1A1E);
-          border: 0.5px solid rgba(124,245,192,0.18); border-radius: 16px; padding: 22px;
+        /* Reward */
+        .dp-reward-card {
+          background: linear-gradient(135deg, #091810, #0a1a1c);
+          border: 1px solid rgba(124,245,192,0.16); border-radius: 16px; padding: 20px;
         }
-        .reward-eyebrow {
-          display: flex; align-items: center; gap: 7px; margin-bottom: 11px;
-          font-size: 10px; text-transform: uppercase; letter-spacing: 0.09em;
-          color: rgba(124,245,192,0.55); font-weight: 500;
+        .dp-reward-eye {
+          display: flex; align-items: center; gap: 6px; margin-bottom: 10px;
+          font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em;
+          color: rgba(124,245,192,0.5);
         }
-        .reward-eyebrow svg { width: 13px; height: 13px; }
-        .reward-val {
-          font-family: 'Syne', sans-serif; font-weight: 800; font-size: 28px;
-          color: #7CF5C0; line-height: 1; margin-bottom: 6px; letter-spacing: -0.02em;
+        .dp-reward-eye svg { width: 12px; height: 12px; }
+        .dp-reward-val {
+          font-weight: 700; font-size: 26px; letter-spacing: -0.03em;
+          color: #7CF5C0; line-height: 1; margin-bottom: 5px;
         }
-        .reward-sub { font-size: 11px; color: rgba(255,255,255,0.25); }
+        .dp-reward-sub { font-size: 11px; color: rgba(255,255,255,0.22); font-weight: 500; }
 
-        .side-card {
-          background: #0C1120; border: 0.5px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 18px;
+        /* Side card */
+        .dp-side-card {
+          background: #0D1221; border: 1px solid rgba(255,255,255,0.06);
+          border-radius: 16px; padding: 16px;
         }
-        .side-label {
-          font-size: 10px; text-transform: uppercase; letter-spacing: 0.09em;
-          color: rgba(255,255,255,0.27); font-weight: 500; margin: 0 0 14px;
+        .dp-side-label {
+          font-size: 10px; font-weight: 600; text-transform: uppercase;
+          letter-spacing: 0.09em; color: rgba(255,255,255,0.24); margin: 0 0 12px;
         }
-        .stat-row {
+        .dp-stat-row {
           display: flex; align-items: center; justify-content: space-between;
-          padding: 9px 0; border-bottom: 0.5px solid rgba(255,255,255,0.04);
+          padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
         }
-        .stat-row:last-child { border-bottom: none; }
-        .stat-row-label {
+        .dp-stat-row:last-child { border-bottom: none; }
+        .dp-stat-lbl {
           display: flex; align-items: center; gap: 7px;
-          font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em;
-          color: rgba(255,255,255,0.28); font-weight: 500;
+          font-size: 11px; font-weight: 600; text-transform: uppercase;
+          letter-spacing: 0.07em; color: rgba(255,255,255,0.26);
         }
-        .stat-row-label svg { width: 13px; height: 13px; opacity: 0.5; }
-        .stat-row-value { font-size: 13px; font-weight: 500; }
+        .dp-stat-lbl svg { width: 12px; height: 12px; opacity: 0.5; }
+        .dp-stat-val { font-size: 13px; font-weight: 600; letter-spacing: -0.01em; }
 
-        .link-btn {
+        /* Link buttons */
+        .dp-link-btn {
           display: flex; align-items: center; justify-content: space-between;
-          padding: 11px 14px; background: rgba(255,255,255,0.03);
-          border: 0.5px solid rgba(255,255,255,0.07); border-radius: 11px;
-          text-decoration: none; color: rgba(255,255,255,0.55); font-size: 13px; font-weight: 500;
-          transition: background 0.15s, border-color 0.15s; margin-bottom: 7px;
+          padding: 10px 13px;
+          background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+          border-radius: 10px; text-decoration: none;
+          color: rgba(255,255,255,0.5); font-size: 13px; font-weight: 500;
+          transition: all 0.15s; margin-bottom: 7px;
         }
-        .link-btn:last-child { margin-bottom: 0; }
-        .link-btn:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); }
-        .link-btn-icon {
-          width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,0.05);
-          display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        .dp-link-btn:last-child { margin-bottom: 0; }
+        .dp-link-btn:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); }
+        .dp-link-icon {
+          width: 26px; height: 26px; border-radius: 7px;
+          background: rgba(255,255,255,0.05);
+          display: flex; align-items: center; justify-content: center;
         }
-        .link-btn-icon svg { width: 13px; height: 13px; }
+        .dp-link-icon svg { width: 12px; height: 12px; }
 
-        .tg-card {
-          background: linear-gradient(135deg, rgba(99,130,255,0.07), rgba(124,245,192,0.04));
-          border: 0.5px solid rgba(99,130,255,0.18); border-radius: 16px; padding: 20px; text-align: center;
+        /* TG card */
+        .dp-tg-card {
+          background: linear-gradient(135deg, rgba(99,120,255,0.06), rgba(124,245,192,0.04));
+          border: 1px solid rgba(99,120,255,0.15); border-radius: 16px;
+          padding: 18px; text-align: center;
         }
-        .tg-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; color: #fff; margin: 0 0 6px; }
-        .tg-sub { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.6; margin: 0 0 16px; }
-        .btn-tg-card {
-          display: flex; align-items: center; justify-content: center; gap: 8px;
-          background: rgba(99,130,255,0.12); color: #90AAFF;
-          border: 0.5px solid rgba(99,130,255,0.22); border-radius: 11px;
-          padding: 11px; font-size: 13px; font-weight: 500;
+        .dp-tg-title { font-weight: 600; font-size: 14px; letter-spacing: -0.01em; color: #fff; margin: 0 0 5px; }
+        .dp-tg-sub { font-size: 12px; color: rgba(255,255,255,0.32); line-height: 1.6; margin: 0 0 14px; }
+        .dp-tg-btn {
+          display: flex; align-items: center; justify-content: center; gap: 7px;
+          background: rgba(99,120,255,0.1); color: #8FA8FF;
+          border: 1px solid rgba(99,120,255,0.2); border-radius: 10px;
+          padding: 10px; font-size: 13px; font-weight: 600;
           text-decoration: none; transition: background 0.15s;
+          font-family: var(--font-space), system-ui, sans-serif;
         }
-        .btn-tg-card:hover { background: rgba(99,130,255,0.18); }
-        .btn-tg-card svg { width: 14px; height: 14px; }
+        .dp-tg-btn:hover { background: rgba(99,120,255,0.16); }
+        .dp-tg-btn svg { width: 13px; height: 13px; }
 
-        /* ── Mobile ── */
+        /* Mobile */
         @media (max-width: 768px) {
-          .dp-topbar { padding: 12px 16px; }
-          .dp-hero { padding: 24px 16px 0; }
+          .dp-bc { padding: 12px 16px; }
+          .dp-hero { padding: 24px 16px 24px; }
           .dp-title { font-size: 22px; }
-          .dp-logo, .dp-logo-fb { width: 60px; height: 60px; border-radius: 15px; }
-          .dp-logo-fb { font-size: 22px; }
-          .dp-stats-strip { margin: 0 16px; width: calc(100% - 32px); }
-          .dp-body { grid-template-columns: 1fr; padding: 20px 16px 60px; gap: 16px; }
+          .dp-logo, .dp-logo-fb { width: 60px; height: 60px; border-radius: 14px; }
+          .dp-logo-fb { font-size: 20px; }
+          .dp-strip-wrap { padding: 0 16px; }
+          .dp-body { grid-template-columns: 1fr; padding: 16px 16px 60px; gap: 14px; }
           .dp-sidebar { position: static; }
-          .related-grid { grid-template-columns: 1fr 1fr; }
-          .dp-cta-banner { flex-direction: column; }
+          .dp-related-grid { grid-template-columns: 1fr 1fr; }
+          .dp-banner { flex-direction: column; }
         }
       `}</style>
 
-      <div className="dp-root">
+      <div className="dp">
 
-        {/* ── Breadcrumb ── */}
-        <div className="dp-topbar">
-          <a href="https://seo.3alamiyweb3.online">Home</a>
-          <span className="bc-sep">›</span>
-          <a href="https://seo.3alamiyweb3.online/airdrops">Airdrops</a>
-          <span className="bc-sep">›</span>
-          <span className="bc-cur">{a.name}</span>
+        {/* Breadcrumb */}
+        <div style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+          <nav className="dp-bc" aria-label="Breadcrumb">
+            <a href="https://seo.3alamiyweb3.online">Home</a>
+            <span style={{ opacity: 0.3 }}>›</span>
+            <a href="https://seo.3alamiyweb3.online/airdrops">Airdrops</a>
+            <span style={{ opacity: 0.3 }}>›</span>
+            <span className="dp-bc-active">{a.name}</span>
+          </nav>
         </div>
 
-        {/* ── Hero ── */}
+        {/* Hero */}
         <div className="dp-hero">
+          <div className="dp-hero-glow-r" />
+          <div className="dp-hero-glow-l" />
+
           <div className="dp-badges">
             <span className="dp-badge badge-chain">{a.blockchain}</span>
             <span className={`dp-badge ${a.status === 'Active' ? 'badge-active' : 'badge-ended'}`}>{a.status}</span>
@@ -472,19 +491,19 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
 
           <div className="dp-identity">
             {a.logo
-              ? <img className="dp-logo" src={a.logo} alt={`${a.name} logo`} width={76} height={76} />
+              ? <img className="dp-logo" src={a.logo} alt={`${a.name} logo`} width={72} height={72} />
               : <div className="dp-logo-fb">{a.name?.[0]}</div>
             }
             <div style={{ flex: 1 }}>
-              <h1 className="dp-title">{a.name.replace(/\s*airdrop\s*/gi, ' ').trim()} Airdrop Guide {year}</h1>
+              <h1 className="dp-title">{a.name} Airdrop Guide {year}</h1>
               <p className="dp-desc">{a.description}</p>
               <div className="dp-cta-row">
                 <a href="#guide" className="btn-start">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                   Start Guide
                 </a>
                 <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="btn-ghost">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                   Get Alerts
                 </a>
               </div>
@@ -492,41 +511,43 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
 
-        {/* ── Stats strip ── */}
-        <div className="dp-stats-strip">
-          <div className="dp-stat-cell">
-            <div className="dp-stat-val" style={{ color: '#7CF5C0' }}>{reward}</div>
-            <div className="dp-stat-lbl">Est. Reward</div>
-          </div>
-          <div className="dp-stat-cell">
-            <div className="dp-stat-val" style={{ color: difficultyColor }}>{a.difficulty}</div>
-            <div className="dp-stat-lbl">Difficulty</div>
-          </div>
-          <div className="dp-stat-cell">
-            <div className="dp-stat-val" style={{ color: costColor }}>{a.cost}</div>
-            <div className="dp-stat-lbl">Cost</div>
+        {/* Stats strip */}
+        <div className="dp-strip-wrap">
+          <div className="dp-strip">
+            <div className="dp-strip-cell">
+              <div className="dp-strip-val" style={{ color: '#7CF5C0' }}>{reward}</div>
+              <div className="dp-strip-lbl">Est. Reward</div>
+            </div>
+            <div className="dp-strip-cell">
+              <div className="dp-strip-val" style={{ color: difficultyColor }}>{a.difficulty}</div>
+              <div className="dp-strip-lbl">Difficulty</div>
+            </div>
+            <div className="dp-strip-cell">
+              <div className="dp-strip-val" style={{ color: costColor }}>{a.cost}</div>
+              <div className="dp-strip-lbl">Cost</div>
+            </div>
           </div>
         </div>
 
-        {/* ── Body grid ── */}
+        {/* Body */}
         <div className="dp-body">
 
-          {/* LEFT */}
+          {/* ── Left column ── */}
           <div className="dp-main">
 
             {/* Quick Answer */}
-            <div className="dp-quick-answer">
-              <div className="qa-icon-wrap">
+            <div className="dp-qa">
+              <div className="dp-qa-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
               </div>
               <div>
-                <p className="qa-label">Quick Answer</p>
-                <p className="qa-text">
+                <p className="dp-qa-label">Quick Answer</p>
+                <p className="dp-qa-text">
                   <strong>{a.name}</strong> is a {a.status === 'Active' ? 'live' : a.status.toLowerCase()} crypto airdrop on{' '}
-                  <strong>{a.blockchain}</strong>. It costs{' '}
-                  <strong style={{ color: costColor }}>{a.cost}</strong> to participate, rated{' '}
-                  <strong style={{ color: difficultyColor }}>{a.difficulty}</strong> difficulty with {steps.length} steps to complete.{' '}
-                  {a.reward_min ? `Estimated reward: ${reward}.` : 'Reward TBA.'}
+                  <strong>{a.blockchain}</strong>. Costs <strong style={{ color: costColor }}>{a.cost}</strong> to participate,
+                  rated <strong style={{ color: difficultyColor }}>{a.difficulty}</strong> difficulty
+                  with <strong>{steps.length} steps</strong>.{' '}
+                  {a.reward_min ? <>Estimated reward: <strong style={{ color: '#7CF5C0' }}>{reward}</strong>.</> : 'Reward TBA.'}
                 </p>
               </div>
             </div>
@@ -534,21 +555,21 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
             {/* Overview */}
             <div className="dp-card">
               <div className="dp-card-inner">
-                <p className="dp-sec-label">Overview</p>
-                <h2 className="dp-card-title">What is {a.name} Airdrop?</h2>
-                <p className="ov-body">{a.description}</p>
-                <p className="ov-body" style={{ marginBottom: 0 }}>
+                <p className="dp-eyebrow">Overview</p>
+                <h2 className="dp-heading">What is {a.name} Airdrop?</h2>
+                <p className="dp-ov-text">{a.description}</p>
+                <p className="dp-ov-text" style={{ marginBottom: 0 }}>
                   Currently <strong style={{ color: '#7CF5C0' }}>{a.status}</strong> on {a.blockchain}.
                   Difficulty: <strong style={{ color: difficultyColor }}>{a.difficulty}</strong>.
                   Cost: <strong style={{ color: costColor }}>{a.cost}</strong>.
-                  {reward !== 'TBA' ? <> Estimated reward: <strong style={{ color: '#7CF5C0' }}>{reward}</strong>.</> : ''}
+                  {reward !== 'TBA' ? <> Reward estimate: <strong style={{ color: '#7CF5C0' }}>{reward}</strong>.</> : ''}
                 </p>
-                <div className="ov-tags">
-                  <span className="ov-tag">Status<span>{a.status}</span></span>
-                  <span className="ov-tag">Chain<span>{a.blockchain}</span></span>
-                  <span className="ov-tag">Time<span>{Math.max(15, steps.length * 3)} mins</span></span>
-                  <span className="ov-tag">Steps<span>{steps.length}</span></span>
-                  {a.category && <span className="ov-tag">Category<span>{a.category}</span></span>}
+                <div className="dp-ov-tags">
+                  <span className="dp-ov-tag">Status<span>{a.status}</span></span>
+                  <span className="dp-ov-tag">Chain<span>{a.blockchain}</span></span>
+                  <span className="dp-ov-tag">Time<span>{Math.max(15, steps.length * 3)} mins</span></span>
+                  <span className="dp-ov-tag">Steps<span>{steps.length}</span></span>
+                  {a.category && <span className="dp-ov-tag">Category<span>{a.category}</span></span>}
                 </div>
               </div>
             </div>
@@ -559,23 +580,21 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
             </div>
 
             {/* CTA Banner */}
-            <div className="dp-cta-banner">
+            <div className="dp-banner">
               <div>
-                <div className="cta-pulse">
-                  <div className="cta-dot" />
-                  <span className="cta-eyebrow">All steps done?</span>
+                <div className="dp-banner-eye">
+                  <div className="dp-banner-dot" />
+                  <span className="dp-banner-eyetxt">Finished?</span>
                 </div>
-                <p className="cta-title">Don't miss the next airdrop</p>
-                <p className="cta-sub">Get instant alerts when new airdrops drop. Free, no spam.</p>
+                <p className="dp-banner-title">Don't miss the next airdrop</p>
+                <p className="dp-banner-sub">Instant alerts when new airdrops drop. Free, no spam.</p>
               </div>
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="btn-tg">
-                  <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 14, height: 14 }}><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+              <div className="dp-banner-btns">
+                <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="btn-tg-green">
+                  <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 13, height: 13 }}><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                   Join Telegram
                 </a>
-                <a href="/airdrops" className="btn-ghost" style={{ whiteSpace: 'nowrap' }}>
-                  More Airdrops →
-                </a>
+                <a href="/airdrops" className="btn-more">More Airdrops →</a>
               </div>
             </div>
 
@@ -583,7 +602,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
             {tags.length > 0 && (
               <div className="dp-card">
                 <div className="dp-card-inner">
-                  <p className="dp-sec-label">Categories</p>
+                  <p className="dp-eyebrow">Categories</p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px' }}>
                     {tags.map((tag: string) => <span key={tag} className="dp-tag">{tag}</span>)}
                   </div>
@@ -594,17 +613,17 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
             {/* FAQ */}
             <div className="dp-card">
               <div className="dp-card-inner">
-                <p className="dp-sec-label">FAQ</p>
-                <h2 className="dp-card-title">Frequently Asked Questions</h2>
+                <p className="dp-eyebrow">FAQ</p>
+                <h2 className="dp-heading">Frequently Asked Questions</h2>
                 {[
-                  { q: `Is ${a.name} airdrop legit?`, a: `Yes, ${a.name} is a verified ${a.blockchain} project. Always use official links and never share your private keys.` },
-                  { q: `How much can I earn from the ${a.name} airdrop?`, a: `The estimated reward is ${reward}. Actual rewards depend on your on-chain activity and eligibility.` },
+                  { q: `Is ${a.name} airdrop legit?`, a: `Yes, ${a.name} is a verified ${a.blockchain} project. Always use official links and never share your private keys or seed phrase.` },
+                  { q: `How much can I earn from the ${a.name} airdrop?`, a: `Estimated reward is ${reward}. Actual rewards depend on your on-chain activity and eligibility at snapshot.` },
                   { q: `Is the ${a.name} airdrop free?`, a: a.cost === 'Free' ? `Yes, completely free — no investment required.` : `Small gas fees may apply for on-chain transactions.` },
                   { q: `How long does it take to complete?`, a: `Approximately ${Math.max(15, steps.length * 3)} minutes. Difficulty is rated ${a.difficulty}.` },
                 ].map((faq, i) => (
-                  <div key={i} className="faq-item">
-                    <p className="faq-q">{faq.q}</p>
-                    <p className="faq-a">{faq.a}</p>
+                  <div key={i} className="dp-faq-item">
+                    <p className="dp-faq-q">{faq.q}</p>
+                    <p className="dp-faq-a">{faq.a}</p>
                   </div>
                 ))}
               </div>
@@ -613,14 +632,14 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
             {/* Learn */}
             <div className="dp-card">
               <div className="dp-card-inner">
-                <p className="dp-sec-label">Learn More</p>
+                <p className="dp-eyebrow">Learn More</p>
                 {[
                   { slug: 'how-to-avoid-crypto-airdrop-scams-2026', title: 'How to Avoid Airdrop Scams' },
                   { slug: 'how-to-build-onchain-activity-that-actually-matters', title: 'Build Onchain Activity That Matters' },
                   { slug: 'best-crypto-airdrops-2026', title: 'Best Crypto Airdrops 2026' },
                   ...(a.cost === 'Free' ? [{ slug: 'best-free-crypto-airdrops-2026', title: 'Best Free Crypto Airdrops 2026' }] : []),
                 ].slice(0, 4).map((article) => (
-                  <a key={article.slug} href={`/learn/${article.slug}`} className="learn-link">
+                  <a key={article.slug} href={`/learn/${article.slug}`} className="dp-learn-link">
                     <span>{article.title}</span>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                   </a>
@@ -632,13 +651,13 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
             {relatedAirdrops.length > 0 && (
               <div className="dp-card">
                 <div className="dp-card-inner">
-                  <p className="dp-sec-label">More {a.blockchain} Airdrops</p>
-                  <div className="related-grid">
+                  <p className="dp-eyebrow">More {a.blockchain} Airdrops</p>
+                  <div className="dp-related-grid">
                     {relatedAirdrops.map((r: any) => (
-                      <a key={r.slug} href={`/airdrops/${r.slug}`} className="related-card">
-                        {r.logo && <img src={r.logo} alt={r.name} width={32} height={32} style={{ borderRadius: '9px', border: '0.5px solid rgba(255,255,255,0.07)' }} />}
-                        <div style={{ fontSize: '13px', fontWeight: 500, color: '#E2E4EC' }}>{r.name}</div>
-                        <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', fontWeight: 500 }}>{r.difficulty} · {r.blockchain}</div>
+                      <a key={r.slug} href={`/airdrops/${r.slug}`} className="dp-related-card">
+                        {r.logo && <img src={r.logo} alt={r.name} width={30} height={30} style={{ borderRadius: '8px', border: '1px solid rgba(255,255,255,0.07)' }} />}
+                        <div style={{ fontSize: '13px', fontWeight: 600, color: '#E2E4EC', letterSpacing: '-0.01em' }}>{r.name}</div>
+                        <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.28)', fontWeight: 600 }}>{r.difficulty} · {r.blockchain}</div>
                       </a>
                     ))}
                   </div>
@@ -647,57 +666,55 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
             )}
           </div>
 
-          {/* ── SIDEBAR ── */}
+          {/* ── Sidebar ── */}
           <aside className="dp-sidebar">
 
             {/* Reward */}
-            <div className="reward-card">
-              <div className="reward-eyebrow">
+            <div className="dp-reward-card">
+              <div className="dp-reward-eye">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                 Est. Reward Range
               </div>
-              <div className="reward-val">{rewardDisplay}</div>
-              <div className="reward-sub">based on similar projects</div>
+              <div className="dp-reward-val">{rewardDisplay}</div>
+              <div className="dp-reward-sub">based on similar projects</div>
             </div>
 
-            {/* Quick stats */}
-            <div className="side-card">
-              <p className="side-label">Quick Stats</p>
-              <div>
-                {[
-                  { icon: <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zM12 6v6l4 2"/>, label: 'Est. Time', value: `${Math.max(15, steps.length * 3)} Mins`, color: '#fff' },
-                  { icon: <><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></>, label: 'Reward', value: reward, color: '#7CF5C0' },
-                  { icon: <><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></>, label: 'Gas', value: costLabel, color: costColor },
-                  { icon: <><path d="M18 20V10M12 20V4M6 20v-6"/></>, label: 'Difficulty', value: a.difficulty, color: difficultyColor },
-                  { icon: <><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></>, label: 'Blockchain', value: a.blockchain, color: '#90AAFF' },
-                  { icon: <><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></>, label: 'Steps', value: `${steps.length} steps`, color: '#fff' },
-                ].map(({ icon, label, value, color }) => (
-                  <div key={label} className="stat-row">
-                    <span className="stat-row-label">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">{icon}</svg>
-                      {label}
-                    </span>
-                    <span className="stat-row-value" style={{ color }}>{value}</span>
-                  </div>
-                ))}
-              </div>
+            {/* Quick Stats */}
+            <div className="dp-side-card">
+              <p className="dp-side-label">Quick Stats</p>
+              {[
+                { svg: <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zM12 6v6l4 2"/>, label: 'Est. Time', value: `${Math.max(15, steps.length * 3)} Mins`, color: '#fff' },
+                { svg: <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>, label: 'Reward', value: reward, color: '#7CF5C0' },
+                { svg: <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>, label: 'Gas', value: costLabel, color: costColor },
+                { svg: <path d="M18 20V10M12 20V4M6 20v-6"/>, label: 'Difficulty', value: a.difficulty, color: difficultyColor },
+                { svg: <><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></>, label: 'Blockchain', value: a.blockchain, color: '#8FA8FF' },
+                { svg: <><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></>, label: 'Steps', value: `${steps.length} steps`, color: '#fff' },
+              ].map(({ svg, label, value, color }) => (
+                <div key={label} className="dp-stat-row">
+                  <span className="dp-stat-lbl">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">{svg}</svg>
+                    {label}
+                  </span>
+                  <span className="dp-stat-val" style={{ color }}>{value}</span>
+                </div>
+              ))}
 
               {/* Official links */}
               {Object.keys(links).length > 0 && (
-                <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '0.5px solid rgba(255,255,255,0.06)' }}>
-                  <p className="side-label" style={{ marginBottom: '10px' }}>Official Links</p>
+                <div style={{ marginTop: '14px', paddingTop: '14px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                  <p className="dp-side-label" style={{ marginBottom: '9px' }}>Official Links</p>
                   {Object.entries(links).map(([key, url]) => (
-                    <a key={key} href={url as string} target="_blank" rel="noopener noreferrer" className="link-btn">
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <div className="link-btn-icon">
+                    <a key={key} href={url as string} target="_blank" rel="noopener noreferrer" className="dp-link-btn">
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '9px' }}>
+                        <div className="dp-link-icon">
                           {key === 'X' || key === 'twitter'
-                            ? <svg viewBox="0 0 24 24" fill="currentColor" style={{ color: 'rgba(255,255,255,0.6)' }}><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
-                            : <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: '#90AAFF' }}><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            ? <svg viewBox="0 0 24 24" fill="currentColor" style={{ color: 'rgba(255,255,255,0.55)' }}><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+                            : <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: '#8FA8FF' }}><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                           }
                         </div>
                         <span>{key === 'X' || key === 'twitter' ? 'X (Twitter)' : key.charAt(0).toUpperCase() + key.slice(1)}</span>
                       </div>
-                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ opacity: 0.3 }}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ opacity: 0.25 }}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
                     </a>
                   ))}
                 </div>
@@ -705,25 +722,27 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
             </div>
 
             {/* Telegram */}
-            <div className="tg-card">
-              <p className="tg-title">Need Help?</p>
-              <p className="tg-sub">Join our community for real-time airdrop alerts and step-by-step guides.</p>
-              <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="btn-tg-card">
+            <div className="dp-tg-card">
+              <p className="dp-tg-title">Need Help?</p>
+              <p className="dp-tg-sub">Join our community for real-time alerts and step-by-step guides.</p>
+              <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="dp-tg-btn">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                 Join Telegram Channel
               </a>
             </div>
 
-            {/* Browse all */}
-            <div className="side-card" style={{ textAlign: 'center' }}>
-              <a href="/airdrops" style={{ color: '#90AAFF', textDecoration: 'none', fontWeight: 500, fontSize: '13px', display: 'block', marginBottom: '4px' }}>Browse All Airdrops →</a>
-              <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.25)', margin: 0 }}>{allAirdrops.length}+ guides available</p>
+            {/* Browse */}
+            <div className="dp-side-card" style={{ textAlign: 'center' }}>
+              <a href="/airdrops" style={{ color: '#8FA8FF', textDecoration: 'none', fontWeight: 600, fontSize: '13px', display: 'block', marginBottom: '4px', letterSpacing: '-0.01em' }}>
+                Browse All Airdrops →
+              </a>
+              <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.22)', margin: 0, fontWeight: 500 }}>{allAirdrops.length}+ guides available</p>
             </div>
 
-            {/* Last updated */}
-            <div style={{ textAlign: 'center', padding: '2px 0' }}>
-              <p style={{ fontSize: '10px', color: 'rgba(255,255,255,0.2)', margin: 0 }}>
-                Last updated: <span style={{ color: 'rgba(255,255,255,0.35)' }}>{new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
+            {/* Updated */}
+            <div style={{ textAlign: 'center' }}>
+              <p style={{ fontSize: '10px', color: 'rgba(255,255,255,0.18)', margin: 0, fontWeight: 500 }}>
+                Updated <span style={{ color: 'rgba(255,255,255,0.32)' }}>{new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
               </p>
             </div>
 
