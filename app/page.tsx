@@ -25,7 +25,7 @@ const articles = [
   { slug: 'discord-role-airdrops-guide-2026', title: 'Discord Role Airdrops 2026', desc: 'Plasma OG = $20K. How to grind roles.', cat: 'Strategy' },
   { slug: 'how-to-find-airdrops-before-everyone-else', title: 'Find Airdrops Before Everyone Else', desc: 'The exact system top hunters use.', cat: 'Strategy' },
   { slug: 'how-to-build-onchain-activity-that-actually-matters', title: 'Build Onchain Activity That Matters', desc: 'Quality over quantity.', cat: 'Onchain' },
-  { slug: 'upcoming-crypto-airdrops-2026', title: 'Upcoming Crypto Airdrops 2026', desc: 'Don\'t miss these high-potential drops.', cat: 'Airdrops' },
+  { slug: 'upcoming-crypto-airdrops-2026', title: 'Upcoming Crypto Airdrops 2026', desc: "Don't miss these high-potential drops.", cat: 'Airdrops' },
   { slug: 'how-to-avoid-crypto-airdrop-scams-2026', title: 'How to Avoid Airdrop Scams', desc: 'Stay safe while farming.', cat: 'Beginners' },
 ];
 
@@ -34,10 +34,26 @@ const catColors: Record<string, string> = {
   Airdrops: '#f59e0b', Beginners: '#60a5fa', Ecosystems: '#c084fc',
 };
 
+// Pick a short estimated time label based on step count
+function timeLabel(steps: any[]): string {
+  const n = steps?.length || 0;
+  if (n <= 3) return '1 min';
+  if (n <= 6) return '3 min';
+  if (n <= 10) return '5 min';
+  return '10 min';
+}
+
+const starterColors = ['#818cf8', '#7CF5C0', '#f59e0b'];
+
 export default async function Home() {
   const airdrops = await getAllAirdrops();
   const activeCount = airdrops.filter((a: any) => a.status === 'Active').length;
-  const freeCount = airdrops.filter((a: any) => a.cost === 'Free').length;
+  const freeCount   = airdrops.filter((a: any) => a.cost === 'Free').length;
+
+  // ── Dynamic starter 3: latest Active + Free + Easy airdrops ──
+  const starterAirdrops = airdrops
+    .filter((a: any) => a.status === 'Active' && a.cost === 'Free' && a.difficulty === 'Easy')
+    .slice(0, 3);
 
   return (
     <>
@@ -54,32 +70,27 @@ export default async function Home() {
         .hero-radial{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:700px;background:radial-gradient(ellipse,rgba(99,102,241,0.14) 0%,rgba(99,102,241,0.04) 40%,transparent 70%);pointer-events:none;}
         .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;}
 
-        /* Eyebrow */
         .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.18);border-radius:99px;padding:6px 14px 6px 10px;margin-bottom:24px;}
         .eyebrow-dot{width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981;animation:pulse 1.8s infinite;}
         @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.85)}}
         .eyebrow-text{font-size:12px;font-weight:700;color:#818cf8;letter-spacing:0.02em;}
 
-        /* Heading */
         .hero-h1{font-family:'Space Grotesk',sans-serif;font-size:52px;font-weight:800;line-height:1.08;letter-spacing:-0.03em;margin-bottom:20px;color:#fff;}
         .hero-h1 .grad{background:linear-gradient(135deg,#818cf8 0%,#6366f1 40%,#a78bfa 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
         .hero-sub{font-size:17px;color:#94a3b8;line-height:1.75;max-width:460px;margin-bottom:36px;}
 
-        /* CTA */
         .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;}
         .btn-primary{background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;padding:14px 28px;border-radius:14px;text-decoration:none;font-weight:700;font-size:14px;box-shadow:0 8px 28px rgba(99,102,241,0.35);transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;letter-spacing:-0.01em;}
         .btn-primary:hover{box-shadow:0 12px 36px rgba(99,102,241,0.5);transform:translateY(-2px);}
         .btn-ghost{background:transparent;color:#e2e8f0;padding:14px 28px;border-radius:14px;text-decoration:none;font-weight:600;font-size:14px;border:1px solid rgba(255,255,255,0.1);transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
         .btn-ghost:hover{border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.04);}
 
-        /* Social proof */
         .social-proof{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
         .proof-stat{display:flex;flex-direction:column;}
         .proof-val{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.02em;}
         .proof-lbl{font-size:10px;color:#475569;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;}
         .proof-div{width:1px;height:32px;background:#1e293b;}
 
-        /* Right — feature cards grid */
         .hero-right{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
         .feat-card{background:rgba(15,23,42,0.8);border:1px solid #1e293b;border-radius:16px;padding:18px;backdrop-filter:blur(8px);transition:all 0.2s;position:relative;overflow:hidden;}
         .feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,0.3),transparent);opacity:0;}
@@ -91,7 +102,6 @@ export default async function Home() {
         .feat-desc{font-size:12px;color:#64748b;line-height:1.5;}
         .feat-metric{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:800;margin-bottom:2px;}
 
-        /* ── DIVIDER ── */
         .divider{height:1px;background:linear-gradient(90deg,transparent,#1e293b 20%,#1e293b 80%,transparent);}
 
         /* ── STARTER BANNER ── */
@@ -183,7 +193,7 @@ export default async function Home() {
                 </a>
               </div>
 
-              {/* Social proof */}
+              {/* Social proof — all dynamic */}
               <div className="social-proof">
                 {[
                   { val: `${airdrops.length}+`, lbl: 'Verified Guides' },
@@ -206,7 +216,6 @@ export default async function Home() {
 
             {/* Right — feature grid */}
             <div className="hero-right">
-              {/* Card 1 — Airdrop count */}
               <div className="feat-card">
                 <div className="feat-icon" style={{ background: 'rgba(99,102,241,0.12)' }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818cf8" strokeWidth="2"><path d="M12 2l9 4.9V17L12 22l-9-5.1V7z"/></svg>
@@ -216,7 +225,6 @@ export default async function Home() {
                 <div className="feat-desc">Step-by-step guides for every project</div>
               </div>
 
-              {/* Card 2 — Free */}
               <div className="feat-card">
                 <div className="feat-icon" style={{ background: 'rgba(16,185,129,0.12)' }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
@@ -226,7 +234,6 @@ export default async function Home() {
                 <div className="feat-desc">No paywalls, no subscriptions ever</div>
               </div>
 
-              {/* Card 3 — GM Station wide */}
               <div className="feat-card wide" style={{ background: 'linear-gradient(135deg,rgba(99,102,241,0.08),rgba(99,102,241,0.04))' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
                   <div>
@@ -243,7 +250,6 @@ export default async function Home() {
                 </div>
               </div>
 
-              {/* Card 4 — Daily */}
               <div className="feat-card">
                 <div className="feat-icon" style={{ background: 'rgba(245,158,11,0.12)' }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
@@ -253,7 +259,6 @@ export default async function Home() {
                 <div className="feat-desc">New airdrops added every day</div>
               </div>
 
-              {/* Card 5 — Telegram */}
               <div className="feat-card">
                 <div className="feat-icon" style={{ background: 'rgba(96,165,250,0.12)' }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ color: '#60a5fa' }}><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
@@ -268,7 +273,7 @@ export default async function Home() {
 
         <div className="divider" />
 
-        {/* ── STARTER BANNER ── */}
+        {/* ── STARTER BANNER — 100% dynamic from Supabase ── */}
         <section className="starter">
           <div className="starter-inner">
             <div className="starter-head">
@@ -282,24 +287,31 @@ export default async function Home() {
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </Link>
             </div>
+
             <div className="starter-cards">
-              {[
-                { name: 'nof1 Waitlist', chain: 'Sui', time: '1 min', slug: 'nof1-early-waitlist', desc: 'Email signup only. AI + financial markets.', color: '#818cf8' },
-                { name: 'xStocksFi OG Role', chain: 'Multi-chain', time: '2 min', slug: 'xstocksfi-og-role', desc: 'Suggest a stock in Discord. $25B+ volume.', color: '#10b981' },
-                { name: 'Beep AI Galxe', chain: 'Sui', time: '5 min', slug: 'beep-ai-galxe-campaign', desc: '3 Galxe quests. Quiz: BACB. Confirmed rewards.', color: '#f59e0b' },
-              ].map((a, i) => (
-                <Link key={a.slug} href={`/airdrops/${a.slug}`} className="sc-card">
-                  <div style={{ width: '34px', height: '34px', borderRadius: '10px', background: `${a.color}15`, border: `1px solid ${a.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: 900, color: a.color, flexShrink: 0 }}>{i + 1}</div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
-                      <span style={{ fontSize: '13px', fontWeight: 700, color: '#f1f5f9' }}>{a.name}</span>
-                      <span style={{ fontSize: '9px', fontWeight: 700, color: '#10b981', background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.2)', padding: '1px 6px', borderRadius: '99px' }}>FREE</span>
-                    </div>
-                    <p style={{ fontSize: '11px', color: '#475569', margin: 0 }}>{a.desc}</p>
+              {starterAirdrops.length > 0
+                ? starterAirdrops.map((a: any, i: number) => {
+                    const steps = Array.isArray(a.guide_steps) ? a.guide_steps : [];
+                    const color = starterColors[i] || '#818cf8';
+                    return (
+                      <Link key={a.slug} href={`/airdrops/${a.slug}`} className="sc-card">
+                        <div style={{ width: '34px', height: '34px', borderRadius: '10px', background: `${color}18`, border: `1px solid ${color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: 900, color, flexShrink: 0 }}>{i + 1}</div>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
+                            <span style={{ fontSize: '13px', fontWeight: 700, color: '#f1f5f9', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{a.name}</span>
+                            <span style={{ fontSize: '9px', fontWeight: 700, color: '#10b981', background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.2)', padding: '1px 6px', borderRadius: '99px', flexShrink: 0 }}>FREE</span>
+                          </div>
+                          <p style={{ fontSize: '11px', color: '#475569', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{a.description?.slice(0, 60)}…</p>
+                        </div>
+                        <div style={{ fontSize: '10px', color, fontWeight: 700, flexShrink: 0 }}>{timeLabel(steps)}</div>
+                      </Link>
+                    );
+                  })
+                : /* fallback if no matching airdrops */
+                  <div style={{ gridColumn: '1/-1', textAlign: 'center', color: '#475569', fontSize: '13px', padding: '20px 0' }}>
+                    Loading latest free airdrops...
                   </div>
-                  <div style={{ fontSize: '10px', color: a.color, fontWeight: 700, flexShrink: 0 }}>{a.time}</div>
-                </Link>
-              ))}
+              }
             </div>
           </div>
         </section>
