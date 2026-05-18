@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '../auth/AuthProvider';
 import { createClient } from '../auth/supabase';
+import DailyCheckIn from './DailyCheckIn';
 
 type Favorite = {
   airdrop_slug: string;
@@ -117,7 +118,7 @@ export default function ProfilePage() {
         {/* Stats */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '12px', marginBottom: '40px' }}>
           {[
-            { icon: '❤️', value: favorites.length, label: 'Saved Airdrops', color: '#f43f5e' },
+            { icon: '❤', value: favorites.length, label: 'Saved Airdrops', color: '#f43f5e' },
             { icon: '✅', value: activeCount, label: 'Active', color: '#10b981' },
             { icon: '🆓', value: freeCount, label: 'Free Airdrops', color: '#10b981' },
             { icon: '⛓️', value: chains.length, label: 'Blockchains', color: '#818cf8' },
@@ -143,6 +144,9 @@ export default function ProfilePage() {
             </div>
           </div>
         )}
+
+        {/* Daily Check-In */}
+        <DailyCheckIn userId={user.id} />
 
         {/* Saved airdrops */}
         <div>
