@@ -8,102 +8,172 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
-    { label: 'Airdrops', href: '/airdrops', badge: 'Hot', badgeColor: '#f43f5e', badgeBg: 'rgba(244,63,94,0.15)' },
-    { label: 'Learn', href: '/learn', badge: 'New', badgeColor: '#10b981', badgeBg: 'rgba(16,185,129,0.15)' },
-    { label: 'GM Station', href: '/gm', badge: 'GM', badgeColor: '#000', badgeBg: '#818cf8' },
-    { label: 'About', href: '/about', badge: null, badgeColor: null, badgeBg: null },
+    { label: 'Airdrops', href: '/airdrops', badge: 'HOT', badgeColor: '#f43f5e', badgeBg: 'rgba(244,63,94,0.12)' },
+    { label: 'Learn',    href: '/learn',    badge: 'NEW', badgeColor: '#7CF5C0', badgeBg: 'rgba(124,245,192,0.1)' },
+    { label: 'GM Station',href: '/gm',     badge: 'GM',  badgeColor: '#fff',    badgeBg: 'rgba(99,102,241,0.5)' },
+    { label: 'About',    href: '/about',   badge: null,  badgeColor: null,       badgeBg: null },
   ];
 
   return (
     <>
       <style>{`
-        .nav-item {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          color: #a1a1aa;
-          text-decoration: none;
-          font-size: 14px;
-          font-weight: 500;
-          padding: 6px 10px;
-          border-radius: 8px;
-          transition: all 0.2s;
-          white-space: nowrap;
+        .hdr-root {
+          position: sticky; top: 0; z-index: 50;
+          height: 62px;
+          background: rgba(6,9,16,0.92);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+          font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
         }
-        .nav-item:hover { color: #fff; background: rgba(255,255,255,0.05); }
-        .badge {
-          font-size: 9px;
-          font-weight: 800;
-          padding: 2px 6px;
-          border-radius: 99px;
-          text-transform: uppercase;
-          letter-spacing: 0.04em;
+        .hdr-inner {
+          max-width: 1200px; margin: 0 auto;
+          padding: 0 24px; height: 100%;
+          display: flex; align-items: center;
+          justify-content: space-between; gap: 12px;
         }
-        .mobile-menu {
+
+        /* Logo */
+        .hdr-logo {
+          display: flex; align-items: center; gap: 9px;
+          text-decoration: none; color: #fff; flex-shrink: 0;
+        }
+        .hdr-logo-icon {
+          width: 34px; height: 34px; border-radius: 10px;
+          background: linear-gradient(135deg, #0D2A1A, #0A2030);
+          border: 1px solid rgba(124,245,192,0.2);
+          display: flex; align-items: center; justify-content: center;
+          font-size: 16px;
+          box-shadow: 0 0 12px rgba(124,245,192,0.1);
+        }
+        .hdr-logo-name {
+          font-weight: 700; font-size: 15px; letter-spacing: -0.02em; color: #fff;
+        }
+
+        /* Nav */
+        .hdr-nav {
+          display: flex; align-items: center; gap: 2px;
+          flex: 1; justify-content: center;
+        }
+        .hdr-nav-item {
+          display: flex; align-items: center; gap: 6px;
+          color: rgba(255,255,255,0.45); text-decoration: none;
+          font-size: 13.5px; font-weight: 500;
+          padding: 6px 11px; border-radius: 9px;
+          transition: color 0.15s, background 0.15s;
+          white-space: nowrap; letter-spacing: -0.01em;
+        }
+        .hdr-nav-item:hover { color: #fff; background: rgba(255,255,255,0.05); }
+        .hdr-badge {
+          font-size: 8px; font-weight: 700; letter-spacing: 0.06em;
+          text-transform: uppercase; padding: 2px 6px; border-radius: 99px;
+        }
+
+        /* Right side */
+        .hdr-right {
+          display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+        }
+
+        /* List Your Project button */
+        .hdr-list-btn {
+          display: inline-flex; align-items: center; gap: 6px;
+          background: rgba(124,245,192,0.07);
+          border: 1px solid rgba(124,245,192,0.2);
+          color: #7CF5C0; font-size: 12px; font-weight: 600;
+          padding: 7px 13px; border-radius: 9px;
+          text-decoration: none; white-space: nowrap;
+          letter-spacing: -0.01em;
+          font-family: var(--font-space), system-ui, sans-serif;
+          transition: background 0.15s, border-color 0.15s;
+        }
+        .hdr-list-btn:hover { background: rgba(124,245,192,0.13); border-color: rgba(124,245,192,0.35); }
+        .hdr-list-btn svg { width: 11px; height: 11px; flex-shrink: 0; }
+
+        /* Divider */
+        .hdr-divider {
+          width: 1px; height: 20px;
+          background: rgba(255,255,255,0.08);
+        }
+
+        /* Hamburger */
+        .hdr-hamburger {
+          display: none; flex-direction: column; gap: 5px;
+          cursor: pointer; padding: 7px; border-radius: 8px;
+          background: rgba(255,255,255,0.03);
+          border: 1px solid rgba(255,255,255,0.08);
+        }
+        .hdr-hamburger span {
+          width: 18px; height: 1.5px;
+          background: rgba(255,255,255,0.6);
+          border-radius: 99px; display: block; transition: all 0.2s;
+        }
+
+        /* Mobile menu */
+        .hdr-mobile {
           display: none;
-          position: fixed;
-          inset: 62px 0 0 0;
+          position: fixed; inset: 62px 0 0 0;
           background: rgba(6,9,16,0.98);
-          backdrop-filter: blur(12px);
-          z-index: 49;
-          padding: 20px 24px;
-          flex-direction: column;
-          gap: 8px;
-          border-top: 1px solid #1a1f2e;
+          backdrop-filter: blur(16px);
+          z-index: 49; padding: 16px 20px;
+          flex-direction: column; gap: 6px;
+          border-top: 1px solid rgba(255,255,255,0.06);
+          font-family: var(--font-space), system-ui, sans-serif;
         }
-        .mobile-menu.open { display: flex; }
-        .mobile-nav-item {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          color: #a1a1aa;
-          text-decoration: none;
-          font-size: 15px;
-          font-weight: 500;
-          padding: 14px 16px;
-          border-radius: 12px;
-          transition: all 0.2s;
+        .hdr-mobile.open { display: flex; }
+        .hdr-mobile-item {
+          display: flex; align-items: center; gap: 10px;
+          color: rgba(255,255,255,0.5); text-decoration: none;
+          font-size: 14px; font-weight: 500;
+          padding: 13px 14px; border-radius: 12px;
+          transition: all 0.15s;
           border: 1px solid transparent;
+          letter-spacing: -0.01em;
         }
-        .mobile-nav-item:hover { color: #fff; background: rgba(255,255,255,0.05); border-color: #1a1f2e; }
-        .hamburger {
-          display: none;
-          flex-direction: column;
-          gap: 5px;
-          cursor: pointer;
-          padding: 8px;
-          border-radius: 8px;
-          background: #0d1117;
-          border: 1px solid #1a1f2e;
+        .hdr-mobile-item:hover { color: #fff; background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.07); }
+        .hdr-mobile-list {
+          display: flex; align-items: center; gap: 9px;
+          background: rgba(124,245,192,0.06);
+          border: 1px solid rgba(124,245,192,0.18);
+          color: #7CF5C0; font-size: 13px; font-weight: 600;
+          padding: 13px 14px; border-radius: 12px;
+          text-decoration: none; letter-spacing: -0.01em;
+          font-family: var(--font-space), system-ui, sans-serif;
+          transition: background 0.15s;
         }
-        .hamburger span { width: 20px; height: 2px; background: #a1a1aa; border-radius: 99px; transition: all 0.2s; display: block; }
+        .hdr-mobile-list:hover { background: rgba(124,245,192,0.1); }
+        .hdr-mobile-list svg { width: 14px; height: 14px; }
+
+        @media (max-width: 900px) {
+          .hdr-list-btn { display: none !important; }
+          .hdr-divider { display: none !important; }
+        }
         @media (max-width: 768px) {
-          .desktop-nav { display: none !important; }
-          .hamburger { display: flex !important; }
-          .auth-btn-desktop { display: none !important; }
+          .hdr-nav { display: none !important; }
+          .hdr-auth-desktop { display: none !important; }
+          .hdr-hamburger { display: flex !important; }
         }
         @media (min-width: 769px) {
-          .hamburger { display: none !important; }
-          .mobile-menu { display: none !important; }
+          .hdr-hamburger { display: none !important; }
+          .hdr-mobile { display: none !important; }
         }
       `}</style>
 
-      <header style={{ borderBottom: '1px solid #1a1f2e', position: 'sticky', top: 0, background: 'rgba(6,9,16,0.95)', backdropFilter: 'blur(12px)', zIndex: 50, height: '62px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}>
+      <header className="hdr-root">
+        <div className="hdr-inner">
 
           {/* Logo */}
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: '#fff', flexShrink: 0 }}>
-            <div style={{ width: '34px', height: '34px', background: 'linear-gradient(135deg, #6366f1, #4f46e5)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', boxShadow: '0 4px 12px rgba(99,102,241,0.3)' }}>🪂</div>
-            <span style={{ fontWeight: '800', fontSize: '15px', letterSpacing: '-0.01em' }}>3alamiy Web3</span>
+          <Link href="/" className="hdr-logo">
+            <div className="hdr-logo-icon">🪂</div>
+            <span className="hdr-logo-name">3alamiy Web3</span>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '4px', flex: 1, justifyContent: 'center' }}>
-            {navItems.map((item) => (
-              <Link key={item.label} href={item.href} className="nav-item">
+          <nav className="hdr-nav">
+            {navItems.map(item => (
+              <Link key={item.label} href={item.href} className="hdr-nav-item">
                 {item.label}
                 {item.badge && (
-                  <span className="badge" style={{ color: item.badgeColor!, background: item.badgeBg! }}>
+                  <span className="hdr-badge" style={{ color: item.badgeColor!, background: item.badgeBg! }}>
                     {item.badge}
                   </span>
                 )}
@@ -111,33 +181,69 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Auth */}
-          <div className="auth-btn-desktop" style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-            <AuthButton />
-          </div>
+          {/* Right */}
+          <div className="hdr-right">
 
-          {/* Hamburger */}
-          <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
-            <span style={{ transform: menuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none' }} />
-            <span style={{ opacity: menuOpen ? 0 : 1 }} />
-            <span style={{ transform: menuOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'none' }} />
-          </button>
+            {/* List Your Project */}
+            <a
+              href="https://t.me/web33alamiy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hdr-list-btn"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+              List Your Project
+            </a>
+
+            <div className="hdr-divider" />
+
+            {/* Auth */}
+            <div className="hdr-auth-desktop">
+              <AuthButton />
+            </div>
+
+            {/* Hamburger */}
+            <button className="hdr-hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+              <span style={{ transform: menuOpen ? 'rotate(45deg) translate(4px, 4px)' : 'none' }} />
+              <span style={{ opacity: menuOpen ? 0 : 1 }} />
+              <span style={{ transform: menuOpen ? 'rotate(-45deg) translate(4px, -4px)' : 'none' }} />
+            </button>
+          </div>
         </div>
       </header>
 
       {/* Mobile Menu */}
-      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
-        {navItems.map((item) => (
-          <Link key={item.label} href={item.href} className="mobile-nav-item" onClick={() => setMenuOpen(false)}>
+      <div className={`hdr-mobile ${menuOpen ? 'open' : ''}`}>
+        {navItems.map(item => (
+          <Link key={item.label} href={item.href} className="hdr-mobile-item" onClick={() => setMenuOpen(false)}>
             {item.label}
             {item.badge && (
-              <span className="badge" style={{ color: item.badgeColor!, background: item.badgeBg! }}>
+              <span className="hdr-badge" style={{ color: item.badgeColor!, background: item.badgeBg! }}>
                 {item.badge}
               </span>
             )}
           </Link>
         ))}
-        <div style={{ borderTop: '1px solid #1a1f2e', paddingTop: '16px', marginTop: '8px' }}>
+
+        {/* List Your Project in mobile */}
+        <a
+          href="https://t.me/web33alamiy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hdr-mobile-list"
+          onClick={() => setMenuOpen(false)}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          List Your Project
+        </a>
+
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '14px', marginTop: '6px' }}>
           <AuthButton />
         </div>
       </div>
