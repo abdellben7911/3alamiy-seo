@@ -706,48 +706,145 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const cat = categoryColors[a.category] || categoryColors.Airdrops;
 
   return (
-    <div style={{ minHeight: '100vh', background: '#030712', fontFamily: 'system-ui, -apple-system, sans-serif', color: '#fff' }}>
-      <main style={{ maxWidth: '800px', margin: '0 auto', padding: '48px 24px 80px' }}>
-        <a href="https://seo.3alamiyweb3.online" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#71717a', textDecoration: 'none', fontSize: '14px', fontWeight: '700', marginBottom: '40px', padding: '8px 14px', background: '#18181b', borderRadius: '12px', border: '1px solid #27272a' }}>
-          ← Back to Airdrops
-        </a>
+    <>
+      <style>{`
+        html, body { overflow-x: hidden; }
+        .art-root {
+          min-height: 100vh;
+          background: #030712;
+          font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
+          color: #fff;
+          overflow-x: hidden;
+        }
+        .art-main {
+          max-width: 800px; margin: 0 auto;
+          padding: 48px 24px 80px;
+          width: 100%;
+        }
+        .art-back {
+          display: inline-flex; align-items: center; gap: 8px;
+          color: #71717a; text-decoration: none;
+          font-size: 13px; font-weight: 600;
+          margin-bottom: 36px; padding: 8px 14px;
+          background: #18181b; border-radius: 10px;
+          border: 1px solid #27272a; transition: color 0.15s;
+        }
+        .art-back:hover { color: #a1a1aa; }
+        .art-meta {
+          display: flex; align-items: center; gap: 10px;
+          margin-bottom: 18px; flex-wrap: wrap;
+        }
+        .art-cat {
+          padding: 4px 12px; border-radius: 99px;
+          font-size: 10px; font-weight: 800;
+          text-transform: uppercase; letter-spacing: 0.08em;
+        }
+        .art-date { color: #52525b; font-size: 12px; }
+        .art-h1 {
+          font-size: 36px; font-weight: 800; line-height: 1.15;
+          letter-spacing: -0.025em; margin: 0 0 18px; color: #fff;
+          word-break: break-word;
+        }
+        .art-excerpt {
+          font-size: 17px; color: #a1a1aa; line-height: 1.75;
+          margin: 0 0 32px; font-weight: 400;
+        }
+        .art-img-wrap {
+          border-radius: 20px; overflow: hidden;
+          margin-bottom: 40px; border: 1px solid #18181b;
+        }
+        .art-img {
+          width: 100%; height: 360px;
+          object-fit: cover; display: block;
+        }
+        .art-body {
+          font-size: 16px; line-height: 1.85; color: #d4d4d8;
+        }
+        .art-body p { margin: 0 0 22px; }
+        .art-body strong {
+          font-size: 18px; font-weight: 700; color: #fff;
+          display: block; margin-top: 6px; letter-spacing: -0.01em;
+        }
+        .art-body .quote {
+          padding-left: 16px; display: block;
+          border-left: 2px solid #27272a;
+        }
+        .art-divider { border-top: 1px solid #18181b; margin: 44px 0; }
+        .art-cta {
+          background: linear-gradient(135deg, #1e1b4b, #0f0f1a);
+          border: 1px solid #4c1d95; border-radius: 20px;
+          padding: 36px 28px; text-align: center;
+        }
+        .art-cta-emoji { font-size: 28px; margin-bottom: 10px; display: block; }
+        .art-cta-title { font-size: 20px; font-weight: 800; margin: 0 0 8px; }
+        .art-cta-sub { color: #9ca3af; font-size: 14px; margin: 0 0 22px; line-height: 1.6; }
+        .art-cta-btn {
+          background: linear-gradient(135deg, #6366f1, #4f46e5);
+          color: #fff; padding: 13px 28px; border-radius: 12px;
+          text-decoration: none; font-size: 14px; font-weight: 700;
+          display: inline-block;
+          box-shadow: 0 12px 32px rgba(99,102,241,0.3);
+        }
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px', flexWrap: 'wrap' }}>
-          <span style={{ background: cat.bg, color: cat.text, padding: '4px 12px', borderRadius: '99px', fontSize: '11px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{a.category}</span>
-          <span style={{ color: '#52525b', fontSize: '13px' }}>{a.date}</span>
-          <span style={{ color: '#52525b', fontSize: '13px' }}>· {a.readTime}</span>
-        </div>
+        @media (max-width: 640px) {
+          .art-main { padding: 28px 16px 60px; }
+          .art-h1 { font-size: 24px; margin-bottom: 14px; }
+          .art-excerpt { font-size: 15px; margin-bottom: 24px; }
+          .art-img { height: 200px; }
+          .art-img-wrap { border-radius: 14px; margin-bottom: 28px; }
+          .art-body { font-size: 15px; line-height: 1.8; }
+          .art-body strong { font-size: 16px; }
+          .art-cta { padding: 28px 20px; }
+          .art-cta-title { font-size: 18px; }
+          .art-cta-btn { width: 100%; text-align: center; padding: 13px 20px; }
+          .art-back { margin-bottom: 24px; font-size: 12px; }
+        }
+      `}</style>
 
-        <h1 style={{ fontSize: '40px', fontWeight: '900', lineHeight: 1.15, letterSpacing: '-0.02em', margin: '0 0 20px', color: '#fff' }}>{a.title}</h1>
-        <p style={{ fontSize: '18px', color: '#a1a1aa', lineHeight: 1.7, margin: '0 0 36px', fontWeight: '500' }}>{a.excerpt}</p>
-
-        <div style={{ borderRadius: '24px', overflow: 'hidden', marginBottom: '48px', border: '1px solid #18181b' }}>
-          <img src={a.image} alt={a.title} style={{ width: '100%', height: '400px', objectFit: 'cover', display: 'block' }} />
-        </div>
-
-        <div style={{ fontSize: '17px', lineHeight: 1.85, color: '#d4d4d8' }}>
-          {a.content.split('\n\n').map((para: string, i: number) => (
-            <p key={i} style={{ margin: '0 0 24px' }}>
-              {para.startsWith('•') ? (
-                <span style={{ paddingLeft: '16px', display: 'block', borderLeft: '2px solid #27272a' }}>{para}</span>
-              ) : para.match(/^[A-Z0-9].*:$/) ? (
-                <strong style={{ fontSize: '19px', fontWeight: '800', color: '#fff', display: 'block', marginTop: '8px' }}>{para}</strong>
-              ) : para}
-            </p>
-          ))}
-        </div>
-
-        <div style={{ borderTop: '1px solid #18181b', margin: '48px 0' }} />
-
-        <div style={{ background: 'linear-gradient(135deg, #1e1b4b, #0f0f1a)', border: '1px solid #4c1d95', borderRadius: '24px', padding: '40px', textAlign: 'center' }}>
-          <div style={{ fontSize: '32px', marginBottom: '12px' }}>🪂</div>
-          <h3 style={{ fontSize: '22px', fontWeight: '900', margin: '0 0 8px' }}>Find & Track the Best Airdrops</h3>
-          <p style={{ color: '#9ca3af', fontSize: '15px', margin: '0 0 24px', lineHeight: 1.6 }}>Join 2,500+ Web3 users tracking high-potential airdrops with AI-powered analysis on 3alamiy Web3.</p>
-          <a href="https://3alamiyweb3.online" style={{ background: 'linear-gradient(135deg, #6366f1, #4f46e5)', color: '#fff', padding: '14px 32px', borderRadius: '14px', textDecoration: 'none', fontSize: '15px', fontWeight: '900', display: 'inline-block', boxShadow: '0 20px 40px rgba(99,102,241,0.3)' }}>
-            Open Full Dashboard →
+      <div className="art-root">
+        <main className="art-main">
+          <a href="https://seo.3alamiyweb3.online" className="art-back">
+            ← Back to Airdrops
           </a>
-        </div>
-      </main>
-    </div>
+
+          <div className="art-meta">
+            <span className="art-cat" style={{ background: cat.bg, color: cat.text }}>{a.category}</span>
+            <span className="art-date">{a.date}</span>
+            <span className="art-date">· {a.readTime}</span>
+          </div>
+
+          <h1 className="art-h1">{a.title}</h1>
+          <p className="art-excerpt">{a.excerpt}</p>
+
+          <div className="art-img-wrap">
+            <img src={a.image} alt={a.title} className="art-img" />
+          </div>
+
+          <div className="art-body">
+            {a.content.split('\n\n').map((para: string, i: number) => (
+              <p key={i}>
+                {para.startsWith('•') ? (
+                  <span className="quote">{para}</span>
+                ) : para.match(/^[A-Z0-9].*:$/) ? (
+                  <strong>{para}</strong>
+                ) : para}
+              </p>
+            ))}
+          </div>
+
+          <div className="art-divider" />
+
+          <div className="art-cta">
+            <span className="art-cta-emoji">🪂</span>
+            <h3 className="art-cta-title">Find & Track the Best Airdrops</h3>
+            <p className="art-cta-sub">Join 2,500+ Web3 users tracking high-potential airdrops on 3alamiy Web3.</p>
+            <a href="https://seo.3alamiyweb3.online/airdrops" className="art-cta-btn">
+              Browse All Airdrops →
+            </a>
+          </div>
+        </main>
+      </div>
+    </>
   );
 }
+
