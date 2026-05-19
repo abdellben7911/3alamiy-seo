@@ -31,37 +31,38 @@ export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
     a.reward_min && a.reward_max ? `$${a.reward_min} - $${a.reward_max}` : a.reward_min ? `$${a.reward_min}+` : 'High';
 
   const tabs = [
-    { label: 'All', icon: '⚡', count: airdrops.length },
-    { label: 'Free', icon: '★', count: airdrops.filter(a => a.cost === 'Free').length },
-    { label: 'Paid', icon: '🗂', count: airdrops.filter(a => a.cost === 'Paid').length },
-    { label: 'End / Claim', icon: '✦', count: airdrops.filter(a => a.status === 'Ended').length },
+    { label: 'All',        icon: '⚡', count: airdrops.length },
+    { label: 'Free',       icon: '★',  count: airdrops.filter(a => a.cost === 'Free').length },
+    { label: 'Paid',       icon: '🗂', count: airdrops.filter(a => a.cost !== 'Free' && a.cost !== 'Ended').length },
+    { label: 'End / Claim',icon: '✦',  count: airdrops.filter(a => a.status === 'Ended').length },
   ];
 
   const filtered = airdrops.filter(a => {
     const matchesTab =
-      active === 'All' ? true :
-      active === 'Free' ? a.cost === 'Free' :
-      active === 'Paid' ? a.cost === 'Paid' :
-      active === 'End / Claim' ? a.status === 'Ended' : true;
+      active === 'All'        ? true :
+      active === 'Free'       ? a.cost === 'Free' :
+      active === 'Paid'       ? (a.cost !== 'Free' && a.status !== 'Ended') :
+      active === 'End / Claim'? a.status === 'Ended' : true;
 
-    const matchesSearch = search.trim() === '' ? true :
-      a.name.toLowerCase().includes(search.toLowerCase()) ||
-      a.blockchain?.toLowerCase().includes(search.toLowerCase()) ||
-      a.description?.toLowerCase().includes(search.toLowerCase()) ||
-      (Array.isArray(a.tags) && a.tags.some((t: string) => t.toLowerCase().includes(search.toLowerCase())));
+    const q = search.trim().toLowerCase();
+    const matchesSearch = q === '' ? true :
+      a.name.toLowerCase().includes(q) ||
+      a.blockchain?.toLowerCase().includes(q) ||
+      a.description?.toLowerCase().includes(q) ||
+      (Array.isArray(a.tags) && a.tags.some((t: string) => t.toLowerCase().includes(q)));
 
     return matchesTab && matchesSearch;
   });
 
-  const featured = filtered.filter(a => a.reward_min >= 500).slice(0, 6);
+  const featured   = filtered.filter(a => a.reward_min >= 500).slice(0, 6);
   const newlyAdded = filtered.slice(0, 6);
+  const isAll      = active === 'All' && search.trim() === '';
 
   const BigCard = ({ a }: { a: Airdrop }) => (
     <Link href={`/airdrops/${a.slug}`} style={{
       background: '#0d1117', border: '1px solid #1a1f2e', borderRadius: '16px',
       padding: '20px', cursor: 'pointer', textDecoration: 'none', color: '#fff',
-      display: 'flex', flexDirection: 'column', gap: '14px',
-      transition: 'all 0.22s ease',
+      display: 'flex', flexDirection: 'column', gap: '14px', transition: 'all 0.22s ease',
     }}
       onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(99,102,241,0.4)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
       onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = '#1a1f2e'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
@@ -81,11 +82,10 @@ export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
         </button>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        {a.logo ? (
-          <img src={a.logo} alt={a.name} width={44} height={44} style={{ borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)', flexShrink: 0, objectFit: 'cover' }} />
-        ) : (
-          <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: '#1a1f2e', flexShrink: 0 }} />
-        )}
+        {a.logo
+          ? <img src={a.logo} alt={a.name} width={44} height={44} style={{ borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)', flexShrink: 0, objectFit: 'cover' }} />
+          : <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: '#1a1f2e', flexShrink: 0 }} />
+        }
         <div>
           <h3 style={{ fontSize: '15px', fontWeight: '800', margin: '0 0 2px', color: '#f4f4f5' }}>{a.name}</h3>
           <span style={{ fontSize: '11px', color: '#52525b', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{a.blockchain}</span>
@@ -127,15 +127,20 @@ export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
       onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(99,102,241,0.3)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'; }}
       onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = '#1a1f2e'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
     >
-      {a.logo ? (
-        <img src={a.logo} alt={a.name} width={38} height={38} style={{ borderRadius: '10px', border: '1px solid rgba(255,255,255,0.06)', flexShrink: 0, objectFit: 'cover' }} />
-      ) : (
-        <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: '#1a1f2e', flexShrink: 0 }} />
-      )}
+      {a.logo
+        ? <img src={a.logo} alt={a.name} width={38} height={38} style={{ borderRadius: '10px', border: '1px solid rgba(255,255,255,0.06)', flexShrink: 0, objectFit: 'cover' }} />
+        : <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: '#1a1f2e', flexShrink: 0 }} />
+      }
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
           <h3 style={{ fontSize: '13px', fontWeight: '700', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '130px' }}>{a.name}</h3>
-          <span style={{ background: a.status === 'Active' ? 'rgba(16,185,129,0.1)' : 'rgba(113,113,122,0.1)', color: a.status === 'Active' ? '#10b981' : '#71717a', padding: '1px 6px', borderRadius: '99px', fontSize: '9px', fontWeight: '700', border: `1px solid ${a.status === 'Active' ? 'rgba(16,185,129,0.2)' : 'rgba(113,113,122,0.2)'}`, flexShrink: 0, marginLeft: '4px' }}>{a.status}</span>
+          <span style={{
+            background: a.status === 'Active' ? 'rgba(16,185,129,0.1)' : 'rgba(113,113,122,0.1)',
+            color: a.status === 'Active' ? '#10b981' : '#71717a',
+            padding: '1px 6px', borderRadius: '99px', fontSize: '9px', fontWeight: '700',
+            border: `1px solid ${a.status === 'Active' ? 'rgba(16,185,129,0.2)' : 'rgba(113,113,122,0.2)'}`,
+            flexShrink: 0, marginLeft: '4px',
+          }}>{a.status}</span>
         </div>
         <div style={{ display: 'flex', gap: '4px' }}>
           <span style={{ fontSize: '10px', fontWeight: '700', color: costColor(a.cost), background: `${costColor(a.cost)}12`, padding: '1px 5px', borderRadius: '4px' }}>{a.cost}</span>
@@ -155,11 +160,10 @@ export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
           .filter-bar-wrap { flex-direction: column !important; }
           .filter-tabs { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; }
           .filter-tab-btn { justify-content: center !important; }
-          .section-title { font-size: 16px !important; }
         }
       `}</style>
 
-      {/* Filter bar */}
+      {/* ── Filter bar ── */}
       <div className="filter-bar-wrap" style={{ background: '#0d1117', border: '1px solid #1a1f2e', borderRadius: '14px', padding: '12px 16px', marginBottom: '32px', display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
         <div style={{ flex: 1, minWidth: '180px', position: 'relative' }}>
           <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#52525b', fontSize: '13px' }}>🔍</span>
@@ -188,41 +192,54 @@ export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
         </div>
       </div>
 
-      {/* ⭐ Featured Alpha */}
-      {featured.length > 0 && (
-        <section style={{ marginBottom: '48px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-            <h2 style={{ fontSize: '18px', fontWeight: '800', color: '#fff' }}>⭐ Featured Alpha</h2>
-            <Link href="/airdrops" style={{ fontSize: '12px', color: '#818cf8', textDecoration: 'none', fontWeight: '600' }}>View all →</Link>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '12px' }}>
-            {featured.map(a => <BigCard key={a.slug} a={a} />)}
-          </div>
-        </section>
+      {/* ── Sections only shown on ALL tab ── */}
+      {isAll && (
+        <>
+          {featured.length > 0 && (
+            <section style={{ marginBottom: '48px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+                <h2 style={{ fontSize: '18px', fontWeight: '800', color: '#fff' }}>⭐ Featured Alpha</h2>
+                <Link href="/airdrops" style={{ fontSize: '12px', color: '#818cf8', textDecoration: 'none', fontWeight: '600' }}>View all →</Link>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '12px' }}>
+                {featured.map(a => <BigCard key={a.slug} a={a} />)}
+              </div>
+            </section>
+          )}
+
+          {/* ✨ Recommended For You — ONLY on All tab */}
+          <RecommendedForYou airdrops={airdrops} />
+
+          <section style={{ marginBottom: '48px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+              <h2 style={{ fontSize: '18px', fontWeight: '800', color: '#fff' }}>🆕 Newly Added</h2>
+              <Link href="/airdrops" style={{ fontSize: '12px', color: '#818cf8', textDecoration: 'none', fontWeight: '600' }}>View all →</Link>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '12px' }}>
+              {newlyAdded.map(a => <BigCard key={a.slug} a={a} />)}
+            </div>
+          </section>
+        </>
       )}
 
-      {/* ✨ Recommended For You */}
-      <RecommendedForYou airdrops={airdrops} />
-
-      {/* 🆕 Newly Added */}
-      <section style={{ marginBottom: '48px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-          <h2 style={{ fontSize: '18px', fontWeight: '800', color: '#fff' }}>🆕 Newly Added</h2>
-          <Link href="/airdrops" style={{ fontSize: '12px', color: '#818cf8', textDecoration: 'none', fontWeight: '600' }}>View all →</Link>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '12px' }}>
-          {newlyAdded.map(a => <BigCard key={a.slug} a={a} />)}
-        </div>
-      </section>
-
-      {/* 🔥 All */}
+      {/* ── Filtered results (all tabs) ── */}
       <section>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-          <h2 style={{ fontSize: '18px', fontWeight: '800', color: '#fff' }}>🔥 All Active Airdrops</h2>
+          <div>
+            <h2 style={{ fontSize: '18px', fontWeight: '800', color: '#fff', margin: '0 0 2px' }}>
+              {active === 'All' ? '🔥 All Active Airdrops' :
+               active === 'Free' ? '★ Free Airdrops' :
+               active === 'Paid' ? '🗂 Paid Airdrops' : '✦ Ended / Claim'}
+            </h2>
+            <p style={{ fontSize: '12px', color: '#475569', margin: 0 }}>{filtered.length} airdrops found</p>
+          </div>
           <Link href="/airdrops" style={{ background: '#0d1117', color: '#818cf8', padding: '7px 14px', borderRadius: '9px', textDecoration: 'none', fontSize: '12px', fontWeight: '700', border: '1px solid rgba(99,102,241,0.2)' }}>View All →</Link>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '10px' }}>
-          {filtered.filter(a => a.status === 'Active').slice(0, 12).map(a => <SmallCard key={a.slug} a={a} />)}
+          {filtered
+            .filter(a => active === 'End / Claim' ? a.status === 'Ended' : a.status === 'Active')
+            .slice(0, isAll ? 12 : filtered.length)
+            .map(a => <SmallCard key={a.slug} a={a} />)}
         </div>
       </section>
     </div>
