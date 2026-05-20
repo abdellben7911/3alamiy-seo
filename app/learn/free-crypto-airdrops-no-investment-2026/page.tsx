@@ -16,9 +16,9 @@ const freeAirdrops = [
   { name: 'Beep AI Galxe Campaign', chain: 'Sui', time: '5 min', slug: 'beep-ai-galxe-campaign', desc: 'Complete 3 Galxe quests. Quiz answers: BACB. Confirmed $BEEP rewards.' },
   { name: 'Startale STAR Points', chain: 'Sonium', time: '10 min/day', slug: 'startale-star-points-carnival', desc: 'Daily check-ins and mini games. $70M raised, Samsung + Sony backed.' },
   { name: 'xStocksFi OG Role', chain: 'Multi-chain', time: '2 min', slug: 'xstocksfi-og-role', desc: 'Suggest a stock in Discord. $25B+ trading volume platform.' },
-  { name: 'nof1 Waitlist', chain: 'Sui', time: '1 min', slug: 'nof1-early-waitlist', desc: 'Email signup only. $15M raised, AI + financial markets.' },
-  { name: 'Variational Testnet', chain: 'Arbitrum', time: '15 min', slug: 'variational-testnet', desc: 'Trade on testnet with free test tokens. $11.8M raised, Coinbase Ventures.' },
-  { name: 'Citrea', chain: 'Bitcoin L2', time: '20 min', slug: 'citrea-airdrop', desc: 'First ZK rollup on Bitcoin. Massive upside, very early stage.' },
+  { name: 'nof1 Early Waitlist', chain: 'Sui', time: '1 min', slug: 'nof1-early-waitlist', desc: 'Email signup only. $15M raised, AI + financial markets.' },
+  { name: 'DeepBook Early Waitlist', chain: 'Sui', time: '3 min', slug: 'deepbook-early-waitlist', desc: 'Liquidity layer on Sui. Free waitlist — referrals boost your position significantly.' },
+  { name: 'Canborsa Points Program', chain: 'Canton', time: '15 min', slug: 'canborsa-points-program', desc: 'First RWA perpetual DEX on Canton Network. Complete quests and social tasks.' },
 ];
 
 export default function FreeCryptoAirdrops() {
@@ -59,7 +59,7 @@ export default function FreeCryptoAirdrops() {
             The best free crypto airdrops in 2026. No money needed — just your time and a crypto wallet.
           </p>
           <div style={{ display: 'flex', gap: '28px', flexWrap: 'wrap' }}>
-            {[['73+', 'Free Airdrops'], ['$0', 'Investment Needed'], ['Daily', 'Updated']].map(([val, lbl]) => (
+            {[['86+', 'Free Airdrops'], ['$0', 'Investment Needed'], ['Daily', 'Updated']].map(([val, lbl]) => (
               <div key={lbl}>
                 <div style={{ fontSize: '20px', fontWeight: 900, color: '#10b981' }}>{val}</div>
                 <div style={{ fontSize: '10px', color: '#52525b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{lbl}</div>
@@ -114,7 +114,7 @@ export default function FreeCryptoAirdrops() {
 
         <h3>Testnet Airdrops (Best ROI)</h3>
         <p>Testnet airdrops are completely free because you use test tokens with no real value. The project gives you fake tokens to test their protocol — and in return, rewards real tokens at launch. This is the highest-ROI category because there's truly zero cost and very high reward potential.</p>
-        <p>Projects currently in testnet phase: Monad, MegaETH, Variational, Citrea.</p>
+        <p>Projects currently in testnet phase: Monad, Overlayer, DeepBook, Rhuna.</p>
 
         <h3>Social Task Airdrops (Easiest)</h3>
         <p>Complete simple social tasks — join Discord, follow on Twitter, complete Galxe quests. These require no technical knowledge and usually take under 10 minutes. Rewards are smaller but the effort is minimal.</p>
@@ -146,7 +146,7 @@ export default function FreeCryptoAirdrops() {
             { q: 'Are there really crypto airdrops with no investment?', a: 'Yes. Many legitimate airdrops require only your time and a crypto wallet. Testnet airdrops, social task airdrops, and waitlist airdrops are all completely free.' },
             { q: 'What\'s the catch with free airdrops?', a: 'There\'s no catch — projects genuinely want users to test their protocols. The "cost" is your time. You might spend 10–30 minutes on tasks, and in return you could receive significant token rewards.' },
             { q: 'Do I need ETH to do free airdrops?', a: 'For testnet airdrops: no, you use free test tokens. For some on-chain tasks: a small amount of ETH ($5–10) covers gas. Waitlist and social airdrops require nothing.' },
-            { q: 'How many free airdrops can I do at once?', a: 'As many as you can keep up with. Start with 3–5 and expand as you get comfortable. Our tracker has 73+ free airdrops listed.' },
+            { q: 'How many free airdrops can I do at once?', a: 'As many as you can keep up with. Start with 3–5 and expand as you get comfortable. Our tracker has 86+ free airdrops listed.' },
           ].map((faq, i) => (
             <div key={i} style={{ background: '#0d1117', border: '1px solid #1a1f2e', borderRadius: '12px', padding: '18px' }}>
               <p style={{ fontSize: '14px', fontWeight: 700, color: '#f4f4f5', margin: '0 0 8px' }}>{faq.q}</p>
@@ -156,7 +156,7 @@ export default function FreeCryptoAirdrops() {
         </div>
 
         <div className="divider" />
-        <p>Ready to start earning free crypto? Browse all 73+ free airdrops with step-by-step guides.</p>
+        <p>Ready to start earning free crypto? Browse all 86+ free airdrops with step-by-step guides.</p>
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '16px' }}>
           <Link href="/airdrops" style={{ background: 'linear-gradient(135deg, #10b981, #059669)', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 700, fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
             Browse Free Airdrops →

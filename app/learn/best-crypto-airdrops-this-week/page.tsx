@@ -14,17 +14,17 @@ export const metadata = {
 
 const thisWeekAirdrops = [
   { name: 'Beep AI Galxe Campaign', chain: 'Sui', priority: 'High', reward: '$100–$1,000', slug: 'beep-ai-galxe-campaign', why: 'New Galxe quests just launched. Confirmed $BEEP rewards. Takes 5 minutes.' },
-  { name: 'Variational Testnet', chain: 'Arbitrum', priority: 'High', reward: '$500–$5,000', slug: 'variational-testnet', why: '$11.8M raised, Coinbase Ventures. Active testnet with confirmed airdrop.' },
-  { name: 'Hyperliquid Season 2', chain: 'Hyperliquid', priority: 'High', reward: '$1,000+', slug: 'hyperliquid-season-2', why: 'Season 1 paid $10K+ average. Season 2 live — daily trading builds your allocation.' },
+  { name: 'DeepBook Early Waitlist', chain: 'Sui', priority: 'High', reward: '$50–$500', slug: 'deepbook-early-waitlist', why: 'Liquidity layer on Sui. Free waitlist — referrals boost your position.' },
+  { name: 'PROPR Points Program', chain: 'Hyperliquid', priority: 'High', reward: '$500–$5,000', slug: 'propr-points-program', why: '$5.5M raised, SwissBorg backed. 45.5% token supply for community. Farm daily.' },
   { name: 'Startale STAR Points', chain: 'Sonium', priority: 'Medium', reward: '$50–$500', slug: 'startale-star-points-carnival', why: 'Samsung + Sony backed. $70M raised. Daily check-ins take 2 minutes.' },
-  { name: 'MegaETH Points', chain: 'MegaETH', priority: 'High', reward: '$500–$5,000', slug: 'megaeth-points-season1', why: 'Real-time EVM. Points season active — farm before mainnet launch.' },
-  { name: 'nof1 Waitlist', chain: 'Sui', priority: 'Low', reward: 'TBA', slug: 'nof1-early-waitlist', why: 'AI + financial markets. $15M raised. 1-minute signup — minimal effort.' },
+  { name: 'DustSwap Airdrop', chain: 'Base', priority: 'Medium', reward: '$200–$2,000', slug: 'dustswap-double-rewards', why: 'Dual farming — $DUST airdrop + potential Base ecosystem rewards. Quests + swaps.' },
+  { name: 'nof1 Early Waitlist', chain: 'Sui', priority: 'Low', reward: 'TBA', slug: 'nof1-early-waitlist', why: 'AI + financial markets. $15M raised. 1-minute signup — minimal effort.' },
 ];
 
 const priorityColor = (p: string) => p === 'High' ? '#10b981' : p === 'Medium' ? '#f59e0b' : '#71717a';
 
 export default function BestAirdropsThisWeek() {
-  const weekOf = 'May 12–18, 2026';
+  const weekOf = 'May 19–25, 2026';
 
   return (
     <>
@@ -98,7 +98,7 @@ export default function BestAirdropsThisWeek() {
 
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
           <Link href="/airdrops" style={{ background: 'linear-gradient(135deg, #6366f1, #4f46e5)', color: '#fff', padding: '12px 26px', borderRadius: '12px', textDecoration: 'none', fontWeight: 700, fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 6px 20px rgba(99,102,241,0.3)' }}>
-            View All 73+ Airdrops →
+            View All 86+ Airdrops →
           </Link>
         </div>
 
@@ -150,7 +150,7 @@ export default function BestAirdropsThisWeek() {
         headline: 'Best Crypto Airdrops This Week — May 2026',
         description: 'The best crypto airdrops to farm this week in May 2026.',
         url: 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-this-week',
-        datePublished: '2026-05-12', dateModified: '2026-05-16',
+        datePublished: '2026-05-12', dateModified: '2026-05-20',
         publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
       })}} />
     </>

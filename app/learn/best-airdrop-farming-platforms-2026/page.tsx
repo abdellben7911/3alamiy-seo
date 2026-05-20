@@ -49,7 +49,7 @@ const articleSchema = {
   author: { '@type': 'Organization', name: '3alamiy Web3' },
   publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
   datePublished: '2026-05-11',
-  dateModified: '2026-05-11',
+  dateModified: '2026-05-20',
 };
 
 const platforms = [
@@ -148,7 +148,7 @@ export default function ComparisonPage() {
           <nav style={{ fontSize: '13px', color: '#52525b', marginBottom: '24px' }}>
             <Link href="/" style={{ color: '#6366f1', textDecoration: 'none' }}>Home</Link>
             <span style={{ margin: '0 8px' }}>›</span>
-            <Link href="/learn/how-to-find-airdrops-before-everyone-else" style={{ color: '#6366f1', textDecoration: 'none' }}>Learn</Link>
+            <Link href="/learn" style={{ color: '#6366f1', textDecoration: 'none' }}>Learn</Link>
             <span style={{ margin: '0 8px' }}>›</span>
             <span>Best Airdrop Platforms 2026</span>
           </nav>
@@ -305,7 +305,7 @@ export default function ComparisonPage() {
           <h2 style={{ fontSize: '26px', fontWeight: 800, margin: '0 0 20px', letterSpacing: '-0.01em' }}>Frequently Asked Questions</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '40px' }}>
             {[
-              { q: 'What is the best airdrop farming platform in 2026?', a: '3alamiy Web3 is the best free airdrop farming platform for beginners. It offers 60+ verified airdrop guides with step-by-step instructions, a GM Station for daily on-chain activity, and daily Telegram alerts — all 100% free.' },
+              { q: 'What is the best airdrop farming platform in 2026?', a: '3alamiy Web3 is the best free airdrop farming platform for beginners. It offers 86+ verified airdrop guides with step-by-step instructions, a GM Station for daily on-chain activity, and daily Telegram alerts — all 100% free.' },
               { q: 'Is ZNS Connect free to use?', a: 'ZNS Connect\'s GM Station and airdrop tracker are free, but domain registration costs $8+. 3alamiy Web3 is 100% free with no paid features at all.' },
               { q: 'What is better — Galxe or 3alamiy Web3?', a: 'They serve different purposes. Galxe focuses on completing quests for specific partner projects. 3alamiy Web3 is an independent tracker with step-by-step guides for any airdrop — not just paid partners. Most serious farmers use both.' },
               { q: 'How long does it take to farm an airdrop?', a: 'Most airdrops take 15-30 minutes to set up initially, then 5-10 minutes per day to maintain activity. Using a GM Station reduces daily time to under 5 minutes for on-chain tasks.' },
@@ -323,7 +323,7 @@ export default function ComparisonPage() {
             <div style={{ fontSize: '32px', marginBottom: '12px' }}>🪂</div>
             <h2 style={{ fontSize: '22px', fontWeight: 900, margin: '0 0 8px' }}>Start Farming Airdrops Today — For Free</h2>
             <p style={{ color: '#9ca3af', fontSize: '15px', margin: '0 0 24px', lineHeight: 1.6 }}>
-              Browse 60+ verified airdrops with step-by-step guides. Say GM daily on 16+ chains. All free.
+              Browse 86+ verified airdrops with step-by-step guides. Say GM daily on 16+ chains. All free.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link href="/airdrops" style={{ background: 'linear-gradient(135deg,#6366f1,#4f46e5)', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 700, fontSize: '14px' }}>

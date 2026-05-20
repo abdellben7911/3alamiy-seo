@@ -34,7 +34,7 @@ const articleSchema = {
   author: { '@type': 'Organization', name: '3alamiy Web3' },
   publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
   datePublished: '2026-05-14',
-  dateModified: '2026-05-14',
+  dateModified: '2026-05-20',
 };
 
 const solanaAirdrops = [
@@ -89,7 +89,7 @@ export default function BestSolanaAirdrops2026() {
           <nav style={{ fontSize: '13px', color: '#52525b', marginBottom: '24px' }}>
             <Link href="/" style={{ color: '#6366f1', textDecoration: 'none' }}>Home</Link>
             <span style={{ margin: '0 8px' }}>›</span>
-            <Link href="/learn/how-to-find-airdrops-before-everyone-else" style={{ color: '#6366f1', textDecoration: 'none' }}>Learn</Link>
+            <Link href="/learn" style={{ color: '#6366f1', textDecoration: 'none' }}>Learn</Link>
             <span style={{ margin: '0 8px' }}>›</span>
             <span>Best Solana Airdrops 2026</span>
           </nav>
