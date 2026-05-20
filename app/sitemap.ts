@@ -5,25 +5,30 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 
 const BASE = 'https://seo.3alamiyweb3.online';
 
+// ✅ VALID slugs only — must exist in [slug]/page.tsx articles object OR as a folder
 const articles = [
-  'why-crypto-airdrops-are-becoming-harder-to-qualify-for',
-  'how-to-build-onchain-activity-that-actually-matters',
-  'news-report-the-2-trillion-wipeout',
-  'solanas-institutional-firedancer-era',
-  'nfts-flex-bayc-kidney-moment',
-  'can-solana-reach-1000-deep-dive',
-  'crypto-airdrops-2026-evolution',
-  'how-a-100-domain-became-a-70-million-digital-asset-the-story-behind-ai-com',
+  // — In [slug]/page.tsx articles object —
   'how-to-find-airdrops-before-everyone-else',
   'discord-role-airdrops-guide-2026',
-  'best-no-kyc-crypto-airdrops-2026',
-  'best-low-gas-crypto-airdrops-2026',
-  'best-free-crypto-airdrops-2026',
-  'how-to-set-up-metamask-for-airdrops',
-  'what-is-depin-crypto-airdrops',
   'how-to-avoid-crypto-airdrop-scams-2026',
-  'top-crypto-airdrop-wallets-2026',
+  'how-to-build-onchain-activity-that-actually-matters',
+  'best-airdrop-farming-platforms-2026',
+  'crypto-wallet-setup-for-airdrops-2026',
+  'best-ai-crypto-airdrops-2026',
+  'best-depin-airdrops-2026',
+
+  // — Static folder pages —
+  'best-airdrop-farming-platforms-2026',
+  'best-crypto-airdrops-2026',
+  'best-crypto-airdrops-this-week',
+  'best-solana-airdrops-2026',
+  'free-crypto-airdrops-no-investment-2026',
+  'how-to-get-crypto-airdrops-2026',
+  'what-are-crypto-airdrops',
 ];
+
+// Remove duplicates
+const uniqueArticles = [...new Set(articles)];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let airdrops: { slug: string; created_at: string }[] = [];
@@ -44,13 +49,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
   return [
-    // Core pages — highest priority
+    // Core pages
     { url: BASE, lastModified: now, changeFrequency: 'daily', priority: 1.0 },
     { url: `${BASE}/airdrops`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
+    { url: `${BASE}/learn`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/gm`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${BASE}/privacy`, lastModified: now, changeFrequency: 'monthly', priority: 0.4 },
 
-    // Airdrop detail pages — high priority
+    // Airdrop detail pages
     ...airdrops.map(a => ({
       url: `${BASE}/airdrops/${a.slug}`,
       lastModified: new Date(a.created_at || now),
@@ -58,8 +65,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.85,
     })),
 
-    // Learn articles — medium priority
-    ...articles.map(slug => ({
+    // Learn articles — only valid ones
+    ...uniqueArticles.map(slug => ({
       url: `${BASE}/learn/${slug}`,
       lastModified: now,
       changeFrequency: 'monthly' as const,
