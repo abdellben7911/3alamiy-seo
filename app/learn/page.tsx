@@ -1,196 +1,282 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'Learn — Crypto Airdrop Guides 2026 | 3alamiy Web3',
-  description: 'Free crypto airdrop guides, strategies, and tutorials. Learn how to find, farm, and qualify for the best airdrops in 2026.',
+export const metadata: Metadata = {
+  title: 'Learn Crypto Airdrops 2026 — Free Guides & Strategies | 3alamiy Web3',
+  description: 'Learn everything about crypto airdrops in 2026. Step-by-step guides, farming strategies, blockchain tutorials, and the best airdrop opportunities. All free.',
+  keywords: 'learn crypto airdrops, airdrop guide 2026, how to farm airdrops, crypto airdrop strategy, free crypto guides',
   alternates: { canonical: 'https://seo.3alamiyweb3.online/learn' },
+  openGraph: {
+    title: 'Learn Crypto Airdrops 2026 — Free Guides & Strategies',
+    description: 'Everything you need to know about crypto airdrops in 2026. Free guides updated daily.',
+    url: 'https://seo.3alamiyweb3.online/learn',
+    siteName: '3alamiy Web3',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image', site: '@3alamiyweb3' },
 };
 
-const articles = [
-  { slug: 'best-crypto-airdrops-2026', title: 'Best Crypto Airdrops 2026', desc: 'The complete list of the best free crypto airdrops in 2026. Updated daily.', cat: 'Airdrops', date: 'May 15, 2026', readTime: '8 min', featured: true },
-  { slug: 'best-airdrop-farming-platforms-2026', title: 'Best Airdrop Farming Platforms 2026', desc: 'ZNS vs Galxe vs Layer3 vs 3alamiy — honest comparison of the top platforms.', cat: 'Comparison', date: 'May 10, 2026', readTime: '7 min', featured: true },
-  { slug: 'best-solana-airdrops-2026', title: 'Best Solana Airdrops 2026', desc: 'Top Solana ecosystem airdrops you can farm right now. Free guides included.', cat: 'Ecosystems', date: 'May 8, 2026', readTime: '6 min', featured: false },
-  { slug: 'discord-role-airdrops-guide-2026', title: 'Discord Role Airdrops 2026', desc: 'Plasma OG = $20K. Boundless = $10K+. How to grind roles for massive rewards.', cat: 'Strategy', date: 'May 5, 2026', readTime: '6 min', featured: false },
-  { slug: 'how-to-find-airdrops-before-everyone-else', title: 'Find Airdrops Before Everyone Else', desc: 'The exact system top hunters use to find airdrops early and maximize rewards.', cat: 'Strategy', date: 'May 3, 2026', readTime: '8 min', featured: true },
-  { slug: 'how-to-build-onchain-activity-that-actually-matters', title: 'Build Onchain Activity That Matters', desc: 'Quality over quantity — build a real wallet narrative that qualifies for airdrops.', cat: 'Onchain', date: 'Apr 28, 2026', readTime: '7 min', featured: false },
-  { slug: 'best-free-crypto-airdrops-2026', title: 'Best Free Crypto Airdrops 2026', desc: 'Discover the best airdrops with zero investment required. Start farming today.', cat: 'Airdrops', date: 'Apr 25, 2026', readTime: '5 min', featured: false },
-  { slug: 'how-to-avoid-crypto-airdrop-scams-2026', title: 'How to Avoid Airdrop Scams', desc: 'Stay safe while hunting for legitimate airdrops. Red flags and best practices.', cat: 'Beginners', date: 'Apr 20, 2026', readTime: '5 min', featured: false },
-  { slug: 'best-ethereum-airdrops-2026', title: 'Best Ethereum Airdrops 2026', desc: 'Top ETH ecosystem airdrops across L2s, DeFi, and restaking protocols.', cat: 'Ecosystems', date: 'Apr 18, 2026', readTime: '7 min', featured: false },
-  { slug: 'how-to-use-arbitrum-for-airdrops', title: 'How to Use Arbitrum for Airdrops', desc: 'The #1 chain for airdrop farming. Step-by-step guide for beginners.', cat: 'Beginners', date: 'Apr 15, 2026', readTime: '6 min', featured: false },
-  { slug: 'testnet-airdrop-guide-2026', title: 'Testnet Airdrop Guide 2026', desc: 'How to farm testnets for free and qualify for mainnet token launches.', cat: 'Strategy', date: 'Apr 10, 2026', readTime: '7 min', featured: false },
-  { slug: 'defi-airdrop-farming-guide-2026', title: 'DeFi Airdrop Farming Guide 2026', desc: 'Liquidity provision, lending, and swapping strategies for DeFi airdrops.', cat: 'DeFi', date: 'Apr 5, 2026', readTime: '8 min', featured: false },
-  { slug: 'how-to-farm-multiple-airdrops-at-once', title: 'Farm Multiple Airdrops at Once', desc: 'Manage 10+ airdrop campaigns simultaneously without missing any tasks.', cat: 'Strategy', date: 'Apr 1, 2026', readTime: '6 min', featured: false },
-  { slug: 'crypto-wallet-setup-for-airdrops', title: 'Crypto Wallet Setup for Airdrops', desc: 'The best wallet setup for airdrop farming — security and organization tips.', cat: 'Beginners', date: 'Mar 28, 2026', readTime: '5 min', featured: false },
-  { slug: 'nft-airdrop-guide-2026', title: 'NFT Airdrop Guide 2026', desc: 'How NFT holders get rewarded with token airdrops. Best NFT projects to hold.', cat: 'NFT', date: 'Mar 25, 2026', readTime: '6 min', featured: false },
-  { slug: 'layer2-airdrop-guide-2026', title: 'Layer 2 Airdrop Guide 2026', desc: 'Bridge, swap, and interact on L2s to qualify for upcoming token launches.', cat: 'Onchain', date: 'Mar 20, 2026', readTime: '7 min', featured: false },
-  { slug: 'how-to-use-galxe-for-airdrops', title: 'How to Use Galxe for Airdrops', desc: 'Complete Galxe quests to earn OATs, points, and qualify for token rewards.', cat: 'Platforms', date: 'Mar 15, 2026', readTime: '5 min', featured: false },
-  { slug: 'monad-airdrop-guide-2026', title: 'Monad Airdrop Guide 2026', desc: 'Everything you need to know about farming the Monad ecosystem early.', cat: 'Ecosystems', date: 'Mar 10, 2026', readTime: '6 min', featured: false },
+const featuredArticles = [
+  {
+    slug: 'best-crypto-airdrops-2026',
+    title: 'Best Crypto Airdrops 2026',
+    desc: 'The complete list of the best free crypto airdrops. Every airdrop verified with step-by-step guides.',
+    cat: 'Airdrops', catColor: '#f59e0b', time: '8 min read', badge: '🔥 Most Popular',
+  },
+  {
+    slug: 'best-crypto-airdrops-this-week',
+    title: 'Best Crypto Airdrops This Week',
+    desc: 'The highest-priority airdrops to farm this week. Updated every Monday.',
+    cat: 'Weekly', catColor: '#10b981', time: '5 min read', badge: '📅 Weekly Updated',
+  },
+  {
+    slug: 'discord-role-airdrops-guide-2026',
+    title: 'Discord Role Airdrops 2026',
+    desc: 'Plasma OG holders earned $20K. How to grind Discord roles the right way.',
+    cat: 'Strategy', catColor: '#818cf8', time: '9 min read', badge: '💰 High ROI',
+  },
 ];
 
-const catColors: Record<string, string> = {
-  Airdrops: '#f59e0b',
-  Strategy: '#818cf8',
-  Onchain: '#34d399',
-  Comparison: '#f43f5e',
-  Beginners: '#60a5fa',
-  Ecosystems: '#c084fc',
-  DeFi: '#10b981',
-  NFT: '#fb923c',
-  Platforms: '#06b6d4',
+const allArticles = [
+  // Static folder pages
+  { slug: 'best-crypto-airdrops-2026', title: 'Best Crypto Airdrops 2026', desc: 'Complete verified list with step-by-step guides. Updated daily.', cat: 'Airdrops', catColor: '#f59e0b', time: '8 min' },
+  { slug: 'best-crypto-airdrops-this-week', title: 'Best Crypto Airdrops This Week', desc: 'Top picks ranked by reward potential and farming urgency.', cat: 'Weekly', catColor: '#10b981', time: '5 min' },
+  { slug: 'best-solana-airdrops-2026', title: 'Best Solana Airdrops 2026', desc: 'The top Solana ecosystem airdrops with full participation guides.', cat: 'Ecosystems', catColor: '#9945FF', time: '7 min' },
+  { slug: 'best-airdrop-farming-platforms-2026', title: 'Best Airdrop Farming Platforms 2026', desc: 'ZNS vs Galxe vs Layer3 vs 3alamiy Web3 — honest comparison.', cat: 'Comparison', catColor: '#f43f5e', time: '6 min' },
+  { slug: 'free-crypto-airdrops-no-investment-2026', title: 'Free Crypto Airdrops — No Investment', desc: 'The best airdrops you can farm with zero money. Just your time.', cat: 'Beginners', catColor: '#60a5fa', time: '6 min' },
+  { slug: 'how-to-get-crypto-airdrops-2026', title: 'How to Get Crypto Airdrops 2026', desc: 'Complete beginner guide to qualifying for crypto airdrops.', cat: 'Beginners', catColor: '#60a5fa', time: '7 min' },
+  { slug: 'what-are-crypto-airdrops', title: 'What Are Crypto Airdrops?', desc: 'Everything you need to know about airdrops explained simply.', cat: 'Beginners', catColor: '#60a5fa', time: '5 min' },
+  // Dynamic [slug] articles
+  { slug: 'discord-role-airdrops-guide-2026', title: 'Discord Role Airdrops 2026', desc: 'Plasma OG = $20K. How to grind Discord roles the right way.', cat: 'Strategy', catColor: '#818cf8', time: '9 min' },
+  { slug: 'how-to-find-airdrops-before-everyone-else', title: 'Find Airdrops Before Everyone Else', desc: 'The exact system top hunters use to find airdrops early.', cat: 'Strategy', catColor: '#818cf8', time: '8 min' },
+  { slug: 'how-to-avoid-crypto-airdrop-scams-2026', title: 'How to Avoid Airdrop Scams 2026', desc: 'Stay safe while farming. Red flags and protection strategies.', cat: 'Security', catColor: '#f43f5e', time: '6 min' },
+  { slug: 'how-to-build-onchain-activity-that-actually-matters', title: 'Build Onchain Activity That Matters', desc: 'Quality over quantity. What actually gets you airdrop allocations.', cat: 'Onchain', catColor: '#34d399', time: '7 min' },
+  { slug: 'best-ai-crypto-airdrops-2026', title: 'Best AI Crypto Airdrops 2026', desc: 'Top AI projects backed by major VCs with confirmed reward campaigns.', cat: 'AI', catColor: '#c084fc', time: '10 min' },
+  { slug: 'best-depin-airdrops-2026', title: 'Best DePIN Airdrops 2026', desc: 'Earn crypto passively by sharing your bandwidth and device resources.', cat: 'DePIN', catColor: '#06b6d4', time: '9 min' },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://seo.3alamiyweb3.online/learn' },
+  ],
 };
 
 export default function LearnPage() {
-  const featured = articles.filter(a => a.featured);
-  const rest = articles.filter(a => !a.featured);
-
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+
       <style>{`
-        * { box-sizing: border-box; }
-        .learn-page { min-height: 100vh; background: #060910; color: #fff; font-family: system-ui, -apple-system, sans-serif; }
-
-        /* Hero */
-        .learn-hero { padding: 64px 24px 48px; border-bottom: 1px solid #1a1f2e; position: relative; overflow: hidden; }
-        .learn-hero-glow { position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 700px; height: 500px; background: radial-gradient(ellipse, rgba(99,102,241,0.08) 0%, transparent 65%); pointer-events: none; }
-
-        /* Featured */
-        .featured-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 16px; margin-bottom: 16px; }
-        .featured-card-main { background: #0d1117; border: 1px solid #1a1f2e; border-radius: 20px; padding: 32px; text-decoration: none; color: #fff; display: flex; flex-direction: column; justify-content: flex-end; min-height: 260px; position: relative; overflow: hidden; transition: all 0.25s; }
-        .featured-card-main::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(99,102,241,0.06) 0%, transparent 60%); pointer-events: none; }
-        .featured-card-main:hover { border-color: rgba(99,102,241,0.35); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
-        .featured-side { display: flex; flex-direction: column; gap: 16px; }
-        .featured-card-side { background: #0d1117; border: 1px solid #1a1f2e; border-radius: 20px; padding: 24px; text-decoration: none; color: #fff; display: flex; flex-direction: column; gap: 10px; flex: 1; position: relative; overflow: hidden; transition: all 0.25s; }
-        .featured-card-side:hover { border-color: rgba(99,102,241,0.35); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
-
-        /* Regular grid */
-        .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-        .article-card { background: #0d1117; border: 1px solid #1a1f2e; border-radius: 16px; padding: 22px; text-decoration: none; color: #fff; display: flex; flex-direction: column; gap: 10px; transition: all 0.2s; }
-        .article-card:hover { border-color: rgba(99,102,241,0.25); background: #0f1420; transform: translateY(-1px); }
-
-        /* Arrow icon */
-        .arrow { width: 32px; height: 32px; border: 1px solid #1a1f2e; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #3f3f46; transition: all 0.2s; flex-shrink: 0; }
-        .featured-card-main:hover .arrow,
-        .featured-card-side:hover .arrow,
-        .article-card:hover .arrow { border-color: rgba(99,102,241,0.3); color: #818cf8; }
-
-        /* Cat badge */
-        .cat-badge { display: inline-flex; padding: 3px 10px; border-radius: 99px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; width: fit-content; }
-
-        /* Number */
-        .article-num { font-size: 11px; font-weight: 800; color: #1a1f2e; font-variant-numeric: tabular-nums; }
-
-        @media (max-width: 1024px) {
-          .featured-grid { grid-template-columns: 1fr; }
-          .featured-side { flex-direction: row; }
-          .articles-grid { grid-template-columns: repeat(2, 1fr); }
+        .lp * { box-sizing: border-box; }
+        .lp {
+          min-height: 100vh;
+          background: #080C14;
+          font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
+          color: #D8DAE5;
         }
-        @media (max-width: 640px) {
-          .learn-hero { padding: 40px 16px 32px; }
-          .featured-side { flex-direction: column; }
-          .articles-grid { grid-template-columns: 1fr; }
+        .lp-hero {
+          position: relative; overflow: hidden;
+          padding: 56px 28px 48px;
+          border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .lp-hero-glow {
+          position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+          width: 700px; height: 400px; pointer-events: none;
+          background: radial-gradient(ellipse, rgba(99,102,241,0.07) 0%, transparent 65%);
+        }
+        .lp-inner { max-width: 1200px; margin: 0 auto; position: relative; }
+        .lp-bc {
+          display: flex; align-items: center; gap: 6px;
+          font-size: 12px; color: rgba(255,255,255,0.3);
+          margin-bottom: 24px; font-weight: 500;
+        }
+        .lp-bc a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.15s; }
+        .lp-bc a:hover { color: rgba(255,255,255,0.7); }
+        .lp-bc-cur { color: #7CF5C0; }
+        .lp-eyebrow { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.25); margin: 0 0 10px; }
+        .lp-h1 { font-weight: 700; font-size: 38px; letter-spacing: -0.03em; color: #fff; line-height: 1.1; margin: 0 0 14px; }
+        .lp-h1 em { font-style: normal; color: #7CF5C0; }
+        .lp-sub { font-size: 15px; color: rgba(255,255,255,0.38); line-height: 1.75; margin: 0 0 32px; max-width: 520px; font-weight: 400; }
+        .lp-stats { display: flex; gap: 28px; flex-wrap: wrap; }
+        .lp-stat-val { font-weight: 700; font-size: 20px; letter-spacing: -0.02em; color: #7CF5C0; line-height: 1; margin-bottom: 3px; }
+        .lp-stat-lbl { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.25); }
+
+        .lp-body { max-width: 1200px; margin: 0 auto; padding: 40px 28px 80px; }
+
+        .lp-sec-hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
+        .lp-sec-title { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; color: #fff; }
+        .lp-sec-sub { font-size: 12px; color: rgba(255,255,255,0.28); margin-top: 2px; }
+
+        .lp-featured { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 48px; }
+        .lp-feat {
+          background: #0D1221; border: 1px solid rgba(255,255,255,0.07);
+          border-radius: 16px; padding: 22px; text-decoration: none; color: #fff;
+          display: flex; flex-direction: column; gap: 10px;
+          transition: border-color 0.15s, transform 0.15s; position: relative; overflow: hidden;
+        }
+        .lp-feat::before {
+          content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(124,245,192,0) 50%, transparent);
+          transition: background 0.3s;
+        }
+        .lp-feat:hover { border-color: rgba(124,245,192,0.15); transform: translateY(-2px); }
+        .lp-feat:hover::before { background: linear-gradient(90deg, transparent, rgba(124,245,192,0.25) 50%, transparent); }
+        .lp-feat-badge { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); padding: 3px 10px; border-radius: 99px; width: fit-content; }
+        .lp-feat-cat { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
+        .lp-feat-title { font-weight: 700; font-size: 16px; letter-spacing: -0.015em; color: #fff; margin: 0; line-height: 1.35; }
+        .lp-feat-desc { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.65; margin: 0; }
+        .lp-feat-foot { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: auto; }
+        .lp-feat-time { font-size: 11px; color: rgba(255,255,255,0.25); font-weight: 500; }
+        .lp-feat-arrow { font-size: 12px; color: #7CF5C0; font-weight: 600; }
+
+        .lp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .lp-card {
+          background: #0D1221; border: 1px solid rgba(255,255,255,0.06);
+          border-radius: 14px; padding: 18px; text-decoration: none; color: #fff;
+          display: flex; flex-direction: column; gap: 8px;
+          transition: border-color 0.15s, background 0.15s;
+        }
+        .lp-card:hover { border-color: rgba(124,245,192,0.13); background: rgba(124,245,192,0.01); }
+        .lp-card-cat { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+        .lp-card-title { font-weight: 600; font-size: 14px; letter-spacing: -0.01em; color: #fff; margin: 0; line-height: 1.4; }
+        .lp-card-desc { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.6; margin: 0; }
+        .lp-card-foot { display: flex; align-items: center; justify-content: space-between; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.04); margin-top: auto; }
+        .lp-card-time { font-size: 10px; color: rgba(255,255,255,0.22); font-weight: 500; }
+        .lp-card-arr { font-size: 11px; color: rgba(255,255,255,0.3); transition: color 0.15s; }
+        .lp-card:hover .lp-card-arr { color: #7CF5C0; }
+
+        .lp-cta {
+          background: linear-gradient(135deg, #0B1C15, #0C1728);
+          border: 1px solid rgba(124,245,192,0.13); border-radius: 20px;
+          padding: 44px 32px; text-align: center; margin-top: 48px;
+          position: relative; overflow: hidden;
+        }
+        .lp-cta::before {
+          content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+          width: 400px; height: 280px; pointer-events: none;
+          background: radial-gradient(ellipse, rgba(124,245,192,0.05) 0%, transparent 65%);
+        }
+        .lp-cta-title { font-weight: 700; font-size: 24px; letter-spacing: -0.025em; color: #fff; margin: 0 0 10px; position: relative; }
+        .lp-cta-sub { font-size: 14px; color: rgba(255,255,255,0.35); line-height: 1.7; margin: 0 auto 24px; max-width: 400px; position: relative; }
+        .lp-cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; position: relative; }
+        .btn-lp-p {
+          display: inline-flex; align-items: center; gap: 7px;
+          background: #7CF5C0; color: #04120A;
+          font-family: var(--font-space), system-ui, sans-serif;
+          font-weight: 600; font-size: 14px; letter-spacing: -0.01em;
+          padding: 12px 24px; border-radius: 12px; text-decoration: none;
+          transition: opacity 0.15s, transform 0.15s;
+        }
+        .btn-lp-p:hover { opacity: 0.88; transform: translateY(-1px); }
+        .btn-lp-s {
+          display: inline-flex; align-items: center; gap: 7px;
+          background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.5);
+          font-family: var(--font-space), system-ui, sans-serif;
+          font-weight: 600; font-size: 14px;
+          padding: 12px 22px; border-radius: 12px; text-decoration: none;
+          border: 1px solid rgba(255,255,255,0.09); transition: background 0.15s;
+        }
+        .btn-lp-s:hover { background: rgba(255,255,255,0.07); }
+
+        @media (max-width: 768px) {
+          .lp-hero { padding: 40px 16px 36px; }
+          .lp-h1 { font-size: 28px; }
+          .lp-body { padding: 28px 16px 60px; }
+          .lp-featured { grid-template-columns: 1fr; }
+          .lp-grid { grid-template-columns: 1fr 1fr; }
+          .lp-cta { padding: 32px 20px; }
+          .lp-cta-title { font-size: 20px; }
+        }
+        @media (max-width: 480px) {
+          .lp-grid { grid-template-columns: 1fr; }
         }
       `}</style>
 
-      <div className="learn-page">
+      <div className="lp">
 
         {/* Hero */}
-        <section className="learn-hero">
-          <div className="learn-hero-glow" />
-          <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-              <div>
-                <p style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#52525b', margin: '0 0 12px' }}>Knowledge Base</p>
-                <h1 style={{ fontSize: '40px', fontWeight: 900, margin: '0 0 12px', letterSpacing: '-0.03em', lineHeight: 1.05, color: '#fff' }}>
-                  Guides & Strategies
-                </h1>
-                <p style={{ fontSize: '15px', color: '#71717a', margin: 0, maxWidth: '460px', lineHeight: 1.7 }}>
-                  Everything you need to find, farm, and qualify for the best crypto airdrops in 2026.
-                </p>
-              </div>
-              <div style={{ display: 'flex', gap: '32px' }}>
-                {[
-                  [String(articles.length), 'Articles'],
-                  ['Free', 'Always'],
-                  ['Daily', 'Updated'],
-                ].map(([val, lbl]) => (
-                  <div key={lbl} style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '22px', fontWeight: 900, color: '#fff', letterSpacing: '-0.02em' }}>{val}</div>
-                    <div style={{ fontSize: '10px', color: '#3f3f46', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{lbl}</div>
-                  </div>
-                ))}
-              </div>
+        <div className="lp-hero">
+          <div className="lp-hero-glow" />
+          <div className="lp-inner">
+            <nav className="lp-bc">
+              <Link href="/">Home</Link>
+              <span>›</span>
+              <span className="lp-bc-cur">Learn</span>
+            </nav>
+            <p className="lp-eyebrow">Free Guides</p>
+            <h1 className="lp-h1">Learn Crypto <em>Airdrops</em></h1>
+            <p className="lp-sub">
+              Everything you need to qualify for the best crypto airdrops in 2026. Step-by-step guides, farming strategies, and weekly picks — all free.
+            </p>
+            <div className="lp-stats">
+              <div><div className="lp-stat-val">{allArticles.length}+</div><div className="lp-stat-lbl">Free Guides</div></div>
+              <div><div className="lp-stat-val">Weekly</div><div className="lp-stat-lbl">Updated</div></div>
+              <div><div className="lp-stat-val">86+</div><div className="lp-stat-lbl">Airdrops Tracked</div></div>
             </div>
           </div>
-        </section>
+        </div>
 
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 24px 80px' }}>
+        {/* Body */}
+        <div className="lp-body">
 
-          {/* Featured section */}
-          <div style={{ marginBottom: '48px' }}>
-            <p style={{ fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#3f3f46', margin: '0 0 16px' }}>Featured</p>
-            <div className="featured-grid">
-              {/* Main featured */}
-              <Link href={`/learn/${featured[0].slug}`} className="featured-card-main">
-                <div style={{ position: 'absolute', top: '24px', right: '24px' }}>
-                  <span className="cat-badge" style={{ background: `${catColors[featured[0].cat]}15`, color: catColors[featured[0].cat], border: `1px solid ${catColors[featured[0].cat]}25` }}>{featured[0].cat}</span>
-                </div>
+          {/* Featured */}
+          <div className="lp-sec-hdr">
+            <div>
+              <div className="lp-sec-title">Featured Articles</div>
+              <div className="lp-sec-sub">Most read guides this month</div>
+            </div>
+          </div>
+          <div className="lp-featured">
+            {featuredArticles.map(a => (
+              <Link key={a.slug} href={`/learn/${a.slug}`} className="lp-feat">
+                <span className="lp-feat-badge">{a.badge}</span>
                 <div>
-                  <h2 style={{ fontSize: '22px', fontWeight: 900, margin: '0 0 10px', letterSpacing: '-0.02em', lineHeight: 1.2, color: '#fff' }}>{featured[0].title}</h2>
-                  <p style={{ fontSize: '14px', color: '#71717a', margin: '0 0 20px', lineHeight: 1.6 }}>{featured[0].desc}</p>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div style={{ display: 'flex', gap: '16px' }}>
-                      <span style={{ fontSize: '11px', color: '#3f3f46' }}>{featured[0].date}</span>
-                      <span style={{ fontSize: '11px', color: '#3f3f46' }}>{featured[0].readTime} read</span>
-                    </div>
-                    <div className="arrow">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </div>
-                  </div>
+                  <div className="lp-feat-cat" style={{ color: a.catColor }}>{a.cat}</div>
+                  <h2 className="lp-feat-title">{a.title}</h2>
+                </div>
+                <p className="lp-feat-desc">{a.desc}</p>
+                <div className="lp-feat-foot">
+                  <span className="lp-feat-time">{a.time}</span>
+                  <span className="lp-feat-arrow">Read →</span>
                 </div>
               </Link>
-
-              {/* Side featured */}
-              <div className="featured-side">
-                {featured.slice(1).map((a) => (
-                  <Link key={a.slug} href={`/learn/${a.slug}`} className="featured-card-side">
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
-                      <span className="cat-badge" style={{ background: `${catColors[a.cat]}15`, color: catColors[a.cat], border: `1px solid ${catColors[a.cat]}25` }}>{a.cat}</span>
-                      <div className="arrow">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                      </div>
-                    </div>
-                    <h2 style={{ fontSize: '15px', fontWeight: 800, margin: 0, lineHeight: 1.4, color: '#f4f4f5' }}>{a.title}</h2>
-                    <p style={{ fontSize: '13px', color: '#52525b', margin: 0, lineHeight: 1.5 }}>{a.desc}</p>
-                    <span style={{ fontSize: '11px', color: '#3f3f46', marginTop: 'auto' }}>{a.readTime} read · {a.date}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
 
-          {/* Divider */}
-          <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, #1a1f2e 20%, #1a1f2e 80%, transparent)', marginBottom: '40px' }} />
-
           {/* All articles */}
-          <div>
-            <p style={{ fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.12em', color: '#3f3f46', margin: '0 0 16px' }}>All Articles — {articles.length} guides</p>
-            <div className="articles-grid">
-              {rest.map((a, i) => (
-                <Link key={a.slug} href={`/learn/${a.slug}`} className="article-card">
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span className="cat-badge" style={{ background: `${catColors[a.cat]}12`, color: catColors[a.cat], border: `1px solid ${catColors[a.cat]}20` }}>{a.cat}</span>
-                    <div className="arrow">
-                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </div>
-                  </div>
-                  <h2 style={{ fontSize: '14px', fontWeight: 800, color: '#f4f4f5', margin: 0, lineHeight: 1.4 }}>{a.title}</h2>
-                  <p style={{ fontSize: '12px', color: '#52525b', margin: 0, lineHeight: 1.6 }}>{a.desc}</p>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto', paddingTop: '10px', borderTop: '1px solid #1a1f2e' }}>
-                    <span style={{ fontSize: '11px', color: '#3f3f46' }}>{a.date}</span>
-                    <span style={{ fontSize: '11px', color: '#3f3f46' }}>{a.readTime} read</span>
-                  </div>
-                </Link>
-              ))}
+          <div className="lp-sec-hdr">
+            <div>
+              <div className="lp-sec-title">All Guides</div>
+              <div className="lp-sec-sub">{allArticles.length} articles covering airdrops, strategy, and Web3</div>
+            </div>
+          </div>
+          <div className="lp-grid">
+            {allArticles.map(a => (
+              <Link key={a.slug} href={`/learn/${a.slug}`} className="lp-card">
+                <div className="lp-card-cat" style={{ color: a.catColor }}>{a.cat}</div>
+                <h3 className="lp-card-title">{a.title}</h3>
+                <p className="lp-card-desc">{a.desc}</p>
+                <div className="lp-card-foot">
+                  <span className="lp-card-time">{a.time} read</span>
+                  <span className="lp-card-arr">→</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <div className="lp-cta">
+            <h2 className="lp-cta-title">Ready to Start Farming?</h2>
+            <p className="lp-cta-sub">Browse 86+ verified airdrops with step-by-step guides. Free, no paywall.</p>
+            <div className="lp-cta-btns">
+              <Link href="/airdrops" className="btn-lp-p">Browse Airdrops →</Link>
+              <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="btn-lp-s">
+                <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 13, height: 13 }}><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                Join Telegram
+              </a>
             </div>
           </div>
 
