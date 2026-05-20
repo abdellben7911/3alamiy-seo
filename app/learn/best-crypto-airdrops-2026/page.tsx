@@ -15,12 +15,12 @@ export const metadata = {
 };
 
 const topAirdrops = [
-  { name: 'Variational Testnet', chain: 'Arbitrum', cost: 'Free', reward: '$500–$5,000', status: 'Active', slug: 'variational-testnet', desc: '$11.8M raised, backed by Coinbase Ventures. Trade perpetuals on testnet.' },
-  { name: 'Integra Layer Testnet', chain: 'ETH L2', cost: 'Free', reward: '$200–$2,000', status: 'Active', slug: 'integra-layer-testnet-airdrop', desc: 'RWA-focused L2 with active testnet. Early users get priority allocation.' },
-  { name: 'Citrea', chain: 'Bitcoin L2', cost: 'Free', reward: '$300–$3,000', status: 'Active', slug: 'citrea-airdrop', desc: 'First ZK rollup on Bitcoin. Huge potential for early testers.' },
-  { name: 'Hyperliquid Season 2', chain: 'Hyperliquid', cost: 'Free', reward: '$1,000+', status: 'Active', slug: 'hyperliquid-season-2', desc: 'Season 1 paid up to $32,000. Season 2 is live — trade daily.' },
-  { name: 'Abstract', chain: 'Abstract Chain', cost: 'Free', reward: '$100–$1,000', status: 'Active', slug: 'abstract', desc: 'Consumer-focused L2 by Pudgy Penguins team. High hype, active community.' },
-  { name: 'MegaETH Points Season 1', chain: 'MegaETH', cost: 'Free', reward: '$500–$5,000', status: 'Active', slug: 'megaeth-points-season1', desc: 'Real-time EVM blockchain. Points = future airdrop allocation.' },
+  { name: 'DeepBook Early Waitlist', chain: 'Sui', cost: 'Free', reward: '$50–$500', status: 'Active', slug: 'deepbook-early-waitlist', desc: 'Liquidity infrastructure on Sui. Early waitlist positions for $DEEP ecosystem rewards.' },
+  { name: 'Beep AI Galxe Campaign', chain: 'Sui', cost: 'Free', reward: '$100–$1,000', status: 'Active', slug: 'beep-ai-galxe-campaign', desc: 'First Agentic AI on Sui. Confirmed reward campaign via Galxe quests.' },
+  { name: 'Datahive AI Points Program', chain: 'Solana', cost: 'Free', reward: '$200–$2,000', status: 'Active', slug: 'datahive-ai-points-program', desc: 'Earn points by contributing data to AI training. Browser extension, passive farming.' },
+  { name: 'Overlayer ORIGIN Phase 0', chain: 'Ethereum', cost: 'Free', reward: '$200–$2,000', status: 'Active', slug: 'overlayer-origin-phase0-testnet', desc: 'Phase 0 incentive campaign live before mainnet. Earn points through protocol activity.' },
+  { name: 'Canborsa Points Program', chain: 'Canton', cost: 'Free', reward: '$200–$2,000', status: 'Active', slug: 'canborsa-points-program', desc: 'First RWA perpetual DEX on Canton Network. $5M raised, early points program live.' },
+  { name: 'PROPR Points Program', chain: 'Hyperliquid', cost: 'Paid', reward: '$500–$5,000', status: 'Active', slug: 'propr-points-program', desc: '$5.5M raised, backed by SwissBorg. 45.5% token supply for community rewards.' },
 ];
 
 const faqs = [
@@ -79,7 +79,7 @@ export default function BestCryptoAirdrops2026() {
         <div style={{ position: 'absolute', top: '-100px', left: '50%', transform: 'translateX(-50%)', width: '600px', height: '400px', background: 'radial-gradient(ellipse, rgba(99,102,241,0.1) 0%, transparent 65%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '800px', margin: '0 auto', position: 'relative' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
-            <Link href="/learn/how-to-find-airdrops-before-everyone-else" style={{ fontSize: '12px', color: '#52525b', textDecoration: 'none' }}>Learn</Link>
+            <Link href="/learn" style={{ fontSize: '12px', color: '#52525b', textDecoration: 'none' }}>Learn</Link>
             <span style={{ color: '#3f3f46', fontSize: '12px' }}>›</span>
             <span style={{ fontSize: '12px', color: '#818cf8', fontWeight: 700 }}>Airdrops</span>
           </div>
@@ -95,7 +95,7 @@ export default function BestCryptoAirdrops2026() {
             The complete, up-to-date list of the best free crypto airdrops in 2026. Every airdrop verified, with step-by-step guides to maximize your rewards.
           </p>
           <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
-            {[['71+', 'Verified Airdrops'], ['Free', 'No Investment'], ['Daily', 'Updated']].map(([val, lbl]) => (
+            {[['86+', 'Verified Airdrops'], ['Free', 'No Investment'], ['Daily', 'Updated']].map(([val, lbl]) => (
               <div key={lbl}>
                 <div style={{ fontSize: '20px', fontWeight: 900, color: '#818cf8' }}>{val}</div>
                 <div style={{ fontSize: '11px', color: '#52525b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{lbl}</div>
@@ -145,7 +145,7 @@ export default function BestCryptoAirdrops2026() {
 
         <div style={{ textAlign: 'center', marginTop: '24px' }}>
           <Link href="/airdrops" style={{ background: 'linear-gradient(135deg, #6366f1, #4f46e5)', color: '#fff', padding: '13px 28px', borderRadius: '12px', textDecoration: 'none', fontWeight: 700, fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 8px 24px rgba(99,102,241,0.3)' }}>
-            View All 71+ Airdrops →
+            View All 86+ Airdrops →
           </Link>
         </div>
 
@@ -211,7 +211,7 @@ export default function BestCryptoAirdrops2026() {
           The best time to start farming airdrops was 6 months ago. The second best time is today. Every day you wait is a day of on-chain history you're not building.
         </p>
         <p>
-          3alamiy Web3 tracks 71+ verified airdrops with step-by-step guides — all free, all updated daily. No paid subscriptions, no hidden costs.
+          3alamiy Web3 tracks 86+ verified airdrops with step-by-step guides — all free, all updated daily. No paid subscriptions, no hidden costs.
         </p>
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '24px' }}>
           <Link href="/airdrops" style={{ background: 'linear-gradient(135deg, #6366f1, #4f46e5)', color: '#fff', padding: '13px 26px', borderRadius: '12px', textDecoration: 'none', fontWeight: 700, fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 8px 24px rgba(99,102,241,0.3)' }}>
@@ -234,7 +234,7 @@ export default function BestCryptoAirdrops2026() {
           "description": "The complete list of the best free crypto airdrops in 2026. Step-by-step guides for Arbitrum, Solana, Base, Monad and more.",
           "url": "https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-2026",
           "datePublished": "2026-05-15",
-          "dateModified": "2026-05-15",
+          "dateModified": "2026-05-20",
           "publisher": {
             "@type": "Organization",
             "name": "3alamiy Web3",
