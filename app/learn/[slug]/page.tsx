@@ -895,8 +895,19 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   };
   const cat = categoryColors[a.category] || categoryColors.Airdrops;
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
+      { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://seo.3alamiyweb3.online/learn' },
+      { '@type': 'ListItem', position: 3, name: a.title, item: `https://seo.3alamiyweb3.online/learn/${slug}` },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <style>{`
         html, body { overflow-x: hidden; }
         .art-root {
@@ -993,8 +1004,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
       <div className="art-root">
         <main className="art-main">
-          <a href="https://seo.3alamiyweb3.online" className="art-back">
-            ← Back to Airdrops
+          <nav style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: 'rgba(255,255,255,0.3)', marginBottom: '20px', flexWrap: 'wrap' }}>
+            <a href="https://seo.3alamiyweb3.online" style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>Home</a>
+            <span>›</span>
+            <a href="https://seo.3alamiyweb3.online/learn" style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>Learn</a>
+            <span>›</span>
+            <span style={{ color: '#7CF5C0' }}>{a.category}</span>
+          </nav>
+
+          <a href="https://seo.3alamiyweb3.online/learn" className="art-back">
+            ← Back to Learn
           </a>
 
           <div className="art-meta">
