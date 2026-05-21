@@ -50,29 +50,6 @@ export const metadata: Metadata = {
   },
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    { '@type': 'Question', name: 'What are the best Solana airdrops in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'The best Solana airdrops in 2026 include Backpack Exchange (confirmed TGE), Jupiter Season 2, Meteora Season 2, BULK Trade, JTX Trade (Jito ecosystem), and Datahive AI. All have active points programs and confirmed token plans.' } },
-    { '@type': 'Question', name: 'How do I qualify for Solana airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'To qualify for Solana airdrops: set up a Phantom or Backpack wallet, hold SOL, interact with DeFi protocols (swap, stake, provide liquidity), join Discord communities, and stay active daily. Use 3alamiy Web3 for step-by-step guides.' } },
-    { '@type': 'Question', name: 'Is it too late to farm Solana airdrops in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'No. Many top Solana projects like Backpack, Meteora Season 2, and JTX Trade are still in early points programs. The window is open but closing fast — start today.' } },
-    { '@type': 'Question', name: 'What wallet do I need for Solana airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'Phantom Wallet is the most widely supported for Solana airdrops. Backpack Wallet is also excellent and gives additional points for Backpack Exchange airdrops.' } },
-    { '@type': 'Question', name: 'How much can I earn from Solana airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'Based on historical data, moderate Solana airdrop farmers earned $500–$5,000 from Jupiter Season 1. Top farmers earned $10,000+. Backpack and Meteora Season 2 have similar potential.' } },
-  ],
-};
-
-const articleSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'Best Solana Airdrops 2026 — Free Step-by-Step Guides',
-  description: 'The top Solana airdrops to farm in 2026 with step-by-step participation guides.',
-  author: { '@type': 'Organization', name: '3alamiy Web3' },
-  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
-  datePublished: '2026-05-14',
-  dateModified: '2026-05-20',
-};
-
 const solanaAirdrops = [
   {
     name: 'BULK Trade Testnet',
@@ -118,8 +95,6 @@ export default function BestSolanaAirdrops2026() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
 
       <div style={{ minHeight: '100vh', background: '#060910', fontFamily: 'system-ui, -apple-system, sans-serif', color: '#fff' }}>
         <main style={{ maxWidth: '860px', margin: '0 auto', padding: '48px 24px 80px' }}>

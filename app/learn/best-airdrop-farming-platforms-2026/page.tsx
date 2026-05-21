@@ -51,44 +51,6 @@ export const metadata: Metadata = {
   },
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'What is the best airdrop farming platform in 2026?',
-      acceptedAnswer: { '@type': 'Answer', text: '3alamiy Web3 is the best free airdrop farming platform for beginners in 2026. It offers 60+ verified airdrop guides, a GM Station for daily on-chain activity, and step-by-step guides for every airdrop — all completely free.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'Is ZNS Connect free to use?',
-      acceptedAnswer: { '@type': 'Answer', text: 'ZNS Connect is partially free — the GM Station and airdrop tracker are free, but domain registration costs $8+. 3alamiy Web3 is 100% free with no paid features.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'What is the difference between Galxe and 3alamiy Web3?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Galxe focuses on quest completion for specific partner projects. 3alamiy Web3 is an independent airdrop tracker with step-by-step guides for any project, not just paid partners. 3alamiy Web3 also includes a GM Station for daily on-chain activity.' },
-    },
-    {
-      '@type': 'Question',
-      name: 'How do I farm airdrops in 2026?',
-      acceptedAnswer: { '@type': 'Answer', text: 'To farm airdrops in 2026: 1) Say GM daily on-chain using a GM Station tool, 2) Follow step-by-step guides for each airdrop, 3) Build consistent on-chain activity, 4) Track multiple airdrops at once using a free tracker like 3alamiy Web3.' },
-    },
-  ],
-};
-
-const articleSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'Best Airdrop Farming Platforms 2026 — ZNS vs Galxe vs Layer3 vs 3alamiy Web3',
-  description: 'Compare the best crypto airdrop farming platforms of 2026.',
-  author: { '@type': 'Organization', name: '3alamiy Web3' },
-  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
-  datePublished: '2026-05-11',
-  dateModified: '2026-05-20',
-};
-
 const platforms = [
   {
     name: '3alamiy Web3',
@@ -178,8 +140,6 @@ export default function ComparisonPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
 
       <div style={{ minHeight: '100vh', background: '#060910', fontFamily: 'system-ui, -apple-system, sans-serif', color: '#fff' }}>
         <main style={{ maxWidth: '860px', margin: '0 auto', padding: '48px 24px 80px' }}>
