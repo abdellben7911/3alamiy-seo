@@ -905,9 +905,55 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     ],
   };
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: a.title,
+    description: a.excerpt,
+    url: `https://seo.3alamiyweb3.online/learn/${slug}`,
+    datePublished: a.date ? new Date(a.date).toISOString().split('T')[0] : '2026-05-01',
+    dateModified: '2026-05-21',
+    author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
+    publisher: {
+      '@type': 'Organization',
+      name: '3alamiy Web3',
+      url: 'https://seo.3alamiyweb3.online',
+      logo: { '@type': 'ImageObject', url: 'https://seo.3alamiyweb3.online/icon.svg' },
+    },
+    image: a.image ? { '@type': 'ImageObject', url: a.image, width: 1200, height: 630 } : undefined,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://seo.3alamiyweb3.online/learn/${slug}` },
+    about: [{ '@type': 'Thing', name: 'Crypto Airdrops' }, { '@type': 'Thing', name: a.category }],
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', '.art-excerpt'] },
+  };
+
+  // Generate FAQ from article content (first 3 section headings become Q&A)
+  const contentLines = a.content?.split('\n\n') || [];
+  const headings = contentLines.filter((p: string) => p.match(/^[A-Z].{10,}:$/)).slice(0, 3);
+  const faqSchema = headings.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: `What is ${a.title.replace(/ 2026.*/, '')}?`,
+        acceptedAnswer: { '@type': 'Answer', text: a.excerpt },
+      },
+      ...headings.map((h: string, i: number) => ({
+        '@type': 'Question',
+        name: h.replace(/:$/, '').trim() + '?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: (contentLines[contentLines.indexOf(h) + 1] || a.excerpt).slice(0, 300),
+        },
+      })),
+    ],
+  } : null;
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
       <style>{`
         html, body { overflow-x: hidden; }
         .art-root {
