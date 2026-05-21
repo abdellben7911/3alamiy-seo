@@ -32,6 +32,8 @@ export default async function AirdropsPage() {
   const activeCount = airdrops.filter((a: any) => a.status === 'Active').length;
   const freeCount = airdrops.filter((a: any) => a.cost === 'Free').length;
 
+  const featuredAirdrops = airdrops.filter((a: any) => a.featured === true);
+
   const featuredChains = ['Ethereum', 'Solana', 'Arbitrum', 'Base', 'ZKSync', 'Monad'];
 
   return (
@@ -269,6 +271,44 @@ export default async function AirdropsPage() {
           .al-stat { text-align: left; }
           .al-h1 { font-size: 26px; }
         }
+
+        /* ── Featured ── */
+        .al-feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 32px; }
+        .al-feat-card {
+          background: linear-gradient(135deg,#0D1A14,#0C1628);
+          border: 1px solid rgba(124,245,192,0.2); border-radius: 16px;
+          padding: 20px; text-decoration: none; color: #fff;
+          display: flex; flex-direction: column; gap: 10px;
+          position: relative; overflow: hidden;
+          transition: border-color 0.15s, transform 0.15s;
+        }
+        .al-feat-card:hover { border-color: rgba(124,245,192,0.4); transform: translateY(-2px); }
+        .al-feat-card::before {
+          content:''; position:absolute; top:0; left:0; right:0; height:1px;
+          background: linear-gradient(90deg,transparent,rgba(124,245,192,0.4) 50%,transparent);
+        }
+        .al-feat-lbl {
+          position:absolute; top:12px; right:12px;
+          background:rgba(124,245,192,0.1); border:1px solid rgba(124,245,192,0.2);
+          color:#7CF5C0; font-size:9px; font-weight:700; letter-spacing:0.06em;
+          text-transform:uppercase; padding:3px 9px; border-radius:99px;
+        }
+        .al-feat-id { display:flex; align-items:center; gap:12px; padding-right:80px; }
+        .al-feat-logo { width:42px; height:42px; border-radius:12px; object-fit:cover; border:1px solid rgba(255,255,255,0.1); flex-shrink:0; }
+        .al-feat-logo-fb { width:42px; height:42px; border-radius:12px; flex-shrink:0; background:linear-gradient(135deg,#111827,#1a2540); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; color:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.07); }
+        .al-feat-name { font-weight:600; font-size:14px; letter-spacing:-0.01em; color:#fff; margin-bottom:2px; }
+        .al-feat-chain { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.07em; color:rgba(255,255,255,0.3); }
+        .al-feat-desc { font-size:12px; color:rgba(255,255,255,0.35); line-height:1.65; margin:0; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+        .al-feat-pills { display:flex; gap:6px; flex-wrap:wrap; }
+        .al-feat-pill { font-size:10px; font-weight:600; padding:3px 10px; border-radius:99px; }
+        .al-feat-foot { display:flex; align-items:center; justify-content:space-between; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06); margin-top:auto; }
+        .al-feat-cta { font-size:12px; font-weight:600; color:#7CF5C0; display:flex; align-items:center; gap:4px; }
+        .al-feat-time { font-size:10px; color:rgba(255,255,255,0.25); font-weight:500; }
+        .al-feat-hdr { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px; }
+        .al-feat-hdr-title { font-weight:700; font-size:17px; letter-spacing:-0.02em; color:#fff; display:flex; align-items:center; gap:8px; }
+        .al-feat-hdr-sub { font-size:11px; color:rgba(255,255,255,0.28); margin-top:2px; }
+        .al-feat-hdr-btn { font-size:11px; color:#7CF5C0; font-weight:600; text-decoration:none; background:rgba(124,245,192,0.07); border:1px solid rgba(124,245,192,0.18); padding:6px 13px; border-radius:8px; white-space:nowrap; }
+        @media(max-width:768px){ .al-feat-grid { grid-template-columns:1fr; } }
       `}</style>
 
       <div className="al">
@@ -318,6 +358,56 @@ export default async function AirdropsPage() {
 
           </div>
         </section>
+
+        {/* ── Featured Airdrops ── */}
+        {featuredAirdrops.length > 0 && (
+          <div className="al-main" style={{ paddingBottom: 0 }}>
+            <div className="al-feat-hdr">
+              <div>
+                <div className="al-feat-hdr-title">
+                  <span style={{ width:'7px', height:'7px', borderRadius:'50%', background:'#7CF5C0', boxShadow:'0 0 8px rgba(124,245,192,0.6)', display:'inline-block' }} />
+                  ⭐ Featured Airdrops
+                </div>
+                <div className="al-feat-hdr-sub">Hand-picked high-potential opportunities</div>
+              </div>
+              <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="al-feat-hdr-btn">+ List Your Project</a>
+            </div>
+            <div className="al-feat-grid">
+              {featuredAirdrops.map((a: any) => {
+                const steps = Array.isArray(a.guide_steps) ? a.guide_steps : [];
+                const reward = a.reward_min && a.reward_max ? `$${a.reward_min}–$${a.reward_max}` : a.reward_min ? `$${a.reward_min}+` : 'TBA';
+                return (
+                  <Link key={a.slug} href={`/airdrops/${a.slug}`} className="al-feat-card">
+                    <span className="al-feat-lbl">{a.featured_label || '⭐ Featured'}</span>
+                    <div className="al-feat-id">
+                      {a.logo
+                        ? <img src={a.logo} alt={a.name} className="al-feat-logo" width={42} height={42} />
+                        : <div className="al-feat-logo-fb">{a.name?.[0]}</div>
+                      }
+                      <div>
+                        <div className="al-feat-name">{a.name}</div>
+                        <div className="al-feat-chain">{a.blockchain}</div>
+                      </div>
+                    </div>
+                    <p className="al-feat-desc">{a.description}</p>
+                    <div className="al-feat-pills">
+                      <span className="al-feat-pill" style={{ color: diffColor(a.difficulty), background: `${diffColor(a.difficulty)}12`, border: `1px solid ${diffColor(a.difficulty)}25` }}>{a.difficulty}</span>
+                      <span className="al-feat-pill" style={{ color: costColor(a.cost), background: `${costColor(a.cost)}12`, border: `1px solid ${costColor(a.cost)}25` }}>{a.cost}</span>
+                      <span className="al-feat-pill" style={{ color:'#7CF5C0', background:'rgba(124,245,192,0.08)', border:'1px solid rgba(124,245,192,0.18)' }}>{reward}</span>
+                    </div>
+                    <div className="al-feat-foot">
+                      <span className="al-feat-cta">
+                        Start Guide
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </span>
+                      <span className="al-feat-time">{steps.length} steps · {Math.max(15, steps.length * 3)} min</span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         {/* Cards */}
         <div className="al-main">
