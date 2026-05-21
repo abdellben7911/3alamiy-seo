@@ -65,8 +65,52 @@ export default async function Home() {
     .filter((a: any) => a.status === 'Active' && a.cost === 'Free' && a.difficulty === 'Easy')
     .slice(0, 3);
 
+  // AEO: Dataset schema — describes the entire airdrop database
+  const datasetSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Dataset',
+    name: 'Crypto Airdrops 2026 — Verified Database',
+    description: `A verified database of ${airdrops.length}+ active and historical crypto airdrops in 2026. Each entry includes blockchain, difficulty, cost, reward estimate, participation steps, and official links. Updated daily.`,
+    url: 'https://seo.3alamiyweb3.online/airdrops',
+    creator: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
+    dateModified: new Date().toISOString().split('T')[0],
+    keywords: ['crypto airdrops 2026', 'free airdrops', 'ethereum airdrop', 'solana airdrop', 'base airdrop', 'sui airdrop', 'hyperliquid airdrop', 'airdrop guide'],
+    variableMeasured: [
+      { '@type': 'PropertyValue', name: 'Total Airdrops', value: airdrops.length },
+      { '@type': 'PropertyValue', name: 'Active Airdrops', value: activeCount },
+      { '@type': 'PropertyValue', name: 'Free Airdrops', value: freeCount },
+      { '@type': 'PropertyValue', name: 'Blockchains Covered', value: 16 },
+      { '@type': 'PropertyValue', name: 'Update Frequency', value: 'Daily' },
+    ],
+    license: 'https://seo.3alamiyweb3.online/privacy',
+    isAccessibleForFree: true,
+  };
+
+  // AEO: ItemList of top active airdrops — AI engines cite this for "best airdrops" queries
+  const topAirdrops = airdrops
+    .filter((a: any) => a.status === 'Active')
+    .slice(0, 10);
+
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `Best Crypto Airdrops ${new Date().getFullYear()}`,
+    description: `The top verified crypto airdrops active right now. Updated daily by 3alamiy Web3.`,
+    url: 'https://seo.3alamiyweb3.online/airdrops',
+    numberOfItems: topAirdrops.length,
+    itemListElement: topAirdrops.map((a: any, i: number) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: `${a.name} Airdrop`,
+      url: `https://seo.3alamiyweb3.online/airdrops/${a.slug}`,
+      description: a.description?.slice(0, 150),
+    })),
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <style>{`
         html, body { overflow-x: hidden; }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
