@@ -103,11 +103,62 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
     ],
   };
 
+  // Speakable — marks key content for voice/AI reading
+  const speakableSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `https://seo.3alamiyweb3.online/airdrops/${a.slug}`,
+    name: `${a.name} Airdrop Guide ${year}`,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.dp-title', '.dp-desc', '.dp-qa-text', '.dp-quick-answer'],
+    },
+    url: `https://seo.3alamiyweb3.online/airdrops/${a.slug}`,
+  };
+
+  // Dataset — structured airdrop data for AI engines
+  const datasetSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Dataset',
+    name: `${a.name} Airdrop Data`,
+    description: `Structured data for the ${a.name} airdrop on ${a.blockchain}. Includes difficulty, cost, reward estimate, participation steps, and eligibility criteria.`,
+    url: `https://seo.3alamiyweb3.online/airdrops/${a.slug}`,
+    creator: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
+    keywords: [`${a.name} airdrop`, `${a.blockchain} airdrop`, 'crypto airdrop 2026', a.difficulty, a.cost],
+    variableMeasured: [
+      { '@type': 'PropertyValue', name: 'Blockchain', value: a.blockchain },
+      { '@type': 'PropertyValue', name: 'Difficulty', value: a.difficulty },
+      { '@type': 'PropertyValue', name: 'Cost', value: a.cost },
+      { '@type': 'PropertyValue', name: 'Status', value: a.status },
+      { '@type': 'PropertyValue', name: 'Estimated Reward', value: reward },
+      { '@type': 'PropertyValue', name: 'Number of Steps', value: steps.length },
+      { '@type': 'PropertyValue', name: 'Estimated Time', value: `${Math.max(15, steps.length * 3)} minutes` },
+    ],
+  };
+
+  // ItemList — related airdrops for AI context
+  const relatedSchema = relatedAirdrops.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `More ${a.blockchain} Airdrops`,
+    description: `Other active airdrops on ${a.blockchain} tracked by 3alamiy Web3`,
+    numberOfItems: relatedAirdrops.length,
+    itemListElement: relatedAirdrops.map((r: any, i: number) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: `${r.name} Airdrop`,
+      url: `https://seo.3alamiyweb3.online/airdrops/${r.slug}`,
+    })),
+  } : null;
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetSchema) }} />
+      {relatedSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(relatedSchema) }} />}
 
       <style>{`
         /* ── Base — uses Space Grotesk loaded in layout.tsx ── */
