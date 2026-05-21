@@ -1,5 +1,59 @@
 import Link from 'next/link';
 
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'How to Get Crypto Airdrops in 2026 — Complete Beginner Guide',
+  description: 'Learn exactly how to get crypto airdrops in 2026. Step-by-step guide for beginners — wallets, chains, strategies, and which airdrops to farm first.',
+  url: 'https://seo.3alamiyweb3.online/learn/how-to-get-crypto-airdrops-2026',
+  datePublished: '2026-05-16',
+  dateModified: '2026-05-20',
+  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
+  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online', logo: { '@type': 'ImageObject', url: 'https://seo.3alamiyweb3.online/icon.svg' } },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://seo.3alamiyweb3.online/learn/how-to-get-crypto-airdrops-2026' },
+  about: [{ '@type': 'Thing', name: 'Crypto Airdrops' }, { '@type': 'Thing', name: 'Blockchain' }, { '@type': 'Thing', name: 'Web3' }],
+  speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.article p:first-of-type'] },
+};
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Get Crypto Airdrops in 2026',
+  description: 'A complete beginner guide to getting crypto airdrops in 2026. Follow these steps to start earning free cryptocurrency.',
+  totalTime: 'PT30M',
+  estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: '0' },
+  step: [
+    { '@type': 'HowToStep', position: 1, name: 'Set Up a Crypto Wallet', text: 'Download MetaMask or Rabby Wallet (both free). Create a dedicated farming wallet — never use your main wallet. Write down your seed phrase and store it safely offline.' },
+    { '@type': 'HowToStep', position: 2, name: 'Get Some ETH for Gas', text: 'Buy $20–50 of ETH on Coinbase or Binance and send it to your wallet for transaction fees. Most testnet interactions are completely free.' },
+    { '@type': 'HowToStep', position: 3, name: 'Bridge to L2 Networks', text: 'Use the official Arbitrum Bridge or Base Bridge to move ETH to L2 networks where most 2026 airdrops are happening.' },
+    { '@type': 'HowToStep', position: 4, name: 'Pick Your First Airdrops', text: 'Start with 3–5 Easy, Free airdrops from 3alamiy Web3 tracker. Build confidence before moving to complex campaigns.' },
+    { '@type': 'HowToStep', position: 5, name: 'Complete Steps Consistently', text: 'Follow step-by-step guides for each airdrop. Return daily or weekly and keep building activity — one interaction is rarely enough to qualify.' },
+    { '@type': 'HowToStep', position: 6, name: 'Track Your Activity', text: 'Keep a log of which projects you have interacted with, what steps you have completed, and when to check back.' },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'How do I get crypto airdrops in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'To get crypto airdrops in 2026: set up a MetaMask wallet, get some ETH for gas fees, browse verified airdrop guides on 3alamiy Web3, follow the step-by-step instructions for each airdrop, and interact with the protocols consistently over time. The key is starting early and being consistent.' } },
+    { '@type': 'Question', name: 'Do I need money to get crypto airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'Most airdrops are completely free. Some require small gas fees under $1 for testnet interactions. Never pay more than a few dollars to participate in any airdrop. Legitimate airdrops are always free to claim.' } },
+    { '@type': 'Question', name: 'How much can beginners earn from crypto airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'Beginners typically earn $50-$500 from their first few airdrops. As you gain experience and farm more projects consistently, earnings of $1,000-$5,000+ per year are realistic. The Hyperliquid airdrop paid average users over $10,000 in 2024.' } },
+    { '@type': 'Question', name: 'Which blockchain should I start with for airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'Start with Sui or Solana for free, easy airdrops with no gas cost. Then move to Arbitrum and Base for higher-reward DeFi airdrops. These are the most active chains for airdrops in 2026.' } },
+    { '@type': 'Question', name: 'Is airdrop farming safe?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, as long as you use a separate dedicated farming wallet and only connect to official project websites. Never share your seed phrase, never pay to claim an airdrop, and always verify links from the project\'s official Twitter or website.' } },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://seo.3alamiyweb3.online/learn' },
+    { '@type': 'ListItem', position: 3, name: 'How to Get Crypto Airdrops 2026', item: 'https://seo.3alamiyweb3.online/learn/how-to-get-crypto-airdrops-2026' },
+  ],
+};
+
 export const metadata = {
   title: 'How to Get Crypto Airdrops in 2026 — Complete Beginner Guide',
   description: 'Learn exactly how to get crypto airdrops in 2026. Step-by-step guide for beginners — wallets, chains, strategies, and which airdrops to farm first.',
@@ -15,6 +69,10 @@ export const metadata = {
 export default function HowToGetCryptoAirdrops() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <style>{`
         .article { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; color: #e4e4e7; font-family: system-ui, -apple-system, sans-serif; }
         .article h2 { font-size: 22px; font-weight: 800; color: #fff; margin: 44px 0 14px; letter-spacing: -0.02em; }
@@ -159,17 +217,6 @@ export default function HowToGetCryptoAirdrops() {
         </div>
       </div>
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context': 'https://schema.org', '@type': 'HowTo',
-        name: 'How to Get Crypto Airdrops in 2026',
-        description: 'A complete beginner guide to getting crypto airdrops in 2026.',
-        step: [
-          { '@type': 'HowToStep', position: 1, name: 'Set Up a Crypto Wallet', text: 'Download MetaMask or Rabby and create a dedicated farming wallet.' },
-          { '@type': 'HowToStep', position: 2, name: 'Get ETH for Gas', text: 'Buy $20–50 of ETH and bridge to L2 networks.' },
-          { '@type': 'HowToStep', position: 3, name: 'Pick Your First Airdrops', text: 'Choose 3–5 active airdrops from our tracker.' },
-          { '@type': 'HowToStep', position: 4, name: 'Complete Steps Consistently', text: 'Follow guides and interact with protocols regularly.' },
-        ],
-      })}} />
     </>
   );
 }

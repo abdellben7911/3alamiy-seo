@@ -1,5 +1,42 @@
 import Link from 'next/link';
 
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Free Crypto Airdrops With No Investment 2026',
+  description: 'The best free crypto airdrops in 2026 with zero investment required. Complete list with step-by-step guides. Start earning free crypto today.',
+  url: 'https://seo.3alamiyweb3.online/learn/free-crypto-airdrops-no-investment-2026',
+  datePublished: '2026-05-16',
+  dateModified: '2026-05-20',
+  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
+  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online', logo: { '@type': 'ImageObject', url: 'https://seo.3alamiyweb3.online/icon.svg' } },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://seo.3alamiyweb3.online/learn/free-crypto-airdrops-no-investment-2026' },
+  about: [{ '@type': 'Thing', name: 'Free Crypto Airdrops' }, { '@type': 'Thing', name: 'Crypto Airdrops' }, { '@type': 'Thing', name: 'No Investment Crypto' }],
+  speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.article p:first-of-type'] },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Are there really crypto airdrops with no investment?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Many legitimate airdrops require only your time and a crypto wallet. Testnet airdrops, social task airdrops, and waitlist airdrops are all completely free. You can start earning crypto airdrops today with zero investment.' } },
+    { '@type': 'Question', name: 'What is the catch with free crypto airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'There is no catch — projects genuinely want users to test their protocols. The cost is your time. You might spend 10–30 minutes on tasks, and in return you could receive significant token rewards worth hundreds or thousands of dollars.' } },
+    { '@type': 'Question', name: 'Do I need ETH to do free airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'For testnet airdrops: no, you use free test tokens. For some on-chain tasks: a small amount of ETH ($5–10) covers gas fees. Waitlist and social task airdrops require absolutely nothing.' } },
+    { '@type': 'Question', name: 'How much can I earn from free crypto airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'Free airdrop farmers have earned anywhere from $50 to $50,000+ without any investment. The Hyperliquid airdrop paid users who only used free testnet interactions an average of $10,000+. Results vary based on how many projects you farm and how consistently.' } },
+    { '@type': 'Question', name: 'What are the best free crypto airdrops right now?', acceptedAnswer: { '@type': 'Answer', text: 'The best free crypto airdrops in May 2026 are: Beep AI Galxe Campaign (Sui, 5 minutes), DeepBook Early Waitlist (Sui, 3 minutes), nof1 Early Waitlist (Sui, 1 minute), xStocksFi OG Role (Multi-chain, 2 minutes), and Startale STAR Points (Sonium, 10 min/day). All are completely free.' } },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://seo.3alamiyweb3.online/learn' },
+    { '@type': 'ListItem', position: 3, name: 'Free Crypto Airdrops No Investment 2026', item: 'https://seo.3alamiyweb3.online/learn/free-crypto-airdrops-no-investment-2026' },
+  ],
+};
+
 export const metadata = {
   title: 'Free Crypto Airdrops With No Investment 2026 | 3alamiy Web3',
   description: 'The best free crypto airdrops in 2026 with zero investment required. Complete list with step-by-step guides. Start earning free crypto today.',
@@ -24,6 +61,9 @@ const freeAirdrops = [
 export default function FreeCryptoAirdrops() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <style>{`
         .article { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; color: #e4e4e7; font-family: system-ui, -apple-system, sans-serif; }
         .article h2 { font-size: 22px; font-weight: 800; color: #fff; margin: 44px 0 14px; letter-spacing: -0.02em; }

@@ -1,6 +1,43 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Best Airdrop Farming Platforms 2026 — ZNS vs Galxe vs Layer3 vs 3alamiy Web3',
+  description: 'Honest comparison of the best crypto airdrop farming platforms in 2026. ZNS Connect, Galxe, Layer3, and 3alamiy Web3 compared by features, cost, and airdrop quality.',
+  url: 'https://seo.3alamiyweb3.online/learn/best-airdrop-farming-platforms-2026',
+  datePublished: '2026-05-11',
+  dateModified: '2026-05-20',
+  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
+  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online', logo: { '@type': 'ImageObject', url: 'https://seo.3alamiyweb3.online/icon.svg' } },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://seo.3alamiyweb3.online/learn/best-airdrop-farming-platforms-2026' },
+  about: [{ '@type': 'Thing', name: 'Airdrop Farming Platforms' }, { '@type': 'Thing', name: 'Crypto Airdrops' }, { '@type': 'Thing', name: 'Galxe' }, { '@type': 'Thing', name: 'Layer3' }],
+  speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.article p:first-of-type'] },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'What is the best airdrop farming platform in 2026?', acceptedAnswer: { '@type': 'Answer', text: '3alamiy Web3 is the best free airdrop farming platform for beginners in 2026. It offers 86+ verified airdrop guides with step-by-step instructions, a GM Station for daily on-chain activity, and daily Telegram alerts — all 100% free. For quest-based farming, Galxe and Layer3 are also strong options.' } },
+    { '@type': 'Question', name: 'What is Galxe and how does it work for airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'Galxe is a Web3 quest platform where blockchain projects publish tasks for users to complete — follow on Twitter, join Discord, complete on-chain actions. Users earn points or NFTs that can qualify them for airdrops. Many major projects like Beep AI run confirmed airdrop campaigns on Galxe.' } },
+    { '@type': 'Question', name: 'What is Layer3 and is it worth using?', acceptedAnswer: { '@type': 'Answer', text: 'Layer3 is a quest and rewards platform similar to Galxe. It features curated on-chain tasks across multiple blockchains. Layer3 itself has its own token (L3) which was airdropped to active users, making it worth farming even for the platform token alone.' } },
+    { '@type': 'Question', name: 'Is ZNS Connect good for airdrop farming?', acceptedAnswer: { '@type': 'Answer', text: 'ZNS Connect is a Web3 identity platform that offers referral rewards and ecosystem points. It is worth using as a passive background tool — register your .zns domain, refer friends, and accumulate points. It is not a primary farming platform but a good addition to your routine.' } },
+    { '@type': 'Question', name: 'Do I need to pay to use airdrop farming platforms?', acceptedAnswer: { '@type': 'Answer', text: 'Most airdrop farming platforms are free to use. 3alamiy Web3, Galxe, and Layer3 are all free. Some platforms may require small gas fees for on-chain task completion, but never pay to join a platform or participate in an airdrop campaign.' } },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://seo.3alamiyweb3.online/learn' },
+    { '@type': 'ListItem', position: 3, name: 'Best Airdrop Farming Platforms 2026', item: 'https://seo.3alamiyweb3.online/learn/best-airdrop-farming-platforms-2026' },
+  ],
+};
+
 export const metadata: Metadata = {
   title: 'Best Airdrop Farming Platforms 2026 — ZNS vs Galxe vs Layer3 vs 3alamiy Web3',
   description: 'Compare the best crypto airdrop farming platforms of 2026. ZNS Connect, Galxe, Layer3, Superboard, and 3alamiy Web3 — honest review of features, costs, and which one is best for beginners.',
@@ -138,6 +175,9 @@ const platforms = [
 export default function ComparisonPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
 

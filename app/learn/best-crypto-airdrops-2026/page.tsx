@@ -1,5 +1,49 @@
 import Link from 'next/link';
 
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Best Crypto Airdrops 2026 — Free Verified Guides',
+  description: 'The complete list of the best free crypto airdrops in 2026. Step-by-step guides for Arbitrum, Solana, Base, Monad and more. Updated daily.',
+  url: 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-2026',
+  datePublished: '2026-05-01',
+  dateModified: '2026-05-20',
+  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
+  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online', logo: { '@type': 'ImageObject', url: 'https://seo.3alamiyweb3.online/icon.svg' } },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-2026' },
+  about: [
+    { '@type': 'Thing', name: 'Crypto Airdrops' },
+    { '@type': 'Thing', name: 'Blockchain' },
+    { '@type': 'Thing', name: 'DeFi' },
+    { '@type': 'Thing', name: 'Web3' },
+  ],
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', 'h2', '.article p:first-of-type'],
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'What is a crypto airdrop?', acceptedAnswer: { '@type': 'Answer', text: 'A crypto airdrop is when a blockchain project distributes free tokens to users who interact with their protocol, complete tasks, or hold certain assets. Airdrops are used by projects to grow their user base and reward early supporters.' } },
+    { '@type': 'Question', name: 'Are crypto airdrops really free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes — the best airdrops only require your time and on-chain activity, not money. You may need small amounts of gas fees (usually under $1) on testnets. Never pay to participate in an airdrop.' } },
+    { '@type': 'Question', name: 'How much can I earn from airdrops in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'Top airdrop farmers earn $5,000–$50,000+ per year. Hyperliquid Season 1 paid average users $10,000+. The key is farming multiple projects consistently and early.' } },
+    { '@type': 'Question', name: 'Which blockchain has the most airdrops in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'Ethereum L2s (Arbitrum, Base, Optimism), Solana, and Sui have the most active airdrops in 2026. Hyperliquid and Monad are also emerging as high-reward ecosystems.' } },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://seo.3alamiyweb3.online/learn' },
+    { '@type': 'ListItem', position: 3, name: 'Best Crypto Airdrops 2026', item: 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-2026' },
+  ],
+};
+
 export const metadata = {
   title: 'Best Crypto Airdrops 2026 — Free Verified Guides | 3alamiy Web3',
   description: 'The complete list of the best free crypto airdrops in 2026. Step-by-step guides for Arbitrum, Solana, Base, Monad and more. Updated daily.',
@@ -49,6 +93,9 @@ const faqs = [
 export default function BestCryptoAirdrops2026() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <style>{`
         .article-body { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; color: #e4e4e7; }
         .article-body h2 { font-size: 24px; font-weight: 800; color: #fff; margin: 48px 0 16px; letter-spacing: -0.02em; }

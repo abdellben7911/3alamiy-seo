@@ -1,6 +1,42 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Best Solana Airdrops 2026 — Free Step-by-Step Guides',
+  description: 'Discover the best Solana airdrops in 2026. Jupiter, Backpack, Meteora, BULK Trade, JTX Trade and more. Free step-by-step guides to farm SOL ecosystem airdrops.',
+  url: 'https://seo.3alamiyweb3.online/learn/best-solana-airdrops-2026',
+  datePublished: '2026-05-14',
+  dateModified: '2026-05-20',
+  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
+  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online', logo: { '@type': 'ImageObject', url: 'https://seo.3alamiyweb3.online/icon.svg' } },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://seo.3alamiyweb3.online/learn/best-solana-airdrops-2026' },
+  about: [{ '@type': 'Thing', name: 'Solana Airdrops' }, { '@type': 'Thing', name: 'Solana' }, { '@type': 'Thing', name: 'Crypto Airdrops' }],
+  speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.article p:first-of-type'] },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'What are the best Solana airdrops in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'The best Solana airdrops in 2026 include BULK Trade Testnet, JTX Trade Waitlist, Datahive AI Points Program, and nof1 Early Waitlist. These projects have raised significant funding and are actively rewarding early users.' } },
+    { '@type': 'Question', name: 'How do I farm Solana airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'To farm Solana airdrops, set up a Phantom or Solflare wallet, get some SOL for gas, then interact with Solana DeFi protocols like trading, providing liquidity, and completing quests. Consistent daily activity increases your eligibility.' } },
+    { '@type': 'Question', name: 'Are Solana airdrops free?', acceptedAnswer: { '@type': 'Answer', text: 'Most Solana airdrops are free or very low cost. Testnet airdrops use free test SOL. Some DeFi airdrops require small amounts of real SOL for gas fees, typically under $5.' } },
+    { '@type': 'Question', name: 'Which Solana projects are most likely to airdrop in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'Projects most likely to airdrop on Solana in 2026 include those with large VC funding but no token yet, active points programs, and growing user bases. Check 3alamiy Web3 for the latest verified Solana airdrop guides.' } },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://seo.3alamiyweb3.online/learn' },
+    { '@type': 'ListItem', position: 3, name: 'Best Solana Airdrops 2026', item: 'https://seo.3alamiyweb3.online/learn/best-solana-airdrops-2026' },
+  ],
+};
+
 export const metadata: Metadata = {
   title: 'Best Solana Airdrops 2026 — Free Step-by-Step Guides | 3alamiy Web3',
   description: 'Discover the best Solana airdrops in 2026. Jupiter, Backpack, Meteora, BULK Trade, JTX Trade and more. Free step-by-step guides to farm SOL ecosystem airdrops.',
@@ -79,6 +115,9 @@ const solanaAirdrops = [
 export default function BestSolanaAirdrops2026() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
 

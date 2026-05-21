@@ -1,5 +1,43 @@
 import Link from 'next/link';
 
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'What Are Crypto Airdrops? Complete Guide 2026',
+  description: 'What are crypto airdrops? How do they work, are they legit, and how much can you earn? Complete guide for beginners in 2026.',
+  url: 'https://seo.3alamiyweb3.online/learn/what-are-crypto-airdrops',
+  datePublished: '2026-05-16',
+  dateModified: '2026-05-20',
+  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
+  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online', logo: { '@type': 'ImageObject', url: 'https://seo.3alamiyweb3.online/icon.svg' } },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://seo.3alamiyweb3.online/learn/what-are-crypto-airdrops' },
+  about: [{ '@type': 'Thing', name: 'Crypto Airdrops' }, { '@type': 'Thing', name: 'Cryptocurrency' }, { '@type': 'Thing', name: 'Blockchain' }],
+  speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.article p:first-of-type'] },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'What are crypto airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'A crypto airdrop is when a blockchain project distributes free tokens to users who interact with their protocol, complete tasks, or meet certain criteria. Projects use airdrops to grow their user base and reward early supporters. No purchase is required to receive airdrop tokens.' } },
+    { '@type': 'Question', name: 'How do crypto airdrops work?', acceptedAnswer: { '@type': 'Answer', text: 'Crypto airdrops work in 5 stages: (1) A project launches on testnet or mainnet. (2) Users interact with the protocol by making transactions, providing liquidity, or completing tasks. (3) The project takes a snapshot of eligible wallet addresses. (4) The project launches their token. (5) Eligible wallets automatically receive free tokens based on their activity level.' } },
+    { '@type': 'Question', name: 'Are crypto airdrops real and legit?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Legitimate crypto airdrops from real projects are completely real. Billions of dollars have been distributed through airdrops. Hyperliquid paid average users over $10,000 in 2024. Arbitrum paid $2,000+ per wallet in 2023. Always verify projects are legitimate before participating — never share your seed phrase or send money to claim an airdrop.' } },
+    { '@type': 'Question', name: 'Are crypto airdrops free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Legitimate airdrops are always free to receive. You may need small gas fees (under $1) for some on-chain interactions, but you never pay to claim tokens. If anyone asks you to send money or share your private key to receive an airdrop, it is a scam.' } },
+    { '@type': 'Question', name: 'How much can you earn from crypto airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'Airdrop earnings vary widely. Recent examples: Hyperliquid paid average users $10,000+ (top wallets $32,000+), Arbitrum paid $2,000+ average, Optimism paid $1,500+ average, ENS paid $5,000+ average. Experienced farmers who consistently track multiple projects earn $10,000–$50,000+ per year. Casual farmers can earn $2,000–$5,000 annually.' } },
+    { '@type': 'Question', name: 'What is the difference between airdrop types?', acceptedAnswer: { '@type': 'Answer', text: 'There are 5 main types: Activity airdrops (reward protocol usage like swaps and liquidity), Testnet airdrops (reward users who test before launch — usually free), Holder airdrops (automatically given to token/NFT holders), Social task airdrops (reward Discord joins, Twitter follows, Galxe quests), and Points system airdrops (daily activity earns points that convert to tokens at launch).' } },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://seo.3alamiyweb3.online/learn' },
+    { '@type': 'ListItem', position: 3, name: 'What Are Crypto Airdrops', item: 'https://seo.3alamiyweb3.online/learn/what-are-crypto-airdrops' },
+  ],
+};
+
 export const metadata = {
   title: 'What Are Crypto Airdrops? Complete Guide 2026 | 3alamiy Web3',
   description: 'What are crypto airdrops? How do they work, are they legit, and how much can you earn? Complete guide for beginners in 2026.',
@@ -15,6 +53,9 @@ export const metadata = {
 export default function WhatAreCryptoAirdrops() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <style>{`
         .article { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; color: #e4e4e7; font-family: system-ui, -apple-system, sans-serif; }
         .article h2 { font-size: 22px; font-weight: 800; color: #fff; margin: 44px 0 14px; letter-spacing: -0.02em; }
@@ -169,7 +210,7 @@ export default function WhatAreCryptoAirdrops() {
 
         <h2>How to Start Getting Airdrops Today</h2>
         <p>Getting started with crypto airdrops is simpler than most people think. You need a wallet, a small amount of ETH for gas, and a tracker to keep organized.</p>
-        <p>3alamiy Web3 tracks 73+ verified airdrops with step-by-step guides — completely free. Browse our list and start with the easiest ones first.</p>
+        <p>3alamiy Web3 tracks 87+ verified airdrops with step-by-step guides — completely free. Browse our list and start with the easiest ones first.</p>
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '20px' }}>
           <Link href="/airdrops" style={{ background: 'linear-gradient(135deg, #6366f1, #4f46e5)', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 700, fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 6px 20px rgba(99,102,241,0.3)' }}>
             Browse Airdrops →
@@ -180,15 +221,6 @@ export default function WhatAreCryptoAirdrops() {
         </div>
       </div>
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context': 'https://schema.org', '@type': 'FAQPage',
-        mainEntity: [
-          { '@type': 'Question', name: 'What are crypto airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'A crypto airdrop is when a blockchain project distributes free tokens to users who interact with their protocol or meet certain criteria. No purchase required.' } },
-          { '@type': 'Question', name: 'Are crypto airdrops real?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Legitimate airdrops from real projects have distributed billions of dollars to users. Hyperliquid paid average users $10,000+ in 2024.' } },
-          { '@type': 'Question', name: 'How much can you earn from crypto airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'Experienced farmers earn $10,000–$50,000+ per year. Casual farmers can realistically earn $2,000–$5,000 annually.' } },
-          { '@type': 'Question', name: 'Are crypto airdrops free?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Legitimate airdrops never require you to send money. If anyone asks you to pay to claim an airdrop, it is a scam.' } },
-        ],
-      })}} />
     </>
   );
 }

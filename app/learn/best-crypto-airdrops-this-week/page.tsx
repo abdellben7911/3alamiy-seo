@@ -1,5 +1,40 @@
 import Link from 'next/link';
 
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Best Crypto Airdrops This Week — May 2026',
+  description: 'The best crypto airdrops to farm this week in May 2026. New drops, active campaigns, and high-reward opportunities updated weekly.',
+  url: 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-this-week',
+  datePublished: '2026-05-12',
+  dateModified: '2026-05-20',
+  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
+  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online', logo: { '@type': 'ImageObject', url: 'https://seo.3alamiyweb3.online/icon.svg' } },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-this-week' },
+  about: [{ '@type': 'Thing', name: 'Crypto Airdrops' }, { '@type': 'Thing', name: 'Weekly Airdrops' }],
+  speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.article p:first-of-type'] },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'What are the best crypto airdrops this week?', acceptedAnswer: { '@type': 'Answer', text: 'The best crypto airdrops this week (May 19-25, 2026) are: Beep AI Galxe Campaign (Sui, Free), DeepBook Early Waitlist (Sui, Free), PROPR Points Program (Hyperliquid, Paid), Startale STAR Points (Sonium, Free), and DustSwap Airdrop (Base, Paid).' } },
+    { '@type': 'Question', name: 'Which airdrops should I farm first this week?', acceptedAnswer: { '@type': 'Answer', text: 'Farm High Priority airdrops first: Beep AI Galxe Campaign (5 minutes, free, confirmed rewards) and DeepBook Early Waitlist (3 minutes, free). Then move to Medium Priority: PROPR and DustSwap for higher rewards with more effort.' } },
+    { '@type': 'Question', name: 'How do I stay updated on new airdrops every week?', acceptedAnswer: { '@type': 'Answer', text: 'Join the 3alamiy Web3 Telegram channel at t.me/web33alamiy for instant alerts when new airdrops launch. We also update our weekly picks every Monday at seo.3alamiyweb3.online/learn/best-crypto-airdrops-this-week.' } },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://seo.3alamiyweb3.online/learn' },
+    { '@type': 'ListItem', position: 3, name: 'Best Crypto Airdrops This Week', item: 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-this-week' },
+  ],
+};
+
 export const metadata = {
   title: 'Best Crypto Airdrops This Week — May 2026 | 3alamiy Web3',
   description: 'The best crypto airdrops to farm this week in May 2026. New drops, active campaigns, and high-reward opportunities updated weekly.',
@@ -28,6 +63,9 @@ export default function BestAirdropsThisWeek() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <style>{`
         .article { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; color: #e4e4e7; font-family: system-ui, -apple-system, sans-serif; }
         .article h2 { font-size: 22px; font-weight: 800; color: #fff; margin: 44px 0 14px; letter-spacing: -0.02em; }
@@ -145,14 +183,6 @@ export default function BestAirdropsThisWeek() {
         </div>
       </div>
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        '@context': 'https://schema.org', '@type': 'Article',
-        headline: 'Best Crypto Airdrops This Week — May 2026',
-        description: 'The best crypto airdrops to farm this week in May 2026.',
-        url: 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-this-week',
-        datePublished: '2026-05-12', dateModified: '2026-05-20',
-        publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
-      })}} />
     </>
   );
 }
