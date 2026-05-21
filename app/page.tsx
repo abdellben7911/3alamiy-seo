@@ -309,6 +309,7 @@ export default async function Home() {
         @media(max-width:1024px) {
           .ru-grid { grid-template-columns: repeat(2,1fr) !important; }
         }
+        .ru-card:hover { border-color: rgba(124,245,192,0.2) !important; }
       `}</style>
 
       <div className="page">
@@ -507,15 +508,12 @@ export default async function Home() {
                   return `${days}d ago`;
                 };
                 return (
-                  <Link key={a.slug} href={`/airdrops/${a.slug}`} style={{
+                  <Link key={a.slug} href={`/airdrops/${a.slug}`} className="ru-card" style={{
                     background: '#0D1221', border: '1px solid rgba(255,255,255,0.06)',
                     borderRadius: '14px', padding: '16px', textDecoration: 'none', color: '#fff',
                     display: 'flex', flexDirection: 'column', gap: '10px',
                     transition: 'border-color 0.15s', position: 'relative', overflow: 'hidden',
-                  }}
-                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.borderColor = 'rgba(124,245,192,0.2)'}
-                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)'}
-                  >
+                  }}>
                     {/* Updated badge */}
                     <div style={{ position: 'absolute', top: '10px', right: '10px', background: 'rgba(124,245,192,0.08)', border: '1px solid rgba(124,245,192,0.18)', color: '#7CF5C0', fontSize: '9px', fontWeight: 700, padding: '2px 7px', borderRadius: '99px', letterSpacing: '0.04em' }}>
                       🔄 {timeAgo(a.updated_at)}
