@@ -14,6 +14,18 @@ async function getAllAirdrops() {
   return res.json();
 }
 
+async function getRecentlyUpdated() {
+  const res = await fetch(
+    `${SUPABASE_URL}/rest/v1/airdrops?select=slug,name,logo,blockchain,status,difficulty,cost,updated_at&order=updated_at.desc&limit=4`,
+    {
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
+      next: { revalidate: 600 },
+    }
+  );
+  if (!res.ok) return [];
+  return res.json();
+}
+
 export const metadata = {
   title: 'Best Crypto Airdrops 2026 — Free Guides | 3alamiy Web3',
   description: 'Track and participate in the best free crypto airdrops of 2026. Step-by-step guides for Ethereum, Solana, Arbitrum, Base, Monad and more. Updated daily.',
@@ -45,7 +57,7 @@ function timeLabel(steps: any[]): string {
 const starterColors = ['#818cf8', '#7CF5C0', '#f59e0b'];
 
 export default async function Home() {
-  const airdrops = await getAllAirdrops();
+  const [airdrops, recentlyUpdated] = await Promise.all([getAllAirdrops(), getRecentlyUpdated()]);
   const activeCount = airdrops.filter((a: any) => a.status === 'Active').length;
   const freeCount   = airdrops.filter((a: any) => a.cost === 'Free').length;
 
@@ -289,6 +301,13 @@ export default async function Home() {
         @media(max-width:640px) {
           .page * { max-width: 100%; }
           .hero-radial { display: none; }
+          .ru-grid { grid-template-columns: 1fr 1fr !important; }
+        }
+        @media(max-width:400px) {
+          .ru-grid { grid-template-columns: 1fr !important; }
+        }
+        @media(max-width:1024px) {
+          .ru-grid { grid-template-columns: repeat(2,1fr) !important; }
         }
       `}</style>
 
@@ -461,6 +480,77 @@ export default async function Home() {
         </div>
 
         <div className="divider" />
+
+        {/* ── RECENTLY UPDATED ── */}
+        {recentlyUpdated.length > 0 && (
+          <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 24px 0' }}>
+            <div className="sec-hdr" style={{ marginBottom: '16px' }}>
+              <div>
+                <div className="sec-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#7CF5C0', boxShadow: '0 0 6px rgba(124,245,192,0.6)', display: 'inline-block', animation: 'pulse 1.8s infinite' }} />
+                  🔄 Recently Updated
+                </div>
+                <div className="sec-sub">Airdrops with fresh guides or new information</div>
+              </div>
+              <Link href="/airdrops" className="view-all">View All →</Link>
+            </div>
+            <div className="ru-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
+              {recentlyUpdated.map((a: any) => {
+                const timeAgo = (date: string) => {
+                  if (!date) return 'Recently';
+                  const diff = Date.now() - new Date(date).getTime();
+                  const mins = Math.floor(diff / 60000);
+                  const hours = Math.floor(diff / 3600000);
+                  const days = Math.floor(diff / 86400000);
+                  if (mins < 60) return `${mins}m ago`;
+                  if (hours < 24) return `${hours}h ago`;
+                  return `${days}d ago`;
+                };
+                return (
+                  <Link key={a.slug} href={`/airdrops/${a.slug}`} style={{
+                    background: '#0D1221', border: '1px solid rgba(255,255,255,0.06)',
+                    borderRadius: '14px', padding: '16px', textDecoration: 'none', color: '#fff',
+                    display: 'flex', flexDirection: 'column', gap: '10px',
+                    transition: 'border-color 0.15s', position: 'relative', overflow: 'hidden',
+                  }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.borderColor = 'rgba(124,245,192,0.2)'}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)'}
+                  >
+                    {/* Updated badge */}
+                    <div style={{ position: 'absolute', top: '10px', right: '10px', background: 'rgba(124,245,192,0.08)', border: '1px solid rgba(124,245,192,0.18)', color: '#7CF5C0', fontSize: '9px', fontWeight: 700, padding: '2px 7px', borderRadius: '99px', letterSpacing: '0.04em' }}>
+                      🔄 {timeAgo(a.updated_at)}
+                    </div>
+
+                    {/* Identity */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', paddingRight: '60px' }}>
+                      {a.logo
+                        ? <img src={a.logo} alt={a.name} width={36} height={36} style={{ borderRadius: '10px', border: '1px solid rgba(255,255,255,0.07)', objectFit: 'cover', flexShrink: 0 }} />
+                        : <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'linear-gradient(135deg, #111827, #1a2540)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: 700, color: 'rgba(255,255,255,0.2)', flexShrink: 0 }}>{a.name?.[0]}</div>
+                      }
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{ fontSize: '13px', fontWeight: 600, color: '#fff', letterSpacing: '-0.01em', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{a.name}</div>
+                        <div style={{ fontSize: '10px', fontWeight: 600, color: 'rgba(255,255,255,0.28)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{a.blockchain}</div>
+                      </div>
+                    </div>
+
+                    {/* Stats */}
+                    <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                      <span style={{ fontSize: '10px', fontWeight: 600, color: a.status === 'Active' ? '#7CF5C0' : '#6b7280', background: a.status === 'Active' ? 'rgba(124,245,192,0.08)' : 'rgba(100,100,120,0.08)', border: `1px solid ${a.status === 'Active' ? 'rgba(124,245,192,0.18)' : 'rgba(100,100,120,0.16)'}`, padding: '2px 8px', borderRadius: '99px' }}>{a.status}</span>
+                      <span style={{ fontSize: '10px', fontWeight: 600, color: a.cost === 'Free' ? '#7CF5C0' : '#f59e0b', background: a.cost === 'Free' ? 'rgba(124,245,192,0.08)' : 'rgba(245,158,11,0.08)', border: `1px solid ${a.cost === 'Free' ? 'rgba(124,245,192,0.18)' : 'rgba(245,158,11,0.18)'}`, padding: '2px 8px', borderRadius: '99px' }}>{a.cost}</span>
+                    </div>
+
+                    <div style={{ fontSize: '11px', fontWeight: 600, color: '#7CF5C0', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      View Guide
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        <div className="divider" style={{ marginTop: '40px' }} />
 
         {/* ── LEARN ── */}
         <section className="learn-section">
