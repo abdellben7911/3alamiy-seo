@@ -10,7 +10,7 @@ export default function EmailSignup() {
     if (!email || !email.includes('@')) return;
     setStatus('loading');
     try {
-      await fetch('https://aahxneihytiogjvcznir.supabase.co/rest/v1/newsletter_subscribers', {
+      const res = await fetch('https://aahxneihytiogjvcznir.supabase.co/rest/v1/newsletter_subscribers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -18,8 +18,9 @@ export default function EmailSignup() {
           'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFhaHhuZWloeXRpb2dqdmN6bmlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3OTkzOTUsImV4cCI6MjA4NjM3NTM5NX0.BOcltYn8FrhX-a99JBIs5j5mD-sFnwtzGK1CgswvG_o',
           'Prefer': 'return=minimal',
         },
-        body: JSON.stringify({ email, subscribed_at: new Date().toISOString() }),
+        body: JSON.stringify({ email }),
       });
+      if (!res.ok && res.status !== 201) throw new Error('Failed');
       setStatus('success');
       setEmail('');
     } catch {
