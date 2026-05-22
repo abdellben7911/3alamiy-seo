@@ -15,15 +15,20 @@ async function getAllAirdrops() {
 }
 
 async function getRecentlyUpdated() {
-  const res = await fetch(
-    `${SUPABASE_URL}/rest/v1/airdrops?select=slug,name,logo,blockchain,status,difficulty,cost,updated_at&order=updated_at.desc&limit=4`,
-    {
-      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
-      next: { revalidate: 600 },
-    }
-  );
-  if (!res.ok) return [];
-  return res.json();
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/airdrops?select=slug,name,logo,blockchain,status,difficulty,cost,updated_at&order=updated_at.desc&limit=4`,
+      {
+        headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
+        next: { revalidate: 600 },
+      }
+    );
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.filter((a: any) => a && a.slug && a.name);
+  } catch {
+    return [];
+  }
 }
 
 export const metadata = {
@@ -98,13 +103,15 @@ export default async function Home() {
     description: `The top verified crypto airdrops active right now. Updated daily by 3alamiy Web3.`,
     url: 'https://seo.3alamiyweb3.online/airdrops',
     numberOfItems: topAirdrops.length,
-    itemListElement: topAirdrops.map((a: any, i: number) => ({
-      '@type': 'ListItem',
-      position: i + 1,
-      name: `${a.name} Airdrop`,
-      url: `https://seo.3alamiyweb3.online/airdrops/${a.slug}`,
-      description: a.description?.slice(0, 150),
-    })),
+    itemListElement: topAirdrops
+      .filter((a: any) => a && a.slug && a.name)
+      .map((a: any, i: number) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: `${a.name} Airdrop`,
+        url: `https://seo.3alamiyweb3.online/airdrops/${a.slug}`,
+        description: a.description?.slice(0, 150) || '',
+      })),
   };
 
   return (
