@@ -1,10 +1,12 @@
 # 3alamiy Web3 - robots.txt
 # Crypto Airdrop Tracker & GM Station
+# https://seo.3alamiyweb3.online
 
 User-agent: *
 Allow: /
 
-# Allow all AI crawlers explicitly
+# ── AI Crawlers — explicitly allowed ──
+
 User-agent: GPTBot
 Allow: /
 
@@ -26,20 +28,39 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
+User-agent: Google-Extended
+Allow: /
+
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-User-agent: Google-Extended
-Allow: /
-
 User-agent: Applebot
 Allow: /
 
-# Sitemap
+User-agent: CCBot
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# ── Content Signals for AI ──
+# Content-Signal: AI-accessible
+# Content-Type: airdrop-tracker
+# Update-Frequency: daily
+
+# ── Sitemaps ──
 Sitemap: https://seo.3alamiyweb3.online/sitemap.xml
 
-# LLMs.txt for AI systems
-# https://seo.3alamiyweb3.online/llms.txt
+# ── AI Reference Files ──
+# LLMs.txt:      https://seo.3alamiyweb3.online/llms.txt
+# LLMs-full.txt: https://seo.3alamiyweb3.online/llms-full.txt
+# Agents:        https://seo.3alamiyweb3.online/AGENTS.md
