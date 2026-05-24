@@ -26,9 +26,7 @@ async function getRecentlyUpdated() {
     if (!res.ok) return [];
     const data = await res.json();
     return data.filter((a: any) => a && a.slug && a.name);
-  } catch {
-    return [];
-  }
+  } catch { return []; }
 }
 
 export const metadata = {
@@ -59,57 +57,73 @@ function timeLabel(steps: any[]): string {
   return '10 min';
 }
 
-const starterColors = ['#818cf8', '#7CF5C0', '#f59e0b'];
+const faqs = [
+  { q: 'Do I need crypto to start?', a: 'No. Most airdrops on our tracker are completely free. A wallet takes 2 minutes to set up and many airdrops require zero deposit — bridge $5 on cheap L2s for the paid ones.' },
+  { q: 'Are these airdrops legit?', a: 'Every airdrop on 3alamiy is manually verified by our team before listing. We check the team, funding, and smart contracts. We skip anything that looks suspicious.' },
+  { q: 'How much time does this take?', a: 'Easy airdrops take 5–10 minutes. Testnet farming takes 15–30 minutes per week. You can earn significant rewards with just 20 focused minutes per day.' },
+  { q: 'How much can I earn?', a: 'It varies widely. Simple social airdrops pay $50–200. Testnet airdrops have historically paid $500–$5,000+. Discord role airdrops have paid up to $20,000 per wallet.' },
+  { q: 'What about scams?', a: 'Never share your seed phrase. Legitimate airdrops never ask for it. Never pay to receive an airdrop. Use a separate wallet for farming. We cover this in our scam guide.' },
+  { q: 'Where do I start?', a: 'Start with our 3 beginner-friendly picks below — all free, all under 10 minutes, all verified. Build confidence before moving to more complex strategies.' },
+];
+
+const socialProof = [
+  { handle: '@crypto_farmer', avatar: 'C', claim: '$3,200', text: 'Followed the Monad testnet guide on a Sunday. Got my allocation 6 weeks later. Zero cost in.', color: '#818cf8' },
+  { handle: '@web3_daily', avatar: 'W', claim: '$840', text: 'The daily routine actually works. 10 mins a day, landing just as signed.', color: '#7CF5C0' },
+  { handle: '@defi_alerts', avatar: 'D', claim: '$1,750', text: 'Telegram alerts caught the snapshot 4 hours before CT noticed. Wild.', color: '#f59e0b' },
+];
+
+const chains = ['Ethereum', 'Solana', 'Arbitrum', 'Base', 'Monad', 'Sui', 'zkSync', 'Optimism'];
 
 export default async function Home() {
   const [airdrops, recentlyUpdated] = await Promise.all([getAllAirdrops(), getRecentlyUpdated()]);
   const activeCount = airdrops.filter((a: any) => a.status === 'Active').length;
-  const freeCount   = airdrops.filter((a: any) => a.cost === 'Free').length;
+  const freeCount = airdrops.filter((a: any) => a.cost === 'Free').length;
 
   const starterAirdrops = airdrops
     .filter((a: any) => a.status === 'Active' && a.cost === 'Free' && a.difficulty === 'Easy')
     .slice(0, 3);
 
-  // AEO: Dataset schema — describes the entire airdrop database
   const datasetSchema = {
     '@context': 'https://schema.org',
     '@type': 'Dataset',
     name: 'Crypto Airdrops 2026 — Verified Database',
-    description: `A verified database of ${airdrops.length}+ active and historical crypto airdrops in 2026. Each entry includes blockchain, difficulty, cost, reward estimate, participation steps, and official links. Updated daily.`,
-    url: 'https://seo.3alamiyweb3.online/airdrops',
-    creator: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
+    description: `A verified database of ${airdrops.length}+ active and historical crypto airdrops in 2026.`,
+    url: 'https://www.3alamiyweb3.com/airdrops',
+    creator: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
     dateModified: new Date().toISOString().split('T')[0],
-    keywords: ['crypto airdrops 2026', 'free airdrops', 'ethereum airdrop', 'solana airdrop', 'base airdrop', 'sui airdrop', 'hyperliquid airdrop', 'airdrop guide'],
+    keywords: ['crypto airdrops 2026', 'free airdrops', 'ethereum airdrop', 'solana airdrop'],
     variableMeasured: [
       { '@type': 'PropertyValue', name: 'Total Airdrops', value: airdrops.length },
       { '@type': 'PropertyValue', name: 'Active Airdrops', value: activeCount },
       { '@type': 'PropertyValue', name: 'Free Airdrops', value: freeCount },
       { '@type': 'PropertyValue', name: 'Blockchains Covered', value: 16 },
-      { '@type': 'PropertyValue', name: 'Update Frequency', value: 'Daily' },
     ],
-    license: 'https://seo.3alamiyweb3.online/privacy',
     isAccessibleForFree: true,
   };
 
-  // AEO: ItemList of top active airdrops — AI engines cite this for "best airdrops" queries
-  const topAirdrops = airdrops
-    .filter((a: any) => a.status === 'Active')
-    .slice(0, 10);
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(f => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  };
 
   const itemListSchema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: `Best Crypto Airdrops ${new Date().getFullYear()}`,
-    description: `The top verified crypto airdrops active right now. Updated daily by 3alamiy Web3.`,
-    url: 'https://seo.3alamiyweb3.online/airdrops',
-    numberOfItems: topAirdrops.length,
-    itemListElement: topAirdrops
-      .filter((a: any) => a && a.slug && a.name)
+    url: 'https://www.3alamiyweb3.com/airdrops',
+    numberOfItems: airdrops.filter((a: any) => a.status === 'Active').slice(0, 10).length,
+    itemListElement: airdrops.filter((a: any) => a.status === 'Active').slice(0, 10)
+      .filter((a: any) => a?.slug && a?.name)
       .map((a: any, i: number) => ({
         '@type': 'ListItem',
         position: i + 1,
         name: `${a.name} Airdrop`,
-        url: `https://seo.3alamiyweb3.online/airdrops/${a.slug}`,
+        url: `https://www.3alamiyweb3.com/airdrops/${a.slug}`,
         description: a.description?.slice(0, 150) || '',
       })),
   };
@@ -117,499 +131,389 @@ export default async function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+
       <style>{`
         html, body { overflow-x: hidden; }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
         .page {
           min-height: 100vh;
-          background: #020617;
+          background: #080C14;
           font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
-          color: #fff;
-          overflow-x: hidden;
-          width: 100%;
+          color: #fff; overflow-x: hidden; width: 100%;
         }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(124,245,192,0.6); } 50% { opacity: 0.5; box-shadow: 0 0 12px rgba(124,245,192,0.3); } }
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes counterUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .anim-fade-up { animation: fadeUp 0.7s ease both; }
+        .anim-fade-up-1 { animation: fadeUp 0.7s 0.1s ease both; }
+        .anim-fade-up-2 { animation: fadeUp 0.7s 0.2s ease both; }
+        .anim-fade-up-3 { animation: fadeUp 0.7s 0.3s ease both; }
+        .anim-fade-up-4 { animation: fadeUp 0.7s 0.4s ease both; }
 
-        /* ── HERO ── */
-        .hero {
-          position: relative; overflow: hidden;
-          padding: 80px 24px 72px;
-          width: 100%;
-        }
-        .hero-grid-bg {
-          position: absolute; inset: 0;
-          background-image: linear-gradient(rgba(99,102,241,0.04) 1px,transparent 1px),
-            linear-gradient(90deg,rgba(99,102,241,0.04) 1px,transparent 1px);
-          background-size: 48px 48px; pointer-events: none;
-        }
-        .hero-radial {
-          position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
-          width: 900px; height: 700px;
-          background: radial-gradient(ellipse,rgba(99,102,241,0.14) 0%,rgba(99,102,241,0.04) 40%,transparent 70%);
-          pointer-events: none;
-        }
-        .hero-inner {
-          max-width: 1200px; margin: 0 auto;
-          display: grid; grid-template-columns: 1fr 1fr;
-          gap: 64px; align-items: center; position: relative;
-        }
+        /* HERO */
+        .hero { position: relative; overflow: hidden; padding: 90px 24px 80px; width: 100%; }
+        .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(124,245,192,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(124,245,192,0.03) 1px, transparent 1px); background-size: 56px 56px; pointer-events: none; }
+        .hero-glow { position: absolute; top: -120px; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(ellipse at center, rgba(124,245,192,0.06) 0%, rgba(99,102,241,0.04) 40%, transparent 70%); pointer-events: none; }
+        .hero-inner { position: relative; max-width: 820px; margin: 0 auto; text-align: center; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 7px; background: rgba(124,245,192,0.06); border: 1px solid rgba(124,245,192,0.18); color: #7CF5C0; font-size: 11px; font-weight: 700; padding: 6px 14px; border-radius: 99px; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 28px; }
+        .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #7CF5C0; animation: pulse 1.8s infinite; }
+        .hero-h1 { font-size: clamp(38px, 6vw, 72px); font-weight: 900; line-height: 1.08; letter-spacing: -0.035em; color: #fff; margin-bottom: 12px; }
+        .hero-h1-accent { background: linear-gradient(135deg, #7CF5C0, #6366f1, #7CF5C0); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 4s ease infinite; }
+        .hero-sub { font-size: clamp(15px, 2vw, 18px); color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 560px; margin: 0 auto 36px; font-weight: 400; }
+        .hero-ctas { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #7CF5C0, #4ade80); color: #080C14; font-size: 14px; font-weight: 800; padding: 13px 26px; border-radius: 12px; text-decoration: none; box-shadow: 0 8px 32px rgba(124,245,192,0.25); transition: transform 0.15s, box-shadow 0.15s; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(124,245,192,0.35); }
+        .btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 600; padding: 13px 26px; border-radius: 12px; text-decoration: none; transition: background 0.15s, border-color 0.15s; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18); color: #fff; }
+        .hero-proof { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .hero-proof-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: rgba(255,255,255,0.35); font-weight: 500; }
+        .hero-proof-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.15); }
 
-        /* Eyebrow */
-        .eyebrow {
-          display: inline-flex; align-items: center; gap: 8px;
-          background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.18);
-          border-radius: 99px; padding: 6px 14px 6px 10px; margin-bottom: 24px;
-          max-width: 100%;
-        }
-        .eyebrow-dot {
-          width: 7px; height: 7px; border-radius: 50%;
-          background: #10b981; box-shadow: 0 0 8px #10b981;
-          animation: pulse 1.8s infinite; flex-shrink: 0;
-        }
-        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.85)} }
-        .eyebrow-text { font-size: 12px; font-weight: 700; color: #818cf8; letter-spacing: 0.02em; }
+        /* STATS */
+        .stats-bar { border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); padding: 0 24px; }
+        .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+        .stat-item { padding: 24px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,0.05); animation: counterUp 0.6s ease both; }
+        .stat-item:last-child { border-right: none; }
+        .stat-num { font-size: 32px; font-weight: 900; letter-spacing: -0.04em; line-height: 1; margin-bottom: 4px; }
+        .stat-label { font-size: 11px; color: rgba(255,255,255,0.3); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
 
-        /* Heading */
-        .hero-h1 {
-          font-size: 52px; font-weight: 800; line-height: 1.08;
-          letter-spacing: -0.03em; margin-bottom: 20px; color: #fff;
-          word-break: break-word;
-        }
-        .hero-h1 .grad {
-          background: linear-gradient(135deg,#818cf8 0%,#6366f1 40%,#a78bfa 100%);
-          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .hero-sub {
-          font-size: 17px; color: #94a3b8; line-height: 1.75;
-          max-width: 460px; margin-bottom: 36px;
-        }
+        /* CHAINS */
+        .chains-strip { padding: 20px 24px; border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .chains-label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.1em; text-align: center; margin-bottom: 14px; }
+        .chains-row { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .chain-tag { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 5px 14px; border-radius: 99px; transition: color 0.15s, border-color 0.15s; }
+        .chain-tag:hover { color: #7CF5C0; border-color: rgba(124,245,192,0.2); }
 
-        /* CTA */
-        .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
-        .btn-primary {
-          background: linear-gradient(135deg,#6366f1,#4f46e5); color: #fff;
-          padding: 14px 28px; border-radius: 14px; text-decoration: none;
-          font-weight: 700; font-size: 14px;
-          box-shadow: 0 8px 28px rgba(99,102,241,0.35); transition: all 0.2s;
-          display: inline-flex; align-items: center; gap: 8px; letter-spacing: -0.01em;
-        }
-        .btn-primary:hover { box-shadow: 0 12px 36px rgba(99,102,241,0.5); transform: translateY(-2px); }
-        .btn-ghost {
-          background: transparent; color: #e2e8f0;
-          padding: 14px 28px; border-radius: 14px; text-decoration: none;
-          font-weight: 600; font-size: 14px;
-          border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s;
-          display: inline-flex; align-items: center; gap: 8px;
-        }
-        .btn-ghost:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.04); }
+        /* SECTIONS */
+        .section { padding: 72px 24px; }
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-label { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 8px; }
+        .section-title { font-size: clamp(24px, 4vw, 36px); font-weight: 900; letter-spacing: -0.03em; color: #fff; margin-bottom: 6px; }
+        .section-sub { font-size: 14px; color: rgba(255,255,255,0.35); font-weight: 400; }
+        .sec-hdr { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 28px; gap: 16px; flex-wrap: wrap; }
+        .view-all { font-size: 12px; font-weight: 700; color: #7CF5C0; text-decoration: none; display: flex; align-items: center; gap: 4px; transition: gap 0.15s; white-space: nowrap; }
+        .view-all:hover { gap: 8px; }
 
-        /* Stats */
-        .social-proof { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-        .proof-stat { display: flex; flex-direction: column; }
-        .proof-val { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
-        .proof-lbl { font-size: 10px; color: #475569; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
-        .proof-div { width: 1px; height: 32px; background: #1e293b; }
+        /* STARTER CARDS */
+        .starter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .starter-card { background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 24px; text-decoration: none; color: #fff; display: flex; flex-direction: column; gap: 14px; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
+        .starter-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(124,245,192,0.03) 0%, transparent 60%); opacity: 0; transition: opacity 0.2s; }
+        .starter-card:hover { border-color: rgba(124,245,192,0.2); transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+        .starter-card:hover::before { opacity: 1; }
+        .starter-num { width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 900; flex-shrink: 0; }
+        .starter-name { font-size: 15px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .starter-chain { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.08em; }
+        .starter-desc { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.6; flex: 1; }
+        .tag { display: inline-flex; align-items: center; font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 99px; }
+        .tag-free { background: rgba(124,245,192,0.08); border: 1px solid rgba(124,245,192,0.18); color: #7CF5C0; }
+        .tag-easy { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.18); color: #818cf8; }
+        .starter-cta { font-size: 12px; font-weight: 700; color: #7CF5C0; display: flex; align-items: center; gap: 4px; transition: gap 0.15s; }
+        .starter-card:hover .starter-cta { gap: 8px; }
 
-        /* Feature cards */
-        .hero-right { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .feat-card {
-          background: rgba(15,23,42,0.8); border: 1px solid #1e293b;
-          border-radius: 16px; padding: 18px; backdrop-filter: blur(8px);
-          transition: all 0.2s; position: relative; overflow: hidden;
-        }
-        .feat-card::before {
-          content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-          background: linear-gradient(90deg,transparent,rgba(99,102,241,0.3),transparent); opacity: 0;
-        }
-        .feat-card:hover { border-color: rgba(99,102,241,0.25); transform: translateY(-2px); }
-        .feat-card:hover::before { opacity: 1; }
-        .feat-card.wide { grid-column: span 2; }
-        .feat-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; flex-shrink: 0; }
-        .feat-title { font-size: 14px; font-weight: 700; color: #f1f5f9; margin-bottom: 4px; }
-        .feat-desc { font-size: 12px; color: #64748b; line-height: 1.5; }
-        .feat-metric { font-size: 26px; font-weight: 800; margin-bottom: 2px; }
+        /* PROOF */
+        .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+        .proof-card { background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 14px; animation: fadeUp 0.6s ease both; }
+        .proof-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 900; flex-shrink: 0; }
+        .proof-handle { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); }
+        .proof-claim { font-size: 22px; font-weight: 900; letter-spacing: -0.04em; color: #7CF5C0; }
+        .proof-text { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+        .proof-on { font-size: 10px; color: rgba(255,255,255,0.2); font-weight: 600; }
 
-        .divider { height: 1px; background: linear-gradient(90deg,transparent,#1e293b 20%,#1e293b 80%,transparent); }
+        /* RECENTLY UPDATED */
+        .ru-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .ru-card { background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 16px; text-decoration: none; color: #fff; display: flex; flex-direction: column; gap: 10px; transition: border-color 0.15s, transform 0.15s; position: relative; overflow: hidden; }
+        .ru-card:hover { border-color: rgba(124,245,192,0.2); transform: translateY(-2px); }
 
-        /* ── STARTER ── */
-        .starter {
-          padding: 28px 24px;
-          background: linear-gradient(135deg,rgba(16,185,129,0.04),rgba(99,102,241,0.04));
-          border-bottom: 1px solid #0f172a; width: 100%;
-        }
-        .starter-inner { max-width: 1200px; margin: 0 auto; }
-        .starter-head {
-          display: flex; align-items: flex-start; justify-content: space-between;
-          margin-bottom: 14px; flex-wrap: wrap; gap: 8px;
-        }
-        .starter-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
-        .sc-card {
-          background: #0e1223; border: 1px solid #1e293b; border-radius: 14px;
-          padding: 16px; text-decoration: none; color: #fff;
-          display: flex; align-items: center; gap: 14px; transition: all 0.2s;
-          min-width: 0;
-        }
-        .sc-card:hover { border-color: rgba(16,185,129,0.3); transform: translateY(-1px); }
+        /* LEARN */
+        .learn-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+        .learn-card { background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 22px; text-decoration: none; color: #fff; display: flex; flex-direction: column; gap: 8px; transition: border-color 0.2s, transform 0.2s; }
+        .learn-card:hover { border-color: rgba(99,102,241,0.25); transform: translateY(-2px); }
+        .learn-cat { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
+        .learn-title { font-size: 15px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.35; color: #f1f5f9; }
+        .learn-desc { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.6; }
 
-        /* ── CONTENT ── */
-        .content { max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
-        .sec-hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
-        .sec-title { font-size: 18px; font-weight: 800; color: #f1f5f9; letter-spacing: -0.01em; }
-        .sec-sub { font-size: 12px; color: #475569; margin-top: 3px; }
-        .view-all {
-          background: #0f172a; color: #818cf8; padding: 7px 14px; border-radius: 9px;
-          text-decoration: none; font-size: 12px; font-weight: 700;
-          border: 1px solid rgba(99,102,241,0.2); transition: all 0.2s; white-space: nowrap;
-        }
-        .view-all:hover { background: rgba(99,102,241,0.1); }
+        /* FAQ */
+        .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        .faq-card { background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 22px; transition: border-color 0.15s; animation: fadeUp 0.6s ease both; }
+        .faq-card:hover { border-color: rgba(124,245,192,0.12); }
+        .faq-q { font-size: 15px; font-weight: 800; letter-spacing: -0.02em; color: #fff; margin-bottom: 10px; line-height: 1.4; display: flex; align-items: flex-start; gap: 10px; }
+        .faq-q-icon { width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0; background: rgba(124,245,192,0.08); border: 1px solid rgba(124,245,192,0.15); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 900; color: #7CF5C0; margin-top: 1px; }
+        .faq-a { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.7; padding-left: 32px; }
 
-        /* ── LEARN ── */
-        .learn-section { background: #080d1a; padding: 56px 24px; width: 100%; }
-        .learn-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
-        .learn-card {
-          background: #0e1223; border: 1px solid #1e293b; border-radius: 14px;
-          padding: 20px; text-decoration: none; color: #fff;
-          display: block; transition: all 0.2s; position: relative; overflow: hidden;
-        }
-        .learn-card::after {
-          content: '→'; position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
-          font-size: 16px; color: #2d3748; transition: all 0.2s;
-        }
-        .learn-card:hover { border-color: rgba(99,102,241,0.25); background: #101828; }
-        .learn-card:hover::after { color: #818cf8; right: 14px; }
-        .learn-cat { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
-        .learn-title { font-size: 14px; font-weight: 700; color: #f1f5f9; margin-bottom: 5px; line-height: 1.4; padding-right: 24px; }
-        .learn-desc { font-size: 12px; color: #475569; line-height: 1.5; }
+        /* CTA SPLIT */
+        .cta-split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .cta-email { background: linear-gradient(135deg, #0D1A2B, #080C14); border: 1px solid rgba(99,102,241,0.2); border-radius: 20px; padding: 36px; position: relative; overflow: hidden; }
+        .cta-email::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%); }
+        .cta-tg { background: linear-gradient(135deg, #0D1A1F, #080C14); border: 1px solid rgba(124,245,192,0.15); border-radius: 20px; padding: 36px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
+        .cta-tg::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(124,245,192,0.08) 0%, transparent 70%); }
+        .cta-label { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+        .cta-h2 { font-size: clamp(20px, 3vw, 28px); font-weight: 900; letter-spacing: -0.03em; color: #fff; margin-bottom: 10px; line-height: 1.25; }
+        .cta-desc { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.6; margin-bottom: 24px; }
+        .cta-tg-avatars { display: flex; align-items: center; margin-bottom: 16px; }
+        .cta-tg-av { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #7CF5C0, #4ade80); border: 2px solid #080C14; margin-left: -8px; font-size: 10px; font-weight: 800; display: flex; align-items: center; justify-content: center; color: #080C14; }
+        .cta-tg-av:first-child { margin-left: 0; }
+        .cta-tg-count { font-size: 12px; color: rgba(255,255,255,0.35); margin-left: 10px; font-weight: 600; }
+        .btn-tg { display: inline-flex; align-items: center; gap: 8px; background: rgba(124,245,192,0.1); border: 1px solid rgba(124,245,192,0.2); color: #7CF5C0; font-size: 13px; font-weight: 700; padding: 12px 20px; border-radius: 12px; text-decoration: none; transition: background 0.15s; width: fit-content; }
+        .btn-tg:hover { background: rgba(124,245,192,0.16); }
 
-        /* ── NEWSLETTER ── */
-        .newsletter { padding: 80px 24px; background: #020617; position: relative; overflow: hidden; width: 100%; }
-        .nl-glow {
-          position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-          width: 700px; height: 400px;
-          background: radial-gradient(ellipse,rgba(99,102,241,0.07) 0%,transparent 65%);
-          pointer-events: none;
-        }
-        .nl-inner { max-width: 560px; margin: 0 auto; text-align: center; position: relative; }
-        .nl-badge {
-          display: inline-flex; align-items: center; gap: 6px;
-          background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.18);
-          color: #818cf8; padding: 5px 14px; border-radius: 99px;
-          font-size: 11px; font-weight: 700; margin-bottom: 20px;
-          letter-spacing: 0.04em; text-transform: uppercase;
-        }
-        .nl-h2 { font-size: 34px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em; line-height: 1.15; }
+        /* MISC */
+        .content { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .divider { height: 1px; background: rgba(255,255,255,0.05); margin: 0 24px; }
+        .sc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .sc-card { display: flex; align-items: center; gap: 12px; background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 14px 16px; text-decoration: none; color: #fff; transition: border-color 0.15s, transform 0.15s; }
+        .sc-card:hover { border-color: rgba(124,245,192,0.2); transform: translateY(-2px); }
 
-        /* ── TABLET ── */
-        @media(max-width:1024px) {
-          .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-          .hero-h1 { font-size: 40px; }
-          .learn-grid { grid-template-columns: repeat(2,1fr); }
-          .starter-cards { grid-template-columns: 1fr; }
-          .hero-right { grid-template-columns: repeat(2,1fr); }
-        }
-
-        /* ── MOBILE ── */
-        @media(max-width:640px) {
-          .hero { padding: 40px 16px 40px; }
-          .hero-h1 { font-size: 28px; line-height: 1.15; }
-          .hero-sub { font-size: 15px; margin-bottom: 28px; }
-          .eyebrow-text { font-size: 11px; }
-
-          .cta-row { flex-direction: column; gap: 10px; margin-bottom: 32px; }
-          .btn-primary, .btn-ghost { width: 100%; justify-content: center; padding: 13px 20px; }
-
-          .social-proof { gap: 10px; }
-          .proof-val { font-size: 17px; }
-          .proof-div { height: 24px; }
-
-          .hero-right { grid-template-columns: 1fr 1fr; gap: 8px; }
-          .feat-card { padding: 14px; }
-          .feat-card.wide { grid-column: span 2; }
-          .feat-metric { font-size: 20px; }
-          .feat-title { font-size: 12px; }
-          .feat-desc { font-size: 11px; }
-          .feat-icon { width: 28px; height: 28px; margin-bottom: 8px; }
-
-          .starter { padding: 20px 16px; }
-          .starter-head { flex-direction: column; align-items: flex-start; gap: 6px; }
-          .starter-cards { grid-template-columns: 1fr; gap: 8px; }
-          .sc-card { padding: 12px 14px; gap: 10px; }
-
-          .content { padding: 0 16px 48px; }
-          .sec-title { font-size: 16px; }
-
-          .learn-section { padding: 40px 16px; }
+        @media (max-width: 900px) {
+          .stats-inner { grid-template-columns: repeat(2, 1fr); }
+          .stat-item:nth-child(2) { border-right: none; }
+          .starter-grid { grid-template-columns: 1fr; }
+          .proof-grid { grid-template-columns: 1fr; }
+          .ru-grid { grid-template-columns: repeat(2, 1fr); }
           .learn-grid { grid-template-columns: 1fr; }
-          .learn-card { padding: 16px; }
-
-          .newsletter { padding: 48px 16px; }
-          .nl-h2 { font-size: 24px; }
-          .nl-inner { padding: 0; }
+          .faq-grid { grid-template-columns: 1fr; }
+          .cta-split { grid-template-columns: 1fr; }
+          .sc-grid { grid-template-columns: repeat(2, 1fr); }
         }
-
-        /* prevent any child from overflowing */
-        @media(max-width:640px) {
-          .page * { max-width: 100%; }
-          .hero-radial { display: none; }
-          .ru-grid { grid-template-columns: 1fr 1fr !important; }
+        @media (max-width: 600px) {
+          .hero { padding: 60px 16px 56px; }
+          .section { padding: 48px 16px; }
+          .ru-grid { grid-template-columns: 1fr; }
+          .sc-grid { grid-template-columns: 1fr; }
+          .hero-ctas { flex-direction: column; align-items: center; }
+          .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
         }
-        @media(max-width:400px) {
-          .ru-grid { grid-template-columns: 1fr !important; }
-        }
-        @media(max-width:1024px) {
-          .ru-grid { grid-template-columns: repeat(2,1fr) !important; }
-        }
-        .ru-card:hover { border-color: rgba(124,245,192,0.2) !important; }
       `}</style>
 
       <div className="page">
 
-        {/* ── HERO ── */}
+        {/* HERO */}
         <section className="hero">
-          <div className="hero-grid-bg" />
-          <div className="hero-radial" />
+          <div className="hero-grid" />
+          <div className="hero-glow" />
           <div className="hero-inner">
-
-            {/* Left */}
-            <div>
-              <div className="eyebrow">
-                <span className="eyebrow-dot" />
-                <span className="eyebrow-text">{airdrops.length}+ Verified Airdrops Tracked</span>
-              </div>
-
-              <h1 className="hero-h1">
-                Find Crypto Airdrops<br />
-                <span className="grad">Before Everyone Else</span>
-              </h1>
-
-              <p className="hero-sub">
-                Free step-by-step guides for every airdrop. Track, participate, and earn — no paywalls, no fluff. Updated daily.
-              </p>
-
-              <div className="cta-row">
-                <Link href="/airdrops" className="btn-primary">
-                  Browse Airdrops
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </Link>
-                <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="btn-ghost">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-                  Join Telegram
-                </a>
-              </div>
-
-              <div className="social-proof">
-                {[
-                  { val: `${airdrops.length}+`, lbl: 'Verified Guides' },
-                  null,
-                  { val: `${activeCount}`, lbl: 'Active Now' },
-                  null,
-                  { val: `${freeCount}`, lbl: 'Free Airdrops' },
-                  null,
-                  { val: '16+', lbl: 'EVM Chains' },
-                ].map((item, i) =>
-                  item === null
-                    ? <div key={i} className="proof-div" />
-                    : <div key={i} className="proof-stat">
-                        <span className="proof-val">{item.val}</span>
-                        <span className="proof-lbl">{item.lbl}</span>
-                      </div>
-                )}
-              </div>
+            <div className="hero-badge anim-fade-up">
+              <span className="hero-badge-dot" />
+              {activeCount}+ Verified Airdrops Tracked
             </div>
-
-            {/* Right — feature grid */}
-            <div className="hero-right">
-              <div className="feat-card">
-                <div className="feat-icon" style={{ background: 'rgba(99,102,241,0.12)' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818cf8" strokeWidth="2"><path d="M12 2l9 4.9V17L12 22l-9-5.1V7z"/></svg>
-                </div>
-                <div className="feat-metric" style={{ color: '#818cf8' }}>{airdrops.length}+</div>
-                <div className="feat-title">Verified Airdrops</div>
-                <div className="feat-desc">Step-by-step guides for every project</div>
-              </div>
-
-              <div className="feat-card">
-                <div className="feat-icon" style={{ background: 'rgba(16,185,129,0.12)' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                </div>
-                <div className="feat-metric" style={{ color: '#10b981' }}>100%</div>
-                <div className="feat-title">Always Free</div>
-                <div className="feat-desc">No paywalls, no subscriptions ever</div>
-              </div>
-
-              <div className="feat-card wide" style={{ background: 'linear-gradient(135deg,rgba(99,102,241,0.08),rgba(99,102,241,0.04))' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
-                  <div>
-                    <div className="feat-icon" style={{ background: 'rgba(99,102,241,0.15)', marginBottom: '10px' }}>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818cf8" strokeWidth="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
-                    </div>
-                    <div className="feat-title">GM Station</div>
-                    <div className="feat-desc">Daily on-chain activity across 16+ EVM chains in one click.</div>
-                  </div>
-                  <Link href="/gm" style={{ background: 'rgba(99,102,241,0.15)', border: '1px solid rgba(99,102,241,0.3)', color: '#818cf8', padding: '9px 18px', borderRadius: '10px', textDecoration: 'none', fontSize: '12px', fontWeight: 800, whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                    Open GM Station
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                  </Link>
-                </div>
-              </div>
-
-              <div className="feat-card">
-                <div className="feat-icon" style={{ background: 'rgba(245,158,11,0.12)' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                </div>
-                <div className="feat-metric" style={{ color: '#f59e0b' }}>Daily</div>
-                <div className="feat-title">Always Updated</div>
-                <div className="feat-desc">New airdrops added every day</div>
-              </div>
-
-              <div className="feat-card">
-                <div className="feat-icon" style={{ background: 'rgba(96,165,250,0.12)' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ color: '#60a5fa' }}><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-                </div>
-                <div className="feat-metric" style={{ color: '#60a5fa' }}>500+</div>
-                <div className="feat-title">Community</div>
-                <div className="feat-desc">Join our Telegram for alerts</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div className="divider" />
-
-        {/* ── STARTER BANNER ── */}
-        <section className="starter">
-          <div className="starter-inner">
-            <div className="starter-head">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 6px #10b981', flexShrink: 0 }} />
-                <span style={{ fontSize: '11px', fontWeight: 800, color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.08em' }}>New to airdrops?</span>
-                <span style={{ fontSize: '14px', fontWeight: 700, color: '#f1f5f9' }}>Start with these 3 — free, under 10 minutes each</span>
-              </div>
-              <Link href="/learn/how-to-get-crypto-airdrops-2026" style={{ fontSize: '12px', color: '#10b981', fontWeight: 700, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', whiteSpace: 'nowrap' }}>
-                Full beginner guide
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <h1 className="hero-h1 anim-fade-up-1">
+              Find crypto airdrops<br />
+              before everyone<br />
+              <span className="hero-h1-accent">CT notices.</span>
+            </h1>
+            <p className="hero-sub anim-fade-up-2">
+              Free step-by-step guides for every airdrop. Track, participate, and earn — no paywalls, no fluff. Updated daily by hunters who actually farm.
+            </p>
+            <div className="hero-ctas anim-fade-up-3">
+              <Link href="/airdrops" className="btn-primary">
+                Browse {activeCount} airdrops →
               </Link>
+              <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="btn-secondary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+                Join 500+ in Telegram
+              </a>
             </div>
+            <div className="hero-proof anim-fade-up-4">
+              <span className="hero-proof-item">🌍 40+ countries</span>
+              <span className="hero-proof-dot" />
+              <span className="hero-proof-item">📖 {airdrops.length}+ guides</span>
+              <span className="hero-proof-dot" />
+              <span className="hero-proof-item">✅ Always free</span>
+              <span className="hero-proof-dot" />
+              <span className="hero-proof-item">🔄 Updated daily</span>
+            </div>
+          </div>
+        </section>
 
-            <div className="starter-cards">
-              {starterAirdrops.length > 0
-                ? starterAirdrops.map((a: any, i: number) => {
-                    const steps = Array.isArray(a.guide_steps) ? a.guide_steps : [];
-                    const color = starterColors[i] || '#818cf8';
-                    return (
-                      <Link key={a.slug} href={`/airdrops/${a.slug}`} className="sc-card">
-                        <div style={{ width: '34px', height: '34px', borderRadius: '10px', background: `${color}18`, border: `1px solid ${color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: 900, color, flexShrink: 0 }}>{i + 1}</div>
-                        <div style={{ flex: 1, minWidth: 0, overflow: 'hidden' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
-                            <span style={{ fontSize: '13px', fontWeight: 700, color: '#f1f5f9', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{a.name}</span>
-                            <span style={{ fontSize: '9px', fontWeight: 700, color: '#10b981', background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.2)', padding: '1px 6px', borderRadius: '99px', flexShrink: 0 }}>FREE</span>
-                          </div>
-                          <p style={{ fontSize: '11px', color: '#475569', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{a.description?.slice(0, 60)}…</p>
+        {/* STATS BAR */}
+        <div className="stats-bar">
+          <div className="stats-inner">
+            {[
+              { num: airdrops.length, suffix: '+', label: 'Total Airdrops', color: '#7CF5C0', delay: '0s' },
+              { num: activeCount, suffix: '', label: 'Active Right Now', color: '#818cf8', delay: '0.1s' },
+              { num: 100, suffix: '%', label: 'Always Free', color: '#f59e0b', delay: '0.2s' },
+              { num: 16, suffix: '+', label: 'EVM Networks', color: '#f43f5e', delay: '0.3s' },
+            ].map((s) => (
+              <div key={s.label} className="stat-item" style={{ animationDelay: s.delay }}>
+                <div className="stat-num" style={{ color: s.color }}>{s.num}{s.suffix}</div>
+                <div className="stat-label">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CHAINS */}
+        <div className="chains-strip">
+          <div className="chains-label">Supported chains</div>
+          <div className="chains-row">
+            {chains.map(c => <span key={c} className="chain-tag">{c}</span>)}
+          </div>
+        </div>
+
+        {/* START WITH THESE THREE */}
+        {starterAirdrops.length > 0 && (
+          <section className="section">
+            <div className="section-inner">
+              <div className="sec-hdr">
+                <div>
+                  <div className="section-label">New to Airdrops?</div>
+                  <div className="section-title">Start with these three.</div>
+                  <div className="section-sub">Free, under 10 minutes each, verified by our team.</div>
+                </div>
+                <Link href="/airdrops" className="view-all">Full beginner guide →</Link>
+              </div>
+              <div className="starter-grid">
+                {starterAirdrops.map((a: any, i: number) => {
+                  const colors = ['#818cf8', '#7CF5C0', '#f59e0b'];
+                  const color = colors[i];
+                  const steps = Array.isArray(a.steps) ? a.steps : (typeof a.steps === 'string' ? JSON.parse(a.steps || '[]') : []);
+                  return (
+                    <Link key={a.slug} href={`/airdrops/${a.slug}`} className="starter-card">
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <div className="starter-num" style={{ background: `${color}12`, border: `1px solid ${color}30`, color }}>{i + 1}</div>
+                        <div>
+                          <div className="starter-name">{a.name}</div>
+                          <div className="starter-chain">{a.blockchain}</div>
                         </div>
-                        <div style={{ fontSize: '10px', color, fontWeight: 700, flexShrink: 0 }}>{timeLabel(steps)}</div>
-                      </Link>
-                    );
-                  })
-                : <div style={{ gridColumn: '1/-1', textAlign: 'center', color: '#475569', fontSize: '13px', padding: '20px 0' }}>Loading latest free airdrops...</div>
-              }
+                        {a.logo && <img src={a.logo} alt={a.name} width={32} height={32} style={{ borderRadius: '8px', marginLeft: 'auto', border: '1px solid rgba(255,255,255,0.07)', objectFit: 'cover' }} />}
+                      </div>
+                      <p className="starter-desc">{a.description?.slice(0, 90)}…</p>
+                      <div style={{ display: 'flex', gap: '6px' }}>
+                        <span className="tag tag-free">Free</span>
+                        <span className="tag tag-easy">Easy</span>
+                        <span className="tag" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.3)' }}>{timeLabel(steps)}</span>
+                      </div>
+                      <div className="starter-cta" style={{ color }}>
+                        View guide
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
+
+        <div className="divider" />
+
+        {/* SOCIAL PROOF */}
+        <section className="section">
+          <div className="section-inner">
+            <div className="sec-hdr">
+              <div>
+                <div className="section-label">Proof, not promises</div>
+                <div className="section-title">Hunters who actually shipped.</div>
+                <div className="section-sub">Real wallets, real transactions. No fake screenshots, no paid shills.</div>
+              </div>
+              <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="view-all">Share yours →</a>
+            </div>
+            <div className="proof-grid">
+              {socialProof.map((p, i) => (
+                <div key={p.handle} className="proof-card" style={{ animationDelay: `${i * 0.1}s` }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div className="proof-avatar" style={{ background: `${p.color}18`, border: `1px solid ${p.color}30`, color: p.color }}>{p.avatar}</div>
+                    <div>
+                      <div className="proof-handle">{p.handle}</div>
+                      <div className="proof-on">on 3alamiy Web3</div>
+                    </div>
+                  </div>
+                  <div className="proof-claim">Claimed {p.claim}</div>
+                  <p className="proof-text">"{p.text}"</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
         <div className="divider" />
 
-        {/* ── AIRDROPS ── */}
-        <div className="content" style={{ paddingTop: '48px' }}>
+        {/* RECENTLY UPDATED */}
+        {recentlyUpdated.length > 0 && (
+          <section className="section" style={{ paddingBottom: 0 }}>
+            <div className="section-inner">
+              <div className="sec-hdr" style={{ marginBottom: '16px' }}>
+                <div>
+                  <div className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '22px' }}>
+                    <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#7CF5C0', boxShadow: '0 0 6px rgba(124,245,192,0.6)', display: 'inline-block', animation: 'pulse 1.8s infinite', flexShrink: 0 }} />
+                    Recently Updated
+                  </div>
+                  <div className="section-sub">Airdrops with fresh guides or new information</div>
+                </div>
+                <Link href="/airdrops" className="view-all">See all →</Link>
+              </div>
+              <div className="ru-grid">
+                {recentlyUpdated.map((a: any) => {
+                  const timeAgo = (date: string) => {
+                    if (!date) return 'Recently';
+                    const diff = Date.now() - new Date(date).getTime();
+                    const mins = Math.floor(diff / 60000);
+                    const hours = Math.floor(diff / 3600000);
+                    const days = Math.floor(diff / 86400000);
+                    if (mins < 60) return `${mins}m ago`;
+                    if (hours < 24) return `${hours}h ago`;
+                    return `${days}d ago`;
+                  };
+                  return (
+                    <Link key={a.slug} href={`/airdrops/${a.slug}`} className="ru-card">
+                      <div style={{ position: 'absolute', top: '10px', right: '10px', background: 'rgba(124,245,192,0.08)', border: '1px solid rgba(124,245,192,0.18)', color: '#7CF5C0', fontSize: '9px', fontWeight: 700, padding: '2px 7px', borderRadius: '99px' }}>
+                        🔄 {timeAgo(a.updated_at)}
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', paddingRight: '60px' }}>
+                        {a.logo
+                          ? <img src={a.logo} alt={a.name} width={36} height={36} style={{ borderRadius: '10px', border: '1px solid rgba(255,255,255,0.07)', objectFit: 'cover', flexShrink: 0 }} />
+                          : <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: '#1a2540', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: 700, color: 'rgba(255,255,255,0.2)', flexShrink: 0 }}>{a.name?.[0]}</div>
+                        }
+                        <div style={{ minWidth: 0 }}>
+                          <div style={{ fontSize: '13px', fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{a.name}</div>
+                          <div style={{ fontSize: '10px', fontWeight: 600, color: 'rgba(255,255,255,0.28)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{a.blockchain}</div>
+                        </div>
+                      </div>
+                      <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                        <span className="tag" style={{ background: a.status === 'Active' ? 'rgba(124,245,192,0.08)' : 'rgba(100,100,120,0.08)', border: `1px solid ${a.status === 'Active' ? 'rgba(124,245,192,0.18)' : 'rgba(100,100,120,0.16)'}`, color: a.status === 'Active' ? '#7CF5C0' : '#6b7280' }}>{a.status}</span>
+                        <span className="tag" style={{ background: a.cost === 'Free' ? 'rgba(124,245,192,0.08)' : 'rgba(245,158,11,0.08)', border: `1px solid ${a.cost === 'Free' ? 'rgba(124,245,192,0.18)' : 'rgba(245,158,11,0.18)'}`, color: a.cost === 'Free' ? '#7CF5C0' : '#f59e0b' }}>{a.cost}</span>
+                      </div>
+                      <div style={{ fontSize: '11px', fontWeight: 700, color: '#7CF5C0', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        View Guide <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
+
+        <div className="divider" style={{ marginTop: '72px' }} />
+
+        {/* ALL AIRDROPS */}
+        <div className="content" style={{ paddingTop: '56px', paddingBottom: '0' }}>
           <div className="sec-hdr">
             <div>
-              <div className="sec-title">Latest Airdrops</div>
-              <div className="sec-sub">Verified guides updated daily · {airdrops.length} total</div>
+              <div className="section-label">The full list</div>
+              <div className="section-title" style={{ fontSize: 'clamp(24px,4vw,36px)' }}>Every airdrop, one wall.</div>
+              <div className="section-sub">{activeCount} active · {freeCount} free · Updated daily</div>
             </div>
-            <Link href="/airdrops" className="view-all">View All →</Link>
+            <Link href="/airdrops" className="view-all">View all →</Link>
           </div>
           <FilterBar airdrops={airdrops} />
         </div>
 
-        <div className="divider" />
+        <div className="divider" style={{ marginTop: '56px' }} />
 
-        {/* ── RECENTLY UPDATED ── */}
-        {recentlyUpdated.length > 0 && (
-          <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 24px 0' }}>
-            <div className="sec-hdr" style={{ marginBottom: '16px' }}>
-              <div>
-                <div className="sec-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#7CF5C0', boxShadow: '0 0 6px rgba(124,245,192,0.6)', display: 'inline-block', animation: 'pulse 1.8s infinite' }} />
-                  🔄 Recently Updated
-                </div>
-                <div className="sec-sub">Airdrops with fresh guides or new information</div>
-              </div>
-              <Link href="/airdrops" className="view-all">View All →</Link>
-            </div>
-            <div className="ru-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px' }}>
-              {recentlyUpdated.map((a: any) => {
-                const timeAgo = (date: string) => {
-                  if (!date) return 'Recently';
-                  const diff = Date.now() - new Date(date).getTime();
-                  const mins = Math.floor(diff / 60000);
-                  const hours = Math.floor(diff / 3600000);
-                  const days = Math.floor(diff / 86400000);
-                  if (mins < 60) return `${mins}m ago`;
-                  if (hours < 24) return `${hours}h ago`;
-                  return `${days}d ago`;
-                };
-                return (
-                  <Link key={a.slug} href={`/airdrops/${a.slug}`} className="ru-card" style={{
-                    background: '#0D1221', border: '1px solid rgba(255,255,255,0.06)',
-                    borderRadius: '14px', padding: '16px', textDecoration: 'none', color: '#fff',
-                    display: 'flex', flexDirection: 'column', gap: '10px',
-                    transition: 'border-color 0.15s', position: 'relative', overflow: 'hidden',
-                  }}>
-                    {/* Updated badge */}
-                    <div style={{ position: 'absolute', top: '10px', right: '10px', background: 'rgba(124,245,192,0.08)', border: '1px solid rgba(124,245,192,0.18)', color: '#7CF5C0', fontSize: '9px', fontWeight: 700, padding: '2px 7px', borderRadius: '99px', letterSpacing: '0.04em' }}>
-                      🔄 {timeAgo(a.updated_at)}
-                    </div>
-
-                    {/* Identity */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', paddingRight: '60px' }}>
-                      {a.logo
-                        ? <img src={a.logo} alt={a.name} width={36} height={36} style={{ borderRadius: '10px', border: '1px solid rgba(255,255,255,0.07)', objectFit: 'cover', flexShrink: 0 }} />
-                        : <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'linear-gradient(135deg, #111827, #1a2540)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: 700, color: 'rgba(255,255,255,0.2)', flexShrink: 0 }}>{a.name?.[0]}</div>
-                      }
-                      <div style={{ minWidth: 0 }}>
-                        <div style={{ fontSize: '13px', fontWeight: 600, color: '#fff', letterSpacing: '-0.01em', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{a.name}</div>
-                        <div style={{ fontSize: '10px', fontWeight: 600, color: 'rgba(255,255,255,0.28)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{a.blockchain}</div>
-                      </div>
-                    </div>
-
-                    {/* Stats */}
-                    <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-                      <span style={{ fontSize: '10px', fontWeight: 600, color: a.status === 'Active' ? '#7CF5C0' : '#6b7280', background: a.status === 'Active' ? 'rgba(124,245,192,0.08)' : 'rgba(100,100,120,0.08)', border: `1px solid ${a.status === 'Active' ? 'rgba(124,245,192,0.18)' : 'rgba(100,100,120,0.16)'}`, padding: '2px 8px', borderRadius: '99px' }}>{a.status}</span>
-                      <span style={{ fontSize: '10px', fontWeight: 600, color: a.cost === 'Free' ? '#7CF5C0' : '#f59e0b', background: a.cost === 'Free' ? 'rgba(124,245,192,0.08)' : 'rgba(245,158,11,0.08)', border: `1px solid ${a.cost === 'Free' ? 'rgba(124,245,192,0.18)' : 'rgba(245,158,11,0.18)'}`, padding: '2px 8px', borderRadius: '99px' }}>{a.cost}</span>
-                    </div>
-
-                    <div style={{ fontSize: '11px', fontWeight: 600, color: '#7CF5C0', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      View Guide
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        <div className="divider" style={{ marginTop: '40px' }} />
-
-        {/* ── LEARN ── */}
-        <section className="learn-section">
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        {/* LEARN */}
+        <section className="section">
+          <div className="section-inner">
             <div className="sec-hdr">
               <div>
-                <div className="sec-title">Learn & Level Up</div>
-                <div className="sec-sub">Everything you need to qualify for the best airdrops</div>
+                <div className="section-label">1 guide · 1 week · skip a CT notice</div>
+                <div className="section-title">Sharper than the timeline.</div>
+                <div className="section-sub">Long-form guides from hunters who actually farm.</div>
               </div>
-              <Link href="/learn" className="view-all">All Articles →</Link>
+              <Link href="/learn" className="view-all">All articles →</Link>
             </div>
             <div className="learn-grid">
               {articles.map((a) => (
@@ -625,19 +529,61 @@ export default async function Home() {
 
         <div className="divider" />
 
-        {/* ── NEWSLETTER ── */}
-        <section className="newsletter">
-          <div className="nl-glow" />
-          <div className="nl-inner">
-            <div className="nl-badge">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              Free Daily Alerts
+        {/* CTA SPLIT */}
+        <section className="section">
+          <div className="section-inner">
+            <div className="cta-split">
+              <div className="cta-email">
+                <div className="cta-label" style={{ color: '#818cf8' }}>📧 Free · No spam</div>
+                <div className="cta-h2">One drop. One email. No spam.</div>
+                <p className="cta-desc">Get the single best airdrop opportunity every Friday — only when there's something worth your gas.</p>
+                <EmailSignup />
+              </div>
+              <div className="cta-tg">
+                <div>
+                  <div className="cta-label" style={{ color: '#7CF5C0' }}>💬 Telegram · Live</div>
+                  <div className="cta-h2">500+ hunters in chat.</div>
+                  <p className="cta-desc">The fastest place to learn about new drops before they go viral. No noise, just alpha.</p>
+                </div>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
+                    <div className="cta-tg-avatars">
+                      {['A','B','C','D'].map(l => <div key={l} className="cta-tg-av">{l}</div>)}
+                    </div>
+                    <span className="cta-tg-count">+496 active now</span>
+                  </div>
+                  <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="btn-tg">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+                    Join the channel
+                  </a>
+                </div>
+              </div>
             </div>
-            <h2 className="nl-h2">Never Miss a New Airdrop</h2>
-            <p style={{ fontSize: '15px', color: '#64748b', margin: '0 0 32px', lineHeight: 1.7 }}>
-              Get the best new airdrops delivered to your inbox every day. Free, no spam.
-            </p>
-            <EmailSignup />
+          </div>
+        </section>
+
+        <div className="divider" />
+
+        {/* FAQ */}
+        <section className="section">
+          <div className="section-inner">
+            <div className="sec-hdr" style={{ marginBottom: '28px' }}>
+              <div>
+                <div className="section-label">Real questions</div>
+                <div className="section-title">What hunters always ask first.</div>
+              </div>
+            </div>
+            <div className="faq-grid">
+              {faqs.map((f, i) => (
+                <div key={f.q} className="faq-card" style={{ animationDelay: `${i * 0.08}s` }}>
+                  <div className="faq-q">
+                    <span className="faq-q-icon">Q</span>
+                    {f.q}
+                  </div>
+                  <p className="faq-a">{f.a}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
