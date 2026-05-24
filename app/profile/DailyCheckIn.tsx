@@ -42,7 +42,7 @@ export default function DailyCheckIn({ userId }: Props) {
   const [justChecked, setJustChecked] = useState(false);
   const supabase = createClient();
 
-  const today = new Date().toISOString().split('T')[0];
+  const today = (() => { const d = new Date(); const offset = d.getTimezoneOffset(); const local = new Date(d.getTime() - offset * 60 * 1000); return local.toISOString().split('T')[0]; })();
   const checkedToday = lastCheckin === today;
 
   useEffect(() => {
@@ -70,9 +70,10 @@ export default function DailyCheckIn({ userId }: Props) {
     if (checkedToday || checking) return;
     setChecking(true);
 
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    const yesterdayStr = yesterday.toISOString().split('T')[0];
+    const yDate = new Date();
+    yDate.setDate(yDate.getDate() - 1);
+    const yOffset = yDate.getTimezoneOffset();
+    const yesterdayStr = new Date(yDate.getTime() - yOffset * 60 * 1000).toISOString().split('T')[0];
 
     const newStreak = lastCheckin === yesterdayStr ? streak + 1 : 1;
     const boost = getBoost(newStreak);
@@ -119,14 +120,11 @@ export default function DailyCheckIn({ userId }: Props) {
 
   // Build 30-day grid
   const days = Array.from({ length: 30 }, (_, i) => {
-    const d = new Date();
-    d.setDate(d.getDate() - (totalCheckins - 1 - i));
-    return {
-      day: i + 1,
-      checked: i < totalCheckins,
-      isToday: i === totalCheckins - 1 && checkedToday,
-      isNext: i === totalCheckins && !checkedToday,
-    };
+    const dayNum = i + 1;
+    const checked = checkedToday ? dayNum <= streak : dayNum < streak;
+    const isToday = checkedToday && dayNum === streak;
+    const isNext = !checkedToday && dayNum === streak + 1;
+    return { day: dayNum, checked, isToday, isNext };
   });
 
   if (loading) return (
