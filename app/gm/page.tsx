@@ -183,7 +183,7 @@ export default function GMPage() {
           background: radial-gradient(ellipse, rgba(131,110,249,0.1) 0%, rgba(99,102,241,0.04) 40%, transparent 70%);
           pointer-events: none;
         }
-        .gm-hero-inner { position: relative; max-width: 700px; }
+        .gm-hero-inner { position: relative; max-width: 1200px; margin: 0 auto; }
         .gm-label {
           display: inline-flex; align-items: center; gap: 7px;
           font-size: 10px; font-weight: 800; text-transform: uppercase;
@@ -217,6 +217,32 @@ export default function GMPage() {
           font-size: 13px; color: rgba(255,255,255,0.35);
         }
         .gm-countdown strong { color: #836ef9; font-variant-numeric: tabular-nums; font-weight: 800; }
+
+        /* Override RainbowKit yellow button with brand colors */
+        #rk-connect-button,
+        .__rk-c-bVkRSy,
+        [class*="ConnectButton"],
+        [class*="connectButton"] {
+          background: linear-gradient(135deg, #7CF5C0, #4ade80) !important;
+          color: #080C14 !important;
+        }
+        /* Override RainbowKit yellow button with brand colors */
+        [data-testid="rk-connect-button"],
+        button[data-testid="rk-connect-button"] {
+          background: linear-gradient(135deg, #7CF5C0, #4ade80) !important;
+          color: #080C14 !important;
+          font-weight: 800 !important;
+          border-radius: 12px !important;
+          box-shadow: 0 8px 24px rgba(124,245,192,0.25) !important;
+          border: none !important;
+        }
+        /* RainbowKit connected state */
+        [data-testid="rk-account-button"] {
+          background: rgba(124,245,192,0.08) !important;
+          border: 1px solid rgba(124,245,192,0.2) !important;
+          color: #7CF5C0 !important;
+          border-radius: 12px !important;
+        }
 
         /* HOW IT WORKS + STAT */
         .gm-cards {
@@ -440,7 +466,50 @@ export default function GMPage() {
               One click. {MAINNET_CHAINS.length}+ EVM chains. Daily activity that compounds into points across every protocol that's still allocating.
             </p>
             <div className="gm-hero-connect afu3">
-              <ConnectButton />
+              <ConnectButton.Custom>
+                {({ account, chain, openAccountModal, openChainModal, openConnectModal, mounted: rbMounted }) => {
+                  const ready = rbMounted;
+                  const connected = ready && account && chain;
+                  return (
+                    <div {...(!ready && { 'aria-hidden': true, style: { opacity: 0, pointerEvents: 'none', userSelect: 'none' } })}>
+                      {!connected ? (
+                        <button
+                          onClick={openConnectModal}
+                          style={{
+                            background: 'linear-gradient(135deg, #7CF5C0, #4ade80)',
+                            color: '#080C14',
+                            border: 'none',
+                            padding: '13px 28px',
+                            borderRadius: '12px',
+                            fontSize: '14px',
+                            fontWeight: 800,
+                            cursor: 'pointer',
+                            fontFamily: 'inherit',
+                            boxShadow: '0 8px 24px rgba(124,245,192,0.25)',
+                            letterSpacing: '-0.01em',
+                          }}
+                        >
+                          Connect Wallet
+                        </button>
+                      ) : chain.unsupported ? (
+                        <button onClick={openChainModal} style={{ background: 'rgba(244,63,94,0.1)', border: '1px solid rgba(244,63,94,0.2)', color: '#f43f5e', padding: '13px 20px', borderRadius: '12px', fontSize: '13px', fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
+                          Wrong network
+                        </button>
+                      ) : (
+                        <div style={{ display: 'flex', gap: '8px' }}>
+                          <button onClick={openChainModal} style={{ background: 'rgba(124,245,192,0.06)', border: '1px solid rgba(124,245,192,0.15)', color: '#7CF5C0', padding: '10px 14px', borderRadius: '12px', fontSize: '12px', fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            {chain.hasIcon && chain.iconUrl && <img src={chain.iconUrl} alt={chain.name} style={{ width: 16, height: 16, borderRadius: '50%' }} />}
+                            {chain.name}
+                          </button>
+                          <button onClick={openAccountModal} style={{ background: 'rgba(124,245,192,0.06)', border: '1px solid rgba(124,245,192,0.15)', color: '#7CF5C0', padding: '10px 16px', borderRadius: '12px', fontSize: '12px', fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
+                            {account.displayName}
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  );
+                }}
+              </ConnectButton.Custom>
               {isConnected && (
                 <div className="gm-countdown">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
