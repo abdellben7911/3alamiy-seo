@@ -532,7 +532,7 @@ export default async function Home() {
         {/* CTA SPLIT */}
         <section className="section">
           <div className="section-inner">
-            <div className="cta-split">
+            <div className="cta-split" id="newsletter">
               <div className="cta-email">
                 <div className="cta-label" style={{ color: '#818cf8' }}>📧 Free · No spam</div>
                 <div className="cta-h2">One drop. One email. No spam.</div>

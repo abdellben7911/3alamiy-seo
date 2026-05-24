@@ -169,7 +169,7 @@ export default function StickyBar() {
               </svg>
               Telegram
             </a>
-            <a href="#newsletter" className="sticky-btn-email" onClick={dismiss}>
+            <a href="#newsletter" className="sticky-btn-email" onClick={(e) => { e.preventDefault(); dismiss(); const el = document.getElementById('newsletter'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                 <polyline points="22,6 12,13 2,6"/>
