@@ -3,9 +3,24 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      // Redirect seo.3alamiyweb3.online → www.3alamiyweb3.com
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'seo.3alamiyweb3.online' }],
+        destination: 'https://www.3alamiyweb3.com/:path*',
+        permanent: true,
+      },
+      // Also redirect bare 3alamiyweb3.online → www.3alamiyweb3.com
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: '3alamiyweb3.online' }],
+        destination: 'https://www.3alamiyweb3.com/:path*',
+        permanent: true,
+      },
+      // Redirect non-www to www
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: '3alamiyweb3.com' }],
         destination: 'https://www.3alamiyweb3.com/:path*',
         permanent: true,
       },
