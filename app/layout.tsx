@@ -5,6 +5,7 @@ import { AuthProvider } from './auth/AuthProvider';
 import { Providers } from './providers';
 import Header from './Header';
 import Footer from './Footer';
+import StickyBar from './StickyBar';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -21,12 +22,12 @@ export const metadata: Metadata = {
     apple: '/icon.svg',
     shortcut: '/icon.svg',
   },
-  metadataBase: new URL('https://seo.3alamiyweb3.online'),
+  metadataBase: new URL('https://www.3alamiyweb3.com'),
   alternates: {
-    canonical: 'https://seo.3alamiyweb3.online',
+    canonical: 'https://www.3alamiyweb3.com',
     languages: {
-      'en': 'https://seo.3alamiyweb3.online',
-      'x-default': 'https://seo.3alamiyweb3.online',
+      'en': 'https://www.3alamiyweb3.com',
+      'x-default': 'https://www.3alamiyweb3.com',
     },
   },
   openGraph: {
@@ -59,10 +60,10 @@ const aiSchema = {
     // WebSite with SiteLinksSearchBox — helps AI engines and Google understand your search
     {
       '@type': 'WebSite',
-      '@id': 'https://seo.3alamiyweb3.online/#website',
+      '@id': 'https://www.3alamiyweb3.com/#website',
       'name': '3alamiy Web3',
       'alternateName': '3alamiy',
-      'url': 'https://seo.3alamiyweb3.online',
+      'url': 'https://www.3alamiyweb3.com',
       'description': 'The best free crypto airdrop tracker in 2026. Step-by-step guides for 87+ verified airdrops across Ethereum, Solana, Base, Arbitrum, Sui, Hyperliquid and more.',
       'inLanguage': 'en',
       'potentialAction': [
@@ -70,7 +71,7 @@ const aiSchema = {
           '@type': 'SearchAction',
           'target': {
             '@type': 'EntryPoint',
-            'urlTemplate': 'https://seo.3alamiyweb3.online/?search={search_term_string}',
+            'urlTemplate': 'https://www.3alamiyweb3.com/?search={search_term_string}',
           },
           'query-input': 'required name=search_term_string',
         },
@@ -79,13 +80,13 @@ const aiSchema = {
     // Organization — enhanced for AEO/AI engine trust
     {
       '@type': 'Organization',
-      '@id': 'https://seo.3alamiyweb3.online/#organization',
+      '@id': 'https://www.3alamiyweb3.com/#organization',
       'name': '3alamiy Web3',
       'alternateName': '3alamiy',
-      'url': 'https://seo.3alamiyweb3.online',
+      'url': 'https://www.3alamiyweb3.com',
       'logo': {
         '@type': 'ImageObject',
-        'url': 'https://seo.3alamiyweb3.online/icon.svg',
+        'url': 'https://www.3alamiyweb3.com/icon.svg',
         'width': 512,
         'height': 512,
       },
@@ -132,16 +133,16 @@ const aiSchema = {
     // ItemList — top-level airdrop categories for AI engines
     {
       '@type': 'ItemList',
-      '@id': 'https://seo.3alamiyweb3.online/#sections',
+      '@id': 'https://www.3alamiyweb3.com/#sections',
       'name': '3alamiy Web3 — Main Sections',
       'itemListElement': [
-        { '@type': 'ListItem', position: 1, name: 'All Crypto Airdrops 2026', url: 'https://seo.3alamiyweb3.online/airdrops' },
-        { '@type': 'ListItem', position: 2, name: 'Learn Crypto Airdrops', url: 'https://seo.3alamiyweb3.online/learn' },
-        { '@type': 'ListItem', position: 3, name: 'GM Station — Daily On-Chain Activity', url: 'https://seo.3alamiyweb3.online/gm' },
-        { '@type': 'ListItem', position: 4, name: 'Best Crypto Airdrops 2026', url: 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-2026' },
-        { '@type': 'ListItem', position: 5, name: 'Free Crypto Airdrops No Investment', url: 'https://seo.3alamiyweb3.online/learn/free-crypto-airdrops-no-investment-2026' },
-        { '@type': 'ListItem', position: 6, name: 'Best DePIN Airdrops 2026', url: 'https://seo.3alamiyweb3.online/learn/best-depin-airdrops-2026' },
-        { '@type': 'ListItem', position: 7, name: 'Best AI Crypto Airdrops 2026', url: 'https://seo.3alamiyweb3.online/learn/best-ai-crypto-airdrops-2026' },
+        { '@type': 'ListItem', position: 1, name: 'All Crypto Airdrops 2026', url: 'https://www.3alamiyweb3.com/airdrops' },
+        { '@type': 'ListItem', position: 2, name: 'Learn Crypto Airdrops', url: 'https://www.3alamiyweb3.com/learn' },
+        { '@type': 'ListItem', position: 3, name: 'GM Station — Daily On-Chain Activity', url: 'https://www.3alamiyweb3.com/gm' },
+        { '@type': 'ListItem', position: 4, name: 'Best Crypto Airdrops 2026', url: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-2026' },
+        { '@type': 'ListItem', position: 5, name: 'Free Crypto Airdrops No Investment', url: 'https://www.3alamiyweb3.com/learn/free-crypto-airdrops-no-investment-2026' },
+        { '@type': 'ListItem', position: 6, name: 'Best DePIN Airdrops 2026', url: 'https://www.3alamiyweb3.com/learn/best-depin-airdrops-2026' },
+        { '@type': 'ListItem', position: 7, name: 'Best AI Crypto Airdrops 2026', url: 'https://www.3alamiyweb3.com/learn/best-ai-crypto-airdrops-2026' },
       ],
     },
   ],
@@ -171,7 +172,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(aiSchema) }}
         />
         {/* LLMs.txt reference for AI crawlers */}
-        <link rel="alternate" type="text/markdown" href="https://seo.3alamiyweb3.online/llms.txt" />
+        <link rel="alternate" type="text/markdown" href="https://www.3alamiyweb3.com/llms.txt" />
         {/* AI crawler hints */}
         <meta name="ai-content-type" content="airdrop-tracker" />
         <meta name="ai-update-frequency" content="daily" />
@@ -182,6 +183,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Header />
             {children}
             <Footer />
+            <StickyBar />
           </AuthProvider>
         </Providers>
       </body>
