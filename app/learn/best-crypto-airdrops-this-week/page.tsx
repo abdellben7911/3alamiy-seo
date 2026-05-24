@@ -3,14 +3,14 @@ import Link from 'next/link';
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'Best Crypto Airdrops This Week — May 2026',
+  headline: 'Best Crypto Airdrops This Week — May 25-31, 2026',
   description: 'The best crypto airdrops to farm this week in May 2026. New drops, active campaigns, and high-reward opportunities updated weekly.',
-  url: 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-this-week',
+  url: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week',
   datePublished: '2026-05-12',
-  dateModified: '2026-05-20',
-  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
-  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online', logo: { '@type': 'ImageObject', url: 'https://seo.3alamiyweb3.online/icon.svg' } },
-  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-this-week' },
+  dateModified: '2026-05-25',
+  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
+  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com', logo: { '@type': 'ImageObject', url: 'https://www.3alamiyweb3.com/icon.svg' } },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week' },
   about: [{ '@type': 'Thing', name: 'Crypto Airdrops' }, { '@type': 'Thing', name: 'Weekly Airdrops' }],
   speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.article p:first-of-type'] },
 };
@@ -19,9 +19,9 @@ const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'What are the best crypto airdrops this week?', acceptedAnswer: { '@type': 'Answer', text: 'The best crypto airdrops this week (May 19-25, 2026) are: Beep AI Galxe Campaign (Sui, Free), DeepBook Early Waitlist (Sui, Free), PROPR Points Program (Hyperliquid, Paid), Startale STAR Points (Sonium, Free), and DustSwap Airdrop (Base, Paid).' } },
+    { '@type': 'Question', name: 'What are the best crypto airdrops this week?', acceptedAnswer: { '@type': 'Answer', text: 'The best crypto airdrops this week (May 25-31, 2026) are: Beep AI Galxe Campaign (Sui, Free), DeepBook Early Waitlist (Sui, Free), PROPR Points Program (Hyperliquid, Paid), Startale STAR Points (Sonium, Free), and DustSwap Airdrop (Base, Paid).' } },
     { '@type': 'Question', name: 'Which airdrops should I farm first this week?', acceptedAnswer: { '@type': 'Answer', text: 'Farm High Priority airdrops first: Beep AI Galxe Campaign (5 minutes, free, confirmed rewards) and DeepBook Early Waitlist (3 minutes, free). Then move to Medium Priority: PROPR and DustSwap for higher rewards with more effort.' } },
-    { '@type': 'Question', name: 'How do I stay updated on new airdrops every week?', acceptedAnswer: { '@type': 'Answer', text: 'Join the 3alamiy Web3 Telegram channel at t.me/web33alamiy for instant alerts when new airdrops launch. We also update our weekly picks every Monday at seo.3alamiyweb3.online/learn/best-crypto-airdrops-this-week.' } },
+    { '@type': 'Question', name: 'How do I stay updated on new airdrops every week?', acceptedAnswer: { '@type': 'Answer', text: 'Join the 3alamiy Web3 Telegram channel at t.me/web33alamiy for instant alerts when new airdrops launch. We also update our weekly picks every Monday at www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week.' } },
   ],
 };
 
@@ -29,14 +29,14 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
-    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://seo.3alamiyweb3.online/learn' },
-    { '@type': 'ListItem', position: 3, name: 'Best Crypto Airdrops This Week', item: 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-this-week' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.3alamiyweb3.com' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://www.3alamiyweb3.com/learn' },
+    { '@type': 'ListItem', position: 3, name: 'Best Crypto Airdrops This Week', item: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week' },
   ],
 };
 
 export const metadata = {
-  title: 'Best Crypto Airdrops This Week — May 2026 | 3alamiy Web3',
+  title: 'Best Crypto Airdrops This Week — May 25-31, 2026 | 3alamiy Web3',
   description: 'The best crypto airdrops to farm this week in May 2026. New drops, active campaigns, and high-reward opportunities updated weekly.',
   keywords: 'best crypto airdrops this week, crypto airdrops this week, new crypto airdrops, weekly airdrop list, best airdrops may 2026',
   openGraph: {
@@ -44,10 +44,11 @@ export const metadata = {
     description: 'The best crypto airdrops to farm this week. Updated every week.',
     type: 'article',
   },
-  alternates: { canonical: 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-this-week' },
+  alternates: { canonical: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week' },
 };
 
 const thisWeekAirdrops = [
+  { name: 'Rumor Early Access Roles', chain: 'Multi-chain', priority: 'High', reward: '$200-$2,000', slug: 'rumor-early-access-roles', why: 'Confirmed airdrop campaign. OG roles, AI credits, leaderboard rewards. Join early for best position.' },
   { name: 'Beep AI Galxe Campaign', chain: 'Sui', priority: 'High', reward: '$100–$1,000', slug: 'beep-ai-galxe-campaign', why: 'New Galxe quests just launched. Confirmed $BEEP rewards. Takes 5 minutes.' },
   { name: 'DeepBook Early Waitlist', chain: 'Sui', priority: 'High', reward: '$50–$500', slug: 'deepbook-early-waitlist', why: 'Liquidity layer on Sui. Free waitlist — referrals boost your position.' },
   { name: 'PROPR Points Program', chain: 'Hyperliquid', priority: 'High', reward: '$500–$5,000', slug: 'propr-points-program', why: '$5.5M raised, SwissBorg backed. 45.5% token supply for community. Farm daily.' },
@@ -59,7 +60,7 @@ const thisWeekAirdrops = [
 const priorityColor = (p: string) => p === 'High' ? '#10b981' : p === 'Medium' ? '#f59e0b' : '#71717a';
 
 export default function BestAirdropsThisWeek() {
-  const weekOf = 'May 19–25, 2026';
+  const weekOf = 'May 25–31, 2026';
 
   return (
     <>
@@ -96,7 +97,7 @@ export default function BestAirdropsThisWeek() {
           </div>
           <h1 style={{ fontSize: '38px', fontWeight: 900, color: '#fff', margin: '0 0 14px', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
             Best Crypto Airdrops<br />
-            <span style={{ background: 'linear-gradient(135deg, #818cf8, #6366f1)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>This Week — May 2026</span>
+            <span style={{ background: 'linear-gradient(135deg, #818cf8, #6366f1)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>This Week — May 25–31</span>
           </h1>
           <p style={{ fontSize: '16px', color: '#71717a', margin: '0 0 24px', lineHeight: 1.7, maxWidth: '580px' }}>
             The highest-priority airdrops to farm this week. Ranked by reward potential, effort required, and farming urgency.
@@ -136,7 +137,7 @@ export default function BestAirdropsThisWeek() {
 
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
           <Link href="/airdrops" style={{ background: 'linear-gradient(135deg, #6366f1, #4f46e5)', color: '#fff', padding: '12px 26px', borderRadius: '12px', textDecoration: 'none', fontWeight: 700, fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 6px 20px rgba(99,102,241,0.3)' }}>
-            View All 86+ Airdrops →
+            View All 94+ Airdrops →
           </Link>
         </div>
 
@@ -162,6 +163,7 @@ export default function BestAirdropsThisWeek() {
         <h2>New Airdrops Added This Week</h2>
         <p>We added several new airdrops to the tracker this week. Here's what's new:</p>
         <ul>
+          <li><strong>Rumor Early Access Roles</strong> — Confirmed airdrop, AI trading platform, OG roles and leaderboard rewards</li>
           <li><strong>Beep AI Galxe Campaign</strong> — New Galxe quests with confirmed $BEEP rewards on Sui</li>
           <li><strong>nof1 Early Waitlist</strong> — AI meets financial markets, $15M raised, Sui ecosystem</li>
           <li><strong>xStocksFi OG Role</strong> — Tokenized stocks on-chain, $25B trading volume</li>
