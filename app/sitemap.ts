@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 const SUPABASE_URL = 'https://aahxneihytiogjvcznir.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFhaHhuZWloeXRpb2dqdmN6bmlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3OTkzOTUsImV4cCI6MjA4NjM3NTM5NX0.BOcltYn8FrhX-a99JBIs5j5mD-sFnwtzGK1CgswvG_o';
 
-const BASE = 'https://seo.3alamiyweb3.online';
+const BASE = 'https://www.3alamiyweb3.com';
 
 // ✅ VALID slugs only — must exist in [slug]/page.tsx articles object OR as a folder
 const articles = [
@@ -16,6 +16,7 @@ const articles = [
   'crypto-wallet-setup-for-airdrops-2026',
   'best-ai-crypto-airdrops-2026',
   'best-depin-airdrops-2026',
+  'best-testnet-airdrops-2026',
 
   // — Static folder pages —
   'best-airdrop-farming-platforms-2026',
