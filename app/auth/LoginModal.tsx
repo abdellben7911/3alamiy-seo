@@ -9,7 +9,10 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [mounted, setMounted] = useState(false);
   const { signInWithMagicLink } = useAuth();
+
+  useEffect(() => { setMounted(true); }, []);
 
   const handleSubmit = async () => {
     if (!email || !email.includes('@')) {
@@ -27,39 +30,41 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
     }
   };
 
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => { setMounted(true); }, []);
   if (!mounted) return null;
 
   return createPortal(
     <>
       <style>{`
-        @keyframes modalIn {
+        @keyframes lmModalIn {
           from { opacity: 0; transform: translate(-50%, -48%) scale(0.96); }
           to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
         }
-        @keyframes backdropIn {
+        @keyframes lmBackdropIn {
           from { opacity: 0; }
           to { opacity: 1; }
         }
-        @keyframes pulse {
+        @keyframes lmPulse {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.4; }
+        }
+        @keyframes lmSpin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
         .lm-backdrop {
           position: fixed; inset: 0;
           background: rgba(0,0,0,0.75);
           backdrop-filter: blur(8px);
           -webkit-backdrop-filter: blur(8px);
-          z-index: 100;
-          animation: backdropIn 0.2s ease both;
+          z-index: 9998;
+          animation: lmBackdropIn 0.2s ease both;
         }
         .lm-wrap {
           position: fixed; top: 50%; left: 50%;
           transform: translate(-50%, -50%);
-          z-index: 101; width: 100%;
+          z-index: 9999; width: 100%;
           max-width: 400px; padding: 0 16px;
-          animation: modalIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+          animation: lmModalIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
         }
         .lm-card {
           background: #0A0F1A;
@@ -87,15 +92,8 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
           transition: all 0.15s; z-index: 2;
           font-family: inherit;
         }
-        .lm-close:hover {
-          background: rgba(255,255,255,0.08);
-          color: rgba(255,255,255,0.8);
-        }
-        .lm-header {
-          padding: 36px 28px 0;
-          text-align: center;
-          position: relative; z-index: 1;
-        }
+        .lm-close:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); }
+        .lm-header { padding: 36px 28px 0; text-align: center; position: relative; z-index: 1; }
         .lm-icon {
           width: 56px; height: 56px;
           background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(99,102,241,0.08));
@@ -106,9 +104,8 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
           box-shadow: 0 8px 24px rgba(99,102,241,0.15);
         }
         .lm-title {
-          font-size: 20px; font-weight: 900;
-          color: #fff; margin: 0 0 8px;
-          letter-spacing: -0.03em;
+          font-size: 20px; font-weight: 900; color: #fff;
+          margin: 0 0 8px; letter-spacing: -0.03em;
           font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
         }
         .lm-subtitle {
@@ -134,124 +131,86 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
           display: flex; align-items: center; justify-content: center;
           font-size: 14px; flex-shrink: 0;
         }
-        .lm-benefit-text {
-          font-size: 12px; font-weight: 600;
-          color: rgba(255,255,255,0.45);
-        }
+        .lm-benefit-text { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.45); }
         .lm-form { padding: 20px 28px 28px; }
         .lm-label {
-          font-size: 10px; font-weight: 800;
-          text-transform: uppercase; letter-spacing: 0.1em;
-          color: rgba(255,255,255,0.25);
+          font-size: 10px; font-weight: 800; text-transform: uppercase;
+          letter-spacing: 0.1em; color: rgba(255,255,255,0.25);
           display: block; margin-bottom: 8px;
           font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
         }
         .lm-input-wrap { position: relative; margin-bottom: 10px; }
         .lm-input-icon {
           position: absolute; left: 14px; top: 50%;
-          transform: translateY(-50%);
-          color: rgba(255,255,255,0.2);
-          pointer-events: none;
+          transform: translateY(-50%); color: rgba(255,255,255,0.2); pointer-events: none;
         }
         .lm-input {
-          width: 100%;
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(255,255,255,0.08);
-          border-radius: 12px;
-          padding: 13px 16px 13px 42px;
-          color: #fff; font-size: 14px;
-          outline: none;
-          font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
-          box-sizing: border-box;
-          transition: border-color 0.15s, background 0.15s;
+          width: 100%; background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(255,255,255,0.08); border-radius: 12px;
+          padding: 13px 16px 13px 42px; color: #fff; font-size: 14px;
+          outline: none; font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
+          box-sizing: border-box; transition: border-color 0.15s, background 0.15s;
         }
-        .lm-input:focus {
-          border-color: rgba(99,102,241,0.4);
-          background: rgba(99,102,241,0.04);
-        }
+        .lm-input:focus { border-color: rgba(99,102,241,0.4); background: rgba(99,102,241,0.04); }
         .lm-input::placeholder { color: rgba(255,255,255,0.2); }
         .lm-error {
-          font-size: 12px; color: #f43f5e;
-          margin: 6px 0 0; display: flex; align-items: center; gap: 5px;
+          font-size: 12px; color: #f43f5e; margin: 6px 0 0;
+          display: flex; align-items: center; gap: 5px;
           font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
         }
         .lm-btn {
           width: 100%; margin-top: 12px;
           background: linear-gradient(135deg, #6366f1, #4f46e5);
-          color: #fff; border: none;
-          border-radius: 12px; padding: 14px;
-          font-size: 14px; font-weight: 800;
-          cursor: pointer;
+          color: #fff; border: none; border-radius: 12px; padding: 14px;
+          font-size: 14px; font-weight: 800; cursor: pointer;
           font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
           box-shadow: 0 8px 24px rgba(99,102,241,0.3);
           transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
           display: flex; align-items: center; justify-content: center; gap: 8px;
         }
-        .lm-btn:hover:not(:disabled) {
-          transform: translateY(-1px);
-          box-shadow: 0 12px 32px rgba(99,102,241,0.4);
-        }
+        .lm-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(99,102,241,0.4); }
         .lm-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .lm-spin { animation: lmSpin 1s linear infinite; }
         .lm-hint {
-          text-align: center; margin-top: 12px;
-          font-size: 11px; color: rgba(255,255,255,0.2);
+          text-align: center; margin-top: 12px; font-size: 11px;
+          color: rgba(255,255,255,0.2);
           font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
           display: flex; align-items: center; justify-content: center; gap: 5px;
         }
-
-        /* Success state */
-        .lm-success {
-          padding: 40px 28px;
-          text-align: center;
-          position: relative; z-index: 1;
-        }
+        .lm-success { padding: 40px 28px; text-align: center; position: relative; z-index: 1; }
         .lm-success-icon {
-          width: 64px; height: 64px;
-          background: rgba(16,185,129,0.1);
-          border: 1px solid rgba(16,185,129,0.2);
-          border-radius: 50%;
+          width: 64px; height: 64px; background: rgba(16,185,129,0.1);
+          border: 1px solid rgba(16,185,129,0.2); border-radius: 50%;
           display: flex; align-items: center; justify-content: center;
           font-size: 28px; margin: 0 auto 20px;
-          animation: pulse 2s infinite;
+          animation: lmPulse 2s infinite;
         }
         .lm-success-title {
-          font-size: 22px; font-weight: 900;
-          color: #fff; margin: 0 0 10px;
+          font-size: 22px; font-weight: 900; color: #fff; margin: 0 0 10px;
           letter-spacing: -0.03em;
           font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
         }
         .lm-success-text {
-          font-size: 14px; color: rgba(255,255,255,0.4);
-          line-height: 1.7; margin: 0 0 20px;
+          font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.7; margin: 0 0 20px;
           font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
         }
         .lm-success-box {
-          background: rgba(16,185,129,0.06);
-          border: 1px solid rgba(16,185,129,0.15);
-          border-radius: 12px; padding: 14px;
-          margin-bottom: 20px;
-          font-size: 12px; color: rgba(255,255,255,0.3);
+          background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.15);
+          border-radius: 12px; padding: 14px; margin-bottom: 20px;
+          font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.6;
           font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
-          line-height: 1.6;
         }
         .lm-close-btn {
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(255,255,255,0.08);
-          color: rgba(255,255,255,0.5);
-          border-radius: 12px; padding: 12px 28px;
-          font-size: 13px; font-weight: 700;
-          cursor: pointer;
+          background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+          color: rgba(255,255,255,0.5); border-radius: 12px; padding: 12px 28px;
+          font-size: 13px; font-weight: 700; cursor: pointer;
           font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
           transition: all 0.15s;
         }
-        .lm-close-btn:hover {
-          background: rgba(255,255,255,0.08);
-          color: rgba(255,255,255,0.8);
-        }
+        .lm-close-btn:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); }
       `}</style>
 
       <div className="lm-backdrop" onClick={onClose} />
-
       <div className="lm-wrap">
         <div className="lm-card">
           <div className="lm-glow" />
@@ -264,7 +223,6 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
                 <h2 className="lm-title">Welcome to 3alamiy Web3</h2>
                 <p className="lm-subtitle">Sign in to track airdrops and get daily alerts</p>
               </div>
-
               <div className="lm-benefits">
                 {[
                   { icon: '❤️', text: 'Save favorites across all devices', bg: 'rgba(244,63,94,0.1)' },
@@ -277,7 +235,6 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
                   </div>
                 ))}
               </div>
-
               <div className="lm-form">
                 <label className="lm-label">Email Address</label>
                 <div className="lm-input-wrap">
@@ -306,7 +263,7 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
                 <button className="lm-btn" onClick={handleSubmit} disabled={loading}>
                   {loading ? (
                     <>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ animation: 'spin 1s linear infinite' }}>
+                      <svg className="lm-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
                       </svg>
                       Sending...
@@ -343,6 +300,7 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
           )}
         </div>
       </div>
-    </>, document.body)
+    </>,
+    document.body
   );
 }
