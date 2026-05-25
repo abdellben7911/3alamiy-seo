@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useAuth } from './AuthProvider';
 
 export default function LoginModal({ onClose }: { onClose: () => void }) {
@@ -26,7 +27,11 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
     }
   };
 
-  return (
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+  if (!mounted) return null;
+
+  return createPortal(
     <>
       <style>{`
         @keyframes modalIn {
@@ -338,6 +343,6 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
           )}
         </div>
       </div>
-    </>
+    </>, document.body)
   );
 }
