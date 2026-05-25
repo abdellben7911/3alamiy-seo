@@ -8,15 +8,16 @@ export default function Footer() {
   const platformLinks = [
     { label: 'Airdrops', href: '/airdrops' },
     { label: 'GM Station', href: '/gm' },
-    { label: 'Learn', href: '/learn/how-to-find-airdrops-before-everyone-else' },
+    { label: 'Learn', href: '/learn' },
     { label: 'About', href: '/about' },
     { label: 'Profile', href: '/profile' },
   ];
 
   const communityLinks = [
     { label: 'Telegram', href: 'https://t.me/web33alamiy', external: true },
+    { label: 'List Your Project', href: 'https://t.me/web33alamiy', external: true },
     { label: 'Twitter / X', href: 'https://x.com/3alamiyweb3', external: true },
-    { label: 'Main App', href: 'https://3alamiyweb3.online', external: true },
+
   ];
 
   const legalLinks = [
@@ -198,6 +199,20 @@ export default function Footer() {
             <p className="ft-brand-desc">
               The best free crypto airdrop tracker in 2026. Step-by-step guides updated daily.
             </p>
+            <div style={{ display: 'flex', gap: '16px', marginBottom: '22px', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                <span style={{ fontSize: '15px', fontWeight: 900, color: '#7CF5C0', letterSpacing: '-0.03em' }}>94+</span>
+                <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.2)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em' }}>Guides</span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                <span style={{ fontSize: '15px', fontWeight: 900, color: '#818cf8', letterSpacing: '-0.03em' }}>2,500+</span>
+                <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.2)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em' }}>Monthly Users</span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                <span style={{ fontSize: '15px', fontWeight: 900, color: '#f59e0b', letterSpacing: '-0.03em' }}>40+</span>
+                <span style={{ fontSize: '10px', color: 'rgba(255,255,255,0.2)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em' }}>Countries</span>
+              </div>
+            </div>
             <div className="ft-socials">
               <a href="https://x.com/3alamiyweb3" target="_blank" rel="noopener noreferrer" className="ft-social" aria-label="X / Twitter">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.259 5.63L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
@@ -205,9 +220,7 @@ export default function Footer() {
               <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="ft-social" aria-label="Telegram">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.277-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
               </a>
-              <a href="https://3alamiyweb3.online" target="_blank" rel="noopener noreferrer" className="ft-social" aria-label="Website">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              </a>
+
             </div>
           </div>
 
@@ -240,7 +253,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="ft-bottom">
           <div className="ft-bottom-inner">
-            <p className="ft-copy">© {year} 3alamiyweb3.online — All rights reserved.</p>
+            <p className="ft-copy">© {year} 3alamiy Web3 — All rights reserved.</p>
             <div className="ft-bottom-right">
               <span className="ft-badge">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
