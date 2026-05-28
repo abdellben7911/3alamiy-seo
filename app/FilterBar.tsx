@@ -31,30 +31,6 @@ export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
     a.reward_min && a.reward_max ? `$${a.reward_min} - $${a.reward_max}` : a.reward_min ? `$${a.reward_min}+` : 'High';
 
   const tabs = [
-    { label: 'All',        icon: '⚡', count: airdrops.length },
-    { label: 'Free',       icon: '★',  count: airdrops.filter(a => a.cost === 'Free').length },
-    { label: 'Paid',       icon: '🗂', count: airdrops.filter(a => a.cost !== 'Free' && a.cost !== 'Ended').length },
-    { label: 'End / Claim',icon: '✦',  count: airdrops.filter(a => a.status === 'Ended').length },
-  ];
-
-  const filtered = airdrops.filter(a => {
-    const matchesTab =
-      active === 'All'        ? true :
-      active === 'Free'       ? a.cost === 'Free' :
-      active === 'Paid'       ? (a.cost !== 'Free' && a.status !== 'Ended') :
-      active === 'End / Claim'? a.status === 'Ended' : true;
-
-    const q = search.trim().toLowerCase();
-    const matchesSearch = q === '' ? true :
-      a.name.toLowerCase().includes(q) ||
-      a.blockchain?.toLowerCase().includes(q) ||
-      a.description?.toLowerCase().includes(q) ||
-      (Array.isArray(a.tags) && a.tags.some((t: string) => t.toLowerCase().includes(q)));
-
-    return matchesTab && matchesSearch;
-  });
-
-  const tabs = [
     { label: 'All', count: airdrops.length },
     { label: 'Active', count: airdrops.filter(a => a.status === 'Active').length },
     { label: 'Free', count: airdrops.filter(a => a.cost === 'Free').length },
