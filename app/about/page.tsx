@@ -21,13 +21,29 @@ const organizationSchema = {
   name: '3alamiy Web3',
   url: 'https://www.3alamiyweb3.com',
   description: '3alamiy Web3 is a crypto airdrop tracker and guide platform helping Web3 users discover, track, and participate in the best crypto airdrops.',
-  foundingDate: '2025',
+  foundingDate: '2026',
   sameAs: ['https://www.3alamiyweb3.com', 'https://t.me/web33alamiy'],
   contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', url: 'https://t.me/web33alamiy' },
   areaServed: 'Worldwide',
 };
 
-export default function AboutPage() {
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+
+async function getAirdropCount() {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/airdrops?select=id`, {
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) return 102;
+    const data = await res.json();
+    return data.length;
+  } catch { return 102; }
+}
+
+export default async function AboutPage() {
+  const airdropCount = await getAirdropCount();
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
@@ -237,7 +253,7 @@ export default function AboutPage() {
         {/* STATS */}
         <div className="about-stats afu2">
           {[
-            { num: '94+', label: 'Airdrops Tracked', color: '#7CF5C0' },
+            { num: `${airdropCount}+`, label: 'Airdrops Tracked', color: '#7CF5C0' },
             { num: '2,500+', label: 'Monthly Users', color: '#818cf8' },
             { num: '40+', label: 'Countries', color: '#f59e0b' },
             { num: '100%', label: 'Always Free', color: '#f43f5e' },
@@ -298,15 +314,24 @@ export default function AboutPage() {
             </div>
             <div className="about-card-title">Talk to us</div>
             <p className="about-tg-sub">Telegram is the fastest. Email if it's serious.</p>
-            <a
-              href="https://t.me/web33alamiy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="about-tg-btn"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
-              Open Telegram channel
-            </a>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <a
+                href="https://t.me/web33alamiy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="about-tg-btn"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+                Open Telegram channel
+              </a>
+              <a
+                href="mailto:contact@3alamiyweb3.com"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.5)', fontSize: '13px', fontWeight: 700, padding: '12px 22px', borderRadius: '12px', textDecoration: 'none', transition: 'all 0.15s' }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                contact@3alamiyweb3.com
+              </a>
+            </div>
           </div>
 
         </div>
