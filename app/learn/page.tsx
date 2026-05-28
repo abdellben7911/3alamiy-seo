@@ -1,15 +1,32 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+
+async function getAirdropCount() {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/airdrops?select=id`, {
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`, 'Prefer': 'count=exact' },
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) return 100;
+    const count = res.headers.get('content-range');
+    if (count) return parseInt(count.split('/')[1]) || 100;
+    const data = await res.json();
+    return data.length || 100;
+  } catch { return 100; }
+}
+
 export const metadata: Metadata = {
   title: 'Learn Crypto Airdrops 2026 — Free Guides & Strategies | 3alamiy Web3',
   description: 'Learn everything about crypto airdrops in 2026. Step-by-step guides, farming strategies, blockchain tutorials, and the best airdrop opportunities. All free.',
   keywords: 'learn crypto airdrops, airdrop guide 2026, how to farm airdrops, crypto airdrop strategy, free crypto guides',
-  alternates: { canonical: 'https://seo.3alamiyweb3.online/learn' },
+  alternates: { canonical: 'https://www.3alamiyweb3.com/learn' },
   openGraph: {
     title: 'Learn Crypto Airdrops 2026 — Free Guides & Strategies',
     description: 'Everything you need to know about crypto airdrops in 2026. Free guides updated daily.',
-    url: 'https://seo.3alamiyweb3.online/learn',
+    url: 'https://www.3alamiyweb3.com/learn',
     siteName: '3alamiy Web3',
     type: 'website',
   },
@@ -21,19 +38,19 @@ const featuredArticles = [
     slug: 'best-crypto-airdrops-2026',
     title: 'Best Crypto Airdrops 2026',
     desc: 'The complete list of the best free crypto airdrops. Every airdrop verified with step-by-step guides.',
-    cat: 'Airdrops', catColor: '#f59e0b', time: '8 min read', badge: '🔥 Most Popular',
+    cat: 'Airdrops', catColor: '#f59e0b', time: '8 min read', badge: 'Most Popular',
   },
   {
     slug: 'best-crypto-airdrops-this-week',
     title: 'Best Crypto Airdrops This Week',
     desc: 'The highest-priority airdrops to farm this week. Updated every Monday.',
-    cat: 'Weekly', catColor: '#10b981', time: '5 min read', badge: '📅 Weekly Updated',
+    cat: 'Weekly', catColor: '#10b981', time: '5 min read', badge: 'Weekly Updated',
   },
   {
     slug: 'discord-role-airdrops-guide-2026',
     title: 'Discord Role Airdrops 2026',
     desc: 'Plasma OG holders earned $20K. How to grind Discord roles the right way.',
-    cat: 'Strategy', catColor: '#818cf8', time: '9 min read', badge: '💰 High ROI',
+    cat: 'Strategy', catColor: '#818cf8', time: '9 min read', badge: 'High ROI',
   },
 ];
 
@@ -59,12 +76,13 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
-    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://seo.3alamiyweb3.online/learn' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.3alamiyweb3.com' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://www.3alamiyweb3.com/learn' },
   ],
 };
 
-export default function LearnPage() {
+export default async function LearnPage() {
+  const airdropCount = await getAirdropCount();
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -214,7 +232,7 @@ export default function LearnPage() {
             <div className="lp-stats">
               <div><div className="lp-stat-val">{allArticles.length}+</div><div className="lp-stat-lbl">Free Guides</div></div>
               <div><div className="lp-stat-val">Weekly</div><div className="lp-stat-lbl">Updated</div></div>
-              <div><div className="lp-stat-val">86+</div><div className="lp-stat-lbl">Airdrops Tracked</div></div>
+              <div><div className="lp-stat-val">{airdropCount}+</div><div className="lp-stat-lbl">Airdrops Tracked</div></div>
             </div>
           </div>
         </div>
@@ -270,7 +288,7 @@ export default function LearnPage() {
           {/* CTA */}
           <div className="lp-cta">
             <h2 className="lp-cta-title">Ready to Start Farming?</h2>
-            <p className="lp-cta-sub">Browse 86+ verified airdrops with step-by-step guides. Free, no paywall.</p>
+            <p className="lp-cta-sub">Browse {airdropCount}+ verified airdrops with step-by-step guides. Free, no paywall.</p>
             <div className="lp-cta-btns">
               <Link href="/airdrops" className="btn-lp-p">Browse Airdrops →</Link>
               <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="btn-lp-s">
