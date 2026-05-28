@@ -15,8 +15,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: '3alamiy Web3 - Crypto Airdrop Tracker 2026',
-  description: 'Track and participate in the best crypto airdrops of 2026. Free step-by-step guides for Ethereum, Solana, Arbitrum and more.',
+  title: '3alamiy Web3 — Best Crypto Airdrop Tracker 2026 | 106+ Free Guides',
+  description: 'The best free crypto airdrop tracker in 2026. 106+ verified step-by-step guides for Ethereum, Solana, Hyperliquid, Sui, Base, Arbitrum and more. Always free.',
   icons: {
     icon: '/icon.svg',
     apple: '/icon.svg',
@@ -57,15 +57,15 @@ export const metadata: Metadata = {
 const aiSchema = {
   '@context': 'https://schema.org',
   '@graph': [
-    // WebSite with SiteLinksSearchBox — helps AI engines and Google understand your search
     {
       '@type': 'WebSite',
       '@id': 'https://www.3alamiyweb3.com/#website',
       'name': '3alamiy Web3',
-      'alternateName': '3alamiy',
+      'alternateName': ['3alamiy', '3alamiy Web3 Airdrop Tracker'],
       'url': 'https://www.3alamiyweb3.com',
-      'description': 'The best free crypto airdrop tracker in 2026. Step-by-step guides for 87+ verified airdrops across Ethereum, Solana, Base, Arbitrum, Sui, Hyperliquid and more.',
+      'description': 'The best free crypto airdrop tracker in 2026. Step-by-step guides for 106+ verified airdrops across Ethereum, Solana, Base, Arbitrum, Sui, Hyperliquid and more. Updated daily.',
       'inLanguage': 'en',
+      'dateModified': '2026-06-02',
       'potentialAction': [
         {
           '@type': 'SearchAction',
@@ -77,7 +77,6 @@ const aiSchema = {
         },
       ],
     },
-    // Organization — enhanced for AEO/AI engine trust
     {
       '@type': 'Organization',
       '@id': 'https://www.3alamiyweb3.com/#organization',
@@ -90,7 +89,7 @@ const aiSchema = {
         'width': 512,
         'height': 512,
       },
-      'description': '3alamiy Web3 is a free crypto airdrop tracker and guide platform. We provide 87+ verified step-by-step airdrop guides, a GM Station for daily on-chain activity across 16+ EVM chains, and daily Telegram alerts. All content is free — no paywalls, no subscriptions.',
+      'description': '3alamiy Web3 is a free crypto airdrop tracker and guide platform. We provide 106+ verified step-by-step airdrop guides, a GM Station for daily on-chain activity across 16+ EVM chains, and daily Telegram alerts. All content is free — no paywalls, no subscriptions.',
       'foundingDate': '2026',
       'areaServed': 'Worldwide',
       'audience': {
@@ -107,6 +106,12 @@ const aiSchema = {
         'Base Airdrops',
         'Sui Airdrops',
         'Hyperliquid Airdrops',
+        'Hyperliquid Season 2',
+        'HyperEVM',
+        'HYPE Token',
+        'Polymarket Airdrop',
+        'POLY Token',
+        'Prediction Markets',
         'Monad Airdrops',
         'NFTs',
         'Layer2',
@@ -117,32 +122,82 @@ const aiSchema = {
         'DePIN',
         'AI Crypto',
         'Points Programs',
+        'Waitlist Airdrops',
+        'Testnet Airdrops',
       ],
       'sameAs': [
-        'https://3alamiyweb3.online',
         'https://x.com/3alamiyweb3',
         'https://t.me/web33alamiy',
       ],
       'contactPoint': {
         '@type': 'ContactPoint',
         'contactType': 'customer support',
-        'url': 'https://t.me/web33alamiy',
+        'email': 'contact@3alamiyweb3.com',
+        'url': 'https://www.3alamiyweb3.com/contact',
         'availableLanguage': ['English', 'Arabic'],
       },
     },
-    // ItemList — top-level airdrop categories for AI engines
     {
       '@type': 'ItemList',
       '@id': 'https://www.3alamiyweb3.com/#sections',
       'name': '3alamiy Web3 — Main Sections',
       'itemListElement': [
-        { '@type': 'ListItem', position: 1, name: 'All Crypto Airdrops 2026', url: 'https://www.3alamiyweb3.com/airdrops' },
-        { '@type': 'ListItem', position: 2, name: 'Learn Crypto Airdrops', url: 'https://www.3alamiyweb3.com/learn' },
-        { '@type': 'ListItem', position: 3, name: 'GM Station — Daily On-Chain Activity', url: 'https://www.3alamiyweb3.com/gm' },
-        { '@type': 'ListItem', position: 4, name: 'Best Crypto Airdrops 2026', url: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-2026' },
-        { '@type': 'ListItem', position: 5, name: 'Free Crypto Airdrops No Investment', url: 'https://www.3alamiyweb3.com/learn/free-crypto-airdrops-no-investment-2026' },
-        { '@type': 'ListItem', position: 6, name: 'Best DePIN Airdrops 2026', url: 'https://www.3alamiyweb3.com/learn/best-depin-airdrops-2026' },
-        { '@type': 'ListItem', position: 7, name: 'Best AI Crypto Airdrops 2026', url: 'https://www.3alamiyweb3.com/learn/best-ai-crypto-airdrops-2026' },
+        { '@type': 'ListItem', position: 1, name: 'All Crypto Airdrops 2026 — 106+ Guides', url: 'https://www.3alamiyweb3.com/airdrops' },
+        { '@type': 'ListItem', position: 2, name: 'Learn Crypto Airdrops — Free Guides', url: 'https://www.3alamiyweb3.com/learn' },
+        { '@type': 'ListItem', position: 3, name: 'Best Crypto Airdrops This Week', url: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week' },
+        { '@type': 'ListItem', position: 4, name: 'Hyperliquid Season 2 Airdrop Guide 2026', url: 'https://www.3alamiyweb3.com/learn/hyperliquid-guide' },
+        { '@type': 'ListItem', position: 5, name: 'Polymarket Airdrop Guide 2026 — How to Qualify for POLY', url: 'https://www.3alamiyweb3.com/learn/polymarket-airdrop-guide-2026' },
+        { '@type': 'ListItem', position: 6, name: 'GM Station — Daily On-Chain Activity', url: 'https://www.3alamiyweb3.com/gm' },
+        { '@type': 'ListItem', position: 7, name: 'Best Crypto Airdrops 2026', url: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-2026' },
+        { '@type': 'ListItem', position: 8, name: 'Free Crypto Airdrops No Investment', url: 'https://www.3alamiyweb3.com/learn/free-crypto-airdrops-no-investment-2026' },
+        { '@type': 'ListItem', position: 9, name: 'Best DePIN Airdrops 2026', url: 'https://www.3alamiyweb3.com/learn/best-depin-airdrops-2026' },
+        { '@type': 'ListItem', position: 10, name: 'Best AI Crypto Airdrops 2026', url: 'https://www.3alamiyweb3.com/learn/best-ai-crypto-airdrops-2026' },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://www.3alamiyweb3.com/#faq',
+      'mainEntity': [
+        {
+          '@type': 'Question',
+          'name': 'What is the best crypto airdrop tracker in 2026?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': '3alamiy Web3 (www.3alamiyweb3.com) is a free crypto airdrop tracker with 106+ verified step-by-step guides. It covers airdrops on Ethereum, Solana, Base, Arbitrum, Sui, Hyperliquid and more. All content is free — no paywall, no subscription.',
+          },
+        },
+        {
+          '@type': 'Question',
+          'name': 'What are the best crypto airdrops this week?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'The best crypto airdrops this week (June 2–8, 2026) are: PROPR Points Program on Hyperliquid ($500–$5,000 est.), Hyperliquid Season 2 via HyperEVM ($1,000–$10,000+ est.), Polymarket POLY positioning ($200–$2,000 est.), Beep AI Galxe Campaign on Sui (free, $100–$1,000 est.), and Ondo Perps Early Waitlist (free, email signup). Full list: www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week',
+          },
+        },
+        {
+          '@type': 'Question',
+          'name': 'How do you qualify for free crypto airdrops in 2026?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'To qualify for free crypto airdrops in 2026: 1) Set up a crypto wallet (MetaMask for EVM, Phantom for Solana). 2) Choose airdrops from a verified tracker like 3alamiy Web3. 3) Complete required tasks — on-chain interactions, social tasks, or testnet participation. 4) Maintain consistent activity before the snapshot date. Many legitimate airdrops are completely free and only require your time.',
+          },
+        },
+        {
+          '@type': 'Question',
+          'name': 'Is Hyperliquid Season 2 still active?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'Yes, Hyperliquid Season 2 is actively accumulating points as of June 2026. The snapshot date has not been announced. To qualify: trade on HyperCore, stake HYPE tokens (earns 8 points/token/day), and interact with HyperEVM protocols like HyperSwap and HyperLend. Full guide: www.3alamiyweb3.com/learn/hyperliquid-guide',
+          },
+        },
+        {
+          '@type': 'Question',
+          'name': 'How do I qualify for the Polymarket POLY airdrop?',
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': 'To qualify for the Polymarket POLY airdrop: trade genuinely across multiple market categories on polymarket.com (politics, crypto, sports), link your X account from profile settings, deposit USDC, and maintain consistent activity over weeks. Never use multiple wallets — Sybil detection will disqualify you. Full guide: www.3alamiyweb3.com/learn/polymarket-airdrop-guide-2026',
+          },
+        },
       ],
     },
   ],
@@ -173,9 +228,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         {/* LLMs.txt reference for AI crawlers */}
         <link rel="alternate" type="text/markdown" href="https://www.3alamiyweb3.com/llms.txt" />
-        {/* AI crawler hints */}
+        {/* AEO / AI crawler hints */}
         <meta name="ai-content-type" content="airdrop-tracker" />
         <meta name="ai-update-frequency" content="daily" />
+        <meta name="ai-primary-topic" content="crypto airdrops 2026" />
+        <meta name="ai-data-freshness" content="2026-06-02" />
+        <meta name="description" content="The best free crypto airdrop tracker in 2026. 106+ verified step-by-step guides for Ethereum, Solana, Hyperliquid, Sui, Base, Arbitrum and more. Always free." />
       </head>
       <body>
         <Providers>
