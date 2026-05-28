@@ -86,9 +86,7 @@ export default function ContactPage() {
         {/* About section for AdSense */}
         <div style={{ background: 'rgba(124,245,192,0.03)', border: '1px solid rgba(124,245,192,0.1)', borderRadius: '14px', padding: '22px' }}>
           <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.3)', lineHeight: 1.8 }}>
-            <strong style={{ color: 'rgba(255,255,255,0.6)' }}>3alamiy Web3</strong> is a free crypto airdrop tracker built and maintained by a small team of Web3 farmers based in Morocco. We are not affiliated with any of the projects listed on our platform. All guides are independently researched and written.
-            <br /><br />
-            Publisher ID: <span style={{ color: '#7CF5C0', fontFamily: 'monospace' }}>pub-3151798675292980</span>
+            <strong style={{ color: 'rgba(255,255,255,0.6)' }}>3alamiy Web3</strong> is a free crypto airdrop tracker. We are not affiliated with any of the projects listed on our platform. All guides are independently researched and written.
           </div>
         </div>
 
