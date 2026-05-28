@@ -3,11 +3,11 @@ import Link from 'next/link';
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'Best Crypto Airdrops This Week — May 25-31, 2026',
-  description: 'The best crypto airdrops to farm this week in May 2026. New drops, active campaigns, and high-reward opportunities updated weekly.',
+  headline: 'Best Crypto Airdrops This Week — June 2–8, 2026',
+  description: 'The best crypto airdrops to farm this week in June 2026. New drops, active campaigns, and high-reward opportunities updated every Monday.',
   url: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week',
   datePublished: '2026-05-12',
-  dateModified: '2026-05-25',
+  dateModified: '2026-06-02',
   author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com', logo: { '@type': 'ImageObject', url: 'https://www.3alamiyweb3.com/icon.svg' } },
   mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week' },
@@ -19,9 +19,31 @@ const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'What are the best crypto airdrops this week?', acceptedAnswer: { '@type': 'Answer', text: 'The best crypto airdrops this week (May 25-31, 2026) are: Beep AI Galxe Campaign (Sui, Free), DeepBook Early Waitlist (Sui, Free), PROPR Points Program (Hyperliquid, Paid), Startale STAR Points (Sonium, Free), and DustSwap Airdrop (Base, Paid).' } },
-    { '@type': 'Question', name: 'Which airdrops should I farm first this week?', acceptedAnswer: { '@type': 'Answer', text: 'Farm High Priority airdrops first: Beep AI Galxe Campaign (5 minutes, free, confirmed rewards) and DeepBook Early Waitlist (3 minutes, free). Then move to Medium Priority: PROPR and DustSwap for higher rewards with more effort.' } },
-    { '@type': 'Question', name: 'How do I stay updated on new airdrops every week?', acceptedAnswer: { '@type': 'Answer', text: 'Join the 3alamiy Web3 Telegram channel at t.me/web33alamiy for instant alerts when new airdrops launch. We also update our weekly picks every Monday at www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week.' } },
+    {
+      '@type': 'Question',
+      name: 'What are the best crypto airdrops this week?',
+      acceptedAnswer: { '@type': 'Answer', text: 'The best crypto airdrops this week (June 2–8, 2026) are: PROPR Points Program (Hyperliquid, High Priority, $500–$5,000 est.), Hyperliquid Season 2 farming (HyperEVM, High Priority), Polymarket POLY positioning (Polygon, High Priority), Beep AI Galxe Campaign (Sui, High Priority), and Ondo Perps Early Waitlist (Ethereum, Medium Priority). Farm High Priority airdrops first.' }
+    },
+    {
+      '@type': 'Question',
+      name: 'Which airdrops should I farm first this week in June 2026?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Start with PROPR Points Program on Hyperliquid — $5.5M raised, 45.5% token supply for community, daily farming required. Then farm Hyperliquid Season 2 via HyperEVM interactions. Both take under 20 minutes daily and have the highest reward potential this week.' }
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Hyperliquid Season 2 still active in June 2026?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes. Hyperliquid Season 2 is actively accumulating points. The snapshot date has not been announced. Trading on HyperCore, staking HYPE, and interacting with HyperEVM protocols like HyperSwap and HyperLend all count toward your allocation. Start farming now — every day of activity matters.' }
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I stay updated on new airdrops every week?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Join the 3alamiy Web3 Telegram channel at t.me/web33alamiy for instant airdrop alerts. We update our weekly picks every Monday at www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week.' }
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the easiest airdrop to farm this week?',
+      acceptedAnswer: { '@type': 'Answer', text: 'The easiest airdrop this week is the Ondo Perps Early Waitlist — just enter your email at ondoperps.xyz and join the waitlist. Takes under 2 minutes, completely free, and qualifies you for a potential ONDO ecosystem airdrop.' }
+    },
   ],
 };
 
@@ -35,38 +57,53 @@ const breadcrumbSchema = {
   ],
 };
 
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Farm the Best Crypto Airdrops This Week (June 2026)',
+  description: 'Step-by-step guide to farming the highest-priority crypto airdrops the week of June 2–8, 2026.',
+  step: [
+    { '@type': 'HowToStep', name: 'Farm PROPR Points on Hyperliquid', text: 'Go to app.hyperliquid.xyz, open PROPR markets, trade daily to accumulate points toward the 45.5% community token allocation.' },
+    { '@type': 'HowToStep', name: 'Interact with HyperEVM for Season 2', text: 'Bridge 5+ HYPE to HyperEVM, swap on HyperSwap, deposit on HyperLend. Daily EVM activity builds your Season 2 allocation.' },
+    { '@type': 'HowToStep', name: 'Trade on Polymarket for POLY positioning', text: 'Go to polymarket.com, trade across multiple market categories (politics, crypto, sports), link your X account.' },
+    { '@type': 'HowToStep', name: 'Complete Beep AI Galxe quests', text: 'Go to galxe.com, find Beep AI campaign, complete 3 quests. Quiz answers: BACB. Takes 5 minutes.' },
+    { '@type': 'HowToStep', name: 'Join Ondo Perps waitlist', text: 'Go to ondoperps.xyz, enter your email, join the waitlist. 2 minutes, completely free.' },
+  ],
+};
+
 export const metadata = {
-  title: 'Best Crypto Airdrops This Week — May 25-31, 2026 | 3alamiy Web3',
-  description: 'The best crypto airdrops to farm this week in May 2026. New drops, active campaigns, and high-reward opportunities updated weekly.',
-  keywords: 'best crypto airdrops this week, crypto airdrops this week, new crypto airdrops, weekly airdrop list, best airdrops may 2026',
+  title: 'Best Crypto Airdrops This Week — June 2–8, 2026 | 3alamiy Web3',
+  description: 'The best crypto airdrops to farm this week in June 2026. PROPR, Hyperliquid Season 2, Polymarket POLY, and more. Updated every Monday.',
+  keywords: 'best crypto airdrops this week, crypto airdrops june 2026, new crypto airdrops, weekly airdrop list, best airdrops june 2026, hyperliquid season 2, polymarket airdrop',
   openGraph: {
-    title: 'Best Crypto Airdrops This Week — May 2026',
-    description: 'The best crypto airdrops to farm this week. Updated every week.',
+    title: 'Best Crypto Airdrops This Week — June 2–8, 2026',
+    description: 'The best crypto airdrops to farm this week. PROPR, Hyperliquid Season 2, Polymarket. Updated every Monday.',
     type: 'article',
   },
   alternates: { canonical: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week' },
 };
 
 const thisWeekAirdrops = [
-  { name: 'Rumor Early Access Roles', chain: 'Multi-chain', priority: 'High', reward: '$200-$2,000', slug: 'rumor-early-access-roles', why: 'Confirmed airdrop campaign. OG roles, AI credits, leaderboard rewards. Join early for best position.' },
-  { name: 'Beep AI Galxe Campaign', chain: 'Sui', priority: 'High', reward: '$100–$1,000', slug: 'beep-ai-galxe-campaign', why: 'New Galxe quests just launched. Confirmed $BEEP rewards. Takes 5 minutes.' },
-  { name: 'DeepBook Early Waitlist', chain: 'Sui', priority: 'High', reward: '$50–$500', slug: 'deepbook-early-waitlist', why: 'Liquidity layer on Sui. Free waitlist — referrals boost your position.' },
-  { name: 'PROPR Points Program', chain: 'Hyperliquid', priority: 'High', reward: '$500–$5,000', slug: 'propr-points-program', why: '$5.5M raised, SwissBorg backed. 45.5% token supply for community. Farm daily.' },
-  { name: 'Startale STAR Points', chain: 'Sonium', priority: 'Medium', reward: '$50–$500', slug: 'startale-star-points-carnival', why: 'Samsung + Sony backed. $70M raised. Daily check-ins take 2 minutes.' },
-  { name: 'DustSwap Airdrop', chain: 'Base', priority: 'Medium', reward: '$200–$2,000', slug: 'dustswap-double-rewards', why: 'Dual farming — $DUST airdrop + potential Base ecosystem rewards. Quests + swaps.' },
-  { name: 'nof1 Early Waitlist', chain: 'Sui', priority: 'Low', reward: 'TBA', slug: 'nof1-early-waitlist', why: 'AI + financial markets. $15M raised. 1-minute signup — minimal effort.' },
+  { name: 'PROPR Points Program', chain: 'Hyperliquid', priority: 'High', reward: '$500–$5,000', slug: 'propr-points-program', why: '$5.5M raised, SwissBorg backed. 45.5% token supply reserved for community. Farm daily on Hyperliquid — perp trading and points accumulation.' },
+  { name: 'Hyperliquid Season 2', chain: 'HyperEVM', priority: 'High', reward: '$1,000–$10,000+', slug: 'hyperliquid-guide', why: '38.8% of HYPE supply unreleased. Snapshot unannounced. Trade on HyperCore, stake HYPE, interact with HyperEVM daily. Most critical farm right now.' },
+  { name: 'Polymarket POLY', chain: 'Polygon', priority: 'High', reward: '$200–$2,000', slug: 'polymarket-airdrop-guide-2026', why: 'CMO confirmed token is coming. $9B valuation. Trade across multiple markets this week — politics, crypto, sports. Link your X account now.' },
+  { name: 'Beep AI Galxe Campaign', chain: 'Sui', priority: 'High', reward: '$100–$1,000', slug: 'beep-ai-galxe-campaign', why: 'New Galxe quests live. Confirmed $BEEP rewards. Quiz answers: BACB. Takes 5 minutes — highest ROI per minute this week.' },
+  { name: 'Ondo Perps Early Waitlist', chain: 'Ethereum', priority: 'Medium', reward: '$50–$500', slug: 'ondo-perps-early-waitlist', why: '$46M raised by Ondo Finance team. Perp trading platform. Just enter email — 2 minutes, completely free.' },
+  { name: 'K25 Waitlist', chain: 'Multi-chain', priority: 'Medium', reward: '$50–$300', slug: 'k25-waitlist', why: '$2M raised. Sports streaming + esports prediction markets + AI oracle. Email signup only — 2 minutes.' },
+  { name: 'DeepBook Early Waitlist', chain: 'Sui', priority: 'Low', reward: '$50–$500', slug: 'deepbook-early-waitlist', why: 'Liquidity layer on Sui. Free waitlist — referrals boost your position significantly. 3 minutes.' },
 ];
 
-const priorityColor = (p: string) => p === 'High' ? '#10b981' : p === 'Medium' ? '#f59e0b' : '#71717a';
+const priorityColor = (p: string) => p === 'High' ? '#7CF5C0' : p === 'Medium' ? '#f59e0b' : '#6b7280';
 
 export default function BestAirdropsThisWeek() {
-  const weekOf = 'May 25–31, 2026';
+  const weekOf = 'June 2–8, 2026';
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       <style>{`
         .article { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; color: #e4e4e7; font-family: system-ui, -apple-system, sans-serif; }
         .article h2 { font-size: 22px; font-weight: 800; color: #fff; margin: 44px 0 14px; letter-spacing: -0.02em; }
@@ -97,7 +134,7 @@ export default function BestAirdropsThisWeek() {
           </div>
           <h1 style={{ fontSize: '38px', fontWeight: 900, color: '#fff', margin: '0 0 14px', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
             Best Crypto Airdrops<br />
-            <span style={{ background: 'linear-gradient(135deg, #818cf8, #6366f1)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>This Week — May 25–31</span>
+            <span style={{ background: 'linear-gradient(135deg, #7CF5C0, #34d399)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>This Week — June 2–8</span>
           </h1>
           <p style={{ fontSize: '16px', color: '#71717a', margin: '0 0 24px', lineHeight: 1.7, maxWidth: '580px' }}>
             The highest-priority airdrops to farm this week. Ranked by reward potential, effort required, and farming urgency.
@@ -137,7 +174,7 @@ export default function BestAirdropsThisWeek() {
 
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
           <Link href="/airdrops" style={{ background: 'linear-gradient(135deg, #6366f1, #4f46e5)', color: '#fff', padding: '12px 26px', borderRadius: '12px', textDecoration: 'none', fontWeight: 700, fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 6px 20px rgba(99,102,241,0.3)' }}>
-            View All 94+ Airdrops →
+            View All 106+ Airdrops →
           </Link>
         </div>
 
@@ -163,11 +200,10 @@ export default function BestAirdropsThisWeek() {
         <h2>New Airdrops Added This Week</h2>
         <p>We added several new airdrops to the tracker this week. Here's what's new:</p>
         <ul>
-          <li><strong>Rumor Early Access Roles</strong> — Confirmed airdrop, AI trading platform, OG roles and leaderboard rewards</li>
-          <li><strong>Beep AI Galxe Campaign</strong> — New Galxe quests with confirmed $BEEP rewards on Sui</li>
-          <li><strong>nof1 Early Waitlist</strong> — AI meets financial markets, $15M raised, Sui ecosystem</li>
-          <li><strong>xStocksFi OG Role</strong> — Tokenized stocks on-chain, $25B trading volume</li>
-          <li><strong>Startale STAR Points Carnival</strong> — Samsung + Sony backed, $70M raised</li>
+          <li><strong>Ondo Perps Early Waitlist</strong> — $46M raised, perpetual futures by Ondo Finance team. Email signup only.</li>
+          <li><strong>K25 Waitlist</strong> — $2M raised, sports streaming + esports prediction markets + AI oracles. Free signup.</li>
+          <li><strong>Hyperliquid Season 2 Guide</strong> — Full step-by-step guide now live covering HyperCore + HyperEVM farming.</li>
+          <li><strong>Polymarket POLY Guide</strong> — Complete positioning guide ahead of the confirmed POLY token launch.</li>
         </ul>
         <p>All new airdrops are available with full step-by-step guides on our tracker.</p>
 
