@@ -54,193 +54,240 @@ export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
     return matchesTab && matchesSearch;
   });
 
-  const featured   = filtered.filter(a => a.reward_min >= 500).slice(0, 6);
+  const tabs = [
+    { label: 'All', count: airdrops.length },
+    { label: 'Active', count: airdrops.filter(a => a.status === 'Active').length },
+    { label: 'Free', count: airdrops.filter(a => a.cost === 'Free').length },
+    { label: 'Easy', count: airdrops.filter(a => a.difficulty === 'Easy').length },
+    { label: 'End / Claim', count: airdrops.filter(a => a.status === 'Ended').length },
+  ];
+
+  const filtered = airdrops.filter(a => {
+    const matchesTab =
+      active === 'All'         ? true :
+      active === 'Active'      ? a.status === 'Active' :
+      active === 'Free'        ? a.cost === 'Free' :
+      active === 'Easy'        ? a.difficulty === 'Easy' :
+      active === 'End / Claim' ? a.status === 'Ended' : true;
+
+    const q = search.trim().toLowerCase();
+    const matchesSearch = q === '' ? true :
+      a.name.toLowerCase().includes(q) ||
+      a.blockchain?.toLowerCase().includes(q) ||
+      a.description?.toLowerCase().includes(q) ||
+      (Array.isArray(a.tags) && a.tags.some((t: string) => t.toLowerCase().includes(q)));
+
+    return matchesTab && matchesSearch;
+  });
+
   const newlyAdded = filtered.slice(0, 6);
-  const isAll      = active === 'All' && search.trim() === '';
-
-  const BigCard = ({ a }: { a: Airdrop }) => (
-    <Link href={`/airdrops/${a.slug}`} style={{
-      background: '#0d1117', border: '1px solid #1a1f2e', borderRadius: '16px',
-      padding: '20px', cursor: 'pointer', textDecoration: 'none', color: '#fff',
-      display: 'flex', flexDirection: 'column', gap: '14px', transition: 'all 0.22s ease',
-    }}
-      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(99,102,241,0.4)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
-      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = '#1a1f2e'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', gap: '6px' }}>
-          <span style={{ background: 'rgba(99,102,241,0.15)', color: '#818cf8', border: '1px solid rgba(99,102,241,0.2)', padding: '2px 8px', borderRadius: '5px', fontSize: '10px', fontWeight: '800' }}>3ALAMIY</span>
-          <span style={{ background: 'rgba(16,185,129,0.1)', color: '#10b981', border: '1px solid rgba(16,185,129,0.2)', padding: '2px 8px', borderRadius: '5px', fontSize: '10px', fontWeight: '800' }}>✦ NEW</span>
-        </div>
-        <button onClick={(e) => { e.preventDefault(); toggleLike(a.slug, a); }} style={{
-          background: liked[a.slug] ? 'rgba(239,68,68,0.1)' : 'transparent',
-          border: `1px solid ${liked[a.slug] ? 'rgba(239,68,68,0.3)' : '#27272a'}`,
-          borderRadius: '8px', width: '32px', height: '32px', cursor: 'pointer',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', transition: 'all 0.2s',
-        }}>
-          {liked[a.slug] ? '❤️' : '🤍'}
-        </button>
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        {a.logo
-          ? <img src={a.logo} alt={a.name} width={44} height={44} style={{ borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)', flexShrink: 0, objectFit: 'cover' }} />
-          : <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: '#1a1f2e', flexShrink: 0 }} />
-        }
-        <div>
-          <h3 style={{ fontSize: '15px', fontWeight: '800', margin: '0 0 2px', color: '#f4f4f5' }}>{a.name}</h3>
-          <span style={{ fontSize: '11px', color: '#52525b', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{a.blockchain}</span>
-        </div>
-      </div>
-      <p style={{ fontSize: '13px', color: '#52525b', lineHeight: 1.6, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', margin: 0 } as any}>{a.description}</p>
-      <div style={{ display: 'flex', gap: '24px' }}>
-        <div>
-          <div style={{ fontSize: '10px', color: '#3f3f46', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '3px' }}>⚡ DIFFICULTY</div>
-          <div style={{ fontSize: '13px', fontWeight: '700', color: difficultyColor(a.difficulty) }}>{a.difficulty}</div>
-        </div>
-        <div>
-          <div style={{ fontSize: '10px', color: '#3f3f46', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '3px' }}>💰 REWARD</div>
-          <div style={{ fontSize: '13px', fontWeight: '700', color: '#10b981' }}>{rewardLabel(a)}</div>
-        </div>
-      </div>
-      {Array.isArray(a.tags) && a.tags.length > 0 && (
-        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-          {a.tags.slice(0, 3).map((tag: string) => (
-            <span key={tag} style={{ background: '#18181b', border: '1px solid #27272a', color: '#71717a', padding: '3px 10px', borderRadius: '6px', fontSize: '11px', fontWeight: '600' }}>{tag}</span>
-          ))}
-        </div>
-      )}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <div style={{ height: '3px', flex: 1, background: '#1a1f2e', borderRadius: '99px', overflow: 'hidden' }}>
-          <div style={{ height: '100%', width: '97%', background: 'linear-gradient(90deg, #6366f1, #818cf8)', borderRadius: '99px' }} />
-        </div>
-        <span style={{ fontSize: '10px', fontWeight: '800', color: '#818cf8', whiteSpace: 'nowrap' }}>97% WORTH IT</span>
-      </div>
-    </Link>
-  );
-
-  const SmallCard = ({ a }: { a: Airdrop }) => (
-    <Link href={`/airdrops/${a.slug}`} style={{
-      background: '#0d1117', border: '1px solid #1a1f2e', borderRadius: '14px',
-      padding: '14px 16px', textDecoration: 'none', color: '#fff',
-      display: 'flex', gap: '12px', alignItems: 'center', transition: 'all 0.2s',
-    }}
-      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(99,102,241,0.3)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'; }}
-      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = '#1a1f2e'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
-    >
-      {a.logo
-        ? <img src={a.logo} alt={a.name} width={38} height={38} style={{ borderRadius: '10px', border: '1px solid rgba(255,255,255,0.06)', flexShrink: 0, objectFit: 'cover' }} />
-        : <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: '#1a1f2e', flexShrink: 0 }} />
-      }
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
-          <h3 style={{ fontSize: '13px', fontWeight: '700', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '130px' }}>{a.name}</h3>
-          <span style={{
-            background: a.status === 'Active' ? 'rgba(16,185,129,0.1)' : 'rgba(113,113,122,0.1)',
-            color: a.status === 'Active' ? '#10b981' : '#71717a',
-            padding: '1px 6px', borderRadius: '99px', fontSize: '9px', fontWeight: '700',
-            border: `1px solid ${a.status === 'Active' ? 'rgba(16,185,129,0.2)' : 'rgba(113,113,122,0.2)'}`,
-            flexShrink: 0, marginLeft: '4px',
-          }}>{a.status}</span>
-        </div>
-        <div style={{ display: 'flex', gap: '4px' }}>
-          <span style={{ fontSize: '10px', fontWeight: '700', color: costColor(a.cost), background: `${costColor(a.cost)}12`, padding: '1px 5px', borderRadius: '4px' }}>{a.cost}</span>
-          <span style={{ fontSize: '10px', fontWeight: '700', color: difficultyColor(a.difficulty), background: `${difficultyColor(a.difficulty)}12`, padding: '1px 5px', borderRadius: '4px' }}>{a.difficulty}</span>
-          {a.blockchain && <span style={{ fontSize: '10px', fontWeight: '700', color: '#818cf8', background: 'rgba(99,102,241,0.08)', padding: '1px 5px', borderRadius: '4px' }}>{a.blockchain}</span>}
-        </div>
-      </div>
-    </Link>
-  );
+  const isAll = active === 'All' && search.trim() === '';
 
   return (
     <div>
       <style>{`
-        .filter-bar-wrap { flex-direction: row; }
-        .filter-tabs { flex-wrap: wrap; }
-        @media (max-width: 640px) {
-          .filter-bar-wrap { flex-direction: column !important; }
-          .filter-tabs { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; }
-          .filter-tab-btn { justify-content: center !important; }
+        /* ── Filter bar ── */
+        .fb-wrap { background:#0D1221; border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:14px 16px; margin-bottom:32px; display:flex; flex-direction:column; gap:12px; }
+        .fb-search-wrap { position:relative; }
+        .fb-search-icon { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:rgba(255,255,255,0.2); pointer-events:none; }
+        .fb-search { width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:10px 12px 10px 36px; color:#fff; font-size:13px; outline:none; font-family:var(--font-space),system-ui,sans-serif; transition:border-color 0.15s; }
+        .fb-search::placeholder { color:rgba(255,255,255,0.2); }
+        .fb-search:focus { border-color:rgba(124,245,192,0.25); }
+        .fb-tabs { display:flex; gap:6px; flex-wrap:wrap; }
+        .fb-tab { display:flex; align-items:center; gap:6px; background:transparent; border:1px solid rgba(255,255,255,0.08); border-radius:99px; padding:6px 14px; cursor:pointer; transition:all 0.15s; font-family:var(--font-space),system-ui,sans-serif; }
+        .fb-tab:hover { border-color:rgba(255,255,255,0.15); }
+        .fb-tab.on { background:rgba(124,245,192,0.08); border-color:rgba(124,245,192,0.22); }
+        .fb-tab-label { font-size:12px; font-weight:600; color:rgba(255,255,255,0.38); }
+        .fb-tab.on .fb-tab-label { color:#7CF5C0; }
+        .fb-tab-count { font-size:10px; font-weight:700; color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.05); padding:1px 7px; border-radius:99px; }
+        .fb-tab.on .fb-tab-count { color:#7CF5C0; background:rgba(124,245,192,0.12); }
+
+        /* ── Section headers ── */
+        .fb-sec-hdr { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:8px; }
+        .fb-sec-title { font-size:16px; font-weight:700; color:#fff; margin:0; letter-spacing:-0.02em; display:flex; align-items:center; gap:8px; }
+        .fb-sec-dot { width:6px; height:6px; border-radius:50%; background:#7CF5C0; box-shadow:0 0 6px rgba(124,245,192,0.5); flex-shrink:0; }
+        .fb-sec-sub { font-size:12px; color:rgba(255,255,255,0.25); margin:3px 0 0; }
+        .fb-view-all { font-size:12px; font-weight:700; color:#7CF5C0; text-decoration:none; display:flex; align-items:center; gap:4px; transition:gap 0.15s; white-space:nowrap; }
+        .fb-view-all:hover { gap:8px; }
+
+        /* ── Big card ── */
+        .fb-grid-big { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:48px; }
+        .fb-big { background:#0D1221; border:1px solid rgba(255,255,255,0.06); border-radius:16px; padding:18px; text-decoration:none; color:#fff; display:flex; flex-direction:column; gap:11px; transition:border-color 0.18s,transform 0.18s,box-shadow 0.18s; }
+        .fb-big:hover { border-color:rgba(124,245,192,0.2); transform:translateY(-2px); box-shadow:0 8px 32px rgba(0,0,0,0.25); }
+        .fb-big-top { display:flex; align-items:center; justify-content:space-between; }
+        .fb-big-badges { display:flex; gap:5px; flex-wrap:wrap; }
+        .fb-bb { font-size:9px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; padding:2px 8px; border-radius:5px; }
+        .fb-bb-brand { background:rgba(124,245,192,0.08); color:#7CF5C0; border:1px solid rgba(124,245,192,0.18); }
+        .fb-bb-new { background:rgba(99,102,241,0.08); color:#818cf8; border:1px solid rgba(99,102,241,0.18); }
+        .fb-bb-active { background:rgba(124,245,192,0.06); color:#7CF5C0; border:1px solid rgba(124,245,192,0.14); }
+        .fb-bb-ended { background:rgba(100,100,120,0.08); color:#6b7280; border:1px solid rgba(100,100,120,0.18); }
+        .fb-like { width:28px; height:28px; border-radius:7px; border:1px solid rgba(255,255,255,0.08); background:transparent; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all 0.15s; flex-shrink:0; }
+        .fb-like:hover { background:rgba(244,63,94,0.08); border-color:rgba(244,63,94,0.25); }
+        .fb-like-on { background:rgba(244,63,94,0.08); border-color:rgba(244,63,94,0.25); }
+        .fb-big-id { display:flex; align-items:center; gap:10px; }
+        .fb-logo { width:40px; height:40px; border-radius:10px; border:1px solid rgba(255,255,255,0.07); object-fit:cover; flex-shrink:0; }
+        .fb-logo-fb { width:40px; height:40px; border-radius:10px; background:#1a2540; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; color:rgba(255,255,255,0.2); }
+        .fb-big-name { font-size:14px; font-weight:700; color:#fff; margin:0 0 2px; letter-spacing:-0.01em; }
+        .fb-big-chain { font-size:10px; color:rgba(255,255,255,0.25); font-weight:600; text-transform:uppercase; letter-spacing:0.07em; }
+        .fb-big-desc { font-size:12px; color:rgba(255,255,255,0.32); line-height:1.65; overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; margin:0; flex:1; }
+        .fb-big-meta { display:flex; gap:16px; }
+        .fb-meta-lbl { font-size:9px; color:rgba(255,255,255,0.22); font-weight:700; text-transform:uppercase; letter-spacing:0.07em; margin-bottom:3px; }
+        .fb-meta-val { font-size:12px; font-weight:700; }
+        .fb-big-tags { display:flex; gap:5px; flex-wrap:wrap; }
+        .fb-tag { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); color:rgba(255,255,255,0.28); padding:2px 8px; border-radius:6px; font-size:10px; font-weight:600; }
+
+        /* ── Small card ── */
+        .fb-grid-small { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+        .fb-small { background:#0D1221; border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:14px; text-decoration:none; color:#fff; display:flex; gap:10px; align-items:center; transition:border-color 0.15s,transform 0.15s; }
+        .fb-small:hover { border-color:rgba(124,245,192,0.18); transform:translateY(-1px); }
+        .fb-sm-logo { width:36px; height:36px; border-radius:9px; border:1px solid rgba(255,255,255,0.07); object-fit:cover; flex-shrink:0; }
+        .fb-sm-logo-fb { width:36px; height:36px; border-radius:9px; background:#1a2540; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:rgba(255,255,255,0.2); }
+        .fb-sm-body { flex:1; min-width:0; }
+        .fb-sm-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:5px; gap:4px; }
+        .fb-sm-name { font-size:13px; font-weight:700; color:#fff; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .fb-sm-status { font-size:9px; font-weight:700; padding:1px 6px; border-radius:99px; flex-shrink:0; }
+        .fb-sm-pills { display:flex; gap:4px; flex-wrap:wrap; }
+        .fb-pill { font-size:10px; font-weight:600; padding:1px 6px; border-radius:4px; }
+
+        /* ── Empty state ── */
+        .fb-empty { text-align:center; padding:48px 24px; color:rgba(255,255,255,0.25); font-size:14px; }
+
+        /* ── Mobile ── */
+        @media (max-width:900px) {
+          .fb-grid-big { grid-template-columns:repeat(2,1fr); }
+          .fb-grid-small { grid-template-columns:repeat(2,1fr); }
+        }
+        @media (max-width:560px) {
+          .fb-grid-big { grid-template-columns:1fr; }
+          .fb-grid-small { grid-template-columns:1fr; }
+          .fb-tabs { display:grid; grid-template-columns:repeat(2,1fr); }
+          .fb-tab { justify-content:center; }
         }
       `}</style>
 
-      {/* ── Filter bar ── */}
-      <div className="filter-bar-wrap" style={{ background: '#0d1117', border: '1px solid #1a1f2e', borderRadius: '14px', padding: '12px 16px', marginBottom: '32px', display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
-        <div style={{ flex: 1, minWidth: '180px', position: 'relative' }}>
-          <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#52525b', fontSize: '13px' }}>🔍</span>
-          <input
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            placeholder="Search by name, category or blockchain..."
-            style={{ width: '100%', background: '#18181b', border: '1px solid #27272a', borderRadius: '10px', padding: '10px 12px 10px 34px', color: '#e4e4e7', fontSize: '13px', outline: 'none', fontFamily: 'inherit' }}
-          />
+      {/* Filter bar */}
+      <div className="fb-wrap">
+        <div className="fb-search-wrap">
+          <span className="fb-search-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </span>
+          <input className="fb-search" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search by name, chain, or category..." />
         </div>
-        <div className="filter-tabs" style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', width: '100%' }}>
-          {tabs.map((tab) => (
-            <button key={tab.label} className="filter-tab-btn" onClick={() => setActive(tab.label)} style={{
-              display: 'flex', alignItems: 'center', gap: '7px',
-              background: active === tab.label ? 'linear-gradient(135deg, #6366f1, #4f46e5)' : '#18181b',
-              border: `1px solid ${active === tab.label ? 'transparent' : '#27272a'}`,
-              borderRadius: '10px', padding: '8px 14px', cursor: 'pointer',
-              boxShadow: active === tab.label ? '0 4px 12px rgba(99,102,241,0.3)' : 'none',
-              transition: 'all 0.2s',
-            }}>
-              <span style={{ fontSize: '12px' }}>{tab.icon}</span>
-              <span style={{ fontSize: '13px', fontWeight: '700', color: active === tab.label ? '#fff' : '#71717a' }}>{tab.label}</span>
-              <span style={{ background: active === tab.label ? 'rgba(255,255,255,0.2)' : '#27272a', color: active === tab.label ? '#fff' : '#52525b', fontSize: '11px', fontWeight: '700', padding: '1px 7px', borderRadius: '6px', minWidth: '22px', textAlign: 'center' }}>{tab.count}</span>
+        <div className="fb-tabs">
+          {tabs.map(tab => (
+            <button key={tab.label} className={`fb-tab${active === tab.label ? ' on' : ''}`} onClick={() => setActive(tab.label)}>
+              <span className="fb-tab-label">{tab.label}</span>
+              <span className="fb-tab-count">{tab.count}</span>
             </button>
           ))}
         </div>
       </div>
 
-      {/* ── Sections only shown on ALL tab ── */}
-      {isAll && (
-        <>
-          {featured.length > 0 && (
-            <section style={{ marginBottom: '48px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                <h2 style={{ fontSize: '18px', fontWeight: '800', color: '#fff' }}>⭐ Featured Alpha</h2>
-                <Link href="/airdrops" style={{ fontSize: '12px', color: '#818cf8', textDecoration: 'none', fontWeight: '600' }}>View all →</Link>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '12px' }}>
-                {featured.map(a => <BigCard key={a.slug} a={a} />)}
-              </div>
-            </section>
-          )}
+      {/* Recommended — only on All tab */}
+      {isAll && <RecommendedForYou airdrops={airdrops} />}
 
-          {/* ✨ Recommended For You — ONLY on All tab */}
-          <RecommendedForYou airdrops={airdrops} />
-
-          <section style={{ marginBottom: '48px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-              <h2 style={{ fontSize: '18px', fontWeight: '800', color: '#fff' }}>🆕 Newly Added</h2>
-              <Link href="/airdrops" style={{ fontSize: '12px', color: '#818cf8', textDecoration: 'none', fontWeight: '600' }}>View all →</Link>
+      {/* Newly Added — only on All tab */}
+      {isAll && newlyAdded.length > 0 && (
+        <section style={{ marginBottom: '48px' }}>
+          <div className="fb-sec-hdr">
+            <div>
+              <div className="fb-sec-title">
+                <span className="fb-sec-dot" />
+                Newly Added
+              </div>
+              <div className="fb-sec-sub">{newlyAdded.length} fresh airdrops</div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '12px' }}>
-              {newlyAdded.map(a => <BigCard key={a.slug} a={a} />)}
-            </div>
-          </section>
-        </>
+            <Link href="/airdrops" className="fb-view-all">View all →</Link>
+          </div>
+          <div className="fb-grid-big">
+            {newlyAdded.map((a, idx) => (
+              <Link key={a.slug} href={`/airdrops/${a.slug}`} className="fb-big">
+                <div className="fb-big-top">
+                  <div className="fb-big-badges">
+                    <span className="fb-bb fb-bb-brand">3alamiy</span>
+                    <span className="fb-bb fb-bb-new">New</span>
+                  </div>
+                  <button className={`fb-like${liked[a.slug] ? ' fb-like-on' : ''}`}
+                    onClick={e => { e.preventDefault(); toggleLike(a.slug, a); }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24"
+                      fill={liked[a.slug] ? '#f87171' : 'none'}
+                      stroke={liked[a.slug] ? '#f87171' : 'rgba(255,255,255,0.35)'}
+                      strokeWidth="2">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                  </button>
+                </div>
+                <div className="fb-big-id">
+                  {a.logo ? <img src={a.logo} alt={a.name} width={40} height={40} className="fb-logo" /> : <div className="fb-logo-fb">{a.name?.[0]}</div>}
+                  <div>
+                    <div className="fb-big-name">{a.name}</div>
+                    <div className="fb-big-chain">{a.blockchain}</div>
+                  </div>
+                </div>
+                <p className="fb-big-desc">{a.description}</p>
+                <div className="fb-big-meta">
+                  <div>
+                    <div className="fb-meta-lbl">Difficulty</div>
+                    <div className="fb-meta-val" style={{ color: difficultyColor(a.difficulty) }}>{a.difficulty}</div>
+                  </div>
+                  <div>
+                    <div className="fb-meta-lbl">Reward</div>
+                    <div className="fb-meta-val" style={{ color: '#7CF5C0' }}>{rewardLabel(a)}</div>
+                  </div>
+                </div>
+                {Array.isArray(a.tags) && a.tags.length > 0 && (
+                  <div className="fb-big-tags">
+                    {a.tags.slice(0, 3).map(tag => <span key={tag} className="fb-tag">{tag}</span>)}
+                  </div>
+                )}
+              </Link>
+            ))}
+          </div>
+        </section>
       )}
 
-      {/* ── Filtered results (all tabs) ── */}
+      {/* Filtered results */}
       <section>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+        <div className="fb-sec-hdr">
           <div>
-            <h2 style={{ fontSize: '18px', fontWeight: '800', color: '#fff', margin: '0 0 2px' }}>
-              {active === 'All' ? '🔥 All Active Airdrops' :
-               active === 'Free' ? '★ Free Airdrops' :
-               active === 'Paid' ? '🗂 Paid Airdrops' : '✦ Ended / Claim'}
-            </h2>
-            <p style={{ fontSize: '12px', color: '#475569', margin: 0 }}>{filtered.length} airdrops found</p>
+            <div className="fb-sec-title">
+              {active === 'All' ? 'All Airdrops' :
+               active === 'Active' ? 'Active Airdrops' :
+               active === 'Free' ? 'Free Airdrops' :
+               active === 'Easy' ? 'Easy Airdrops' : 'Ended / Claim'}
+            </div>
+            <div className="fb-sec-sub">{filtered.length} airdrops found</div>
           </div>
-          <Link href="/airdrops" style={{ background: '#0d1117', color: '#818cf8', padding: '7px 14px', borderRadius: '9px', textDecoration: 'none', fontSize: '12px', fontWeight: '700', border: '1px solid rgba(99,102,241,0.2)' }}>View All →</Link>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '10px' }}>
-          {filtered
-            .filter(a => active === 'End / Claim' ? a.status === 'Ended' : a.status === 'Active')
-            .slice(0, isAll ? 12 : filtered.length)
-            .map(a => <SmallCard key={a.slug} a={a} />)}
-        </div>
+        {filtered.length === 0 ? (
+          <div className="fb-empty">No airdrops found for "{search}"</div>
+        ) : (
+          <div className="fb-grid-small">
+            {filtered
+              .filter(a => active === 'End / Claim' ? a.status === 'Ended' : a.status !== 'Ended')
+              .slice(0, isAll ? 18 : filtered.length)
+              .map(a => (
+                <Link key={a.slug} href={`/airdrops/${a.slug}`} className="fb-small">
+                  {a.logo ? <img src={a.logo} alt={a.name} width={36} height={36} className="fb-sm-logo" /> : <div className="fb-sm-logo-fb">{a.name?.[0]}</div>}
+                  <div className="fb-sm-body">
+                    <div className="fb-sm-top">
+                      <span className="fb-sm-name">{a.name}</span>
+                      <span className="fb-sm-status" style={{
+                        background: a.status === 'Active' ? 'rgba(124,245,192,0.08)' : 'rgba(100,100,120,0.08)',
+                        color: a.status === 'Active' ? '#7CF5C0' : '#6b7280',
+                        border: `1px solid ${a.status === 'Active' ? 'rgba(124,245,192,0.18)' : 'rgba(100,100,120,0.18)'}`,
+                      }}>{a.status}</span>
+                    </div>
+                    <div className="fb-sm-pills">
+                      <span className="fb-pill" style={{ color: costColor(a.cost), background: `${costColor(a.cost)}14` }}>{a.cost}</span>
+                      <span className="fb-pill" style={{ color: difficultyColor(a.difficulty), background: `${difficultyColor(a.difficulty)}14` }}>{a.difficulty}</span>
+                      {a.blockchain && <span className="fb-pill" style={{ color: 'rgba(255,255,255,0.3)', background: 'rgba(255,255,255,0.04)' }}>{a.blockchain}</span>}
+                    </div>
+                  </div>
+                </Link>
+              ))}
+          </div>
+        )}
       </section>
     </div>
   );
