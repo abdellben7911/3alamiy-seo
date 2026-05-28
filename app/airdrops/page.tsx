@@ -32,7 +32,16 @@ export default async function AirdropsPage() {
   const activeCount = airdrops.filter((a: any) => a.status === 'Active').length;
   const freeCount = airdrops.filter((a: any) => a.cost === 'Free').length;
   const easyCount = airdrops.filter((a: any) => a.difficulty === 'Easy').length;
-  const featuredAirdrops = airdrops.filter((a: any) => a.featured === true);
+  const featuredAirdrops = airdrops
+    .filter((a: any) => a.featured === true && a.status === 'Active')
+    .slice(0, 3)
+    .concat(
+      airdrops
+        .filter((a: any) => a.status === 'Active' && a.cost === 'Free')
+        .slice(0, 3)
+    )
+    .filter((a: any, i: number, arr: any[]) => arr.findIndex((x: any) => x.slug === a.slug) === i)
+    .slice(0, 3);
   const featuredChains = ['Ethereum', 'Solana', 'Arbitrum', 'Base', 'ZKSync', 'Monad', 'Sui'];
 
   // Category counts
@@ -399,9 +408,9 @@ export default async function AirdropsPage() {
                 <div>
                   <div className="al-feat-hdr-title">
                     <span style={{ width:'7px', height:'7px', borderRadius:'50%', background:'#7CF5C0', boxShadow:'0 0 8px rgba(124,245,192,0.6)', display:'inline-block', animation:'pulse 1.8s infinite' }} />
-                    ⭐ Featured Airdrops
+                    Featured Airdrops
                   </div>
-                  <div className="al-feat-hdr-sub">Hand-picked high-potential opportunities</div>
+                  <div className="al-feat-hdr-sub">Hand-picked high-potential opportunities — updated daily</div>
                 </div>
                 <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="al-feat-hdr-btn">+ List Your Project</a>
               </div>
@@ -411,7 +420,7 @@ export default async function AirdropsPage() {
                   const reward = a.reward_min && a.reward_max ? `$${a.reward_min}–$${a.reward_max}` : a.reward_min ? `$${a.reward_min}+` : 'TBA';
                   return (
                     <Link key={a.slug} href={`/airdrops/${a.slug}`} className="al-feat-card">
-                      <span className="al-feat-lbl">{a.featured_label || '⭐ Featured'}</span>
+                      <span className="al-feat-lbl">{a.featured_label || 'HOT PICK'}</span>
                       <div className="al-feat-id">
                         {a.logo ? <img src={a.logo} alt={a.name} className="al-feat-logo" width={42} height={42} /> : <div className="al-feat-logo-fb">{a.name?.[0]}</div>}
                         <div>
