@@ -70,6 +70,8 @@ const allArticles = [
   { slug: 'how-to-build-onchain-activity-that-actually-matters', title: 'Build Onchain Activity That Matters', desc: 'Quality over quantity. What actually gets you airdrop allocations.', cat: 'Onchain', catColor: '#34d399', time: '7 min' },
   { slug: 'best-ai-crypto-airdrops-2026', title: 'Best AI Crypto Airdrops 2026', desc: 'Top AI projects backed by major VCs with confirmed reward campaigns.', cat: 'AI', catColor: '#c084fc', time: '10 min' },
   { slug: 'best-depin-airdrops-2026', title: 'Best DePIN Airdrops 2026', desc: 'Earn crypto passively by sharing your bandwidth and device resources.', cat: 'DePIN', catColor: '#06b6d4', time: '9 min' },
+  { slug: 'hyperliquid-guide', title: 'Hyperliquid Season 2 Guide 2026', desc: 'How to qualify for HYPE Season 2. Trade, stake, and farm HyperEVM before the snapshot.', cat: 'DeFi', catColor: '#7CF5C0', time: '10 min' },
+  { slug: 'polymarket-airdrop-guide-2026', title: 'Polymarket Airdrop Guide 2026', desc: 'How to qualify for POLY token. Trade real markets, link X account, avoid Sybil filters.', cat: 'Prediction', catColor: '#f59e0b', time: '8 min' },
 ];
 
 const breadcrumbSchema = {
