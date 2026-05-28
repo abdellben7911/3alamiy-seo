@@ -29,6 +29,21 @@ async function getRecentlyUpdated() {
   } catch { return []; }
 }
 
+async function getTestimonials() {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/testimonials?select=*&order=created_at.desc&limit=3`,
+      {
+        headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
+        next: { revalidate: 3600 },
+      }
+    );
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.filter((t: any) => t && t.handle && t.claim);
+  } catch { return []; }
+}
+
 export const metadata = {
   title: 'Best Crypto Airdrops 2026 — Free Guides | 3alamiy Web3',
   description: 'Track and participate in the best free crypto airdrops of 2026. Step-by-step guides for Ethereum, Solana, Arbitrum, Base, Monad and more. Updated daily.',
@@ -75,7 +90,9 @@ const socialProof = [
 const chains = ['Ethereum', 'Solana', 'Arbitrum', 'Base', 'Monad', 'Sui', 'zkSync', 'Optimism'];
 
 export default async function Home() {
-  const [airdrops, recentlyUpdated] = await Promise.all([getAllAirdrops(), getRecentlyUpdated()]);
+  const [airdrops, recentlyUpdated, dbTestimonials] = await Promise.all([getAllAirdrops(), getRecentlyUpdated(), getTestimonials()]);
+  const proofColors = ['#818cf8', '#7CF5C0', '#f59e0b'];
+  const testimonials = dbTestimonials.length > 0 ? dbTestimonials : socialProof;
   const activeCount = airdrops.filter((a: any) => a.status === 'Active').length;
   const freeCount = airdrops.filter((a: any) => a.cost === 'Free').length;
 
@@ -317,13 +334,25 @@ export default async function Home() {
               </a>
             </div>
             <div className="hero-proof anim-fade-up-4">
-              <span className="hero-proof-item">🌍 40+ countries</span>
+              <span className="hero-proof-item">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                40+ countries
+              </span>
               <span className="hero-proof-dot" />
-              <span className="hero-proof-item">📖 {airdrops.length}+ guides</span>
+              <span className="hero-proof-item">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                {airdrops.length}+ guides
+              </span>
               <span className="hero-proof-dot" />
-              <span className="hero-proof-item">✅ Always free</span>
+              <span className="hero-proof-item">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Always free
+              </span>
               <span className="hero-proof-dot" />
-              <span className="hero-proof-item">🔄 Updated daily</span>
+              <span className="hero-proof-item">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                Updated daily
+              </span>
             </div>
           </div>
         </section>
@@ -412,19 +441,23 @@ export default async function Home() {
               <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="view-all">Share yours →</a>
             </div>
             <div className="proof-grid">
-              {socialProof.map((p, i) => (
-                <div key={p.handle} className="proof-card" style={{ animationDelay: `${i * 0.1}s` }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <div className="proof-avatar" style={{ background: `${p.color}18`, border: `1px solid ${p.color}30`, color: p.color }}>{p.avatar}</div>
-                    <div>
-                      <div className="proof-handle">{p.handle}</div>
-                      <div className="proof-on">on 3alamiy Web3</div>
+              {testimonials.map((p: any, i: number) => {
+                const color = proofColors[i % proofColors.length];
+                const av = p.avatar || p.handle?.[1]?.toUpperCase() || '?';
+                return (
+                  <div key={p.handle} className="proof-card" style={{ animationDelay: `${i * 0.1}s` }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <div className="proof-avatar" style={{ background: `${color}18`, border: `1px solid ${color}30`, color }}>{av}</div>
+                      <div>
+                        <div className="proof-handle">{p.handle}</div>
+                        <div className="proof-on">on 3alamiy Web3</div>
+                      </div>
                     </div>
+                    <div className="proof-claim">Claimed {p.claim}</div>
+                    <p className="proof-text">"{p.text}"</p>
                   </div>
-                  <div className="proof-claim">Claimed {p.claim}</div>
-                  <p className="proof-text">"{p.text}"</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
@@ -460,7 +493,7 @@ export default async function Home() {
                   return (
                     <Link key={a.slug} href={`/airdrops/${a.slug}`} className="ru-card">
                       <div style={{ position: 'absolute', top: '10px', right: '10px', background: 'rgba(124,245,192,0.08)', border: '1px solid rgba(124,245,192,0.18)', color: '#7CF5C0', fontSize: '9px', fontWeight: 700, padding: '2px 7px', borderRadius: '99px' }}>
-                        🔄 {timeAgo(a.updated_at)}
+                        {timeAgo(a.updated_at)}
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', paddingRight: '60px' }}>
                         {a.logo
@@ -534,14 +567,14 @@ export default async function Home() {
           <div className="section-inner">
             <div className="cta-split" id="newsletter">
               <div className="cta-email">
-                <div className="cta-label" style={{ color: '#818cf8' }}>📧 Free · No spam</div>
+                <div className="cta-label" style={{ color: '#818cf8' }}>Free · No spam</div>
                 <div className="cta-h2">One drop. One email. No spam.</div>
                 <p className="cta-desc">Get the single best airdrop opportunity every Friday — only when there's something worth your gas.</p>
                 <EmailSignup />
               </div>
               <div className="cta-tg">
                 <div>
-                  <div className="cta-label" style={{ color: '#7CF5C0' }}>💬 Telegram · Live</div>
+                  <div className="cta-label" style={{ color: '#7CF5C0' }}>Telegram · Live</div>
                   <div className="cta-h2">500+ hunters in chat.</div>
                   <p className="cta-desc">The fastest place to learn about new drops before they go viral. No noise, just alpha.</p>
                 </div>
