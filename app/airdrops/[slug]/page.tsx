@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import ParticipationGuide from './ParticipationGuide';
+import FavoriteButton from './FavoriteButton';
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -44,13 +45,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: `${a.name} Airdrop Guide ${year}`,
       description: desc,
-      url: `https://seo.3alamiyweb3.online/airdrops/${slug}`,
+      url: `https://www.3alamiyweb3.com/airdrops/${slug}`,
       siteName: '3alamiy Web3',
       images: a.logo ? [{ url: a.logo, width: 400, height: 400, alt: `${a.name} airdrop logo` }] : [],
       type: 'article',
     },
     twitter: { card: 'summary_large_image', title: `${a.name} Airdrop — Free Guide ${year}`, description: desc },
-    alternates: { canonical: `https://seo.3alamiyweb3.online/airdrops/${slug}` },
+    alternates: { canonical: `https://www.3alamiyweb3.com/airdrops/${slug}` },
   };
 }
 
@@ -81,7 +82,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
     image: a.logo ? { '@type': 'ImageObject', url: a.logo } : undefined,
     totalTime: `PT${Math.max(15, steps.length * 3)}M`,
     estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: a.cost === 'Free' ? '0' : '10' },
-    step: steps.map((s: string, i: number) => ({ '@type': 'HowToStep', position: i + 1, name: s, text: s, url: `https://seo.3alamiyweb3.online/airdrops/${a.slug}#guide` })),
+    step: steps.map((s: string, i: number) => ({ '@type': 'HowToStep', position: i + 1, name: s, text: s, url: `https://www.3alamiyweb3.com/airdrops/${a.slug}#guide` })),
   };
 
   const faqSchema = {
@@ -97,9 +98,9 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
   const breadcrumbSchema = {
     '@context': 'https://schema.org', '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
-      { '@type': 'ListItem', position: 2, name: 'Airdrops', item: 'https://seo.3alamiyweb3.online/airdrops' },
-      { '@type': 'ListItem', position: 3, name: `${a.name} Airdrop`, item: `https://seo.3alamiyweb3.online/airdrops/${a.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.3alamiyweb3.com' },
+      { '@type': 'ListItem', position: 2, name: 'Airdrops', item: 'https://www.3alamiyweb3.com/airdrops' },
+      { '@type': 'ListItem', position: 3, name: `${a.name} Airdrop`, item: `https://www.3alamiyweb3.com/airdrops/${a.slug}` },
     ],
   };
 
@@ -107,13 +108,13 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
   const speakableSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `https://seo.3alamiyweb3.online/airdrops/${a.slug}`,
+    '@id': `https://www.3alamiyweb3.com/airdrops/${a.slug}`,
     name: `${a.name} Airdrop Guide ${year}`,
     speakable: {
       '@type': 'SpeakableSpecification',
       cssSelector: ['.dp-title', '.dp-desc', '.dp-qa-text', '.dp-quick-answer'],
     },
-    url: `https://seo.3alamiyweb3.online/airdrops/${a.slug}`,
+    url: `https://www.3alamiyweb3.com/airdrops/${a.slug}`,
   };
 
   // Dataset — structured airdrop data for AI engines
@@ -122,8 +123,8 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
     '@type': 'Dataset',
     name: `${a.name} Airdrop Data`,
     description: `Structured data for the ${a.name} airdrop on ${a.blockchain}. Includes difficulty, cost, reward estimate, participation steps, and eligibility criteria.`,
-    url: `https://seo.3alamiyweb3.online/airdrops/${a.slug}`,
-    creator: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
+    url: `https://www.3alamiyweb3.com/airdrops/${a.slug}`,
+    creator: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
     keywords: [`${a.name} airdrop`, `${a.blockchain} airdrop`, 'crypto airdrop 2026', a.difficulty, a.cost],
     variableMeasured: [
       { '@type': 'PropertyValue', name: 'Blockchain', value: a.blockchain },
@@ -147,7 +148,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
       '@type': 'ListItem',
       position: i + 1,
       name: `${r.name} Airdrop`,
-      url: `https://seo.3alamiyweb3.online/airdrops/${r.slug}`,
+      url: `https://www.3alamiyweb3.com/airdrops/${r.slug}`,
     })),
   } : null;
 
@@ -521,9 +522,9 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
         {/* Breadcrumb */}
         <div style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <nav className="dp-bc" aria-label="Breadcrumb">
-            <a href="https://seo.3alamiyweb3.online">Home</a>
+            <a href="https://www.3alamiyweb3.com">Home</a>
             <span style={{ opacity: 0.3 }}>›</span>
-            <a href="https://seo.3alamiyweb3.online/airdrops">Airdrops</a>
+            <a href="https://www.3alamiyweb3.com/airdrops">Airdrops</a>
             <span style={{ opacity: 0.3 }}>›</span>
             <span className="dp-bc-active">{a.name}</span>
           </nav>
@@ -557,6 +558,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                   Get Alerts
                 </a>
+                <FavoriteButton slug={a.slug} name={a.name} blockchain={a.blockchain} tags={tags} />
               </div>
             </div>
           </div>
