@@ -81,7 +81,7 @@ export default function ContactPage() {
               <div className="ct-card-desc">Partnerships and serious inquiries</div>
             </div>
             <div className="ct-card-link" style={{ color:'#7CF5C0' }}>
-              contact@3alamiy…
+              contact@3alamiyweb3.com
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </div>
           </a>
