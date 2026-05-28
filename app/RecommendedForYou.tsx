@@ -171,83 +171,107 @@ export default function RecommendedForYou({ airdrops }: { airdrops: Airdrop[] })
 
   return (
     <section style={{ marginBottom: '48px' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <div style={{ width: '32px', height: '32px', background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px' }}>✨</div>
+      <style>{`
+        .rfy-hdr { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; flex-wrap:wrap; gap:12px; }
+        .rfy-hdr-left { display:flex; align-items:center; gap:10px; }
+        .rfy-icon { width:30px; height:30px; background:rgba(124,245,192,0.08); border:1px solid rgba(124,245,192,0.18); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        .rfy-title { font-size:17px; font-weight:700; color:#fff; margin:0; letter-spacing:-0.02em; }
+        .rfy-sub { font-size:11px; color:rgba(255,255,255,0.28); margin:2px 0 0; font-weight:500; }
+        .rfy-badge { background:rgba(124,245,192,0.06); border:1px solid rgba(124,245,192,0.15); color:#7CF5C0; padding:4px 12px; border-radius:99px; font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; display:flex; align-items:center; gap:5px; }
+        .rfy-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px; }
+        .rfy-wrap { position:relative; }
+        .rfy-rec-tag { position:absolute; top:-1px; left:14px; z-index:10; background:rgba(124,245,192,0.1); border:1px solid rgba(124,245,192,0.2); color:#7CF5C0; font-size:9px; font-weight:700; padding:2px 10px; border-radius:99px; letter-spacing:0.07em; text-transform:uppercase; }
+        .rfy-card { background:#0D1221; border:1px solid rgba(255,255,255,0.06); border-radius:16px; padding:18px; text-decoration:none; color:#fff; display:flex; flex-direction:column; gap:12px; transition:border-color 0.18s,transform 0.18s,box-shadow 0.18s; }
+        .rfy-card:hover { border-color:rgba(124,245,192,0.2); transform:translateY(-2px); box-shadow:0 8px 32px rgba(0,0,0,0.25); }
+        .rfy-top { display:flex; align-items:center; justify-content:space-between; }
+        .rfy-badges { display:flex; gap:5px; }
+        .rfy-b { font-size:9px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; padding:2px 8px; border-radius:5px; }
+        .rfy-b-brand { background:rgba(124,245,192,0.08); color:#7CF5C0; border:1px solid rgba(124,245,192,0.18); }
+        .rfy-b-active { background:rgba(124,245,192,0.06); color:#7CF5C0; border:1px solid rgba(124,245,192,0.14); }
+        .rfy-b-ended { background:rgba(100,100,120,0.08); color:#6b7280; border:1px solid rgba(100,100,120,0.18); }
+        .rfy-like { width:30px; height:30px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background:transparent; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all 0.15s; flex-shrink:0; }
+        .rfy-like:hover { background:rgba(244,63,94,0.08); border-color:rgba(244,63,94,0.25); }
+        .rfy-like-on { background:rgba(244,63,94,0.08); border-color:rgba(244,63,94,0.25); }
+        .rfy-id { display:flex; align-items:center; gap:10px; }
+        .rfy-logo { width:40px; height:40px; border-radius:10px; border:1px solid rgba(255,255,255,0.07); object-fit:cover; flex-shrink:0; }
+        .rfy-logo-fb { width:40px; height:40px; border-radius:10px; background:#1a2540; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; color:rgba(255,255,255,0.2); }
+        .rfy-name { font-size:14px; font-weight:700; color:#fff; margin:0 0 2px; letter-spacing:-0.01em; }
+        .rfy-chain { font-size:10px; color:rgba(255,255,255,0.25); font-weight:600; text-transform:uppercase; letter-spacing:0.07em; }
+        .rfy-desc { font-size:12px; color:rgba(255,255,255,0.32); line-height:1.65; overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; margin:0; }
+        .rfy-meta { display:flex; gap:20px; }
+        .rfy-meta-lbl { font-size:9px; color:rgba(255,255,255,0.22); font-weight:700; text-transform:uppercase; letter-spacing:0.07em; margin-bottom:3px; }
+        .rfy-meta-val { font-size:12px; font-weight:700; }
+        .rfy-tags { display:flex; gap:5px; flex-wrap:wrap; }
+        .rfy-tag { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); color:rgba(255,255,255,0.28); padding:2px 9px; border-radius:6px; font-size:10px; font-weight:600; }
+      `}</style>
+
+      <div className="rfy-hdr">
+        <div className="rfy-hdr-left">
+          <div className="rfy-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7CF5C0" strokeWidth="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
           <div>
-            <h2 style={{ fontSize: '18px', fontWeight: '800', color: '#fff', margin: 0 }}>Recommended For You</h2>
-            <p style={{ fontSize: '11px', color: '#52525b', margin: 0 }}>
-              {likedCount >= 2 ? `Based on your ${likedCount} liked airdrops` : 'Fresh picks updated every visit'}
+            <h2 className="rfy-title">Recommended For You</h2>
+            <p className="rfy-sub">
+              {likedCount >= 2 ? `Based on your ${likedCount} saved airdrops` : 'Fresh picks updated every visit'}
             </p>
           </div>
         </div>
-        <span style={{ background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', color: '#818cf8', padding: '3px 10px', borderRadius: '99px', fontSize: '11px', fontWeight: '700' }}>
-          AI Picks 🎯
-        </span>
+        <div className="rfy-badge">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          AI Picks
+        </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '12px' }}>
+      <div className="rfy-grid">
         {recommended.map((a) => (
-          <div key={a.slug} style={{ position: 'relative' }}>
-            <div style={{ position: 'absolute', top: '-8px', left: '16px', zIndex: 10, background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', color: '#fff', fontSize: '9px', fontWeight: '800', padding: '2px 8px', borderRadius: '99px', letterSpacing: '0.05em' }}>
-              ✨ RECOMMENDED
-            </div>
-            <Link href={`/airdrops/${a.slug}`} style={{
-              background: '#0d1117',
-              border: '1px solid rgba(99,102,241,0.25)',
-              borderRadius: '16px', padding: '20px',
-              textDecoration: 'none', color: '#fff',
-              display: 'flex', flexDirection: 'column', gap: '14px',
-              boxShadow: '0 0 0 1px rgba(99,102,241,0.05), 0 4px 20px rgba(99,102,241,0.08)',
-              transition: 'all 0.22s ease',
-            }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(99,102,241,0.5)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(99,102,241,0.25)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', gap: '6px' }}>
-                  <span style={{ background: 'rgba(99,102,241,0.15)', color: '#818cf8', border: '1px solid rgba(99,102,241,0.2)', padding: '2px 8px', borderRadius: '5px', fontSize: '10px', fontWeight: '800' }}>3ALAMIY</span>
-                  <span style={{ background: a.status === 'Active' ? 'rgba(16,185,129,0.1)' : 'rgba(113,113,122,0.1)', color: a.status === 'Active' ? '#10b981' : '#71717a', border: `1px solid ${a.status === 'Active' ? 'rgba(16,185,129,0.2)' : 'rgba(113,113,122,0.2)'}`, padding: '2px 8px', borderRadius: '5px', fontSize: '10px', fontWeight: '800' }}>{a.status}</span>
+          <div key={a.slug} className="rfy-wrap">
+            <span className="rfy-rec-tag">Recommended</span>
+            <Link href={`/airdrops/${a.slug}`} className="rfy-card">
+              <div className="rfy-top">
+                <div className="rfy-badges">
+                  <span className="rfy-b rfy-b-brand">3alamiy</span>
+                  <span className={`rfy-b ${a.status === 'Active' ? 'rfy-b-active' : 'rfy-b-ended'}`}>{a.status}</span>
                 </div>
-                <button onClick={(e) => { e.preventDefault(); toggleLike(a.slug, a); }} style={{
-                  background: liked[a.slug] ? 'rgba(239,68,68,0.1)' : 'transparent',
-                  border: `1px solid ${liked[a.slug] ? 'rgba(239,68,68,0.3)' : '#27272a'}`,
-                  borderRadius: '8px', width: '32px', height: '32px', cursor: 'pointer',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '14px', transition: 'all 0.2s',
-                }}>
-                  {liked[a.slug] ? '❤️' : '🤍'}
+                <button onClick={(e) => { e.preventDefault(); toggleLike(a.slug, a); }}
+                  className={`rfy-like ${liked[a.slug] ? 'rfy-like-on' : ''}`}>
+                  <svg width="13" height="13" viewBox="0 0 24 24"
+                    fill={liked[a.slug] ? '#f87171' : 'none'}
+                    stroke={liked[a.slug] ? '#f87171' : 'rgba(255,255,255,0.35)'}
+                    strokeWidth="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                  </svg>
                 </button>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div className="rfy-id">
                 {a.logo
-                  ? <img src={a.logo} alt={a.name} width={44} height={44} style={{ borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)', flexShrink: 0, objectFit: 'cover' }} />
-                  : <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: '#1a1f2e', flexShrink: 0 }} />
+                  ? <img src={a.logo} alt={a.name} width={40} height={40} className="rfy-logo" />
+                  : <div className="rfy-logo-fb">{a.name?.[0]}</div>
                 }
                 <div>
-                  <h3 style={{ fontSize: '15px', fontWeight: '800', margin: '0 0 2px', color: '#f4f4f5' }}>{a.name}</h3>
-                  <span style={{ fontSize: '11px', color: '#52525b', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{a.blockchain}</span>
+                  <div className="rfy-name">{a.name}</div>
+                  <div className="rfy-chain">{a.blockchain}</div>
                 </div>
               </div>
 
-              <p style={{ fontSize: '13px', color: '#52525b', lineHeight: 1.6, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', margin: 0 } as any}>{a.description}</p>
+              <p className="rfy-desc">{a.description}</p>
 
-              <div style={{ display: 'flex', gap: '24px' }}>
+              <div className="rfy-meta">
                 <div>
-                  <div style={{ fontSize: '10px', color: '#3f3f46', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '3px' }}>⚡ DIFFICULTY</div>
-                  <div style={{ fontSize: '13px', fontWeight: '700', color: difficultyColor(a.difficulty) }}>{a.difficulty}</div>
+                  <div className="rfy-meta-lbl">Difficulty</div>
+                  <div className="rfy-meta-val" style={{ color: difficultyColor(a.difficulty) }}>{a.difficulty}</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '10px', color: '#3f3f46', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '3px' }}>💰 REWARD</div>
-                  <div style={{ fontSize: '13px', fontWeight: '700', color: '#10b981' }}>{rewardLabel(a)}</div>
+                  <div className="rfy-meta-lbl">Reward</div>
+                  <div className="rfy-meta-val" style={{ color: '#7CF5C0' }}>{rewardLabel(a)}</div>
                 </div>
               </div>
 
               {Array.isArray(a.tags) && a.tags.length > 0 && (
-                <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                <div className="rfy-tags">
                   {a.tags.slice(0, 3).map((tag: string) => (
-                    <span key={tag} style={{ background: '#18181b', border: '1px solid #27272a', color: '#71717a', padding: '3px 10px', borderRadius: '6px', fontSize: '11px', fontWeight: '600' }}>{tag}</span>
+                    <span key={tag} className="rfy-tag">{tag}</span>
                   ))}
                 </div>
               )}
