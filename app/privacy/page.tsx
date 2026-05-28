@@ -15,7 +15,7 @@ export default function PrivacyPolicyPage() {
           </span>
           <h1 className="text-4xl font-bold text-white mb-3">Privacy Policy</h1>
           <p className="text-gray-400 text-sm">
-            Last updated: <span className="text-cyan-400">May 15, 2026</span>
+            Last updated: <span className="text-cyan-400">May 27, 2026</span>
           </p>
         </div>
 
@@ -23,10 +23,10 @@ export default function PrivacyPolicyPage() {
         <p className="text-gray-300 leading-relaxed mb-10">
           Welcome to <strong className="text-white">3alamiy Web3</strong> (
           <a
-            href="https://seo.3alamiyweb3.online"
+            href="https://www.3alamiyweb3.com"
             className="text-cyan-400 hover:underline"
           >
-            seo.3alamiyweb3.online
+            www.3alamiyweb3.com
           </a>
           ). We are committed to protecting your privacy. This Privacy Policy
           explains what information we collect, how we use it, and your rights
@@ -227,6 +227,13 @@ export default function PrivacyPolicyPage() {
                 rel="noopener noreferrer"
               >
                 t.me/web33alamiy
+              </a>{" "}
+              or email us at{" "}
+              <a
+                href="mailto:contact@3alamiyweb3.com"
+                className="text-cyan-400 hover:underline"
+              >
+                contact@3alamiyweb3.com
               </a>
               .
             </p>
