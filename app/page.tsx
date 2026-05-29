@@ -451,7 +451,7 @@ export default async function Home() {
                 { name: 'Taiko', logo: 'https://pbs.twimg.com/profile_images/1741462468514082816/V5GHmHWZ_400x400.jpg' },
               ]).map((c, i) => (
                 <div key={i} className="tk-card">
-                  <img src={c.logo} alt={c.name} width={32} height={32} className="tk-logo" referrerPolicy="no-referrer" onError={(e) => { (e.target as HTMLImageElement).style.display="none"; const next = (e.target as HTMLImageElement).nextElementSibling as HTMLElement; if(next) next.style.display="flex"; }} /><span className="tk-logo-err">{c.name[0]}</span>
+                  <img src={c.logo} alt={c.name} width={32} height={32} className="tk-logo" />
                   <span className="tk-name">{c.name}</span>
                 </div>
               ))}
