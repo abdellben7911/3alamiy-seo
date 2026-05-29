@@ -375,7 +375,7 @@ export default async function Home() {
         </div>
 
         {/* ECOSYSTEM TICKER */}
-        <div style={{ padding: '40px 0', borderTop: '1px solid rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.04)', background: '#060A12' }}>
+        <div style={{ padding: '48px 0', borderTop: '1px solid rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.04)', background: 'linear-gradient(135deg, #060A12 0%, #0D1A2E 40%, #0A1628 60%, #060A12 100%)', position: 'relative' }}>
           <div style={{ textAlign: 'center', marginBottom: '24px' }}>
             <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)', marginBottom: '6px' }}>Ecosystem Coverage</div>
             <div style={{ fontSize: '16px', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em' }}>Trusted across <span style={{ color: '#7CF5C0' }}>50+ Networks</span></div>
@@ -390,14 +390,15 @@ export default async function Home() {
             .tk-track:hover { animation-play-state: paused; }
             @keyframes tkScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
             .tk-card { display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:12px 18px; white-space:nowrap; flex-shrink:0; transition:border-color 0.15s,background 0.15s; cursor:default; }
-            .tk-card:hover { border-color:rgba(124,245,192,0.25); background:rgba(255,255,255,0.06); }
+            .tk-card:hover { border-color:rgba(124,245,192,0.25); background:rgba(124,245,192,0.04); }
             .tk-logo { width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0; background:rgba(255,255,255,0.06); }
-            .tk-name { font-size:14px; font-weight:600; color:rgba(255,255,255,0.75); }
+            .tk-logo-err { display:none; width:32px; height:32px; border-radius:50%; flex-shrink:0; background:rgba(124,245,192,0.1); border:1px solid rgba(124,245,192,0.2); color:#7CF5C0; font-size:12px; font-weight:700; align-items:center; justify-content:center; }
+            .tk-name { font-size:13px; font-weight:600; color:rgba(255,255,255,0.7); }
             @media (max-width:560px) {
-              .tk-card { padding:10px 14px; border-radius:12px; }
-              .tk-logo { width:26px; height:26px; }
+              .tk-card { padding:8px 12px; border-radius:10px; gap:8px; }
+              .tk-logo, .tk-logo-err { width:24px; height:24px; font-size:10px; }
               .tk-name { font-size:12px; }
-              .tk-track { gap:8px; }
+              .tk-track { gap:7px; }
             }
           `}</style>
           <div className="tk-outer">
@@ -450,7 +451,7 @@ export default async function Home() {
                 { name: 'Taiko', logo: 'https://pbs.twimg.com/profile_images/1741462468514082816/V5GHmHWZ_400x400.jpg' },
               ]).map((c, i) => (
                 <div key={i} className="tk-card">
-                  <img src={c.logo} alt={c.name} width={32} height={32} className="tk-logo" />
+                  <img src={c.logo} alt={c.name} width={32} height={32} className="tk-logo" referrerPolicy="no-referrer" onError={(e) => { (e.target as HTMLImageElement).style.display="none"; const next = (e.target as HTMLImageElement).nextElementSibling as HTMLElement; if(next) next.style.display="flex"; }} /><span className="tk-logo-err">{c.name[0]}</span>
                   <span className="tk-name">{c.name}</span>
                 </div>
               ))}
