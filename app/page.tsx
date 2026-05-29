@@ -374,12 +374,66 @@ export default async function Home() {
           </div>
         </div>
 
-        {/* CHAINS */}
-        <div className="chains-strip">
-          <div className="chains-label">Supported chains</div>
-          <div className="chains-row">
-            {chains.map(c => <span key={c} className="chain-tag">{c}</span>)}
+        {/* ECOSYSTEM TICKER */}
+        <div style={{ padding: '40px 0', borderTop: '1px solid rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.04)', background: '#060A12', overflow: 'hidden' }}>
+          <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+            <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)', marginBottom: '6px' }}>Ecosystem Coverage</div>
+            <div style={{ fontSize: '16px', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em' }}>Trusted across <span style={{ color: '#7CF5C0' }}>50+ Networks</span></div>
           </div>
+          <style>{`
+            .ticker-outer { overflow: hidden; position: relative; width: 100%; }
+            .ticker-outer::before, .ticker-outer::after { content:''; position:absolute; top:0; width:120px; height:100%; z-index:2; pointer-events:none; }
+            .ticker-outer::before { left:0; background:linear-gradient(to right, #060A12, transparent); }
+            .ticker-outer::after { right:0; background:linear-gradient(to left, #060A12, transparent); }
+            .ticker-track { display:flex; gap:10px; width:max-content; animation: tickerScroll 35s linear infinite; }
+            .ticker-track:hover { animation-play-state: paused; }
+            @keyframes tickerScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+            .ticker-chip { display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:99px; padding:7px 16px; white-space:nowrap; flex-shrink:0; transition:border-color 0.15s; cursor:default; }
+            .ticker-chip:hover { border-color:rgba(124,245,192,0.25); }
+            .ticker-chip img { width:22px; height:22px; border-radius:50%; object-fit:cover; }
+            .ticker-chip-fb { width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; }
+            .ticker-chip span { font-size:13px; font-weight:600; color:rgba(255,255,255,0.7); }
+          `}</style>
+          <div className="ticker-outer">
+            <div className="ticker-track" id="ecosystemTicker"></div>
+          </div>
+          <script dangerouslySetInnerHTML={{ __html: `
+            (function() {
+              var chains = [
+                {name:'Ethereum',logo:'https://cryptologos.cc/logos/ethereum-eth-logo.png'},
+                {name:'Solana',logo:'https://cryptologos.cc/logos/solana-sol-logo.png'},
+                {name:'Arbitrum',logo:'https://cryptologos.cc/logos/arbitrum-arb-logo.png'},
+                {name:'Base',logo:'https://raw.githubusercontent.com/base-org/brand-kit/001c0e9b40a67799ebe0418671ac4e02a0c683ce/logo/in-product/Base_Network_Logo.svg'},
+                {name:'Hyperliquid',logo:'https://pbs.twimg.com/profile_images/1880654761876905984/WF3pjD5X_400x400.jpg'},
+                {name:'Sui',logo:'https://cryptologos.cc/logos/sui-sui-logo.png'},
+                {name:'Optimism',logo:'https://cryptologos.cc/logos/optimism-ethereum-op-logo.png'},
+                {name:'Polygon',logo:'https://cryptologos.cc/logos/polygon-matic-logo.png'},
+                {name:'Avalanche',logo:'https://cryptologos.cc/logos/avalanche-avax-logo.png'},
+                {name:'BNB Chain',logo:'https://cryptologos.cc/logos/bnb-bnb-logo.png'},
+                {name:'Aptos',logo:'https://cryptologos.cc/logos/aptos-apt-logo.png'},
+                {name:'ZKSync',logo:'https://cryptologos.cc/logos/zksync-zk-logo.png'},
+                {name:'Linea',logo:'https://pbs.twimg.com/profile_images/1782122030519025664/MNhD-i_K_400x400.jpg'},
+                {name:'Starknet',logo:'https://pbs.twimg.com/profile_images/1638930843056939009/bYpTMUMy_400x400.jpg'},
+                {name:'Monad',logo:'https://pbs.twimg.com/profile_images/1786434684400246784/jdFEj0oC_400x400.jpg'},
+                {name:'Pharos',logo:'https://pbs.twimg.com/profile_images/1879069022697046017/Obd_kMGT_400x400.jpg'},
+                {name:'Mantle',logo:'https://cryptologos.cc/logos/mantle-mnt-logo.png'},
+                {name:'Blast',logo:'https://pbs.twimg.com/profile_images/1787534584012713984/Y2nOjXgB_400x400.jpg'},
+                {name:'HyperEVM',logo:'https://pbs.twimg.com/profile_images/1880654761876905984/WF3pjD5X_400x400.jpg'},
+                {name:'Abstract',logo:'https://pbs.twimg.com/profile_images/1851644227544965120/1RBOqaqX_400x400.jpg'},
+                {name:'Scroll',logo:'https://pbs.twimg.com/profile_images/1696508864215617536/VTDtMFNY_400x400.jpg'},
+                {name:'Taiko',logo:'https://pbs.twimg.com/profile_images/1741462468514082816/V5GHmHWZ_400x400.jpg'},
+              ];
+              var track = document.getElementById('ecosystemTicker');
+              if (!track) return;
+              var doubled = chains.concat(chains);
+              doubled.forEach(function(c) {
+                var chip = document.createElement('div');
+                chip.className = 'ticker-chip';
+                chip.innerHTML = '<img src="'+c.logo+'" alt="'+c.name+'" onerror="this.style.display=\\'none\\';this.nextElementSibling.style.display=\\'flex\\'" /><div class="ticker-chip-fb" style="background:rgba(124,245,192,0.08);color:#7CF5C0;display:none">'+c.name[0]+'</div><span>'+c.name+'</span>';
+                track.appendChild(chip);
+              });
+            })();
+          ` }} />
         </div>
 
         {/* START WITH THESE THREE */}
