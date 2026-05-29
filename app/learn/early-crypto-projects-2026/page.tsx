@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: '15 Early Crypto Projects to Watch in 2026 — Pre-Launch Airdrop Opportunities | 3alamiy Web3',
-  description: 'Discover 15 early-stage crypto projects launching in 2026 across DeFi, AI, RWA, Gaming and HyperEVM. Follow now before they go live and position yourself for potential airdrops.',
-  keywords: 'early crypto projects 2026, upcoming crypto airdrops 2026, pre-launch crypto projects, HyperEVM projects, early stage defi 2026, crypto projects to watch 2026',
+  title: '15 Early HyperEVM and Crypto Projects to Watch in 2026 — Pre-Launch Airdrops | 3alamiy Web3',
+  description: 'Discover 15 early-stage crypto projects launching in 2026 across HyperEVM, DeFi, AI, RWA and Gaming. Follow now before they go live and position yourself for potential airdrops.',
+  keywords: 'HyperEVM early projects 2026, early crypto projects 2026, pre-launch crypto airdrops june 2026, upcoming crypto airdrops 2026, HyperEVM projects to watch, early stage defi 2026',
   alternates: { canonical: 'https://www.3alamiyweb3.com/learn/early-crypto-projects-2026' },
   openGraph: {
-    title: '15 Early Crypto Projects to Watch in 2026',
-    description: 'Pre-launch projects across DeFi, AI, RWA and Gaming. Follow now, farm early.',
+    title: '15 Early HyperEVM and Crypto Projects to Watch in 2026',
+    description: 'Pre-launch projects across HyperEVM, DeFi, AI, RWA and Gaming. Follow now, farm early.',
     url: 'https://www.3alamiyweb3.com/learn/early-crypto-projects-2026',
     type: 'article',
   },
@@ -17,13 +17,23 @@ export const metadata: Metadata = {
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: '15 Early Crypto Projects to Watch in 2026 — Pre-Launch Airdrop Opportunities',
-  description: 'Discover 15 early-stage crypto projects launching in 2026 across DeFi, AI, RWA, Gaming and HyperEVM.',
+  headline: '15 Early HyperEVM and Crypto Projects to Watch in 2026',
+  description: 'Discover 15 early-stage crypto projects launching in 2026 across HyperEVM, DeFi, AI, RWA and Gaming.',
   url: 'https://www.3alamiyweb3.com/learn/early-crypto-projects-2026',
   datePublished: '2026-06-02',
   dateModified: '2026-06-02',
   author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', 'h2', '.ep-sub', '.ep-p:first-of-type'],
+  },
+  about: [
+    { '@type': 'Thing', name: 'HyperEVM' },
+    { '@type': 'Thing', name: 'Crypto Airdrops' },
+    { '@type': 'Thing', name: 'DeFi' },
+    { '@type': 'Thing', name: 'Early Stage Crypto Projects' },
+  ],
 };
 
 const faqSchema = {
@@ -68,6 +78,20 @@ const breadcrumbSchema = {
   ],
 };
 
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Farm Early Crypto Projects for Airdrops in 2026',
+  description: 'Step-by-step guide to positioning yourself in early-stage crypto projects before token launch to maximize airdrop eligibility.',
+  step: [
+    { '@type': 'HowToStep', name: 'Follow on X immediately', text: 'Follow every early project on X/Twitter as soon as you discover them. This costs nothing and keeps you updated when they open access.' },
+    { '@type': 'HowToStep', name: 'Join Discord or Telegram', text: 'Most projects announce Discord or Telegram links on their X profile. Early community members almost always qualify for better airdrop allocations.' },
+    { '@type': 'HowToStep', name: 'Complete available social tasks', text: 'If the project has a Galxe campaign, waitlist, or quest system, complete it immediately. These are typically free and take under 5 minutes.' },
+    { '@type': 'HowToStep', name: 'Interact when testnet or beta opens', text: 'The moment they announce testnet or early access, use the protocol. Swap, deposit, or stake. Consistency matters more than size of investment.' },
+    { '@type': 'HowToStep', name: 'Set a reminder for token launch', text: 'Add the project to your watch list. When they announce a TGE (token generation event), you want to be positioned before launch day.' },
+  ],
+};
+
 const projects = [
   { name: 'Monetrix', handle: '@Monetrix_xyz', category: 'DeFi / HyperEVM', chain: 'HyperEVM', url: 'https://x.com/Monetrix_xyz', why: 'Yield-bearing stablecoin on HyperEVM. If HyperEVM DeFi takes off the way early Arbitrum did, stablecoin protocols will be among the highest-value positions. Follow now and interact when testnet launches.', catColor: '#7CF5C0' },
   { name: 'Tacit Finance', handle: '@tacitfi', category: 'DeFi', chain: 'Multi-chain', url: 'https://x.com/tacitfi', why: 'Automated yield strategies and onchain asset management. Yield automation is one of the most consistently rewarded categories in DeFi airdrops.', catColor: '#7CF5C0' },
@@ -100,6 +124,7 @@ export default function EarlyProjects2026() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       <style>{`
         .ep-wrap { min-height:100vh; background:#060A12; font-family:var(--font-space),'Space Grotesk',system-ui,sans-serif; }
         .ep-hero { background:#060A12; border-bottom:1px solid rgba(255,255,255,0.06); padding:56px 24px 48px; position:relative; overflow:hidden; }
@@ -174,8 +199,8 @@ export default function EarlyProjects2026() {
             </div>
             <div className="ep-badge">Pre-Launch Alpha — June 2026</div>
             <h1 className="ep-title">
-              15 Early Crypto Projects<br />
-              <span>to Watch in 2026</span>
+              15 Early HyperEVM<br />
+              <span>and Crypto Projects 2026</span>
             </h1>
             <p className="ep-sub">
               Pre-launch projects across DeFi, AI, RWA, Gaming and HyperEVM. Follow now, engage early, and position yourself before broader market awareness. No investment required to start.
