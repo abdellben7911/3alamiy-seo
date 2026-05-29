@@ -5,9 +5,9 @@ const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 export const metadata: Metadata = {
-  title: 'All Crypto Airdrops 2026 — Free Step-by-Step Guides | 3alamiy Web3',
-  description: 'Browse 94+ verified crypto airdrops in 2026. Filter by blockchain, difficulty, and cost. Free step-by-step guides for Ethereum, Solana, Arbitrum and more.',
-  keywords: 'crypto airdrops 2026, free airdrops, ethereum airdrop, solana airdrop, testnet airdrop, airdrop list',
+  title: '106+ Free Crypto Airdrops 2026 — Step-by-Step Guides | 3alamiy Web3',
+  description: 'Browse 106+ verified crypto airdrops in 2026. Free step-by-step guides for every airdrop. Filter by blockchain, difficulty, and cost. Ethereum, Solana, Hyperliquid, Sui, Base and more.',
+  keywords: 'crypto airdrops 2026, free crypto airdrops, best airdrops 2026, airdrop tracker, ethereum airdrops, solana airdrops, hyperliquid airdrop, free airdrop list 2026',
   alternates: { canonical: 'https://www.3alamiyweb3.com/airdrops' },
 };
 
