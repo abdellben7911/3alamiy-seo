@@ -375,82 +375,88 @@ export default async function Home() {
         </div>
 
         {/* ECOSYSTEM TICKER */}
-        <div style={{ padding: '40px 0', borderTop: '1px solid rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.04)', background: '#060A12', overflow: 'hidden' }}>
-          <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+        <div style={{ padding: '40px 0', borderTop: '1px solid rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.04)', background: '#060A12' }}>
+          <div style={{ textAlign: 'center', marginBottom: '24px' }}>
             <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)', marginBottom: '6px' }}>Ecosystem Coverage</div>
             <div style={{ fontSize: '16px', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em' }}>Trusted across <span style={{ color: '#7CF5C0' }}>50+ Networks</span></div>
+            <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.2)', marginTop: '4px' }}>and many more across the ecosystem...</div>
           </div>
           <style>{`
-            .ticker-outer { overflow: hidden; position: relative; width: 100%; }
-            .ticker-outer::before, .ticker-outer::after { content:''; position:absolute; top:0; width:100px; height:100%; z-index:2; pointer-events:none; }
-            .ticker-outer::before { left:0; background:linear-gradient(to right, #060A12, transparent); }
-            .ticker-outer::after { right:0; background:linear-gradient(to left, #060A12, transparent); }
-            .ticker-track { display:flex; gap:10px; width:max-content; animation: tickerScroll 40s linear infinite; }
-            .ticker-track:hover { animation-play-state: paused; }
-            @keyframes tickerScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-            .ticker-chip { display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:99px; padding:7px 16px; white-space:nowrap; flex-shrink:0; transition:border-color 0.15s; cursor:default; }
-            .ticker-chip:hover { border-color:rgba(124,245,192,0.25); }
-            .ticker-chip img { width:22px; height:22px; border-radius:50%; object-fit:cover; flex-shrink:0; }
-            .ticker-chip-name { font-size:13px; font-weight:600; color:rgba(255,255,255,0.7); }
+            .tk-outer { overflow: hidden; position: relative; width: 100%; }
+            .tk-outer::before, .tk-outer::after { content:''; position:absolute; top:0; width:80px; height:100%; z-index:2; pointer-events:none; }
+            .tk-outer::before { left:0; background:linear-gradient(to right, #060A12, transparent); }
+            .tk-outer::after { right:0; background:linear-gradient(to left, #060A12, transparent); }
+            .tk-track { display:flex; gap:10px; width:max-content; animation: tkScroll 45s linear infinite; padding: 4px 0; }
+            .tk-track:hover { animation-play-state: paused; }
+            @keyframes tkScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+            .tk-card { display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:12px 18px; white-space:nowrap; flex-shrink:0; transition:border-color 0.15s,background 0.15s; cursor:default; }
+            .tk-card:hover { border-color:rgba(124,245,192,0.25); background:rgba(255,255,255,0.06); }
+            .tk-logo { width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0; background:rgba(255,255,255,0.06); }
+            .tk-name { font-size:14px; font-weight:600; color:rgba(255,255,255,0.75); }
+            @media (max-width:560px) {
+              .tk-card { padding:10px 14px; border-radius:12px; }
+              .tk-logo { width:26px; height:26px; }
+              .tk-name { font-size:12px; }
+              .tk-track { gap:8px; }
+            }
           `}</style>
-          <div className="ticker-outer">
-            <div className="ticker-track">
+          <div className="tk-outer">
+            <div className="tk-track">
               {[
-                { name: 'Ethereum', logo: 'https://cryptologos.cc/logos/ethereum-eth-logo.png' },
-                { name: 'Solana', logo: 'https://cryptologos.cc/logos/solana-sol-logo.png' },
-                { name: 'Arbitrum', logo: 'https://cryptologos.cc/logos/arbitrum-arb-logo.png' },
-                { name: 'Base', logo: 'https://raw.githubusercontent.com/base-org/brand-kit/001c0e9b40a67799ebe0418671ac4e02a0c683ce/logo/in-product/Base_Network_Logo.svg' },
-                { name: 'Hyperliquid', logo: 'https://pbs.twimg.com/profile_images/1880654761876905984/WF3pjD5X_400x400.jpg' },
-                { name: 'Sui', logo: 'https://cryptologos.cc/logos/sui-sui-logo.png' },
-                { name: 'Optimism', logo: 'https://cryptologos.cc/logos/optimism-ethereum-op-logo.png' },
-                { name: 'Polygon', logo: 'https://cryptologos.cc/logos/polygon-matic-logo.png' },
-                { name: 'Avalanche', logo: 'https://cryptologos.cc/logos/avalanche-avax-logo.png' },
-                { name: 'BNB Chain', logo: 'https://cryptologos.cc/logos/bnb-bnb-logo.png' },
-                { name: 'Aptos', logo: 'https://cryptologos.cc/logos/aptos-apt-logo.png' },
-                { name: 'ZKSync', logo: 'https://cryptologos.cc/logos/zksync-zk-logo.png' },
+                { name: 'Ethereum', logo: 'https://assets.coingecko.com/coins/images/279/small/ethereum.png' },
+                { name: 'Solana', logo: 'https://assets.coingecko.com/coins/images/4128/small/solana.png' },
+                { name: 'Arbitrum', logo: 'https://assets.coingecko.com/coins/images/16547/small/photo_2023-03-29_21.47.00.jpeg' },
+                { name: 'Base', logo: 'https://assets.coingecko.com/asset_platforms/images/131/small/base-network.png' },
+                { name: 'Hyperliquid', logo: 'https://assets.coingecko.com/coins/images/35618/small/hyperliquid.png' },
+                { name: 'Sui', logo: 'https://assets.coingecko.com/coins/images/26375/small/sui_asset.jpeg' },
+                { name: 'Optimism', logo: 'https://assets.coingecko.com/coins/images/25244/small/Optimism.png' },
+                { name: 'Polygon', logo: 'https://assets.coingecko.com/coins/images/4713/small/polygon.png' },
+                { name: 'Avalanche', logo: 'https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png' },
+                { name: 'BNB Chain', logo: 'https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png' },
+                { name: 'Aptos', logo: 'https://assets.coingecko.com/coins/images/26455/small/aptos_round.png' },
+                { name: 'ZKSync', logo: 'https://assets.coingecko.com/coins/images/38043/small/ZKTokenBlack.png' },
                 { name: 'Monad', logo: 'https://pbs.twimg.com/profile_images/1786434684400246784/jdFEj0oC_400x400.jpg' },
                 { name: 'Linea', logo: 'https://pbs.twimg.com/profile_images/1782122030519025664/MNhD-i_K_400x400.jpg' },
-                { name: 'Starknet', logo: 'https://pbs.twimg.com/profile_images/1638930843056939009/bYpTMUMy_400x400.jpg' },
+                { name: 'Starknet', logo: 'https://assets.coingecko.com/coins/images/26433/small/starknet.png' },
                 { name: 'Pharos', logo: 'https://pbs.twimg.com/profile_images/1879069022697046017/Obd_kMGT_400x400.jpg' },
-                { name: 'Mantle', logo: 'https://cryptologos.cc/logos/mantle-mnt-logo.png' },
-                { name: 'Blast', logo: 'https://pbs.twimg.com/profile_images/1787534584012713984/Y2nOjXgB_400x400.jpg' },
-                { name: 'HyperEVM', logo: 'https://pbs.twimg.com/profile_images/1880654761876905984/WF3pjD5X_400x400.jpg' },
+                { name: 'Mantle', logo: 'https://assets.coingecko.com/coins/images/30980/small/token-logo.png' },
+                { name: 'Blast', logo: 'https://assets.coingecko.com/coins/images/35494/small/blast.jpeg' },
+                { name: 'HyperEVM', logo: 'https://assets.coingecko.com/coins/images/35618/small/hyperliquid.png' },
                 { name: 'Abstract', logo: 'https://pbs.twimg.com/profile_images/1851644227544965120/1RBOqaqX_400x400.jpg' },
-                { name: 'Scroll', logo: 'https://pbs.twimg.com/profile_images/1696508864215617536/VTDtMFNY_400x400.jpg' },
-                { name: 'Taiko', logo: 'https://pbs.twimg.com/profile_images/1741462468514082816/V5GHmHWZ_400x400.jpg' },
+                { name: 'Scroll', logo: 'https://assets.coingecko.com/coins/images/32434/small/scroll.png' },
+                { name: 'Taiko', logo: 'https://assets.coingecko.com/coins/images/35583/small/taiko.jpg' },
               ].concat([
-                { name: 'Ethereum', logo: 'https://cryptologos.cc/logos/ethereum-eth-logo.png' },
-                { name: 'Solana', logo: 'https://cryptologos.cc/logos/solana-sol-logo.png' },
-                { name: 'Arbitrum', logo: 'https://cryptologos.cc/logos/arbitrum-arb-logo.png' },
-                { name: 'Base', logo: 'https://raw.githubusercontent.com/base-org/brand-kit/001c0e9b40a67799ebe0418671ac4e02a0c683ce/logo/in-product/Base_Network_Logo.svg' },
-                { name: 'Hyperliquid', logo: 'https://pbs.twimg.com/profile_images/1880654761876905984/WF3pjD5X_400x400.jpg' },
-                { name: 'Sui', logo: 'https://cryptologos.cc/logos/sui-sui-logo.png' },
-                { name: 'Optimism', logo: 'https://cryptologos.cc/logos/optimism-ethereum-op-logo.png' },
-                { name: 'Polygon', logo: 'https://cryptologos.cc/logos/polygon-matic-logo.png' },
-                { name: 'Avalanche', logo: 'https://cryptologos.cc/logos/avalanche-avax-logo.png' },
-                { name: 'BNB Chain', logo: 'https://cryptologos.cc/logos/bnb-bnb-logo.png' },
-                { name: 'Aptos', logo: 'https://cryptologos.cc/logos/aptos-apt-logo.png' },
-                { name: 'ZKSync', logo: 'https://cryptologos.cc/logos/zksync-zk-logo.png' },
+                { name: 'Ethereum', logo: 'https://assets.coingecko.com/coins/images/279/small/ethereum.png' },
+                { name: 'Solana', logo: 'https://assets.coingecko.com/coins/images/4128/small/solana.png' },
+                { name: 'Arbitrum', logo: 'https://assets.coingecko.com/coins/images/16547/small/photo_2023-03-29_21.47.00.jpeg' },
+                { name: 'Base', logo: 'https://assets.coingecko.com/asset_platforms/images/131/small/base-network.png' },
+                { name: 'Hyperliquid', logo: 'https://assets.coingecko.com/coins/images/35618/small/hyperliquid.png' },
+                { name: 'Sui', logo: 'https://assets.coingecko.com/coins/images/26375/small/sui_asset.jpeg' },
+                { name: 'Optimism', logo: 'https://assets.coingecko.com/coins/images/25244/small/Optimism.png' },
+                { name: 'Polygon', logo: 'https://assets.coingecko.com/coins/images/4713/small/polygon.png' },
+                { name: 'Avalanche', logo: 'https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png' },
+                { name: 'BNB Chain', logo: 'https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png' },
+                { name: 'Aptos', logo: 'https://assets.coingecko.com/coins/images/26455/small/aptos_round.png' },
+                { name: 'ZKSync', logo: 'https://assets.coingecko.com/coins/images/38043/small/ZKTokenBlack.png' },
                 { name: 'Monad', logo: 'https://pbs.twimg.com/profile_images/1786434684400246784/jdFEj0oC_400x400.jpg' },
                 { name: 'Linea', logo: 'https://pbs.twimg.com/profile_images/1782122030519025664/MNhD-i_K_400x400.jpg' },
-                { name: 'Starknet', logo: 'https://pbs.twimg.com/profile_images/1638930843056939009/bYpTMUMy_400x400.jpg' },
+                { name: 'Starknet', logo: 'https://assets.coingecko.com/coins/images/26433/small/starknet.png' },
                 { name: 'Pharos', logo: 'https://pbs.twimg.com/profile_images/1879069022697046017/Obd_kMGT_400x400.jpg' },
-                { name: 'Mantle', logo: 'https://cryptologos.cc/logos/mantle-mnt-logo.png' },
-                { name: 'Blast', logo: 'https://pbs.twimg.com/profile_images/1787534584012713984/Y2nOjXgB_400x400.jpg' },
-                { name: 'HyperEVM', logo: 'https://pbs.twimg.com/profile_images/1880654761876905984/WF3pjD5X_400x400.jpg' },
+                { name: 'Mantle', logo: 'https://assets.coingecko.com/coins/images/30980/small/token-logo.png' },
+                { name: 'Blast', logo: 'https://assets.coingecko.com/coins/images/35494/small/blast.jpeg' },
+                { name: 'HyperEVM', logo: 'https://assets.coingecko.com/coins/images/35618/small/hyperliquid.png' },
                 { name: 'Abstract', logo: 'https://pbs.twimg.com/profile_images/1851644227544965120/1RBOqaqX_400x400.jpg' },
-                { name: 'Scroll', logo: 'https://pbs.twimg.com/profile_images/1696508864215617536/VTDtMFNY_400x400.jpg' },
-                { name: 'Taiko', logo: 'https://pbs.twimg.com/profile_images/1741462468514082816/V5GHmHWZ_400x400.jpg' },
+                { name: 'Scroll', logo: 'https://assets.coingecko.com/coins/images/32434/small/scroll.png' },
+                { name: 'Taiko', logo: 'https://assets.coingecko.com/coins/images/35583/small/taiko.jpg' },
               ]).map((c, i) => (
-                <div key={i} className="ticker-chip">
-                  <img src={c.logo} alt={c.name} width={22} height={22} />
-                  <span className="ticker-chip-name">{c.name}</span>
+                <div key={i} className="tk-card">
+                  <img src={c.logo} alt={c.name} width={32} height={32} className="tk-logo" />
+                  <span className="tk-name">{c.name}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
-
         {/* START WITH THESE THREE */}
         {starterAirdrops.length > 0 && (
           <section className="section">
