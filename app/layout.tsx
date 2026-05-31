@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 import { AuthProvider } from './auth/AuthProvider';
 import { Providers } from './providers';
@@ -242,6 +243,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
             <Footer />
             <StickyBar />
+            <Analytics />
           </AuthProvider>
         </Providers>
       </body>
