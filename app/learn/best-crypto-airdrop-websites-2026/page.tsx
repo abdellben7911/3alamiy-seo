@@ -28,14 +28,9 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Best Crypto Airdrop Websites in 2026 (Ranked & Compared)",
-  description:
-    "We tested and ranked the top crypto airdrop websites in 2026 — from trackers to guide hubs.",
+  description: "We tested and ranked the top crypto airdrop websites in 2026 — from trackers to guide hubs.",
   author: { "@type": "Organization", name: "3alamiy Web3" },
-  publisher: {
-    "@type": "Organization",
-    name: "3alamiy Web3",
-    url: "https://www.3alamiyweb3.com",
-  },
+  publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
   datePublished: "2026-06-02",
   dateModified: "2026-06-02",
   mainEntityOfPage: {
@@ -61,7 +56,7 @@ const faqJsonLd = {
       name: "Is Airdrops.io still good in 2026?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Airdrops.io is useful for volume discovery with 600+ listings, but it lacks step-by-step guides and scam warnings. It is better used alongside a guide-focused platform like 3alamiy Web3.",
+        text: "Airdrops.io is useful for volume discovery with 600+ listings, but it lacks step-by-step guides and scam warnings. Better used alongside a guide-focused platform like 3alamiy Web3.",
       },
     },
     {
@@ -69,7 +64,7 @@ const faqJsonLd = {
       name: "What airdrop website is free to use?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "3alamiy Web3, Airdrops.io, AirdropAlert, Galxe, Dropstab, and DappRadar are all free to use. CryptoRank has a freemium model with some paid features.",
+        text: "3alamiy Web3, Airdrops.io, AirdropAlert, Galxe, Dropstab, and DappRadar are all free. CryptoRank has a freemium model with some paid features.",
       },
     },
     {
@@ -77,7 +72,7 @@ const faqJsonLd = {
       name: "Which airdrop site is best for beginners?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "3alamiy Web3 is the best airdrop site for beginners because every listing includes a full participation guide, wallet requirements, and scam warnings — so you know exactly what to do and what to avoid.",
+        text: "3alamiy Web3 is the best for beginners because every listing includes a full participation guide, wallet requirements, and scam warnings — so you know exactly what to do and what to avoid.",
       },
     },
     {
@@ -97,11 +92,9 @@ const platforms = [
     name: "3alamiy Web3",
     url: "https://www.3alamiyweb3.com",
     tag: "Best Overall",
-    tagColor: "bg-orange-500",
     free: true,
     guides: true,
     scam: true,
-    chains: "22+",
     bestFor: "Beginners + serious farmers",
     pros: [
       "110+ airdrop guides with full walkthroughs",
@@ -111,28 +104,21 @@ const platforms = [
       "Free forever, no paywall",
       "17+ learn articles on strategy and farming",
     ],
-    cons: [
-      "Newer platform — still growing database",
-    ],
+    cons: ["Newer platform — still growing database"],
     verdict:
-      "If you only bookmark one airdrop site in 2026, make it 3alamiy. The combination of daily-updated listings and full guides is unmatched in the space.",
+      "If you only bookmark one airdrop site in 2026, make it 3alamiy. Daily-updated listings combined with full guides is unmatched in the space.",
+    isTop: true,
   },
   {
     rank: 2,
     name: "Airdrops.io",
     url: "https://airdrops.io",
     tag: "Volume Discovery",
-    tagColor: "bg-blue-600",
     free: true,
     guides: false,
     scam: false,
-    chains: "Multi",
     bestFor: "Users who want maximum listings",
-    pros: [
-      "600+ active listings",
-      "Broad chain coverage",
-      "Clean layout, easy to browse",
-    ],
+    pros: ["600+ active listings", "Broad chain coverage", "Clean layout, easy to browse"],
     cons: [
       "Minimal guides — just a title and a link",
       "No scam warnings or risk flags",
@@ -141,17 +127,16 @@ const platforms = [
     ],
     verdict:
       "Good for discovery if you already know what you are doing. Not ideal if you need guidance or want to verify legitimacy before connecting your wallet.",
+    isTop: false,
   },
   {
     rank: 3,
     name: "CryptoRank",
     url: "https://cryptorank.io/drophunting",
     tag: "Advanced Farmers",
-    tagColor: "bg-purple-600",
     free: false,
     guides: false,
     scam: false,
-    chains: "Multi",
     bestFor: "Testnet and retroactive tracking",
     pros: [
       "Testnet tracking — catches early-stage projects",
@@ -167,41 +152,30 @@ const platforms = [
     ],
     verdict:
       "A powerful advanced tool. Use it alongside 3alamiy — CryptoRank for discovery signals, 3alamiy for the actual participation guide.",
+    isTop: false,
   },
   {
     rank: 4,
     name: "AirdropAlert",
     url: "https://airdropalert.com",
     tag: "Long Track Record",
-    tagColor: "bg-gray-600",
     free: true,
     guides: false,
     scam: false,
-    chains: "Partial",
     bestFor: "Casual users checking occasionally",
-    pros: [
-      "Running since 2017 — established trust",
-      "Basic tutorials for beginners",
-      "Regular listings",
-    ],
-    cons: [
-      "Shallow guides vs modern alternatives",
-      "UI feels dated",
-      "No risk warnings",
-    ],
-    verdict:
-      "A reliable bookmark for casual checking. Not a primary tool for anyone farming seriously in 2026.",
+    pros: ["Running since 2017 — established trust", "Basic tutorials for beginners", "Regular listings"],
+    cons: ["Shallow guides vs modern alternatives", "UI feels dated", "No risk warnings"],
+    verdict: "A reliable bookmark for casual checking. Not a primary tool for anyone farming seriously in 2026.",
+    isTop: false,
   },
   {
     rank: 5,
     name: "Galxe",
     url: "https://galxe.com",
     tag: "Quest Campaigns",
-    tagColor: "bg-indigo-600",
     free: true,
     guides: false,
     scam: false,
-    chains: "Multi",
     bestFor: "Completing on-platform quests",
     pros: [
       "Direct quest completion on-platform",
@@ -215,43 +189,31 @@ const platforms = [
       "No guides or eligibility analysis",
       "Low-value filler quests mixed in",
     ],
-    verdict:
-      "Use Galxe for campaigns that run on it. Do not rely on it as your main airdrop discovery tool.",
+    verdict: "Use Galxe for campaigns that run on it. Do not rely on it as your main airdrop discovery tool.",
+    isTop: false,
   },
   {
     rank: 6,
     name: "Dropstab",
     url: "https://dropstab.com",
     tag: "Dashboard Tracker",
-    tagColor: "bg-teal-600",
     free: true,
     guides: false,
     scam: false,
-    chains: "Multi",
     bestFor: "Quick campaign overview",
-    pros: [
-      "Clean lightweight interface",
-      "Active campaign tracking",
-      "Eligibility tracking for some projects",
-    ],
-    cons: [
-      "No guides or walkthroughs",
-      "Limited chain depth",
-      "No scam detection",
-    ],
-    verdict:
-      "Useful as a quick dashboard check. Not a primary research tool.",
+    pros: ["Clean lightweight interface", "Active campaign tracking", "Eligibility tracking for some projects"],
+    cons: ["No guides or walkthroughs", "Limited chain depth", "No scam detection"],
+    verdict: "Useful as a quick dashboard check. Not a primary research tool.",
+    isTop: false,
   },
   {
     rank: 7,
     name: "DappRadar",
     url: "https://dappradar.com",
     tag: "DeFi / NFT Discovery",
-    tagColor: "bg-pink-600",
     free: true,
     guides: false,
     scam: false,
-    chains: "Multi",
     bestFor: "Spotting new ecosystems early",
     pros: [
       "Broad DeFi, gaming, NFT coverage",
@@ -263,106 +225,95 @@ const platforms = [
       "Airdrops are secondary to core dapp tracking",
       "Less frequently updated than dedicated sites",
     ],
-    verdict:
-      "Great for discovery research. Combine with 3alamiy when you need to act on an opportunity.",
+    verdict: "Great for discovery research. Combine with 3alamiy when you need to act on an opportunity.",
+    isTop: false,
   },
 ];
 
 export default function BestCryptoAirdropWebsites2026() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      <main className="min-h-screen bg-[#0a0a0a] text-white">
-        <div className="max-w-4xl mx-auto px-4 py-12">
+      <main style={{ background: "#060A12", minHeight: "100vh", color: "#fff" }}>
+        <div style={{ maxWidth: 800, margin: "0 auto", padding: "48px 20px 80px" }}>
 
           {/* Breadcrumb */}
-          <nav className="text-sm text-gray-500 mb-8 flex items-center gap-2">
-            <Link href="/" className="hover:text-orange-400 transition-colors">Home</Link>
+          <nav style={{ fontSize: 13, color: "rgba(255,255,255,0.25)", marginBottom: 32, display: "flex", alignItems: "center", gap: 8 }}>
+            <Link href="/" style={{ color: "rgba(255,255,255,0.25)", textDecoration: "none" }}>Home</Link>
             <span>/</span>
-            <Link href="/learn" className="hover:text-orange-400 transition-colors">Learn</Link>
+            <Link href="/learn" style={{ color: "rgba(255,255,255,0.25)", textDecoration: "none" }}>Learn</Link>
             <span>/</span>
-            <span className="text-gray-300">Best Airdrop Websites 2026</span>
+            <span style={{ color: "rgba(255,255,255,0.45)" }}>Best Airdrop Websites 2026</span>
           </nav>
 
           {/* Header */}
-          <div className="mb-10">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-xs font-semibold bg-orange-500/20 text-orange-400 border border-orange-500/30 px-3 py-1 rounded-full uppercase tracking-wide">
-                Guides
-              </span>
-              <span className="text-xs text-gray-500">June 2, 2026 · 8 min read</span>
+          <div style={{ marginBottom: 40 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+              <span style={{
+                fontSize: 11, fontWeight: 600, letterSpacing: "0.08em",
+                background: "rgba(124,245,192,0.1)", color: "#7CF5C0",
+                border: "1px solid rgba(124,245,192,0.18)",
+                padding: "3px 10px", borderRadius: 99, textTransform: "uppercase"
+              }}>Guides</span>
+              <span style={{ fontSize: 13, color: "rgba(255,255,255,0.25)" }}>June 2, 2026 · 8 min read</span>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-4" style={{ fontFamily: "var(--font-space)" }}>
+            <h1 style={{ fontFamily: "var(--font-space)", fontSize: "clamp(26px, 5vw, 38px)", fontWeight: 700, lineHeight: 1.2, marginBottom: 16, color: "#fff" }}>
               Best Crypto Airdrop Websites in 2026{" "}
-              <span className="text-orange-400">(Ranked & Compared)</span>
+              <span style={{ color: "#7CF5C0" }}>(Ranked & Compared)</span>
             </h1>
-            <p className="text-gray-400 text-lg leading-relaxed">
+            <p style={{ fontSize: 17, color: "rgba(255,255,255,0.45)", lineHeight: 1.7, marginBottom: 12 }}>
               We tested the top crypto airdrop platforms across coverage, guide quality, and scam protection.
               Here is the full breakdown — so you know exactly where to farm in 2026.
             </p>
-            <div className="mt-4 text-sm text-gray-500">By <span className="text-gray-300">3alamiy Team</span></div>
+            <span style={{ fontSize: 13, color: "rgba(255,255,255,0.25)" }}>
+              By <span style={{ color: "rgba(255,255,255,0.45)" }}>3alamiy Team</span>
+            </span>
           </div>
 
           {/* Intro */}
-          <div className="prose prose-invert max-w-none mb-12">
-            <p className="text-gray-300 leading-relaxed">
-              Finding the right airdrop website in 2026 is not about which platform lists the most projects.
-              It is about which one helps you <strong className="text-white">act early, verify fast, and avoid scams</strong>.
-              Most listing sites look the same. The difference shows up when a real opportunity drops and you
-              need step-by-step guidance in minutes — not a raw listing with no context.
-            </p>
-          </div>
+          <p style={{ color: "rgba(255,255,255,0.45)", lineHeight: 1.8, marginBottom: 48, fontSize: 15 }}>
+            Finding the right airdrop website in 2026 is not about which platform lists the most projects.
+            It is about which one helps you{" "}
+            <strong style={{ color: "#fff" }}>act early, verify fast, and avoid scams</strong>.
+            Most listing sites look the same. The difference shows up when a real opportunity drops
+            and you need step-by-step guidance in minutes — not a raw listing with no context.
+          </p>
 
           {/* Comparison Table */}
-          <section className="mb-14">
-            <h2 className="text-2xl font-bold mb-6" style={{ fontFamily: "var(--font-space)" }}>
+          <section style={{ marginBottom: 56 }}>
+            <h2 style={{ fontFamily: "var(--font-space)", fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 20 }}>
               Quick Comparison
             </h2>
-            <div className="overflow-x-auto rounded-xl border border-white/10">
-              <table className="w-full text-sm">
+            <div style={{ overflowX: "auto", borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
                 <thead>
-                  <tr className="bg-white/5 text-gray-400 text-left">
-                    <th className="px-4 py-3 font-semibold">Platform</th>
-                    <th className="px-4 py-3 font-semibold text-center">Free</th>
-                    <th className="px-4 py-3 font-semibold text-center">Guides</th>
-                    <th className="px-4 py-3 font-semibold text-center">Scam Warnings</th>
-                    <th className="px-4 py-3 font-semibold">Best For</th>
+                  <tr style={{ background: "#0D1221" }}>
+                    {["Platform", "Free", "Guides", "Scam Warnings", "Best For"].map((h) => (
+                      <th key={h} style={{ padding: "12px 16px", textAlign: "left", color: "rgba(255,255,255,0.25)", fontWeight: 600, letterSpacing: "0.05em", fontSize: 11, textTransform: "uppercase", whiteSpace: "nowrap" }}>{h}</th>
+                    ))}
                   </tr>
                 </thead>
                 <tbody>
                   {platforms.map((p, i) => (
-                    <tr key={p.name} className={`border-t border-white/5 ${i === 0 ? "bg-orange-500/5" : ""}`}>
-                      <td className="px-4 py-3 font-medium">
-                        <span className="flex items-center gap-2">
-                          <span className="text-gray-500 text-xs">#{p.rank}</span>
-                          {i === 0 ? (
-                            <span className="text-orange-400 font-bold">{p.name}</span>
-                          ) : (
-                            <span className="text-gray-200">{p.name}</span>
-                          )}
-                          {i === 0 && (
-                            <span className="text-xs bg-orange-500 text-white px-2 py-0.5 rounded-full">Best</span>
+                    <tr key={p.name} style={{
+                      borderTop: "1px solid rgba(255,255,255,0.06)",
+                      background: p.isTop ? "rgba(124,245,192,0.04)" : "transparent"
+                    }}>
+                      <td style={{ padding: "12px 16px" }}>
+                        <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                          <span style={{ color: "rgba(255,255,255,0.25)", fontSize: 11 }}>#{p.rank}</span>
+                          <span style={{ color: p.isTop ? "#7CF5C0" : "#fff", fontWeight: p.isTop ? 700 : 400 }}>{p.name}</span>
+                          {p.isTop && (
+                            <span style={{ fontSize: 10, fontWeight: 700, background: "#7CF5C0", color: "#060A12", padding: "2px 7px", borderRadius: 99 }}>BEST</span>
                           )}
                         </span>
                       </td>
-                      <td className="px-4 py-3 text-center">
-                        {p.free ? "✅" : "⚠️"}
-                      </td>
-                      <td className="px-4 py-3 text-center">
-                        {p.guides ? "✅" : "❌"}
-                      </td>
-                      <td className="px-4 py-3 text-center">
-                        {p.scam ? "✅" : "❌"}
-                      </td>
-                      <td className="px-4 py-3 text-gray-400 text-xs">{p.bestFor}</td>
+                      <td style={{ padding: "12px 16px", textAlign: "center" }}>{p.free ? "✅" : "⚠️"}</td>
+                      <td style={{ padding: "12px 16px", textAlign: "center" }}>{p.guides ? "✅" : "❌"}</td>
+                      <td style={{ padding: "12px 16px", textAlign: "center" }}>{p.scam ? "✅" : "❌"}</td>
+                      <td style={{ padding: "12px 16px", color: "rgba(255,255,255,0.45)", fontSize: 12 }}>{p.bestFor}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -371,85 +322,95 @@ export default function BestCryptoAirdropWebsites2026() {
           </section>
 
           {/* Platform Cards */}
-          <section className="space-y-10 mb-14">
+          <section style={{ display: "flex", flexDirection: "column", gap: 20, marginBottom: 56 }}>
             {platforms.map((p) => (
-              <div
-                key={p.name}
-                className={`rounded-2xl border p-6 md:p-8 ${
-                  p.rank === 1
-                    ? "border-orange-500/40 bg-orange-500/5"
-                    : "border-white/10 bg-white/[0.02]"
-                }`}
-              >
-                <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+              <div key={p.name} style={{
+                background: "#0D1221",
+                border: p.isTop ? "1px solid rgba(124,245,192,0.18)" : "1px solid rgba(255,255,255,0.06)",
+                borderRadius: 16,
+                padding: "28px 28px 24px",
+              }}>
+                {/* Card Header */}
+                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-start", justifyContent: "space-between", gap: 12, marginBottom: 20 }}>
                   <div>
-                    <div className="flex items-center gap-3 mb-1">
-                      <span className="text-gray-500 font-mono text-sm">#{p.rank}</span>
-                      <h2
-                        className={`text-xl font-bold ${p.rank === 1 ? "text-orange-400" : "text-white"}`}
-                        style={{ fontFamily: "var(--font-space)" }}
-                      >
-                        {p.name}
-                      </h2>
-                      <span className={`text-xs text-white px-2 py-0.5 rounded-full ${p.tagColor}`}>
-                        {p.tag}
-                      </span>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
+                      <span style={{ color: "rgba(255,255,255,0.25)", fontSize: 12, fontFamily: "monospace" }}>#{p.rank}</span>
+                      <h2 style={{
+                        fontFamily: "var(--font-space)", fontSize: 18, fontWeight: 700, margin: 0,
+                        color: p.isTop ? "#7CF5C0" : "#fff"
+                      }}>{p.name}</h2>
+                      <span style={{
+                        fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 99,
+                        background: p.isTop ? "#7CF5C0" : "rgba(255,255,255,0.08)",
+                        color: p.isTop ? "#060A12" : "rgba(255,255,255,0.45)",
+                      }}>{p.tag}</span>
                     </div>
-                    <a
-                      href={p.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-gray-500 hover:text-orange-400 transition-colors"
-                    >
+                    <a href={p.url} target="_blank" rel="noopener noreferrer"
+                      style={{ fontSize: 12, color: "rgba(255,255,255,0.25)", textDecoration: "none" }}>
                       {p.url.replace("https://", "")}
                     </a>
                   </div>
-                  <div className="flex gap-4 text-sm">
-                    <span className={p.free ? "text-green-400" : "text-yellow-400"}>
-                      {p.free ? "✅ Free" : "⚠️ Freemium"}
-                    </span>
-                    <span className={p.guides ? "text-green-400" : "text-gray-600"}>
-                      {p.guides ? "✅ Guides" : "❌ No guides"}
-                    </span>
-                    <span className={p.scam ? "text-green-400" : "text-gray-600"}>
-                      {p.scam ? "✅ Scam warnings" : "❌ No warnings"}
-                    </span>
+                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                    {[
+                      { label: p.free ? "Free" : "Freemium", ok: p.free },
+                      { label: "Guides", ok: p.guides },
+                      { label: "Scam warnings", ok: p.scam },
+                    ].map((badge) => (
+                      <span key={badge.label} style={{
+                        fontSize: 11, fontWeight: 600,
+                        color: badge.ok ? "#7CF5C0" : "rgba(255,255,255,0.18)",
+                        background: badge.ok ? "rgba(124,245,192,0.08)" : "rgba(255,255,255,0.04)",
+                        border: `1px solid ${badge.ok ? "rgba(124,245,192,0.18)" : "rgba(255,255,255,0.06)"}`,
+                        padding: "3px 10px", borderRadius: 99,
+                      }}>
+                        {badge.ok ? "✓" : "✗"} {badge.label}
+                      </span>
+                    ))}
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4 mb-5">
+                {/* Pros / Cons */}
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
                   <div>
-                    <p className="text-xs font-semibold text-green-400 uppercase tracking-wide mb-2">What it does well</p>
-                    <ul className="space-y-1">
+                    <p style={{ fontSize: 10, fontWeight: 700, color: "#7CF5C0", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10 }}>What it does well</p>
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 6 }}>
                       {p.pros.map((pro) => (
-                        <li key={pro} className="text-sm text-gray-300 flex items-start gap-2">
-                          <span className="text-green-500 mt-0.5">+</span> {pro}
+                        <li key={pro} style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", display: "flex", gap: 8, alignItems: "flex-start" }}>
+                          <span style={{ color: "#7CF5C0", marginTop: 1, flexShrink: 0 }}>+</span>{pro}
                         </li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-red-400 uppercase tracking-wide mb-2">Where it falls short</p>
-                    <ul className="space-y-1">
+                    <p style={{ fontSize: 10, fontWeight: 700, color: "#f87171", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10 }}>Where it falls short</p>
+                    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 6 }}>
                       {p.cons.map((con) => (
-                        <li key={con} className="text-sm text-gray-400 flex items-start gap-2">
-                          <span className="text-red-500 mt-0.5">−</span> {con}
+                        <li key={con} style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", display: "flex", gap: 8, alignItems: "flex-start" }}>
+                          <span style={{ color: "#f87171", marginTop: 1, flexShrink: 0 }}>−</span>{con}
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
 
-                <div className={`rounded-lg p-4 text-sm leading-relaxed ${p.rank === 1 ? "bg-orange-500/10 text-orange-200 border border-orange-500/20" : "bg-white/5 text-gray-300"}`}>
-                  <span className="font-semibold text-white">Verdict: </span>{p.verdict}
+                {/* Verdict */}
+                <div style={{
+                  borderRadius: 10, padding: "14px 16px", fontSize: 13, lineHeight: 1.6,
+                  background: p.isTop ? "rgba(124,245,192,0.06)" : "rgba(255,255,255,0.03)",
+                  border: p.isTop ? "1px solid rgba(124,245,192,0.12)" : "1px solid rgba(255,255,255,0.06)",
+                  color: "rgba(255,255,255,0.45)",
+                }}>
+                  <span style={{ fontWeight: 700, color: "#fff" }}>Verdict: </span>{p.verdict}
                 </div>
 
-                {p.rank === 1 && (
-                  <div className="mt-4">
-                    <Link
-                      href="/airdrops"
-                      className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors"
-                    >
+                {p.isTop && (
+                  <div style={{ marginTop: 16 }}>
+                    <Link href="/airdrops" style={{
+                      display: "inline-flex", alignItems: "center", gap: 6,
+                      background: "#7CF5C0", color: "#060A12",
+                      fontWeight: 700, fontSize: 13, padding: "10px 20px",
+                      borderRadius: 99, textDecoration: "none",
+                    }}>
                       Browse Airdrops on 3alamiy →
                     </Link>
                   </div>
@@ -459,37 +420,43 @@ export default function BestCryptoAirdropWebsites2026() {
           </section>
 
           {/* Stack Section */}
-          <section className="mb-14">
-            <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: "var(--font-space)" }}>
+          <section style={{ marginBottom: 56 }}>
+            <h2 style={{ fontFamily: "var(--font-space)", fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 8 }}>
               How to Use These Sites Together
             </h2>
-            <p className="text-gray-400 mb-6">
+            <p style={{ color: "rgba(255,255,255,0.45)", marginBottom: 20, fontSize: 14, lineHeight: 1.7 }}>
               The best airdrop farmers in 2026 do not rely on one platform. Here is the stack that works:
             </p>
-            <div className="space-y-3">
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {[
-                { step: "Daily", platform: "3alamiy Web3", action: "Check new verified airdrops with full guides", color: "border-orange-500/40 bg-orange-500/5" },
-                { step: "Weekly", platform: "CryptoRank", action: "Scan for testnet and retroactive opportunities", color: "border-purple-500/30 bg-purple-500/5" },
-                { step: "As needed", platform: "Galxe", action: "Complete quests for campaigns running on-platform", color: "border-indigo-500/30 bg-indigo-500/5" },
-                { step: "Monthly", platform: "DappRadar", action: "Spot new ecosystems worth positioning in early", color: "border-pink-500/30 bg-pink-500/5" },
+                { freq: "Daily", platform: "3alamiy Web3", action: "Check new verified airdrops with full guides", accent: "#7CF5C0" },
+                { freq: "Weekly", platform: "CryptoRank", action: "Scan for testnet and retroactive opportunities", accent: "#c084fc" },
+                { freq: "As needed", platform: "Galxe", action: "Complete quests for campaigns running on-platform", accent: "#818cf8" },
+                { freq: "Monthly", platform: "DappRadar", action: "Spot new ecosystems worth positioning in early", accent: "#60a5fa" },
               ].map((item) => (
-                <div key={item.platform} className={`flex items-start gap-4 rounded-xl border p-4 ${item.color}`}>
-                  <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide w-16 shrink-0 mt-0.5">{item.step}</span>
-                  <div>
-                    <span className="font-semibold text-white text-sm">{item.platform}</span>
-                    <span className="text-gray-400 text-sm"> — {item.action}</span>
-                  </div>
+                <div key={item.platform} style={{
+                  display: "flex", alignItems: "center", gap: 16,
+                  background: "#0D1221", borderRadius: 12,
+                  border: "1px solid rgba(255,255,255,0.06)", padding: "14px 18px",
+                }}>
+                  <span style={{
+                    fontSize: 10, fontWeight: 700, color: item.accent,
+                    background: `${item.accent}18`, border: `1px solid ${item.accent}30`,
+                    padding: "3px 10px", borderRadius: 99, whiteSpace: "nowrap", textTransform: "uppercase", letterSpacing: "0.06em"
+                  }}>{item.freq}</span>
+                  <span style={{ fontSize: 13, color: "#fff", fontWeight: 600 }}>{item.platform}</span>
+                  <span style={{ fontSize: 13, color: "rgba(255,255,255,0.35)" }}>— {item.action}</span>
                 </div>
               ))}
             </div>
           </section>
 
           {/* Checklist */}
-          <section className="mb-14">
-            <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: "var(--font-space)" }}>
+          <section style={{ marginBottom: 56 }}>
+            <h2 style={{ fontFamily: "var(--font-space)", fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 20 }}>
               What to Look For in Any Airdrop Website
             </h2>
-            <div className="space-y-3">
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {[
                 { q: "Does it have step-by-step guides?", a: "A listing without instructions is useless if you do not know how to participate." },
                 { q: "Does it flag scams?", a: "Fake airdrops are everywhere in 2026. Platforms without risk warnings leave you exposed." },
@@ -497,45 +464,61 @@ export default function BestCryptoAirdropWebsites2026() {
                 { q: "Does it cover the chains you farm?", a: "EVM is not everything. Solana, Sui, Aptos, TON, and Cosmos all have active ecosystems." },
                 { q: "Is it free?", a: "The best opportunities should be available to everyone. A paywall on core listings is a red flag." },
               ].map((item, i) => (
-                <div key={i} className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
-                  <p className="font-semibold text-white text-sm mb-1">{i + 1}. {item.q}</p>
-                  <p className="text-gray-400 text-sm">{item.a}</p>
+                <div key={i} style={{
+                  background: "#0D1221", borderRadius: 12,
+                  border: "1px solid rgba(255,255,255,0.06)", padding: "16px 20px",
+                }}>
+                  <p style={{ fontWeight: 600, color: "#fff", fontSize: 14, marginBottom: 6 }}>
+                    <span style={{ color: "#7CF5C0" }}>{i + 1}.</span> {item.q}
+                  </p>
+                  <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 13, margin: 0, lineHeight: 1.6 }}>{item.a}</p>
                 </div>
               ))}
             </div>
           </section>
 
           {/* FAQ */}
-          <section className="mb-14">
-            <h2 className="text-2xl font-bold mb-6" style={{ fontFamily: "var(--font-space)" }}>
+          <section style={{ marginBottom: 56 }}>
+            <h2 style={{ fontFamily: "var(--font-space)", fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 20 }}>
               Frequently Asked Questions
             </h2>
-            <div className="space-y-4">
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {faqJsonLd.mainEntity.map((faq, i) => (
-                <div key={i} className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-                  <h3 className="font-semibold text-white mb-2 text-sm">{faq.name}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{faq.acceptedAnswer.text}</p>
+                <div key={i} style={{
+                  background: "#0D1221", borderRadius: 12,
+                  border: "1px solid rgba(255,255,255,0.06)", padding: "18px 20px",
+                }}>
+                  <h3 style={{ fontWeight: 600, color: "#fff", fontSize: 14, marginBottom: 8 }}>{faq.name}</h3>
+                  <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 13, margin: 0, lineHeight: 1.7 }}>{faq.acceptedAnswer.text}</p>
                 </div>
               ))}
             </div>
           </section>
 
           {/* Final CTA */}
-          <div className="rounded-2xl border border-orange-500/30 bg-orange-500/5 p-8 text-center">
-            <h2 className="text-2xl font-bold mb-3" style={{ fontFamily: "var(--font-space)" }}>
+          <div style={{
+            background: "rgba(124,245,192,0.06)",
+            border: "1px solid rgba(124,245,192,0.18)",
+            borderRadius: 16, padding: "40px 32px", textAlign: "center",
+          }}>
+            <h2 style={{ fontFamily: "var(--font-space)", fontSize: 24, fontWeight: 700, color: "#fff", marginBottom: 12 }}>
               Start with the Best
             </h2>
-            <p className="text-gray-400 mb-6 max-w-md mx-auto">
+            <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 14, lineHeight: 1.7, maxWidth: 440, margin: "0 auto 28px" }}>
               3alamiy Web3 is free, updated daily, and comes with full step-by-step guides for every airdrop.
               No paywall. No noise. Just verified opportunities across 22+ chains.
             </p>
-            <Link
-              href="/airdrops"
-              className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-xl transition-colors text-sm"
-            >
+            <Link href="/airdrops" style={{
+              display: "inline-flex", alignItems: "center", gap: 6,
+              background: "#7CF5C0", color: "#060A12",
+              fontWeight: 700, fontSize: 14, padding: "12px 28px",
+              borderRadius: 99, textDecoration: "none",
+            }}>
               Browse All Airdrops →
             </Link>
-            <p className="text-xs text-gray-600 mt-4">Last updated: June 2, 2026 · Reviewed weekly</p>
+            <p style={{ fontSize: 11, color: "rgba(255,255,255,0.18)", marginTop: 16 }}>
+              Last updated: June 2, 2026 · Reviewed weekly
+            </p>
           </div>
 
         </div>
