@@ -72,6 +72,9 @@ const allArticles = [
   { slug: 'best-depin-airdrops-2026', title: 'Best DePIN Airdrops 2026', desc: 'Earn crypto passively by sharing your bandwidth and device resources.', cat: 'DePIN', catColor: '#06b6d4', time: '9 min' },
   { slug: 'hyperliquid-guide', title: 'Hyperliquid Season 2 Guide 2026', desc: 'How to qualify for HYPE Season 2. Trade, stake, and farm HyperEVM before the snapshot.', cat: 'DeFi', catColor: '#7CF5C0', time: '10 min' },
   { slug: 'polymarket-airdrop-guide-2026', title: 'Polymarket Airdrop Guide 2026', desc: 'How to qualify for POLY token. Trade real markets, link X account, avoid Sybil filters.', cat: 'Prediction', catColor: '#f59e0b', time: '8 min' },
+  { slug: 'best-solana-airdrops-2026', title: 'Best Solana Airdrops 2026', desc: 'The top Solana ecosystem airdrops with full participation guides. Jupiter, Kamino, Drift and more.', cat: 'Ecosystems', catColor: '#9945FF', time: '9 min' },
+  { slug: 'early-crypto-projects-2026', title: '15 Early Crypto Projects to Watch 2026', desc: 'Pre-launch projects across HyperEVM, DeFi, AI, RWA and Gaming. Follow now, farm early.', cat: 'Alpha', catColor: '#7CF5C0', time: '8 min' },
+  { slug: 'best-crypto-airdrop-checker-tools-2026', title: 'Best Crypto Airdrop Checker Tools 2026', desc: 'Honest comparison of every major airdrop checker tool. 3alamiy, Galxe, Drops.bot, Layer3 and more.', cat: 'Comparison', catColor: '#818cf8', time: '7 min' },
 ];
 
 const breadcrumbSchema = {
