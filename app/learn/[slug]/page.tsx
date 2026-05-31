@@ -971,13 +971,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: a.title,
       description: a.excerpt,
-      url: `https://seo.3alamiyweb3.online/learn/${slug}`,
+      url: `https://www.3alamiyweb3.com/learn/${slug}`,
       siteName: '3alamiy Web3',
       images: a.image ? [{ url: a.image, width: 1200, height: 630, alt: a.title }] : [],
       type: 'article',
     },
     twitter: { card: 'summary_large_image', title: a.title, description: a.excerpt },
-    alternates: { canonical: `https://seo.3alamiyweb3.online/learn/${slug}` },
+    alternates: { canonical: `https://www.3alamiyweb3.com/learn/${slug}` },
   };
 }
 
@@ -990,7 +990,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <div style={{ minHeight: '100vh', background: '#030712', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'system-ui, sans-serif' }}>
         <div style={{ textAlign: 'center', color: '#fff' }}>
           <h1 style={{ fontSize: '24px', marginBottom: '16px' }}>Article not found</h1>
-          <a href="https://seo.3alamiyweb3.online" style={{ color: '#6366f1', textDecoration: 'none' }}>← Back to Dashboard</a>
+          <a href="https://www.3alamiyweb3.com" style={{ color: '#7CF5C0', textDecoration: 'none' }}>← Back to Dashboard</a>
         </div>
       </div>
     );
@@ -1009,9 +1009,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
-      { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://seo.3alamiyweb3.online/learn' },
-      { '@type': 'ListItem', position: 3, name: a.title, item: `https://seo.3alamiyweb3.online/learn/${slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.3alamiyweb3.com' },
+      { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://www.3alamiyweb3.com/learn' },
+      { '@type': 'ListItem', position: 3, name: a.title, item: `https://www.3alamiyweb3.com/learn/${slug}` },
     ],
   };
 
@@ -1020,18 +1020,18 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     '@type': 'Article',
     headline: a.title,
     description: a.excerpt,
-    url: `https://seo.3alamiyweb3.online/learn/${slug}`,
+    url: `https://www.3alamiyweb3.com/learn/${slug}`,
     datePublished: a.date ? new Date(a.date).toISOString().split('T')[0] : '2026-05-01',
-    dateModified: '2026-05-21',
-    author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
+    dateModified: '2026-06-02',
+    author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
     publisher: {
       '@type': 'Organization',
       name: '3alamiy Web3',
-      url: 'https://seo.3alamiyweb3.online',
-      logo: { '@type': 'ImageObject', url: 'https://seo.3alamiyweb3.online/icon.svg' },
+      url: 'https://www.3alamiyweb3.com',
+      logo: { '@type': 'ImageObject', url: 'https://www.3alamiyweb3.com/icon.svg' },
     },
     image: a.image ? { '@type': 'ImageObject', url: a.image, width: 1200, height: 630 } : undefined,
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://seo.3alamiyweb3.online/learn/${slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://www.3alamiyweb3.com/learn/${slug}` },
     about: [{ '@type': 'Thing', name: 'Crypto Airdrops' }, { '@type': 'Thing', name: a.category }],
     speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', '.art-excerpt'] },
   };
@@ -1068,7 +1068,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         html, body { overflow-x: hidden; }
         .art-root {
           min-height: 100vh;
-          background: #030712;
+          background: #060A12;
           font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
           color: #fff;
           overflow-x: hidden;
@@ -1080,13 +1080,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         }
         .art-back {
           display: inline-flex; align-items: center; gap: 8px;
-          color: #71717a; text-decoration: none;
+          color: rgba(255,255,255,0.45); text-decoration: none;
           font-size: 13px; font-weight: 600;
           margin-bottom: 36px; padding: 8px 14px;
-          background: #18181b; border-radius: 10px;
-          border: 1px solid #27272a; transition: color 0.15s;
+          background: #0D1221; border-radius: 10px;
+          border: 1px solid rgba(255,255,255,0.06); transition: color 0.15s;
         }
-        .art-back:hover { color: #a1a1aa; }
+        .art-back:hover { color: #7CF5C0; }
         .art-meta {
           display: flex; align-items: center; gap: 10px;
           margin-bottom: 18px; flex-wrap: wrap;
@@ -1096,7 +1096,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           font-size: 10px; font-weight: 800;
           text-transform: uppercase; letter-spacing: 0.08em;
         }
-        .art-date { color: #52525b; font-size: 12px; }
+        .art-date { color: rgba(255,255,255,0.25); font-size: 12px; }
         .art-h1 {
           font-size: 36px; font-weight: 800; line-height: 1.15;
           letter-spacing: -0.025em; margin: 0 0 18px; color: #fff;
@@ -1108,14 +1108,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         }
         .art-img-wrap {
           border-radius: 20px; overflow: hidden;
-          margin-bottom: 40px; border: 1px solid #18181b;
+          margin-bottom: 40px; border: 1px solid rgba(255,255,255,0.06);
         }
         .art-img {
           width: 100%; height: 360px;
           object-fit: cover; display: block;
         }
         .art-body {
-          font-size: 16px; line-height: 1.85; color: #d4d4d8;
+          font-size: 16px; line-height: 1.85; color: rgba(255,255,255,0.45);
         }
         .art-body p { margin: 0 0 22px; }
         .art-body strong {
@@ -1124,23 +1124,22 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         }
         .art-body .quote {
           padding-left: 16px; display: block;
-          border-left: 2px solid #27272a;
+          border-left: 2px solid rgba(124,245,192,0.2);
         }
-        .art-divider { border-top: 1px solid #18181b; margin: 44px 0; }
+        .art-divider { border-top: 1px solid rgba(255,255,255,0.06); margin: 44px 0; }
         .art-cta {
-          background: linear-gradient(135deg, #1e1b4b, #0f0f1a);
-          border: 1px solid #4c1d95; border-radius: 20px;
+          background: rgba(124,245,192,0.05);
+          border: 1px solid rgba(124,245,192,0.18); border-radius: 20px;
           padding: 36px 28px; text-align: center;
         }
         .art-cta-emoji { font-size: 28px; margin-bottom: 10px; display: block; }
-        .art-cta-title { font-size: 20px; font-weight: 800; margin: 0 0 8px; }
-        .art-cta-sub { color: #9ca3af; font-size: 14px; margin: 0 0 22px; line-height: 1.6; }
+        .art-cta-title { font-size: 20px; font-weight: 800; margin: 0 0 8px; color: #fff; }
+        .art-cta-sub { color: rgba(255,255,255,0.45); font-size: 14px; margin: 0 0 22px; line-height: 1.6; }
         .art-cta-btn {
-          background: linear-gradient(135deg, #6366f1, #4f46e5);
-          color: #fff; padding: 13px 28px; border-radius: 12px;
+          background: #7CF5C0;
+          color: #060A12; padding: 13px 28px; border-radius: 99px;
           text-decoration: none; font-size: 14px; font-weight: 700;
           display: inline-block;
-          box-shadow: 0 12px 32px rgba(99,102,241,0.3);
         }
 
         @media (max-width: 640px) {
@@ -1161,14 +1160,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <div className="art-root">
         <main className="art-main">
           <nav style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', color: 'rgba(255,255,255,0.3)', marginBottom: '20px', flexWrap: 'wrap' }}>
-            <a href="https://seo.3alamiyweb3.online" style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>Home</a>
+            <a href="https://www.3alamiyweb3.com" style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>Home</a>
             <span>›</span>
-            <a href="https://seo.3alamiyweb3.online/learn" style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>Learn</a>
+            <a href="https://www.3alamiyweb3.com/learn" style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>Learn</a>
             <span>›</span>
             <span style={{ color: '#7CF5C0' }}>{a.category}</span>
           </nav>
 
-          <a href="https://seo.3alamiyweb3.online/learn" className="art-back">
+          <a href="https://www.3alamiyweb3.com/learn" className="art-back">
             ← Back to Learn
           </a>
 
@@ -1176,6 +1175,15 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <span className="art-cat" style={{ background: cat.bg, color: cat.text }}>{a.category}</span>
             <span className="art-date">{a.date}</span>
             <span className="art-date">· {a.readTime}</span>
+          </div>
+
+          {/* Author Byline */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20, padding: '12px 16px', background: 'rgba(124,245,192,0.04)', border: '1px solid rgba(124,245,192,0.1)', borderRadius: 10 }}>
+            <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'rgba(124,245,192,0.15)', border: '1px solid rgba(124,245,192,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, flexShrink: 0 }}>🪂</div>
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#fff' }}>3alamiy Team</div>
+              <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)' }}>Web3 Airdrop Research · <a href="https://www.3alamiyweb3.com" style={{ color: '#7CF5C0', textDecoration: 'none' }}>3alamiyweb3.com</a></div>
+            </div>
           </div>
 
           <h1 className="art-h1">{a.title}</h1>
@@ -1203,7 +1211,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <span className="art-cta-emoji">🪂</span>
             <h3 className="art-cta-title">Find & Track the Best Airdrops</h3>
             <p className="art-cta-sub">Join 2,500+ Web3 users tracking high-potential airdrops on 3alamiy Web3.</p>
-            <a href="https://seo.3alamiyweb3.online/airdrops" className="art-cta-btn">
+            <a href="https://www.3alamiyweb3.com/airdrops" className="art-cta-btn">
               Browse All Airdrops →
             </a>
           </div>
