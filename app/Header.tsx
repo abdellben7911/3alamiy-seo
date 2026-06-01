@@ -8,18 +8,19 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
-    { label: 'Airdrops', href: '/airdrops', badge: 'HOT', badgeColor: '#f43f5e', badgeBg: 'rgba(244,63,94,0.12)' },
-    { label: 'Learn',    href: '/learn',    badge: 'NEW', badgeColor: '#7CF5C0', badgeBg: 'rgba(124,245,192,0.1)' },
-    { label: 'GM Station',href: '/gm',     badge: 'GM',  badgeColor: '#fff',    badgeBg: 'rgba(99,102,241,0.5)' },
-    { label: 'About',    href: '/about',   badge: null,  badgeColor: null,       badgeBg: null },
-    { label: 'Contact',  href: '/contact', badge: null,  badgeColor: null,       badgeBg: null },
+    { label: 'Airdrops',   href: '/airdrops',  badge: 'HOT', badgeColor: '#f43f5e', badgeBg: 'rgba(244,63,94,0.12)' },
+    { label: 'Calendar',   href: '/calendar',  badge: 'NEW', badgeColor: '#7CF5C0', badgeBg: 'rgba(124,245,192,0.1)' },
+    { label: 'Learn',      href: '/learn',     badge: null,  badgeColor: null,      badgeBg: null },
+    { label: 'GM Station', href: '/gm',        badge: 'GM',  badgeColor: '#fff',    badgeBg: 'rgba(99,102,241,0.5)' },
+    { label: 'About',      href: '/about',     badge: null,  badgeColor: null,      badgeBg: null },
+    { label: 'Contact',    href: '/contact',   badge: null,  badgeColor: null,      badgeBg: null },
   ];
 
   return (
     <>
       <style>{`
         .hdr-root {
-          position: sticky; top: 0; z-index: 50;
+          position: fixed; top: 0; left: 0; right: 0; z-index: 50;
           height: 62px;
           background: rgba(6,9,16,0.92);
           backdrop-filter: blur(16px);
@@ -27,6 +28,9 @@ export default function Header() {
           border-bottom: 1px solid rgba(255,255,255,0.06);
           font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
         }
+        /* Push page content below fixed header */
+        .hdr-spacer { height: 62px; }
+
         .hdr-inner {
           max-width: 1200px; margin: 0 auto;
           padding: 0 24px; height: 100%;
@@ -119,6 +123,7 @@ export default function Header() {
           flex-direction: column; gap: 6px;
           border-top: 1px solid rgba(255,255,255,0.06);
           font-family: var(--font-space), system-ui, sans-serif;
+          overflow-y: auto;
         }
         .hdr-mobile.open { display: flex; }
         .hdr-mobile-item {
@@ -159,6 +164,9 @@ export default function Header() {
         }
       `}</style>
 
+      {/* Spacer so content doesn't hide under fixed header */}
+      <div className="hdr-spacer" />
+
       <header className="hdr-root">
         <div className="hdr-inner">
 
@@ -184,29 +192,17 @@ export default function Header() {
 
           {/* Right */}
           <div className="hdr-right">
-
-            {/* List Your Project */}
-            <a
-              href="https://t.me/web33alamiy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hdr-list-btn"
-            >
+            <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="hdr-list-btn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="12" y1="5" x2="12" y2="19"/>
                 <line x1="5" y1="12" x2="19" y2="12"/>
               </svg>
               List Your Project
             </a>
-
             <div className="hdr-divider" />
-
-            {/* Auth */}
             <div className="hdr-auth-desktop">
               <AuthButton />
             </div>
-
-            {/* Hamburger */}
             <button className="hdr-hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
               <span style={{ transform: menuOpen ? 'rotate(45deg) translate(4px, 4px)' : 'none' }} />
               <span style={{ opacity: menuOpen ? 0 : 1 }} />
@@ -228,22 +224,13 @@ export default function Header() {
             )}
           </Link>
         ))}
-
-        {/* List Your Project in mobile */}
-        <a
-          href="https://t.me/web33alamiy"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hdr-mobile-list"
-          onClick={() => setMenuOpen(false)}
-        >
+        <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="hdr-mobile-list" onClick={() => setMenuOpen(false)}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <line x1="12" y1="5" x2="12" y2="19"/>
             <line x1="5" y1="12" x2="19" y2="12"/>
           </svg>
           List Your Project
         </a>
-
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '14px', marginTop: '6px' }}>
           <AuthButton />
         </div>
