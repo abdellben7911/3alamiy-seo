@@ -14,6 +14,18 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Hyperliquid Airdrop Season 2 Guide 2026 — How to Qualify for HYPE',
+  description: 'Complete step-by-step guide to qualifying for Hyperliquid Season 2 airdrop in 2026.',
+  author: { '@type': 'Organization', name: '3alamiy Web3' },
+  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
+  datePublished: '2026-05-01',
+  dateModified: '2026-06-02',
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/hyperliquid-guide' },
+};
+
 export default function HyperliquidGuide() {
   return (
     <>
@@ -103,6 +115,8 @@ export default function HyperliquidGuide() {
         }
       `}</style>
 
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
       <div className="hl-wrap">
 
         {/* Hero */}
@@ -130,7 +144,7 @@ export default function HyperliquidGuide() {
             <div className="hl-stats">
               {[
                 ['38.8%', 'HYPE Supply Reserved'],
-                ['$100B+', 'Cumulative Volume'],
+                ['$200B+', 'Cumulative Volume'],
                 ['Free', 'Cost to Participate'],
                 ['2026', 'Still Active'],
               ].map(([val, lbl]) => (
@@ -148,6 +162,15 @@ export default function HyperliquidGuide() {
 
           <div className="hl-alert">
             <p><strong>Not financial advice.</strong> This guide is for educational purposes only. Hyperliquid Season 2 has not been officially confirmed. Always do your own research before participating in any airdrop or DeFi protocol.</p>
+          </div>
+
+          {/* Author byline */}
+          <div style={{ display:'flex', alignItems:'center', gap:10, marginBottom:32, padding:'12px 16px', background:'rgba(124,245,192,0.04)', border:'1px solid rgba(124,245,192,0.1)', borderRadius:10 }}>
+            <div style={{ width:32, height:32, borderRadius:'50%', background:'rgba(124,245,192,0.15)', border:'1px solid rgba(124,245,192,0.25)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:14, flexShrink:0 }}>🪂</div>
+            <div>
+              <div style={{ fontSize:13, fontWeight:700, color:'#fff' }}>3alamiy Team</div>
+              <div style={{ fontSize:11, color:'rgba(255,255,255,0.35)' }}>Web3 Airdrop Research · Updated June 2, 2026 · <a href="https://www.3alamiyweb3.com" style={{ color:'#7CF5C0', textDecoration:'none' }}>3alamiyweb3.com</a></div>
+            </div>
           </div>
 
           {/* What is Hyperliquid */}
@@ -313,6 +336,9 @@ export default function HyperliquidGuide() {
             <Link href="/learn">← Back to Learn</Link>
             <Link href="/airdrops">Browse All Airdrops</Link>
             <Link href="/learn/best-crypto-airdrops-2026">Best Airdrops 2026</Link>
+            <Link href="/learn/early-crypto-projects-2026">Early Crypto Projects 2026</Link>
+            <Link href="/learn/crypto-airdrop-eligibility-requirements-2026">Eligibility Requirements</Link>
+            <Link href="/learn/polymarket-airdrop-guide-2026">Polymarket Guide</Link>
             <Link href="/gm">GM Station</Link>
           </div>
 
