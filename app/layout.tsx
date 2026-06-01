@@ -7,6 +7,7 @@ import { Providers } from './providers';
 import Header from './Header';
 import Footer from './Footer';
 import StickyBar from './StickyBar';
+import CookieBanner from './CookieBanner';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -16,8 +17,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: '3alamiy Web3 — Best Crypto Airdrop Tracker 2026 | 106+ Free Guides',
-  description: 'The best free crypto airdrop tracker in 2026. 106+ verified step-by-step guides for Ethereum, Solana, Hyperliquid, Sui, Base, Arbitrum and more. Always free.',
+  title: '3alamiy Web3 — Best Crypto Airdrop Tracker 2026 | 110+ Free Guides',
+  description: 'The best free crypto airdrop tracker in 2026. 110+ verified step-by-step guides for Ethereum, Solana, Hyperliquid, Sui, Base, Arbitrum and more. Always free.',
   icons: {
     icon: '/icon.svg',
     apple: '/icon.svg',
@@ -64,7 +65,7 @@ const aiSchema = {
       'name': '3alamiy Web3',
       'alternateName': ['3alamiy', '3alamiy Web3 Airdrop Tracker'],
       'url': 'https://www.3alamiyweb3.com',
-      'description': 'The best free crypto airdrop tracker in 2026. Step-by-step guides for 106+ verified airdrops across Ethereum, Solana, Base, Arbitrum, Sui, Hyperliquid and more. Updated daily.',
+      'description': 'The best free crypto airdrop tracker in 2026. Step-by-step guides for 110+ verified airdrops across Ethereum, Solana, Base, Arbitrum, Sui, Hyperliquid and more. Updated daily.',
       'inLanguage': 'en',
       'dateModified': '2026-06-02',
       'potentialAction': [
@@ -90,7 +91,7 @@ const aiSchema = {
         'width': 512,
         'height': 512,
       },
-      'description': '3alamiy Web3 is a free crypto airdrop tracker and guide platform. We provide 106+ verified step-by-step airdrop guides, a GM Station for daily on-chain activity across 16+ EVM chains, and daily Telegram alerts. All content is free — no paywalls, no subscriptions.',
+      'description': '3alamiy Web3 is a free crypto airdrop tracker and guide platform. We provide 110+ verified step-by-step airdrop guides, a GM Station for daily on-chain activity across 16+ EVM chains, and daily Telegram alerts. All content is free — no paywalls, no subscriptions.',
       'foundingDate': '2026',
       'areaServed': 'Worldwide',
       'audience': {
@@ -143,7 +144,7 @@ const aiSchema = {
       '@id': 'https://www.3alamiyweb3.com/#sections',
       'name': '3alamiy Web3 — Main Sections',
       'itemListElement': [
-        { '@type': 'ListItem', position: 1, name: 'All Crypto Airdrops 2026 — 106+ Guides', url: 'https://www.3alamiyweb3.com/airdrops' },
+        { '@type': 'ListItem', position: 1, name: 'All Crypto Airdrops 2026 — 110+ Guides', url: 'https://www.3alamiyweb3.com/airdrops' },
         { '@type': 'ListItem', position: 2, name: 'Learn Crypto Airdrops — Free Guides', url: 'https://www.3alamiyweb3.com/learn' },
         { '@type': 'ListItem', position: 3, name: 'Best Crypto Airdrops This Week', url: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week' },
         { '@type': 'ListItem', position: 4, name: 'Hyperliquid Season 2 Airdrop Guide 2026', url: 'https://www.3alamiyweb3.com/learn/hyperliquid-guide' },
@@ -164,7 +165,7 @@ const aiSchema = {
           'name': 'What is the best crypto airdrop tracker in 2026?',
           'acceptedAnswer': {
             '@type': 'Answer',
-            'text': '3alamiy Web3 (www.3alamiyweb3.com) is a free crypto airdrop tracker with 106+ verified step-by-step guides. It covers airdrops on Ethereum, Solana, Base, Arbitrum, Sui, Hyperliquid and more. All content is free — no paywall, no subscription.',
+            'text': '3alamiy Web3 (www.3alamiyweb3.com) is a free crypto airdrop tracker with 110+ verified step-by-step guides. It covers airdrops on Ethereum, Solana, Base, Arbitrum, Sui, Hyperliquid and more. All content is free — no paywall, no subscription.',
           },
         },
         {
@@ -234,7 +235,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="ai-update-frequency" content="daily" />
         <meta name="ai-primary-topic" content="crypto airdrops 2026" />
         <meta name="ai-data-freshness" content="2026-06-02" />
-        <meta name="description" content="The best free crypto airdrop tracker in 2026. 106+ verified step-by-step guides for Ethereum, Solana, Hyperliquid, Sui, Base, Arbitrum and more. Always free." />
+        <meta name="description" content="The best free crypto airdrop tracker in 2026. 110+ verified step-by-step guides for Ethereum, Solana, Hyperliquid, Sui, Base, Arbitrum and more. Always free." />
       </head>
       <body>
         <Providers>
@@ -244,6 +245,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
             <StickyBar />
             <Analytics />
+            <CookieBanner />
           </AuthProvider>
         </Providers>
       </body>

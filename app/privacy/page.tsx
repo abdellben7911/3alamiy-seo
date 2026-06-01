@@ -6,16 +6,16 @@ export const metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="min-h-screen bg-[#0a0f1e] text-gray-200 py-16 px-4">
+    <main className="min-h-screen bg-[#060A12] text-gray-200 py-16 px-4">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="mb-12">
-          <span className="inline-block text-xs font-semibold tracking-widest uppercase text-cyan-400 mb-3">
+          <span className="inline-block text-xs font-semibold tracking-widest uppercase text-[#7CF5C0] mb-3">
             Legal
           </span>
           <h1 className="text-4xl font-bold text-white mb-3">Privacy Policy</h1>
           <p className="text-gray-400 text-sm">
-            Last updated: <span className="text-cyan-400">May 27, 2026</span>
+            Last updated: <span className="text-[#7CF5C0]">June 2, 2026</span>
           </p>
         </div>
 
@@ -24,7 +24,7 @@ export default function PrivacyPolicyPage() {
           Welcome to <strong className="text-white">3alamiy Web3</strong> (
           <a
             href="https://www.3alamiyweb3.com"
-            className="text-cyan-400 hover:underline"
+            className="text-[#7CF5C0] hover:underline"
           >
             www.3alamiyweb3.com
           </a>
@@ -37,7 +37,7 @@ export default function PrivacyPolicyPage() {
           {/* Section 1 */}
           <section>
             <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-              <span className="text-cyan-400">01.</span> Information We Collect
+              <span className="text-[#7CF5C0]">01.</span> Information We Collect
             </h2>
             <p className="text-gray-300 leading-relaxed mb-3">
               We may collect the following types of information:
@@ -68,7 +68,7 @@ export default function PrivacyPolicyPage() {
           {/* Section 2 */}
           <section>
             <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-              <span className="text-cyan-400">02.</span> How We Use Your
+              <span className="text-[#7CF5C0]">02.</span> How We Use Your
               Information
             </h2>
             <ul className="list-disc list-inside space-y-2 text-gray-300 leading-relaxed ml-2">
@@ -87,7 +87,7 @@ export default function PrivacyPolicyPage() {
           {/* Section 3 */}
           <section>
             <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-              <span className="text-cyan-400">03.</span> Google AdSense &
+              <span className="text-[#7CF5C0]">03.</span> Google AdSense &
               Cookies
             </h2>
             <p className="text-gray-300 leading-relaxed">
@@ -97,7 +97,7 @@ export default function PrivacyPolicyPage() {
               websites. You can opt out of personalized advertising by visiting{" "}
               <a
                 href="https://www.google.com/settings/ads"
-                className="text-cyan-400 hover:underline"
+                className="text-[#7CF5C0] hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -106,7 +106,7 @@ export default function PrivacyPolicyPage() {
               . For more information, see{" "}
               <a
                 href="https://policies.google.com/technologies/ads"
-                className="text-cyan-400 hover:underline"
+                className="text-[#7CF5C0] hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -119,7 +119,7 @@ export default function PrivacyPolicyPage() {
           {/* Section 4 */}
           <section>
             <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-              <span className="text-cyan-400">04.</span> Google Analytics
+              <span className="text-[#7CF5C0]">04.</span> Google Analytics
             </h2>
             <p className="text-gray-300 leading-relaxed">
               We use <strong className="text-white">Google Analytics</strong> to
@@ -128,7 +128,7 @@ export default function PrivacyPolicyPage() {
               opt out using the{" "}
               <a
                 href="https://tools.google.com/dlpage/gaoptout"
-                className="text-cyan-400 hover:underline"
+                className="text-[#7CF5C0] hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -141,7 +141,7 @@ export default function PrivacyPolicyPage() {
           {/* Section 5 */}
           <section>
             <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-              <span className="text-cyan-400">05.</span> Third-Party Services
+              <span className="text-[#7CF5C0]">05.</span> Third-Party Services
             </h2>
             <p className="text-gray-300 leading-relaxed">
               Our site may contain links to third-party websites (airdrop
@@ -154,7 +154,7 @@ export default function PrivacyPolicyPage() {
           {/* Section 6 */}
           <section>
             <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-              <span className="text-cyan-400">06.</span> Data Storage & Security
+              <span className="text-[#7CF5C0]">06.</span> Data Storage & Security
             </h2>
             <p className="text-gray-300 leading-relaxed">
               Your data (email, favorites) is stored securely in{" "}
@@ -168,7 +168,7 @@ export default function PrivacyPolicyPage() {
           {/* Section 7 */}
           <section>
             <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-              <span className="text-cyan-400">07.</span> Your Rights
+              <span className="text-[#7CF5C0]">07.</span> Your Rights
             </h2>
             <ul className="list-disc list-inside space-y-2 text-gray-300 leading-relaxed ml-2">
               <li>
@@ -189,7 +189,7 @@ export default function PrivacyPolicyPage() {
           {/* Section 8 */}
           <section>
             <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-              <span className="text-cyan-400">08.</span> Children's Privacy
+              <span className="text-[#7CF5C0]">08.</span> Children's Privacy
             </h2>
             <p className="text-gray-300 leading-relaxed">
               Our site is not directed at children under 13. We do not
@@ -202,7 +202,7 @@ export default function PrivacyPolicyPage() {
           {/* Section 9 */}
           <section>
             <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-              <span className="text-cyan-400">09.</span> Changes to This Policy
+              <span className="text-[#7CF5C0]">09.</span> Changes to This Policy
             </h2>
             <p className="text-gray-300 leading-relaxed">
               We may update this Privacy Policy from time to time. We will
@@ -215,14 +215,14 @@ export default function PrivacyPolicyPage() {
           {/* Section 10 */}
           <section>
             <h2 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-              <span className="text-cyan-400">10.</span> Contact Us
+              <span className="text-[#7CF5C0]">10.</span> Contact Us
             </h2>
             <p className="text-gray-300 leading-relaxed">
               If you have any questions about this Privacy Policy, please
               contact us via our Telegram channel:{" "}
               <a
                 href="https://t.me/web33alamiy"
-                className="text-cyan-400 hover:underline"
+                className="text-[#7CF5C0] hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -231,7 +231,7 @@ export default function PrivacyPolicyPage() {
               or email us at{" "}
               <a
                 href="mailto:contact@3alamiyweb3.com"
-                className="text-cyan-400 hover:underline"
+                className="text-[#7CF5C0] hover:underline"
               >
                 contact@3alamiyweb3.com
               </a>
