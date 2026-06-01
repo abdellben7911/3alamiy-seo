@@ -66,7 +66,15 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
   const costLabel = a.cost === 'Paid' ? 'Mainnet (Paid)' : a.cost === 'Low' ? 'Mainnet (Low)' : 'Testnet (Free)';
   const costColor = a.cost === 'Paid' ? '#f43f5e' : a.cost === 'Low' ? '#f59e0b' : '#7CF5C0';
   const reward = a.reward_min && a.reward_max ? `$${a.reward_min}–$${a.reward_max}` : a.reward_min ? `$${a.reward_min}+` : 'TBA';
-  const relatedAirdrops = allAirdrops.filter((x: any) => x.slug !== slug && x.blockchain === a.blockchain).slice(0, 3);
+  const relatedByChain = allAirdrops.filter((x: any) => x.slug !== slug && x.blockchain === a.blockchain);
+  const relatedByCategory = allAirdrops.filter((x: any) => x.slug !== slug && x.category === a.category && x.blockchain !== a.blockchain);
+  const relatedByDifficulty = allAirdrops.filter((x: any) => x.slug !== slug && x.difficulty === a.difficulty && x.blockchain !== a.blockchain && x.category !== a.category);
+  const relatedAirdrops = [...relatedByChain, ...relatedByCategory, ...relatedByDifficulty]
+    .filter((x: any, i: number, self: any[]) => self.findIndex((y: any) => y.slug === x.slug) === i)
+    .slice(0, 4);
+  const similarAirdrops = allAirdrops
+    .filter((x: any) => x.slug !== slug && x.difficulty === a.difficulty && x.cost === a.cost && !relatedAirdrops.find((r: any) => r.slug === x.slug))
+    .slice(0, 3);
   const year = new Date().getFullYear();
   const difficultyColor = a.difficulty === 'Easy' ? '#7CF5C0' : a.difficulty === 'Medium' ? '#FFD264' : '#f43f5e';
 
@@ -689,8 +697,13 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
                 {[
                   { slug: 'how-to-avoid-crypto-airdrop-scams-2026', title: 'How to Avoid Airdrop Scams' },
                   { slug: 'how-to-build-onchain-activity-that-actually-matters', title: 'Build Onchain Activity That Matters' },
+                  ...(a.cost === 'Free' ? [{ slug: 'free-crypto-airdrops-no-investment-2026', title: 'Best Free Airdrops — No Investment' }] : [{ slug: 'best-airdrop-farming-platforms-2026', title: 'Best Airdrop Farming Platforms 2026' }]),
+                  ...(a.category === 'DeFi' ? [{ slug: 'how-to-get-crypto-airdrops-2026', title: 'How to Get Crypto Airdrops 2026' }] : []),
+                  ...(a.category === 'AI' ? [{ slug: 'best-ai-crypto-airdrops-2026', title: 'Best AI Crypto Airdrops 2026' }] : []),
+                  ...(a.category === 'DePIN' ? [{ slug: 'best-depin-airdrops-2026', title: 'Best DePIN Airdrops 2026' }] : []),
+                  ...(a.blockchain === 'Solana' ? [{ slug: 'best-solana-airdrops-2026', title: 'Best Solana Airdrops 2026' }] : []),
+                  { slug: 'best-crypto-airdrop-websites-2026', title: 'Best Crypto Airdrop Websites 2026' },
                   { slug: 'best-crypto-airdrops-2026', title: 'Best Crypto Airdrops 2026' },
-                  ...(a.cost === 'Free' ? [{ slug: 'best-free-crypto-airdrops-2026', title: 'Best Free Crypto Airdrops 2026' }] : []),
                 ].slice(0, 4).map((article) => (
                   <a key={article.slug} href={`/learn/${article.slug}`} className="dp-learn-link">
                     <span>{article.title}</span>
@@ -714,6 +727,27 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
                       </a>
                     ))}
                   </div>
+                </div>
+              </div>
+            )}
+
+            {/* Similar difficulty & cost */}
+            {similarAirdrops.length > 0 && (
+              <div className="dp-card">
+                <div className="dp-card-inner">
+                  <p className="dp-eyebrow">Also {a.difficulty} · {a.cost}</p>
+                  <div className="dp-related-grid">
+                    {similarAirdrops.map((r: any) => (
+                      <a key={r.slug} href={`/airdrops/${r.slug}`} className="dp-related-card">
+                        {r.logo && <img src={r.logo} alt={r.name} width={30} height={30} style={{ borderRadius: '8px', border: '1px solid rgba(255,255,255,0.07)' }} />}
+                        <div style={{ fontSize: '13px', fontWeight: 600, color: '#E2E4EC', letterSpacing: '-0.01em' }}>{r.name}</div>
+                        <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.28)', fontWeight: 600 }}>{r.category} · {r.blockchain}</div>
+                      </a>
+                    ))}
+                  </div>
+                  <a href="/airdrops" style={{ display: 'block', textAlign: 'center', marginTop: '14px', fontSize: '12px', color: '#7CF5C0', textDecoration: 'none', fontWeight: 600 }}>
+                    Browse all {allAirdrops.length}+ airdrops →
+                  </a>
                 </div>
               </div>
             )}
