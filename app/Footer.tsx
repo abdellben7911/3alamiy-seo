@@ -7,9 +7,9 @@ export default function Footer() {
 
   const platformLinks = [
     { label: 'Airdrops', href: '/airdrops' },
+    { label: 'Calendar', href: '/calendar' },
     { label: 'GM Station', href: '/gm' },
     { label: 'Learn', href: '/learn' },
-    { label: 'Upcoming', href: '/upcoming' },
     { label: 'Profile', href: '/profile' },
   ];
 
