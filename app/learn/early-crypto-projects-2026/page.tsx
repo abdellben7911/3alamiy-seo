@@ -1,336 +1,414 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: '15 Early HyperEVM and Crypto Projects to Watch in 2026 — Pre-Launch Airdrops | 3alamiy Web3',
-  description: 'Discover 15 early-stage crypto projects launching in 2026 across HyperEVM, DeFi, AI, RWA and Gaming. Follow now before they go live and position yourself for potential airdrops.',
-  keywords: 'HyperEVM early projects 2026, early crypto projects 2026, pre-launch crypto airdrops june 2026, upcoming crypto airdrops 2026, HyperEVM projects to watch, early stage defi 2026',
-  alternates: { canonical: 'https://www.3alamiyweb3.com/learn/early-crypto-projects-2026' },
+  title: "Best Early Crypto Projects to Farm in 2026 — Before Everyone Else | 3alamiy Web3",
+  description:
+    "Discover the best early-stage crypto projects to farm in 2026 before they announce airdrops. Tokenless protocols, testnets, and high-potential ecosystems worth positioning in now.",
+  alternates: { canonical: "https://www.3alamiyweb3.com/learn/early-crypto-projects-2026" },
   openGraph: {
-    title: '15 Early HyperEVM and Crypto Projects to Watch in 2026',
-    description: 'Pre-launch projects across HyperEVM, DeFi, AI, RWA and Gaming. Follow now, farm early.',
-    url: 'https://www.3alamiyweb3.com/learn/early-crypto-projects-2026',
-    type: 'article',
+    title: "Best Early Crypto Projects to Farm in 2026 — Before Everyone Else",
+    description: "Discover the best early-stage crypto projects to farm in 2026 before they announce airdrops.",
+    url: "https://www.3alamiyweb3.com/learn/early-crypto-projects-2026",
+    siteName: "3alamiy Web3",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Best Early Crypto Projects to Farm in 2026 — Before Everyone Else",
+    description: "Early-stage crypto projects worth farming in 2026 before the airdrop announcement.",
   },
 };
 
-const articleSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: '15 Early HyperEVM and Crypto Projects to Watch in 2026',
-  description: 'Discover 15 early-stage crypto projects launching in 2026 across HyperEVM, DeFi, AI, RWA and Gaming.',
-  url: 'https://www.3alamiyweb3.com/learn/early-crypto-projects-2026',
-  datePublished: '2026-06-02',
-  dateModified: '2026-06-02',
-  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
-  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
-  speakable: {
-    '@type': 'SpeakableSpecification',
-    cssSelector: ['h1', 'h2', '.ep-sub', '.ep-p:first-of-type'],
-  },
-  about: [
-    { '@type': 'Thing', name: 'HyperEVM' },
-    { '@type': 'Thing', name: 'Crypto Airdrops' },
-    { '@type': 'Thing', name: 'DeFi' },
-    { '@type': 'Thing', name: 'Early Stage Crypto Projects' },
-  ],
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Best Early Crypto Projects to Farm in 2026 — Before Everyone Else",
+  description: "Discover the best early-stage crypto projects to farm in 2026 before they announce airdrops.",
+  author: { "@type": "Organization", name: "3alamiy Web3" },
+  publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
+  datePublished: "2026-06-02",
+  dateModified: "2026-06-02",
+  mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/early-crypto-projects-2026" },
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
   mainEntity: [
     {
-      '@type': 'Question',
-      name: 'What are the best early crypto projects to watch in 2026?',
-      acceptedAnswer: { '@type': 'Answer', text: 'The best early crypto projects to watch in 2026 include Monetrix (HyperEVM yield stablecoin), Shodai Network (decentralized AI agents), Keringit AI (no-code Web3 builder), Quay Markets (onchain DEX), and ParlayMatch (blockchain sports prediction). All are pre-launch and represent early positioning opportunities before broader market awareness.' },
+      "@type": "Question",
+      name: "How do you find early crypto projects before they airdrop?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Look for tokenless protocols — projects with active users and no token yet. Check VC funding announcements on platforms like Crunchbase or crypto news sites. Follow ecosystem grants programs on new Layer 1 and Layer 2 chains. The best opportunities are projects with real usage but no token yet.",
+      },
     },
     {
-      '@type': 'Question',
-      name: 'How do you find early crypto projects before they launch?',
-      acceptedAnswer: { '@type': 'Answer', text: 'The best ways to find early crypto projects before launch: follow crypto Twitter/X for project announcements, monitor VC firm portfolio pages (a16z, Paradigm, Multicoin), join early-stage Discord communities, follow airdrop trackers like 3alamiy Web3, and watch for testnet launches. Early interaction before token launch maximizes potential airdrop allocation.' },
+      "@type": "Question",
+      name: "What makes a crypto project high potential for an airdrop?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Key signals: VC funding from top firms (a16z, Paradigm, Sequoia), active mainnet with real users, no token yet, growing TVL or trading volume, and recent testnet launches. Projects that tick all five boxes are the strongest airdrop candidates.",
+      },
     },
     {
-      '@type': 'Question',
-      name: 'Do early crypto projects give airdrops?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Yes. Most early-stage crypto projects distribute a portion of their token supply to early users, testers, and community members. Historical examples include Hyperliquid (31% of supply to early users, average $10,000+ per wallet), Uniswap (400 UNI to all early users), and Arbitrum (large allocation to early bridge users). Following and engaging with projects before launch significantly improves allocation chances.' },
+      "@type": "Question",
+      name: "Is it risky to farm early crypto projects?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Early projects carry more risk — some never launch a token, some get abandoned, and some turn out to be scams. Always verify the team, check funding sources, and never deposit more than you can afford to lose. Stick to projects backed by reputable VCs and with verifiable on-chain activity.",
+      },
     },
     {
-      '@type': 'Question',
-      name: 'What is HyperEVM and why are so many projects building on it?',
-      acceptedAnswer: { '@type': 'Answer', text: 'HyperEVM is the EVM-compatible smart contract layer on Hyperliquid, launched February 18, 2026. Projects build on HyperEVM to access Hyperliquid\'s existing user base and deep liquidity. Early HyperEVM projects often receive points multipliers from Hyperliquid itself, making them doubly attractive for airdrop farmers — you earn the new project\'s potential airdrop AND build Hyperliquid Season 2 points simultaneously.' },
+      "@type": "Question",
+      name: "What are the best tokenless protocols to farm in 2026?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "High-potential tokenless protocols in 2026 include Base (Coinbase's Layer 2), MetaMask, Backpack Exchange, and several new DeFi and infrastructure protocols. These have large user bases and no token yet, making them prime retroactive airdrop candidates.",
+      },
     },
     {
-      '@type': 'Question',
-      name: 'Is it risky to interact with early crypto projects?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Yes. Early-stage projects carry significant risk: smart contract vulnerabilities, project abandonment, rug pulls, and regulatory issues. Always use a dedicated farming wallet separate from your main wallet. Never deposit more than you can afford to lose. Research the team, check for audits, and verify contract addresses from official sources. The projects listed here are unaudited and early-stage — DYOR before participating.' },
+      "@type": "Question",
+      name: "How much time should I spend farming early projects?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Quality beats quantity. Focus on 3-5 high-conviction projects and build genuine activity over months. Spreading thin across 50 projects with minimal activity rarely qualifies for significant allocations. Consistent, genuine usage is what projects reward.",
+      },
     },
   ],
 };
 
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.3alamiyweb3.com' },
-    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://www.3alamiyweb3.com/learn' },
-    { '@type': 'ListItem', position: 3, name: '15 Early Crypto Projects 2026', item: 'https://www.3alamiyweb3.com/learn/early-crypto-projects-2026' },
-  ],
-};
-
-const howToSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'HowTo',
-  name: 'How to Farm Early Crypto Projects for Airdrops in 2026',
-  description: 'Step-by-step guide to positioning yourself in early-stage crypto projects before token launch to maximize airdrop eligibility.',
-  step: [
-    { '@type': 'HowToStep', name: 'Follow on X immediately', text: 'Follow every early project on X/Twitter as soon as you discover them. This costs nothing and keeps you updated when they open access.' },
-    { '@type': 'HowToStep', name: 'Join Discord or Telegram', text: 'Most projects announce Discord or Telegram links on their X profile. Early community members almost always qualify for better airdrop allocations.' },
-    { '@type': 'HowToStep', name: 'Complete available social tasks', text: 'If the project has a Galxe campaign, waitlist, or quest system, complete it immediately. These are typically free and take under 5 minutes.' },
-    { '@type': 'HowToStep', name: 'Interact when testnet or beta opens', text: 'The moment they announce testnet or early access, use the protocol. Swap, deposit, or stake. Consistency matters more than size of investment.' },
-    { '@type': 'HowToStep', name: 'Set a reminder for token launch', text: 'Add the project to your watch list. When they announce a TGE (token generation event), you want to be positioned before launch day.' },
-  ],
-};
-
-const projects = [
-  { name: 'Monetrix', handle: '@Monetrix_xyz', category: 'DeFi / HyperEVM', chain: 'HyperEVM', url: 'https://x.com/Monetrix_xyz', why: 'Yield-bearing stablecoin on HyperEVM. If HyperEVM DeFi takes off the way early Arbitrum did, stablecoin protocols will be among the highest-value positions. Follow now and interact when testnet launches.', catColor: '#7CF5C0' },
-  { name: 'Tacit Finance', handle: '@tacitfi', category: 'DeFi', chain: 'Multi-chain', url: 'https://x.com/tacitfi', why: 'Automated yield strategies and onchain asset management. Yield automation is one of the most consistently rewarded categories in DeFi airdrops.', catColor: '#7CF5C0' },
-  { name: 'Dekant Finance', handle: '@Dekantfi', category: 'RWA', chain: 'Multi-chain', url: 'https://x.com/Dekantfi', why: 'Tokenized real-world assets (RWA) is one of 2026\'s hottest narratives. Early RWA platforms have historically rewarded beta testers and early depositors well.', catColor: '#f59e0b' },
-  { name: 'Shodai Network', handle: '@shodai_network', category: 'AI / Infrastructure', chain: 'Multi-chain', url: 'https://x.com/shodai_network', why: 'Decentralized AI agents and web3 infrastructure. AI + blockchain projects raised the most VC money in early 2026. Infrastructure projects tend to have larger community allocations.', catColor: '#c084fc' },
-  { name: 'Nivo Finance', handle: '@Nivo_finance', category: 'DeFi', chain: 'Multi-chain', url: 'https://x.com/Nivo_finance', why: 'Yield optimization and automated lending. Projects in this category often reward consistent daily users heavily — similar to how early Yearn Finance and AAVE users were rewarded.', catColor: '#7CF5C0' },
-  { name: 'Ekiden Finance', handle: '@Ekidenfi', category: 'DeFi / Privacy', chain: 'Multi-chain', url: 'https://x.com/Ekidenfi', why: 'Private onchain trading and liquidity. Privacy DeFi is a growing niche with limited competition. Early users of privacy protocols have historically been very well rewarded.', catColor: '#7CF5C0' },
-  { name: 'Spandex', handle: '@spandexsh', category: 'Infrastructure', chain: 'Multi-chain', url: 'https://x.com/spandexsh', why: 'Web3 app deployment and blockchain automation for developers. Developer tooling projects often have large community allocations for early beta users and integration partners.', catColor: '#818cf8' },
-  { name: 'OpenStock', handle: '@openstockInc', category: 'Social / Identity', chain: 'Multi-chain', url: 'https://x.com/openstockInc', why: 'Onchain social platform and digital identity. Social protocols are increasingly rewarding active community members. Early account creation and engagement is the lowest-effort farm.', catColor: '#60a5fa' },
-  { name: 'Nota RWA', handle: '@nota_rwa', category: 'RWA / Productivity', chain: 'Multi-chain', url: 'https://x.com/nota_rwa', why: 'Notes and collaboration with RWA integration. Niche crossover between productivity and tokenization. Early waitlist signups cost nothing and often qualify for launch allocations.', catColor: '#f59e0b' },
-  { name: 'Nusa Harvest', handle: '@nusaHarvest', category: 'DeFi / Rewards', chain: 'Multi-chain', url: 'https://x.com/nusaHarvest', why: 'Farming rewards platform with community incentives. Community-first platforms tend to be generous with airdrop allocations to early Discord and Telegram members.', catColor: '#7CF5C0' },
-  { name: 'Swords and Solana', handle: '@swordsandsolana', category: 'Gaming / NFT', chain: 'Solana', url: 'https://x.com/swordsandsolana', why: 'Solana blockchain gaming with fantasy battles and NFTs. Gaming projects on Solana have strong historical precedent for rewarding early Discord members and NFT holders.', catColor: '#9945FF' },
-  { name: 'Quay Markets', handle: '@Quaymarkets', category: 'DeFi / DEX', chain: 'Multi-chain', url: 'https://x.com/Quaymarkets', why: 'Decentralized trading and liquidity. DEX protocols are among the most reliably airdrop-generous categories — Uniswap, dYdX, and Hyperliquid all rewarded early traders massively.', catColor: '#7CF5C0' },
-  { name: 'ParlayMatch', handle: '@ParlayMatch', category: 'Prediction Market', chain: 'Multi-chain', url: 'https://x.com/ParlayMatch', why: 'Blockchain sports prediction and competitive wagering. With Polymarket confirming a POLY token, the prediction market sector is heating up. Early users of any prediction platform now are well-positioned.', catColor: '#f59e0b' },
-  { name: 'Keycard Solana', handle: '@keycardsol', category: 'Infrastructure / Identity', chain: 'Solana', url: 'https://x.com/keycardsol', why: 'Solana digital identity and web3 authentication. Identity infrastructure is a foundational layer — projects in this category often receive ecosystem grants and reward early integration partners.', catColor: '#9945FF' },
-  { name: 'Keringit AI', handle: '@Keringit_ai', category: 'AI / No-Code', chain: 'Multi-chain', url: 'https://x.com/Keringit_ai', why: 'AI-powered no-code builder for dApps and smart contracts. No-code Web3 tools target a massive underserved market. AI builders have been among the most-funded categories in 2026.', catColor: '#c084fc' },
+const categories = [
+  {
+    title: "Layer 1 & Layer 2 Ecosystems",
+    color: "#7CF5C0",
+    bg: "rgba(124,245,192,0.06)",
+    border: "rgba(124,245,192,0.18)",
+    icon: "⛓️",
+    desc: "New chains with active ecosystems and no token yet are the highest-upside opportunities. Early users across all protocols in the ecosystem often qualify for multiple airdrops.",
+    projects: [
+      { name: "Base", chain: "Ethereum L2", signal: "Coinbase backing, millions of users, no token", how: "Bridge ETH, use Base DeFi apps, complete Base quests", risk: "Low", potential: "Very High" },
+      { name: "Monad", chain: "EVM L1", signal: "Raised $225M, EVM-compatible, launching soon", how: "Join testnet, complete tasks, stay active in Discord", risk: "Low", potential: "Very High" },
+      { name: "MegaETH", chain: "Ethereum L2", signal: "Real-time blockchain, strong VC backing", how: "Testnet participation, ecosystem protocol usage", risk: "Medium", potential: "High" },
+    ],
+  },
+  {
+    title: "DeFi Protocols",
+    color: "#c084fc",
+    bg: "rgba(192,132,252,0.06)",
+    border: "rgba(192,132,252,0.18)",
+    icon: "💱",
+    desc: "DeFi protocols with real TVL and no token are prime retroactive airdrop candidates. The key is using them genuinely over time — not one-time interactions.",
+    projects: [
+      { name: "Backpack Exchange", chain: "Multi-chain", signal: "Raised $17M, fast-growing CEX/DEX hybrid, no token", how: "Trade regularly, deposit funds, use all features", risk: "Low", potential: "High" },
+      { name: "MetaMask", chain: "Multi-chain", signal: "Largest wallet, 30M+ users, no token", how: "Use MetaMask Swaps, Bridges, and Portfolio features daily", risk: "Very Low", potential: "High" },
+      { name: "Jupiter Exchange", chain: "Solana", signal: "Dominant Solana DEX aggregator, active points program", how: "Swap regularly on Jupiter, use Jupiter Perps, stake JLP", risk: "Low", potential: "High" },
+    ],
+  },
+  {
+    title: "AI & DePIN",
+    color: "#60a5fa",
+    bg: "rgba(96,165,250,0.06)",
+    border: "rgba(96,165,250,0.18)",
+    icon: "🤖",
+    desc: "AI and DePIN projects are the fastest-growing sector in 2026. Many have VC funding and active products but no token yet — ideal for early positioning.",
+    projects: [
+      { name: "Grass", chain: "Solana", signal: "Decentralized web scraping network, points active", how: "Install Grass extension, keep it running, refer friends", risk: "Low", potential: "High" },
+      { name: "Humanity Protocol", chain: "EVM", signal: "Biometric proof-of-humanity, $30M raised", how: "Complete palm scan verification, stay active in community", risk: "Medium", potential: "High" },
+      { name: "Nillion Network", chain: "Multi-chain", signal: "Privacy computation, $25M raised, testnet active", how: "Run Nillion node, complete testnet tasks", risk: "Medium", potential: "High" },
+    ],
+  },
+  {
+    title: "Prediction Markets",
+    color: "#f59e0b",
+    bg: "rgba(245,158,11,0.06)",
+    border: "rgba(245,158,11,0.18)",
+    icon: "📊",
+    desc: "Prediction markets are exploding in 2026. Beyond Polymarket, several competitors and adjacent platforms are building with no token yet.",
+    projects: [
+      { name: "Kalshi", chain: "Multi-chain", signal: "CFTC-regulated prediction market, IPO rumors, no token", how: "Trade on Kalshi markets regularly, diversify across categories", risk: "Low", potential: "High" },
+      { name: "Drift Protocol", chain: "Solana", signal: "Largest Solana perp DEX, active points program", how: "Trade perps, provide liquidity, use all Drift features", risk: "Medium", potential: "High" },
+    ],
+  },
+  {
+    title: "Infrastructure",
+    color: "#818cf8",
+    bg: "rgba(129,140,248,0.06)",
+    border: "rgba(129,140,248,0.18)",
+    icon: "🔧",
+    desc: "Infrastructure projects — bridges, oracles, rollup stacks — reward early users and developers. Often overlooked but historically some of the highest-value airdrops.",
+    projects: [
+      { name: "Linera", chain: "Multi-chain", signal: "Parallel blockchain architecture, strong VC backing", how: "Join testnet, run a microchain, stay active in developer community", risk: "Medium", potential: "High" },
+      { name: "Arch Network", chain: "Bitcoin L2", signal: "Bitcoin programmability layer, unique positioning", how: "Join testnet, complete developer tasks, Discord active", risk: "Medium", potential: "High" },
+    ],
+  },
 ];
 
-const categoryGroups = [
-  { label: 'DeFi / HyperEVM', color: '#7CF5C0', projects: ['Monetrix', 'Tacit Finance', 'Nivo Finance', 'Ekiden Finance', 'Quay Markets'] },
-  { label: 'AI / Infrastructure', color: '#c084fc', projects: ['Shodai Network', 'Spandex', 'Keringit AI'] },
-  { label: 'RWA', color: '#f59e0b', projects: ['Dekant Finance', 'Nota RWA'] },
-  { label: 'Solana', color: '#9945FF', projects: ['Swords and Solana', 'Keycard Solana'] },
-  { label: 'Other', color: '#60a5fa', projects: ['OpenStock', 'Nusa Harvest', 'ParlayMatch'] },
+const signals = [
+  { title: "VC Funding from Top Firms", desc: "a16z, Paradigm, Sequoia, Multicoin backing = serious project with resources to launch a token", icon: "💰" },
+  { title: "Active Product, No Token", desc: "Real users, real TVL or volume, but no token yet — the classic retroactive airdrop setup", icon: "⚡" },
+  { title: "Testnet Recently Launched", desc: "Testnet = imminent mainnet = imminent token. Be there before the mainnet launch announcement", icon: "🧪" },
+  { title: "Growing Discord & Community", desc: "Active Discord with regular updates and team engagement = project is building toward a launch", icon: "👥" },
+  { title: "Points Program Active", desc: "Points programs are always pre-token. If a project is tracking points, a token is coming", icon: "🎯" },
 ];
 
-export default function EarlyProjects2026() {
+const mistakes = [
+  { mistake: "Farming too many projects at once", fix: "Focus on 3-5 high-conviction projects. Shallow activity across 50 projects rarely qualifies for significant allocations." },
+  { mistake: "One-time interactions only", fix: "Use the protocol regularly over weeks and months. Single interactions are easy for projects to filter out as farming." },
+  { mistake: "Ignoring ecosystem protocols", fix: "When a new L1 or L2 launches a token, ALL protocols in that ecosystem often get attention. Farm the ecosystem, not just one project." },
+  { mistake: "Waiting for the announcement", fix: "By announcement time, the snapshot may already be taken. The best allocations go to users who were there before anyone knew there was an airdrop." },
+  { mistake: "Using multiple wallets", fix: "One genuine wallet beats ten farming wallets. Sybil detection has become extremely sophisticated in 2026." },
+];
+
+export default function EarlyCryptoProjects2026() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+
       <style>{`
-        .ep-wrap { min-height:100vh; background:#060A12; font-family:var(--font-space),'Space Grotesk',system-ui,sans-serif; }
-        .ep-hero { background:#060A12; border-bottom:1px solid rgba(255,255,255,0.06); padding:56px 24px 48px; position:relative; overflow:hidden; }
-        .ep-hero-glow { position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:700px; height:500px; background:radial-gradient(ellipse,rgba(124,245,192,0.05) 0%,transparent 65%); pointer-events:none; }
-        .ep-hero-inner { max-width:800px; margin:0 auto; position:relative; }
-        .ep-breadcrumb { display:flex; align-items:center; gap:6px; margin-bottom:20px; }
-        .ep-breadcrumb a { font-size:12px; color:rgba(255,255,255,0.3); text-decoration:none; }
-        .ep-breadcrumb span { color:rgba(255,255,255,0.15); font-size:12px; }
-        .ep-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(124,245,192,0.08); border:1px solid rgba(124,245,192,0.2); color:#7CF5C0; padding:4px 12px; border-radius:99px; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:18px; }
-        .ep-title { font-size:clamp(26px,5vw,40px); font-weight:700; color:#fff; letter-spacing:-0.03em; line-height:1.12; margin:0 0 14px; }
-        .ep-title span { color:#7CF5C0; }
-        .ep-sub { font-size:14px; color:rgba(255,255,255,0.4); line-height:1.75; max-width:600px; margin:0 0 28px; }
-        .ep-stats { display:flex; gap:28px; flex-wrap:wrap; }
-        .ep-stat-val { font-size:20px; font-weight:700; color:#7CF5C0; }
-        .ep-stat-lbl { font-size:10px; color:rgba(255,255,255,0.25); font-weight:600; text-transform:uppercase; letter-spacing:0.07em; margin-top:2px; }
-        .ep-article { max-width:800px; margin:0 auto; padding:48px 24px 100px; }
-        .ep-alert { background:rgba(245,158,11,0.04); border:1px solid rgba(245,158,11,0.14); border-left:3px solid rgba(245,158,11,0.5); border-radius:10px; padding:16px 20px; margin-bottom:36px; }
-        .ep-alert p { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.75; margin:0; }
-        .ep-alert strong { color:#f59e0b; }
-        .ep-h2 { font-size:20px; font-weight:700; color:#fff; letter-spacing:-0.02em; margin:44px 0 14px; }
-        .ep-p { font-size:14px; color:rgba(255,255,255,0.45); line-height:1.85; margin:0 0 14px; }
-        .ep-p strong { color:rgba(255,255,255,0.75); font-weight:600; }
-        .ep-divider { border:none; border-top:1px solid rgba(255,255,255,0.06); margin:40px 0; }
-        .ep-cats { display:flex; gap:8px; flex-wrap:wrap; margin:0 0 36px; }
-        .ep-cat { font-size:11px; font-weight:700; padding:4px 12px; border-radius:99px; }
-        .ep-projects { display:flex; flex-direction:column; gap:12px; margin:20px 0 40px; }
-        .ep-proj { background:#0D1221; border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:18px; transition:border-color 0.15s; }
-        .ep-proj:hover { border-color:rgba(124,245,192,0.18); }
-        .ep-proj-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; flex-wrap:wrap; gap:8px; }
-        .ep-proj-left { display:flex; align-items:center; gap:10px; }
-        .ep-proj-num { width:24px; height:24px; border-radius:6px; background:rgba(124,245,192,0.08); border:1px solid rgba(124,245,192,0.18); color:#7CF5C0; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-        .ep-proj-name { font-size:14px; font-weight:700; color:#fff; }
-        .ep-proj-handle { font-size:11px; color:rgba(255,255,255,0.3); }
-        .ep-proj-badges { display:flex; gap:6px; flex-wrap:wrap; }
-        .ep-proj-cat { font-size:9px; font-weight:700; padding:2px 8px; border-radius:5px; text-transform:uppercase; letter-spacing:0.05em; }
-        .ep-proj-chain { font-size:9px; font-weight:700; padding:2px 8px; border-radius:5px; background:rgba(255,255,255,0.04); color:rgba(255,255,255,0.3); border:1px solid rgba(255,255,255,0.07); }
-        .ep-proj-why { font-size:12px; color:rgba(255,255,255,0.35); line-height:1.65; margin:0 0 12px; }
-        .ep-proj-action { display:flex; align-items:center; justify-content:space-between; }
-        .ep-proj-link { font-size:11px; font-weight:700; color:#7CF5C0; text-decoration:none; display:flex; align-items:center; gap:4px; }
-        .ep-proj-link:hover { opacity:0.8; }
-        .ep-steps { display:flex; flex-direction:column; gap:10px; margin:16px 0 28px; }
-        .ep-step { background:#0D1221; border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:14px 16px; display:flex; gap:12px; }
-        .ep-step-num { width:22px; height:22px; border-radius:6px; background:rgba(124,245,192,0.08); border:1px solid rgba(124,245,192,0.18); color:#7CF5C0; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-        .ep-step-text { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.6; margin:0; }
-        .ep-step-text strong { color:#fff; font-weight:600; }
-        .ep-faqs { display:flex; flex-direction:column; gap:10px; margin:20px 0; }
-        .ep-faq { background:#0D1221; border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:16px 18px; }
-        .ep-faq-q { font-size:13px; font-weight:600; color:#fff; margin:0 0 8px; }
-        .ep-faq-a { font-size:12px; color:rgba(255,255,255,0.38); line-height:1.7; margin:0; }
-        .ep-cta { background:rgba(124,245,192,0.04); border:1px solid rgba(124,245,192,0.12); border-radius:16px; padding:28px; text-align:center; margin-top:48px; }
-        .ep-cta-title { font-size:18px; font-weight:700; color:#fff; margin:0 0 8px; }
-        .ep-cta-sub { font-size:13px; color:rgba(255,255,255,0.35); margin:0 0 20px; }
-        .ep-cta-btns { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
-        .ep-btn-p { background:#7CF5C0; color:#060A12; font-weight:700; font-size:13px; padding:11px 22px; border-radius:10px; text-decoration:none; }
-        .ep-btn-g { background:transparent; color:rgba(255,255,255,0.5); font-weight:600; font-size:13px; padding:11px 22px; border-radius:10px; text-decoration:none; border:1px solid rgba(255,255,255,0.1); }
-        .ep-footer-links { display:flex; gap:16px; flex-wrap:wrap; margin-top:48px; padding-top:28px; border-top:1px solid rgba(255,255,255,0.06); }
-        .ep-footer-links a { font-size:13px; color:rgba(255,255,255,0.28); text-decoration:none; }
-        .ep-footer-links a:hover { color:rgba(255,255,255,0.6); }
-        @media (max-width:560px) { .ep-stats { gap:20px; } .ep-cta-btns { flex-direction:column; } }
+        .ec * { box-sizing: border-box; }
+        .ec { background: #060A12; min-height: 100vh; color: #fff; font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif; }
+        .ec-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 80px; }
+        .ec-bc { font-size: 13px; color: rgba(255,255,255,0.25); margin-bottom: 32px; display: flex; align-items: center; gap: 8px; }
+        .ec-bc a { color: rgba(255,255,255,0.25); text-decoration: none; }
+        .ec-badge { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; background: rgba(124,245,192,0.1); color: #7CF5C0; border: 1px solid rgba(124,245,192,0.18); padding: 3px 10px; border-radius: 99px; text-transform: uppercase; margin-right: 10px; }
+        .ec-h1 { font-size: clamp(24px, 5vw, 36px); font-weight: 700; line-height: 1.2; margin: 16px 0; color: #fff; }
+        .ec-h1 span { color: #7CF5C0; }
+        .ec-sub { font-size: 16px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 12px; }
+        .ec-meta { font-size: 13px; color: rgba(255,255,255,0.25); margin-bottom: 16px; }
+        .ec-meta span { color: rgba(255,255,255,0.45); }
+        .ec-byline { display: flex; align-items: center; gap: 10px; margin-bottom: 40px; padding: 12px 16px; background: rgba(124,245,192,0.04); border: 1px solid rgba(124,245,192,0.1); border-radius: 10px; }
+        .ec-byline-avatar { width: 32px; height: 32px; border-radius: 50%; background: rgba(124,245,192,0.15); border: 1px solid rgba(124,245,192,0.25); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+        .ec-byline-name { font-size: 13px; font-weight: 700; color: #fff; }
+        .ec-byline-sub { font-size: 11px; color: rgba(255,255,255,0.35); }
+        .ec-byline-sub a { color: #7CF5C0; text-decoration: none; }
+
+        /* Quick answer */
+        .ec-qa { background: rgba(124,245,192,0.05); border: 1px solid rgba(124,245,192,0.18); border-radius: 14px; padding: 18px 20px; margin-bottom: 48px; display: flex; gap: 14px; }
+        .ec-qa-label { font-size: 11px; font-weight: 700; color: #7CF5C0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+        .ec-qa-text { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; margin: 0; }
+        .ec-qa-text strong { color: #fff; }
+
+        /* Section */
+        .ec-section { margin-bottom: 52px; }
+        .ec-h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .ec-p { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 20px; }
+
+        /* Category */
+        .ec-cat { background: rgba(255,255,255,0.02); border-radius: 16px; margin-bottom: 24px; overflow: hidden; }
+        .ec-cat-head { padding: 18px 20px 14px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .ec-cat-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .ec-cat-icon { font-size: 18px; }
+        .ec-cat-title { font-size: 16px; font-weight: 700; color: #fff; }
+        .ec-cat-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 99px; }
+        .ec-cat-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.65; }
+
+        /* Project rows */
+        .ec-project { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.04); }
+        .ec-project-name { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .ec-project-signal { font-size: 12px; color: rgba(255,255,255,0.35); margin-bottom: 10px; line-height: 1.5; }
+        .ec-project-signal strong { color: rgba(255,255,255,0.6); }
+        .ec-project-how { font-size: 12px; color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 8px 12px; margin-bottom: 10px; line-height: 1.6; }
+        .ec-project-how strong { color: #7CF5C0; }
+        .ec-project-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+        .ec-tag { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 99px; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.03); }
+
+        /* Signals */
+        .ec-signals { display: flex; flex-direction: column; gap: 10px; }
+        .ec-signal { background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 14px 18px; display: flex; gap: 14px; align-items: flex-start; }
+        .ec-signal-icon { font-size: 20px; flex-shrink: 0; }
+        .ec-signal-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .ec-signal-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+        /* Mistakes */
+        .ec-mistakes { display: flex; flex-direction: column; gap: 10px; }
+        .ec-mistake { background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 14px 18px; }
+        .ec-mistake-title { font-size: 13px; font-weight: 600; color: "#fff"; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .ec-mistake-fix { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+        .ec-mistake-fix strong { color: #7CF5C0; }
+
+        /* FAQ */
+        .ec-faqs { display: flex; flex-direction: column; gap: 10px; }
+        .ec-faq { background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 18px 20px; }
+        .ec-faq h3 { font-weight: 600; color: #fff; font-size: 14px; margin-bottom: 8px; }
+        .ec-faq p { color: rgba(255,255,255,0.45); font-size: 13px; margin: 0; line-height: 1.7; }
+
+        /* Related */
+        .ec-related { display: flex; flex-direction: column; gap: 8px; }
+        .ec-related-link { display: flex; align-items: center; justify-content: space-between; background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 13px 16px; text-decoration: none; color: rgba(255,255,255,0.6); font-size: 13px; font-weight: 500; }
+        .ec-related-link span:last-child { color: #7CF5C0; font-size: 12px; }
+
+        /* CTA */
+        .ec-cta { background: rgba(124,245,192,0.06); border: 1px solid rgba(124,245,192,0.18); border-radius: 16px; padding: 40px 28px; text-align: center; }
+        .ec-cta h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+        .ec-cta p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 420px; margin: 0 auto 24px; }
+        .ec-cta-btn { display: inline-flex; align-items: center; gap: 6px; background: #7CF5C0; color: #060A12; font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: 99px; text-decoration: none; }
+        .ec-note { font-size: 11px; color: rgba(255,255,255,0.18); margin-top: 16px; }
+
+        @media (max-width: 600px) {
+          .ec-wrap { padding: 32px 16px 64px; }
+          .ec-cta { padding: 28px 16px; }
+        }
       `}</style>
 
-      <div className="ep-wrap">
-        <div className="ep-hero">
-          <div className="ep-hero-glow" />
-          <div className="ep-hero-inner">
-            <div className="ep-breadcrumb">
-              <Link href="/">Home</Link>
-              <span>›</span>
-              <Link href="/learn">Learn</Link>
-              <span>›</span>
-              <span style={{ fontSize:'12px', color:'#7CF5C0', fontWeight:600 }}>Early Projects 2026</span>
+      <main className="ec">
+        <div className="ec-wrap">
+
+          {/* Breadcrumb */}
+          <nav className="ec-bc">
+            <Link href="/">Home</Link><span>/</span>
+            <Link href="/learn">Learn</Link><span>/</span>
+            <span style={{ color: "rgba(255,255,255,0.45)" }}>Early Crypto Projects 2026</span>
+          </nav>
+
+          {/* Header */}
+          <div>
+            <span className="ec-badge">Strategy</span>
+            <h1 className="ec-h1">Best Early Crypto Projects to Farm in 2026 <span>— Before Everyone Else</span></h1>
+            <p className="ec-sub">The biggest airdrop allocations always go to users who were there before the announcement. Here are the highest-potential early-stage projects worth farming right now — and exactly how to do it.</p>
+            <p className="ec-meta">By <span>3alamiy Team</span> · June 2, 2026 · 9 min read</p>
+            <div className="ec-byline">
+              <div className="ec-byline-avatar">🪂</div>
+              <div>
+                <div className="ec-byline-name">3alamiy Team</div>
+                <div className="ec-byline-sub">Web3 Airdrop Research · <a href="https://www.3alamiyweb3.com">3alamiyweb3.com</a></div>
+              </div>
             </div>
-            <div className="ep-badge">Pre-Launch Alpha — June 2026</div>
-            <h1 className="ep-title">
-              15 Early HyperEVM<br />
-              <span>and Crypto Projects 2026</span>
-            </h1>
-            <p className="ep-sub">
-              Pre-launch projects across DeFi, AI, RWA, Gaming and HyperEVM. Follow now, engage early, and position yourself before broader market awareness. No investment required to start.
+          </div>
+
+          {/* Quick Answer */}
+          <div className="ec-qa">
+            <span style={{ fontSize: 22, flexShrink: 0 }}>⚡</span>
+            <div>
+              <p className="ec-qa-label">Quick Answer</p>
+              <p className="ec-qa-text">
+                The best early projects to farm in 2026 are <strong>tokenless protocols with real usage</strong> — Base, MetaMask, Backpack, Monad testnet, and new DeFi protocols on emerging chains. The strategy: use them genuinely over months before any airdrop announcement. By announcement time, the best allocations are already locked in.
+              </p>
+            </div>
+          </div>
+
+          {/* Why Early */}
+          <section className="ec-section">
+            <h2 className="ec-h2">Why Early Positioning Wins Every Time</h2>
+            <p className="ec-p">
+              The history of crypto airdrops is clear — the largest allocations consistently go to the earliest users. Uniswap, Arbitrum, Optimism, Hyperliquid — in every case, users who were active months before the announcement received multiples more than those who joined after the news broke.
             </p>
-            <div className="ep-stats">
-              {[['15', 'Early Projects'], ['5', 'Categories'], ['Free', 'To Follow'], ['2026', 'Pre-Launch']].map(([val, lbl]) => (
-                <div key={lbl}>
-                  <div className="ep-stat-val">{val}</div>
-                  <div className="ep-stat-lbl">{lbl}</div>
+            <p className="ec-p">
+              In 2026, this dynamic is even stronger. Projects use sophisticated on-chain analysis to identify genuine long-term users. A wallet with 8 months of consistent activity will always outperform a wallet that rushed in the week before the snapshot — even if the late wallet has more transactions.
+            </p>
+            <p className="ec-p">
+              The opportunity is finding the projects that have not announced yet but are clearly building toward a token. That is what this guide is for.
+            </p>
+          </section>
+
+          {/* 5 Signals */}
+          <section className="ec-section">
+            <h2 className="ec-h2">5 Signals a Project Will Airdrop</h2>
+            <p className="ec-p">Before farming any project, check these five signals. The more boxes it ticks, the higher the conviction.</p>
+            <div className="ec-signals">
+              {signals.map((s) => (
+                <div key={s.title} className="ec-signal">
+                  <span className="ec-signal-icon">{s.icon}</span>
+                  <div>
+                    <div className="ec-signal-title">{s.title}</div>
+                    <div className="ec-signal-desc">{s.desc}</div>
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
-        </div>
+          </section>
 
-        <div className="ep-article">
-
-          <div className="ep-alert">
-            <p><strong>DYOR always.</strong> These are early-stage, pre-launch projects with no confirmed airdrops. We can bring them to your attention — researching them and deciding whether to participate is entirely up to you. Never invest more than you can afford to lose.</p>
-          </div>
-
-          <h2 className="ep-h2">Why Follow Projects Before They Launch?</h2>
-          <p className="ep-p">The biggest airdrops in crypto history — Hyperliquid, Uniswap, Arbitrum, dYdX — rewarded users who were there <strong>before everyone else noticed</strong>. The Hyperliquid airdrop paid an average of $10,000+ to early testnet users. Uniswap gave 400 UNI to every early address when UNI was worth $3,000+.</p>
-          <p className="ep-p">By the time a project trends on crypto Twitter, the best positions are already taken. The strategy is simple: <strong>find projects early, follow them, and interact the moment they open access.</strong> The cost is zero. You just need to know where to look.</p>
-          <p className="ep-p">These 15 projects are all pre-launch as of June 2026. None have tokens yet. All are building in categories where crypto has historically rewarded early users most generously.</p>
-
-          <div className="ep-cats">
-            {categoryGroups.map(g => (
-              <span key={g.label} className="ep-cat" style={{ background: `${g.color}12`, color: g.color, border: `1px solid ${g.color}25` }}>
-                {g.label} ({g.projects.length})
-              </span>
-            ))}
-          </div>
-
-          <hr className="ep-divider" />
-
-          <h2 className="ep-h2">The 15 Projects</h2>
-
-          <div className="ep-projects">
-            {projects.map((p, i) => (
-              <div key={p.name} className="ep-proj">
-                <div className="ep-proj-top">
-                  <div className="ep-proj-left">
-                    <div className="ep-proj-num">{i + 1}</div>
-                    <div>
-                      <div className="ep-proj-name">{p.name}</div>
-                      <div className="ep-proj-handle">{p.handle}</div>
+          {/* Projects by Category */}
+          <section className="ec-section">
+            <h2 className="ec-h2">Best Early Projects by Category</h2>
+            <p className="ec-p">These are the highest-conviction early farming opportunities in 2026 — organized by sector with exact participation strategies.</p>
+            {categories.map((cat) => (
+              <div key={cat.title} className="ec-cat" style={{ border: `1px solid ${cat.border}`, background: cat.bg }}>
+                <div className="ec-cat-head">
+                  <div className="ec-cat-top">
+                    <span className="ec-cat-icon">{cat.icon}</span>
+                    <span className="ec-cat-title">{cat.title}</span>
+                    <span className="ec-cat-badge" style={{ color: cat.color, background: `${cat.color}15`, border: `1px solid ${cat.color}30` }}>{cat.projects.length} projects</span>
+                  </div>
+                  <p className="ec-cat-desc">{cat.desc}</p>
+                </div>
+                {cat.projects.map((p) => (
+                  <div key={p.name} className="ec-project">
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4, flexWrap: "wrap", gap: 8 }}>
+                      <div className="ec-project-name">{p.name}</div>
+                      <div className="ec-project-tags">
+                        <span className="ec-tag" style={{ color: "rgba(255,255,255,0.4)" }}>{p.chain}</span>
+                        <span className="ec-tag" style={{ color: p.risk === "Low" || p.risk === "Very Low" ? "#7CF5C0" : "#f59e0b" }}>Risk: {p.risk}</span>
+                        <span className="ec-tag" style={{ color: cat.color }}>Potential: {p.potential}</span>
+                      </div>
                     </div>
+                    <p className="ec-project-signal"><strong>Signal: </strong>{p.signal}</p>
+                    <div className="ec-project-how"><strong>How to farm: </strong>{p.how}</div>
                   </div>
-                  <div className="ep-proj-badges">
-                    <span className="ep-proj-cat" style={{ background: `${p.catColor}12`, color: p.catColor, border: `1px solid ${p.catColor}25` }}>{p.category}</span>
-                    <span className="ep-proj-chain">{p.chain}</span>
+                ))}
+              </div>
+            ))}
+          </section>
+
+          {/* Common Mistakes */}
+          <section className="ec-section">
+            <h2 className="ec-h2">5 Mistakes That Kill Your Allocation</h2>
+            <div className="ec-mistakes">
+              {mistakes.map((m, i) => (
+                <div key={i} className="ec-mistake">
+                  <div className="ec-mistake-title">
+                    <span style={{ color: "#f87171", fontWeight: 700 }}>✗</span>
+                    <span style={{ color: "#fff", fontSize: 13, fontWeight: 600 }}>{m.mistake}</span>
                   </div>
+                  <div className="ec-mistake-fix"><strong>Fix: </strong>{m.fix}</div>
                 </div>
-                <p className="ep-proj-why">{p.why}</p>
-                <div className="ep-proj-action">
-                  <a href={p.url} target="_blank" rel="noopener noreferrer" className="ep-proj-link">
-                    Follow on X
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                  </a>
-                  <span style={{ fontSize:'10px', color:'rgba(255,255,255,0.18)', fontWeight:600 }}>Pre-launch</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <hr className="ep-divider" />
-
-          <h2 className="ep-h2">How to Farm These Projects — Step by Step</h2>
-          <p className="ep-p">For every project on this list, the same early-stage strategy applies:</p>
-          <div className="ep-steps">
-            {[
-              { step: '1', title: 'Follow on X immediately', desc: 'Every project is listed with their X handle. Follow all 15 now. This costs nothing and keeps you updated when they open access.' },
-              { step: '2', title: 'Join their Discord or Telegram', desc: 'Most projects announce Discord links on their X profile. Early community members almost always qualify for better allocations.' },
-              { step: '3', title: 'Complete any available social tasks', desc: 'If they have a Galxe campaign, waitlist, or quest system — complete it immediately. These are typically free and take under 5 minutes.' },
-              { step: '4', title: 'Interact when testnet or beta opens', desc: 'The moment they announce testnet or early access, use the protocol. Swap, deposit, stake — whatever action they support. Consistency matters more than size.' },
-              { step: '5', title: 'Set a reminder for token launch', desc: 'Add the project to your watch list. When they announce a TGE (token generation event), you want to be positioned before launch day.' },
-            ].map(s => (
-              <div key={s.step} className="ep-step">
-                <div className="ep-step-num">{s.step}</div>
-                <p className="ep-step-text"><strong>{s.title}</strong> — {s.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <hr className="ep-divider" />
-
-          <h2 className="ep-h2">Category Breakdown</h2>
-          <p className="ep-p"><strong>DeFi / HyperEVM (5 projects)</strong> — The highest-priority category. HyperEVM launched February 2026 and is still early. Projects here let you simultaneously farm Hyperliquid Season 2 points AND the new project's potential airdrop. Double farming, one action.</p>
-          <p className="ep-p"><strong>AI / Infrastructure (3 projects)</strong> — AI + Web3 was the most-funded narrative in early 2026. Infrastructure projects tend to have larger community allocations because they need real users to stress-test their systems.</p>
-          <p className="ep-p"><strong>RWA (2 projects)</strong> — Real-world asset tokenization is still early. Early RWA platforms need users to prove product-market fit to institutional investors — they reward participation generously.</p>
-          <p className="ep-p"><strong>Solana (2 projects)</strong> — Solana ecosystem projects have strong historical precedent for rewarding early NFT holders and Discord members.</p>
-          <p className="ep-p"><strong>Social / Gaming / Prediction (3 projects)</strong> — Lower barrier to entry. Community participation costs nothing and positions you for launch allocations.</p>
-
-          <hr className="ep-divider" />
-
-          <h2 className="ep-h2">Frequently Asked Questions</h2>
-          <div className="ep-faqs">
-            {[
-              { q: 'What are the best early crypto projects to watch in 2026?', a: 'The standouts on this list are Monetrix (HyperEVM yield stablecoin), Shodai Network (decentralized AI agents), Keringit AI (no-code Web3 builder), Quay Markets (onchain DEX), and ParlayMatch (sports prediction). All are pre-launch with no token yet.' },
-              { q: 'Do I need money to follow these projects?', a: 'No. Following on X, joining Discord, and completing social tasks costs nothing. You only need capital if and when a project launches a paid product or requires deposits. Most of these have free entry points.' },
-              { q: 'What is HyperEVM and why are multiple projects building on it?', a: 'HyperEVM is the EVM smart contract layer on Hyperliquid, launched February 2026. Projects build here to access Hyperliquid\'s existing liquidity and users. Farming HyperEVM projects also builds your Hyperliquid Season 2 score simultaneously.' },
-              { q: 'Is it safe to interact with early projects?', a: 'Early projects carry significant risk. Always use a dedicated farming wallet. Never connect your main wallet. Never approve unlimited token spending. Start with small amounts when testnet opens. These projects are unaudited — DYOR before any real money interaction.' },
-              { q: 'How do I know when these projects open access?', a: 'Follow them on X and join their Telegram/Discord. Join the 3alamiy Web3 Telegram at t.me/web33alamiy for alerts when we add them as active airdrops to the tracker.' },
-            ].map((faq, i) => (
-              <div key={i} className="ep-faq">
-                <div className="ep-faq-q">{faq.q}</div>
-                <div className="ep-faq-a">{faq.a}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="ep-cta">
-            <div className="ep-cta-title">Want alerts when these go live?</div>
-            <div className="ep-cta-sub">We add them to the tracker the moment they open access. Join Telegram for instant alerts.</div>
-            <div className="ep-cta-btns">
-              <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="ep-btn-p">Join Telegram for Alerts</a>
-              <Link href="/airdrops" className="ep-btn-g">Browse Active Airdrops</Link>
+              ))}
             </div>
-          </div>
+          </section>
 
-          <div className="ep-footer-links">
-            <Link href="/learn">Back to Learn</Link>
-            <Link href="/learn/hyperliquid-guide">Hyperliquid Guide</Link>
-            <Link href="/learn/best-crypto-airdrops-2026">Best Airdrops 2026</Link>
-            <Link href="/airdrops">All 106+ Airdrops</Link>
+          {/* FAQ */}
+          <section className="ec-section">
+            <h2 className="ec-h2">Frequently Asked Questions</h2>
+            <div className="ec-faqs">
+              {faqJsonLd.mainEntity.map((faq, i) => (
+                <div key={i} className="ec-faq">
+                  <h3>{faq.name}</h3>
+                  <p>{faq.acceptedAnswer.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Related */}
+          <section className="ec-section">
+            <h2 className="ec-h2" style={{ marginBottom: 16 }}>Related Guides</h2>
+            <div className="ec-related">
+              {[
+                { slug: "how-to-find-airdrops-before-everyone-else", title: "How to Find Airdrops Before Everyone Else" },
+                { slug: "how-to-build-onchain-activity-that-actually-matters", title: "How to Build On-Chain Activity That Actually Matters" },
+                { slug: "crypto-airdrop-eligibility-requirements-2026", title: "Crypto Airdrop Eligibility Requirements 2026" },
+                { slug: "polymarket-airdrop-guide-2026", title: "Polymarket Airdrop Guide 2026 — How to Farm POLY" },
+                { slug: "best-airdrop-farming-platforms-2026", title: "Best Airdrop Farming Platforms 2026" },
+              ].map((a) => (
+                <Link key={a.slug} href={`/learn/${a.slug}`} className="ec-related-link">
+                  <span>{a.title}</span><span>→</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* CTA */}
+          <div className="ec-cta">
+            <h2>Track Early Airdrops Daily</h2>
+            <p>3alamiy Web3 tracks 110+ active airdrops with full step-by-step guides. Be the first to know when early projects go live.</p>
+            <Link href="/airdrops" className="ec-cta-btn">Browse All Airdrops →</Link>
+            <p className="ec-note">Last updated: June 2, 2026 · Reviewed weekly</p>
           </div>
 
         </div>
-      </div>
+      </main>
     </>
   );
 }
