@@ -1,252 +1,390 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: 'Polymarket Airdrop Guide 2026 — How to Qualify for POLY Token | 3alamiy Web3',
-  description: 'Complete guide to qualifying for the Polymarket POLY token airdrop in 2026. Learn how to farm prediction markets, avoid Sybil detection, and maximize your allocation.',
-  keywords: 'polymarket airdrop 2026, POLY token airdrop, polymarket how to qualify, prediction market airdrop, polymarket guide',
-  alternates: { canonical: 'https://www.3alamiyweb3.com/learn/polymarket-airdrop-guide-2026' },
+  title: "Polymarket Airdrop Guide 2026 — How to Farm the POLY Token | 3alamiy Web3",
+  description:
+    "Polymarket confirmed the POLY token and airdrop. Learn how to qualify — trading strategy, eligibility signals, and step-by-step farming guide for the biggest prediction market airdrop of 2026.",
+  alternates: { canonical: "https://www.3alamiyweb3.com/learn/polymarket-airdrop-guide-2026" },
   openGraph: {
-    title: 'Polymarket Airdrop Guide 2026 — How to Qualify for POLY Token',
-    description: 'Step-by-step guide to farming the Polymarket POLY token airdrop. Trade real markets, link your X account, avoid Sybil filters.',
-    url: 'https://www.3alamiyweb3.com/learn/polymarket-airdrop-guide-2026',
-    type: 'article',
+    title: "Polymarket Airdrop Guide 2026 — How to Farm the POLY Token",
+    description: "Polymarket confirmed the POLY token and airdrop. Learn how to qualify with our step-by-step farming guide.",
+    url: "https://www.3alamiyweb3.com/learn/polymarket-airdrop-guide-2026",
+    siteName: "3alamiy Web3",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Polymarket Airdrop Guide 2026 — How to Farm the POLY Token",
+    description: "Polymarket confirmed the POLY token and airdrop. Step-by-step farming guide.",
   },
 };
 
-export default function PolymarketGuide() {
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Polymarket Airdrop Guide 2026 — How to Farm the POLY Token",
+  description: "Polymarket confirmed the POLY token and airdrop. Learn how to qualify with our step-by-step farming guide.",
+  author: { "@type": "Organization", name: "3alamiy Web3" },
+  publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
+  datePublished: "2026-06-02",
+  dateModified: "2026-06-02",
+  mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/polymarket-airdrop-guide-2026" },
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Is the Polymarket airdrop confirmed?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Polymarket's CMO Matthew Modabber confirmed on a podcast in March 2026: 'There will be a token, there will be an airdrop.' The POLY token launch is expected in 2026 after the U.S. platform launch.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do I qualify for the Polymarket POLY airdrop?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "No official eligibility criteria have been confirmed. Community analysis suggests trading volume, diversity of markets traded, consistency of activity over time, and a linked X account are likely factors. Start trading now to build genuine history.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How much POLY will be airdropped?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Early reports suggest 5–10% of the total POLY supply will be allocated to the airdrop. No exact tokenomics have been confirmed yet.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do I need USDC to farm the Polymarket airdrop?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Polymarket requires real USDC to place trades. There is no confirmed minimum, but meaningful trading history will likely require consistent deposits and trading activity over time.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "When will the Polymarket POLY token launch?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "No official date has been confirmed. The team is prioritizing the U.S. platform launch first. Community estimates point to a second half of 2026 window for the token event.",
+      },
+    },
+  ],
+};
+
+const steps = [
+  {
+    n: 1, title: "Set Up Your Wallet",
+    desc: "Use MetaMask or any EVM-compatible wallet. Polymarket runs on Polygon. Keep the same wallet throughout — switching wallets resets your activity history.",
+    tip: "Use one wallet only. Consistency matters for snapshot eligibility.",
+    color: "#7CF5C0",
+  },
+  {
+    n: 2, title: "Bridge USDC to Polygon",
+    desc: "Deposit USDC to your wallet and bridge it to Polygon via the official Polymarket deposit flow or Polygon Bridge. You need USDC on Polygon to place trades.",
+    tip: "Start with $20–50 USDC. You don't need large capital — consistency beats size.",
+    color: "#7CF5C0",
+  },
+  {
+    n: 3, title: "Create Your Polymarket Account",
+    desc: "Go to polymarket.com, connect your wallet, and complete the sign-up. Link your X (Twitter) account — community analysis flags this as a likely eligibility signal.",
+    tip: "Link your X account immediately. It signals you are a real human, not a bot.",
+    color: "#c084fc",
+  },
+  {
+    n: 4, title: "Trade Across Multiple Market Categories",
+    desc: "Do not only trade crypto markets. Polymarket covers politics, sports, economics, science, and more. Trading across diverse categories signals genuine platform usage — not farming.",
+    tip: "Trade at least 3 different market categories per week — crypto, politics, and one other.",
+    color: "#60a5fa",
+  },
+  {
+    n: 5, title: "Build Consistent Trading Volume",
+    desc: "Place trades regularly — weekly at minimum. Sporadic bursts of activity are easy to filter out. A steady pattern of genuine trading over months is what gets noticed.",
+    tip: "Set a weekly reminder. 2–3 trades per week over 6 months beats 100 trades in one day.",
+    color: "#7CF5C0",
+  },
+  {
+    n: 6, title: "Reinvest Winnings",
+    desc: "When you win a position, reinvest the USDC into new markets rather than withdrawing. This keeps your on-platform activity score growing and shows long-term engagement.",
+    tip: "Reinvesting signals you value the platform, not just the airdrop.",
+    color: "#f59e0b",
+  },
+  {
+    n: 7, title: "Avoid Wash Trading",
+    desc: "Polymarket explicitly filters out wash trading and fake volume. Do not try to game the system with artificial trades. Only genuine market participation will qualify.",
+    tip: "Trade on markets you actually have an opinion on. Authenticity is the strategy.",
+    color: "#f87171",
+  },
+  {
+    n: 8, title: "Stay Active Long Term",
+    desc: "The snapshot date has not been announced. This is intentional — it prevents last-minute farming. Build your history from today and keep it consistent until the TGE.",
+    tip: "Treat Polymarket like a product you use, not an airdrop you farm.",
+    color: "#7CF5C0",
+  },
+];
+
+const signals = [
+  { label: "Trading Volume", desc: "Total USDC traded across all markets — higher is better", likely: true },
+  { label: "Market Diversity", desc: "Number of different market categories traded", likely: true },
+  { label: "Activity Consistency", desc: "Regular trading over weeks and months, not bursts", likely: true },
+  { label: "X Account Linked", desc: "Connected Twitter/X account on your profile", likely: true },
+  { label: "Winning Rate", desc: "Percentage of correct predictions — quality signal", likely: true },
+  { label: "Reinvestment", desc: "USDC reinvested vs withdrawn — engagement signal", likely: true },
+  { label: "Account Age", desc: "How long your account has been active", likely: true },
+  { label: "KYC", desc: "No KYC confirmed — standard for DeFi prediction markets", likely: false },
+];
+
+export default function PolymarketAirdropGuide2026() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+
       <style>{`
-        .pm-wrap { min-height:100vh; background:#060A12; font-family:var(--font-space),'Space Grotesk',system-ui,sans-serif; }
-        .pm-hero { background:#060A12; border-bottom:1px solid rgba(255,255,255,0.06); padding:56px 24px 48px; position:relative; overflow:hidden; }
-        .pm-hero-glow { position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:700px; height:500px; background:radial-gradient(ellipse,rgba(124,245,192,0.05) 0%,transparent 65%); pointer-events:none; }
-        .pm-hero-inner { max-width:800px; margin:0 auto; position:relative; }
-        .pm-breadcrumb { display:flex; align-items:center; gap:6px; margin-bottom:20px; }
-        .pm-breadcrumb a { font-size:12px; color:rgba(255,255,255,0.3); text-decoration:none; }
-        .pm-breadcrumb a:hover { color:rgba(255,255,255,0.6); }
-        .pm-breadcrumb span { color:rgba(255,255,255,0.15); font-size:12px; }
-        .pm-breadcrumb-cur { font-size:12px; color:#7CF5C0; font-weight:600; }
-        .pm-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(124,245,192,0.08); border:1px solid rgba(124,245,192,0.2); color:#7CF5C0; padding:4px 12px; border-radius:99px; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:18px; }
-        .pm-badge-dot { width:5px; height:5px; border-radius:50%; background:#7CF5C0; box-shadow:0 0 6px rgba(124,245,192,0.6); animation:blink 2s infinite; }
-        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
-        .pm-title { font-size:clamp(28px,5vw,42px); font-weight:700; color:#fff; letter-spacing:-0.03em; line-height:1.12; margin:0 0 16px; }
-        .pm-title span { color:#7CF5C0; }
-        .pm-sub { font-size:15px; color:rgba(255,255,255,0.4); line-height:1.75; max-width:600px; margin:0 0 28px; }
-        .pm-stats { display:flex; gap:28px; flex-wrap:wrap; }
-        .pm-stat-val { font-size:20px; font-weight:700; color:#7CF5C0; }
-        .pm-stat-lbl { font-size:10px; color:rgba(255,255,255,0.25); font-weight:600; text-transform:uppercase; letter-spacing:0.07em; margin-top:2px; }
-        .pm-article { max-width:800px; margin:0 auto; padding:48px 24px 100px; }
-        .pm-alert { background:rgba(245,158,11,0.04); border:1px solid rgba(245,158,11,0.14); border-left:3px solid rgba(245,158,11,0.5); border-radius:10px; padding:16px 20px; margin-bottom:36px; }
-        .pm-alert p { font-size:13px; color:rgba(255,255,255,0.5); line-height:1.75; margin:0; }
-        .pm-alert strong { color:#f59e0b; }
-        .pm-h2 { font-size:22px; font-weight:700; color:#fff; letter-spacing:-0.02em; margin:44px 0 14px; display:flex; align-items:center; gap:10px; }
-        .pm-h2-num { width:26px; height:26px; border-radius:7px; background:rgba(124,245,192,0.08); border:1px solid rgba(124,245,192,0.2); color:#7CF5C0; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-        .pm-p { font-size:14px; color:rgba(255,255,255,0.45); line-height:1.85; margin:0 0 14px; }
-        .pm-p strong { color:rgba(255,255,255,0.75); font-weight:600; }
-        .pm-divider { border:none; border-top:1px solid rgba(255,255,255,0.06); margin:40px 0; }
-        .pm-steps { display:flex; flex-direction:column; gap:12px; margin:20px 0 32px; }
-        .pm-step { background:#0D1221; border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:16px 18px; display:flex; gap:14px; align-items:flex-start; }
-        .pm-step-num { width:28px; height:28px; border-radius:8px; background:rgba(124,245,192,0.08); border:1px solid rgba(124,245,192,0.18); color:#7CF5C0; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
-        .pm-step-title { font-size:13px; font-weight:600; color:#fff; margin:0 0 4px; }
-        .pm-step-desc { font-size:12px; color:rgba(255,255,255,0.35); line-height:1.65; margin:0; }
-        .pm-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:20px 0 32px; }
-        .pm-card { background:#0D1221; border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:16px; }
-        .pm-card-label { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px; }
-        .pm-card-title { font-size:13px; font-weight:600; color:#fff; margin:0 0 6px; }
-        .pm-card-desc { font-size:12px; color:rgba(255,255,255,0.35); line-height:1.6; margin:0; }
-        .pm-warn { background:rgba(244,63,94,0.04); border:1px solid rgba(244,63,94,0.14); border-left:3px solid rgba(244,63,94,0.4); border-radius:10px; padding:16px 20px; margin:20px 0 32px; }
-        .pm-warn p { font-size:13px; color:rgba(255,255,255,0.45); line-height:1.75; margin:0; }
-        .pm-warn strong { color:#f87171; }
-        .pm-faqs { display:flex; flex-direction:column; gap:10px; margin:20px 0; }
-        .pm-faq { background:#0D1221; border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:16px 18px; }
-        .pm-faq-q { font-size:13px; font-weight:600; color:#fff; margin:0 0 8px; }
-        .pm-faq-a { font-size:12px; color:rgba(255,255,255,0.38); line-height:1.7; margin:0; }
-        .pm-cta { background:rgba(124,245,192,0.04); border:1px solid rgba(124,245,192,0.12); border-radius:16px; padding:28px; text-align:center; margin-top:48px; }
-        .pm-cta-title { font-size:18px; font-weight:700; color:#fff; margin:0 0 8px; }
-        .pm-cta-sub { font-size:13px; color:rgba(255,255,255,0.35); margin:0 0 20px; }
-        .pm-cta-btns { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
-        .pm-btn-primary { background:#7CF5C0; color:#060A12; font-weight:700; font-size:13px; padding:11px 22px; border-radius:10px; text-decoration:none; display:inline-flex; align-items:center; gap:6px; transition:opacity 0.15s; }
-        .pm-btn-primary:hover { opacity:0.88; }
-        .pm-btn-ghost { background:transparent; color:rgba(255,255,255,0.5); font-weight:600; font-size:13px; padding:11px 22px; border-radius:10px; text-decoration:none; border:1px solid rgba(255,255,255,0.1); display:inline-flex; align-items:center; gap:6px; transition:border-color 0.15s; }
-        .pm-btn-ghost:hover { border-color:rgba(255,255,255,0.2); color:#fff; }
-        .pm-footer-links { display:flex; gap:16px; flex-wrap:wrap; margin-top:48px; padding-top:28px; border-top:1px solid rgba(255,255,255,0.06); }
-        .pm-footer-links a { font-size:13px; color:rgba(255,255,255,0.28); text-decoration:none; transition:color 0.15s; }
-        .pm-footer-links a:hover { color:rgba(255,255,255,0.6); }
-        @media (max-width:600px) {
-          .pm-grid { grid-template-columns:1fr; }
-          .pm-stats { gap:20px; }
-          .pm-cta-btns { flex-direction:column; align-items:stretch; }
+        .pm * { box-sizing: border-box; }
+        .pm {
+          background: #060A12; min-height: 100vh; color: #fff;
+          font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
+        }
+        .pm-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 80px; }
+        .pm-bc { font-size: 13px; color: rgba(255,255,255,0.25); margin-bottom: 32px; display: flex; align-items: center; gap: 8px; }
+        .pm-bc a { color: rgba(255,255,255,0.25); text-decoration: none; }
+        .pm-badge { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; background: rgba(124,245,192,0.1); color: #7CF5C0; border: 1px solid rgba(124,245,192,0.18); padding: 3px 10px; border-radius: 99px; text-transform: uppercase; margin-right: 10px; }
+        .pm-badge-red { background: rgba(248,113,113,0.1); color: #f87171; border-color: rgba(248,113,113,0.2); }
+        .pm-h1 { font-size: clamp(24px, 5vw, 36px); font-weight: 700; line-height: 1.2; margin: 16px 0; color: #fff; }
+        .pm-h1 span { color: #7CF5C0; }
+        .pm-sub { font-size: 16px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 12px; }
+        .pm-author { font-size: 13px; color: rgba(255,255,255,0.25); margin-bottom: 40px; }
+        .pm-author span { color: rgba(255,255,255,0.45); }
+
+        /* Quick answer */
+        .pm-qa { background: rgba(124,245,192,0.05); border: 1px solid rgba(124,245,192,0.18); border-radius: 14px; padding: 18px 20px; margin-bottom: 48px; display: flex; gap: 14px; }
+        .pm-qa-label { font-size: 11px; font-weight: 700; color: #7CF5C0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+        .pm-qa-text { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; margin: 0; }
+        .pm-qa-text strong { color: #fff; }
+
+        /* Stats */
+        .pm-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; overflow: hidden; margin-bottom: 48px; }
+        .pm-stat { background: #0D1221; padding: 18px 16px; text-align: center; }
+        .pm-stat-val { font-size: 22px; font-weight: 700; color: #7CF5C0; margin-bottom: 4px; }
+        .pm-stat-lbl { font-size: 11px; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+
+        /* Section */
+        .pm-section { margin-bottom: 52px; }
+        .pm-h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .pm-p { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 20px; }
+
+        /* Steps */
+        .pm-steps { display: flex; flex-direction: column; gap: 12px; }
+        .pm-step { background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 20px; }
+        .pm-step-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+        .pm-step-num { width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+        .pm-step-title { font-size: 15px; font-weight: 700; color: #fff; }
+        .pm-step-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 10px; }
+        .pm-step-tip { font-size: 12px; color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 8px 12px; }
+        .pm-step-tip strong { color: #7CF5C0; }
+
+        /* Eligibility signals */
+        .pm-signals { display: flex; flex-direction: column; gap: 8px; }
+        .pm-signal { background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; gap: 14px; }
+        .pm-signal-icon { font-size: 14px; font-weight: 700; flex-shrink: 0; width: 20px; text-align: center; }
+        .pm-signal-label { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+        .pm-signal-desc { font-size: 12px; color: rgba(255,255,255,0.35); }
+        .pm-signal-tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 99px; flex-shrink: 0; margin-left: auto; }
+
+        /* Warning box */
+        .pm-warning { background: rgba(248,113,113,0.05); border: 1px solid rgba(248,113,113,0.18); border-radius: 12px; padding: 16px 18px; margin-bottom: 20px; display: flex; gap: 12px; }
+        .pm-warning-text { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+        .pm-warning-text strong { color: #f87171; }
+
+        /* FAQ */
+        .pm-faqs { display: flex; flex-direction: column; gap: 10px; }
+        .pm-faq { background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 18px 20px; }
+        .pm-faq h3 { font-weight: 600; color: #fff; font-size: 14px; margin-bottom: 8px; }
+        .pm-faq p { color: rgba(255,255,255,0.45); font-size: 13px; margin: 0; line-height: 1.7; }
+
+        /* Related */
+        .pm-related { display: flex; flex-direction: column; gap: 8px; }
+        .pm-related-link { display: flex; align-items: center; justify-content: space-between; background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 13px 16px; text-decoration: none; color: rgba(255,255,255,0.6); font-size: 13px; font-weight: 500; }
+        .pm-related-link span:last-child { color: #7CF5C0; font-size: 12px; }
+
+        /* CTA */
+        .pm-cta { background: rgba(124,245,192,0.06); border: 1px solid rgba(124,245,192,0.18); border-radius: 16px; padding: 40px 28px; text-align: center; }
+        .pm-cta h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+        .pm-cta p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 420px; margin: 0 auto 24px; }
+        .pm-cta-btn { display: inline-flex; align-items: center; gap: 6px; background: #7CF5C0; color: #060A12; font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: 99px; text-decoration: none; }
+        .pm-note { font-size: 11px; color: rgba(255,255,255,0.18); margin-top: 16px; }
+
+        @media (max-width: 600px) {
+          .pm-wrap { padding: 32px 16px 64px; }
+          .pm-stats { grid-template-columns: repeat(3, 1fr); }
+          .pm-stat-val { font-size: 18px; }
+          .pm-cta { padding: 28px 16px; }
         }
       `}</style>
 
-      <div className="pm-wrap">
-        <div className="pm-hero">
-          <div className="pm-hero-glow" />
-          <div className="pm-hero-inner">
-            <div className="pm-breadcrumb">
-              <Link href="/">Home</Link>
-              <span>›</span>
-              <Link href="/learn">Learn</Link>
-              <span>›</span>
-              <span className="pm-breadcrumb-cur">Polymarket Guide</span>
+      <main className="pm">
+        <div className="pm-wrap">
+
+          {/* Breadcrumb */}
+          <nav className="pm-bc">
+            <Link href="/">Home</Link><span>/</span>
+            <Link href="/learn">Learn</Link><span>/</span>
+            <span style={{ color: "rgba(255,255,255,0.45)" }}>Polymarket Airdrop Guide 2026</span>
+          </nav>
+
+          {/* Header */}
+          <div>
+            <div>
+              <span className="pm-badge">Confirmed Airdrop</span>
+              <span className="pm-badge pm-badge-red">No TGE Date Yet</span>
             </div>
-            <div className="pm-badge">
-              <span className="pm-badge-dot" />
-              POLY Token — 2026
+            <h1 className="pm-h1">Polymarket Airdrop Guide 2026 — <span>How to Farm the POLY Token</span></h1>
+            <p className="pm-sub">Polymarket confirmed the POLY token and airdrop. The clock is already running — 1.35M+ users are farming right now. Here is exactly how to position yourself before the snapshot.</p>
+            <div className="pm-author">By <span>3alamiy Team</span> · June 2, 2026 · 7 min read</div>
+
+            {/* Author byline */}
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 40, padding: "12px 16px", background: "rgba(124,245,192,0.04)", border: "1px solid rgba(124,245,192,0.1)", borderRadius: 10 }}>
+              <div style={{ width: 32, height: 32, borderRadius: "50%", background: "rgba(124,245,192,0.15)", border: "1px solid rgba(124,245,192,0.25)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, flexShrink: 0 }}>🪂</div>
+              <div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "#fff" }}>3alamiy Team</div>
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)" }}>Web3 Airdrop Research · <a href="https://www.3alamiyweb3.com" style={{ color: "#7CF5C0", textDecoration: "none" }}>3alamiyweb3.com</a></div>
+              </div>
             </div>
-            <h1 className="pm-title">
-              Polymarket Airdrop<br />
-              <span>Guide 2026 — How to Qualify</span>
-            </h1>
-            <p className="pm-sub">
-              Polymarket's CMO confirmed a token is coming. 5–10% of total POLY supply going to active users. Here's exactly how to position yourself before the snapshot.
+          </div>
+
+          {/* Quick Answer */}
+          <div className="pm-qa">
+            <span style={{ fontSize: 22, flexShrink: 0 }}>⚡</span>
+            <div>
+              <p className="pm-qa-label">Quick Answer</p>
+              <p className="pm-qa-text">
+                Polymarket's CMO confirmed: <strong>"There will be a token, there will be an airdrop."</strong> The POLY token is expected H2 2026. To qualify: trade consistently across multiple market categories, link your X account, and build 6+ months of genuine activity. No snapshot date announced — start now.
+              </p>
+            </div>
+          </div>
+
+          {/* Stats */}
+          <div className="pm-stats">
+            {[
+              { val: "$10.57B", lbl: "March 2026 Volume" },
+              { val: "1.35M+", lbl: "Active Traders" },
+              { val: "5–10%", lbl: "Supply for Airdrop" },
+            ].map((s) => (
+              <div key={s.lbl} className="pm-stat">
+                <div className="pm-stat-val">{s.val}</div>
+                <div className="pm-stat-lbl">{s.lbl}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* What is Polymarket */}
+          <section className="pm-section">
+            <h2 className="pm-h2">What is Polymarket?</h2>
+            <p className="pm-p">
+              Polymarket is the world's largest prediction market platform. Users trade on the outcome of real-world events — politics, sports, crypto, economics, and more — using USDC. It crossed $10.57 billion in trading volume in March 2026 alone and is valued at $15 billion after NYSE parent company ICE invested close to $2 billion.
             </p>
-            <div className="pm-stats">
-              {[
-                ['5–10%', 'Supply to Users'],
-                ['$9B', 'Platform Valuation'],
-                ['Free', 'Cost to Start'],
-                ['2026', 'Expected Launch'],
-              ].map(([val, lbl]) => (
-                <div key={lbl}>
-                  <div className="pm-stat-val">{val}</div>
-                  <div className="pm-stat-lbl">{lbl}</div>
+            <p className="pm-p">
+              In October 2025, Polymarket's CMO Matthew Modabber confirmed on a podcast: <strong style={{ color: "#fff" }}>"There will be a coin. There will be an airdrop."</strong> The POLY token launch is expected after the U.S. platform relaunch stabilizes, with community estimates pointing to H2 2026. Early reports suggest 5–10% of total supply will be distributed to genuine users.
+            </p>
+            <div className="pm-warning">
+              <span style={{ fontSize: 18, flexShrink: 0 }}>⚠️</span>
+              <p className="pm-warning-text">
+                <strong>Important:</strong> No snapshot date has been announced. No official eligibility criteria confirmed. This guide is based on confirmed statements and community analysis. Always do your own research before depositing funds.
+              </p>
+            </div>
+          </section>
+
+          {/* Step by step */}
+          <section className="pm-section">
+            <h2 className="pm-h2">Step-by-Step Farming Guide</h2>
+            <p className="pm-p">Polymarket explicitly filters wash trading and fake volume. Only genuine, consistent usage qualifies. Here is the right approach.</p>
+            <div className="pm-steps">
+              {steps.map((s) => (
+                <div key={s.n} className="pm-step">
+                  <div className="pm-step-head">
+                    <div className="pm-step-num" style={{ background: `${s.color}15`, border: `1px solid ${s.color}30`, color: s.color }}>{s.n}</div>
+                    <span className="pm-step-title">{s.title}</span>
+                  </div>
+                  <p className="pm-step-desc">{s.desc}</p>
+                  <div className="pm-step-tip"><strong>Tip: </strong>{s.tip}</div>
                 </div>
               ))}
             </div>
-          </div>
-        </div>
+          </section>
 
-        <div className="pm-article">
-
-          <div className="pm-alert">
-            <p><strong>Not confirmed yet.</strong> Polymarket's CMO confirmed a token is coming but no official airdrop criteria, snapshot date, or token ticker has been announced. This guide covers how to position yourself as a genuine user. Never create multiple wallets — Sybil detection will disqualify you entirely.</p>
-          </div>
-
-          <h2 className="pm-h2">What is Polymarket?</h2>
-          <p className="pm-p">Polymarket is the world's largest prediction market platform. Users trade on real-world outcomes — politics, sports, crypto, global events — using USDC. If your prediction is correct, you profit. If not, you lose your stake.</p>
-          <p className="pm-p">The platform achieved a <strong>$9 billion valuation</strong> and processed billions in trading volume during major events like the 2024 US election. It's now relaunching in the US market under regulatory compliance — and the POLY token is expected to follow.</p>
-          <p className="pm-p">Unlike most airdrop opportunities, Polymarket rewards <strong>genuine engagement</strong>. You actually need to trade real markets and be right occasionally. Bots and wash traders will be excluded.</p>
-
-          <hr className="pm-divider" />
-
-          <h2 className="pm-h2"><span className="pm-h2-num">1</span> Set Up Your Account</h2>
-          <div className="pm-steps">
-            {[
-              { title: 'Go to polymarket.com', desc: 'Connect with MetaMask or any Polygon-compatible wallet. Polymarket runs on Polygon — add the Polygon network to your wallet if you haven\'t already.' },
-              { title: 'Get MATIC for gas', desc: 'You need a small amount of MATIC (under $1) for transaction fees on Polygon. Buy on any exchange and send to your wallet.' },
-              { title: 'Deposit USDC', desc: 'Polymarket uses USDC for all trades. Bridge USDC to Polygon or deposit directly via the platform. Even $20-50 is enough to start building history.' },
-              { title: 'Link your X (Twitter) account', desc: 'Polymarket has explicitly encouraged users to link their X account. This is likely a factor in eligibility — do it now from your profile settings.' },
-            ].map((s, i) => (
-              <div key={i} className="pm-step">
-                <div className="pm-step-num">{i + 1}</div>
-                <div>
-                  <div className="pm-step-title">{s.title}</div>
-                  <div className="pm-step-desc">{s.desc}</div>
+          {/* Eligibility signals */}
+          <section className="pm-section">
+            <h2 className="pm-h2">Likely Eligibility Signals</h2>
+            <p className="pm-p">No official criteria confirmed. These are based on community analysis, executive statements, and how similar retroactive airdrops have worked.</p>
+            <div className="pm-signals">
+              {signals.map((s) => (
+                <div key={s.label} className="pm-signal">
+                  <span className="pm-signal-icon" style={{ color: s.likely ? "#7CF5C0" : "#f87171" }}>{s.likely ? "✓" : "✗"}</span>
+                  <div style={{ flex: 1 }}>
+                    <div className="pm-signal-label">{s.label}</div>
+                    <div className="pm-signal-desc">{s.desc}</div>
+                  </div>
+                  <span className="pm-signal-tag" style={{
+                    background: s.likely ? "rgba(124,245,192,0.08)" : "rgba(255,255,255,0.04)",
+                    color: s.likely ? "#7CF5C0" : "rgba(255,255,255,0.25)",
+                    border: `1px solid ${s.likely ? "rgba(124,245,192,0.18)" : "rgba(255,255,255,0.06)"}`,
+                  }}>
+                    {s.likely ? "Likely" : "Unlikely"}
+                  </span>
                 </div>
-              </div>
-            ))}
-          </div>
-
-          <h2 className="pm-h2"><span className="pm-h2-num">2</span> How to Farm the Right Way</h2>
-          <p className="pm-p">Polymarket's anti-Sybil system is designed to distinguish real users from bots. The key signal: <strong>real users naturally spread activity across many markets</strong>. Bots concentrate volume in one place.</p>
-          <div className="pm-steps">
-            {[
-              { title: 'Trade across multiple market categories', desc: 'Politics, crypto, sports, science, world events. Diversity of markets is a key signal of genuine engagement. Don\'t put all your volume in one market.' },
-              { title: 'Trade consistently over time', desc: 'A few small trades per week over months beats one large deposit the week before a snapshot. Consistent history matters more than size.' },
-              { title: 'Reinvest your winnings', desc: 'Users who reinvest winnings and stay active demonstrate long-term platform commitment — exactly what Polymarket wants to reward.' },
-              { title: 'Provide liquidity (market making)', desc: 'Active liquidity providers earn rewards through the liquidity rewards program, which can offset trading costs and build additional airdrop eligibility.' },
-              { title: 'Use the platform normally', desc: 'Trade on events you actually have opinions about. Genuine predictions perform better and build natural, hard-to-fake activity patterns.' },
-            ].map((s, i) => (
-              <div key={i} className="pm-step">
-                <div className="pm-step-num">{i + 1}</div>
-                <div>
-                  <div className="pm-step-title">{s.title}</div>
-                  <div className="pm-step-desc">{s.desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <h2 className="pm-h2">What the POLY Token Will Do</h2>
-          <div className="pm-grid">
-            {[
-              { label: 'Governance', color: '#7CF5C0', title: 'Vote on Market Parameters', desc: 'Token holders will govern dispute resolution, market creation rules, and platform parameters.' },
-              { label: 'Staking', color: '#818cf8', title: 'Stake for Rewards', desc: 'Staking POLY will likely align incentives around honest market creation and accurate resolution.' },
-              { label: 'Utility', color: '#f59e0b', title: 'Fee Discounts', desc: 'Token holders may receive reduced trading fees, similar to how exchange tokens work on CEXes.' },
-              { label: 'Rewards', color: '#f87171', title: 'Liquidity Incentives', desc: 'Active market makers and liquidity providers expected to receive ongoing POLY rewards.' },
-            ].map(c => (
-              <div key={c.title} className="pm-card">
-                <div className="pm-card-label" style={{ color: c.color }}>{c.label}</div>
-                <div className="pm-card-title">{c.title}</div>
-                <div className="pm-card-desc">{c.desc}</div>
-              </div>
-            ))}
-          </div>
-
-          <h2 className="pm-h2">What NOT to Do</h2>
-          <div className="pm-warn">
-            <p><strong>Never create multiple wallets.</strong> Polymarket confirmed Sybil detection will exclude wash-traded volume entirely. If you're caught farming with multiple wallets, all of them get disqualified — not just the extra ones.</p>
-          </div>
-          <div className="pm-steps">
-            {[
-              { title: "Don't wash trade", desc: 'Trading with yourself across wallets is detectable and will get you banned from the airdrop entirely.' },
-              { title: "Don't concentrate volume in one market", desc: "Bots do this. Real users don't. Spread your activity across many different market categories." },
-              { title: "Don't wait for the snapshot announcement", desc: "By the time it's announced, early user advantage is gone. Historical activity before the snapshot date matters most." },
-              { title: "Don't farm with capital you can't afford to lose", desc: "Prediction markets carry real risk. Only use funds you're comfortable losing — treat airdrop upside as a bonus, not the goal." },
-            ].map((s, i) => (
-              <div key={i} className="pm-step">
-                <div className="pm-step-num" style={{ color:'#f87171', background:'rgba(244,63,94,0.08)', borderColor:'rgba(244,63,94,0.2)' }}>✕</div>
-                <div>
-                  <div className="pm-step-title">{s.title}</div>
-                  <div className="pm-step-desc">{s.desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <hr className="pm-divider" />
-
-          <h2 className="pm-h2">Frequently Asked Questions</h2>
-          <div className="pm-faqs">
-            {[
-              { q: 'Is the Polymarket airdrop confirmed?', a: "Polymarket's CMO officially confirmed a token is coming. The airdrop has not been officially confirmed with specific criteria. Community analysis strongly suggests active traders will be rewarded — similar to how Uniswap and dYdX rewarded early users." },
-              { q: 'How much POLY will I get?', a: 'No official allocation formula has been released. Community estimates suggest 5-10% of total POLY supply will go to users, distributed based on trading volume, market diversity, consistency, and platform engagement.' },
-              { q: 'When will the airdrop happen?', a: "Expected in 2026, following Polymarket's US platform relaunch and regulatory approval. No specific date has been confirmed. The snapshot date will likely not be announced in advance." },
-              { q: 'Do I need a lot of money to qualify?', a: 'No. Consistency matters more than size. Trading $20-50 across many markets over several months likely qualifies better than one $500 trade. Quality of engagement beats quantity of capital.' },
-              { q: 'Why should I link my X account?', a: "Polymarket explicitly encouraged users to link their X (Twitter) account. This likely factors into eligibility as it proves you're a real person with a real social identity — a key anti-Sybil signal." },
-              { q: 'What chains does Polymarket run on?', a: "Polymarket runs on Polygon. You need a Polygon-compatible wallet (MetaMask works), MATIC for gas fees, and USDC for trading positions." },
-            ].map((faq, i) => (
-              <div key={i} className="pm-faq">
-                <div className="pm-faq-q">{faq.q}</div>
-                <div className="pm-faq-a">{faq.a}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="pm-cta">
-            <div className="pm-cta-title">Start using Polymarket today</div>
-            <div className="pm-cta-sub">Historical activity before the snapshot matters most. Every week you wait is history you can't recover.</div>
-            <div className="pm-cta-btns">
-              <a href="https://polymarket.com" target="_blank" rel="noopener noreferrer" className="pm-btn-primary">
-                Open Polymarket →
-              </a>
-              <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="pm-btn-ghost">
-                Get Airdrop Alerts
-              </a>
+              ))}
             </div>
-          </div>
+          </section>
 
-          <div className="pm-footer-links">
-            <Link href="/learn">← Back to Learn</Link>
-            <Link href="/airdrops">Browse All Airdrops</Link>
-            <Link href="/learn/hyperliquid-guide">Hyperliquid Guide</Link>
-            <Link href="/learn/best-crypto-airdrops-2026">Best Airdrops 2026</Link>
+          {/* FAQ */}
+          <section className="pm-section">
+            <h2 className="pm-h2">Frequently Asked Questions</h2>
+            <div className="pm-faqs">
+              {faqJsonLd.mainEntity.map((faq, i) => (
+                <div key={i} className="pm-faq">
+                  <h3>{faq.name}</h3>
+                  <p>{faq.acceptedAnswer.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Related */}
+          <section className="pm-section">
+            <h2 className="pm-h2" style={{ marginBottom: 16 }}>Related Guides</h2>
+            <div className="pm-related">
+              {[
+                { slug: "how-to-build-onchain-activity-that-actually-matters", title: "How to Build On-Chain Activity That Actually Matters" },
+                { slug: "crypto-airdrop-eligibility-requirements-2026", title: "Crypto Airdrop Eligibility Requirements 2026" },
+                { slug: "how-to-avoid-crypto-airdrop-scams-2026", title: "How to Avoid Crypto Airdrop Scams 2026" },
+                { slug: "best-crypto-airdrop-websites-2026", title: "Best Crypto Airdrop Websites 2026" },
+                { slug: "how-to-find-airdrops-before-everyone-else", title: "How to Find Airdrops Before Everyone Else" },
+              ].map((a) => (
+                <Link key={a.slug} href={`/learn/${a.slug}`} className="pm-related-link">
+                  <span>{a.title}</span><span>→</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* CTA */}
+          <div className="pm-cta">
+            <h2>Track the POLY Airdrop Daily</h2>
+            <p>3alamiy Web3 tracks 110+ active airdrops with full step-by-step guides. Never miss an update on Polymarket or any other major drop.</p>
+            <Link href="/airdrops" className="pm-cta-btn">Browse All Airdrops →</Link>
+            <p className="pm-note">Last updated: June 2, 2026 · Reviewed weekly</p>
           </div>
 
         </div>
-      </div>
+      </main>
     </>
   );
 }
