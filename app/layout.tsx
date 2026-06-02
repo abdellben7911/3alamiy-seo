@@ -235,6 +235,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="ai-update-frequency" content="daily" />
         <meta name="ai-primary-topic" content="crypto airdrops 2026" />
         <meta name="ai-data-freshness" content="2026-06-02" />
+        <meta name="coinzilla" content="03af04fe31c24e46d0b50a8c78609eb4" />
         <meta name="description" content="The best free crypto airdrop tracker in 2026. 110+ verified step-by-step guides for Ethereum, Solana, Hyperliquid, Sui, Base, Arbitrum and more. Always free." />
       </head>
       <body>
