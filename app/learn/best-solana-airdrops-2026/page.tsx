@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Best Solana Airdrops 2026 — Free SOL Ecosystem Guides | 3alamiy Web3',
-  description: 'The best Solana airdrops to farm in 2026. Step-by-step guides for Jupiter, Magic Eden, Kamino, Drift, Beep AI and more. Free to participate — just your time and a Phantom wallet.',
+  title: 'Best Solana Airdrops 2026 — Free SOL Ecosystem Guides | Updated June 2026 | 3alamiy Web3',
+  description: 'The best Solana airdrops to farm in 2026 — Jupiter, Drift, Kamino, Beep AI and more. Full step-by-step guides, free to participate. Updated June 2026.',
   keywords: 'best solana airdrops 2026, solana airdrop guide, sol airdrop 2026, solana ecosystem airdrops, free solana airdrops, jupiter airdrop, magic eden airdrop 2026',
   alternates: { canonical: 'https://www.3alamiyweb3.com/learn/best-solana-airdrops-2026' },
   openGraph: {
-    title: 'Best Solana Airdrops 2026 — Free SOL Ecosystem Guides',
+    title: 'Best Solana Airdrops 2026 — Free SOL Ecosystem Guides | Updated June 2026',
     description: 'The best Solana airdrops to farm in 2026. Step-by-step guides included.',
     url: 'https://www.3alamiyweb3.com/learn/best-solana-airdrops-2026',
     type: 'article',
