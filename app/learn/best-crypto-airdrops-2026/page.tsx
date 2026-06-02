@@ -4,7 +4,7 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: 'Best Crypto Airdrops 2026 — Free Verified Guides',
-  description: 'The complete list of the best free crypto airdrops in 2026. Step-by-step guides for Arbitrum, Solana, Base, Monad and more. Updated daily.',
+  description: 'The complete list of the best free crypto airdrops in 2026. Step-by-step guides for Arbitrum, Solana, Base, Monad, Hyperliquid and more. Updated daily — June 2026.',
   url: 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-2026',
   datePublished: '2026-05-01',
   dateModified: '2026-05-20',
@@ -45,11 +45,11 @@ const breadcrumbSchema = {
 };
 
 export const metadata = {
-  title: 'Best Crypto Airdrops 2026 — Free Verified Guides | 3alamiy Web3',
-  description: 'The complete list of the best free crypto airdrops in 2026. Step-by-step guides for Arbitrum, Solana, Base, Monad and more. Updated daily.',
+  title: 'Best Crypto Airdrops 2026 — Free Verified Guides | Updated June 2026 | 3alamiy Web3',
+  description: 'The complete list of the best free crypto airdrops in 2026. Step-by-step guides for Arbitrum, Solana, Base, Monad, Hyperliquid and more. Updated daily — June 2026.',
   keywords: 'best crypto airdrops 2026, free crypto airdrop, airdrop list 2026, ethereum airdrop 2026, solana airdrop 2026, arbitrum airdrop, monad airdrop',
   openGraph: {
-    title: 'Best Crypto Airdrops 2026 — Free Verified Guides',
+    title: 'Best Crypto Airdrops 2026 — Free Verified Guides | Updated June 2026',
     description: 'The complete list of the best free crypto airdrops in 2026. Step-by-step guides updated daily.',
     type: 'article',
   },
