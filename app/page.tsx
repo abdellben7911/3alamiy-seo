@@ -82,9 +82,9 @@ const faqs = [
 ];
 
 const socialProof = [
-  { handle: '@crypto_farmer', avatar: 'C', claim: '$3,200', text: 'Followed the Monad testnet guide on a Sunday. Got my allocation 6 weeks later. Zero cost in.', color: '#818cf8' },
-  { handle: '@web3_daily', avatar: 'W', claim: '$840', text: 'The daily routine actually works. 10 mins a day, landing just as signed.', color: '#7CF5C0' },
-  { handle: '@defi_alerts', avatar: 'D', claim: '$1,750', text: 'Telegram alerts caught the snapshot 4 hours before CT noticed. Wild.', color: '#f59e0b' },
+  { handle: 'Telegram member, Morocco 🇲🇦', avatar: 'M', claim: '$3,200', text: 'Followed the Monad testnet guide step by step. Got my allocation 6 weeks later. Zero cost in, just my time.', color: '#818cf8' },
+  { handle: 'Telegram member, Nigeria 🇳🇬', avatar: 'N', claim: '$840', text: 'The daily on-chain routine actually works. 10 minutes a day consistently. Got the airdrop, no drama.', color: '#7CF5C0' },
+  { handle: 'Telegram member, Poland 🇵🇱', avatar: 'P', claim: '$1,750', text: 'Telegram alert caught the snapshot window 4 hours before it went viral on CT. Would have missed it otherwise.', color: '#f59e0b' },
 ];
 
 const chains = ['Ethereum', 'Solana', 'Arbitrum', 'Base', 'Monad', 'Sui', 'zkSync', 'Optimism'];
@@ -511,8 +511,8 @@ export default async function Home() {
             <div className="sec-hdr">
               <div>
                 <div className="section-label">Proof, not promises</div>
-                <div className="section-title">Hunters who actually shipped.</div>
-                <div className="section-sub">Real wallets, real transactions. No fake screenshots, no paid shills.</div>
+                <div className="section-title">From our Telegram community — real results, real people.</div>
+                <div className="section-sub">Members sharing their wins in our Telegram. Join 500+ farmers tracking airdrops daily.</div>
               </div>
               <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="view-all">Share yours →</a>
             </div>
