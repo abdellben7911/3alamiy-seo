@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: '3alamiy Web3 vs Galxe — Best Airdrop Platform 2026 Comparison | 3alamiy Web3',
-  description: 'Honest comparison of 3alamiy Web3 vs Galxe for crypto airdrop farming in 2026. Features, free guides, GM Station, and which platform is better for beginners vs advanced farmers.',
+  title: '3alamiy Web3 vs Galxe — Which is Better for Airdrops in 2026? | 3alamiy Web3',
+  description: 'Honest comparison of 3alamiy Web3 vs Galxe in 2026. Step-by-step guides, scam warnings, GM Station vs quests — which platform is actually better for airdrop farming?',
   keywords: '3alamiy vs galxe, best airdrop platform 2026, galxe alternative 2026, airdrop tracker comparison, 3alamiy web3 review, galxe review 2026',
   alternates: { canonical: 'https://www.3alamiyweb3.com/learn/3alamiy-vs-galxe' },
   openGraph: {
-    title: '3alamiy Web3 vs Galxe — Best Airdrop Platform 2026',
+    title: '3alamiy Web3 vs Galxe — Which is Better for Airdrops in 2026?',
     description: 'Honest comparison. Which platform is better for airdrop farming in 2026?',
     url: 'https://www.3alamiyweb3.com/learn/3alamiy-vs-galxe',
     type: 'article',
