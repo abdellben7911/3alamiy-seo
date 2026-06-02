@@ -56,25 +56,32 @@ const featuredArticles = [
 
 const allArticles = [
   // Static folder pages
+  // Hot / Trending
+  { slug: 'hyperliquid-guide', title: 'Hyperliquid Season 2 Full Guide', desc: 'HyperCore trading, HLP vault 3x multiplier, HyperEVM — complete farming strategy.', cat: 'Hot', catColor: '#7CF5C0', time: '10 min' },
+  { slug: 'polymarket-airdrop-guide-2026', title: 'Polymarket POLY Airdrop Guide', desc: 'How to qualify before the snapshot. Confirmed drop — step-by-step farming strategy.', cat: 'Hot', catColor: '#f59e0b', time: '8 min' },
+  { slug: 'polymarket-willo2-500k-loss', title: 'Did Polymarket Scam Willo2 — or Just Greed?', desc: 'Full breakdown of the $500K loss trending on X. What happened and what every trader needs to know.', cat: 'Analysis', catColor: '#f87171', time: '6 min' },
+  { slug: 'top-25-airdrop-picks-2026', title: 'Top 25 Airdrop Picks for 2026', desc: '25 early opportunities — a16z-backed testnets, points programs, and confirmed drops.', cat: 'Strategy', catColor: '#818cf8', time: '10 min' },
+  // Weekly
+  { slug: 'best-crypto-airdrops-this-week', title: 'Best Crypto Airdrops This Week', desc: 'Top picks ranked by reward potential and farming urgency. Updated every Monday.', cat: 'Weekly', catColor: '#10b981', time: '5 min' },
+  // Guides
   { slug: 'best-crypto-airdrops-2026', title: 'Best Crypto Airdrops 2026', desc: 'Complete verified list with step-by-step guides. Updated daily.', cat: 'Airdrops', catColor: '#f59e0b', time: '8 min' },
-  { slug: 'best-crypto-airdrops-this-week', title: 'Best Crypto Airdrops This Week', desc: 'Top picks ranked by reward potential and farming urgency.', cat: 'Weekly', catColor: '#10b981', time: '5 min' },
-  { slug: 'best-solana-airdrops-2026', title: 'Best Solana Airdrops 2026', desc: 'The top Solana ecosystem airdrops with full participation guides.', cat: 'Ecosystems', catColor: '#9945FF', time: '7 min' },
-  { slug: 'best-airdrop-farming-platforms-2026', title: 'Best Airdrop Farming Platforms 2026', desc: 'ZNS vs Galxe vs Layer3 vs 3alamiy Web3 — honest comparison.', cat: 'Comparison', catColor: '#f43f5e', time: '6 min' },
-  { slug: 'free-crypto-airdrops-no-investment-2026', title: 'Free Crypto Airdrops — No Investment', desc: 'The best airdrops you can farm with zero money. Just your time.', cat: 'Beginners', catColor: '#60a5fa', time: '6 min' },
-  { slug: 'how-to-get-crypto-airdrops-2026', title: 'How to Get Crypto Airdrops 2026', desc: 'Complete beginner guide to qualifying for crypto airdrops.', cat: 'Beginners', catColor: '#60a5fa', time: '7 min' },
-  { slug: 'what-are-crypto-airdrops', title: 'What Are Crypto Airdrops?', desc: 'Everything you need to know about airdrops explained simply.', cat: 'Beginners', catColor: '#60a5fa', time: '5 min' },
-  // Dynamic [slug] articles
+  { slug: 'early-crypto-projects-2026', title: 'Best Early Crypto Projects 2026', desc: 'Farm before the announcement. a16z-backed projects across L1, DeFi, AI and DePIN.', cat: 'Alpha', catColor: '#7CF5C0', time: '9 min' },
+  { slug: 'crypto-airdrop-eligibility-requirements-2026', title: 'Airdrop Eligibility Requirements 2026', desc: 'What you need to qualify — wallet, on-chain activity, checklist, and common disqualifiers.', cat: 'Beginners', catColor: '#60a5fa', time: '7 min' },
+  { slug: 'best-crypto-airdrop-websites-2026', title: 'Best Crypto Airdrop Websites 2026', desc: '7 platforms ranked and compared — 3alamiy vs Airdrops.io vs CryptoRank vs Galxe.', cat: 'Comparison', catColor: '#818cf8', time: '8 min' },
+  { slug: 'best-solana-airdrops-2026', title: 'Best Solana Airdrops 2026', desc: 'The top Solana ecosystem airdrops with full participation guides. Jupiter, Kamino, Drift and more.', cat: 'Ecosystems', catColor: '#9945FF', time: '9 min' },
+  { slug: 'best-ai-crypto-airdrops-2026', title: 'Best AI Crypto Airdrops 2026', desc: 'Top AI projects backed by major VCs with confirmed reward campaigns.', cat: 'AI', catColor: '#c084fc', time: '10 min' },
+  { slug: 'best-depin-airdrops-2026', title: 'Best DePIN Airdrops 2026', desc: 'Earn crypto passively by sharing your bandwidth and device resources.', cat: 'DePIN', catColor: '#06b6d4', time: '9 min' },
   { slug: 'discord-role-airdrops-guide-2026', title: 'Discord Role Airdrops 2026', desc: 'Plasma OG = $20K. How to grind Discord roles the right way.', cat: 'Strategy', catColor: '#818cf8', time: '9 min' },
   { slug: 'how-to-find-airdrops-before-everyone-else', title: 'Find Airdrops Before Everyone Else', desc: 'The exact system top hunters use to find airdrops early.', cat: 'Strategy', catColor: '#818cf8', time: '8 min' },
   { slug: 'how-to-avoid-crypto-airdrop-scams-2026', title: 'How to Avoid Airdrop Scams 2026', desc: 'Stay safe while farming. Red flags and protection strategies.', cat: 'Security', catColor: '#f43f5e', time: '6 min' },
   { slug: 'how-to-build-onchain-activity-that-actually-matters', title: 'Build Onchain Activity That Matters', desc: 'Quality over quantity. What actually gets you airdrop allocations.', cat: 'Onchain', catColor: '#34d399', time: '7 min' },
-  { slug: 'best-ai-crypto-airdrops-2026', title: 'Best AI Crypto Airdrops 2026', desc: 'Top AI projects backed by major VCs with confirmed reward campaigns.', cat: 'AI', catColor: '#c084fc', time: '10 min' },
-  { slug: 'best-depin-airdrops-2026', title: 'Best DePIN Airdrops 2026', desc: 'Earn crypto passively by sharing your bandwidth and device resources.', cat: 'DePIN', catColor: '#06b6d4', time: '9 min' },
-  { slug: 'hyperliquid-guide', title: 'Hyperliquid Season 2 Guide 2026', desc: 'How to qualify for HYPE Season 2. Trade, stake, and farm HyperEVM before the snapshot.', cat: 'DeFi', catColor: '#7CF5C0', time: '10 min' },
-  { slug: 'polymarket-airdrop-guide-2026', title: 'Polymarket Airdrop Guide 2026', desc: 'How to qualify for POLY token. Trade real markets, link X account, avoid Sybil filters.', cat: 'Prediction', catColor: '#f59e0b', time: '8 min' },
-  { slug: 'best-solana-airdrops-2026', title: 'Best Solana Airdrops 2026', desc: 'The top Solana ecosystem airdrops with full participation guides. Jupiter, Kamino, Drift and more.', cat: 'Ecosystems', catColor: '#9945FF', time: '9 min' },
-  { slug: 'early-crypto-projects-2026', title: '15 Early Crypto Projects to Watch 2026', desc: 'Pre-launch projects across HyperEVM, DeFi, AI, RWA and Gaming. Follow now, farm early.', cat: 'Alpha', catColor: '#7CF5C0', time: '8 min' },
+  { slug: 'best-airdrop-farming-platforms-2026', title: 'Best Airdrop Farming Platforms 2026', desc: 'ZNS vs Galxe vs Layer3 vs 3alamiy Web3 — honest comparison.', cat: 'Comparison', catColor: '#f43f5e', time: '6 min' },
   { slug: 'best-crypto-airdrop-checker-tools-2026', title: 'Best Crypto Airdrop Checker Tools 2026', desc: 'Honest comparison of every major airdrop checker tool. 3alamiy, Galxe, Drops.bot, Layer3 and more.', cat: 'Comparison', catColor: '#818cf8', time: '7 min' },
+  { slug: 'free-crypto-airdrops-no-investment-2026', title: 'Free Crypto Airdrops — No Investment', desc: 'The best airdrops you can farm with zero money. Just your time.', cat: 'Beginners', catColor: '#60a5fa', time: '6 min' },
+  { slug: 'how-to-get-crypto-airdrops-2026', title: 'How to Get Crypto Airdrops 2026', desc: 'Complete beginner guide to qualifying for crypto airdrops.', cat: 'Beginners', catColor: '#60a5fa', time: '7 min' },
+  { slug: 'what-are-crypto-airdrops', title: 'What Are Crypto Airdrops?', desc: 'Everything you need to know about airdrops explained simply.', cat: 'Beginners', catColor: '#60a5fa', time: '5 min' },
+  { slug: 'upcoming-crypto-airdrops-2026', title: 'Upcoming Crypto Airdrops 2026', desc: 'Pre-TGE projects across AI, DeFi, DePIN, and Web3. Get in before they launch.', cat: 'Alpha', catColor: '#7CF5C0', time: '7 min' },
+  { slug: '3alamiy-vs-galxe', title: '3alamiy Web3 vs Galxe 2026', desc: 'Which is better for airdrop farming? Honest feature-by-feature comparison.', cat: 'Comparison', catColor: '#818cf8', time: '6 min' },
 ];
 
 const breadcrumbSchema = {
