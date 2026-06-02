@@ -45,9 +45,25 @@ async function getTestimonials() {
 }
 
 export const metadata = {
-  title: 'Best Crypto Airdrops 2026 — Free Guides | 3alamiy Web3',
-  description: 'Track and participate in the best free crypto airdrops of 2026. Step-by-step guides for Ethereum, Solana, Arbitrum, Base, Monad and more. Updated daily.',
-  keywords: 'best crypto airdrops 2026, free crypto airdrop, airdrop tracker, ethereum airdrop, solana airdrop',
+  title: '3alamiy Web3 — Best Crypto Airdrop Tracker 2026 | 110+ Free Guides',
+  description: 'The best free crypto airdrop tracker in 2026. 110+ verified step-by-step guides for Ethereum, Solana, Hyperliquid, Sui, Base, Arbitrum and more. Updated daily.',
+  keywords: 'best crypto airdrops 2026, free crypto airdrop, airdrop tracker, ethereum airdrop, solana airdrop, hyperliquid airdrop, polymarket airdrop',
+  openGraph: {
+    title: '3alamiy Web3 — Best Crypto Airdrop Tracker 2026 | 110+ Free Guides',
+    description: 'The best free crypto airdrop tracker in 2026. 110+ verified step-by-step guides for Ethereum, Solana, Hyperliquid, Sui, Base, Arbitrum and more. Updated daily.',
+    url: 'https://www.3alamiyweb3.com',
+    siteName: '3alamiy Web3',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '3alamiy Web3 — Best Crypto Airdrop Tracker 2026',
+    description: 'The best free crypto airdrop tracker in 2026. 110+ verified step-by-step guides. Updated daily.',
+    site: '@3alamiyweb3',
+  },
+  alternates: {
+    canonical: 'https://www.3alamiyweb3.com',
+  },
 };
 
 const articles = [
