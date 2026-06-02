@@ -1,15 +1,15 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Free Crypto Airdrops With No Investment 2026 | 3alamiy Web3',
-  description: 'The best free crypto airdrops in 2026 with zero investment required. Complete list with step-by-step guides. Start earning free crypto today.',
+  title: 'Free Crypto Airdrops 2026 — No Investment Required | Updated June 2026 | 3alamiy Web3',
+  description: 'The best free crypto airdrops in 2026 — no investment required. 110+ verified listings with step-by-step guides. Updated June 2026.',
   keywords: 'free crypto airdrops, free airdrops no investment, free crypto 2026, get free crypto, free airdrop list 2026',
   openGraph: {
-    title: 'Free Crypto Airdrops With No Investment 2026',
+    title: 'Free Crypto Airdrops 2026 — No Investment Required | Updated June 2026',
     description: 'The best free crypto airdrops in 2026 with zero investment required.',
     type: 'article',
   },
-  alternates: { canonical: 'https://seo.3alamiyweb3.online/learn/free-crypto-airdrops-no-investment-2026' },
+  alternates: { canonical: 'https://www.3alamiyweb3.com/learn/free-crypto-airdrops-no-investment-2026' },
 };
 
 const freeAirdrops = [
@@ -25,44 +25,44 @@ export default function FreeCryptoAirdrops() {
   return (
     <>
       <style>{`
-        .article { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; color: #e4e4e7; font-family: system-ui, -apple-system, sans-serif; }
+        .article { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; color: #fff; font-family: system-ui, -apple-system, sans-serif; }
         .article h2 { font-size: 22px; font-weight: 800; color: #fff; margin: 44px 0 14px; letter-spacing: -0.02em; }
         .article h3 { font-size: 17px; font-weight: 700; color: #f4f4f5; margin: 28px 0 10px; }
-        .article p { font-size: 15px; line-height: 1.8; color: #a1a1aa; margin: 0 0 16px; }
+        .article p { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.45); margin: 0 0 16px; }
         .article ul { padding-left: 20px; margin: 0 0 16px; }
-        .article ul li { font-size: 15px; line-height: 1.8; color: #a1a1aa; margin-bottom: 8px; }
-        .article strong { color: #e4e4e7; }
-        .divider { height: 1px; background: linear-gradient(90deg, transparent, #1a1f2e 20%, #1a1f2e 80%, transparent); margin: 44px 0; }
-        .tip-box { background: rgba(16,185,129,0.05); border: 1px solid rgba(16,185,129,0.15); border-radius: 12px; padding: 18px 22px; margin: 24px 0; }
+        .article ul li { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.45); margin-bottom: 8px; }
+        .article strong { color: #fff; }
+        .divider { height: 1px; background: rgba(255,255,255,0.06); margin: 44px 0; }
+        .tip-box { background: rgba(124,245,192,0.05); border: 1px solid rgba(124,245,192,0.18); border-radius: 12px; padding: 18px 22px; margin: 24px 0; }
         .tip-box p { color: #a1a1aa; margin: 0; font-size: 14px; line-height: 1.7; }
-        .tip-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #10b981; margin: 0 0 6px; }
-        .airdrop-row { background: #0d1117; border: 1px solid #1a1f2e; border-radius: 14px; padding: 18px 20px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; gap: 16px; text-decoration: none; transition: border-color 0.2s; }
+        .tip-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #7CF5C0; margin: 0 0 6px; }
+        .airdrop-row { background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 18px 20px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; gap: 16px; text-decoration: none; transition: border-color 0.2s; }
         .airdrop-row:hover { border-color: rgba(16,185,129,0.3); }
       `}</style>
 
-      <section style={{ background: '#060910', padding: '56px 24px 40px', borderBottom: '1px solid #1a1f2e', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', top: '-80px', left: '50%', transform: 'translateX(-50%)', width: '600px', height: '400px', background: 'radial-gradient(ellipse, rgba(16,185,129,0.06) 0%, transparent 65%)', pointerEvents: 'none' }} />
+      <section style={{ background: '#060A12', padding: '56px 24px 40px', borderBottom: '1px solid rgba(255,255,255,0.06)', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: '-80px', left: '50%', transform: 'translateX(-50%)', width: '600px', height: '400px', background: 'radial-gradient(ellipse, rgba(124,245,192,0.06) 0%, transparent 65%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '800px', margin: '0 auto', position: 'relative' }}>
           <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', alignItems: 'center' }}>
-            <Link href="/learn" style={{ fontSize: '12px', color: '#52525b', textDecoration: 'none' }}>Learn</Link>
-            <span style={{ color: '#3f3f46', fontSize: '12px' }}>›</span>
-            <span style={{ fontSize: '12px', color: '#10b981', fontWeight: 700 }}>Free Airdrops</span>
+            <Link href="/learn" style={{ fontSize: '12px', color: 'rgba(255,255,255,0.25)', textDecoration: 'none' }}>Learn</Link>
+            <span style={{ color: 'rgba(255,255,255,0.18)', fontSize: '12px' }}>›</span>
+            <span style={{ fontSize: '12px', color: '#7CF5C0', fontWeight: 700 }}>Free Airdrops</span>
           </div>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.2)', color: '#10b981', padding: '4px 12px', borderRadius: '99px', fontSize: '10px', fontWeight: 800, marginBottom: '16px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(124,245,192,0.1)', border: '1px solid rgba(124,245,192,0.2)', color: '#7CF5C0', padding: '4px 12px', borderRadius: '99px', fontSize: '10px', fontWeight: 800, marginBottom: '16px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
             Zero Investment Required
           </div>
           <h1 style={{ fontSize: '38px', fontWeight: 900, color: '#fff', margin: '0 0 14px', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
             Free Crypto Airdrops<br />
-            <span style={{ background: 'linear-gradient(135deg, #10b981, #34d399)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>No Investment Required</span>
+            <span style={{ color: '#7CF5C0' }}>No Investment Required</span>
           </h1>
-          <p style={{ fontSize: '16px', color: '#71717a', margin: '0 0 24px', lineHeight: 1.7, maxWidth: '580px' }}>
+          <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.45)', margin: '0 0 24px', lineHeight: 1.7, maxWidth: '580px' }}>
             The best free crypto airdrops in 2026. No money needed — just your time and a crypto wallet.
           </p>
           <div style={{ display: 'flex', gap: '28px', flexWrap: 'wrap' }}>
-            {[['86+', 'Free Airdrops'], ['$0', 'Investment Needed'], ['Daily', 'Updated']].map(([val, lbl]) => (
+            {[['110+', 'Free Airdrops'], ['$0', 'Investment Needed'], ['Daily', 'Updated']].map(([val, lbl]) => (
               <div key={lbl}>
-                <div style={{ fontSize: '20px', fontWeight: 900, color: '#10b981' }}>{val}</div>
-                <div style={{ fontSize: '10px', color: '#52525b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{lbl}</div>
+                <div style={{ fontSize: '20px', fontWeight: 900, color: '#7CF5C0' }}>{val}</div>
+                <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.25)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{lbl}</div>
               </div>
             ))}
           </div>
@@ -82,28 +82,28 @@ export default function FreeCryptoAirdrops() {
 
         <div className="divider" />
 
-        <h2>Best Free Crypto Airdrops Right Now (May 2026)</h2>
+        <h2>Best Free Crypto Airdrops Right Now (June 2026)</h2>
         <p>All of these are completely free — no ETH, no investment, just your time:</p>
 
         {freeAirdrops.map((a) => (
           <Link key={a.slug} href={`/airdrops/${a.slug}`} className="airdrop-row">
             <div style={{ flex: 1 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '5px', flexWrap: 'wrap' }}>
-                <span style={{ fontWeight: 800, fontSize: '15px', color: '#f4f4f5' }}>{a.name}</span>
-                <span style={{ background: 'rgba(16,185,129,0.1)', color: '#10b981', border: '1px solid rgba(16,185,129,0.2)', padding: '2px 8px', borderRadius: '99px', fontSize: '9px', fontWeight: 700 }}>FREE</span>
+                <span style={{ fontWeight: 800, fontSize: '15px', color: '#fff' }}>{a.name}</span>
+                <span style={{ background: 'rgba(124,245,192,0.1)', color: '#7CF5C0', border: '1px solid rgba(124,245,192,0.2)', padding: '2px 8px', borderRadius: '99px', fontSize: '9px', fontWeight: 700 }}>FREE</span>
                 <span style={{ background: 'rgba(99,102,241,0.1)', color: '#818cf8', border: '1px solid rgba(99,102,241,0.2)', padding: '2px 8px', borderRadius: '99px', fontSize: '9px', fontWeight: 700 }}>{a.chain}</span>
               </div>
-              <p style={{ fontSize: '12px', color: '#71717a', margin: 0 }}>{a.desc}</p>
+              <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.45)', margin: 0 }}>{a.desc}</p>
             </div>
             <div style={{ textAlign: 'right', flexShrink: 0 }}>
-              <div style={{ fontSize: '12px', fontWeight: 700, color: '#10b981' }}>{a.time}</div>
-              <div style={{ fontSize: '10px', color: '#3f3f46' }}>to complete</div>
+              <div style={{ fontSize: '12px', fontWeight: 700, color: '#7CF5C0' }}>{a.time}</div>
+              <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.18)' }}>to complete</div>
             </div>
           </Link>
         ))}
 
         <div style={{ textAlign: 'center', marginTop: '20px' }}>
-          <Link href="/airdrops?cost=free" style={{ background: 'linear-gradient(135deg, #10b981, #059669)', color: '#fff', padding: '12px 26px', borderRadius: '12px', textDecoration: 'none', fontWeight: 700, fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+          <Link href="/airdrops?cost=free" style={{ background: '#7CF5C0', color: '#060A12', padding: '12px 26px', borderRadius: '12px', textDecoration: 'none', fontWeight: 700, fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
             View All Free Airdrops →
           </Link>
         </div>
@@ -136,7 +136,7 @@ export default function FreeCryptoAirdrops() {
         <p>Focus on projects that have raised real money from credible investors. A project that raised $10M+ has real pressure to launch a token and distribute value to early users. Check for funding announcements on CrunchBase or the project's own blog.</p>
 
         <h3>Use GM Station Daily</h3>
-        <p>Our <Link href="/gm" style={{ color: '#10b981', textDecoration: 'none' }}>GM Station</Link> is completely free and helps you build daily on-chain activity across 16+ EVM chains. Daily GM transactions cost almost nothing in gas and create genuine wallet history that helps qualify for future airdrops.</p>
+        <p>Our <Link href="/gm" style={{ color: '#7CF5C0', textDecoration: 'none' }}>GM Station</Link> is completely free and helps you build daily on-chain activity across 16+ EVM chains. Daily GM transactions cost almost nothing in gas and create genuine wallet history that helps qualify for future airdrops.</p>
 
         <div className="divider" />
 
@@ -146,22 +146,22 @@ export default function FreeCryptoAirdrops() {
             { q: 'Are there really crypto airdrops with no investment?', a: 'Yes. Many legitimate airdrops require only your time and a crypto wallet. Testnet airdrops, social task airdrops, and waitlist airdrops are all completely free.' },
             { q: 'What\'s the catch with free airdrops?', a: 'There\'s no catch — projects genuinely want users to test their protocols. The "cost" is your time. You might spend 10–30 minutes on tasks, and in return you could receive significant token rewards.' },
             { q: 'Do I need ETH to do free airdrops?', a: 'For testnet airdrops: no, you use free test tokens. For some on-chain tasks: a small amount of ETH ($5–10) covers gas. Waitlist and social airdrops require nothing.' },
-            { q: 'How many free airdrops can I do at once?', a: 'As many as you can keep up with. Start with 3–5 and expand as you get comfortable. Our tracker has 86+ free airdrops listed.' },
+            { q: 'How many free airdrops can I do at once?', a: 'As many as you can keep up with. Start with 3–5 and expand as you get comfortable. Our tracker has 110+ free airdrops listed.' },
           ].map((faq, i) => (
-            <div key={i} style={{ background: '#0d1117', border: '1px solid #1a1f2e', borderRadius: '12px', padding: '18px' }}>
-              <p style={{ fontSize: '14px', fontWeight: 700, color: '#f4f4f5', margin: '0 0 8px' }}>{faq.q}</p>
-              <p style={{ fontSize: '13px', color: '#71717a', margin: 0, lineHeight: 1.7 }}>{faq.a}</p>
+            <div key={i} style={{ background: '#0D1221', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '12px', padding: '18px' }}>
+              <p style={{ fontSize: '14px', fontWeight: 700, color: '#fff', margin: '0 0 8px' }}>{faq.q}</p>
+              <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', margin: 0, lineHeight: 1.7 }}>{faq.a}</p>
             </div>
           ))}
         </div>
 
         <div className="divider" />
-        <p>Ready to start earning free crypto? Browse all 86+ free airdrops with step-by-step guides.</p>
+        <p>Ready to start earning free crypto? Browse all 110+ free airdrops with step-by-step guides.</p>
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '16px' }}>
-          <Link href="/airdrops" style={{ background: 'linear-gradient(135deg, #10b981, #059669)', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 700, fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+          <Link href="/airdrops" style={{ background: '#7CF5C0', color: '#060A12', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 700, fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
             Browse Free Airdrops →
           </Link>
-          <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" style={{ background: 'transparent', color: '#e4e4e7', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 600, fontSize: '14px', border: '1px solid #1a1f2e', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+          <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" style={{ background: 'transparent', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 600, fontSize: '14px', border: '1px solid rgba(255,255,255,0.06)', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
             Daily Alerts on Telegram
           </a>
         </div>
