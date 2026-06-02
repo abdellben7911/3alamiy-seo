@@ -51,12 +51,12 @@ export const metadata = {
 };
 
 const articles = [
-  { slug: 'best-airdrop-farming-platforms-2026', title: 'Best Airdrop Farming Platforms 2026', desc: 'ZNS vs Galxe vs Layer3 — honest comparison.', cat: 'Comparison' },
-  { slug: 'discord-role-airdrops-guide-2026', title: 'Discord Role Airdrops 2026', desc: 'Plasma OG = $20K. How to grind roles.', cat: 'Strategy' },
-  { slug: 'how-to-find-airdrops-before-everyone-else', title: 'Find Airdrops Before Everyone Else', desc: 'The exact system top hunters use.', cat: 'Strategy' },
-  { slug: 'how-to-build-onchain-activity-that-actually-matters', title: 'Build Onchain Activity That Matters', desc: 'Quality over quantity.', cat: 'Onchain' },
-  { slug: 'upcoming-crypto-airdrops-2026', title: 'Upcoming Crypto Airdrops 2026', desc: "Don't miss these high-potential drops.", cat: 'Airdrops' },
-  { slug: 'how-to-avoid-crypto-airdrop-scams-2026', title: 'How to Avoid Airdrop Scams', desc: 'Stay safe while farming.', cat: 'Beginners' },
+  { slug: 'hyperliquid-guide', title: 'Hyperliquid Season 2 Full Guide', desc: 'HyperCore, HLP vault, HyperEVM — complete farming strategy.', cat: 'Hot' },
+  { slug: 'polymarket-airdrop-guide-2026', title: 'Polymarket POLY Airdrop Guide', desc: 'How to qualify before the snapshot. Confirmed drop.', cat: 'Hot' },
+  { slug: 'top-25-airdrop-picks-2026', title: 'Top 25 Airdrop Picks for 2026', desc: '25 early opportunities — testnets, points, confirmed drops.', cat: 'Strategy' },
+  { slug: 'early-crypto-projects-2026', title: 'Best Early Crypto Projects 2026', desc: 'Farm before the announcement. a16z-backed projects.', cat: 'Strategy' },
+  { slug: 'crypto-airdrop-eligibility-requirements-2026', title: 'Airdrop Eligibility Requirements', desc: 'What you need to qualify — checklist + common mistakes.', cat: 'Beginners' },
+  { slug: 'how-to-avoid-crypto-airdrop-scams-2026', title: 'How to Avoid Airdrop Scams', desc: 'Stay safe while farming in 2026.', cat: 'Beginners' },
 ];
 
 const catColors: Record<string, string> = {
