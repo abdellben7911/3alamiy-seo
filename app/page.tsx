@@ -263,7 +263,7 @@ export default async function Home() {
 
         /* CTA SPLIT */
         .cta-split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        .cta-email { background: linear-gradient(135deg, #0D1A2B, #080C14); border: 1px solid rgba(99,102,241,0.2); border-radius: 20px; padding: 36px; position: relative; overflow: hidden; }
+        .cta-email { background: rgba(124,245,192,0.03); border: 1px solid rgba(124,245,192,0.15); border-radius: 20px; padding: 36px; position: relative; overflow: hidden; }
         .cta-email::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%); }
         .cta-tg { background: linear-gradient(135deg, #0D1A1F, #080C14); border: 1px solid rgba(124,245,192,0.15); border-radius: 20px; padding: 36px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
         .cta-tg::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(124,245,192,0.08) 0%, transparent 70%); }
@@ -643,9 +643,9 @@ export default async function Home() {
           <div className="section-inner">
             <div className="cta-split" id="newsletter">
               <div className="cta-email">
-                <div className="cta-label" style={{ color: '#818cf8' }}>Free · No spam</div>
-                <div className="cta-h2">One drop. One email. No spam.</div>
-                <p className="cta-desc">Get the single best airdrop opportunity every Friday — only when there's something worth your gas.</p>
+                <div className="cta-label" style={{ color: '#7CF5C0' }}>Every Friday · Free · No spam</div>
+                <div className="cta-h2">The #1 airdrop of the week — before CT notices.</div>
+                <p className="cta-desc">Every Friday we pick the single highest-potential airdrop of the week. Step-by-step guide included. Only sent when it's worth your time.</p>
                 <EmailSignup />
               </div>
               <div className="cta-tg">
