@@ -310,6 +310,11 @@ export default async function AirdropsPage() {
                 <p className="al-eyebrow">Verified Guides · Updated Daily</p>
                 <h1 className="al-h1">All Crypto <em>Airdrops</em></h1>
                 <p className="al-hero-sub">{airdrops.length}+ verified airdrops with step-by-step guides. Always free.</p>
+                <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.3)', lineHeight: 1.7, margin: '12px 0 0', maxWidth: '560px' }}>
+                  Every listing includes wallet setup, chain requirements, eligibility criteria, and scam warnings — not just a name and a link.
+                  Covers Ethereum, Solana, Hyperliquid, Base, Sui, Monad, and 30+ more chains.
+                  Listings verified by our team and updated daily.
+                </p>
               </div>
               <div style={{ display: 'flex', gap: '8px' }}>
                 <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(124,245,192,0.08)', border: '1px solid rgba(124,245,192,0.2)', color: '#7CF5C0', fontSize: '12px', fontWeight: 700, padding: '9px 16px', borderRadius: '10px', textDecoration: 'none', whiteSpace: 'nowrap' }}>
