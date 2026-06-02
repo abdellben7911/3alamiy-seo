@@ -5,12 +5,12 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'How to Get Crypto Airdrops in 2026 — Complete Beginner Guide',
   description: 'Learn exactly how to get crypto airdrops in 2026. Step-by-step guide for beginners — wallets, chains, strategies, and which airdrops to farm first.',
-  url: 'https://seo.3alamiyweb3.online/learn/how-to-get-crypto-airdrops-2026',
+  url: 'https://www.3alamiyweb3.com/learn/how-to-get-crypto-airdrops-2026',
   datePublished: '2026-05-16',
   dateModified: '2026-05-20',
-  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
-  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online', logo: { '@type': 'ImageObject', url: 'https://seo.3alamiyweb3.online/icon.svg' } },
-  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://seo.3alamiyweb3.online/learn/how-to-get-crypto-airdrops-2026' },
+  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
+  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com', logo: { '@type': 'ImageObject', url: 'https://www.3alamiyweb3.com/icon.svg' } },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/how-to-get-crypto-airdrops-2026' },
   about: [{ '@type': 'Thing', name: 'Crypto Airdrops' }, { '@type': 'Thing', name: 'Blockchain' }, { '@type': 'Thing', name: 'Web3' }],
   speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.article p:first-of-type'] },
 };
@@ -48,22 +48,22 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
-    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://seo.3alamiyweb3.online/learn' },
-    { '@type': 'ListItem', position: 3, name: 'How to Get Crypto Airdrops 2026', item: 'https://seo.3alamiyweb3.online/learn/how-to-get-crypto-airdrops-2026' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.3alamiyweb3.com' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://www.3alamiyweb3.com/learn' },
+    { '@type': 'ListItem', position: 3, name: 'How to Get Crypto Airdrops 2026', item: 'https://www.3alamiyweb3.com/learn/how-to-get-crypto-airdrops-2026' },
   ],
 };
 
 export const metadata = {
-  title: 'How to Get Crypto Airdrops in 2026 — Complete Beginner Guide',
+  title: 'How to Get Crypto Airdrops in 2026 — Complete Beginner Guide | Updated June 2026 | 3alamiy Web3',
   description: 'Learn exactly how to get crypto airdrops in 2026. Step-by-step guide for beginners — wallets, chains, strategies, and which airdrops to farm first.',
   keywords: 'how to get crypto airdrops, how to get airdrops crypto, crypto airdrop guide beginners, how to qualify for airdrop, get free crypto 2026',
   openGraph: {
-    title: 'How to Get Crypto Airdrops in 2026 — Complete Beginner Guide',
+    title: 'How to Get Crypto Airdrops in 2026 — Complete Beginner Guide | Updated June 2026',
     description: 'Step-by-step guide for getting crypto airdrops in 2026. Free strategies that actually work.',
     type: 'article',
   },
-  alternates: { canonical: 'https://seo.3alamiyweb3.online/learn/how-to-get-crypto-airdrops-2026' },
+  alternates: { canonical: 'https://www.3alamiyweb3.com/learn/how-to-get-crypto-airdrops-2026' },
 };
 
 export default function HowToGetCryptoAirdrops() {
