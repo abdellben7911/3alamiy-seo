@@ -2,12 +2,12 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Upcoming Crypto Airdrops 2026 — 18 Early Projects to Watch | 3alamiy Web3',
-  description: 'The best upcoming crypto projects to watch in 2026. Early stage platforms across AI, DeFi, DePIN, and Web3 — get in before they launch their tokens.',
+  title: 'Upcoming Crypto Airdrops 2026 — Pre-TGE Projects | Updated June 2026 | 3alamiy Web3',
+  description: 'The best upcoming crypto airdrops and pre-TGE projects in 2026. AI, DeFi, DePIN, and Web3 — get in before they launch their tokens. Updated June 2026.',
   keywords: 'upcoming crypto airdrops 2026, early crypto projects, new crypto projects 2026, upcoming web3 airdrops, early stage crypto',
   alternates: { canonical: 'https://www.3alamiyweb3.com/learn/upcoming-crypto-airdrops-2026' },
   openGraph: {
-    title: 'Upcoming Crypto Airdrops 2026 — 18 Early Projects',
+    title: 'Upcoming Crypto Airdrops 2026 — Pre-TGE Projects | Updated June 2026',
     description: 'Early stage platforms across AI, DeFi, DePIN, and Web3. Get in before they launch.',
     type: 'article',
   },
