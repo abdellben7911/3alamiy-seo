@@ -2,12 +2,12 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Polymarket Airdrop Guide 2026 — How to Farm the POLY Token | 3alamiy Web3",
+  title: "Polymarket POLY Airdrop Guide 2026 — How to Qualify Before the Snapshot | 3alamiy Web3",
   description:
     "Polymarket confirmed the POLY token and airdrop. Learn how to qualify — trading strategy, eligibility signals, and step-by-step farming guide for the biggest prediction market airdrop of 2026.",
   alternates: { canonical: "https://www.3alamiyweb3.com/learn/polymarket-airdrop-guide-2026" },
   openGraph: {
-    title: "Polymarket Airdrop Guide 2026 — How to Farm the POLY Token",
+    title: "Polymarket POLY Airdrop Guide 2026 — How to Qualify Before the Snapshot",
     description: "Polymarket confirmed the POLY token and airdrop. Learn how to qualify with our step-by-step farming guide.",
     url: "https://www.3alamiyweb3.com/learn/polymarket-airdrop-guide-2026",
     siteName: "3alamiy Web3",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Polymarket Airdrop Guide 2026 — How to Farm the POLY Token",
+    title: "Polymarket POLY Airdrop Guide 2026 — How to Qualify Before the Snapshot",
     description: "Polymarket confirmed the POLY token and airdrop. Step-by-step farming guide.",
   },
 };
