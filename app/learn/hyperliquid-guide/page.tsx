@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Hyperliquid Airdrop Season 2 Guide 2026 — How to Qualify for HYPE | 3alamiy Web3',
-  description: 'Complete step-by-step guide to qualifying for Hyperliquid Season 2 airdrop in 2026. Learn how to farm HYPE tokens through trading, staking, HyperEVM, and more.',
+  title: 'Hyperliquid Season 2 Airdrop — Full Farming Guide (Updated June 2026) | 3alamiy Web3',
+  description: 'Hyperliquid Season 2 is still active. Full farming guide — HyperCore trading, HLP vault 3x multiplier, HyperEVM protocols, and daily routine. Updated June 2026.',
   keywords: 'hyperliquid season 2 airdrop, HYPE airdrop 2026, HyperEVM guide, how to qualify hyperliquid, hyperliquid farming guide',
   alternates: { canonical: 'https://www.3alamiyweb3.com/learn/hyperliquid-guide' },
   openGraph: {
-    title: 'Hyperliquid Airdrop Season 2 Guide 2026',
-    description: 'Step-by-step guide to qualifying for HYPE Season 2. Trade, stake, and farm HyperEVM before the snapshot.',
+    title: 'Hyperliquid Season 2 Airdrop — Full Farming Guide (Updated June 2026)',
+    description: 'Hyperliquid Season 2 is still active. Full farming guide — HyperCore trading, HLP vault 3x multiplier, HyperEVM protocols, and daily routine. Updated June 2026.',
     url: 'https://www.3alamiyweb3.com/learn/hyperliquid-guide',
     type: 'article',
   },
