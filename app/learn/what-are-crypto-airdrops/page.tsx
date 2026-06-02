@@ -4,13 +4,13 @@ const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: 'What Are Crypto Airdrops? Complete Guide 2026',
-  description: 'What are crypto airdrops? How do they work, are they legit, and how much can you earn? Complete guide for beginners in 2026.',
-  url: 'https://seo.3alamiyweb3.online/learn/what-are-crypto-airdrops',
+  description: 'What are crypto airdrops? How they work, how much you can earn, and how to get your first one in 2026. Complete beginner guide — updated June 2026.',
+  url: 'https://www.3alamiyweb3.com/learn/what-are-crypto-airdrops',
   datePublished: '2026-05-16',
   dateModified: '2026-05-20',
-  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
-  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online', logo: { '@type': 'ImageObject', url: 'https://seo.3alamiyweb3.online/icon.svg' } },
-  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://seo.3alamiyweb3.online/learn/what-are-crypto-airdrops' },
+  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
+  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com', logo: { '@type': 'ImageObject', url: 'https://www.3alamiyweb3.com/icon.svg' } },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/what-are-crypto-airdrops' },
   about: [{ '@type': 'Thing', name: 'Crypto Airdrops' }, { '@type': 'Thing', name: 'Cryptocurrency' }, { '@type': 'Thing', name: 'Blockchain' }],
   speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.article p:first-of-type'] },
 };
@@ -32,22 +32,22 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
-    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://seo.3alamiyweb3.online/learn' },
-    { '@type': 'ListItem', position: 3, name: 'What Are Crypto Airdrops', item: 'https://seo.3alamiyweb3.online/learn/what-are-crypto-airdrops' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.3alamiyweb3.com' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://www.3alamiyweb3.com/learn' },
+    { '@type': 'ListItem', position: 3, name: 'What Are Crypto Airdrops', item: 'https://www.3alamiyweb3.com/learn/what-are-crypto-airdrops' },
   ],
 };
 
 export const metadata = {
-  title: 'What Are Crypto Airdrops? Complete Guide 2026 | 3alamiy Web3',
-  description: 'What are crypto airdrops? How do they work, are they legit, and how much can you earn? Complete guide for beginners in 2026.',
+  title: 'What Are Crypto Airdrops? Complete Beginner Guide | Updated June 2026 | 3alamiy Web3',
+  description: 'What are crypto airdrops? How they work, how much you can earn, and how to get your first one in 2026. Complete beginner guide — updated June 2026.',
   keywords: 'what are airdrops, what are crypto airdrops, what is an airdrop crypto, how do airdrops work, crypto airdrop explained',
   openGraph: {
-    title: 'What Are Crypto Airdrops? Complete Guide 2026',
+    title: 'What Are Crypto Airdrops? Complete Beginner Guide | Updated June 2026',
     description: 'Everything you need to know about crypto airdrops — how they work, how much you can earn, and how to get started.',
     type: 'article',
   },
-  alternates: { canonical: 'https://seo.3alamiyweb3.online/learn/what-are-crypto-airdrops' },
+  alternates: { canonical: 'https://www.3alamiyweb3.com/learn/what-are-crypto-airdrops' },
 };
 
 export default function WhatAreCryptoAirdrops() {
