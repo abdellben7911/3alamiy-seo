@@ -6,12 +6,12 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'Best Airdrop Farming Platforms 2026 — ZNS vs Galxe vs Layer3 vs 3alamiy Web3',
   description: 'Honest comparison of the best crypto airdrop farming platforms in 2026. ZNS Connect, Galxe, Layer3, and 3alamiy Web3 compared by features, cost, and airdrop quality.',
-  url: 'https://seo.3alamiyweb3.online/learn/best-airdrop-farming-platforms-2026',
+  url: 'https://www.3alamiyweb3.com/learn/best-airdrop-farming-platforms-2026',
   datePublished: '2026-05-11',
   dateModified: '2026-05-20',
-  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
-  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online', logo: { '@type': 'ImageObject', url: 'https://seo.3alamiyweb3.online/icon.svg' } },
-  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://seo.3alamiyweb3.online/learn/best-airdrop-farming-platforms-2026' },
+  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
+  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com', logo: { '@type': 'ImageObject', url: 'https://www.3alamiyweb3.com/icon.svg' } },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/best-airdrop-farming-platforms-2026' },
   about: [{ '@type': 'Thing', name: 'Airdrop Farming Platforms' }, { '@type': 'Thing', name: 'Crypto Airdrops' }, { '@type': 'Thing', name: 'Galxe' }, { '@type': 'Thing', name: 'Layer3' }],
   speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.article p:first-of-type'] },
 };
@@ -32,21 +32,21 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
-    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://seo.3alamiyweb3.online/learn' },
-    { '@type': 'ListItem', position: 3, name: 'Best Airdrop Farming Platforms 2026', item: 'https://seo.3alamiyweb3.online/learn/best-airdrop-farming-platforms-2026' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.3alamiyweb3.com' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://www.3alamiyweb3.com/learn' },
+    { '@type': 'ListItem', position: 3, name: 'Best Airdrop Farming Platforms 2026', item: 'https://www.3alamiyweb3.com/learn/best-airdrop-farming-platforms-2026' },
   ],
 };
 
 export const metadata: Metadata = {
-  title: 'Best Airdrop Farming Platforms 2026 — ZNS vs Galxe vs Layer3 vs 3alamiy Web3',
+  title: 'Best Airdrop Farming Platforms 2026 — Updated June 2026 | 3alamiy Web3',
   description: 'Compare the best crypto airdrop farming platforms of 2026. ZNS Connect, Galxe, Layer3, Superboard, and 3alamiy Web3 — honest review of features, costs, and which one is best for beginners.',
   keywords: 'best airdrop farming platforms 2026, zns connect review, galxe alternative, layer3 vs galxe, airdrop tracker 2026, free airdrop platform',
-  alternates: { canonical: 'https://seo.3alamiyweb3.online/learn/best-airdrop-farming-platforms-2026' },
+  alternates: { canonical: 'https://www.3alamiyweb3.com/learn/best-airdrop-farming-platforms-2026' },
   openGraph: {
-    title: 'Best Airdrop Farming Platforms 2026 — Full Comparison',
+    title: 'Best Airdrop Farming Platforms 2026 — Full Comparison | Updated June 2026',
     description: 'Compare ZNS Connect, Galxe, Layer3, Superboard and 3alamiy Web3. Find the best free platform for farming crypto airdrops in 2026.',
-    url: 'https://seo.3alamiyweb3.online/learn/best-airdrop-farming-platforms-2026',
+    url: 'https://www.3alamiyweb3.com/learn/best-airdrop-farming-platforms-2026',
     type: 'article',
   },
 };
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
 const platforms = [
   {
     name: '3alamiy Web3',
-    url: 'https://seo.3alamiyweb3.online',
+    url: 'https://www.3alamiyweb3.com',
     emoji: '🪂',
     badge: 'Best Free',
     badgeColor: '#10b981',
@@ -286,7 +286,7 @@ export default function ComparisonPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '40px' }}>
             {[
               { step: '1', title: 'Say GM daily on every chain', desc: 'Use 3alamiy Web3\'s GM Station to send a GM transaction on 5-10 chains every day. This builds wallet history and signals genuine activity.' },
-              { step: '2', title: 'Pick 5-10 airdrops to actively farm', desc: 'Go to seo.3alamiyweb3.online/airdrops and choose 5-10 free airdrops. Focus on ones backed by major VCs with no token yet.' },
+              { step: '2', title: 'Pick 5-10 airdrops to actively farm', desc: 'Go to www.3alamiyweb3.com/airdrops and choose 5-10 free airdrops. Focus on ones backed by major VCs with no token yet.' },
               { step: '3', title: 'Follow step-by-step guides', desc: 'Each airdrop guide on 3alamiy Web3 has exact steps. Follow them in order. Consistency matters more than perfection.' },
               { step: '4', title: 'Stay active on Discord and X', desc: 'Many airdrops reward community activity. Join Discord, post content on X, and engage with the project regularly.' },
               { step: '5', title: 'Track and repeat daily', desc: 'Set a 20-minute daily routine: GM Station first, then check your active airdrops for new tasks.' },
