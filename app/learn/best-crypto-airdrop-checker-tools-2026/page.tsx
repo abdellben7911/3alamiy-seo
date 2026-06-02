@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Best Crypto Airdrop Checker Tools 2026 — Honest Comparison | 3alamiy Web3',
-  description: 'Honest comparison of the best crypto airdrop checker tools in 2026. 3alamiy Web3, Galxe, Airdrops.io, Drops.bot, Layer3, DeBank and more. Which tool is right for you?',
+  title: 'Best Crypto Airdrop Checker Tools 2026 — Honest Comparison | Updated June 2026 | 3alamiy Web3',
+  description: 'Honest comparison of the best crypto airdrop checker tools in 2026 — 3alamiy Web3, Galxe, Airdrops.io, Layer3, DeBank and more. Updated June 2026.',
   keywords: 'best crypto airdrop checker tools 2026, airdrop checker comparison, best airdrop tracker 2026, galxe vs airdrops.io, crypto airdrop tools comparison, free airdrop checker',
   alternates: { canonical: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrop-checker-tools-2026' },
   openGraph: {
-    title: 'Best Crypto Airdrop Checker Tools 2026 — Honest Comparison',
+    title: 'Best Crypto Airdrop Checker Tools 2026 — Honest Comparison | Updated June 2026',
     description: 'Honest comparison of every major airdrop checker tool in 2026. Find the right one for your strategy.',
     url: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrop-checker-tools-2026',
     type: 'article',
