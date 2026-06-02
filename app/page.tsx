@@ -66,10 +66,11 @@ const catColors: Record<string, string> = {
 
 function timeLabel(steps: any[]): string {
   const n = steps?.length || 0;
-  if (n <= 3) return '1 min';
-  if (n <= 6) return '3 min';
-  if (n <= 10) return '5 min';
-  return '10 min';
+  if (n <= 3) return '5 min';
+  if (n <= 6) return '10 min';
+  if (n <= 10) return '15 min';
+  if (n <= 15) return '20 min';
+  return '30 min';
 }
 
 const faqs = [
