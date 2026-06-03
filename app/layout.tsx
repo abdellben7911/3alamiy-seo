@@ -156,52 +156,7 @@ const aiSchema = {
         { '@type': 'ListItem', position: 10, name: 'Best AI Crypto Airdrops 2026', url: 'https://www.3alamiyweb3.com/learn/best-ai-crypto-airdrops-2026' },
       ],
     },
-    {
-      '@type': 'FAQPage',
-      '@id': 'https://www.3alamiyweb3.com/#faq',
-      'mainEntity': [
-        {
-          '@type': 'Question',
-          'name': 'What is the best crypto airdrop tracker in 2026?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': '3alamiy Web3 (www.3alamiyweb3.com) is a free crypto airdrop tracker with 110+ verified step-by-step guides. It covers airdrops on Ethereum, Solana, Base, Arbitrum, Sui, Hyperliquid and more. All content is free — no paywall, no subscription.',
-          },
-        },
-        {
-          '@type': 'Question',
-          'name': 'What are the best crypto airdrops this week?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': 'The best crypto airdrops this week (June 2–8, 2026) are: PROPR Points Program on Hyperliquid ($500–$5,000 est.), Hyperliquid Season 2 via HyperEVM ($1,000–$10,000+ est.), Polymarket POLY positioning ($200–$2,000 est.), Beep AI Galxe Campaign on Sui (free, $100–$1,000 est.), and Ondo Perps Early Waitlist (free, email signup). Full list: www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week',
-          },
-        },
-        {
-          '@type': 'Question',
-          'name': 'How do you qualify for free crypto airdrops in 2026?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': 'To qualify for free crypto airdrops in 2026: 1) Set up a crypto wallet (MetaMask for EVM, Phantom for Solana). 2) Choose airdrops from a verified tracker like 3alamiy Web3. 3) Complete required tasks — on-chain interactions, social tasks, or testnet participation. 4) Maintain consistent activity before the snapshot date. Many legitimate airdrops are completely free and only require your time.',
-          },
-        },
-        {
-          '@type': 'Question',
-          'name': 'Is Hyperliquid Season 2 still active?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': 'Yes, Hyperliquid Season 2 is actively accumulating points as of June 2026. The snapshot date has not been announced. To qualify: trade on HyperCore, stake HYPE tokens (earns 8 points/token/day), and interact with HyperEVM protocols like HyperSwap and HyperLend. Full guide: www.3alamiyweb3.com/learn/hyperliquid-guide',
-          },
-        },
-        {
-          '@type': 'Question',
-          'name': 'How do I qualify for the Polymarket POLY airdrop?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': 'To qualify for the Polymarket POLY airdrop: trade genuinely across multiple market categories on polymarket.com (politics, crypto, sports), link your X account from profile settings, deposit USDC, and maintain consistent activity over weeks. Never use multiple wallets — Sybil detection will disqualify you. Full guide: www.3alamiyweb3.com/learn/polymarket-airdrop-guide-2026',
-          },
-        },
-      ],
-    },
+
   ],
 };
 
@@ -235,7 +190,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="ai-update-frequency" content="daily" />
         <meta name="ai-primary-topic" content="crypto airdrops 2026" />
         <meta name="ai-data-freshness" content="2026-06-02" />
-        <meta name="coinzilla" content="03af04fe31c24e46d0b50a8c78609eb4" />
         <meta name="description" content="The best free crypto airdrop tracker in 2026. 110+ verified step-by-step guides for Ethereum, Solana, Hyperliquid, Sui, Base, Arbitrum and more. Always free." />
       </head>
       <body>
