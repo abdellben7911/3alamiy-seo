@@ -100,25 +100,37 @@ export default async function AirdropsPage() {
 
         /* FEATURED */
         .al-feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 32px; }
-        .al-feat-card { background: linear-gradient(135deg,#0D1A14,#0C1628); border: 1px solid rgba(124,245,192,0.2); border-radius: 16px; padding: 20px; text-decoration: none; color: #fff; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden; transition: border-color 0.15s, transform 0.15s; }
-        .al-feat-card:hover { border-color: rgba(124,245,192,0.4); transform: translateY(-2px); }
-        .al-feat-card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background: linear-gradient(90deg,transparent,rgba(124,245,192,0.4) 50%,transparent); }
-        .al-feat-lbl { position:absolute; top:12px; right:12px; background:rgba(124,245,192,0.1); border:1px solid rgba(124,245,192,0.2); color:#7CF5C0; font-size:9px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:3px 9px; border-radius:99px; }
-        .al-feat-id { display:flex; align-items:center; gap:12px; padding-right:80px; }
-        .al-feat-logo { width:42px; height:42px; border-radius:12px; object-fit:cover; border:1px solid rgba(255,255,255,0.1); flex-shrink:0; }
-        .al-feat-logo-fb { width:42px; height:42px; border-radius:12px; flex-shrink:0; background:linear-gradient(135deg,#111827,#1a2540); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; color:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.07); }
-        .al-feat-name { font-weight:600; font-size:14px; letter-spacing:-0.01em; color:#fff; margin-bottom:2px; }
-        .al-feat-chain { font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.07em; color:rgba(255,255,255,0.3); }
-        .al-feat-desc { font-size:12px; color:rgba(255,255,255,0.35); line-height:1.65; margin:0; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-        .al-feat-pills { display:flex; gap:6px; flex-wrap:wrap; }
-        .al-feat-pill { font-size:10px; font-weight:600; padding:3px 10px; border-radius:99px; }
-        .al-feat-foot { display:flex; align-items:center; justify-content:space-between; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06); margin-top:auto; }
-        .al-feat-cta { font-size:12px; font-weight:600; color:#7CF5C0; display:flex; align-items:center; gap:4px; }
-        .al-feat-time { font-size:10px; color:rgba(255,255,255,0.25); font-weight:500; }
+        .al-feat-card {
+          background: #0B1120;
+          border: 1px solid rgba(124,245,192,0.18);
+          border-radius: 18px; padding: 0;
+          text-decoration: none; color: #fff;
+          display: flex; flex-direction: column;
+          overflow: hidden; position: relative;
+          transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+        }
+        .al-feat-card:hover { border-color: rgba(124,245,192,0.4); transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(124,245,192,0.08); }
+        .al-feat-card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background: linear-gradient(90deg,transparent,rgba(124,245,192,0.5) 50%,transparent); }
+        .al-feat-lbl { position:absolute; top:12px; right:12px; background:rgba(124,245,192,0.12); border:1px solid rgba(124,245,192,0.25); color:#7CF5C0; font-size:9px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:99px; }
+        .al-feat-id { display:flex; align-items:center; gap:12px; padding: 16px 16px 0; padding-right:90px; }
+        .al-feat-logo { width:46px; height:46px; border-radius:13px; object-fit:cover; border:1px solid rgba(255,255,255,0.08); flex-shrink:0; }
+        .al-feat-logo-fb { width:46px; height:46px; border-radius:13px; flex-shrink:0; background:linear-gradient(135deg,#0f1a2a,#162033); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; color:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.06); }
+        .al-feat-name { font-weight:700; font-size:14px; letter-spacing:-0.01em; color:#fff; margin-bottom:3px; }
+        .al-feat-chain { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.09em; color:rgba(255,255,255,0.22); }
+        .al-feat-desc { font-size:12px; color:rgba(255,255,255,0.32); line-height:1.65; margin:0; padding: 10px 16px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+        .al-feat-meta { display:grid; grid-template-columns:repeat(3,1fr); margin: 0 16px; background:rgba(255,255,255,0.025); border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,0.04); }
+        .al-feat-meta-cell { padding:9px 10px; display:flex; flex-direction:column; gap:2px; border-right:1px solid rgba(255,255,255,0.04); }
+        .al-feat-meta-cell:last-child { border-right:none; }
+        .al-feat-meta-lbl { font-size:8px; font-weight:700; text-transform:uppercase; letter-spacing:0.09em; color:rgba(255,255,255,0.18); }
+        .al-feat-meta-val { font-size:11px; font-weight:700; }
+        .al-feat-foot { display:flex; align-items:center; justify-content:space-between; padding: 12px 16px 14px; border-top:1px solid rgba(255,255,255,0.04); margin-top:auto; }
+        .al-feat-cta { font-size:12px; font-weight:700; color:#7CF5C0; display:flex; align-items:center; gap:5px; }
+        .al-feat-time { font-size:9px; color:rgba(255,255,255,0.2); font-weight:500; }
         .al-feat-hdr { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px; }
         .al-feat-hdr-title { font-weight:700; font-size:17px; letter-spacing:-0.02em; color:#fff; display:flex; align-items:center; gap:8px; }
         .al-feat-hdr-sub { font-size:11px; color:rgba(255,255,255,0.28); margin-top:2px; }
         .al-feat-hdr-btn { font-size:11px; color:#7CF5C0; font-weight:600; text-decoration:none; background:rgba(124,245,192,0.07); border:1px solid rgba(124,245,192,0.18); padding:6px 13px; border-radius:8px; white-space:nowrap; }
+        .al-feat-pills { display:none; }
 
         /* Responsive */
         @media (max-width: 1024px) { .al-stats-bar { grid-template-columns: repeat(3, 1fr); } }
@@ -223,17 +235,26 @@ export default async function AirdropsPage() {
                     <Link key={a.slug} href={`/airdrops/${a.slug}`} className="al-feat-card">
                       <span className="al-feat-lbl">{a.featured_label || 'HOT PICK'}</span>
                       <div className="al-feat-id">
-                        {a.logo ? <img src={a.logo} alt={a.name} className="al-feat-logo" width={42} height={42} /> : <div className="al-feat-logo-fb">{a.name?.[0]}</div>}
+                        {a.logo ? <img src={a.logo} alt={a.name} className="al-feat-logo" width={46} height={46} /> : <div className="al-feat-logo-fb">{a.name?.[0]}</div>}
                         <div>
                           <div className="al-feat-name">{a.name}</div>
                           <div className="al-feat-chain">{a.blockchain}</div>
                         </div>
                       </div>
                       <p className="al-feat-desc">{a.description}</p>
-                      <div className="al-feat-pills">
-                        <span className="al-feat-pill" style={{ color: diffColor(a.difficulty), background: `${diffColor(a.difficulty)}12`, border: `1px solid ${diffColor(a.difficulty)}25` }}>{a.difficulty}</span>
-                        <span className="al-feat-pill" style={{ color: costColor(a.cost), background: `${costColor(a.cost)}12`, border: `1px solid ${costColor(a.cost)}25` }}>{a.cost}</span>
-                        <span className="al-feat-pill" style={{ color:'#7CF5C0', background:'rgba(124,245,192,0.08)', border:'1px solid rgba(124,245,192,0.18)' }}>{reward}</span>
+                      <div className="al-feat-meta">
+                        <div className="al-feat-meta-cell">
+                          <span className="al-feat-meta-lbl">Difficulty</span>
+                          <span className="al-feat-meta-val" style={{ color: diffColor(a.difficulty) }}>{a.difficulty}</span>
+                        </div>
+                        <div className="al-feat-meta-cell">
+                          <span className="al-feat-meta-lbl">Cost</span>
+                          <span className="al-feat-meta-val" style={{ color: costColor(a.cost) }}>{a.cost}</span>
+                        </div>
+                        <div className="al-feat-meta-cell">
+                          <span className="al-feat-meta-lbl">Reward</span>
+                          <span className="al-feat-meta-val" style={{ color: '#7CF5C0', fontSize: 10 }}>{reward}</span>
+                        </div>
                       </div>
                       <div className="al-feat-foot">
                         <span className="al-feat-cta">Start Guide <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
