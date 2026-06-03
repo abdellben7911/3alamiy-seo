@@ -8,6 +8,19 @@ const costColor = (c: string) => c === 'Free' ? '#7CF5C0' : c === 'Paid' ? '#f43
 
 const PER_PAGE = 12;
 
+// Deterministic number from slug — always same number for same airdrop
+function seededJoined(slug: string): string {
+  let hash = 0;
+  for (let i = 0; i < slug.length; i++) {
+    hash = ((hash << 5) - hash) + slug.charCodeAt(i);
+    hash |= 0;
+  }
+  const base = Math.abs(hash) % 900 + 100; // 100–999
+  if (base > 700) return `${(base * 2 + 300).toLocaleString()} joined`;
+  if (base > 400) return `${(base + 200).toLocaleString()} joined`;
+  return `${base} joined`;
+}
+
 function timeLabel(steps: any[]): string {
   const n = steps?.length || 0;
   if (n <= 3) return '5 min';
@@ -269,7 +282,13 @@ export default function AirdropsClient({ airdrops }: { airdrops: any[] }) {
                     View Guide
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                   </span>
-                  {steps.length > 0 && <span className="ac-steps-badge">{steps.length} steps · {timeLabel(steps)}</span>}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <span style={{ fontSize: 10, color: 'rgba(124,245,192,0.6)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 3 }}>
+                      <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                      {seededJoined(a.slug)}
+                    </span>
+                    {steps.length > 0 && <span className="ac-steps-badge">{steps.length} steps · {timeLabel(steps)}</span>}
+                  </div>
                 </div>
               </Link>
             );
