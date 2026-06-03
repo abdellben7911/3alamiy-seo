@@ -107,17 +107,18 @@ export default async function AirdropsPage() {
           text-decoration: none; color: #fff;
           display: flex; flex-direction: column;
           overflow: hidden; position: relative;
+          min-width: 0; min-height: 0;
           transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
         }
         .al-feat-card:hover { border-color: rgba(124,245,192,0.4); transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(124,245,192,0.08); }
         .al-feat-card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background: linear-gradient(90deg,transparent,rgba(124,245,192,0.5) 50%,transparent); }
         .al-feat-lbl { position:absolute; top:12px; right:12px; background:rgba(124,245,192,0.12); border:1px solid rgba(124,245,192,0.25); color:#7CF5C0; font-size:9px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; padding:3px 10px; border-radius:99px; }
-        .al-feat-id { display:flex; align-items:center; gap:12px; padding: 16px 60px 0 16px; min-width:0; }
+        .al-feat-id { display:flex; align-items:center; gap:10px; padding: 14px 80px 0 14px; min-width:0; overflow:hidden; }
         .al-feat-logo { width:46px; height:46px; border-radius:13px; object-fit:cover; border:1px solid rgba(255,255,255,0.08); flex-shrink:0; }
         .al-feat-logo-fb { width:46px; height:46px; border-radius:13px; flex-shrink:0; background:linear-gradient(135deg,#0f1a2a,#162033); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; color:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.06); }
-        .al-feat-name { font-weight:700; font-size:14px; letter-spacing:-0.01em; color:#fff; margin-bottom:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:180px; }
+        .al-feat-name { font-weight:700; font-size:13px; letter-spacing:-0.01em; color:#fff; margin-bottom:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
         .al-feat-chain { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.09em; color:rgba(255,255,255,0.22); }
-        .al-feat-desc { font-size:12px; color:rgba(255,255,255,0.32); line-height:1.65; margin:0; padding: 10px 16px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; word-break:break-word; }
+        .al-feat-desc { font-size:12px; color:rgba(255,255,255,0.32); line-height:1.6; margin:0; padding: 8px 16px; height: 58px; overflow:hidden; word-break:break-word; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; }
         .al-feat-meta { display:grid; grid-template-columns:repeat(3,1fr); margin: 0 16px; background:rgba(255,255,255,0.025); border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,0.04); }
         .al-feat-meta-cell { padding:9px 10px; display:flex; flex-direction:column; gap:2px; border-right:1px solid rgba(255,255,255,0.04); }
         .al-feat-meta-cell:last-child { border-right:none; }
