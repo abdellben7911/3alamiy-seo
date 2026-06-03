@@ -265,7 +265,6 @@ export default function AirdropsClient({ airdrops }: { airdrops: any[] }) {
           font-size: 12px; color: rgba(255,255,255,0.32);
           line-height: 1.65; margin: 0;
           padding: 10px 16px;
-          display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
           overflow: hidden;
         }
 
@@ -455,7 +454,7 @@ export default function AirdropsClient({ airdrops }: { airdrops: any[] }) {
                 </div>
 
                 {/* Desc */}
-                <p className="ac2-desc">{a.description}</p>
+                <p className="ac2-desc">{(a.description || '').slice(0, 100)}{(a.description || '').length > 100 ? '...' : ''}</p>
 
                 {/* Meta */}
                 <div className="ac2-meta">
