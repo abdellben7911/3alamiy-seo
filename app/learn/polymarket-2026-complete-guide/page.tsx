@@ -92,7 +92,7 @@ export default function Polymarket2026Guide() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
         :root {
           --green: #7CF5C0;
@@ -146,10 +146,10 @@ export default function Polymarket2026Guide() {
 
         /* Headline */
         .p26-h1 {
-          font-family: 'Syne', var(--font-space), system-ui, sans-serif;
-          font-size: clamp(28px, 6vw, 52px);
-          font-weight: 800; line-height: 1.08;
-          letter-spacing: -0.03em;
+          font-family: 'Outfit', var(--font-space), system-ui, sans-serif;
+          font-size: clamp(26px, 4.5vw, 42px);
+          font-weight: 700; line-height: 1.15;
+          letter-spacing: -0.02em;
           color: #fff;
           margin-bottom: 20px;
         }
@@ -200,7 +200,7 @@ export default function Polymarket2026Guide() {
         }
         .p26-stat:hover::before { opacity: 1; }
         .p26-stat-val {
-          font-family: 'Syne', system-ui, sans-serif;
+          font-family: 'Outfit', var(--font-space), system-ui, sans-serif;
           font-size: clamp(18px, 3.5vw, 28px);
           font-weight: 800; letter-spacing: -0.03em;
           line-height: 1; margin-bottom: 6px;
@@ -215,7 +215,7 @@ export default function Polymarket2026Guide() {
 
         .p26-section { margin-bottom: 60px; }
         .p26-h2 {
-          font-family: 'Syne', var(--font-space), system-ui, sans-serif;
+          font-family: 'Outfit', var(--font-space), system-ui, sans-serif;
           font-size: clamp(20px, 3.5vw, 28px);
           font-weight: 800; letter-spacing: -0.02em;
           color: #fff; margin-bottom: 16px;
@@ -237,7 +237,7 @@ export default function Polymarket2026Guide() {
           width: 60px; flex-shrink: 0; padding-top: 4px;
         }
         .p26-tl-year {
-          font-family: 'Syne', system-ui, sans-serif;
+          font-family: 'Outfit', var(--font-space), system-ui, sans-serif;
           font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.25);
           letter-spacing: 0.05em; margin-bottom: 8px; white-space: nowrap;
         }
@@ -388,7 +388,7 @@ export default function Polymarket2026Guide() {
           opacity: 0.5;
         }
         .p26-cta-title {
-          font-family: 'Syne', system-ui, sans-serif;
+          font-family: 'Outfit', var(--font-space), system-ui, sans-serif;
           font-size: clamp(20px, 4vw, 28px); font-weight: 800;
           color: #fff; margin-bottom: 12px; letter-spacing: -0.02em;
         }
