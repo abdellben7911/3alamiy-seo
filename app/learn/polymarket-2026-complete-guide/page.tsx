@@ -3,12 +3,11 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Polymarket in 2026 — Everything You Need to Know | 3alamiy Web3",
-  description:
-    "Polymarket hit $10.57B monthly volume in March 2026, partnered with MLS, expanded to the US, and confirmed the POLY token. Full guide to what's happening on Polymarket right now.",
+  description: "Polymarket hit $10.57B monthly volume, relaunched in the US, partnered with MLS, and confirmed the POLY token. Full guide to what's happening on Polymarket right now.",
   alternates: { canonical: "https://www.3alamiyweb3.com/learn/polymarket-2026-complete-guide" },
   openGraph: {
     title: "Polymarket in 2026 — Everything You Need to Know",
-    description: "Polymarket hit $10.57B monthly volume, partnered with MLS, expanded to the US, and confirmed the POLY token. Full guide.",
+    description: "Polymarket hit $10.57B monthly volume and confirmed the POLY token. Full guide to what's happening right now.",
     url: "https://www.3alamiyweb3.com/learn/polymarket-2026-complete-guide",
     siteName: "3alamiy Web3",
     type: "article",
@@ -16,7 +15,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Polymarket in 2026 — Everything You Need to Know",
-    description: "Polymarket hit $10.57B monthly volume and confirmed the POLY token. Full guide to what's happening right now.",
+    description: "Polymarket hit $10.57B monthly volume and confirmed the POLY token.",
   },
 };
 
@@ -24,7 +23,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Polymarket in 2026 — Everything You Need to Know",
-  description: "Polymarket hit $10.57B monthly volume in March 2026, partnered with MLS, and confirmed the POLY token. Full guide.",
+  description: "Polymarket hit $10.57B monthly volume in March 2026, partnered with MLS, and confirmed the POLY token.",
   author: { "@type": "Organization", name: "3alamiy Web3" },
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
   datePublished: "2026-06-04",
@@ -39,76 +38,51 @@ const faqJsonLd = {
     {
       "@type": "Question",
       name: "What is Polymarket?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Polymarket is the world's largest decentralized prediction market platform. Users trade on the outcomes of real-world events — sports, politics, crypto, economics — using USDC on the Polygon blockchain. It hit $10.57 billion in monthly trading volume in March 2026.",
-      },
+      acceptedAnswer: { "@type": "Answer", text: "Polymarket is the world's largest decentralized prediction market. Users trade on outcomes of real-world events using USDC on Polygon. It hit $10.57 billion in monthly trading volume in March 2026." },
     },
     {
       "@type": "Question",
       name: "Is Polymarket legal in the US in 2026?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. In 2026 Polymarket officially relaunched access for US users following regulatory developments. The platform now operates legally in over 40 US states. It has also partnered with Major League Soccer (MLS) for official prediction markets.",
-      },
+      acceptedAnswer: { "@type": "Answer", text: "Yes. In 2026 Polymarket officially relaunched access for US users in over 40 states. It also partnered with Major League Soccer for official prediction markets." },
     },
     {
       "@type": "Question",
       name: "What is the POLY token?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "The POLY token is Polymarket's upcoming governance and utility token. The CMO confirmed in March 2026: 'There will be a token, there will be an airdrop.' No launch date has been announced. Early reports suggest 5-10% of total supply will be distributed to active traders.",
-      },
+      acceptedAnswer: { "@type": "Answer", text: "The POLY token is Polymarket's upcoming governance token. The CMO confirmed: 'There will be a token, there will be an airdrop.' Expected H2 2026. Active traders are building eligibility now." },
     },
     {
       "@type": "Question",
       name: "What are the most popular markets on Polymarket right now?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "As of June 2026, the most active markets include the NBA Finals (New York Knicks vs San Antonio Spurs), sports markets via the MLS partnership, French Presidential Election, and various crypto price prediction markets. Sports markets have become one of the fastest-growing categories following the MLS deal.",
-      },
+      acceptedAnswer: { "@type": "Answer", text: "As of June 2026: NBA Finals (Knicks vs Spurs, Knicks at 54%), French Presidential Election, MLS Cup 2026, and various crypto price prediction markets." },
     },
     {
       "@type": "Question",
       name: "How do I start trading on Polymarket?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Go to polymarket.com, connect MetaMask (make sure Polygon network is added), deposit USDC, and start trading. In 2026, US users can also deposit via credit card. Link your X account from profile settings — it is believed to be an eligibility factor for the future POLY airdrop.",
-      },
+      acceptedAnswer: { "@type": "Answer", text: "Go to polymarket.com, connect MetaMask on Polygon, deposit USDC, and start trading. US users can also deposit via credit card in 2026. Link your X account — believed to be an eligibility factor for the POLY airdrop." },
     },
     {
       "@type": "Question",
       name: "What happened with the Willo2 $500K loss on Polymarket?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Willo2 lost approximately $500,000 betting YES on a MicroStrategy Bitcoin market after the news had already come out. The market resolved NO based on existing precedent. It was not a scam — Polymarket's resolution was consistent with prior policy. The main issue was ambiguous market wording that Polymarket should have clarified earlier.",
-      },
+      acceptedAnswer: { "@type": "Answer", text: "Willo2 lost $500K betting YES on a MicroStrategy Bitcoin market. It resolved NO based on precedent. Not a scam — Polymarket's resolution was consistent with prior policy. The real issue was ambiguous market wording Polymarket should have clarified earlier." },
     },
   ],
 };
 
-const stats = [
-  { val: "$10.57B", lbl: "March 2026 Volume", color: "#7CF5C0" },
-  { val: "1.35M+", lbl: "Active Traders", color: "#7CF5C0" },
-  { val: "$15B", lbl: "Valuation", color: "#f59e0b" },
-  { val: "40+", lbl: "US States Legal", color: "#818cf8" },
+const timeline = [
+  { date: "2020", event: "Polymarket launches on Polygon", detail: "Founded by Shayne Coplan. Prediction markets for crypto-native users. First real decentralized prediction market with meaningful liquidity.", hot: false },
+  { date: "2022", event: "CFTC cease and desist — US users blocked", detail: "US regulator forces Polymarket to block US users and pay $1.4M settlement. Platform pivots hard to non-US markets. Volume drops.", hot: false },
+  { date: "2024", event: "$3.7B in US election bets", detail: "Trump vs Biden/Harris drives Polymarket to mainstream. $3.7B in election bets. First time a crypto platform becomes the go-to political forecasting tool.", hot: false },
+  { date: "Jan 2026", event: "ICE invests ~$2B — $15B valuation", detail: "NYSE parent company invests close to $2 billion. Polymarket becomes the most valuable prediction market company in history.", hot: true },
+  { date: "March 2026", event: "$10.57B monthly volume — all-time record", detail: "1.35M+ active traders. CMO confirms POLY token is coming. Largest single month in prediction market history.", hot: true },
+  { date: "2026", event: "US relaunch + MLS official partnership", detail: "Legal in 40+ US states. Official MLS deal — first major US sports league on a crypto prediction platform. League regulates market integrity.", hot: true },
+  { date: "H2 2026", event: "POLY token expected", detail: "No official date. Active traders building history now. Community estimates point to H2 2026 after US relaunch stabilizes.", hot: false },
 ];
 
 const trending = [
-  { market: "NBA Finals 2026", category: "Sports", leader: "New York Knicks", odds: "54%", volume: "High", why: "NBA Finals underway — Knicks vs Spurs is one of the most traded markets right now." },
-  { market: "French Presidential Election", category: "Politics", leader: "TBD", odds: "Active", volume: "High", why: "European political markets are surging as the French election cycle heats up." },
-  { market: "Will Bitcoin hit $100K in 2026?", category: "Crypto", leader: "NO", odds: "Active", volume: "Medium", why: "Bitcoin price markets always attract heavy volume. Traders betting on BTC trajectory." },
-  { market: "MLS Cup Winner 2026", category: "Sports", leader: "Various", odds: "Active", volume: "Growing", why: "Official MLS partnership launched — first regulated sports prediction markets with league oversight." },
-];
-
-const timeline = [
-  { date: "2020", event: "Polymarket launches on Polygon", detail: "Founded by Shayne Coplan. Prediction markets for crypto-native users." },
-  { date: "2022", event: "CFTC issues a cease and desist", detail: "US regulator forces Polymarket to block US users and pay $1.4M settlement. The platform pivots to non-US markets." },
-  { date: "2024", event: "US Presidential election drives $3.7B in volume", detail: "Polymarket becomes mainstream during the Trump vs Biden/Harris election. Total election bets exceed $3.7B." },
-  { date: "Jan 2026", event: "Polymarket raises at $15B valuation", detail: "ICE (NYSE parent company) invests close to $2B. Polymarket becomes the most valuable prediction market company in history." },
-  { date: "March 2026", event: "$10.57B monthly volume — new record", detail: "Breaks all previous records. 1.35M+ active traders. CMO confirms POLY token is coming." },
-  { date: "2026", event: "US relaunch + MLS partnership", detail: "Polymarket officially relaunches for US users in 40+ states. Partners with MLS for official league prediction markets with regulatory oversight." },
-  { date: "H2 2026", event: "POLY token expected", detail: "No official date. Community estimates point to H2 2026. Active traders building history now." },
+  { market: "NBA Finals 2026", cat: "🏀 Sports", odds: "Knicks 54%", note: "Most active market. Knicks vs Spurs — one of the most traded sports events in Polymarket history." },
+  { market: "MLS Cup Winner 2026", cat: "⚽ Sports", odds: "Active", note: "Official MLS partnership markets — first regulated sports prediction with league oversight." },
+  { market: "French Presidential Election", cat: "🗳️ Politics", odds: "Active", note: "European political markets surging. High volume across all election category markets." },
+  { market: "Bitcoin price markets", cat: "₿ Crypto", odds: "Active", note: "BTC bull/bear markets always attract heavy volume. Traders betting on H2 2026 trajectory." },
 ];
 
 export default function Polymarket2026Guide() {
@@ -118,243 +92,514 @@ export default function Polymarket2026Guide() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       <style>{`
-        .pm2 * { box-sizing: border-box; }
-        .pm2 { background: #060A12; min-height: 100vh; color: #fff; font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif; }
-        .pm2-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px 80px; }
-        .pm2-bc { font-size: 13px; color: rgba(255,255,255,0.25); margin-bottom: 32px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .pm2-bc a { color: rgba(255,255,255,0.25); text-decoration: none; }
-        .pm2-badge { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 99px; text-transform: uppercase; margin-right: 8px; }
-        .pm2-h1 { font-size: clamp(24px, 5vw, 36px); font-weight: 700; line-height: 1.2; margin: 16px 0; color: #fff; }
-        .pm2-h1 span { color: #7CF5C0; }
-        .pm2-sub { font-size: 16px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 12px; }
-        .pm2-meta { font-size: 13px; color: rgba(255,255,255,0.25); margin-bottom: 16px; }
-        .pm2-meta span { color: rgba(255,255,255,0.45); }
-        .pm2-byline { display: flex; align-items: center; gap: 10px; margin-bottom: 40px; padding: 12px 16px; background: rgba(124,245,192,0.04); border: 1px solid rgba(124,245,192,0.1); border-radius: 10px; }
-        .pm2-byline-avatar { width: 32px; height: 32px; border-radius: 50%; background: rgba(124,245,192,0.15); border: 1px solid rgba(124,245,192,0.25); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
-        .pm2-byline-name { font-size: 13px; font-weight: 700; color: #fff; }
-        .pm2-byline-sub { font-size: 11px; color: rgba(255,255,255,0.35); }
-        .pm2-byline-sub a { color: #7CF5C0; text-decoration: none; }
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
-        /* Stats */
-        .pm2-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; overflow: hidden; margin-bottom: 48px; }
-        .pm2-stat { background: #0D1221; padding: 16px 12px; text-align: center; }
-        .pm2-stat-val { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
-        .pm2-stat-lbl { font-size: 10px; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+        :root {
+          --green: #7CF5C0;
+          --green-dim: rgba(124,245,192,0.12);
+          --green-border: rgba(124,245,192,0.2);
+          --red: #f87171;
+          --amber: #f59e0b;
+          --card: #0B1120;
+          --bg: #060A12;
+          --text: rgba(255,255,255,0.45);
+          --text-bright: #fff;
+          --border: rgba(255,255,255,0.07);
+        }
 
-        /* Section */
-        .pm2-section { margin-bottom: 52px; }
-        .pm2-h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 12px; }
-        .pm2-p { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 16px; }
-        .pm2-p strong { color: #fff; }
+        .p26 * { box-sizing: border-box; margin: 0; padding: 0; }
+        .p26 { background: var(--bg); min-height: 100vh; color: var(--text-bright); font-family: 'DM Sans', var(--font-space), system-ui, sans-serif; }
 
-        /* Timeline */
-        .pm2-timeline { display: flex; flex-direction: column; }
-        .pm2-tl-item { display: flex; gap: 16px; padding-bottom: 20px; }
-        .pm2-tl-item:last-child { padding-bottom: 0; }
-        .pm2-tl-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 20px; }
-        .pm2-tl-dot { width: 10px; height: 10px; border-radius: 50%; background: #7CF5C0; flex-shrink: 0; margin-top: 4px; }
-        .pm2-tl-line { width: 1px; flex: 1; background: rgba(255,255,255,0.06); margin-top: 4px; }
-        .pm2-tl-item:last-child .pm2-tl-line { display: none; }
-        .pm2-tl-content { flex: 1; padding-bottom: 4px; }
-        .pm2-tl-date { font-size: 10px; font-weight: 700; color: #7CF5C0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
-        .pm2-tl-event { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
-        .pm2-tl-detail { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.65; }
+        /* ── HERO ── */
+        .p26-hero {
+          position: relative; overflow: hidden;
+          padding: 0 20px 0;
+          border-bottom: 1px solid var(--border);
+        }
+        .p26-hero-glow {
+          position: absolute; inset: 0;
+          background:
+            radial-gradient(ellipse 80% 60% at 10% -10%, rgba(124,245,192,0.07) 0%, transparent 60%),
+            radial-gradient(ellipse 50% 40% at 90% 100%, rgba(96,165,250,0.05) 0%, transparent 60%);
+          pointer-events: none;
+        }
+        .p26-hero-grid {
+          position: absolute; inset: 0;
+          background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+          background-size: 40px 40px;
+          pointer-events: none;
+        }
+        .p26-inner { max-width: 760px; margin: 0 auto; position: relative; }
 
-        /* Trending markets */
-        .pm2-markets { display: flex; flex-direction: column; gap: 10px; }
-        .pm2-market { background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 16px 18px; }
-        .pm2-market-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; flex-wrap: wrap; gap: 8px; }
-        .pm2-market-name { font-size: 14px; font-weight: 700; color: #fff; }
-        .pm2-market-tags { display: flex; gap: 6px; }
-        .pm2-market-tag { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 99px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.4); }
-        .pm2-market-why { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.6; }
+        /* Breadcrumb */
+        .p26-bc { display: flex; align-items: center; gap: 6px; padding: 24px 0 0; font-size: 12px; color: rgba(255,255,255,0.25); }
+        .p26-bc a { color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.15s; }
+        .p26-bc a:hover { color: var(--green); }
 
-        /* Box */
-        .pm2-box { border-radius: 12px; padding: 16px 18px; margin-bottom: 16px; }
-        .pm2-box-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
-        .pm2-box-text { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; margin: 0; }
-        .pm2-box-text strong { color: #fff; }
+        /* Badge row */
+        .p26-badges { display: flex; gap: 8px; margin: 20px 0 16px; flex-wrap: wrap; }
+        .p26-badge {
+          font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+          text-transform: uppercase; padding: 4px 12px;
+          border-radius: 99px; border: 1px solid;
+        }
+
+        /* Headline */
+        .p26-h1 {
+          font-family: 'Syne', var(--font-space), system-ui, sans-serif;
+          font-size: clamp(28px, 6vw, 52px);
+          font-weight: 800; line-height: 1.08;
+          letter-spacing: -0.03em;
+          color: #fff;
+          margin-bottom: 20px;
+        }
+        .p26-h1 .accent { color: var(--green); }
+        .p26-h1 .dim { color: rgba(255,255,255,0.5); }
+
+        /* Deck */
+        .p26-deck {
+          font-size: clamp(14px, 2.2vw, 17px);
+          color: rgba(255,255,255,0.5);
+          line-height: 1.75;
+          max-width: 580px;
+          margin-bottom: 24px;
+          font-weight: 300;
+        }
+
+        /* Author strip */
+        .p26-author {
+          display: flex; align-items: center; gap: 12px;
+          padding: 14px 0 28px;
+          border-top: 1px solid var(--border);
+          margin-top: 8px;
+        }
+        .p26-author-avatar {
+          width: 36px; height: 36px; border-radius: 50%;
+          background: var(--green-dim); border: 1px solid var(--green-border);
+          display: flex; align-items: center; justify-content: center; font-size: 16px;
+        }
+        .p26-author-name { font-size: 13px; font-weight: 600; color: #fff; }
+        .p26-author-meta { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+        .p26-author-meta a { color: var(--green); text-decoration: none; }
+
+        /* ── STATS BAND ── */
+        .p26-stats {
+          display: grid; grid-template-columns: repeat(4,1fr);
+          border-bottom: 1px solid var(--border);
+          background: rgba(255,255,255,0.01);
+        }
+        .p26-stat {
+          padding: 22px 16px; text-align: center;
+          border-right: 1px solid var(--border);
+          position: relative; overflow: hidden;
+        }
+        .p26-stat:last-child { border-right: none; }
+        .p26-stat::before {
+          content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+          opacity: 0; transition: opacity 0.3s;
+        }
+        .p26-stat:hover::before { opacity: 1; }
+        .p26-stat-val {
+          font-family: 'Syne', system-ui, sans-serif;
+          font-size: clamp(18px, 3.5vw, 28px);
+          font-weight: 800; letter-spacing: -0.03em;
+          line-height: 1; margin-bottom: 6px;
+        }
+        .p26-stat-lbl {
+          font-size: 9px; font-weight: 600; text-transform: uppercase;
+          letter-spacing: 0.1em; color: rgba(255,255,255,0.2);
+        }
+
+        /* ── BODY ── */
+        .p26-body { max-width: 760px; margin: 0 auto; padding: 52px 20px 80px; }
+
+        .p26-section { margin-bottom: 60px; }
+        .p26-h2 {
+          font-family: 'Syne', var(--font-space), system-ui, sans-serif;
+          font-size: clamp(20px, 3.5vw, 28px);
+          font-weight: 800; letter-spacing: -0.02em;
+          color: #fff; margin-bottom: 16px;
+          padding-bottom: 12px;
+          border-bottom: 1px solid var(--border);
+        }
+        .p26-p {
+          font-size: 15px; color: var(--text);
+          line-height: 1.85; margin-bottom: 16px;
+          font-weight: 300;
+        }
+        .p26-p strong { color: #fff; font-weight: 600; }
+
+        /* ── TIMELINE ── */
+        .p26-tl { display: flex; flex-direction: column; gap: 0; }
+        .p26-tl-row { display: flex; gap: 0; }
+        .p26-tl-left {
+          display: flex; flex-direction: column; align-items: center;
+          width: 60px; flex-shrink: 0; padding-top: 4px;
+        }
+        .p26-tl-year {
+          font-family: 'Syne', system-ui, sans-serif;
+          font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.25);
+          letter-spacing: 0.05em; margin-bottom: 8px; white-space: nowrap;
+        }
+        .p26-tl-dot {
+          width: 10px; height: 10px; border-radius: 50%;
+          background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.2);
+          flex-shrink: 0; position: relative; z-index: 1;
+          transition: all 0.3s;
+        }
+        .p26-tl-dot.hot {
+          background: var(--green);
+          border-color: var(--green);
+          box-shadow: 0 0 12px rgba(124,245,192,0.5);
+          animation: glow-pulse 2s ease-in-out infinite;
+        }
+        @keyframes glow-pulse { 0%,100%{box-shadow:0 0 8px rgba(124,245,192,0.5)} 50%{box-shadow:0 0 20px rgba(124,245,192,0.8)} }
+        .p26-tl-vline {
+          width: 1px; flex: 1; background: var(--border);
+          margin: 4px 0;
+        }
+        .p26-tl-row:last-child .p26-tl-vline { display: none; }
+        .p26-tl-content {
+          flex: 1; padding: 0 0 28px 20px;
+        }
+        .p26-tl-event {
+          font-size: 15px; font-weight: 600; color: #fff;
+          margin-bottom: 6px; line-height: 1.3;
+        }
+        .p26-tl-detail {
+          font-size: 13px; color: rgba(255,255,255,0.35);
+          line-height: 1.7; font-weight: 300;
+        }
+        .p26-tl-hot-badge {
+          display: inline-block; font-size: 9px; font-weight: 800;
+          background: var(--green-dim); color: var(--green);
+          border: 1px solid var(--green-border);
+          padding: 2px 8px; border-radius: 99px;
+          text-transform: uppercase; letter-spacing: 0.08em;
+          margin-left: 8px; vertical-align: middle;
+        }
+
+        /* ── TRENDING CARDS ── */
+        .p26-trending { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .p26-tcard {
+          background: var(--card);
+          border: 1px solid var(--border);
+          border-radius: 14px; padding: 18px;
+          transition: border-color 0.2s, transform 0.2s;
+          position: relative; overflow: hidden;
+        }
+        .p26-tcard::before {
+          content: ''; position: absolute;
+          top: 0; left: 0; right: 0; height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(124,245,192,0.3) 50%, transparent);
+          opacity: 0; transition: opacity 0.3s;
+        }
+        .p26-tcard:hover { border-color: var(--green-border); transform: translateY(-2px); }
+        .p26-tcard:hover::before { opacity: 1; }
+        .p26-tcard-cat { font-size: 11px; color: rgba(255,255,255,0.3); margin-bottom: 8px; font-weight: 500; }
+        .p26-tcard-name { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.3; }
+        .p26-tcard-odds {
+          display: inline-block; font-size: 11px; font-weight: 700;
+          background: var(--green-dim); color: var(--green);
+          border: 1px solid var(--green-border);
+          padding: 3px 10px; border-radius: 99px; margin-bottom: 10px;
+        }
+        .p26-tcard-note { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.65; font-weight: 300; }
+
+        /* ── POLY BOX ── */
+        .p26-poly-box {
+          background: linear-gradient(135deg, rgba(124,245,192,0.05) 0%, rgba(96,165,250,0.03) 100%);
+          border: 1px solid var(--green-border);
+          border-radius: 16px; padding: 24px;
+          margin-bottom: 24px; position: relative; overflow: hidden;
+        }
+        .p26-poly-box::before {
+          content: ''; position: absolute;
+          top: 0; left: 0; right: 0; height: 1px;
+          background: linear-gradient(90deg, transparent, var(--green) 50%, transparent);
+          opacity: 0.4;
+        }
+        .p26-poly-label {
+          font-size: 10px; font-weight: 800; text-transform: uppercase;
+          letter-spacing: 0.1em; color: var(--green); margin-bottom: 12px;
+          display: flex; align-items: center; gap: 6px;
+        }
+        .p26-poly-label::before {
+          content: ''; width: 6px; height: 6px; border-radius: 50%;
+          background: var(--green); box-shadow: 0 0 8px rgba(124,245,192,0.8);
+          animation: glow-pulse 2s infinite;
+        }
+
+        /* Eligibility rows */
+        .p26-elig { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+        .p26-elig-row {
+          display: flex; align-items: flex-start; gap: 12px;
+          background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+          border-radius: 10px; padding: 12px 14px;
+        }
+        .p26-elig-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+        .p26-elig-label { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+        .p26-elig-desc { font-size: 12px; color: rgba(255,255,255,0.35); font-weight: 300; }
+
+        /* Callout boxes */
+        .p26-callout {
+          border-radius: 12px; padding: 16px 18px; margin-bottom: 14px;
+          display: flex; gap: 14px; align-items: flex-start;
+        }
+        .p26-callout-icon { font-size: 18px; flex-shrink: 0; }
+        .p26-callout-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+        .p26-callout-text { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; font-weight: 300; }
+        .p26-callout-text strong { color: #fff; font-weight: 600; }
 
         /* FAQ */
-        .pm2-faqs { display: flex; flex-direction: column; gap: 10px; }
-        .pm2-faq { background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 18px 20px; }
-        .pm2-faq h3 { font-weight: 600; color: #fff; font-size: 14px; margin-bottom: 8px; }
-        .pm2-faq p { color: rgba(255,255,255,0.45); font-size: 13px; margin: 0; line-height: 1.7; }
+        .p26-faqs { display: flex; flex-direction: column; gap: 8px; }
+        .p26-faq {
+          background: var(--card); border: 1px solid var(--border);
+          border-radius: 12px; padding: 18px 20px;
+          transition: border-color 0.2s;
+        }
+        .p26-faq:hover { border-color: rgba(255,255,255,0.12); }
+        .p26-faq h3 { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 8px; line-height: 1.4; }
+        .p26-faq p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.75; font-weight: 300; }
 
         /* Related */
-        .pm2-related { display: flex; flex-direction: column; gap: 8px; }
-        .pm2-related-link { display: flex; align-items: center; justify-content: space-between; background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 13px 16px; text-decoration: none; color: rgba(255,255,255,0.6); font-size: 13px; font-weight: 500; }
-        .pm2-related-link span:last-child { color: #7CF5C0; font-size: 12px; }
+        .p26-related { display: flex; flex-direction: column; gap: 8px; }
+        .p26-rel {
+          display: flex; align-items: center; justify-content: space-between;
+          background: var(--card); border: 1px solid var(--border);
+          border-radius: 10px; padding: 13px 16px;
+          text-decoration: none; color: rgba(255,255,255,0.5);
+          font-size: 13px; font-weight: 400;
+          transition: border-color 0.2s, color 0.2s;
+        }
+        .p26-rel:hover { border-color: var(--green-border); color: rgba(255,255,255,0.8); }
+        .p26-rel-arrow { color: var(--green); font-size: 12px; flex-shrink: 0; }
 
         /* CTA */
-        .pm2-cta { background: rgba(124,245,192,0.06); border: 1px solid rgba(124,245,192,0.18); border-radius: 16px; padding: 40px 28px; text-align: center; }
-        .pm2-cta h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; }
-        .pm2-cta p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 420px; margin: 0 auto 24px; }
-        .pm2-cta-btn { display: inline-flex; align-items: center; gap: 6px; background: #7CF5C0; color: #060A12; font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: 99px; text-decoration: none; }
-        .pm2-note { font-size: 11px; color: rgba(255,255,255,0.18); margin-top: 16px; }
+        .p26-cta {
+          background: linear-gradient(135deg, rgba(124,245,192,0.06) 0%, rgba(96,165,250,0.04) 100%);
+          border: 1px solid var(--green-border);
+          border-radius: 20px; padding: 48px 32px;
+          text-align: center; position: relative; overflow: hidden;
+        }
+        .p26-cta::before {
+          content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+          background: linear-gradient(90deg, transparent, var(--green) 50%, transparent);
+          opacity: 0.5;
+        }
+        .p26-cta-title {
+          font-family: 'Syne', system-ui, sans-serif;
+          font-size: clamp(20px, 4vw, 28px); font-weight: 800;
+          color: #fff; margin-bottom: 12px; letter-spacing: -0.02em;
+        }
+        .p26-cta-desc { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.7; max-width: 420px; margin: 0 auto 28px; font-weight: 300; }
+        .p26-cta-btn {
+          display: inline-flex; align-items: center; gap: 8px;
+          background: var(--green); color: #060A12;
+          font-weight: 700; font-size: 14px;
+          padding: 13px 30px; border-radius: 99px;
+          text-decoration: none; letter-spacing: 0.01em;
+          transition: opacity 0.2s, transform 0.2s;
+        }
+        .p26-cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .p26-note { font-size: 11px; color: rgba(255,255,255,0.18); margin-top: 16px; }
 
-        @media (max-width: 600px) {
-          .pm2-wrap { padding: 32px 16px 64px; }
-          .pm2-stats { grid-template-columns: repeat(2, 1fr); }
-          .pm2-stat-val { font-size: 17px; }
-          .pm2-cta { padding: 28px 16px; }
+        /* ── MOBILE ── */
+        @media (max-width: 640px) {
+          .p26-stats { grid-template-columns: repeat(2, 1fr); }
+          .p26-stat { padding: 16px 10px; }
+          .p26-trending { grid-template-columns: 1fr; }
+          .p26-cta { padding: 32px 20px; }
+          .p26-tl-left { width: 44px; }
+          .p26-tl-year { font-size: 10px; }
+          .p26-body { padding: 36px 16px 60px; }
+          .p26-hero { padding: 0 16px; }
         }
       `}</style>
 
-      <main className="pm2">
-        <div className="pm2-wrap">
+      <article className="p26">
 
-          {/* Breadcrumb */}
-          <nav className="pm2-bc">
-            <Link href="/">Home</Link><span>/</span>
-            <Link href="/learn">Learn</Link><span>/</span>
-            <span style={{ color: "rgba(255,255,255,0.45)" }}>Polymarket 2026 Complete Guide</span>
-          </nav>
+        {/* ── HERO ── */}
+        <header className="p26-hero">
+          <div className="p26-hero-glow" />
+          <div className="p26-hero-grid" />
+          <div className="p26-inner">
 
-          {/* Header */}
-          <div>
-            <span className="pm2-badge" style={{ background: "rgba(124,245,192,0.1)", color: "#7CF5C0", border: "1px solid rgba(124,245,192,0.18)" }}>Updated June 2026</span>
-            <span className="pm2-badge" style={{ background: "rgba(248,113,113,0.1)", color: "#f87171", border: "1px solid rgba(248,113,113,0.2)" }}>Trending</span>
-            <h1 className="pm2-h1">Polymarket in 2026 — <span>Everything You Need to Know</span></h1>
-            <p className="pm2-sub">Polymarket hit $10.57B monthly volume, relaunched in the US, partnered with MLS, and confirmed the POLY token is coming. Here is everything happening on the world's largest prediction market right now.</p>
-            <p className="pm2-meta">By <span>3alamiy Team</span> · June 4, 2026 · 8 min read</p>
-            <div className="pm2-byline">
-              <div className="pm2-byline-avatar">🪂</div>
+            <nav className="p26-bc">
+              <Link href="/">Home</Link>
+              <span style={{ opacity: 0.3 }}>›</span>
+              <Link href="/learn">Learn</Link>
+              <span style={{ opacity: 0.3 }}>›</span>
+              <span style={{ color: "var(--green)" }}>Polymarket 2026</span>
+            </nav>
+
+            <div className="p26-badges">
+              <span className="p26-badge" style={{ color: "var(--red)", borderColor: "rgba(248,113,113,0.25)", background: "rgba(248,113,113,0.08)" }}>🔴 Trending</span>
+              <span className="p26-badge" style={{ color: "var(--green)", borderColor: "var(--green-border)", background: "var(--green-dim)" }}>Updated June 2026</span>
+              <span className="p26-badge" style={{ color: "rgba(255,255,255,0.3)", borderColor: "var(--border)", background: "transparent" }}>8 min read</span>
+            </div>
+
+            <h1 className="p26-h1">
+              Polymarket in 2026 —<br />
+              <span className="accent">Everything</span>{" "}
+              <span className="dim">You Need to Know</span>
+            </h1>
+
+            <p className="p26-deck">
+              $10.57B monthly volume. US relaunch. MLS partnership. POLY token confirmed.
+              Here is everything happening on the world's largest prediction market right now.
+            </p>
+
+            <div className="p26-author">
+              <div className="p26-author-avatar">🪂</div>
               <div>
-                <div className="pm2-byline-name">3alamiy Team</div>
-                <div className="pm2-byline-sub">Web3 Research · <a href="https://www.3alamiyweb3.com">3alamiyweb3.com</a></div>
+                <div className="p26-author-name">3alamiy Team</div>
+                <div className="p26-author-meta">Web3 Research · <a href="https://www.3alamiyweb3.com">3alamiyweb3.com</a> · June 4, 2026</div>
               </div>
             </div>
           </div>
+        </header>
 
-          {/* Stats */}
-          <div className="pm2-stats">
-            {stats.map((s) => (
-              <div key={s.lbl} className="pm2-stat">
-                <div className="pm2-stat-val" style={{ color: s.color }}>{s.val}</div>
-                <div className="pm2-stat-lbl">{s.lbl}</div>
-              </div>
-            ))}
-          </div>
+        {/* ── STATS BAND ── */}
+        <div className="p26-stats">
+          {[
+            { val: "$10.57B", lbl: "March 2026 Volume", color: "var(--green)", glow: "rgba(124,245,192,0.5)" },
+            { val: "1.35M+", lbl: "Active Traders", color: "var(--green)", glow: "rgba(124,245,192,0.5)" },
+            { val: "$15B", lbl: "Valuation (2026)", color: "var(--amber)", glow: "rgba(245,158,11,0.5)" },
+            { val: "40+", lbl: "US States Legal", color: "#818cf8", glow: "rgba(129,140,248,0.5)" },
+          ].map((s) => (
+            <div key={s.lbl} className="p26-stat" style={{ ['--glow-color' as any]: s.glow }}>
+              <style>{`.p26-stat:hover::before { background: linear-gradient(90deg, transparent, ${s.glow} 50%, transparent); }`}</style>
+              <div className="p26-stat-val" style={{ color: s.color }}>{s.val}</div>
+              <div className="p26-stat-lbl">{s.lbl}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── BODY ── */}
+        <div className="p26-body">
 
           {/* What is Polymarket */}
-          <section className="pm2-section">
-            <h2 className="pm2-h2">What is Polymarket?</h2>
-            <p className="pm2-p">
-              Polymarket is the world's largest decentralized prediction market. Users buy and sell shares in the outcomes of real-world events — from NBA Finals to elections to crypto prices — using USDC on the Polygon blockchain. Every market has a clearly defined resolution criteria. When the event concludes, winning shares pay out <strong>$1 each</strong>.
+          <section className="p26-section">
+            <h2 className="p26-h2">What is Polymarket?</h2>
+            <p className="p26-p">
+              Polymarket is the world's largest decentralized prediction market. Users buy and sell shares in the outcomes of real-world events — from NBA Finals to elections to crypto prices — using USDC on the Polygon blockchain. Every market has clearly defined resolution criteria. When the event concludes, <strong>winning shares pay out $1 each</strong>.
             </p>
-            <p className="pm2-p">
-              In 2026, Polymarket has become mainstream. <strong>$10.57 billion</strong> in monthly trading volume in March 2026. Over <strong>1.35 million active traders</strong>. A valuation of <strong>$15 billion</strong> after NYSE parent company ICE invested close to $2 billion. And now officially legal in over 40 US states.
+            <p className="p26-p">
+              In 2026, Polymarket has gone fully mainstream. <strong>$10.57 billion</strong> in monthly trading volume in March. Over <strong>1.35 million active traders</strong>. A valuation of <strong>$15 billion</strong> after NYSE parent company ICE invested close to $2 billion. Now officially legal in over 40 US states.
             </p>
           </section>
 
           {/* Timeline */}
-          <section className="pm2-section">
-            <h2 className="pm2-h2">Polymarket in 2026 — Full Timeline</h2>
-            <div className="pm2-timeline">
+          <section className="p26-section">
+            <h2 className="p26-h2">How Polymarket Got Here — Full Timeline</h2>
+            <div className="p26-tl">
               {timeline.map((t, i) => (
-                <div key={i} className="pm2-tl-item">
-                  <div className="pm2-tl-left">
-                    <div className="pm2-tl-dot" />
-                    <div className="pm2-tl-line" />
+                <div key={i} className="p26-tl-row">
+                  <div className="p26-tl-left">
+                    <div className="p26-tl-year">{t.date}</div>
+                    <div className={`p26-tl-dot${t.hot ? ' hot' : ''}`} />
+                    <div className="p26-tl-vline" />
                   </div>
-                  <div className="pm2-tl-content">
-                    <div className="pm2-tl-date">{t.date}</div>
-                    <div className="pm2-tl-event">{t.event}</div>
-                    <div className="pm2-tl-detail">{t.detail}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Trending now */}
-          <section className="pm2-section">
-            <h2 className="pm2-h2">What's Trending on Polymarket Right Now</h2>
-            <p className="pm2-p">These are the highest-volume markets on Polymarket as of June 4, 2026:</p>
-            <div className="pm2-markets">
-              {trending.map((m) => (
-                <div key={m.market} className="pm2-market">
-                  <div className="pm2-market-top">
-                    <span className="pm2-market-name">{m.market}</span>
-                    <div className="pm2-market-tags">
-                      <span className="pm2-market-tag">{m.category}</span>
-                      <span className="pm2-market-tag" style={{ color: "#7CF5C0", background: "rgba(124,245,192,0.08)", borderColor: "rgba(124,245,192,0.18)" }}>Volume: {m.volume}</span>
+                  <div className="p26-tl-content">
+                    <div className="p26-tl-event">
+                      {t.event}
+                      {t.hot && <span className="p26-tl-hot-badge">New</span>}
                     </div>
+                    <div className="p26-tl-detail">{t.detail}</div>
                   </div>
-                  <p className="pm2-market-why">{m.why}</p>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* MLS Partnership */}
-          <section className="pm2-section">
-            <h2 className="pm2-h2">The MLS Partnership — What It Means</h2>
-            <p className="pm2-p">
-              In 2026, Major League Soccer officially partnered with Polymarket to launch prediction markets for the MLS season. This includes markets for the MLS Cup, All-Star Game, and Leagues Cup. The league oversees market integrity with third-party compliance firms IC360 and Sportradar. Players and staff are barred from participating.
+          {/* Trending */}
+          <section className="p26-section">
+            <h2 className="p26-h2">What's Trending on Polymarket Right Now</h2>
+            <p className="p26-p" style={{ marginBottom: 20 }}>Highest-volume markets as of June 4, 2026:</p>
+            <div className="p26-trending">
+              {trending.map((m) => (
+                <div key={m.market} className="p26-tcard">
+                  <div className="p26-tcard-cat">{m.cat}</div>
+                  <div className="p26-tcard-name">{m.market}</div>
+                  <div className="p26-tcard-odds">{m.odds}</div>
+                  <p className="p26-tcard-note">{m.note}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* MLS */}
+          <section className="p26-section">
+            <h2 className="p26-h2">The MLS Partnership — A Milestone for Crypto</h2>
+            <p className="p26-p">
+              In 2026, Major League Soccer officially partnered with Polymarket to launch prediction markets for the MLS season. Markets cover the MLS Cup, All-Star Game, and Leagues Cup. The league oversees market integrity with third-party compliance firms IC360 and Sportradar.
             </p>
-            <div className="pm2-box" style={{ background: "rgba(124,245,192,0.04)", border: "1px solid rgba(124,245,192,0.15)" }}>
-              <p className="pm2-box-label" style={{ color: "#7CF5C0" }}>Why This Is a Big Deal</p>
-              <p className="pm2-box-text">
-                This is the first time a major US professional sports league has officially partnered with a crypto prediction market. It signals <strong>regulatory legitimacy</strong> and opens the door for NFL, NBA, and MLB partnerships. For Polymarket users, it means more liquidity, more markets, and better resolution standards.
-              </p>
+            <div className="p26-callout" style={{ background: "rgba(124,245,192,0.04)", border: "1px solid rgba(124,245,192,0.15)" }}>
+              <span className="p26-callout-icon">⚽</span>
+              <div>
+                <div className="p26-callout-label" style={{ color: "var(--green)" }}>Why It Matters</div>
+                <p className="p26-callout-text">This is the <strong>first time a major US professional sports league officially partnered with a crypto prediction platform</strong>. It signals regulatory legitimacy and opens the door for NFL, NBA, and MLB partnerships. For users — more liquidity, better resolution standards, and mainstream credibility.</p>
+              </div>
             </div>
           </section>
 
           {/* POLY Token */}
-          <section className="pm2-section">
-            <h2 className="pm2-h2">The POLY Token — What We Know</h2>
-            <p className="pm2-p">
-              Polymarket's CMO confirmed in a podcast: <strong>"There will be a token, there will be an airdrop."</strong> Beyond that, no official details have been released. Here is what the community analysis suggests:
-            </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <section className="p26-section">
+            <h2 className="p26-h2">The POLY Token — Confirmed, No Date Yet</h2>
+            <div className="p26-poly-box">
+              <div className="p26-poly-label">Confirmed by Polymarket CMO</div>
+              <p style={{ fontSize: 16, color: "rgba(255,255,255,0.7)", lineHeight: 1.7, fontStyle: "italic", fontWeight: 300 }}>
+                "There will be a token, there will be an airdrop."
+              </p>
+            </div>
+            <p className="p26-p">No launch date. No official eligibility criteria. But here is what community analysis and trading patterns suggest:</p>
+            <div className="p26-elig">
               {[
-                { label: "Likely allocation", detail: "5-10% of total POLY supply for active traders", color: "#7CF5C0" },
-                { label: "Eligibility signals", detail: "Trading volume, market diversity, consistency, linked X account", color: "#7CF5C0" },
-                { label: "Expected timing", detail: "H2 2026 — after US relaunch stabilizes", color: "#f59e0b" },
-                { label: "Sybil protection", detail: "Multiple wallets will be detected and disqualified", color: "#f87171" },
-              ].map((item) => (
-                <div key={item.label} style={{ background: "#0D1221", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 10, padding: "12px 16px", display: "flex", gap: 12, alignItems: "flex-start" }}>
-                  <span style={{ color: item.color, fontSize: 12, fontWeight: 700, flexShrink: 0, marginTop: 1 }}>→</span>
+                { icon: "📊", label: "Trading Volume", desc: "Total USDC traded — higher volume = stronger eligibility signal" },
+                { icon: "🌐", label: "Market Diversity", desc: "Trade across multiple categories: sports, politics, crypto, economics" },
+                { icon: "📅", label: "Consistency Over Time", desc: "Regular activity over months, not bursts. Projects reward genuine users" },
+                { icon: "🐦", label: "X Account Linked", desc: "Connect Twitter from your profile settings — believed to be a key signal" },
+                { icon: "🚫", label: "One Wallet Only", desc: "Sybil detection is sophisticated. Multiple wallets = disqualification" },
+              ].map((e) => (
+                <div key={e.label} className="p26-elig-row">
+                  <span className="p26-elig-icon">{e.icon}</span>
                   <div>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: "#fff" }}>{item.label}: </span>
-                    <span style={{ fontSize: 13, color: "rgba(255,255,255,0.45)" }}>{item.detail}</span>
+                    <div className="p26-elig-label">{e.label}</div>
+                    <div className="p26-elig-desc">{e.desc}</div>
                   </div>
                 </div>
               ))}
             </div>
-            <p className="pm2-p" style={{ marginTop: 16 }}>
-              The best strategy: trade genuinely across multiple market categories, keep one consistent wallet, link your X account, and maintain activity over months. There is no shortcut — the snapshot has not been announced intentionally.
-            </p>
-            <Link href="/learn/polymarket-airdrop-guide-2026" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(124,245,192,0.08)", border: "1px solid rgba(124,245,192,0.18)", color: "#7CF5C0", fontWeight: 700, fontSize: 13, padding: "10px 18px", borderRadius: 99, textDecoration: "none" }}>
-              Full POLY Airdrop Farming Guide →
-            </Link>
+            <div style={{ marginTop: 20 }}>
+              <Link href="/learn/polymarket-airdrop-guide-2026" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "var(--green)", color: "#060A12", fontWeight: 700, fontSize: 13, padding: "10px 20px", borderRadius: 99, textDecoration: "none" }}>
+                Full POLY Farming Guide →
+              </Link>
+            </div>
           </section>
 
-          {/* Willo2 controversy */}
-          <section className="pm2-section">
-            <h2 className="pm2-h2">The Willo2 $500K Loss — What Really Happened</h2>
-            <p className="pm2-p">
-              The biggest Polymarket controversy of 2026 was user Willo2 losing approximately $500,000 on the MicroStrategy Bitcoin market. The market asked whether MicroStrategy sold Bitcoin by May 31 — after the news came out, the market stayed at 70-80% YES instead of jumping to 99.9%. Willo2 bet heavily on YES. It resolved NO.
-            </p>
-            <div className="pm2-box" style={{ background: "rgba(245,158,11,0.04)", border: "1px solid rgba(245,158,11,0.15)" }}>
-              <p className="pm2-box-label" style={{ color: "#f59e0b" }}>The Key Lesson</p>
-              <p className="pm2-box-text">
-                The market stayed at 70-80% — not 99.9% — because experienced traders knew about a NO precedent. <strong>If smart money isn't pushing a market where it logically should be, that gap is a warning, not an opportunity.</strong> Polymarket's real mistake was failing to clarify ambiguous rules before the deadline, despite traders specifically asking for clarification.
-              </p>
+          {/* Willo2 */}
+          <section className="p26-section">
+            <h2 className="p26-h2">The Willo2 $500K Controversy</h2>
+            <p className="p26-p">The biggest Polymarket story of 2026: user Willo2 lost $500,000 on the MicroStrategy Bitcoin market. It resolved NO. Was it a scam?</p>
+            <div className="p26-callout" style={{ background: "rgba(245,158,11,0.04)", border: "1px solid rgba(245,158,11,0.15)" }}>
+              <span className="p26-callout-icon">⚖️</span>
+              <div>
+                <div className="p26-callout-label" style={{ color: "var(--amber)" }}>The Verdict</div>
+                <p className="p26-callout-text"><strong>Not a scam — but Polymarket failed their users.</strong> The resolution was consistent with prior precedent. The real problem: Polymarket had ambiguous market wording and refused to clarify it when traders specifically asked. The market stayed at 70-80% — not 99.9% — because smart money knew. That gap was a warning, not an opportunity.</p>
+              </div>
             </div>
-            <Link href="/learn/polymarket-willo2-500k-loss" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.6)", fontWeight: 600, fontSize: 13, padding: "10px 18px", borderRadius: 99, textDecoration: "none" }}>
+            <Link href="/learn/polymarket-willo2-500k-loss" style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.04)", border: "1px solid var(--border)", color: "rgba(255,255,255,0.5)", fontWeight: 600, fontSize: 13, padding: "10px 20px", borderRadius: 99, textDecoration: "none" }}>
               Full Willo2 Breakdown →
             </Link>
           </section>
 
           {/* FAQ */}
-          <section className="pm2-section">
-            <h2 className="pm2-h2">Frequently Asked Questions</h2>
-            <div className="pm2-faqs">
+          <section className="p26-section">
+            <h2 className="p26-h2">Frequently Asked Questions</h2>
+            <div className="p26-faqs">
               {faqJsonLd.mainEntity.map((faq, i) => (
-                <div key={i} className="pm2-faq">
+                <div key={i} className="p26-faq">
                   <h3>{faq.name}</h3>
                   <p>{faq.acceptedAnswer.text}</p>
                 </div>
@@ -363,33 +608,36 @@ export default function Polymarket2026Guide() {
           </section>
 
           {/* Related */}
-          <section className="pm2-section">
-            <h2 className="pm2-h2" style={{ marginBottom: 16 }}>Related Guides</h2>
-            <div className="pm2-related">
+          <section className="p26-section">
+            <h2 className="p26-h2">Related Guides</h2>
+            <div className="p26-related">
               {[
                 { slug: "polymarket-airdrop-guide-2026", title: "Polymarket POLY Airdrop Guide — How to Farm Before the Snapshot" },
-                { slug: "polymarket-willo2-500k-loss", title: "Did Polymarket Scam Willo2 — or Just Greed? Full Breakdown" },
-                { slug: "early-crypto-projects-2026", title: "Best Early Crypto Projects to Farm in 2026" },
+                { slug: "polymarket-willo2-500k-loss", title: "Did Polymarket Scam Willo2 — or Just Greed?" },
+                { slug: "bitmine-strategy-paper-losses-2026", title: "Bitmine Down $8.9B on ETH, Strategy Down $7.6B on BTC" },
                 { slug: "top-25-airdrop-picks-2026", title: "Top 25 Airdrop Picks for 2026" },
-                { slug: "how-to-avoid-crypto-airdrop-scams-2026", title: "How to Avoid Crypto Airdrop Scams 2026" },
               ].map((a) => (
-                <Link key={a.slug} href={`/learn/${a.slug}`} className="pm2-related-link">
-                  <span>{a.title}</span><span>→</span>
+                <Link key={a.slug} href={`/learn/${a.slug}`} className="p26-rel">
+                  <span>{a.title}</span>
+                  <span className="p26-rel-arrow">→</span>
                 </Link>
               ))}
             </div>
           </section>
 
           {/* CTA */}
-          <div className="pm2-cta">
-            <h2>While You Wait for POLY — Farm Other Airdrops</h2>
-            <p>115+ verified airdrops with full guides. Track all opportunities in one place, updated daily.</p>
-            <Link href="/airdrops" className="pm2-cta-btn">Browse All Airdrops →</Link>
-            <p className="pm2-note">Last updated: June 4, 2026 · Reviewed weekly</p>
+          <div className="p26-cta">
+            <div className="p26-cta-title">While You Wait for POLY</div>
+            <p className="p26-cta-desc">115+ verified airdrops with full step-by-step guides. Track every opportunity — updated daily, always free.</p>
+            <Link href="/airdrops" className="p26-cta-btn">
+              Browse All Airdrops
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </Link>
+            <p className="p26-note">Last updated: June 4, 2026 · Reviewed weekly</p>
           </div>
 
         </div>
-      </main>
+      </article>
     </>
   );
 }
