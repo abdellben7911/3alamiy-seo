@@ -99,7 +99,7 @@ const cards = [
     best: "High cashback, Solana ecosystem",
     highlight: "Raised $80M Series A. Season 5 offered up to 12% cashback in $MOVE tokens. On pace for $100M ARR in 2026. Growing fast with strong rewards program.",
     cashback: "Up to 12%",
-    referral: null,
+    referral: "https://app.kast.xyz/referral/M9F7SPDV",
     color: "#c084fc",
   },
   {
@@ -366,7 +366,7 @@ export default function TopCryptoCardsMay2026() {
                   </div>
                   {c.referral && (
                     <a href={c.referral} target="_blank" rel="noopener noreferrer" className="cc-referral">
-                      Get RedotPay — Up to 6% cashback →
+                      {c.name === "KAST" ? "Get KAST — Up to 12% cashback →" : "Get RedotPay — Up to 6% cashback →"}
                     </a>
                   )}
                 </div>
