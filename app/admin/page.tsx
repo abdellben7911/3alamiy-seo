@@ -89,7 +89,7 @@ export default function AdminPage() {
     try {
       const res = await fetch(`${SUPABASE_URL}/rest/v1/articles`, {
         method: 'POST', headers,
-        body: JSON.stringify({ ...article, date: new Date().toISOString().split('T')[0] }),
+        body: JSON.stringify({ ...article, description: article.desc, date: new Date().toISOString().split('T')[0] }),
       });
       if (res.ok || res.status === 201) {
         setArticleSaved(true);

@@ -122,7 +122,7 @@ export default async function LearnPage() {
   const staticOnly = allArticles.filter(a => !dbSlugs.has(a.slug));
   const mergedArticles = [
     ...dbArticles.map((a: any) => ({
-      slug: a.slug, title: a.title, desc: a.desc,
+      slug: a.slug, title: a.title, desc: a.description || a.desc || '',
       cat: a.cat, catColor: a.catColor || '#7CF5C0', time: a.time || '5 min',
     })),
     ...staticOnly,
