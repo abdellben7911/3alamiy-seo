@@ -35,16 +35,19 @@ export const metadata: Metadata = {
 
 const featuredArticles = [
   {
+    slug: 'polymarket-2026-complete-guide',
+    label: '🔥 Pinned', badge: 'Trending', desc: 'Polymarket hit $10.57B volume, US relaunch, MLS partnership, POLY token confirmed. Everything happening right now.',
+  },
+  {
     slug: 'best-crypto-airdrops-2026',
     title: 'Best Crypto Airdrops 2026',
     desc: 'The complete list of the best free crypto airdrops. Every airdrop verified with step-by-step guides.',
     cat: 'Airdrops', catColor: '#f59e0b', time: '8 min read', badge: 'Most Popular',
   },
   {
-    slug: 'best-crypto-airdrops-this-week',
-    title: 'Best Crypto Airdrops This Week',
-    desc: 'The highest-priority airdrops to farm this week. Updated every Monday.',
-    cat: 'Weekly', catColor: '#10b981', time: '5 min read', badge: 'Weekly Updated',
+    slug: 'top-crypto-cards-by-volume-may-2026',
+    label: '📊 Pinned', badge: 'Data',
+    desc: '$750M record in May 2026. RedotPay leads at $445M. Tria fastest at +47.1%. Full breakdown with referral links.',
   },
   {
     slug: 'discord-role-airdrops-guide-2026',
@@ -61,6 +64,11 @@ const allArticles = [
   { slug: 'polymarket-airdrop-guide-2026', title: 'Polymarket POLY Airdrop Guide', desc: 'How to qualify before the snapshot. Confirmed drop — step-by-step farming strategy.', cat: 'Hot', catColor: '#f59e0b', time: '8 min' },
   { slug: 'polymarket-willo2-500k-loss', title: 'Did Polymarket Scam Willo2 — or Just Greed?', desc: 'Full breakdown of the $500K loss trending on X. What happened and what every trader needs to know.', cat: 'Analysis', catColor: '#f87171', time: '6 min' },
   { slug: 'top-25-airdrop-picks-2026', title: 'Top 25 Airdrop Picks for 2026', desc: '25 early opportunities — a16z-backed testnets, points programs, and confirmed drops.', cat: 'Strategy', catColor: '#818cf8', time: '10 min' },
+  { slug: 'polymarket-2026-complete-guide', title: 'Polymarket in 2026 — Complete Guide', desc: '$10.57B volume, US relaunch, MLS partnership, POLY token confirmed. Full breakdown.', cat: 'Hot', catColor: '#f87171', time: '8 min' },
+  { slug: 'bitmine-strategy-paper-losses-2026', title: 'Bitmine Down $8.9B on ETH, Strategy Down $7.6B on BTC', desc: 'Combined $16.5B in unrealized losses. Full breakdown of the corporate crypto treasury crisis.', cat: 'Analysis', catColor: '#f87171', time: '7 min' },
+  { slug: 'michael-saylor-2000-crash-bitcoin-history', title: 'Saylor Lost $6.8B in One Day in 2000 — Will History Repeat?', desc: 'SEC fraud, dot-com collapse, Bitcoin reversal. The full story behind crypto's biggest corporate bet.', cat: 'History', catColor: '#f59e0b', time: '8 min' },
+  { slug: 'top-crypto-cards-by-volume-may-2026', title: 'Top 10 Crypto Cards by Volume — May 2026', desc: '$750M record broken. RedotPay leads, Tria fastest at +47.1%. Full breakdown.', cat: 'Data', catColor: '#60a5fa', time: '6 min' },
+  { slug: 'best-crypto-airdrops-nigeria-2026', title: 'Best Crypto Airdrops for Nigerians 2026', desc: 'Free airdrops fully accessible from Nigeria. Setup guide, scam warnings, and top picks.', cat: 'Geo', catColor: '#7CF5C0', time: '7 min' },
   // Weekly
   { slug: 'best-crypto-airdrops-this-week', title: 'Best Crypto Airdrops This Week', desc: 'Top picks ranked by reward potential and farming urgency. Updated every Monday.', cat: 'Weekly', catColor: '#10b981', time: '5 min' },
   // Guides
