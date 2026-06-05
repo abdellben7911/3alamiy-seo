@@ -2,21 +2,21 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Polymarket POLY Airdrop Guide 2026 — How to Qualify Before the Snapshot | 3alamiy Web3",
+  title: "Polymarket Airdrop Guide 2026 — How to Qualify & Farm POLY Before the Snapshot | 3alamiy Web3",
   description:
     "Polymarket confirmed the POLY token and airdrop. Learn how to qualify — trading strategy, eligibility signals, and step-by-step farming guide for the biggest prediction market airdrop of 2026.",
   alternates: { canonical: "https://www.3alamiyweb3.com/learn/polymarket-airdrop-guide-2026" },
   openGraph: {
-    title: "Polymarket POLY Airdrop Guide 2026 — How to Qualify Before the Snapshot",
-    description: "Polymarket confirmed the POLY token and airdrop. Learn how to qualify with our step-by-step farming guide.",
+    title: "Polymarket Airdrop Guide 2026 — How to Qualify & Farm POLY Before the Snapshot",
+    description: "Polymarket confirmed POLY token and airdrop. Step-by-step farming guide — eligibility requirements, how to qualify, volume strategy, and what to avoid. Updated June 2026.",
     url: "https://www.3alamiyweb3.com/learn/polymarket-airdrop-guide-2026",
     siteName: "3alamiy Web3",
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Polymarket POLY Airdrop Guide 2026 — How to Qualify Before the Snapshot",
-    description: "Polymarket confirmed the POLY token and airdrop. Step-by-step farming guide.",
+    title: "Polymarket Airdrop Guide 2026 — How to Qualify & Farm POLY Before the Snapshot",
+    description: "Polymarket confirmed POLY token. How to qualify, farm, and maximize eligibility before the snapshot. Updated June 2026.",
   },
 };
 
@@ -24,7 +24,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Polymarket Airdrop Guide 2026 — How to Farm the POLY Token",
-  description: "Polymarket confirmed the POLY token and airdrop. Learn how to qualify with our step-by-step farming guide.",
+  description: "Polymarket confirmed POLY token and airdrop. Step-by-step farming guide — eligibility requirements, how to qualify, volume strategy, and what to avoid. Updated June 2026.",
   author: { "@type": "Organization", name: "3alamiy Web3" },
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
   datePublished: "2026-06-02",
