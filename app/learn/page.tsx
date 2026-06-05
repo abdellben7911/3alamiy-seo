@@ -36,6 +36,7 @@ export const metadata: Metadata = {
 const featuredArticles = [
   {
     slug: 'polymarket-2026-complete-guide',
+    title: 'Polymarket in 2026 — Everything You Need to Know',
     label: '🔥 Pinned', badge: 'Trending', desc: 'Polymarket hit $10.57B volume, US relaunch, MLS partnership, POLY token confirmed. Everything happening right now.',
   },
   {
@@ -46,14 +47,9 @@ const featuredArticles = [
   },
   {
     slug: 'top-crypto-cards-by-volume-may-2026',
+    title: 'Top 10 Crypto Cards by Volume — May 2026 ($750M Record)',
     label: '📊 Pinned', badge: 'Data',
     desc: '$750M record in May 2026. RedotPay leads at $445M. Tria fastest at +47.1%. Full breakdown with referral links.',
-  },
-  {
-    slug: 'discord-role-airdrops-guide-2026',
-    title: 'Discord Role Airdrops 2026',
-    desc: 'Plasma OG holders earned $20K. How to grind Discord roles the right way.',
-    cat: 'Strategy', catColor: '#818cf8', time: '9 min read', badge: 'High ROI',
   },
 ];
 
