@@ -97,16 +97,15 @@ const breadcrumbSchema = {
   ],
 };
 
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-
 async function getDbArticles() {
+  const SB_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+  const SB_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/articles?select=*&order=date.desc`,
+      `${SB_URL}/rest/v1/articles?select=*&order=date.desc`,
       {
-        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
-        next: { revalidate: 300 }, // refresh every 5 minutes
+        headers: { apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}` },
+        next: { revalidate: 300 },
       }
     );
     if (!res.ok) return [];
