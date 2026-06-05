@@ -97,7 +97,37 @@ const breadcrumbSchema = {
   ],
 };
 
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+
+async function getDbArticles() {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/articles?select=*&order=date.desc`,
+      {
+        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
+        next: { revalidate: 300 }, // refresh every 5 minutes
+      }
+    );
+    if (!res.ok) return [];
+    return res.json();
+  } catch {
+    return [];
+  }
+}
+
 export default async function LearnPage() {
+  // Merge Supabase articles with static ones — Supabase takes priority, static as fallback
+  const dbArticles = await getDbArticles();
+  const dbSlugs = new Set(dbArticles.map((a: any) => a.slug));
+  const staticOnly = allArticles.filter(a => !dbSlugs.has(a.slug));
+  const mergedArticles = [
+    ...dbArticles.map((a: any) => ({
+      slug: a.slug, title: a.title, desc: a.desc,
+      cat: a.cat, catColor: a.catColor || '#7CF5C0', time: a.time || '5 min',
+    })),
+    ...staticOnly,
+  ];
   const airdropCount = await getAirdropCount();
   return (
     <>
@@ -246,7 +276,7 @@ export default async function LearnPage() {
               Everything you need to qualify for the best crypto airdrops in 2026. Step-by-step guides, farming strategies, and weekly picks — all free.
             </p>
             <div className="lp-stats">
-              <div><div className="lp-stat-val">{allArticles.length}+</div><div className="lp-stat-lbl">Free Guides</div></div>
+              <div><div className="lp-stat-val">{mergedArticles.length}+</div><div className="lp-stat-lbl">Free Guides</div></div>
               <div><div className="lp-stat-val">Weekly</div><div className="lp-stat-lbl">Updated</div></div>
               <div><div className="lp-stat-val">{airdropCount}+</div><div className="lp-stat-lbl">Airdrops Tracked</div></div>
             </div>
@@ -284,11 +314,11 @@ export default async function LearnPage() {
           <div className="lp-sec-hdr">
             <div>
               <div className="lp-sec-title">All Guides</div>
-              <div className="lp-sec-sub">{allArticles.length} articles covering airdrops, strategy, and Web3</div>
+              <div className="lp-sec-sub">{mergedArticles.length} articles covering airdrops, strategy, and Web3</div>
             </div>
           </div>
           <div className="lp-grid">
-            {allArticles.map(a => (
+            {mergedArticles.map(a => (
               <Link key={a.slug} href={`/learn/${a.slug}`} className="lp-card">
                 <div className="lp-card-cat" style={{ color: a.catColor }}>{a.cat}</div>
                 <h3 className="lp-card-title">{a.title}</h3>
