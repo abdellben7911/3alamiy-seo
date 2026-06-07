@@ -293,6 +293,28 @@ function WalletCheckerInner() {
         .wc-unlock-btn { background: linear-gradient(135deg,#7CF5C0,#4ade80); color: #060A12; border: none; padding: 18px 40px; border-radius: 14px; font-size: 16px; font-weight: 900; cursor: pointer; font-family: inherit; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 8px 32px rgba(124,245,192,0.3); letter-spacing: -0.02em; }
         .wc-unlock-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 14px 44px rgba(124,245,192,0.42); }
         .wc-unlock-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .mc-card {
+          display: flex; flex-direction: column; gap: 10px;
+          background: #0D1221; border: 1px solid rgba(255,255,255,0.07);
+          border-radius: 13px; padding: 14px 14px 12px;
+          text-decoration: none; transition: border-color 0.15s, transform 0.12s;
+        }
+        .mc-card:hover { border-color: rgba(124,245,192,0.22); transform: translateY(-1px); }
+        .mc-card:hover .mc-btn { background: rgba(124,245,192,0.12); color: #7CF5C0; }
+        .mc-avatar {
+          width: 34px; height: 34px; border-radius: 9px;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 14px; font-weight: 900; flex-shrink: 0;
+        }
+        .mc-name { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.75); letter-spacing: -0.01em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .mc-btn {
+          display: flex; align-items: center; justify-content: center; gap: 5px;
+          background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+          color: rgba(255,255,255,0.4); font-size: 10px; font-weight: 700;
+          padding: 6px 0; border-radius: 7px; letter-spacing: 0.03em;
+          text-transform: uppercase; transition: all 0.15s;
+        }
+        @media (max-width: 600px) { .mc-grid { grid-template-columns: repeat(2,1fr) !important; } }
         .skeleton { background: linear-gradient(90deg,rgba(255,255,255,0.04) 25%,rgba(255,255,255,0.07) 50%,rgba(255,255,255,0.04) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px; }
         @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
         @media (max-width: 600px) { .wc-summary-row { flex-direction: column !important; } .wc-stat-row { flex-direction: row !important; flex-wrap: wrap; } }
@@ -410,10 +432,27 @@ function WalletCheckerInner() {
             {/* ── PRO: full results ── */}
             {result.isPro && (
               <>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'rgba(124,245,192,0.04)', border: '1px solid rgba(124,245,192,0.14)', borderRadius: 12, padding: '11px 18px', marginBottom: 20 }}>
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#7CF5C0"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  <span style={{ fontSize: 12, fontWeight: 700, color: '#7CF5C0' }}>Pro Unlocked — Full Results</span>
-                  <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginLeft: 'auto' }}>{result.stats!.totalChecked} airdrops scanned</span>
+                <div style={{ background: 'rgba(124,245,192,0.04)', border: '1px solid rgba(124,245,192,0.14)', borderRadius: 14, padding: '16px 20px', marginBottom: 20 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="#7CF5C0"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <span style={{ fontSize: 13, fontWeight: 800, color: '#7CF5C0' }}>Pro Report Unlocked</span>
+                    <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginLeft: 'auto' }}>{result.stats!.totalChecked} airdrops scanned</span>
+                  </div>
+                  <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+                    {[
+                      { label: 'Eligible', val: result.stats!.eligibleCount, color: '#7CF5C0', desc: 'You qualify — check official site to claim' },
+                      { label: 'Missed',   val: result.stats!.missedCount,   color: '#f87171', desc: 'Ended before you could claim' },
+                      { label: 'Can Join', val: result.stats!.activeCount,   color: '#818cf8', desc: 'Live now — start farming these' },
+                    ].map(s => (
+                      <div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <span style={{ fontSize: 20, fontWeight: 900, color: s.color, letterSpacing: '-0.04em' }}>{s.val}</span>
+                        <div>
+                          <div style={{ fontSize: 11, fontWeight: 700, color: s.color }}>{s.label}</div>
+                          <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)' }}>{s.desc}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
@@ -569,42 +608,30 @@ function WalletCheckerInner() {
                 <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.06)' }} />
               </div>
               <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)', textAlign: 'center', marginBottom: 24, lineHeight: 1.7 }}>
-                Check your eligibility directly on each protocol's official site. These checkers require manual verification.
+                Click any card to check your eligibility directly on the official site.{checkedAddress ? ' Your wallet address is pre-filled.' : ''}
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(160px,1fr))', gap: 8 }}>
-                {MANUAL_LINKS.map(link => (
-                  <a
-                    key={link.url + link.name}
-                    href={resolveUrl(link.url, checkedAddress)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                      gap: 8, background: 'rgba(255,255,255,0.02)',
-                      border: '1px solid rgba(255,255,255,0.07)',
-                      borderRadius: 10, padding: '10px 14px',
-                      textDecoration: 'none', color: 'rgba(255,255,255,0.55)',
-                      fontSize: 12, fontWeight: 600, letterSpacing: '-0.01em',
-                      transition: 'all 0.15s',
-                    }}
-                    onMouseEnter={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(124,245,192,0.05)';
-                      (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(124,245,192,0.18)';
-                      (e.currentTarget as HTMLAnchorElement).style.color = '#fff';
-                    }}
-                    onMouseLeave={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.02)';
-                      (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.07)';
-                      (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.55)';
-                    }}
-                  >
-                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{link.name}</span>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink: 0, opacity: 0.4 }}>
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                      <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                  </a>
-                ))}
+              <div className="mc-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(140px,1fr))', gap: 10 }}>
+                {MANUAL_LINKS.map((link, i) => {
+                  const colors = ['#7CF5C0','#818cf8','#f59e0b','#f87171','#38bdf8','#a78bfa','#fb923c'];
+                  const bg = colors[i % colors.length];
+                  return (
+                    <a key={link.name + i} href={resolveUrl(link.url, checkedAddress)} target="_blank" rel="noopener noreferrer" className="mc-card">
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                        <div className="mc-avatar" style={{ background: `${bg}15`, border: `1px solid ${bg}30`, color: bg }}>
+                          {link.name[0]}
+                        </div>
+                        <span className="mc-name">{link.name}</span>
+                      </div>
+                      <div className="mc-btn">
+                        Check
+                        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                          <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                      </div>
+                    </a>
+                  );
+                })}
               </div>
             </div>
 
@@ -686,40 +713,28 @@ function WalletCheckerInner() {
               <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)', textAlign: 'center', marginBottom: 24, lineHeight: 1.7 }}>
                 Check your eligibility directly on each protocol's official site.
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(160px,1fr))', gap: 8 }}>
-                {MANUAL_LINKS.map(link => (
-                  <a
-                    key={link.url + link.name}
-                    href={resolveUrl(link.url, checkedAddress)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                      gap: 8, background: 'rgba(255,255,255,0.02)',
-                      border: '1px solid rgba(255,255,255,0.07)',
-                      borderRadius: 10, padding: '10px 14px',
-                      textDecoration: 'none', color: 'rgba(255,255,255,0.55)',
-                      fontSize: 12, fontWeight: 600, letterSpacing: '-0.01em',
-                      transition: 'all 0.15s',
-                    }}
-                    onMouseEnter={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(124,245,192,0.05)';
-                      (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(124,245,192,0.18)';
-                      (e.currentTarget as HTMLAnchorElement).style.color = '#fff';
-                    }}
-                    onMouseLeave={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.02)';
-                      (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.07)';
-                      (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.55)';
-                    }}
-                  >
-                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{link.name}</span>
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink: 0, opacity: 0.4 }}>
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                      <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
-                  </a>
-                ))}
+              <div className="mc-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(140px,1fr))', gap: 10 }}>
+                {MANUAL_LINKS.map((link, i) => {
+                  const colors = ['#7CF5C0','#818cf8','#f59e0b','#f87171','#38bdf8','#a78bfa','#fb923c'];
+                  const bg = colors[i % colors.length];
+                  return (
+                    <a key={link.name + i} href={resolveUrl(link.url, checkedAddress)} target="_blank" rel="noopener noreferrer" className="mc-card">
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                        <div className="mc-avatar" style={{ background: `${bg}15`, border: `1px solid ${bg}30`, color: bg }}>
+                          {link.name[0]}
+                        </div>
+                        <span className="mc-name">{link.name}</span>
+                      </div>
+                      <div className="mc-btn">
+                        Check
+                        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                          <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                      </div>
+                    </a>
+                  );
+                })}
               </div>
             </div>
 
