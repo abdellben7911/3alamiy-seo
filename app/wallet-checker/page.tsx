@@ -79,6 +79,7 @@ function AirdropRow({ a }: { a: AirdropResult }) {
   );
 }
 
+// {addr} is replaced with the wallet address when available
 const MANUAL_LINKS = [
   { name: 'MegaETH Rewards',  url: 'https://terminal.megaeth.com/' },
   { name: 'Offerbook',        url: 'https://offerbook.jup.ag/raindrop' },
@@ -91,7 +92,7 @@ const MANUAL_LINKS = [
   { name: 'Plume Nest PNP',   url: 'https://claim-pnp.nest.credit/' },
   { name: 'Ethena S5',        url: 'https://tokenmanager.coinbase.com/airdrop/ethena/season5' },
   { name: 'Kaio',             url: 'https://claim.kaio.xyz/' },
-  { name: 'Arbitrum DRIP',    url: 'https://arbitrumdrip.com/users/' },
+  { name: 'Arbitrum DRIP',    url: 'https://arbitrumdrip.com/users/{addr}' },
   { name: 'Solstice',         url: 'https://app.solstice.finance/earn-flares' },
   { name: 'Billions',         url: 'https://community.billions.network/' },
   { name: 'USD AI',           url: 'https://app.usd.ai/chip' },
@@ -118,7 +119,7 @@ const MANUAL_LINKS = [
   { name: 'Droplets',         url: 'https://droplets.drop.money/' },
   { name: 'Fight',            url: 'https://airdrop.fight.foundation/' },
   { name: 'EthGas',           url: 'https://ethgasfoundation.org/token/' },
-  { name: 'Rails',            url: 'https://walletchecker.rails.xyz/' },
+  { name: 'Rails',            url: 'https://walletchecker.rails.xyz/?address={addr}' },
   { name: 'RollX',            url: 'https://app.rollx.trade/airdrop' },
   { name: 'HeyElsa',          url: 'https://app.heyelsa.ai/airdrop' },
   { name: 'Owlto',            url: 'https://claim.owlto.finance/' },
@@ -136,7 +137,7 @@ const MANUAL_LINKS = [
   { name: 'Infrared',         url: 'https://infrared.finance/airdrop' },
   { name: 'RateX',            url: 'https://claim.rate-x.io/' },
   { name: 'Theoriq',          url: 'https://claim.theoriq.ai/' },
-  { name: 'Stable',           url: 'https://app.merkl.xyz/users/' },
+  { name: 'Stable',           url: 'https://app.merkl.xyz/users/{addr}' },
   { name: 'Power Protocol',   url: 'https://staking.powerprotocol.xyz/staking' },
   { name: 'ConsumerFi',       url: 'https://consumerfi.ai/app/checker' },
   { name: 'Kyo',              url: 'https://app.kyo.finance/airdrop-checker' },
@@ -156,7 +157,7 @@ const MANUAL_LINKS = [
   { name: 'Madness',          url: 'https://portal.madness.finance/' },
   { name: 'Bob',              url: 'https://claim.gobob.xyz/' },
   { name: 'Irys',             url: 'https://claim.irys.xyz/' },
-  { name: 'Debridge S2',      url: 'https://debridge.foundation/checker' },
+  { name: 'Debridge S2',      url: 'https://debridge.foundation/checker?address={addr}' },
   { name: 'Sapien',           url: 'https://app.sapien.io/t/airdrop' },
   { name: 'GAIB',             url: 'https://gaibfoundation.org/claim' },
   { name: 'Rayls',            url: 'https://tokenclaims.rayls.com/' },
@@ -166,7 +167,7 @@ const MANUAL_LINKS = [
   { name: 'Harmonix',         url: 'https://claim.harmonix.fi/' },
   { name: 'Sentient',         url: 'https://claim.sentient.xyz/' },
   { name: 'Aethon',           url: 'https://aethonswap.com/claim' },
-  { name: 'Fishing Frenzy',   url: 'https://checker.fishingfrenzy.co/' },
+  { name: 'Fishing Frenzy',   url: 'https://checker.fishingfrenzy.co/?address={addr}' },
   { name: 'Acurast',          url: 'https://hub.acurast.com/airdrop' },
   { name: 'Pieverse',         url: 'https://www.pieverse.io/airdrops' },
   { name: 'Hybra Finance',    url: 'https://www.hybra.finance/airdrop' },
@@ -191,7 +192,7 @@ const MANUAL_LINKS = [
   { name: 'Aster S2',         url: 'https://asterdex.com/en/airdrop/allocation' },
   { name: 'Novastro',         url: 'https://airdrop.novastro.xyz/' },
   { name: 'Tea',              url: 'https://app.tea-fi.com/eligibility' },
-  { name: 'Common',           url: 'https://common.xyz/wallet' },
+  { name: 'Common',           url: 'https://common.xyz/wallet/{addr}' },
   { name: 'Orochi',           url: 'https://tge.orochi.network/' },
   { name: 'aPriori',          url: 'https://claim.apr.io/ethereum' },
   { name: 'Cygnus',           url: 'https://airdrop.cygnus.finance/' },
@@ -208,6 +209,10 @@ const MANUAL_LINKS = [
   { name: 'Lab',              url: 'https://lab.pro/wallet-connect' },
   { name: 'Caldera',          url: 'https://claim.caldera.foundation/' },
 ];
+
+function resolveUrl(template: string, addr: string) {
+  return addr ? template.replace('{addr}', addr) : template.replace('/{addr}', '').replace('?address={addr}', '').replace('{addr}', '');
+}
 
 const CHAIN_ICONS: Record<string, string> = {
   Ethereum: '⟠', Arbitrum: 'Arb', Base: 'Base', Optimism: 'OP', Polygon: 'POL', 'BNB Chain': 'BNB', zkSync: 'ZK', Linea: 'LNA', Solana: '◎',
@@ -569,7 +574,7 @@ function WalletCheckerInner() {
                 {MANUAL_LINKS.map(link => (
                   <a
                     key={link.url + link.name}
-                    href={link.url}
+                    href={resolveUrl(link.url, result?.summary?.address ?? '')}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -684,7 +689,7 @@ function WalletCheckerInner() {
                 {MANUAL_LINKS.map(link => (
                   <a
                     key={link.url + link.name}
-                    href={link.url}
+                    href={resolveUrl(link.url, result?.summary?.address ?? '')}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
