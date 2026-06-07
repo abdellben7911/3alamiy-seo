@@ -680,5 +680,7 @@ export default async function Home() {
 
         <div className="divider" style={{ marginTop: '72px' }} />
 
-        {/* ALL AIRDROPS */}
-        <div className="content" style={{ paddi
+      </div>
+    </>
+  );
+}
