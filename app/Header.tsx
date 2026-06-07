@@ -20,7 +20,6 @@ export default function Header() {
     { label: 'Airdrops',   href: '/airdrops', badge: 'HOT', badgeColor: '#f43f5e', badgeBg: 'rgba(244,63,94,0.12)' },
     { label: 'Learn',      href: '/learn',    badge: 'NEW', badgeColor: '#7CF5C0', badgeBg: 'rgba(124,245,192,0.1)' },
     { label: 'GM Station', href: '/gm',       badge: null,  badgeColor: null,      badgeBg: null },
-    { label: 'Contact',    href: '/contact',  badge: null,  badgeColor: null,      badgeBg: null },
   ];
 
   return (
