@@ -267,6 +267,7 @@ function WalletCheckerInner() {
     finally { setCheckoutLoading(false); }
   }
 
+  const checkedAddress = result?.summary?.address ?? '';
   const noActivity    = (result?.summary as any)?.noActivity ?? false;
   const eligibleCount = result?.isPro ? result.stats!.eligibleCount : result?.preview?.eligibleCount ?? 0;
   const missedCount   = result?.isPro ? result.stats!.missedCount   : result?.preview?.missedCount   ?? 0;
@@ -574,7 +575,7 @@ function WalletCheckerInner() {
                 {MANUAL_LINKS.map(link => (
                   <a
                     key={link.url + link.name}
-                    href={resolveUrl(link.url, result?.summary?.address ?? '')}
+                    href={resolveUrl(link.url, checkedAddress)}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -689,7 +690,7 @@ function WalletCheckerInner() {
                 {MANUAL_LINKS.map(link => (
                   <a
                     key={link.url + link.name}
-                    href={resolveUrl(link.url, result?.summary?.address ?? '')}
+                    href={resolveUrl(link.url, checkedAddress)}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
