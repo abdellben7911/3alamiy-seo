@@ -39,21 +39,24 @@ export default function EmailSignup() {
   return (
     <div>
       {/* Input row */}
-      <div style={{ display: 'flex', gap: '8px', background: '#0d1117', border: '1px solid #1a1f2e', borderRadius: '14px', padding: '6px 6px 6px 18px', maxWidth: '480px', margin: '0 auto 16px' }}>
-        <input
-          type="email"
-          placeholder="Enter your email address..."
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          onKeyDown={e => e.key === 'Enter' && handleSubmit()}
-          style={{ flex: 1, background: 'transparent', border: 'none', color: '#fff', fontSize: '14px', outline: 'none', fontFamily: 'inherit', minWidth: 0 }}
-        />
+      <div style={{ display: 'flex', gap: '6px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '6px', maxWidth: '520px', margin: '0 auto 12px', backdropFilter: 'blur(8px)', boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06)' }}>
+        <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '10px', paddingLeft: '16px' }}>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+          <input
+            type="email"
+            placeholder="your@email.com"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && handleSubmit()}
+            style={{ flex: 1, background: 'transparent', border: 'none', color: '#fff', fontSize: '14px', outline: 'none', fontFamily: 'inherit', minWidth: 0 }}
+          />
+        </div>
         <button
           onClick={handleSubmit}
           disabled={status === 'loading'}
-          style={{ background: 'linear-gradient(135deg, #6366f1, #4f46e5)', color: '#fff', border: 'none', padding: '12px 22px', borderRadius: '10px', fontSize: '14px', fontWeight: 800, cursor: status === 'loading' ? 'not-allowed' : 'pointer', fontFamily: 'inherit', whiteSpace: 'nowrap', boxShadow: '0 4px 14px rgba(99,102,241,0.3)', opacity: status === 'loading' ? 0.7 : 1, flexShrink: 0 }}
+          style={{ background: 'linear-gradient(135deg, #7CF5C0, #4ade80)', color: '#060A12', border: 'none', padding: '13px 24px', borderRadius: '12px', fontSize: '14px', fontWeight: 800, cursor: status === 'loading' ? 'not-allowed' : 'pointer', fontFamily: 'inherit', whiteSpace: 'nowrap', boxShadow: '0 4px 20px rgba(124,245,192,0.35)', opacity: status === 'loading' ? 0.7 : 1, flexShrink: 0, letterSpacing: '-0.01em', transition: 'transform 0.15s, box-shadow 0.15s' }}
         >
-          {status === 'loading' ? 'Joining...' : 'Get Alerts →'}
+          {status === 'loading' ? 'Joining...' : 'Get Early Access →'}
         </button>
       </div>
 
@@ -62,18 +65,10 @@ export default function EmailSignup() {
         <p style={{ fontSize: '13px', color: '#f43f5e', textAlign: 'center', margin: '0 0 8px' }}>Something went wrong. Please try again.</p>
       )}
 
-      {/* Social proof */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px', flexWrap: 'wrap' }}>
-        {[
-          { icon: '👥', text: 'Join 500+ Web3 farmers' },
-          { icon: '🔒', text: 'No spam, ever' },
-          { icon: '↩', text: 'Unsubscribe anytime' },
-        ].map(({ icon, text }) => (
-          <span key={text} style={{ fontSize: '12px', color: '#3f3f46', display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <span>{icon}</span>{text}
-          </span>
-        ))}
-      </div>
+      {/* Trust line */}
+      <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.2)', textAlign: 'center', margin: 0 }}>
+        Free forever · No spam · Unsubscribe anytime
+      </p>
     </div>
   );
 }

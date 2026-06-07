@@ -375,21 +375,67 @@ export default async function Home() {
         </section>
 
         {/* EMAIL CAPTURE BANNER */}
-        <section style={{ background: 'linear-gradient(135deg, #0D1221 0%, #0A1628 50%, #0D1221 100%)', borderTop: '1px solid rgba(124,245,192,0.12)', borderBottom: '1px solid rgba(124,245,192,0.12)', padding: '56px 24px', position: 'relative', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '600px', height: '300px', background: 'radial-gradient(ellipse, rgba(124,245,192,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
-          <div style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center', position: 'relative' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(124,245,192,0.08)', border: '1px solid rgba(124,245,192,0.2)', color: '#7CF5C0', fontSize: '10px', fontWeight: 800, padding: '5px 14px', borderRadius: '99px', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '20px' }}>
-              <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#7CF5C0', display: 'inline-block', animation: 'pulse 1.8s infinite' }} />
-              Free Early Access
+        <section style={{ position: 'relative', overflow: 'hidden', padding: '72px 24px' }}>
+          {/* layered background */}
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #080C14 0%, #0B1220 40%, #0D1628 60%, #080C14 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(124,245,192,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(124,245,192,0.025) 1px, transparent 1px)', backgroundSize: '48px 48px' }} />
+          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '900px', height: '400px', background: 'radial-gradient(ellipse, rgba(124,245,192,0.07) 0%, rgba(99,102,241,0.04) 40%, transparent 70%)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(124,245,192,0.3) 30%, rgba(99,102,241,0.3) 70%, transparent)' }} />
+          <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(124,245,192,0.15) 50%, transparent)' }} />
+
+          <div style={{ position: 'relative', maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+
+            {/* badge */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(124,245,192,0.06)', border: '1px solid rgba(124,245,192,0.18)', color: '#7CF5C0', fontSize: '10px', fontWeight: 800, padding: '6px 16px', borderRadius: '99px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '24px' }}>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#7CF5C0', display: 'inline-block', animation: 'pulse 1.8s infinite', boxShadow: '0 0 8px rgba(124,245,192,0.6)' }} />
+              Free — No spam, ever
             </div>
-            <h2 style={{ fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 900, color: '#fff', letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: '12px' }}>
+
+            {/* headline */}
+            <h2 style={{ fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 900, color: '#fff', letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: '16px' }}>
               Get early airdrops<br />
-              <span style={{ background: 'linear-gradient(135deg, #7CF5C0, #4ade80)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>before everyone else.</span>
+              <span style={{ background: 'linear-gradient(135deg, #7CF5C0 0%, #4ade80 50%, #7CF5C0 100%)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'gradientShift 4s ease infinite' }}>before everyone else.</span>
             </h2>
-            <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.4)', marginBottom: '32px', lineHeight: 1.7 }}>
-              We alert you the moment a high-value airdrop goes live — before it hits CT.
+
+            {/* subtext */}
+            <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.38)', marginBottom: '16px', lineHeight: 1.7, maxWidth: '500px', margin: '0 auto 16px' }}>
+              We alert you the moment a high-value airdrop goes live —<br />
+              <span style={{ color: 'rgba(255,255,255,0.55)' }}>before it hits CT.</span>
             </p>
-            <EmailSignup />
+
+            {/* feature pills */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '36px' }}>
+              {[
+                { icon: '⚡', text: 'Instant alerts' },
+                { icon: '🎯', text: 'Verified only' },
+                { icon: '💰', text: '$500–$10K picks' },
+              ].map(({ icon, text }) => (
+                <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', padding: '7px 14px', borderRadius: '99px', fontSize: '12px', fontWeight: 600, color: 'rgba(255,255,255,0.5)' }}>
+                  <span style={{ fontSize: '13px' }}>{icon}</span>
+                  {text}
+                </div>
+              ))}
+            </div>
+
+            {/* form */}
+            <div style={{ maxWidth: '520px', margin: '0 auto' }}>
+              <EmailSignup />
+            </div>
+
+            {/* trust row */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '24px', marginTop: '28px', flexWrap: 'wrap' }}>
+              {[
+                { val: '500+', label: 'subscribers' },
+                { val: '40+', label: 'countries' },
+                { val: '125+', label: 'airdrops tracked' },
+              ].map(({ val, label }) => (
+                <div key={label} style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '18px', fontWeight: 900, color: '#7CF5C0', letterSpacing: '-0.03em' }}>{val}</div>
+                  <div style={{ fontSize: '10px', fontWeight: 600, color: 'rgba(255,255,255,0.2)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{label}</div>
+                </div>
+              ))}
+            </div>
+
           </div>
         </section>
 
