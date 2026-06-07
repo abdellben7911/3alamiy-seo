@@ -79,6 +79,136 @@ function AirdropRow({ a }: { a: AirdropResult }) {
   );
 }
 
+const MANUAL_LINKS = [
+  { name: 'MegaETH Rewards',  url: 'https://terminal.megaeth.com/' },
+  { name: 'Offerbook',        url: 'https://offerbook.jup.ag/raindrop' },
+  { name: 'Limitless S3',     url: 'https://limitless.exchange/claim' },
+  { name: 'Dreamcash Rewards',url: 'https://dreamcash.xyz/share?code=IBBVMA' },
+  { name: 'Gaea',             url: 'https://airdrop.aigaea.net/' },
+  { name: 'PRJX Cashdrop',    url: 'https://prjx.com/cashdrop' },
+  { name: 'Nexus',            url: 'https://app.nexus.xyz/mainnet' },
+  { name: 'Citrea',           url: 'https://citrea.xyz/airdrop' },
+  { name: 'Plume Nest PNP',   url: 'https://claim-pnp.nest.credit/' },
+  { name: 'Ethena S5',        url: 'https://tokenmanager.coinbase.com/airdrop/ethena/season5' },
+  { name: 'Kaio',             url: 'https://claim.kaio.xyz/' },
+  { name: 'Arbitrum DRIP',    url: 'https://arbitrumdrip.com/users/' },
+  { name: 'Solstice',         url: 'https://app.solstice.finance/earn-flares' },
+  { name: 'Billions',         url: 'https://community.billions.network/' },
+  { name: 'USD AI',           url: 'https://app.usd.ai/chip' },
+  { name: 'Fluent',           url: 'https://claim.fluent.xyz/' },
+  { name: 'Genius',           url: 'https://tradegenius.com/airdrop' },
+  { name: 'Horizen',          url: 'https://zenrise.horizen.io/claimpage' },
+  { name: 'Aligned',          url: 'https://community.alignedlayer.com/' },
+  { name: 'Backpack',         url: 'https://backpack.exchange/bp-claim' },
+  { name: 'Shape',            url: 'https://claim.shape.network/' },
+  { name: 'Perle',            url: 'https://register.perle.xyz/' },
+  { name: 'Based',            url: 'https://basedfoundation.com/check' },
+  { name: 'Avantis S2',       url: 'https://foundation.avantisfi.com/airdrop' },
+  { name: 'Opinion',          url: 'https://opinion.foundation/claim' },
+  { name: 'Paradex',          url: 'https://app.paradex.trade/' },
+  { name: 'Huma S3',          url: 'https://claim.huma.finance/' },
+  { name: 'OpenMind',         url: 'https://eligible.fabric.foundation/' },
+  { name: 'Echelon',          url: 'https://app.ethena.fi/delegation' },
+  { name: 'Toki',             url: 'https://toki.finance/claims' },
+  { name: 'Rainbow',          url: 'https://rainbow.me/points' },
+  { name: 'YO',               url: 'https://app.yo.xyz/claim' },
+  { name: 'Warden',           url: 'https://airdrop.wardenprotocol.org/' },
+  { name: 'Arcium',           url: 'https://rtg.arcium.com/' },
+  { name: 'Moonbirds',        url: 'https://claim.moonbirds.com/' },
+  { name: 'Droplets',         url: 'https://droplets.drop.money/' },
+  { name: 'Fight',            url: 'https://airdrop.fight.foundation/' },
+  { name: 'EthGas',           url: 'https://ethgasfoundation.org/token/' },
+  { name: 'Rails',            url: 'https://walletchecker.rails.xyz/' },
+  { name: 'RollX',            url: 'https://app.rollx.trade/airdrop' },
+  { name: 'HeyElsa',          url: 'https://app.heyelsa.ai/airdrop' },
+  { name: 'Owlto',            url: 'https://claim.owlto.finance/' },
+  { name: 'Aster S4',         url: 'https://asterdex.com/en/airdrop' },
+  { name: 'Fogo',             url: 'https://claim.fogo.io/' },
+  { name: 'Zama',             url: 'https://claim.zama.org/' },
+  { name: 'Zetarium',         url: 'https://airdrop.zetarium.world/' },
+  { name: 'Yunks',            url: 'https://airdrop.yunks.xyz/' },
+  { name: 'Mezo',             url: 'https://mezo.org/rewards' },
+  { name: 'Brevis',           url: 'https://claim.brevis.network/' },
+  { name: 'Espresso',         url: 'https://claim.espresso.foundation/' },
+  { name: 'ZkPass',           url: 'https://airdrop.zkpass.org/' },
+  { name: 'Magma',            url: 'https://app.magmafinance.io/airdrop' },
+  { name: 'Almanak',          url: 'https://app.almanak.co/claim' },
+  { name: 'Infrared',         url: 'https://infrared.finance/airdrop' },
+  { name: 'RateX',            url: 'https://claim.rate-x.io/' },
+  { name: 'Theoriq',          url: 'https://claim.theoriq.ai/' },
+  { name: 'Stable',           url: 'https://app.merkl.xyz/users/' },
+  { name: 'Power Protocol',   url: 'https://staking.powerprotocol.xyz/staking' },
+  { name: 'ConsumerFi',       url: 'https://consumerfi.ai/app/checker' },
+  { name: 'Kyo',              url: 'https://app.kyo.finance/airdrop-checker' },
+  { name: 'Superform',        url: 'https://claim.superformfoundation.org/' },
+  { name: 'Cysic',            url: 'https://register.cysicfoundation.org/' },
+  { name: 'Aster S3',         url: 'https://asterdex.com/en/airdrop' },
+  { name: 'Reveel',           url: 'https://www.revapay.ai/airdrop' },
+  { name: 'Paintswap',        url: 'https://airdrop.paintswap.io/' },
+  { name: 'Tari',             url: 'https://airdrop.tari.com/' },
+  { name: 'GaiAI',            url: 'https://gaiai.io/stage/airdrop' },
+  { name: 'Talus',            url: 'https://launch.talus.foundation/' },
+  { name: 'Coti',             url: 'https://earn.coti.io/dashboard' },
+  { name: 'Polynomial',       url: 'https://polynomial.fi/en/mainnet/earn/leaderboard' },
+  { name: 'Peaq S2',          url: 'https://claim.peaq.xyz/' },
+  { name: 'SoSoValue',        url: 'https://ssi.sosovalue.com/en/reward' },
+  { name: 'Ten',              url: 'https://airdrop.ten.xyz/' },
+  { name: 'Madness',          url: 'https://portal.madness.finance/' },
+  { name: 'Bob',              url: 'https://claim.gobob.xyz/' },
+  { name: 'Irys',             url: 'https://claim.irys.xyz/' },
+  { name: 'Debridge S2',      url: 'https://debridge.foundation/checker' },
+  { name: 'Sapien',           url: 'https://app.sapien.io/t/airdrop' },
+  { name: 'GAIB',             url: 'https://gaibfoundation.org/claim' },
+  { name: 'Rayls',            url: 'https://tokenclaims.rayls.com/' },
+  { name: 'Goat Network',     url: 'https://airdrops.goat.network/' },
+  { name: 'Theo',             url: 'https://claim.kaito.ai/reward-station/theo' },
+  { name: 'Monami',           url: 'https://claim.monami.network/' },
+  { name: 'Harmonix',         url: 'https://claim.harmonix.fi/' },
+  { name: 'Sentient',         url: 'https://claim.sentient.xyz/' },
+  { name: 'Aethon',           url: 'https://aethonswap.com/claim' },
+  { name: 'Fishing Frenzy',   url: 'https://checker.fishingfrenzy.co/' },
+  { name: 'Acurast',          url: 'https://hub.acurast.com/airdrop' },
+  { name: 'Pieverse',         url: 'https://www.pieverse.io/airdrops' },
+  { name: 'Hybra Finance',    url: 'https://www.hybra.finance/airdrop' },
+  { name: 'Play Solana',      url: 'https://genesis.playsolana.com/claim' },
+  { name: 'Ramses',           url: 'https://ramses.xyz/airdrop' },
+  { name: 'Anichess',         url: 'https://anichess.com/checkmate-claim' },
+  { name: 'Beamable',         url: 'https://claim.beamable.network/' },
+  { name: 'MacroStrategy',    url: 'https://macrostrategy.tech/airdrop' },
+  { name: 'Capx AI',          url: 'https://app.capx.ai/' },
+  { name: 'Allora',           url: 'https://prime.allora.foundation/' },
+  { name: 'Aria',             url: 'https://app.ariaprotocol.xyz/airdrop' },
+  { name: 'Ethena',           url: 'https://ethena.liquifi.finance/' },
+  { name: 'Intuition',        url: 'https://airdrop.intuition.systems/' },
+  { name: 'Meganet',          url: 'https://claim.meganet.app/' },
+  { name: 'Folks Finance',    url: 'https://claim.folks.finance/' },
+  { name: 'GoKite AI',        url: 'https://kite.foundation/claim' },
+  { name: 'MMT Finance',      url: 'https://airdrop.mmt.finance/' },
+  { name: 'Printr',           url: 'https://app.printr.money/airdrop-checker' },
+  { name: 'Ika',              url: 'https://claim.ika.xyz/' },
+  { name: 'Noble',            url: 'https://points.noble.xyz/claim' },
+  { name: 'Monad',            url: 'https://claim.monad.xyz/' },
+  { name: 'Aster S2',         url: 'https://asterdex.com/en/airdrop/allocation' },
+  { name: 'Novastro',         url: 'https://airdrop.novastro.xyz/' },
+  { name: 'Tea',              url: 'https://app.tea-fi.com/eligibility' },
+  { name: 'Common',           url: 'https://common.xyz/wallet' },
+  { name: 'Orochi',           url: 'https://tge.orochi.network/' },
+  { name: 'aPriori',          url: 'https://claim.apr.io/ethereum' },
+  { name: 'Cygnus',           url: 'https://airdrop.cygnus.finance/' },
+  { name: 'Limitless',        url: 'https://limitless.exchange/claim' },
+  { name: 'Babylon',          url: 'https://airdrop.babylon.foundation/' },
+  { name: 'PlayAI',           url: 'https://hub.playai.network/claim' },
+  { name: 'Turtle',           url: 'https://claims.turtle.xyz/' },
+  { name: 'Phi',              url: 'https://claim.phi.box/' },
+  { name: 'Meteora',          url: 'https://met.meteora.ag/' },
+  { name: '0G',               url: 'https://airdrop.0gfoundation.ai/' },
+  { name: 'GRVT',             url: 'https://grvt.io/exchange/reward-portal?season=1' },
+  { name: 'Yei Finance',      url: 'https://claim.yei.finance/' },
+  { name: 'Enso',             url: 'https://drop.enso.build/claim' },
+  { name: 'Lab',              url: 'https://lab.pro/wallet-connect' },
+  { name: 'Caldera',          url: 'https://claim.caldera.foundation/' },
+];
+
 const CHAIN_ICONS: Record<string, string> = {
   Ethereum: '⟠', Arbitrum: 'Arb', Base: 'Base', Optimism: 'OP', Polygon: 'POL', 'BNB Chain': 'BNB', zkSync: 'ZK', Linea: 'LNA', Solana: '◎',
 };
@@ -423,6 +553,55 @@ function WalletCheckerInner() {
               </div>
             )}
 
+            {/* ── MANUAL CHECKER LINKS ── */}
+            <div style={{ marginTop: 56 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+                <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.06)' }} />
+                <div style={{ fontSize: 9, fontWeight: 800, color: 'rgba(255,255,255,0.2)', textTransform: 'uppercase', letterSpacing: '0.14em', whiteSpace: 'nowrap' }}>
+                  {MANUAL_LINKS.length} Manual Checker Links
+                </div>
+                <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.06)' }} />
+              </div>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)', textAlign: 'center', marginBottom: 24, lineHeight: 1.7 }}>
+                Check your eligibility directly on each protocol's official site. These checkers require manual verification.
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(160px,1fr))', gap: 8 }}>
+                {MANUAL_LINKS.map(link => (
+                  <a
+                    key={link.url + link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                      gap: 8, background: 'rgba(255,255,255,0.02)',
+                      border: '1px solid rgba(255,255,255,0.07)',
+                      borderRadius: 10, padding: '10px 14px',
+                      textDecoration: 'none', color: 'rgba(255,255,255,0.55)',
+                      fontSize: 12, fontWeight: 600, letterSpacing: '-0.01em',
+                      transition: 'all 0.15s',
+                    }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(124,245,192,0.05)';
+                      (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(124,245,192,0.18)';
+                      (e.currentTarget as HTMLAnchorElement).style.color = '#fff';
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.02)';
+                      (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.07)';
+                      (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.55)';
+                    }}
+                  >
+                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{link.name}</span>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink: 0, opacity: 0.4 }}>
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                      <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                  </a>
+                ))}
+              </div>
+            </div>
+
           </div>
         )}
 
@@ -480,11 +659,60 @@ function WalletCheckerInner() {
             </div>
 
             {/* Past airdrops teaser */}
-            <div style={{ textAlign: 'center' }}>
+            <div style={{ textAlign: 'center', marginBottom: 56 }}>
               <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.2)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 16 }}>Recent Airdrops We Tracked</div>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center' }}>
                 {['Arbitrum $ARB', 'zkSync $ZK', 'Scroll $SCR', 'EigenLayer $EIGEN', 'Jito $JTO', 'Starknet $STRK'].map(name => (
                   <span key={name} style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.35)', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)', padding: '5px 13px', borderRadius: 99 }}>{name}</span>
+                ))}
+              </div>
+            </div>
+
+            {/* Manual Checker Links in empty state */}
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+                <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.06)' }} />
+                <div style={{ fontSize: 9, fontWeight: 800, color: 'rgba(255,255,255,0.2)', textTransform: 'uppercase', letterSpacing: '0.14em', whiteSpace: 'nowrap' }}>
+                  {MANUAL_LINKS.length} Manual Checker Links
+                </div>
+                <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.06)' }} />
+              </div>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)', textAlign: 'center', marginBottom: 24, lineHeight: 1.7 }}>
+                Check your eligibility directly on each protocol's official site.
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(160px,1fr))', gap: 8 }}>
+                {MANUAL_LINKS.map(link => (
+                  <a
+                    key={link.url + link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                      gap: 8, background: 'rgba(255,255,255,0.02)',
+                      border: '1px solid rgba(255,255,255,0.07)',
+                      borderRadius: 10, padding: '10px 14px',
+                      textDecoration: 'none', color: 'rgba(255,255,255,0.55)',
+                      fontSize: 12, fontWeight: 600, letterSpacing: '-0.01em',
+                      transition: 'all 0.15s',
+                    }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(124,245,192,0.05)';
+                      (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(124,245,192,0.18)';
+                      (e.currentTarget as HTMLAnchorElement).style.color = '#fff';
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(255,255,255,0.02)';
+                      (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.07)';
+                      (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.55)';
+                    }}
+                  >
+                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{link.name}</span>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink: 0, opacity: 0.4 }}>
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                      <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                  </a>
                 ))}
               </div>
             </div>
