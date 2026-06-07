@@ -4,8 +4,6 @@ import { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
-type ActivityResult = { firstTxTimestamp: number; txCount: number; active: boolean };
-
 type WalletSummary = {
   address: string;
   addressType: string;
@@ -24,110 +22,66 @@ type AirdropResult = {
   blockchain: string;
   status: string;
   difficulty: string;
-  cost: string;
-  description: string;
   eligibility: 'eligible' | 'missed' | 'active' | 'unknown';
 };
 
 type CheckResult = {
   isPro: boolean;
   summary: WalletSummary;
-  preview?: {
-    eligible: AirdropResult[];
-    eligibleCount: number;
-    missedCount: number;
-    activeCount: number;
-  };
-  results?: {
-    eligible: AirdropResult[];
-    missed: AirdropResult[];
-    active: AirdropResult[];
-    all: AirdropResult[];
-  };
-  stats?: {
-    eligibleCount: number;
-    missedCount: number;
-    activeCount: number;
-    totalChecked: number;
-  };
+  preview?: { eligibleCount: number; missedCount: number; activeCount: number };
+  results?: { eligible: AirdropResult[]; missed: AirdropResult[]; active: AirdropResult[] };
+  stats?: { eligibleCount: number; missedCount: number; activeCount: number; totalChecked: number };
 };
 
 function ScoreRing({ score }: { score: number }) {
-  const r = 42;
+  const r = 44;
   const c = 2 * Math.PI * r;
   const filled = (score / 100) * c;
   const color = score >= 70 ? '#7CF5C0' : score >= 40 ? '#f59e0b' : '#f87171';
-  const trackColor = score >= 70 ? 'rgba(124,245,192,0.1)' : score >= 40 ? 'rgba(245,158,11,0.1)' : 'rgba(248,113,113,0.1)';
+  const label = score >= 70 ? 'Excellent' : score >= 40 ? 'Average' : 'Low';
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-      <svg width="100" height="100" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r={r} fill="none" stroke={trackColor} strokeWidth="7" />
-        <circle cx="50" cy="50" r={r} fill="none" stroke={color} strokeWidth="7"
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
+      <svg width="110" height="110" viewBox="0 0 110 110">
+        <circle cx="55" cy="55" r={r} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="8" />
+        <circle cx="55" cy="55" r={r} fill="none" stroke={color} strokeWidth="8"
           strokeDasharray={`${filled} ${c}`} strokeLinecap="round"
-          transform="rotate(-90 50 50)"
-          style={{ transition: 'stroke-dasharray 1.2s cubic-bezier(0.4,0,0.2,1)' }} />
-        <text x="50" y="46" textAnchor="middle" fill={color} fontSize="20" fontWeight="800"
-          fontFamily="Space Grotesk,system-ui">{score}</text>
-        <text x="50" y="60" textAnchor="middle" fill="rgba(255,255,255,0.25)" fontSize="9"
-          fontWeight="600" fontFamily="Space Grotesk,system-ui" letterSpacing="1">SCORE</text>
+          transform="rotate(-90 55 55)"
+          style={{ transition: 'stroke-dasharray 1.4s cubic-bezier(0.4,0,0.2,1)', filter: `drop-shadow(0 0 8px ${color}60)` }} />
+        <text x="55" y="50" textAnchor="middle" fill={color} fontSize="26" fontWeight="900" fontFamily="Space Grotesk,system-ui">{score}</text>
+        <text x="55" y="65" textAnchor="middle" fill="rgba(255,255,255,0.2)" fontSize="9" fontWeight="700" fontFamily="Space Grotesk,system-ui" letterSpacing="1.5">SCORE</text>
       </svg>
+      <span style={{ fontSize: 10, fontWeight: 800, color, background: `${color}12`, border: `1px solid ${color}25`, padding: '2px 10px', borderRadius: 99, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{label}</span>
     </div>
   );
 }
 
-const eligibilityConfig = {
-  eligible: { bg: 'rgba(124,245,192,0.06)', border: 'rgba(124,245,192,0.18)', color: '#7CF5C0',  pill: 'rgba(124,245,192,0.1)',  label: 'Eligible' },
-  missed:   { bg: 'rgba(248,113,113,0.06)', border: 'rgba(248,113,113,0.18)', color: '#f87171',  pill: 'rgba(248,113,113,0.1)',  label: 'Missed' },
-  active:   { bg: 'rgba(99,102,241,0.06)',  border: 'rgba(99,102,241,0.18)',  color: '#818cf8',  pill: 'rgba(99,102,241,0.1)',   label: 'Not on chain' },
-  unknown:  { bg: 'rgba(255,255,255,0.02)', border: 'rgba(255,255,255,0.07)', color: 'rgba(255,255,255,0.3)', pill: 'rgba(255,255,255,0.06)', label: 'Unknown' },
-};
-
-function AirdropCard({ a, blurred = false }: { a: AirdropResult; blurred?: boolean }) {
-  const cfg = eligibilityConfig[a.eligibility] || eligibilityConfig.unknown;
+function AirdropRow({ a }: { a: AirdropResult }) {
+  const cfg = {
+    eligible: { color: '#7CF5C0', bg: 'rgba(124,245,192,0.06)', border: 'rgba(124,245,192,0.18)', label: 'Eligible' },
+    missed:   { color: '#f87171', bg: 'rgba(248,113,113,0.06)', border: 'rgba(248,113,113,0.18)', label: 'Missed' },
+    active:   { color: '#818cf8', bg: 'rgba(99,102,241,0.06)',  border: 'rgba(99,102,241,0.18)',  label: 'Can Join' },
+    unknown:  { color: 'rgba(255,255,255,0.25)', bg: 'rgba(255,255,255,0.02)', border: 'rgba(255,255,255,0.07)', label: 'Unknown' },
+  }[a.eligibility] || { color: 'rgba(255,255,255,0.25)', bg: 'rgba(255,255,255,0.02)', border: 'rgba(255,255,255,0.07)', label: '—' };
 
   return (
-    <Link
-      href={blurred ? '#' : `/airdrops/${a.slug}`}
-      onClick={blurred ? (e) => e.preventDefault() : undefined}
-      style={{
-        display: 'flex', alignItems: 'center', gap: 14,
-        background: cfg.bg, border: `1px solid ${cfg.border}`,
-        borderRadius: 13, padding: '14px 18px',
-        textDecoration: 'none', color: '#fff',
-        filter: blurred ? 'blur(5px)' : 'none',
-        userSelect: blurred ? 'none' : 'auto',
-        pointerEvents: blurred ? 'none' : 'auto',
-        transition: 'transform 0.15s, border-color 0.15s',
-      }}
-    >
+    <Link href={`/airdrops/${a.slug}`} style={{ display: 'flex', alignItems: 'center', gap: 14, background: cfg.bg, border: `1px solid ${cfg.border}`, borderRadius: 13, padding: '13px 18px', textDecoration: 'none', color: '#fff', transition: 'transform 0.12s' }}>
       {a.logo
-        ? <img src={a.logo} alt={a.name} width={38} height={38} style={{ borderRadius: 9, border: '1px solid rgba(255,255,255,0.07)', objectFit: 'cover', flexShrink: 0 }} />
-        : <div style={{ width: 38, height: 38, borderRadius: 9, background: '#1a2540', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 700, color: 'rgba(255,255,255,0.2)', flexShrink: 0 }}>{a.name?.[0]}</div>
+        ? <img src={a.logo} alt={a.name} width={36} height={36} style={{ borderRadius: 9, objectFit: 'cover', flexShrink: 0 }} />
+        : <div style={{ width: 36, height: 36, borderRadius: 9, background: '#1a2540', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 800, color: 'rgba(255,255,255,0.2)', flexShrink: 0 }}>{a.name?.[0]}</div>
       }
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{a.name}</div>
-        <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.28)', textTransform: 'uppercase', letterSpacing: '0.07em', fontWeight: 600 }}>{a.blockchain}</div>
+        <div style={{ fontSize: 13, fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 2 }}>{a.name}</div>
+        <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.07em' }}>{a.blockchain}</div>
       </div>
-      <span style={{ fontSize: 10, fontWeight: 700, color: cfg.color, background: cfg.pill, border: `1px solid ${cfg.border}`, padding: '3px 10px', borderRadius: 99, whiteSpace: 'nowrap', flexShrink: 0 }}>
-        {cfg.label}
-      </span>
+      <span style={{ fontSize: 10, fontWeight: 800, color: cfg.color, background: `${cfg.color}15`, border: `1px solid ${cfg.border}`, padding: '3px 10px', borderRadius: 99, flexShrink: 0 }}>{cfg.label}</span>
     </Link>
   );
 }
 
-function SkeletonCard() {
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 14, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 13, padding: '14px 18px' }}>
-      <div style={{ width: 38, height: 38, borderRadius: 9, background: 'rgba(255,255,255,0.05)', flexShrink: 0 }} />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <div style={{ width: '55%', height: 11, background: 'rgba(255,255,255,0.06)', borderRadius: 4 }} />
-        <div style={{ width: '35%', height: 8, background: 'rgba(255,255,255,0.04)', borderRadius: 4 }} />
-      </div>
-      <div style={{ width: 62, height: 22, background: 'rgba(255,255,255,0.04)', borderRadius: 99 }} />
-    </div>
-  );
-}
+const CHAIN_ICONS: Record<string, string> = {
+  Ethereum: '⟠', Arbitrum: 'Arb', Base: 'Base', Optimism: 'OP', Polygon: 'POL', 'BNB Chain': 'BNB', zkSync: 'ZK', Linea: 'LNA', Solana: '◎',
+};
 
 function WalletCheckerInner() {
   const searchParams = useSearchParams();
@@ -137,15 +91,13 @@ function WalletCheckerInner() {
   const [error, setError] = useState('');
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<'eligible' | 'missed' | 'active'>('eligible');
-  const [successBanner, setSuccessBanner] = useState('');
 
   useEffect(() => {
     const wallet = searchParams.get('wallet');
     const success = searchParams.get('success');
     if (success === 'true' && wallet) {
-      setSuccessBanner('Payment confirmed — full results unlocked.');
       setInput(wallet);
-      setTimeout(() => runCheck(wallet), 600);
+      setTimeout(() => runCheck(wallet), 500);
     } else if (wallet) {
       runCheck(wallet);
     }
@@ -154,19 +106,15 @@ function WalletCheckerInner() {
   async function runCheck(addr?: string) {
     const address = (addr || input).trim();
     if (!address) return;
-    setLoading(true);
-    setError('');
-    setResult(null);
+    setLoading(true); setError(''); setResult(null);
     try {
       const res = await fetch(`/api/wallet-check?address=${encodeURIComponent(address)}`);
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Check failed');
       setResult(data);
     } catch (e: any) {
-      setError(e.message || 'Something went wrong. Check the address and try again.');
-    } finally {
-      setLoading(false);
-    }
+      setError(e.message || 'Something went wrong.');
+    } finally { setLoading(false); }
   }
 
   async function handleCheckout() {
@@ -174,348 +122,359 @@ function WalletCheckerInner() {
     setCheckoutLoading(true);
     try {
       const res = await fetch('/api/create-crypto-checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ wallet: result.summary.address }),
       });
       const data = await res.json();
       if (data.url) window.location.href = data.url;
-      else throw new Error(data.error || 'Failed to create payment');
-    } catch (e: any) {
-      setError(e.message);
-    } finally {
-      setCheckoutLoading(false);
-    }
+      else throw new Error(data.error || 'Payment failed');
+    } catch (e: any) { setError(e.message); }
+    finally { setCheckoutLoading(false); }
   }
 
-  const tabAirdrops = result?.isPro
-    ? (activeTab === 'eligible' ? result.results!.eligible : activeTab === 'missed' ? result.results!.missed : result.results!.active)
-    : result?.preview?.eligible || [];
-
   const eligibleCount = result?.isPro ? result.stats!.eligibleCount : result?.preview?.eligibleCount ?? 0;
-  const missedCount  = result?.isPro ? result.stats!.missedCount  : result?.preview?.missedCount  ?? 0;
-  const activeCount  = result?.isPro ? result.stats!.activeCount  : result?.preview?.activeCount  ?? 0;
+  const missedCount   = result?.isPro ? result.stats!.missedCount   : result?.preview?.missedCount   ?? 0;
+  const activeCount   = result?.isPro ? result.stats!.activeCount   : result?.preview?.activeCount   ?? 0;
+  const tabData       = result?.isPro ? (activeTab === 'eligible' ? result.results!.eligible : activeTab === 'missed' ? result.results!.missed : result.results!.active) : [];
 
   return (
     <div style={{ background: '#060A12', minHeight: '100vh', color: '#fff', fontFamily: "var(--font-space),'Space Grotesk',system-ui,sans-serif" }}>
       <style>{`
         .wc * { box-sizing: border-box; }
-        .wc-wrap { max-width: 860px; margin: 0 auto; padding: 52px 24px 100px; }
-
-        .wc-input { width: 100%; background: transparent; border: none; color: #fff; font-size: 14px; outline: none; font-family: inherit; }
-        .wc-input::placeholder { color: rgba(255,255,255,0.2); }
-
-        .wc-check-btn { background: linear-gradient(135deg,#7CF5C0,#4ade80); color: #060A12; border: none; padding: 0 28px; height: 48px; border-radius: 11px; font-size: 13px; font-weight: 800; cursor: pointer; font-family: inherit; white-space: nowrap; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(124,245,192,0.2); letter-spacing: -0.01em; flex-shrink: 0; }
-        .wc-check-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(124,245,192,0.32); }
-        .wc-check-btn:disabled { opacity: 0.55; cursor: not-allowed; }
-
-        .wc-tab { background: transparent; border: 1px solid rgba(255,255,255,0.08); border-radius: 99px; padding: 6px 16px; cursor: pointer; font-family: inherit; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.35); transition: all 0.15s; display: inline-flex; align-items: center; gap: 7px; }
-        .wc-tab:hover { color: rgba(255,255,255,0.65); border-color: rgba(255,255,255,0.14); }
-        .wc-tab.on-green  { background: rgba(124,245,192,0.07); border-color: rgba(124,245,192,0.22); color: #7CF5C0; }
-        .wc-tab.on-red    { background: rgba(248,113,113,0.07); border-color: rgba(248,113,113,0.22); color: #f87171; }
-        .wc-tab.on-purple { background: rgba(99,102,241,0.07);  border-color: rgba(99,102,241,0.22);  color: #818cf8; }
-
-        .wc-cnt { font-size: 10px; padding: 1px 7px; border-radius: 99px; font-weight: 700; }
-
-        .wc-stat-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 14px 18px; text-align: center; }
-        .wc-stat-val { font-size: 24px; font-weight: 900; letter-spacing: -0.04em; line-height: 1; margin-bottom: 4px; }
-        .wc-stat-lbl { font-size: 9px; color: rgba(255,255,255,0.22); font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; }
-
-        .wc-chain-tag { display: inline-flex; align-items: center; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); padding: 3px 11px; border-radius: 99px; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.4); }
-
-        .wc-unlock-btn { background: linear-gradient(135deg,#7CF5C0,#4ade80); color: #060A12; border: none; padding: 16px 36px; border-radius: 13px; font-size: 15px; font-weight: 900; cursor: pointer; font-family: inherit; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 8px 32px rgba(124,245,192,0.28); letter-spacing: -0.02em; width: 100%; max-width: 320px; }
-        .wc-unlock-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(124,245,192,0.38); }
-        .wc-unlock-btn:disabled { opacity: 0.65; cursor: not-allowed; }
-
-        @media (max-width: 640px) {
-          .wc-wrap { padding: 32px 16px 72px; }
-          .wc-summary-grid { flex-direction: column !important; }
-          .wc-stats-col { flex-direction: row !important; }
-        }
+        .wc-wrap { max-width: 820px; margin: 0 auto; padding: 0 22px; }
+        .wc-input { width: 100%; background: transparent; border: none; color: #fff; font-size: 14px; outline: none; font-family: monospace; height: 52px; }
+        .wc-input::placeholder { color: rgba(255,255,255,0.18); font-family: var(--font-space),system-ui; font-size: 13px; }
+        .wc-btn { background: linear-gradient(135deg,#7CF5C0,#4ade80); color: #060A12; border: none; padding: 0 26px; height: 44px; border-radius: 10px; font-size: 13px; font-weight: 800; cursor: pointer; font-family: inherit; white-space: nowrap; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(124,245,192,0.2); flex-shrink: 0; }
+        .wc-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(124,245,192,0.32); }
+        .wc-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .wc-card { background: #0D1221; border: 1px solid rgba(255,255,255,0.07); border-radius: 18px; }
+        .wc-tab { background: transparent; border: 1px solid rgba(255,255,255,0.08); border-radius: 99px; padding: 6px 16px; cursor: pointer; font-family: inherit; font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.3); transition: all 0.15s; display: inline-flex; align-items: center; gap: 7px; }
+        .wc-tab.g { background: rgba(124,245,192,0.07); border-color: rgba(124,245,192,0.22); color: #7CF5C0; }
+        .wc-tab.r { background: rgba(248,113,113,0.07); border-color: rgba(248,113,113,0.22); color: #f87171; }
+        .wc-tab.p { background: rgba(99,102,241,0.07);  border-color: rgba(99,102,241,0.22);  color: #818cf8; }
+        .wc-cnt { font-size: 10px; padding: 1px 7px; border-radius: 99px; font-weight: 800; }
+        .wc-unlock-btn { background: linear-gradient(135deg,#7CF5C0,#4ade80); color: #060A12; border: none; padding: 18px 40px; border-radius: 14px; font-size: 16px; font-weight: 900; cursor: pointer; font-family: inherit; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 8px 32px rgba(124,245,192,0.3); letter-spacing: -0.02em; }
+        .wc-unlock-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 14px 44px rgba(124,245,192,0.42); }
+        .wc-unlock-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .skeleton { background: linear-gradient(90deg,rgba(255,255,255,0.04) 25%,rgba(255,255,255,0.07) 50%,rgba(255,255,255,0.04) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px; }
+        @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+        @media (max-width: 600px) { .wc-summary-row { flex-direction: column !important; } .wc-stat-row { flex-direction: row !important; flex-wrap: wrap; } }
       `}</style>
 
-      <div className="wc wc-wrap">
+      <div className="wc">
 
-        {/* Breadcrumb */}
-        <nav style={{ fontSize: 12, color: 'rgba(255,255,255,0.22)', marginBottom: 36, display: 'flex', alignItems: 'center', gap: 8, fontWeight: 500 }}>
-          <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link>
-          <span style={{ opacity: 0.5 }}>›</span>
-          <span>Wallet Checker</span>
-        </nav>
+        {/* ── HERO ── */}
+        <div style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', paddingTop: 56, paddingBottom: 56 }}>
+          <div className="wc-wrap">
 
-        {/* Hero */}
-        <div style={{ marginBottom: 44 }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: 'rgba(124,245,192,0.06)', border: '1px solid rgba(124,245,192,0.16)', color: '#7CF5C0', fontSize: 10, fontWeight: 800, padding: '5px 14px', borderRadius: 99, letterSpacing: '0.09em', textTransform: 'uppercase', marginBottom: 22 }}>
-            <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#7CF5C0', display: 'inline-block', boxShadow: '0 0 6px rgba(124,245,192,0.7)' }} />
-            Multi-chain Wallet Analysis
+            <nav style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)', marginBottom: 32, display: 'flex', gap: 8, alignItems: 'center', fontWeight: 500 }}>
+              <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link>
+              <span>›</span><span>Wallet Checker</span>
+            </nav>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 22 }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: 'rgba(124,245,192,0.06)', border: '1px solid rgba(124,245,192,0.16)', color: '#7CF5C0', fontSize: 10, fontWeight: 800, padding: '5px 14px', borderRadius: 99, letterSpacing: '0.09em', textTransform: 'uppercase' }}>
+                <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#7CF5C0', boxShadow: '0 0 6px rgba(124,245,192,0.8)' }} />
+                Multi-chain · 9 Networks
+              </span>
+            </div>
+
+            <h1 style={{ fontSize: 'clamp(30px,5.5vw,52px)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.08, marginBottom: 14 }}>
+              Did you miss any<br />
+              <span style={{ background: 'linear-gradient(135deg,#7CF5C0,#4ade80)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>crypto airdrops?</span>
+            </h1>
+            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.35)', lineHeight: 1.8, maxWidth: 480, marginBottom: 36 }}>
+              Scan any EVM or Solana wallet against our database of 125+ verified airdrops. See what you qualified for, what you missed, and what you can still claim.
+            </p>
+
+            {/* Input */}
+            <div style={{ background: '#0D1221', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, padding: '16px 20px' }}>
+              <div style={{ fontSize: 9, fontWeight: 800, color: 'rgba(255,255,255,0.2)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 10 }}>Wallet Address</div>
+              <div style={{ display: 'flex', gap: 10, alignItems: 'center', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '4px 4px 4px 16px' }}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.18)" strokeWidth="2" style={{ flexShrink: 0 }}><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/></svg>
+                <input className="wc-input" value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && runCheck()} placeholder="0x... or Solana address" spellCheck={false} />
+                <button className="wc-btn" onClick={() => runCheck()} disabled={loading || !input.trim()}>
+                  {loading ? 'Scanning…' : 'Check Wallet'}
+                </button>
+              </div>
+              <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.12)', marginTop: 10, letterSpacing: '0.01em' }}>
+                Ethereum · Arbitrum · Base · Optimism · Polygon · BNB Chain · zkSync · Linea · Solana
+              </p>
+            </div>
+
+            {error && (
+              <div style={{ marginTop: 14, background: 'rgba(248,113,113,0.06)', border: '1px solid rgba(248,113,113,0.18)', borderRadius: 12, padding: '12px 18px', color: '#f87171', fontSize: 13, display: 'flex', alignItems: 'center', gap: 9 }}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                {error}
+              </div>
+            )}
           </div>
-          <h1 style={{ fontSize: 'clamp(28px,5vw,46px)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.08, marginBottom: 14, color: '#fff' }}>
-            Did you miss any<br />
-            <span style={{ background: 'linear-gradient(135deg,#7CF5C0,#4ade80)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>crypto airdrops?</span>
-          </h1>
-          <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.38)', lineHeight: 1.8, maxWidth: 500, margin: 0 }}>
-            Paste any EVM or Solana wallet. We scan your on-chain history against our verified airdrop database and show you exactly what you qualified for — and what you missed.
-          </p>
         </div>
 
-        {/* Success banner */}
-        {successBanner && (
-          <div style={{ background: 'rgba(124,245,192,0.06)', border: '1px solid rgba(124,245,192,0.18)', borderRadius: 12, padding: '13px 18px', marginBottom: 24, fontSize: 13, color: '#7CF5C0', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 10 }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            {successBanner}
-          </div>
-        )}
-
-        {/* Input box */}
-        <div style={{ background: '#0D1221', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: '20px 22px', marginBottom: 28 }}>
-          <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>Wallet Address</div>
-          <div style={{ display: 'flex', gap: 10, alignItems: 'center', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '0 0 0 16px', transition: 'border-color 0.15s' }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="2" style={{ flexShrink: 0 }}><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/></svg>
-            <input
-              className="wc-input"
-              value={input}
-              onChange={e => setInput(e.target.value)}
-              onKeyDown={e => e.key === 'Enter' && runCheck()}
-              placeholder="0x... or Solana address"
-              spellCheck={false}
-              style={{ height: 48 }}
-            />
-            <button className="wc-check-btn" onClick={() => runCheck()} disabled={loading || !input.trim()}>
-              {loading ? 'Scanning...' : 'Check Wallet'}
-            </button>
-          </div>
-          <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.15)', marginTop: 10, letterSpacing: '0.01em' }}>
-            Ethereum · Arbitrum · Base · Optimism · Polygon · BNB Chain · zkSync · Linea · Solana
-          </p>
-        </div>
-
-        {/* Error */}
-        {error && (
-          <div style={{ background: 'rgba(248,113,113,0.06)', border: '1px solid rgba(248,113,113,0.18)', borderRadius: 12, padding: '13px 18px', marginBottom: 24, color: '#f87171', fontSize: 13, display: 'flex', alignItems: 'center', gap: 10 }}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            {error}
-          </div>
-        )}
-
-        {/* Loading skeleton */}
+        {/* ── LOADING ── */}
         {loading && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {[1, 2, 3, 4].map(i => <SkeletonCard key={i} />)}
+          <div className="wc-wrap" style={{ paddingTop: 48, paddingBottom: 48 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 20 }}>
+              {[1,2,3].map(i => <div key={i} className="skeleton" style={{ height: 80, borderRadius: 14 }} />)}
+            </div>
+            {[1,2,3,4,5].map(i => <div key={i} className="skeleton" style={{ height: 62, borderRadius: 13, marginBottom: 9 }} />)}
           </div>
         )}
 
-        {/* Results */}
+        {/* ── RESULTS ── */}
         {result && !loading && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <div className="wc-wrap" style={{ paddingTop: 48, paddingBottom: 100 }}>
 
-            {/* Summary */}
-            <div style={{ background: '#0D1221', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 18, padding: '24px 26px' }}>
-              <div className="wc-summary-grid" style={{ display: 'flex', gap: 24, alignItems: 'flex-start', flexWrap: 'wrap' }}>
+            {/* Summary card */}
+            <div className="wc-card" style={{ padding: '28px 28px', marginBottom: 20 }}>
+              <div className="wc-summary-row" style={{ display: 'flex', gap: 28, alignItems: 'flex-start' }}>
 
-                {/* Score */}
-                <div style={{ flexShrink: 0 }}>
+                <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <ScoreRing score={result.summary.score} />
-                  <div style={{ textAlign: 'center', fontSize: 9, color: 'rgba(255,255,255,0.2)', marginTop: 4, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.09em' }}>Airdrop Score</div>
                 </div>
 
-                {/* Info */}
-                <div style={{ flex: 1, minWidth: 180, display: 'flex', flexDirection: 'column', gap: 18 }}>
-                  <div>
-                    <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.25)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: 5 }}>Wallet</div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                      <span style={{ fontSize: 13, fontWeight: 700, color: '#fff', fontFamily: 'monospace' }}>
-                        {result.summary.address.slice(0, 10)}...{result.summary.address.slice(-8)}
-                      </span>
-                      <span style={{ fontSize: 9, fontWeight: 700, color: '#7CF5C0', background: 'rgba(124,245,192,0.08)', border: '1px solid rgba(124,245,192,0.18)', padding: '2px 8px', borderRadius: 99, letterSpacing: '0.06em' }}>
-                        {result.summary.addressType}
-                      </span>
-                    </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: 13, fontWeight: 700, fontFamily: 'monospace', color: '#fff' }}>
+                      {result.summary.address.slice(0,10)}…{result.summary.address.slice(-8)}
+                    </span>
+                    <span style={{ fontSize: 9, fontWeight: 800, color: '#7CF5C0', background: 'rgba(124,245,192,0.08)', border: '1px solid rgba(124,245,192,0.18)', padding: '2px 9px', borderRadius: 99, letterSpacing: '0.07em' }}>
+                      {result.summary.addressType}
+                    </span>
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14 }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 16 }}>
                     {[
-                      { label: 'Wallet Age',    val: result.summary.walletAge || 'New' },
-                      { label: 'Total TXs',     val: result.summary.totalTxs > 0 ? result.summary.totalTxs.toLocaleString() : '0' },
-                      { label: 'First Active',  val: result.summary.firstActivity || '—' },
-                    ].map(({ label, val }) => (
-                      <div key={label}>
-                        <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.22)', textTransform: 'uppercase', letterSpacing: '0.09em', fontWeight: 700, marginBottom: 4 }}>{label}</div>
-                        <div style={{ fontSize: 14, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em' }}>{val}</div>
+                      { l: 'Wallet Age',   v: result.summary.walletAge || 'New' },
+                      { l: 'Total TXs',    v: result.summary.totalTxs > 0 ? result.summary.totalTxs.toLocaleString() : '0' },
+                      { l: 'First Active', v: result.summary.firstActivity || '—' },
+                    ].map(({ l, v }) => (
+                      <div key={l} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 11, padding: '12px 14px' }}>
+                        <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.22)', textTransform: 'uppercase', letterSpacing: '0.09em', fontWeight: 700, marginBottom: 5 }}>{l}</div>
+                        <div style={{ fontSize: 16, fontWeight: 900, color: '#fff', letterSpacing: '-0.03em' }}>{v}</div>
                       </div>
                     ))}
                   </div>
 
                   {result.summary.activeChains.length > 0 && (
                     <div>
-                      <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.22)', textTransform: 'uppercase', letterSpacing: '0.09em', fontWeight: 700, marginBottom: 8 }}>Active Chains</div>
+                      <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.22)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: 8 }}>Active Chains</div>
                       <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-                        {result.summary.activeChains.map(c => <span key={c} className="wc-chain-tag">{c}</span>)}
+                        {result.summary.activeChains.map(c => (
+                          <span key={c} style={{ fontSize: 11, fontWeight: 600, color: '#7CF5C0', background: 'rgba(124,245,192,0.07)', border: '1px solid rgba(124,245,192,0.15)', padding: '3px 11px', borderRadius: 99 }}>{c}</span>
+                        ))}
                       </div>
                     </div>
                   )}
                 </div>
-
-                {/* Stats col */}
-                <div className="wc-stats-col" style={{ display: 'flex', flexDirection: 'column', gap: 8, minWidth: 130 }}>
-                  <div className="wc-stat-box">
-                    <div className="wc-stat-val" style={{ color: '#7CF5C0' }}>{eligibleCount}</div>
-                    <div className="wc-stat-lbl">Eligible</div>
-                  </div>
-                  <div className="wc-stat-box">
-                    <div className="wc-stat-val" style={{ color: '#f87171' }}>{missedCount}</div>
-                    <div className="wc-stat-lbl">Missed</div>
-                  </div>
-                  <div className="wc-stat-box">
-                    <div className="wc-stat-val" style={{ color: '#818cf8' }}>{activeCount}</div>
-                    <div className="wc-stat-lbl">Can Join</div>
-                  </div>
-                </div>
               </div>
             </div>
 
-            {/* Pro badge */}
+            {/* ── PRO: full results ── */}
             {result.isPro && (
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'rgba(124,245,192,0.04)', border: '1px solid rgba(124,245,192,0.14)', borderRadius: 12, padding: '11px 18px' }}>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="#7CF5C0"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                <span style={{ fontSize: 12, fontWeight: 700, color: '#7CF5C0' }}>Pro — Full Results Unlocked</span>
-                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginLeft: 'auto' }}>{result.stats!.totalChecked} airdrops checked</span>
-              </div>
+              <>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'rgba(124,245,192,0.04)', border: '1px solid rgba(124,245,192,0.14)', borderRadius: 12, padding: '11px 18px', marginBottom: 20 }}>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#7CF5C0"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: '#7CF5C0' }}>Pro Unlocked — Full Results</span>
+                  <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginLeft: 'auto' }}>{result.stats!.totalChecked} airdrops scanned</span>
+                </div>
+
+                <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
+                  {[
+                    { key: 'eligible', cls: 'g', label: 'Eligible',  count: result.stats!.eligibleCount, cntColor: '#7CF5C0', cntBg: 'rgba(124,245,192,0.15)' },
+                    { key: 'missed',   cls: 'r', label: 'Missed',    count: result.stats!.missedCount,   cntColor: '#f87171', cntBg: 'rgba(248,113,113,0.15)' },
+                    { key: 'active',   cls: 'p', label: 'Can Join',  count: result.stats!.activeCount,   cntColor: '#818cf8', cntBg: 'rgba(99,102,241,0.15)'  },
+                  ].map(t => (
+                    <button key={t.key} className={`wc-tab${activeTab === t.key ? ` ${t.cls}` : ''}`} onClick={() => setActiveTab(t.key as any)}>
+                      {t.label}
+                      <span className="wc-cnt" style={{ background: activeTab === t.key ? t.cntBg : 'rgba(255,255,255,0.05)', color: activeTab === t.key ? t.cntColor : 'rgba(255,255,255,0.25)' }}>{t.count}</span>
+                    </button>
+                  ))}
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
+                  {tabData.length > 0
+                    ? tabData.map(a => <AirdropRow key={a.slug} a={a} />)
+                    : <div style={{ textAlign: 'center', padding: '40px 0', color: 'rgba(255,255,255,0.2)', fontSize: 13 }}>No {activeTab} airdrops found for your chains.</div>
+                  }
+                </div>
+
+                {activeTab === 'missed' && result.stats!.missedCount > 0 && (
+                  <div style={{ background: 'rgba(248,113,113,0.04)', border: '1px solid rgba(248,113,113,0.12)', borderRadius: 14, padding: '22px 24px', marginTop: 20 }}>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: '#f87171', marginBottom: 6 }}>You missed {result.stats!.missedCount} airdrops</div>
+                    <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.3)', lineHeight: 1.7, marginBottom: 16 }}>Don't miss the next one. Join our Telegram for real-time airdrop alerts.</div>
+                    <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(124,245,192,0.07)', border: '1px solid rgba(124,245,192,0.18)', color: '#7CF5C0', fontSize: 12, fontWeight: 700, padding: '10px 18px', borderRadius: 10, textDecoration: 'none' }}>
+                      Join Telegram Alerts →
+                    </a>
+                  </div>
+                )}
+              </>
             )}
 
-            {/* Airdrop list */}
-            <div>
-              <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.22)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 14 }}>
-                {result.isPro ? 'Airdrop Eligibility' : 'Preview'}
-              </div>
-
-              {/* Tabs — pro only */}
-              {result.isPro && (
-                <div style={{ display: 'flex', gap: 6, marginBottom: 16, flexWrap: 'wrap' }}>
-                  <button className={`wc-tab${activeTab === 'eligible' ? ' on-green' : ''}`} onClick={() => setActiveTab('eligible')}>
-                    Eligible
-                    <span className="wc-cnt" style={{ background: activeTab === 'eligible' ? 'rgba(124,245,192,0.15)' : 'rgba(255,255,255,0.05)', color: activeTab === 'eligible' ? '#7CF5C0' : 'rgba(255,255,255,0.3)' }}>{result.stats!.eligibleCount}</span>
-                  </button>
-                  <button className={`wc-tab${activeTab === 'missed' ? ' on-red' : ''}`} onClick={() => setActiveTab('missed')}>
-                    Missed
-                    <span className="wc-cnt" style={{ background: activeTab === 'missed' ? 'rgba(248,113,113,0.15)' : 'rgba(255,255,255,0.05)', color: activeTab === 'missed' ? '#f87171' : 'rgba(255,255,255,0.3)' }}>{result.stats!.missedCount}</span>
-                  </button>
-                  <button className={`wc-tab${activeTab === 'active' ? ' on-purple' : ''}`} onClick={() => setActiveTab('active')}>
-                    Can Join
-                    <span className="wc-cnt" style={{ background: activeTab === 'active' ? 'rgba(99,102,241,0.15)' : 'rgba(255,255,255,0.05)', color: activeTab === 'active' ? '#818cf8' : 'rgba(255,255,255,0.3)' }}>{result.stats!.activeCount}</span>
-                  </button>
-                </div>
-              )}
-
-              {/* Cards + paywall */}
-              <div style={{ position: 'relative' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
-                  {tabAirdrops.length > 0
-                    ? tabAirdrops.map((a, i) => <AirdropCard key={a.slug} a={a} blurred={!result.isPro && i > 0} />)
-                    : !result.isPro
-                      ? null
-                      : <div style={{ textAlign: 'center', padding: '40px 24px', color: 'rgba(255,255,255,0.22)', fontSize: 13 }}>No {activeTab} airdrops found for detected chains.</div>
-                  }
-
-                  {/* Blur placeholders for free tier */}
-                  {!result.isPro && [0, 1, 2, 3].map(i => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, background: 'rgba(124,245,192,0.04)', border: '1px solid rgba(124,245,192,0.1)', borderRadius: 13, padding: '14px 18px', filter: 'blur(5px)', userSelect: 'none' }}>
-                      <div style={{ width: 38, height: 38, borderRadius: 9, background: '#1a2540', flexShrink: 0 }} />
-                      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6 }}>
-                        <div style={{ width: '50%', height: 11, background: 'rgba(255,255,255,0.07)', borderRadius: 4 }} />
-                        <div style={{ width: '32%', height: 8, background: 'rgba(255,255,255,0.04)', borderRadius: 4 }} />
-                      </div>
-                      <div style={{ width: 64, height: 22, background: 'rgba(124,245,192,0.08)', borderRadius: 99 }} />
+            {/* ── FREE: hard paywall (no results shown) ── */}
+            {!result.isPro && (
+              <div>
+                {/* Teaser stat row */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 24 }}>
+                  {[
+                    { val: eligibleCount, label: 'Eligible Airdrops',  color: '#7CF5C0', icon: '✓' },
+                    { val: missedCount,   label: 'Missed Airdrops',    color: '#f87171', icon: '✗' },
+                    { val: activeCount,   label: 'Can Still Claim',    color: '#818cf8', icon: '→' },
+                  ].map(({ val, label, color, icon }) => (
+                    <div key={label} style={{ background: '#0D1221', border: `1px solid ${color}20`, borderRadius: 16, padding: '22px 18px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+                      <div style={{ position: 'absolute', top: -20, right: -20, width: 80, height: 80, background: `radial-gradient(circle,${color}12 0%,transparent 70%)`, pointerEvents: 'none' }} />
+                      <div style={{ fontSize: 36, fontWeight: 900, color, letterSpacing: '-0.05em', lineHeight: 1, marginBottom: 6 }}>{val}</div>
+                      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.09em' }}>{label}</div>
                     </div>
                   ))}
                 </div>
 
-                {/* Paywall overlay */}
-                {!result.isPro && (
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(to bottom, transparent, rgba(6,10,18,0.92) 28%, #060A12 55%)', borderRadius: '0 0 16px 16px', padding: '80px 24px 32px', textAlign: 'center' }}>
-
-                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 700, padding: '5px 14px', borderRadius: 99, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 18 }}>
-                      Full Results Locked
-                    </div>
-
-                    <h3 style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.04em', color: '#fff', marginBottom: 8, lineHeight: 1.2 }}>
-                      {missedCount} missed · {eligibleCount} eligible · {activeCount} can join
-                    </h3>
-                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.32)', marginBottom: 28, maxWidth: 340, margin: '0 auto 28px', lineHeight: 1.7 }}>
-                      Unlock the complete eligibility report for this wallet across all chains — including every airdrop you missed and all active ones you can still claim.
-                    </p>
-
-                    <div style={{ display: 'flex', gap: 20, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 24 }}>
-                      {['Full eligibility report', 'All chains + Solana', 'Missed airdrop history', 'Monthly re-scans'].map(f => (
-                        <span key={f} style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#7CF5C0" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                          {f}
-                        </span>
-                      ))}
-                    </div>
-
-                    <button className="wc-unlock-btn" onClick={handleCheckout} disabled={checkoutLoading}>
-                      {checkoutLoading ? 'Redirecting...' : 'Unlock for 3 USDC / month'}
-                    </button>
-                    <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.18)', marginTop: 12 }}>
-                      Pay with crypto · Cancel anytime
-                    </p>
+                {/* Locked results preview */}
+                <div style={{ position: 'relative', marginBottom: 8 }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
+                    {/* Fake blurred rows */}
+                    {[
+                      { color: '#7CF5C0', label: 'Eligible' },
+                      { color: '#f87171', label: 'Missed'   },
+                      { color: '#818cf8', label: 'Can Join' },
+                      { color: '#7CF5C0', label: 'Eligible' },
+                      { color: '#f87171', label: 'Missed'   },
+                      { color: '#7CF5C0', label: 'Eligible' },
+                    ].map((row, i) => (
+                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, background: `${row.color}08`, border: `1px solid ${row.color}15`, borderRadius: 13, padding: '13px 18px', filter: 'blur(4px)', userSelect: 'none', pointerEvents: 'none' }}>
+                        <div style={{ width: 36, height: 36, borderRadius: 9, background: '#1a2540', flexShrink: 0 }} />
+                        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6 }}>
+                          <div style={{ width: `${45 + (i * 7) % 30}%`, height: 11, background: 'rgba(255,255,255,0.08)', borderRadius: 4 }} />
+                          <div style={{ width: `${28 + (i * 5) % 20}%`, height: 8, background: 'rgba(255,255,255,0.05)', borderRadius: 4 }} />
+                        </div>
+                        <span style={{ fontSize: 10, fontWeight: 800, color: row.color, background: `${row.color}15`, border: `1px solid ${row.color}25`, padding: '3px 10px', borderRadius: 99, flexShrink: 0 }}>{row.label}</span>
+                      </div>
+                    ))}
                   </div>
-                )}
-              </div>
-            </div>
 
-            {/* Missed CTA — pro only */}
-            {result.isPro && activeTab === 'missed' && result.stats!.missedCount > 0 && (
-              <div style={{ background: 'rgba(248,113,113,0.04)', border: '1px solid rgba(248,113,113,0.13)', borderRadius: 14, padding: '20px 24px' }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: '#f87171', marginBottom: 6 }}>
-                  You missed {result.stats!.missedCount} airdrops
+                  {/* Gradient fade */}
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 10%, #060A12 65%)', pointerEvents: 'none', borderRadius: 13 }} />
                 </div>
-                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.32)', lineHeight: 1.65, marginBottom: 16 }}>
-                  Get instant alerts the moment high-value airdrops go live — before they hit Crypto Twitter.
+
+                {/* Paywall box */}
+                <div style={{ background: '#0D1221', border: '1px solid rgba(124,245,192,0.18)', borderRadius: 20, padding: '44px 36px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+                  <div style={{ position: 'absolute', top: -60, left: '50%', transform: 'translateX(-50%)', width: 360, height: 180, background: 'radial-gradient(ellipse,rgba(124,245,192,0.08) 0%,transparent 70%)', pointerEvents: 'none' }} />
+
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)', color: 'rgba(255,255,255,0.35)', fontSize: 10, fontWeight: 800, padding: '5px 14px', borderRadius: 99, letterSpacing: '0.09em', textTransform: 'uppercase', marginBottom: 20 }}>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    Pro Required
+                  </div>
+
+                  <h2 style={{ fontSize: 'clamp(22px,4vw,32px)', fontWeight: 900, letterSpacing: '-0.04em', color: '#fff', marginBottom: 8, lineHeight: 1.2 }}>
+                    {eligibleCount} eligible · {missedCount} missed · {activeCount} can claim
+                  </h2>
+                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.3)', lineHeight: 1.75, marginBottom: 32, maxWidth: 380, margin: '0 auto 32px' }}>
+                    Unlock the full report to see every airdrop you qualified for, every one you missed, and every active drop you can still claim right now.
+                  </p>
+
+                  <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 28 }}>
+                    {['Full eligibility report', 'Missed airdrop history', 'Live claimable drops', 'All 9 chains'].map(f => (
+                      <span key={f} style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', display: 'flex', alignItems: 'center', gap: 6 }}>
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#7CF5C0" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        {f}
+                      </span>
+                    ))}
+                  </div>
+
+                  <button className="wc-unlock-btn" onClick={handleCheckout} disabled={checkoutLoading}>
+                    {checkoutLoading ? 'Redirecting…' : 'Unlock Full Report — 3 USDC / month'}
+                  </button>
+
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginTop: 20, flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.18)', display: 'flex', alignItems: 'center', gap: 5 }}>
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>
+                      BTC · ETH · USDT · SOL accepted
+                    </span>
+                    <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.18)', display: 'flex', alignItems: 'center', gap: 5 }}>
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>
+                      No account · No KYC
+                    </span>
+                    <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.18)', display: 'flex', alignItems: 'center', gap: 5 }}>
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>
+                      Cancel any time
+                    </span>
+                  </div>
+
+                  <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', marginTop: 28, paddingTop: 20 }}>
+                    <Link href="/pro" style={{ fontSize: 13, color: '#7CF5C0', textDecoration: 'none', fontWeight: 600 }}>
+                      See everything that's included →
+                    </Link>
+                  </div>
                 </div>
-                <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(124,245,192,0.07)', border: '1px solid rgba(124,245,192,0.18)', color: '#7CF5C0', fontSize: 12, fontWeight: 700, padding: '10px 18px', borderRadius: 10, textDecoration: 'none', transition: 'background 0.15s' }}>
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
-                  Join Telegram Alerts
-                </a>
               </div>
             )}
 
-            {/* How we check */}
-            <div style={{ background: '#0D1221', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 16, padding: '22px 26px' }}>
-              <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.22)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 20 }}>How Eligibility Is Determined</div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', gap: 20 }}>
+          </div>
+        )}
+
+        {/* ── EMPTY STATE ── */}
+        {!result && !loading && !error && (
+          <div className="wc-wrap" style={{ paddingTop: 64, paddingBottom: 100 }}>
+
+            {/* How it works */}
+            <div style={{ marginBottom: 52 }}>
+              <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.2)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 28, textAlign: 'center' }}>How It Works</div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', gap: 14 }}>
                 {[
-                  { title: 'Chain Detection', desc: 'We query Etherscan, Arbiscan, Basescan, and other block explorers to map which chains your wallet has been active on.' },
-                  { title: 'Airdrop Matching', desc: 'We cross-reference your active chains against our database of 125+ manually verified airdrop opportunities.' },
-                  { title: 'Timeline Check', desc: 'We compare your first transaction date to each airdrop window to determine if you were on-chain at the right time.' },
-                  { title: 'Live Results', desc: 'Active airdrops are flagged in real-time — eligible ones can still be claimed directly from the results.' },
-                ].map(({ title, desc }) => (
-                  <div key={title}>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 6, letterSpacing: '-0.01em' }}>{title}</div>
+                  { n: '1', title: 'Paste wallet',     desc: 'Any EVM address or Solana wallet. No sign-up needed.' },
+                  { n: '2', title: 'We scan 9 chains', desc: 'We query your on-chain history across all major networks simultaneously.' },
+                  { n: '3', title: 'See your score',   desc: 'Get your free airdrop score + chain activity summary instantly.' },
+                  { n: '4', title: 'Unlock full report', desc: 'Pay 3 USDC to see every eligible, missed, and live airdrop for your wallet.' },
+                ].map(({ n, title, desc }) => (
+                  <div key={n} className="wc-card" style={{ padding: '24px 20px' }}>
+                    <div style={{ width: 28, height: 28, borderRadius: 8, background: 'rgba(124,245,192,0.08)', border: '1px solid rgba(124,245,192,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 900, color: '#7CF5C0', marginBottom: 14 }}>{n}</div>
+                    <div style={{ fontSize: 13, fontWeight: 800, color: '#fff', marginBottom: 7, letterSpacing: '-0.02em' }}>{title}</div>
                     <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.28)', lineHeight: 1.7 }}>{desc}</div>
                   </div>
                 ))}
               </div>
             </div>
 
-          </div>
-        )}
-
-        {/* Empty state */}
-        {!result && !loading && !error && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 14, marginTop: 8 }}>
-            {[
-              { title: 'Find missed airdrops',    desc: 'See every airdrop you were eligible for but didn\'t claim — across all EVM chains and Solana.',    color: '#7CF5C0' },
-              { title: '125+ airdrops scanned',   desc: 'Every check runs against our full verified database, updated daily.',                               color: '#818cf8' },
-              { title: 'Multi-chain in seconds',  desc: 'ETH, Arbitrum, Base, Optimism, Polygon, BNB, zkSync, Linea, and Solana — all at once.',            color: '#f59e0b' },
-              { title: '3 USDC / month',          desc: 'Free tier shows a preview. Pro unlocks the complete report, missed history, and monthly re-scans.', color: '#f87171' },
-            ].map(({ title, desc, color }) => (
-              <div key={title} style={{ background: '#0D1221', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 15, padding: '22px 20px' }}>
-                <div style={{ width: 6, height: 6, borderRadius: '50%', background: color, marginBottom: 14, boxShadow: `0 0 8px ${color}80` }} />
-                <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 7, letterSpacing: '-0.02em', lineHeight: 1.35 }}>{title}</div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.28)', lineHeight: 1.7 }}>{desc}</div>
+            {/* What Pro unlocks */}
+            <div style={{ background: '#0D1221', border: '1px solid rgba(124,245,192,0.12)', borderRadius: 18, padding: '32px 28px', marginBottom: 40 }}>
+              <div style={{ fontSize: 10, fontWeight: 800, color: '#7CF5C0', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 20 }}>Pro Unlocks</div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 14 }}>
+                {[
+                  { t: 'Eligible Airdrops',    d: 'Every airdrop your wallet qualified for across all active chains.' },
+                  { t: 'Missed Airdrop History', d: 'See exactly which drops you missed — so you never repeat the mistake.' },
+                  { t: 'Live Claimable Drops',  d: 'Active airdrops you can still claim right now, filtered to your chains.' },
+                  { t: 'Monthly Re-Scans',      d: 'Your wallet re-checked automatically as new drops launch.' },
+                ].map(({ t, d }) => (
+                  <div key={t} style={{ display: 'flex', gap: 12 }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7CF5C0" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: 2 }}><polyline points="20 6 9 17 4 12"/></svg>
+                    <div>
+                      <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 4 }}>{t}</div>
+                      <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.28)', lineHeight: 1.65 }}>{d}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+              <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', marginTop: 24, paddingTop: 20, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+                <div>
+                  <span style={{ fontSize: 24, fontWeight: 900, color: '#7CF5C0', letterSpacing: '-0.04em' }}>3 USDC</span>
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)', marginLeft: 8 }}>/ month · any crypto accepted</span>
+                </div>
+                <Link href="/pro" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(124,245,192,0.07)', border: '1px solid rgba(124,245,192,0.18)', color: '#7CF5C0', fontSize: 13, fontWeight: 700, padding: '10px 20px', borderRadius: 10, textDecoration: 'none' }}>
+                  See all benefits →
+                </Link>
+              </div>
+            </div>
+
+            {/* Past airdrops teaser */}
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.2)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 16 }}>Recent Airdrops We Tracked</div>
+              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center' }}>
+                {['Arbitrum $ARB', 'zkSync $ZK', 'Scroll $SCR', 'EigenLayer $EIGEN', 'Jito $JTO', 'Starknet $STRK'].map(name => (
+                  <span key={name} style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.35)', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)', padding: '5px 13px', borderRadius: 99 }}>{name}</span>
+                ))}
+              </div>
+            </div>
+
           </div>
         )}
 
