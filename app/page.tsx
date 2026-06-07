@@ -374,6 +374,25 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* EMAIL CAPTURE BANNER */}
+        <section style={{ background: 'linear-gradient(135deg, #0D1221 0%, #0A1628 50%, #0D1221 100%)', borderTop: '1px solid rgba(124,245,192,0.12)', borderBottom: '1px solid rgba(124,245,192,0.12)', padding: '56px 24px', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '600px', height: '300px', background: 'radial-gradient(ellipse, rgba(124,245,192,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          <div style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center', position: 'relative' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(124,245,192,0.08)', border: '1px solid rgba(124,245,192,0.2)', color: '#7CF5C0', fontSize: '10px', fontWeight: 800, padding: '5px 14px', borderRadius: '99px', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '20px' }}>
+              <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#7CF5C0', display: 'inline-block', animation: 'pulse 1.8s infinite' }} />
+              Free Early Access
+            </div>
+            <h2 style={{ fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 900, color: '#fff', letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: '12px' }}>
+              Get early airdrops<br />
+              <span style={{ background: 'linear-gradient(135deg, #7CF5C0, #4ade80)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>before everyone else.</span>
+            </h2>
+            <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.4)', marginBottom: '32px', lineHeight: 1.7 }}>
+              We alert you the moment a high-value airdrop goes live — before it hits CT.
+            </p>
+            <EmailSignup />
+          </div>
+        </section>
+
         {/* STATS BAR */}
         <div className="stats-bar">
           <div className="stats-inner">
