@@ -44,6 +44,13 @@ export default function Header() {
       badgeBg: 'rgba(99,102,241,0.5)',
     },
     {
+      label: 'Go Pro',
+      href: '/pro',
+      badge: '$3',
+      badgeColor: '#7CF5C0',
+      badgeBg: 'rgba(124,245,192,0.1)',
+    },
+    {
       label: 'Contact',
       href: '/contact',
       badge: null,
