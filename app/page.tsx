@@ -613,6 +613,25 @@ export default async function Home() {
           </section>
         )}
 
+        <div className="divider" />
+
+        {/* ALL AIRDROPS */}
+        <div className="content" style={{ paddingTop: '72px', paddingBottom: '72px' }}>
+          <div style={{ marginBottom: '32px' }}>
+            <div className="section-label">Full Database</div>
+            <div className="section-title">All Airdrops</div>
+            <div className="section-sub">{airdrops.length}+ verified airdrop opportunities — filter by chain, status, or cost.</div>
+          </div>
+          <FilterBar airdrops={airdrops} />
+          <div style={{ marginTop: '48px', textAlign: 'center' }}>
+            <Link href="/airdrops" className="btn-primary" style={{ display: 'inline-flex' }}>
+              View all {airdrops.length} airdrops →
+            </Link>
+          </div>
+        </div>
+
+        <div className="divider" />
+
         {/* EMAIL CAPTURE BANNER */}
         <section style={{ position: 'relative', overflow: 'hidden', padding: '72px 24px' }}>
           {/* layered background */}
