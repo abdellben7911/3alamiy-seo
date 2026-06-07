@@ -374,71 +374,6 @@ export default async function Home() {
           </div>
         </section>
 
-        {/* EMAIL CAPTURE BANNER */}
-        <section style={{ position: 'relative', overflow: 'hidden', padding: '72px 24px' }}>
-          {/* layered background */}
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #080C14 0%, #0B1220 40%, #0D1628 60%, #080C14 100%)' }} />
-          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(124,245,192,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(124,245,192,0.025) 1px, transparent 1px)', backgroundSize: '48px 48px' }} />
-          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '900px', height: '400px', background: 'radial-gradient(ellipse, rgba(124,245,192,0.07) 0%, rgba(99,102,241,0.04) 40%, transparent 70%)', pointerEvents: 'none' }} />
-          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(124,245,192,0.3) 30%, rgba(99,102,241,0.3) 70%, transparent)' }} />
-          <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(124,245,192,0.15) 50%, transparent)' }} />
-
-          <div style={{ position: 'relative', maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
-
-            {/* badge */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(124,245,192,0.06)', border: '1px solid rgba(124,245,192,0.18)', color: '#7CF5C0', fontSize: '10px', fontWeight: 800, padding: '6px 16px', borderRadius: '99px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '24px' }}>
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#7CF5C0', display: 'inline-block', animation: 'pulse 1.8s infinite', boxShadow: '0 0 8px rgba(124,245,192,0.6)' }} />
-              Free — No spam, ever
-            </div>
-
-            {/* headline */}
-            <h2 style={{ fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 900, color: '#fff', letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: '16px' }}>
-              Get early airdrops<br />
-              <span style={{ background: 'linear-gradient(135deg, #7CF5C0 0%, #4ade80 50%, #7CF5C0 100%)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'gradientShift 4s ease infinite' }}>before everyone else.</span>
-            </h2>
-
-            {/* subtext */}
-            <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.38)', marginBottom: '16px', lineHeight: 1.7, maxWidth: '500px', margin: '0 auto 16px' }}>
-              We alert you the moment a high-value airdrop goes live —<br />
-              <span style={{ color: 'rgba(255,255,255,0.55)' }}>before it hits CT.</span>
-            </p>
-
-            {/* feature pills */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '36px' }}>
-              {[
-                { icon: '⚡', text: 'Instant alerts' },
-                { icon: '🎯', text: 'Verified only' },
-                { icon: '💰', text: '$500–$10K picks' },
-              ].map(({ icon, text }) => (
-                <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', padding: '7px 14px', borderRadius: '99px', fontSize: '12px', fontWeight: 600, color: 'rgba(255,255,255,0.5)' }}>
-                  <span style={{ fontSize: '13px' }}>{icon}</span>
-                  {text}
-                </div>
-              ))}
-            </div>
-
-            {/* form */}
-            <div style={{ maxWidth: '520px', margin: '0 auto' }}>
-              <EmailSignup />
-            </div>
-
-            {/* trust row */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '24px', marginTop: '28px', flexWrap: 'wrap' }}>
-              {[
-                { val: '500+', label: 'subscribers' },
-                { val: '40+', label: 'countries' },
-                { val: '125+', label: 'airdrops tracked' },
-              ].map(({ val, label }) => (
-                <div key={label} style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '18px', fontWeight: 900, color: '#7CF5C0', letterSpacing: '-0.03em' }}>{val}</div>
-                  <div style={{ fontSize: '10px', fontWeight: 600, color: 'rgba(255,255,255,0.2)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{label}</div>
-                </div>
-              ))}
-            </div>
-
-          </div>
-        </section>
-
         {/* STATS BAR */}
         <div className="stats-bar">
           <div className="stats-inner">
@@ -678,107 +613,72 @@ export default async function Home() {
           </section>
         )}
 
+        {/* EMAIL CAPTURE BANNER */}
+        <section style={{ position: 'relative', overflow: 'hidden', padding: '72px 24px' }}>
+          {/* layered background */}
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #080C14 0%, #0B1220 40%, #0D1628 60%, #080C14 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(124,245,192,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(124,245,192,0.025) 1px, transparent 1px)', backgroundSize: '48px 48px' }} />
+          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '900px', height: '400px', background: 'radial-gradient(ellipse, rgba(124,245,192,0.07) 0%, rgba(99,102,241,0.04) 40%, transparent 70%)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(124,245,192,0.3) 30%, rgba(99,102,241,0.3) 70%, transparent)' }} />
+          <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(124,245,192,0.15) 50%, transparent)' }} />
+
+          <div style={{ position: 'relative', maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+
+            {/* badge */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(124,245,192,0.06)', border: '1px solid rgba(124,245,192,0.18)', color: '#7CF5C0', fontSize: '10px', fontWeight: 800, padding: '6px 16px', borderRadius: '99px', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '24px' }}>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#7CF5C0', display: 'inline-block', animation: 'pulse 1.8s infinite', boxShadow: '0 0 8px rgba(124,245,192,0.6)' }} />
+              Free — No spam, ever
+            </div>
+
+            {/* headline */}
+            <h2 style={{ fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 900, color: '#fff', letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: '16px' }}>
+              Get early airdrops<br />
+              <span style={{ background: 'linear-gradient(135deg, #7CF5C0 0%, #4ade80 50%, #7CF5C0 100%)', backgroundSize: '200% auto', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'gradientShift 4s ease infinite' }}>before everyone else.</span>
+            </h2>
+
+            {/* subtext */}
+            <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.38)', marginBottom: '16px', lineHeight: 1.7, maxWidth: '500px', margin: '0 auto 16px' }}>
+              We alert you the moment a high-value airdrop goes live —<br />
+              <span style={{ color: 'rgba(255,255,255,0.55)' }}>before it hits CT.</span>
+            </p>
+
+            {/* feature pills */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '36px' }}>
+              {[
+                { icon: '⚡', text: 'Instant alerts' },
+                { icon: '🎯', text: 'Verified only' },
+                { icon: '💰', text: '$500–$10K picks' },
+              ].map(({ icon, text }) => (
+                <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', padding: '7px 14px', borderRadius: '99px', fontSize: '12px', fontWeight: 600, color: 'rgba(255,255,255,0.5)' }}>
+                  <span style={{ fontSize: '13px' }}>{icon}</span>
+                  {text}
+                </div>
+              ))}
+            </div>
+
+            {/* form */}
+            <div style={{ maxWidth: '520px', margin: '0 auto' }}>
+              <EmailSignup />
+            </div>
+
+            {/* trust row */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '24px', marginTop: '28px', flexWrap: 'wrap' }}>
+              {[
+                { val: '500+', label: 'subscribers' },
+                { val: '40+', label: 'countries' },
+                { val: '125+', label: 'airdrops tracked' },
+              ].map(({ val, label }) => (
+                <div key={label} style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '18px', fontWeight: 900, color: '#7CF5C0', letterSpacing: '-0.03em' }}>{val}</div>
+                  <div style={{ fontSize: '10px', fontWeight: 600, color: 'rgba(255,255,255,0.2)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{label}</div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+
         <div className="divider" style={{ marginTop: '72px' }} />
 
         {/* ALL AIRDROPS */}
-        <div className="content" style={{ paddingTop: '56px', paddingBottom: '0' }}>
-          <div className="sec-hdr">
-            <div>
-              <div className="section-label">The full list</div>
-              <div className="section-title" style={{ fontSize: 'clamp(24px,4vw,36px)' }}>Every airdrop, one wall.</div>
-              <div className="section-sub">{activeCount} active · {freeCount} free · Updated daily</div>
-            </div>
-            <Link href="/airdrops" className="view-all">View all →</Link>
-          </div>
-          <FilterBar airdrops={airdrops} />
-        </div>
-
-        <div className="divider" style={{ marginTop: '56px' }} />
-
-        {/* LEARN */}
-        <section className="section">
-          <div className="section-inner">
-            <div className="sec-hdr">
-              <div>
-                <div className="section-label">1 guide · 1 week · skip a CT notice</div>
-                <div className="section-title">Sharper than the timeline.</div>
-                <div className="section-sub">Long-form guides from hunters who actually farm.</div>
-              </div>
-              <Link href="/learn" className="view-all">All articles →</Link>
-            </div>
-            <div className="learn-grid">
-              {articles.map((a) => (
-                <Link key={a.slug} href={`/learn/${a.slug}`} className="learn-card">
-                  <div className="learn-cat" style={{ color: catColors[a.cat] || '#818cf8' }}>{a.cat}</div>
-                  <h3 className="learn-title">{a.title}</h3>
-                  <p className="learn-desc">{a.desc}</p>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <div className="divider" />
-
-        {/* CTA SPLIT */}
-        <section className="section">
-          <div className="section-inner">
-            <div className="cta-split" id="newsletter">
-              <div className="cta-email">
-                <div className="cta-label" style={{ color: '#7CF5C0' }}>Every Friday · Free · No spam</div>
-                <div className="cta-h2">The #1 airdrop of the week — before CT notices.</div>
-                <p className="cta-desc">Every Friday we pick the single highest-potential airdrop of the week. Step-by-step guide included. Only sent when it's worth your time.</p>
-                <EmailSignup />
-              </div>
-              <div className="cta-tg">
-                <div>
-                  <div className="cta-label" style={{ color: '#7CF5C0' }}>Telegram · Live</div>
-                  <div className="cta-h2">500+ hunters in chat.</div>
-                  <p className="cta-desc">The fastest place to learn about new drops before they go viral. No noise, just alpha.</p>
-                </div>
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
-                    <div className="cta-tg-avatars">
-                      {['A','B','C','D'].map(l => <div key={l} className="cta-tg-av">{l}</div>)}
-                    </div>
-                    <span className="cta-tg-count">+496 active now</span>
-                  </div>
-                  <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="btn-tg">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
-                    Join the channel
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div className="divider" />
-
-        {/* FAQ */}
-        <section className="section">
-          <div className="section-inner">
-            <div className="sec-hdr" style={{ marginBottom: '28px' }}>
-              <div>
-                <div className="section-label">Real questions</div>
-                <div className="section-title">What hunters always ask first.</div>
-              </div>
-            </div>
-            <div className="faq-grid">
-              {faqs.map((f, i) => (
-                <div key={f.q} className="faq-card" style={{ animationDelay: `${i * 0.08}s` }}>
-                  <div className="faq-q">
-                    <span className="faq-q-icon">Q</span>
-                    {f.q}
-                  </div>
-                  <p className="faq-a">{f.a}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-      </div>
-    </>
-  );
-}
+        <div className="content" style={{ paddi
