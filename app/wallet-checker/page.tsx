@@ -132,6 +132,7 @@ function WalletCheckerInner() {
     finally { setCheckoutLoading(false); }
   }
 
+  const noActivity    = (result?.summary as any)?.noActivity ?? false;
   const eligibleCount = result?.isPro ? result.stats!.eligibleCount : result?.preview?.eligibleCount ?? 0;
   const missedCount   = result?.isPro ? result.stats!.missedCount   : result?.preview?.missedCount   ?? 0;
   const activeCount   = result?.isPro ? result.stats!.activeCount   : result?.preview?.activeCount   ?? 0;
@@ -311,8 +312,21 @@ function WalletCheckerInner() {
               </>
             )}
 
+            {/* ── No activity found ── */}
+            {noActivity && (
+              <div style={{ background: 'rgba(245,158,11,0.05)', border: '1px solid rgba(245,158,11,0.18)', borderRadius: 16, padding: '28px 28px', marginBottom: 16, display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" style={{ flexShrink: 0, marginTop: 2 }}><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: '#f59e0b', marginBottom: 6 }}>No on-chain activity found</div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)', lineHeight: 1.7 }}>
+                    This wallet has no transactions on Ethereum, Arbitrum, Base, Optimism, Polygon, BNB Chain, zkSync, Linea, or Solana. Try a different wallet address, or make sure you copied it correctly.
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* ── FREE: hard paywall (no results shown) ── */}
-            {!result.isPro && (
+            {!result.isPro && !noActivity && (
               <div>
                 {/* Teaser stat row */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 24 }}>
