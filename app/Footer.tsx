@@ -6,11 +6,11 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   const platformLinks = [
-    { label: 'Airdrops', href: '/airdrops' },
-    { label: 'Calendar', href: '/calendar' },
-    { label: 'GM Station', href: '/gm' },
-    { label: 'Learn', href: '/learn' },
-    { label: 'Profile', href: '/profile' },
+    { label: 'Airdrops',       href: '/airdrops' },
+    { label: 'Wallet Checker', href: '/wallet-checker' },
+    { label: 'Go Pro',         href: '/pro' },
+    { label: 'GM Station',     href: '/gm' },
+    { label: 'Learn',          href: '/learn' },
   ];
 
   const communityLinks = [
