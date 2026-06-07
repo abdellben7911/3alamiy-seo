@@ -118,45 +118,51 @@ export async function GET(req: NextRequest) {
   // Check subscription
   const isPro = await checkSubscription(address);
 
-  // Parallel: scan chains + fetch airdrops
-  let chainResults: Array<{ chain: typeof EVM_CHAINS[0]; activity: { firstTxTimestamp: number; txCount: number; active: boolean } }> = [];
-  let solActivity: { firstTxTimestamp: number; txCount: number; active: boolean } | null = null;
-  const [airdrops] = await Promise.all([
+  type ActivityResult = { firstTxTimestamp: number; txCount: number; active: boolean };
+  type ChainResult = { chain: typeof EVM_CHAINS[0]; activity: ActivityResult };
+
+  // Scan chains + fetch airdrops in parallel
+  let chainResults: ChainResult[] = [];
+  let solActivityResult: ActivityResult | null = null;
+
+  const [airdrops, chainScanResult] = await Promise.all([
     getAirdrops(),
-    (async () => {
-      if (isEvm) {
-        const results = await Promise.all(
-          EVM_CHAINS.map(async chain => {
-            const activity = await getEvmActivity(address, chain.api);
-            return activity ? { chain, activity } : null;
-          })
-        );
-        chainResults = results.filter(Boolean) as typeof chainResults;
-      } else {
-        solActivity = await getSolanaActivity(address);
-      }
-    })(),
+    isEvm
+      ? Promise.all(EVM_CHAINS.map(async chain => {
+          const activity = await getEvmActivity(address, chain.api);
+          return activity ? { chain, activity } : null;
+        }))
+      : getSolanaActivity(address),
   ]);
+
+  if (isEvm && Array.isArray(chainScanResult)) {
+    chainResults = (chainScanResult as (ChainResult | null)[]).filter((r): r is ChainResult => r !== null);
+  } else if (!isEvm) {
+    solActivityResult = chainScanResult as ActivityResult | null;
+  }
 
   // Build active chain names
   const activeChainNames = new Set<string>();
   chainResults.forEach(({ chain }) => {
     chain.dbNames.forEach(n => activeChainNames.add(n));
   });
-  if (solActivity) {
+  if (solActivityResult) {
     ['Solana', 'SOL'].forEach(n => activeChainNames.add(n));
   }
 
   // Find earliest tx across all chains
   const allTimestamps = [
     ...chainResults.map(c => c.activity.firstTxTimestamp),
-    ...(solActivity ? [solActivity.firstTxTimestamp] : []),
+    ...(solActivityResult ? [solActivityResult.firstTxTimestamp] : []),
   ].filter(Boolean);
   const firstTx = allTimestamps.length ? Math.min(...allTimestamps) : null;
 
   // Total txs
   const totalTxs = chainResults.reduce((sum, c) => sum + c.activity.txCount, 0)
-    + (solActivity?.txCount || 0);
+    + (solActivityResult?.txCount || 0);
+
+  // alias for rest of file
+  const solActivity = solActivityResult;
 
   // Wallet age
   const ageMs = firstTx ? Date.now() - firstTx : null;
