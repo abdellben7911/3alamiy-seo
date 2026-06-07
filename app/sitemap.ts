@@ -7,25 +7,57 @@ const BASE = 'https://www.3alamiyweb3.com';
 
 // ✅ VALID slugs only — must exist in [slug]/page.tsx articles object OR as a folder
 const articles = [
-  // — In [slug]/page.tsx articles object —
+  // — High priority / Hot —
+  'hyperliquid-guide',
+  'polymarket-airdrop-guide-2026',
+  'hyperliquid-season-2-airdrop-date',
+  'polymarket-2026-complete-guide',
+  'top-25-airdrop-picks-2026',
+  'early-crypto-projects-2026',
+
+  // — Analysis & News (static folders) —
+  'bitmine-strategy-paper-losses-2026',
+  'michael-saylor-2000-crash-bitcoin-history',
+  'zcash-orchard-vulnerability-2026',
+  'polymarket-willo2-500k-loss',
+  'top-crypto-cards-by-volume-may-2026',
+
+  // — Geo & Lists —
+  'best-crypto-airdrops-nigeria-2026',
+  'best-crypto-airdrops-2026',
+  'best-crypto-airdrops-this-week',
+  'best-solana-airdrops-2026',
+  'upcoming-crypto-airdrops-2026',
+  '3alamiy-vs-galxe',
+
+  // — Beginner guides (static folders) —
+  'best-airdrop-farming-platforms-2026',
+  'best-crypto-airdrop-checker-tools-2026',
+  'best-crypto-airdrop-websites-2026',
+  'crypto-airdrop-eligibility-requirements-2026',
+  'free-crypto-airdrops-no-investment-2026',
+  'how-to-get-crypto-airdrops-2026',
+  'what-are-crypto-airdrops',
+
+  // — In [slug]/page.tsx —
   'how-to-find-airdrops-before-everyone-else',
   'discord-role-airdrops-guide-2026',
   'how-to-avoid-crypto-airdrop-scams-2026',
   'how-to-build-onchain-activity-that-actually-matters',
-  'best-airdrop-farming-platforms-2026',
-  'crypto-wallet-setup-for-airdrops-2026',
   'best-ai-crypto-airdrops-2026',
   'best-depin-airdrops-2026',
   'best-testnet-airdrops-2026',
-
-  // — Static folder pages —
-  'best-airdrop-farming-platforms-2026',
-  'best-crypto-airdrops-2026',
-  'best-crypto-airdrops-this-week',
-  'best-solana-airdrops-2026',
-  'free-crypto-airdrops-no-investment-2026',
-  'how-to-get-crypto-airdrops-2026',
-  'what-are-crypto-airdrops',
+  'best-no-kyc-crypto-airdrops-2026',
+  'best-low-gas-crypto-airdrops-2026',
+  'why-crypto-airdrops-are-becoming-harder-to-qualify-for',
+  'how-to-set-up-metamask-for-airdrops',
+  'what-is-depin-crypto-airdrops',
+  'top-crypto-airdrop-wallets-2026',
+  'best-free-crypto-airdrops-2026',
+  'crypto-airdrops-2026-evolution',
+  'news-report-the-2-trillion-wipeout',
+  'solanas-institutional-firedancer-era',
+  'can-solana-reach-1000-deep-dive',
 ];
 
 // Remove duplicates
@@ -66,12 +98,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.85,
     })),
 
-    // Learn articles — only valid ones
+    // Learn articles — high priority for hot pages
     ...uniqueArticles.map(slug => ({
       url: `${BASE}/learn/${slug}`,
       lastModified: now,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
+      changeFrequency: ['hyperliquid-guide','polymarket-airdrop-guide-2026','hyperliquid-season-2-airdrop-date','best-crypto-airdrops-this-week','top-25-airdrop-picks-2026'].includes(slug) ? 'weekly' as const : 'monthly' as const,
+      priority: ['hyperliquid-guide','polymarket-airdrop-guide-2026','hyperliquid-season-2-airdrop-date'].includes(slug) ? 0.9 : ['best-crypto-airdrops-this-week','top-25-airdrop-picks-2026','early-crypto-projects-2026','polymarket-2026-complete-guide'].includes(slug) ? 0.8 : 0.7,
     })),
   ];
 }
