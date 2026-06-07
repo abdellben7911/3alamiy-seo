@@ -16,6 +16,7 @@ const articles = [
   'early-crypto-projects-2026',
 
   // — Analysis & News (static folders) —
+  'pumpfun-tattoo-bounty-india-viral',
   'bitmine-strategy-paper-losses-2026',
   'michael-saylor-2000-crash-bitcoin-history',
   'zcash-orchard-vulnerability-2026',
