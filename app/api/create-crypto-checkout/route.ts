@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const COINBASE_API_KEY = process.env.COINBASE_COMMERCE_API_KEY || '';
+const NOWPAYMENTS_API_KEY = process.env.NOWPAYMENTS_API_KEY || '';
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.3alamiyweb3.com';
 
 export async function POST(req: NextRequest) {
-  if (!COINBASE_API_KEY) {
+  if (!NOWPAYMENTS_API_KEY) {
     return NextResponse.json({ error: 'Payment not configured' }, { status: 500 });
   }
 
@@ -14,36 +14,30 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const res = await fetch('https://api.commerce.coinbase.com/charges', {
+    const res = await fetch('https://api.nowpayments.io/v1/invoice', {
       method: 'POST',
       headers: {
-        'X-CC-Api-Key': COINBASE_API_KEY,
-        'X-CC-Version': '2018-03-22',
+        'x-api-key': NOWPAYMENTS_API_KEY,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name: '3alamiy Web3 — Wallet Checker Pro',
-        description: '30-day full access: missed airdrop history, full eligibility report, multi-chain PNL.',
-        pricing_type: 'fixed_price',
-        local_price: {
-          amount: '3.00',
-          currency: 'USDC',
-        },
-        metadata: {
-          wallet_address: wallet.toLowerCase(),
-        },
-        redirect_url: `${BASE_URL}/wallet-checker?success=true&wallet=${encodeURIComponent(wallet)}`,
+        price_amount: 3,
+        price_currency: 'usd',
+        order_id: wallet.toLowerCase(),
+        order_description: '3alamiy Web3 — Wallet Checker Pro (30 days)',
+        success_url: `${BASE_URL}/wallet-checker?success=true&wallet=${encodeURIComponent(wallet)}`,
         cancel_url: `${BASE_URL}/wallet-checker?wallet=${encodeURIComponent(wallet)}`,
+        ipn_callback_url: `${BASE_URL}/api/nowpayments-webhook`,
       }),
     });
 
     if (!res.ok) {
       const err = await res.json();
-      return NextResponse.json({ error: err.error?.message || 'Coinbase error' }, { status: 500 });
+      return NextResponse.json({ error: err.message || 'NOWPayments error' }, { status: 500 });
     }
 
     const data = await res.json();
-    return NextResponse.json({ url: data.data.hosted_url });
+    return NextResponse.json({ url: data.invoice_url });
   } catch {
     return NextResponse.json({ error: 'Failed to create payment' }, { status: 500 });
   }
