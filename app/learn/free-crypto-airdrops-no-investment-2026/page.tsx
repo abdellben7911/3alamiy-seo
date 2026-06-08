@@ -12,6 +12,37 @@ export const metadata = {
   alternates: { canonical: 'https://www.3alamiyweb3.com/learn/free-crypto-airdrops-no-investment-2026' },
 };
 
+const articleSchema = {
+  '@context': 'https://schema.org', '@type': 'Article',
+  headline: 'Free Crypto Airdrops 2026 — No Investment Required',
+  description: 'The best free crypto airdrops in 2026 requiring zero investment. Verified listings with step-by-step guides.',
+  url: 'https://www.3alamiyweb3.com/learn/free-crypto-airdrops-no-investment-2026',
+  datePublished: '2026-05-01', dateModified: '2026-06-08',
+  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
+  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
+  speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2'] },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Are there really free crypto airdrops with no investment?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Many legitimate airdrops require zero investment — only your time. Testnet airdrops use free test tokens, social task airdrops require following accounts or joining Discord, and waitlist airdrops just need an email signup. Some require small gas fees under $5 for on-chain tasks.' } },
+    { '@type': 'Question', name: 'What is the easiest free crypto airdrop to get in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'Waitlist and social task airdrops are the easiest — often just an email signup or Discord join. Examples include project early access waitlists, Galxe quest campaigns, and Layer3 missions that reward following social accounts and completing quizzes.' } },
+    { '@type': 'Question', name: 'How much can you earn from free airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'Free airdrop earnings range widely. Simple social task airdrops may pay $10–$100. Testnet airdrops for high-profile projects can pay $500–$5,000+. Some of the largest free airdrops historically: Uniswap ($3,000+ average), Arbitrum ($1,500+ average), Hyperliquid ($10,000+ average). None required upfront investment.' } },
+    { '@type': 'Question', name: 'What wallet do I need for free crypto airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'MetaMask covers most EVM chain airdrops (Ethereum, Base, Arbitrum, Optimism). Phantom covers Solana. Sui Wallet covers Sui. All are free to install. Never use a centralized exchange wallet — airdrop tokens will not arrive there.' } },
+    { '@type': 'Question', name: 'How do I avoid fake free airdrop scams?', acceptedAnswer: { '@type': 'Answer', text: 'Never connect your wallet to unofficial links. Never share your seed phrase — no legitimate airdrop ever asks for it. Only use links from official project social accounts and verified airdrop trackers like 3alamiy Web3. If an airdrop promises guaranteed large amounts with no effort, it is likely a scam.' } },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.3alamiyweb3.com' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://www.3alamiyweb3.com/learn' },
+    { '@type': 'ListItem', position: 3, name: 'Free Crypto Airdrops No Investment 2026', item: 'https://www.3alamiyweb3.com/learn/free-crypto-airdrops-no-investment-2026' },
+  ],
+};
+
 const freeAirdrops = [
   { name: 'Beep AI Galxe Campaign', chain: 'Sui', time: '5 min', slug: 'beep-ai-galxe-campaign', desc: 'Complete 3 Galxe quests. Quiz answers: BACB. Confirmed $BEEP rewards.' },
   { name: 'Startale STAR Points', chain: 'Sonium', time: '10 min/day', slug: 'startale-star-points-carnival', desc: 'Daily check-ins and mini games. $70M raised, Samsung + Sony backed.' },
@@ -24,6 +55,9 @@ const freeAirdrops = [
 export default function FreeCryptoAirdrops() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <style>{`
         .article { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; color: #fff; font-family: system-ui, -apple-system, sans-serif; }
         .article h2 { font-size: 22px; font-weight: 800; color: #fff; margin: 44px 0 14px; letter-spacing: -0.02em; }

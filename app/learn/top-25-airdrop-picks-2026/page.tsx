@@ -28,8 +28,30 @@ const jsonLd = {
   author: { "@type": "Organization", name: "3alamiy Web3" },
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
   datePublished: "2026-06-02",
-  dateModified: "2026-06-02",
+  dateModified: "2026-06-08",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/top-25-airdrop-picks-2026" },
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", "h2"] },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    { "@type": "Question", name: "What are the top crypto airdrop picks for 2026?", acceptedAnswer: { "@type": "Answer", text: "The top 25 airdrop picks for 2026 include high-potential opportunities across L1s, DeFi, DePIN, and AI: Monad (10,000 TPS EVM, $225M raised), MegaETH (100,000 TPS, $20M raised), Hyperliquid Season 2 (active now, $10K+ Season 1 average), Polymarket POLY (confirmed drop), and 21 more. Full list at 3alamiyweb3.com/learn/top-25-airdrop-picks-2026." } },
+    { "@type": "Question", name: "Which crypto airdrops have the highest rewards in 2026?", acceptedAnswer: { "@type": "Answer", text: "The highest-reward airdrop categories in 2026 are: (1) Major L1 testnets — Monad, MegaETH ($500–$5,000+ estimated), (2) Hyperliquid Season 2 ($1,000–$10,000+ estimated), (3) Confirmed DeFi drops like Polymarket POLY ($200–$2,000). Early testnet farmers consistently earn the most." } },
+    { "@type": "Question", name: "Which crypto airdrops are confirmed for 2026?", acceptedAnswer: { "@type": 'Answer', text: "Confirmed airdrops in 2026 include: Polymarket POLY token (snapshot expected before year-end), ACI Testnet (30M tokens confirmed, June 30 deadline), Aro Network Season 2 (ARO rewards confirmed). Many others have active points programs that strongly imply future token distributions." } },
+    { "@type": "Question", name: "How early should I start farming airdrops?", acceptedAnswer: { "@type": "Answer", text: "The earlier the better. Most retroactive airdrops reward wallets with activity starting months before the snapshot. For testnets like Monad and MegaETH, farming from day one of testnet launch gives the best eligibility position. Social and waitlist airdrops can be done any time before the deadline." } },
+  ],
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.3alamiyweb3.com" },
+    { "@type": "ListItem", position: 2, name: "Learn", item: "https://www.3alamiyweb3.com/learn" },
+    { "@type": "ListItem", position: 3, name: "Top 25 Airdrop Picks 2026", item: "https://www.3alamiyweb3.com/learn/top-25-airdrop-picks-2026" },
+  ],
 };
 
 const categoryColors: Record<string, { color: string; bg: string; border: string }> = {
@@ -242,6 +264,8 @@ export default function Top25AirdropPicks2026() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <style>{`
         .t25 * { box-sizing: border-box; }

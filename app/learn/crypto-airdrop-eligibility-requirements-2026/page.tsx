@@ -31,11 +31,37 @@ const jsonLd = {
   author: { "@type": "Organization", name: "3alamiy Web3" },
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
   datePublished: "2026-06-02",
-  dateModified: "2026-06-02",
+  dateModified: "2026-06-08",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://www.3alamiyweb3.com/learn/crypto-airdrop-eligibility-requirements-2026",
   },
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", "h2", ".req-intro"] },
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How to Meet Crypto Airdrop Eligibility Requirements in 2026",
+  description: "Step-by-step guide to making your wallet eligible for the maximum number of crypto airdrops.",
+  totalTime: "PT3M",
+  step: [
+    { "@type": "HowToStep", position: 1, name: "Set up a self-custody wallet", text: "Install MetaMask for EVM chains, Phantom for Solana, and Sui Wallet for Sui. Never use a centralized exchange wallet — you will not receive airdrop tokens." },
+    { "@type": "HowToStep", position: 2, name: "Build on-chain history over 3+ months", text: "Retroactive airdrops reward wallets with genuine long-term activity. Start transacting early — swap tokens, use DeFi protocols, bridge across chains." },
+    { "@type": "HowToStep", position: 3, name: "Use only one wallet per airdrop", text: "Sybil filtering is the #1 disqualifier. Never use multiple wallets for the same project. Use a single dedicated farming wallet per ecosystem." },
+    { "@type": "HowToStep", position: 4, name: "Complete every required task", text: "Follow social accounts, join Discord, verify your wallet in official campaigns. Partially completed task lists are often automatically disqualified." },
+    { "@type": "HowToStep", position: 5, name: "Avoid VPNs and geographic violations", text: "Many airdrops restrict certain countries. Using a VPN to fake your location typically results in permanent disqualification when detected on-chain." },
+  ],
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.3alamiyweb3.com" },
+    { "@type": "ListItem", position: 2, name: "Learn", item: "https://www.3alamiyweb3.com/learn" },
+    { "@type": "ListItem", position: 3, name: "Airdrop Eligibility Requirements 2026", item: "https://www.3alamiyweb3.com/learn/crypto-airdrop-eligibility-requirements-2026" },
+  ],
 };
 
 const faqJsonLd = {
@@ -205,6 +231,8 @@ export default function CryptoAirdropEligibilityRequirements2026() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <main style={{ background: "#060A12", minHeight: "100vh", color: "#fff" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", padding: "48px 20px 80px" }}>

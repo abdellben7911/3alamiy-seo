@@ -17,13 +17,55 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'Hyperliquid Airdrop Season 2 Guide 2026 — How to Qualify for HYPE',
-  description: 'Complete step-by-step guide to qualifying for Hyperliquid Season 2 airdrop in 2026.',
+  headline: 'Hyperliquid Season 2 Airdrop Guide 2026 — How to Qualify for HYPE',
+  description: 'Complete step-by-step guide to qualifying for Hyperliquid Season 2 airdrop in 2026. HyperCore trading, HLP vault, HyperEVM, HYPE staking.',
   author: { '@type': 'Organization', name: '3alamiy Web3' },
   publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   datePublished: '2026-05-01',
-  dateModified: '2026-06-02',
+  dateModified: '2026-06-08',
   mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/hyperliquid-guide' },
+  speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.hl-guide-intro'] },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Is Hyperliquid Season 2 still active?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. As of June 2026, Hyperliquid Season 2 is active with no snapshot date announced. Trading perpetuals on HyperCore, staking HYPE (8 points/HYPE/day), depositing to HLP vault (3× multiplier), and interacting with HyperEVM protocols all accumulate Season 2 points.' } },
+    { '@type': 'Question', name: 'How do I qualify for the Hyperliquid Season 2 airdrop?', acceptedAnswer: { '@type': 'Answer', text: 'To qualify for Hyperliquid Season 2: (1) Trade perpetuals on HyperCore at app.hyperliquid.xyz, (2) Stake HYPE tokens to earn 8 points per HYPE per day, (3) Deposit USDC to the HLP vault for a 3× point multiplier, (4) Interact with HyperEVM protocols like HyperSwap, HyperLend, and Felix Protocol. Consistent daily activity since Season 2 started is the strongest eligibility signal.' } },
+    { '@type': 'Question', name: 'What is the Hyperliquid Season 2 airdrop date?', acceptedAnswer: { '@type': 'Answer', text: 'Hyperliquid has not announced a Season 2 snapshot or airdrop date as of June 2026. Season 1 was also unannounced until it happened. The safest strategy is to farm continuously and not wait for an announcement — by then it may be too late.' } },
+    { '@type': 'Question', name: 'How much did Hyperliquid Season 1 pay?', acceptedAnswer: { '@type': 'Answer', text: 'Hyperliquid Season 1 distributed 310 million HYPE tokens (31% of supply) to over 94,000 wallets. The average recipient received approximately 3,300 HYPE, worth over $10,000 at peak prices. Top farmers received $50,000–$200,000+.' } },
+    { '@type': 'Question', name: 'What is HyperEVM?', acceptedAnswer: { '@type': 'Answer', text: 'HyperEVM is Hyperliquid\'s EVM-compatible execution layer that launched in early 2026. It allows Ethereum-compatible smart contracts to run on Hyperliquid\'s infrastructure. Interacting with HyperEVM protocols (HyperSwap, HyperLend, Felix, HyperBeat) contributes to Season 2 eligibility.' } },
+    { '@type': 'Question', name: 'How do I stake HYPE?', acceptedAnswer: { '@type': 'Answer', text: 'Go to app.hyperliquid.xyz, navigate to the Staking section, and delegate HYPE to a validator. Staked HYPE earns 8 Season 2 points per HYPE per day. You can also use Kinetiq (kinetiq.xyz) to get liquid staking token kHYPE while still earning staking rewards.' } },
+    { '@type': 'Question', name: 'What is the HLP vault and how does it give a 3x multiplier?', acceptedAnswer: { '@type': 'Answer', text: 'HLP (Hyperliquidity Provider) is Hyperliquid\'s market-making vault. Depositing USDC into HLP earns vault returns plus a 3× Season 2 points multiplier on those returns. It\'s the highest points-per-dollar strategy on the platform, though returns depend on market conditions.' } },
+  ],
+};
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Farm the Hyperliquid Season 2 Airdrop',
+  description: 'Step-by-step guide to maximizing your Hyperliquid Season 2 airdrop eligibility.',
+  totalTime: 'PT30M',
+  supply: [{ '@type': 'HowToSupply', name: 'MetaMask or any EVM wallet' }, { '@type': 'HowToSupply', name: 'USDC or ETH to bridge' }],
+  step: [
+    { '@type': 'HowToStep', position: 1, name: 'Create a Hyperliquid account', text: 'Go to app.hyperliquid.xyz and connect your EVM wallet. No separate account needed.' },
+    { '@type': 'HowToStep', position: 2, name: 'Bridge USDC to Hyperliquid', text: 'Use the native bridge at app.hyperliquid.xyz to deposit USDC from Arbitrum or other chains. Gas is free on Hyperliquid.' },
+    { '@type': 'HowToStep', position: 3, name: 'Trade perpetuals on HyperCore', text: 'Place at least one perpetual trade daily. Volume matters for points — trade BTC-PERP, ETH-PERP, or other active markets.' },
+    { '@type': 'HowToStep', position: 4, name: 'Stake HYPE tokens', text: 'Buy HYPE and stake it via the Staking tab. Each staked HYPE earns 8 Season 2 points per day.' },
+    { '@type': 'HowToStep', position: 5, name: 'Deposit to HLP vault', text: 'Navigate to HLP vault and deposit USDC. Earn a 3× point multiplier on vault returns.' },
+    { '@type': 'HowToStep', position: 6, name: 'Interact with HyperEVM protocols', text: 'Use HyperSwap for DEX swaps, HyperLend for lending, and Felix Protocol for CDP stablecoin minting on HyperEVM.' },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.3alamiyweb3.com' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://www.3alamiyweb3.com/learn' },
+    { '@type': 'ListItem', position: 3, name: 'Hyperliquid Season 2 Guide', item: 'https://www.3alamiyweb3.com/learn/hyperliquid-guide' },
+  ],
 };
 
 export default function HyperliquidGuide() {
@@ -116,6 +158,9 @@ export default function HyperliquidGuide() {
       `}</style>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <div className="hl-wrap">
 
