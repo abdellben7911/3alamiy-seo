@@ -13,11 +13,27 @@ export default function CookieBanner() {
 
   const accept = () => {
     localStorage.setItem('cookie_consent', 'accepted');
+    if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+      (window as any).gtag('consent', 'update', {
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        analytics_storage: 'granted',
+      });
+    }
     setVisible(false);
   };
 
   const decline = () => {
     localStorage.setItem('cookie_consent', 'declined');
+    if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+      (window as any).gtag('consent', 'update', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+      });
+    }
     setVisible(false);
   };
 

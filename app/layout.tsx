@@ -91,7 +91,7 @@ const aiSchema = {
         'width': 512,
         'height': 512,
       },
-      'description': '3alamiy Web3 is a free crypto airdrop tracker and guide platform. We provide 110+ verified step-by-step airdrop guides, a GM Station for daily on-chain activity across 16+ EVM chains, and daily Telegram alerts. All content is free — no paywalls, no subscriptions.',
+      'description': '3alamiy Web3 is a crypto airdrop tracker and guide platform. We provide 110+ step-by-step airdrop guides, a GM Station for daily on-chain activity across 16+ EVM chains, and daily Telegram alerts. Core content is free; Pro membership unlocks advanced wallet analytics.',
       'foundingDate': '2026',
       'areaServed': 'Worldwide',
       'audience': {
@@ -164,6 +164,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={spaceGrotesk.variable}>
       <head>
+        {/* Google Consent Mode v2 — MUST run before AdSense/GA scripts */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          var _consent = (typeof localStorage !== 'undefined') ? localStorage.getItem('cookie_consent') : null;
+          if (_consent === 'accepted') {
+            gtag('consent', 'default', {
+              ad_storage: 'granted',
+              ad_user_data: 'granted',
+              ad_personalization: 'granted',
+              analytics_storage: 'granted'
+            });
+          } else {
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+              wait_for_update: 500
+            });
+          }
+        `}} />
         {/* Google AdSense */}
         <script
           async
