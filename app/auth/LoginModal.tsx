@@ -10,7 +10,14 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [mounted, setMounted] = useState(false);
-  const { signInWithMagicLink } = useAuth();
+  const { signInWithMagicLink, signInWithGoogle } = useAuth();
+  const [googleLoading, setGoogleLoading] = useState(false);
+
+  const handleGoogle = async () => {
+    setGoogleLoading(true);
+    await signInWithGoogle();
+    // redirect happens, so no need to reset state
+  };
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -208,6 +215,28 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
           transition: all 0.15s;
         }
         .lm-close-btn:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.8); }
+        .lm-google-btn {
+          width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+          background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+          color: rgba(255,255,255,0.85); border-radius: 12px; padding: 13px 16px;
+          font-size: 14px; font-weight: 700; cursor: pointer;
+          font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
+          transition: background 0.15s, border-color 0.15s, transform 0.15s;
+          margin-bottom: 0;
+        }
+        .lm-google-btn:hover:not(:disabled) {
+          background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.22);
+          transform: translateY(-1px);
+        }
+        .lm-google-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .lm-divider {
+          display: flex; align-items: center; gap: 10px;
+          margin: 14px 0; color: rgba(255,255,255,0.2); font-size: 11px;
+          font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
+        }
+        .lm-divider::before, .lm-divider::after {
+          content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.07);
+        }
       `}</style>
 
       <div className="lm-backdrop" onClick={onClose} />
@@ -236,6 +265,22 @@ export default function LoginModal({ onClose }: { onClose: () => void }) {
                 ))}
               </div>
               <div className="lm-form">
+                <button className="lm-google-btn" onClick={handleGoogle} disabled={googleLoading}>
+                  {googleLoading ? (
+                    <svg className="lm-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+                    </svg>
+                  ) : (
+                    <svg width="18" height="18" viewBox="0 0 48 48">
+                      <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                      <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                      <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                      <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                    </svg>
+                  )}
+                  Continue with Google
+                </button>
+                <div className="lm-divider"><span>or</span></div>
                 <label className="lm-label">Email Address</label>
                 <div className="lm-input-wrap">
                   <span className="lm-input-icon">
