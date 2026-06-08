@@ -17,9 +17,10 @@ export default function Header() {
   }, []);
 
   const navItems = [
-    { label: 'Airdrops',   href: '/airdrops', badge: 'HOT', badgeColor: '#f43f5e', badgeBg: 'rgba(244,63,94,0.12)' },
-    { label: 'Learn',      href: '/learn',    badge: 'NEW', badgeColor: '#7CF5C0', badgeBg: 'rgba(124,245,192,0.1)' },
-    { label: 'GM Station', href: '/gm',       badge: null,  badgeColor: null,      badgeBg: null },
+    { label: 'Airdrops',   href: '/airdrops',  badge: 'HOT', badgeColor: '#f43f5e', badgeBg: 'rgba(244,63,94,0.12)' },
+    { label: 'Learn',      href: '/learn',     badge: 'NEW', badgeColor: '#7CF5C0', badgeBg: 'rgba(124,245,192,0.1)' },
+    { label: 'GM Station', href: '/gm',        badge: null,  badgeColor: null,      badgeBg: null },
+    { label: 'Portfolio',  href: '/portfolio', badge: 'PRO', badgeColor: '#7CF5C0', badgeBg: 'rgba(124,245,192,0.08)' },
   ];
 
   return (
@@ -232,6 +233,10 @@ export default function Header() {
         <Link href="/wallet-checker" className="hdr-drawer-link" onClick={() => setMenuOpen(false)}>
           Wallet Checker
           <span className="hdr-badge" style={{ color: '#f59e0b', background: 'rgba(245,158,11,0.12)' }}>PRO</span>
+        </Link>
+        <Link href="/portfolio" className="hdr-drawer-link" onClick={() => setMenuOpen(false)}>
+          Portfolio
+          <span className="hdr-badge" style={{ color: '#7CF5C0', background: 'rgba(124,245,192,0.08)' }}>PRO</span>
         </Link>
         <hr className="hdr-drawer-divider" />
         <Link href="/pro" className="hdr-drawer-pro" onClick={() => setMenuOpen(false)}>
