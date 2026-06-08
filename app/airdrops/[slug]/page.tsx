@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import ParticipationGuide from './ParticipationGuide';
 import FavoriteButton from './FavoriteButton';
+import EmailSignup from '../../EmailSignup';
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -767,6 +768,14 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
                 </div>
               </div>
             )}
+          </div>
+
+          {/* ── Email signup ── */}
+          <div style={{ background: '#0D1221', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 20, padding: '32px 28px', marginBottom: 12 }}>
+            <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.2)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 12 }}>Never Miss a Drop</div>
+            <div style={{ fontSize: 16, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em', marginBottom: 8, lineHeight: 1.3 }}>Get the next {a.name}-level alert first.</div>
+            <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.3)', marginBottom: 20, lineHeight: 1.6 }}>Free weekly digest — top 5 airdrops before they go viral.</div>
+            <EmailSignup />
           </div>
 
           {/* ── Sidebar ── */}
