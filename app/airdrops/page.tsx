@@ -271,6 +271,27 @@ export default async function AirdropsPage() {
           {/* Client component handles filters + grid */}
           <AirdropsClient airdrops={airdrops} />
 
+          {/* ── Pro upsell banner ── */}
+          <div style={{ margin: '48px 0 8px', background: 'linear-gradient(135deg,rgba(124,245,192,0.06) 0%,rgba(99,102,241,0.04) 100%)', border: '1px solid rgba(124,245,192,0.14)', borderRadius: 20, padding: '28px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap', fontFamily: "var(--font-space),'Space Grotesk',system-ui,sans-serif" }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+              <div style={{ width: 44, height: 44, borderRadius: 12, background: 'rgba(124,245,192,0.1)', border: '1px solid rgba(124,245,192,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7CF5C0" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              </div>
+              <div>
+                <div style={{ fontSize: 15, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em', marginBottom: 4 }}>
+                  Does your wallet qualify for these airdrops?
+                </div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)', lineHeight: 1.5 }}>
+                  Paste any EVM or Solana address — we scan 9 chains and show your full eligibility report.
+                </div>
+              </div>
+            </div>
+            <Link href="/wallet-checker" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'linear-gradient(135deg,#7CF5C0,#4ade80)', color: '#060A12', fontSize: 13, fontWeight: 900, padding: '12px 24px', borderRadius: 12, textDecoration: 'none', whiteSpace: 'nowrap', letterSpacing: '-0.01em', boxShadow: '0 4px 20px rgba(124,245,192,0.25)', flexShrink: 0 }}>
+              Check My Wallet
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </Link>
+          </div>
+
         </div>
       </div>
     </>

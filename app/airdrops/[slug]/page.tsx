@@ -713,6 +713,22 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
               </div>
             </div>
 
+            {/* ── Wallet eligibility upsell ── */}
+            <div style={{ background: 'linear-gradient(135deg,rgba(124,245,192,0.07) 0%,rgba(99,102,241,0.04) 100%)', border: '1px solid rgba(124,245,192,0.15)', borderRadius: 18, padding: '24px 28px', marginBottom: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap' }}>
+              <div>
+                <div style={{ fontSize: 14, fontWeight: 800, color: '#fff', letterSpacing: '-0.02em', marginBottom: 5 }}>
+                  Already farming {a.name}? Check if you qualify.
+                </div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.32)', lineHeight: 1.6 }}>
+                  Paste your wallet — we scan 9 chains and show your full airdrop eligibility report.
+                </div>
+              </div>
+              <a href="/wallet-checker" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: 'linear-gradient(135deg,#7CF5C0,#4ade80)', color: '#060A12', fontSize: 12, fontWeight: 900, padding: '11px 22px', borderRadius: 10, textDecoration: 'none', whiteSpace: 'nowrap', letterSpacing: '-0.01em', boxShadow: '0 4px 16px rgba(124,245,192,0.25)', flexShrink: 0 }}>
+                Check My Wallet
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+
             {/* Related */}
             {relatedAirdrops.length > 0 && (
               <div className="dp-card">
