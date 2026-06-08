@@ -56,6 +56,10 @@ const featuredArticles = [
 const allArticles = [
   // Static folder pages
   // Hot / Trending
+  { slug: 'best-hyperliquid-airdrops-2026', title: 'Best Hyperliquid Airdrops 2026', desc: 'HyperEVM is live with $40B+ TVL. Top 8 protocols to farm in the Hyperliquid ecosystem — HyperSwap, HyperLend, Felix, and more.', cat: 'Hot', catColor: '#7CF5C0', time: '10 min' },
+  { slug: 'how-to-farm-monad-airdrop', title: 'How to Farm the Monad Airdrop 2026', desc: 'Monad raised $225M and targets 10,000 TPS. Testnet is live with MonadPoints. Full step-by-step guide.', cat: 'Hot', catColor: '#a78bfa', time: '10 min' },
+  { slug: 'best-base-airdrops-2026', title: 'Best Base Airdrops 2026', desc: 'Top 10 Base ecosystem airdrop opportunities — Seamless Protocol, Dackieswap, Grand Base, Morpho Blue, and more.', cat: 'Ecosystems', catColor: '#6494FF', time: '12 min' },
+  { slug: 'how-to-farm-megaeth-airdrop', title: 'How to Farm the MegaETH Airdrop 2026', desc: 'MegaETH targets 100,000 TPS with real-time EVM. MEGAPoints testnet program is live. Complete farming guide.', cat: 'Hot', catColor: '#8FA8FF', time: '10 min' },
   { slug: 'hyperliquid-guide', title: 'Hyperliquid Season 2 Full Guide', desc: 'HyperCore trading, HLP vault 3x multiplier, HyperEVM — complete farming strategy.', cat: 'Hot', catColor: '#7CF5C0', time: '10 min' },
   { slug: 'polymarket-airdrop-guide-2026', title: 'Polymarket POLY Airdrop Guide', desc: 'How to qualify before the snapshot. Confirmed drop — step-by-step farming strategy.', cat: 'Hot', catColor: '#f59e0b', time: '8 min' },
   { slug: 'polymarket-willo2-500k-loss', title: 'Did Polymarket Scam Willo2 — or Just Greed?', desc: 'Full breakdown of the $500K loss trending on X. What happened and what every trader needs to know.', cat: 'Analysis', catColor: '#f87171', time: '6 min' },
@@ -337,16 +341,4 @@ export default async function LearnPage() {
             <h2 className="lp-cta-title">Ready to Start Farming?</h2>
             <p className="lp-cta-sub">Browse {airdropCount}+ verified airdrops with step-by-step guides. Free, no paywall.</p>
             <div className="lp-cta-btns">
-              <Link href="/airdrops" className="btn-lp-p">Browse Airdrops →</Link>
-              <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="btn-lp-s">
-                <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 13, height: 13 }}><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-                Join Telegram
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </>
-  );
-}
+              <Link href="/airdrops" classN
