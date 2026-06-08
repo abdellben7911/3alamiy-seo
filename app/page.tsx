@@ -195,7 +195,7 @@ export default async function Home() {
         .hero-inner { position: relative; max-width: 820px; margin: 0 auto; text-align: center; }
         .hero-badge { display: inline-flex; align-items: center; gap: 7px; background: rgba(124,245,192,0.06); border: 1px solid rgba(124,245,192,0.18); color: #7CF5C0; font-size: 11px; font-weight: 700; padding: 6px 14px; border-radius: 99px; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 28px; }
         .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #7CF5C0; animation: pulse 1.8s infinite; }
-        .hero-h1 { font-size: clamp(38px, 6vw, 72px); font-weight: 900; line-height: 1.08; letter-spacing: -0.035em; color: #fff; margin-bottom: 12px; }
+        .hero-h1 { font-size: clamp(32px, 4.5vw, 56px); font-weight: 900; line-height: 1.08; letter-spacing: -0.035em; color: #fff; margin-bottom: 12px; }
         .hero-h1-accent { background: linear-gradient(135deg, #7CF5C0, #6366f1, #7CF5C0); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 4s ease infinite; }
         .hero-sub { font-size: clamp(17px, 2.2vw, 22px); color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 560px; margin: 0 auto 36px; font-weight: 400; }
         .hero-ctas { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
