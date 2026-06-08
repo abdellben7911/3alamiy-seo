@@ -335,7 +335,7 @@ export default async function Home() {
             </div>
             <h1 className="hero-h1 anim-fade-up-1">
               Best crypto airdrops 2026<br />
-              — guides, alerts,<br />
+              guides, alerts,<br />
               <span className="hero-h1-accent">before CT notices.</span>
             </h1>
             <p className="hero-sub anim-fade-up-2">
