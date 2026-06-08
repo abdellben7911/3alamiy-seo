@@ -197,7 +197,7 @@ export default async function Home() {
         .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #7CF5C0; animation: pulse 1.8s infinite; }
         .hero-h1 { font-size: clamp(38px, 6vw, 72px); font-weight: 900; line-height: 1.08; letter-spacing: -0.035em; color: #fff; margin-bottom: 12px; }
         .hero-h1-accent { background: linear-gradient(135deg, #7CF5C0, #6366f1, #7CF5C0); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 4s ease infinite; }
-        .hero-sub { font-size: clamp(15px, 2vw, 18px); color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 560px; margin: 0 auto 36px; font-weight: 400; }
+        .hero-sub { font-size: clamp(17px, 2.2vw, 22px); color: rgba(255,255,255,0.55); line-height: 1.7; max-width: 560px; margin: 0 auto 36px; font-weight: 400; }
         .hero-ctas { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
         .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #7CF5C0, #4ade80); color: #080C14; font-size: 14px; font-weight: 800; padding: 13px 26px; border-radius: 12px; text-decoration: none; box-shadow: 0 8px 32px rgba(124,245,192,0.25); transition: transform 0.15s, box-shadow 0.15s; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(124,245,192,0.35); }
