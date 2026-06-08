@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 
-function createSupabase() {
-  const cookieStore = cookies();
+async function createSupabase() {
+  const cookieStore = await cookies();
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -26,7 +26,7 @@ async function getProUser(supabase: any) {
 
 // GET — list saved wallets
 export async function GET() {
-  const supabase = createSupabase();
+  const supabase = await createSupabase();
   const user = await getProUser(supabase);
   if (!user) return NextResponse.json({ error: 'Pro required' }, { status: 403 });
 
@@ -42,7 +42,7 @@ export async function GET() {
 
 // POST — add a wallet
 export async function POST(req: NextRequest) {
-  const supabase = createSupabase();
+  const supabase = await createSupabase();
   const user = await getProUser(supabase);
   if (!user) return NextResponse.json({ error: 'Pro required' }, { status: 403 });
 
@@ -73,7 +73,7 @@ export async function POST(req: NextRequest) {
 
 // DELETE — remove a wallet
 export async function DELETE(req: NextRequest) {
-  const supabase = createSupabase();
+  const supabase = await createSupabase();
   const user = await getProUser(supabase);
   if (!user) return NextResponse.json({ error: 'Pro required' }, { status: 403 });
 
