@@ -774,14 +774,6 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
           {/* ── Sidebar ── */}
           <aside className="dp-sidebar">
 
-            {/* Email signup */}
-            <div style={{ background: '#0D1221', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, padding: '20px' }}>
-              <div style={{ fontSize: 10, fontWeight: 800, color: 'rgba(255,255,255,0.2)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 10 }}>Never Miss a Drop</div>
-              <div style={{ fontSize: 14, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em', marginBottom: 6, lineHeight: 1.3 }}>Get the next {a.name}-level alert first.</div>
-              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginBottom: 16, lineHeight: 1.6 }}>Free weekly digest — top 5 airdrops before they go viral.</div>
-              <EmailSignup />
-            </div>
-
             {/* Reward */}
             <div className="dp-reward-card">
               <div className="dp-reward-eye">
