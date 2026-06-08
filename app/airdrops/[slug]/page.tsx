@@ -520,7 +520,8 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
           .dp-logo-fb { font-size: 20px; }
           .dp-strip-wrap { padding: 0 16px; }
           .dp-body { grid-template-columns: 1fr; padding: 16px 16px 60px; gap: 14px; }
-          .dp-sidebar { position: static; }
+          .dp-sidebar { position: static; order: -1; }
+          .dp-main { order: 0; }
           .dp-related-grid { grid-template-columns: 1fr 1fr; }
           .dp-banner { flex-direction: column; }
         }
@@ -826,4 +827,41 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
                         </div>
                         <span>{key === 'X' || key === 'twitter' ? 'X (Twitter)' : key.charAt(0).toUpperCase() + key.slice(1)}</span>
                       </div>
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ opacity: 0.25 }}><path d="M18 13v6a2 2 0 
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ opacity: 0.25 }}><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Telegram */}
+            <div className="dp-tg-card">
+              <p className="dp-tg-title">Need Help?</p>
+              <p className="dp-tg-sub">Join our community for real-time alerts and step-by-step guides.</p>
+              <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="dp-tg-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                Join Telegram Channel
+              </a>
+            </div>
+
+            {/* Browse */}
+            <div className="dp-side-card" style={{ textAlign: 'center' }}>
+              <a href="/airdrops" style={{ color: '#8FA8FF', textDecoration: 'none', fontWeight: 600, fontSize: '13px', display: 'block', marginBottom: '4px', letterSpacing: '-0.01em' }}>
+                Browse All Airdrops →
+              </a>
+              <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.22)', margin: 0, fontWeight: 500 }}>{allAirdrops.length}+ guides available</p>
+            </div>
+
+            {/* Updated */}
+            <div style={{ textAlign: 'center' }}>
+              <p style={{ fontSize: '10px', color: 'rgba(255,255,255,0.18)', margin: 0, fontWeight: 500 }}>
+                Updated <span style={{ color: 'rgba(255,255,255,0.32)' }}>{new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
+              </p>
+            </div>
+
+          </aside>
+        </div>
+      </div>
+    </>
+  );
+}
