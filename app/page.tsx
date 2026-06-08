@@ -334,12 +334,12 @@ export default async function Home() {
               {activeCount}+ Verified Airdrops Tracked
             </div>
             <h1 className="hero-h1 anim-fade-up-1">
-              Find crypto airdrops<br />
-              before everyone<br />
-              <span className="hero-h1-accent">CT notices.</span>
+              Best crypto airdrops 2026<br />
+              — guides, alerts,<br />
+              <span className="hero-h1-accent">before CT notices.</span>
             </h1>
             <p className="hero-sub anim-fade-up-2">
-              Free step-by-step guides for every airdrop. Track, participate, and earn — no paywalls, no fluff. Updated daily by hunters who actually farm.
+              Free step-by-step guides for every crypto airdrop in 2026. Track, participate, and earn — updated daily by hunters who actually farm.
             </p>
             <div className="hero-ctas anim-fade-up-3">
               <Link href="/airdrops" className="btn-primary">
@@ -380,7 +380,7 @@ export default async function Home() {
             {[
               { num: airdrops.length, suffix: '+', label: 'Total Airdrops', color: '#7CF5C0', delay: '0s' },
               { num: activeCount, suffix: '', label: 'Active Right Now', color: '#818cf8', delay: '0.1s' },
-              { num: 100, suffix: '%', label: 'Always Free', color: '#f59e0b', delay: '0.2s' },
+              { num: 100, suffix: '%', label: 'Free to Start', color: '#f59e0b', delay: '0.2s' },
               { num: 16, suffix: '+', label: 'EVM Networks', color: '#f43f5e', delay: '0.3s' },
             ].map((s) => (
               <div key={s.label} className="stat-item" style={{ animationDelay: s.delay }}>

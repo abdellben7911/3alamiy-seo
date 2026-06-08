@@ -6,75 +6,119 @@ import { useState } from 'react';
 function getStepDescription(step: string, idx: number): string {
   const s = step.toLowerCase();
 
-  if (s.includes('wallet') && (s.includes('connect') || s.includes('install')))
-    return 'Linking your wallet establishes your on-chain identity for the snapshot.';
-  if (s.includes('create') && s.includes('wallet'))
-    return 'A dedicated farming wallet keeps your main funds safe and tracks activity cleanly.';
-  if (s.includes('email') && s.includes('sign') || s.includes('register') || s.includes('sign up'))
-    return 'Account creation is required to link your activity to the airdrop snapshot.';
-  if (s.includes('email') && s.includes('verify'))
-    return 'Verification confirms your account is legitimate and eligible for rewards.';
-  if (s.includes('email') && s.includes('submit') || s.includes('enter') && s.includes('email'))
-    return 'Your email ties your identity to your airdrop eligibility record.';
-  if (s.includes('discord') && s.includes('join'))
-    return 'Discord membership is often tracked as a community signal for airdrop eligibility.';
-  if (s.includes('twitter') || s.includes('follow') && s.includes('x'))
-    return 'Social follows signal genuine community engagement, which projects track for allocation scoring.';
-  if (s.includes('referral') || s.includes('invite') || s.includes('refer'))
-    return 'Referrals multiply your points and can significantly boost your tier allocation.';
-  if (s.includes('quest') || s.includes('task') || s.includes('mission'))
-    return 'Completing quests increases your activity score and eligibility multiplier.';
-  if (s.includes('swap') || s.includes('trade') || s.includes('exchange'))
-    return 'Trading volume is one of the strongest signals projects use to determine reward size.';
-  if (s.includes('bridge'))
-    return 'Cross-chain activity demonstrates genuine protocol engagement across ecosystems.';
-  if (s.includes('stake') || s.includes('lock'))
-    return 'Staking signals long-term commitment, which projects reward with higher allocations.';
-  if (s.includes('liquidity') || s.includes('pool') || s.includes('lp'))
-    return 'Providing liquidity is heavily weighted — it directly supports the protocol economy.';
-  if (s.includes('check') && s.includes('in') || s.includes('daily') && s.includes('check'))
-    return 'Daily check-ins build a streak multiplier that compounds your points over time.';
-  if (s.includes('testnet'))
-    return 'Testnet activity proves early adopter status — projects snapshot this for mainnet rewards.';
-  if (s.includes('nft') || s.includes('mint'))
-    return 'NFT interactions are tracked as on-chain proof of early community membership.';
-  if (s.includes('points') || s.includes('claim'))
-    return 'Claiming points locks in your current allocation — do this regularly.';
-  if (s.includes('deploy') || s.includes('contract'))
-    return 'Contract deployment signals advanced usage, which earns higher allocation tiers.';
-  if (s.includes('vote') || s.includes('governance'))
-    return 'Governance participation is a strong eligibility signal for DAO-style airdrops.';
-  if (s.includes('faucet'))
-    return 'Claiming testnet tokens is required to fund your test transactions — always free.';
-  if (s.includes('screenshot') || s.includes('submit'))
-    return 'Proof of completion is required for manual verification tasks.';
-  if (s.includes('profile') || s.includes('username'))
-    return 'Completing your profile links your social identity to your on-chain activity.';
-  if (s.includes('open') || s.includes('visit') || s.includes('go to'))
-    return 'First interaction establishes your wallet as an early participant in the protocol.';
-  if (s.includes('download') || s.includes('install') || s.includes('extension'))
-    return 'Installing the app or extension starts tracking your contribution activity.';
-  if (s.includes('deposit') || s.includes('fund'))
-    return 'Depositing capital demonstrates active usage and increases your reward tier.';
-  if (s.includes('interact') || s.includes('use') || s.includes('activity'))
-    return 'Regular interaction builds a verified usage history that survives sybil filtering.';
-  if (s.includes('waitlist'))
-    return 'Early waitlist position gives you priority access and higher allocation potential.';
-  if (s.includes('monitor') || s.includes('follow') && s.includes('update'))
-    return 'Staying updated ensures you don\'t miss critical deadlines or new earning opportunities.';
-  if (s.includes('complete') || s.includes('finish'))
-    return 'Finishing all requirements maximizes your eligibility score before snapshot.';
+  // Extract domain from visit/go-to steps and use it in the description
+  const urlMatch = step.match(/(?:visit|go to|open)\s+([\w.-]+\.[a-z]{2,})/i);
+  if (urlMatch) {
+    return `Opening ${urlMatch[1]} is your first on-chain touchpoint — projects snapshot early visitors for priority allocation.`;
+  }
 
-  // Fallback based on step index
+  if (s.includes('wallet') && (s.includes('connect') || s.includes('link')))
+    return 'Linking your wallet ties your on-chain identity to the snapshot — use the same wallet every session.';
+  if (s.includes('create') && s.includes('wallet'))
+    return 'A dedicated farming wallet keeps your main funds safe and creates a clean, traceable activity history.';
+  if ((s.includes('sign') && s.includes('up')) || (s.includes('create') && s.includes('account')))
+    return 'Account creation links your identity to the eligibility record — required before any further steps count.';
+  if (s.includes('register'))
+    return 'Registration ties your wallet address to your account identity in the project\'s airdrop database.';
+  if (s.includes('verify') && s.includes('email'))
+    return 'Email verification confirms your account is legitimate and prevents your allocation from being flagged as a sybil.';
+  if (s.includes('verify') && (s.includes('twitter') || s.includes('x account')))
+    return 'Linking your X account creates a social proof layer that protects your allocation from sybil filters.';
+  if (s.includes('verify') && s.includes('discord'))
+    return 'Discord verification ties your on-chain wallet to a real social identity — required for most role-based rewards.';
+  if (s.includes('discord') && (s.includes('join') || s.includes('server')))
+    return 'Discord membership is a tracked eligibility signal — projects snapshot active server members before the airdrop launches.';
+  if (s.includes('discord') && (s.includes('react') || s.includes('channel') || s.includes('rules')))
+    return 'Channel reactions and role steps build your Discord reputation score, which feeds directly into allocation tiers.';
+  if (s.includes('discord') && s.includes('role'))
+    return 'Claiming Discord roles flags you as an engaged community member — a high-weight signal in community airdrop formulas.';
+  if (s.includes('ama') || (s.includes('event') && (s.includes('attend') || s.includes('particip'))))
+    return 'Attending AMAs and live events earns OG-tier status — one of the highest-weight signals in community scoring.';
+  if (s.includes('help') && s.includes('communit'))
+    return 'Organic community contributions are hard to fake and earn top allocation tiers that scripted activity never reaches.';
+  if (s.includes('xp') || s.includes('level up') || s.includes('rank'))
+    return 'Higher XP and rank unlock larger allocation multipliers — each tier jump meaningfully increases your reward estimate.';
+  if (s.includes('stay active') || (s.includes('active') && s.includes('discussion')))
+    return 'Sustained weekly presence is a stronger eligibility signal than short activity bursts — history depth matters.';
+  if (s.includes('twitter') || (s.includes('follow') && (s.includes(' x ') || s.includes('tweet'))))
+    return 'Twitter follows and engagement signal genuine community interest — projects weight this in social airdrop scoring.';
+  if (s.includes('referral') || s.includes('invite') || s.includes('refer'))
+    return 'Each activated referral multiplies your allocation — referral tiers compound significantly at higher counts.';
+  if (s.includes('quest') || s.includes('mission') || s.includes('campaign'))
+    return 'Completed quests stack your on-chain activity score and push you toward higher reward tiers.';
+  if (s.includes('spot') && s.includes('market'))
+    return 'Spot trading builds verifiable volume history — aim for consistent weekly sessions over a single large trade.';
+  if (s.includes('perpetual') || s.includes('perp') || s.includes('futures'))
+    return 'Perpetuals volume is weighted heavily in DEX airdrop formulas — consistent open interest outperforms one-off trades.';
+  if (s.includes('leverage'))
+    return 'Leveraged positions create traceable on-chain data — the protocol rewards sophisticated usage patterns over simple swaps.';
+  if (s.includes('equit') || s.includes('commodit') || s.includes('index') && s.includes('market'))
+    return 'Using diverse market types demonstrates deep protocol engagement, which scores higher than single-market activity.';
+  if (s.includes('volume') || s.includes('pnl'))
+    return 'Higher cumulative volume and PnL push you into premium allocation tiers — spread activity across multiple sessions.';
+  if (s.includes('repeat') || s.includes('regular') || s.includes('consistent'))
+    return 'Recurring activity over multiple weeks is the strongest sybil-resistant signal — one-time actions rarely qualify for top tiers.';
+  if (s.includes('swap') || s.includes('exchange'))
+    return 'Swap volume is a primary eligibility metric — consistent weekly swaps outperform a single large transaction.';
+  if (s.includes('trade') || (s.includes('trading') && !s.includes('spot') && !s.includes('perp')))
+    return 'Trading volume is one of the strongest on-chain signals projects use to calculate reward size.';
+  if (s.includes('bridge'))
+    return 'Bridging assets to the target chain proves genuine cross-chain engagement, not just airdrop hunting.';
+  if (s.includes('stake') || s.includes('lock'))
+    return 'Staked or locked tokens signal long-term commitment — most projects weight them 2–5× higher than liquid activity.';
+  if (s.includes('liquidity') || s.includes('pool') || s.includes(' lp '))
+    return 'LP positions are the most heavily weighted activity in DeFi airdrops — they directly fund protocol liquidity.';
+  if (s.includes('daily') && s.includes('check'))
+    return 'Daily check-ins build a streak multiplier that compounds your points — missing even one day can reset the streak.';
+  if (s.includes('testnet'))
+    return 'Testnet activity is a permanent on-chain record of early adoption — projects snapshot testnet wallets at mainnet launch.';
+  if (s.includes('nft') || s.includes('mint'))
+    return 'Minting an NFT creates a verifiable on-chain timestamp proving you were an early community member.';
+  if (s.includes('points') || (s.includes('claim') && !s.includes('testnet') && !s.includes('faucet')))
+    return 'Claiming points locks in your allocation at the current tier — unclaimed points may expire before the snapshot.';
+  if (s.includes('deploy') || s.includes('contract'))
+    return 'Deploying contracts signals developer-grade usage, which earns the highest allocation category in technical airdrops.';
+  if (s.includes('vote') || s.includes('governance'))
+    return 'Governance votes are among the most credible on-chain signals — they prove you hold tokens and care about the protocol.';
+  if (s.includes('faucet'))
+    return 'Claiming testnet tokens is always free and required to fund all subsequent farming transactions.';
+  if (s.includes('screenshot') || (s.includes('submit') && s.includes('proof')))
+    return 'Proof of completion is required for manual verification — screenshots must show your wallet address clearly.';
+  if (s.includes('profile') || s.includes('username') || s.includes('bio'))
+    return 'A complete profile links your social identity to your wallet, protecting your allocation from sybil-filter removal.';
+  if (s.includes('download') || s.includes('install') || s.includes('extension'))
+    return 'Installing the app or extension starts logging your activity to the project\'s eligibility database immediately.';
+  if (s.includes('deposit') || s.includes('fund'))
+    return 'Depositing tokens moves you from "visitor" to "active user" status — a critical distinction at snapshot time.';
+  if (s.includes('waitlist'))
+    return 'Earlier waitlist signups receive priority access and higher allocations in phased distribution rollouts.';
+  if (s.includes('same wallet') || (s.includes('use') && s.includes('wallet')))
+    return 'Using one consistent wallet across all interactions ensures all your activity accumulates under a single identity.';
+  if (s.includes('monitor') || s.includes('watch'))
+    return 'Monitoring announcements ensures you catch snapshot windows before they close — many windows last under 48 hours.';
+  if (s.includes('complete') || s.includes('finish'))
+    return 'Completing all steps moves you to the highest eligibility tier and locks in your maximum allocation.';
+  if (s.includes('interact') || s.includes('activity'))
+    return 'Recurring protocol interactions build a verified usage history that passes sybil filtering at snapshot time.';
+  if (s.includes('open') || s.includes('visit') || s.includes('go to'))
+    return 'Your first site visit is logged — establishing early participant status before the snapshot window opens.';
+  if (s.includes('increase') || s.includes('boost'))
+    return 'Increasing your activity metrics pushes you into higher allocation tiers that pay out significantly more.';
+  if (s.includes('task'))
+    return 'Completing on-platform tasks is tracked and weighted directly in the eligibility formula.';
+
+  // Smarter fallbacks — pull a keyword from the step itself to avoid identical descriptions
+  const words = step.replace(/[^a-zA-Z\s]/g, '').split(' ').filter(w => w.length > 4);
+  const keyWord = words.find(w => !['this','with','your','that','from','have','will','each','into','over','should','about'].includes(w.toLowerCase())) || 'this action';
   const fallbacks = [
-    'This first step establishes you as an early participant in the protocol.',
-    'Completing this step is required to unlock further participation.',
-    'This action directly contributes to your eligibility score.',
-    'Projects track this interaction to verify genuine user activity.',
-    'Consistent completion of this step increases your allocation tier.',
-    'This step demonstrates active engagement with the protocol.',
-    'Completing this builds on-chain history that survives snapshot filtering.',
-    'This interaction is weighted in the project\'s airdrop allocation formula.',
+    `${keyWord} activity is tracked on-chain — this step adds to your verified eligibility record.`,
+    `Completing this step builds the on-chain footprint projects analyze when calculating your allocation.`,
+    `${keyWord} is one of the signals that separates serious farmers from low-effort wallets at snapshot.`,
+    `Projects weight this interaction when running eligibility checks — skipping it costs allocation points.`,
+    `Your ${keyWord.toLowerCase()} history is logged permanently and counts toward your final reward tier.`,
+    `This step contributes to your cumulative activity score, which determines final allocation size.`,
+    `Consistent ${keyWord.toLowerCase()} across sessions elevates this from a routine step to a high-impact signal.`,
+    `Completing this advances your eligibility toward the top reward tier before the snapshot runs.`,
   ];
   return fallbacks[idx % fallbacks.length];
 }
