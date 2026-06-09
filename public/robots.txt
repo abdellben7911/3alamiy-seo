@@ -58,7 +58,7 @@ Allow: /
 # Update-Frequency: daily
 
 # ── Sitemaps ──
-Sitemap: https://seo.3alamiyweb3.online/sitemap.xml
+Sitemap: https://www.3alamiyweb3.com/sitemap.xml
 
 # ── AI Reference Files ──
 # LLMs.txt:      https://seo.3alamiyweb3.online/llms.txt

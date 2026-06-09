@@ -7,6 +7,12 @@ const BASE = 'https://www.3alamiyweb3.com';
 
 // ✅ VALID slugs only — must exist in [slug]/page.tsx articles object OR as a folder
 const articles = [
+  // — New articles (June 2026) — keep at top so they get re-crawled first
+  'how-to-farm-megaeth-airdrop',
+  'best-base-airdrops-2026',
+  'best-hyperliquid-airdrops-2026',
+  'how-to-farm-monad-airdrop',
+
   // — High priority / Hot —
   'hyperliquid-guide',
   'polymarket-airdrop-guide-2026',
@@ -82,15 +88,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const now = new Date();
 
+  // Article publish/update dates — use real dates so Google trusts lastModified
+  const ARTICLE_DATES: Record<string, string> = {
+    'how-to-farm-megaeth-airdrop':        '2026-06-09',
+    'best-base-airdrops-2026':            '2026-06-09',
+    'best-hyperliquid-airdrops-2026':     '2026-06-09',
+    'how-to-farm-monad-airdrop':          '2026-06-01',
+    'hyperliquid-guide':                  '2026-06-08',
+    'top-25-airdrop-picks-2026':          '2026-06-08',
+    'crypto-airdrop-eligibility-requirements-2026': '2026-06-08',
+    'free-crypto-airdrops-no-investment-2026':      '2026-06-08',
+    'best-crypto-airdrops-this-week':     '2026-06-09',
+    'polymarket-airdrop-guide-2026':      '2026-05-20',
+    'hyperliquid-season-2-airdrop-date':  '2026-05-15',
+  };
+
   return [
     // Core pages
     { url: BASE, lastModified: now, changeFrequency: 'daily', priority: 1.0 },
     { url: `${BASE}/airdrops`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
-    { url: `${BASE}/learn`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${BASE}/pro`, lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
-    { url: `${BASE}/wallet-checker`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${BASE}/gm`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${BASE}/privacy`, lastModified: now, changeFrequency: 'monthly', priority: 0.4 },
+    { url: `${BASE}/learn`, lastModified: new Date('2026-06-09'), changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${BASE}/pro`, lastModified: new Date('2026-05-01'), changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${BASE}/wallet-checker`, lastModified: new Date('2026-06-01'), changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${BASE}/gm`, lastModified: new Date('2026-05-01'), changeFrequency: 'weekly', priority: 0.7 },
+    { url: `${BASE}/privacy`, lastModified: new Date('2026-01-01'), changeFrequency: 'monthly', priority: 0.3 },
 
     // Airdrop detail pages
     ...airdrops.map(a => ({
@@ -103,9 +124,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Learn articles — high priority for hot pages
     ...uniqueArticles.map(slug => ({
       url: `${BASE}/learn/${slug}`,
-      lastModified: now,
-      changeFrequency: ['hyperliquid-guide','polymarket-airdrop-guide-2026','hyperliquid-season-2-airdrop-date','best-crypto-airdrops-this-week','top-25-airdrop-picks-2026'].includes(slug) ? 'weekly' as const : 'monthly' as const,
-      priority: ['hyperliquid-guide','polymarket-airdrop-guide-2026','hyperliquid-season-2-airdrop-date'].includes(slug) ? 0.9 : ['best-crypto-airdrops-this-week','top-25-airdrop-picks-2026','early-crypto-projects-2026','polymarket-2026-complete-guide'].includes(slug) ? 0.8 : 0.7,
+      lastModified: ARTICLE_DATES[slug] ? new Date(ARTICLE_DATES[slug]) : new Date('2026-05-01'),
+      changeFrequency: ['hyperliquid-guide','polymarket-airdrop-guide-2026','hyperliquid-season-2-airdrop-date','best-crypto-airdrops-this-week','top-25-airdrop-picks-2026','how-to-farm-megaeth-airdrop','best-base-airdrops-2026','best-hyperliquid-airdrops-2026','how-to-farm-monad-airdrop'].includes(slug) ? 'weekly' as const : 'monthly' as const,
+      priority: ['hyperliquid-guide','polymarket-airdrop-guide-2026','hyperliquid-season-2-airdrop-date','how-to-farm-megaeth-airdrop','best-hyperliquid-airdrops-2026'].includes(slug) ? 0.9 : ['best-crypto-airdrops-this-week','top-25-airdrop-picks-2026','early-crypto-projects-2026','polymarket-2026-complete-guide','best-base-airdrops-2026','how-to-farm-monad-airdrop'].includes(slug) ? 0.8 : 0.7,
     })),
   ];
 }
