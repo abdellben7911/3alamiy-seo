@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const PER_PAGE = 12;
@@ -444,7 +445,7 @@ export default function AirdropsClient({ airdrops }: { airdrops: any[] }) {
                 {/* Identity */}
                 <div className="ac2-identity">
                   {a.logo
-                    ? <img src={a.logo} alt={a.name} className="ac2-logo" width={46} height={46} />
+                    ? <Image src={a.logo} alt={a.name} className="ac2-logo" width={46} height={46} />
                     : <div className="ac2-logo-fb">{a.name?.[0]}</div>
                   }
                   <div style={{ minWidth: 0 }}>

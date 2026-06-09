@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 import ParticipationGuide from './ParticipationGuide';
 import FavoriteButton from './FavoriteButton';
 import EmailSignup from '../../EmailSignup';
@@ -553,7 +554,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
 
           <div className="dp-identity">
             {a.logo
-              ? <img className="dp-logo" src={a.logo} alt={`${a.name} logo`} width={72} height={72} />
+              ? <Image className="dp-logo" src={a.logo} alt={`${a.name} logo`} width={72} height={72} priority />
               : <div className="dp-logo-fb">{a.name?.[0]}</div>
             }
             <div style={{ flex: 1 }}>
@@ -739,7 +740,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
                   <div className="dp-related-grid">
                     {relatedAirdrops.map((r: any) => (
                       <a key={r.slug} href={`/airdrops/${r.slug}`} className="dp-related-card">
-                        {r.logo && <img src={r.logo} alt={r.name} width={30} height={30} style={{ borderRadius: '8px', border: '1px solid rgba(255,255,255,0.07)' }} />}
+                        {r.logo && <Image src={r.logo} alt={r.name} width={30} height={30} style={{ borderRadius: '8px', border: '1px solid rgba(255,255,255,0.07)' }} />}
                         <div style={{ fontSize: '13px', fontWeight: 600, color: '#E2E4EC', letterSpacing: '-0.01em' }}>{r.name}</div>
                         <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.28)', fontWeight: 600 }}>{r.difficulty} · {r.blockchain}</div>
                       </a>
@@ -757,7 +758,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
                   <div className="dp-related-grid">
                     {similarAirdrops.map((r: any) => (
                       <a key={r.slug} href={`/airdrops/${r.slug}`} className="dp-related-card">
-                        {r.logo && <img src={r.logo} alt={r.name} width={30} height={30} style={{ borderRadius: '8px', border: '1px solid rgba(255,255,255,0.07)' }} />}
+                        {r.logo && <Image src={r.logo} alt={r.name} width={30} height={30} style={{ borderRadius: '8px', border: '1px solid rgba(255,255,255,0.07)' }} />}
                         <div style={{ fontSize: '13px', fontWeight: 600, color: '#E2E4EC', letterSpacing: '-0.01em' }}>{r.name}</div>
                         <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.28)', fontWeight: 600 }}>{r.category} · {r.blockchain}</div>
                       </a>

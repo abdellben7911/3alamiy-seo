@@ -2,9 +2,9 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
+    // Allow logos from any HTTPS source (CoinGecko, project sites, Supabase storage, etc.)
     remotePatterns: [
-      { protocol: 'https', hostname: 'pbs.twimg.com' },
-      { protocol: 'https', hostname: 'abs.twimg.com' },
+      { protocol: 'https', hostname: '**' },
     ],
   },
   async redirects() {

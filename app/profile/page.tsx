@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useAuth } from '../auth/AuthProvider';
 import { createClient } from '../auth/supabase';
@@ -386,7 +387,7 @@ export default function ProfilePage() {
                     </button>
                     <Link href={`/airdrops/${a.slug}`} className="pf-card-id">
                       {a.logo
-                        ? <img src={a.logo} alt={a.name} className="pf-card-logo" width={40} height={40} />
+                        ? <Image src={a.logo} alt={a.name} className="pf-card-logo" width={40} height={40} />
                         : <div className="pf-card-logo-fb">{a.name?.[0]}</div>
                       }
                       <div>

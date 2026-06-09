@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import RecommendedForYou, { useLikes } from './RecommendedForYou';
 
@@ -194,7 +195,7 @@ export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
                   </button>
                 </div>
                 <div className="fb-big-id">
-                  {a.logo ? <img src={a.logo} alt={a.name} width={40} height={40} className="fb-logo" /> : <div className="fb-logo-fb">{a.name?.[0]}</div>}
+                  {a.logo ? <Image src={a.logo} alt={a.name} width={40} height={40} className="fb-logo" /> : <div className="fb-logo-fb">{a.name?.[0]}</div>}
                   <div>
                     <div className="fb-big-name">{a.name}</div>
                     <div className="fb-big-chain">{a.blockchain}</div>
@@ -244,7 +245,7 @@ export default function FilterBar({ airdrops }: { airdrops: Airdrop[] }) {
               .slice(0, isAll ? 18 : filtered.length)
               .map(a => (
                 <Link key={a.slug} href={`/airdrops/${a.slug}`} className="fb-small">
-                  {a.logo ? <img src={a.logo} alt={a.name} width={36} height={36} className="fb-sm-logo" /> : <div className="fb-sm-logo-fb">{a.name?.[0]}</div>}
+                  {a.logo ? <Image src={a.logo} alt={a.name} width={36} height={36} className="fb-sm-logo" /> : <div className="fb-sm-logo-fb">{a.name?.[0]}</div>}
                   <div className="fb-sm-body">
                     <div className="fb-sm-top">
                       <span className="fb-sm-name">{a.name}</span>

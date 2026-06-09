@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -305,7 +306,7 @@ export default async function CalendarPage() {
                   <Link key={a.slug} href={`/airdrops/${a.slug}`} className="cal-card">
                     <div className="cal-card-top">
                       {a.logo
-                        ? <img src={a.logo} alt={a.name} width={36} height={36} className="cal-card-logo" />
+                        ? <Image src={a.logo} alt={a.name} width={36} height={36} className="cal-card-logo" />
                         : <div className="cal-card-logo-fb" />
                       }
                       <div>
@@ -340,7 +341,7 @@ export default async function CalendarPage() {
                     {catAirdrops.map((a: any) => (
                       <Link key={a.slug} href={`/airdrops/${a.slug}`} className="cal-cat-card">
                         {a.logo
-                          ? <img src={a.logo} alt={a.name} width={28} height={28} className="cal-cat-logo" />
+                          ? <Image src={a.logo} alt={a.name} width={28} height={28} className="cal-cat-logo" />
                           : <div className="cal-cat-logo-fb" />
                         }
                         <div style={{ flex: 1, minWidth: 0 }}>
@@ -387,7 +388,7 @@ export default async function CalendarPage() {
               <div className="cal-ended-grid">
                 {ended.slice(0, 6).map((a: any) => (
                   <Link key={a.slug} href={`/airdrops/${a.slug}`} className="cal-ended-card">
-                    {a.logo && <img src={a.logo} alt={a.name} width={22} height={22} className="cal-ended-logo" />}
+                    {a.logo && <Image src={a.logo} alt={a.name} width={22} height={22} className="cal-ended-logo" />}
                     <span className="cal-ended-name">{a.name}</span>
                     <span className="cal-ended-badge">Ended</span>
                   </Link>

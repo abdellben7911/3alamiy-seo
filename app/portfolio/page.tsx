@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { createClient } from '../auth/supabase';
 
@@ -418,7 +419,7 @@ export default function PortfolioPage() {
                             <div key={`${t.chain}-${t.contractAddress}-${i}`} className="pf-tr">
                               <div style={{ display:'flex', alignItems:'center', gap:10 }}>
                                 {t.logoUrl
-                                  ? <img src={t.logoUrl} alt={t.symbol} className="pf-logo" onError={e => { (e.target as HTMLImageElement).style.display='none'; }}/>
+                                  ? <Image src={t.logoUrl} alt={t.symbol} className="pf-logo" width={24} height={24} />
                                   : <div className="pf-logo-ph">{t.symbol?.[0]}</div>
                                 }
                                 <div>

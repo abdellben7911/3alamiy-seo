@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const articles: Record<string, any> = {
   'discord-role-airdrops-guide-2026': {
     title: 'Discord Role Airdrops 2026: How to Earn $1,000 - $10,000 From Free Discord Roles',
@@ -1190,7 +1192,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <p className="art-excerpt">{a.excerpt}</p>
 
           <div className="art-img-wrap">
-            <img src={a.image} alt={a.title} className="art-img" />
+            <Image src={a.image} alt={a.title} className="art-img" width={780} height={420} priority style={{ width: '100%', height: 'auto', objectFit: 'cover', borderRadius: '14px' }} />
           </div>
 
           <div className="art-body">

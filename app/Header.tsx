@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import AuthButton from './auth/AuthButton';
@@ -177,7 +178,7 @@ export default function Header() {
         <div className="hdr-inner">
 
           <Link href="/" className="hdr-logo">
-            <img src="/icon.svg" alt="3alamiy Web3" width={28} height={28} className="hdr-logo-img" />
+            <Image src="/icon.svg" alt="3alamiy Web3" width={28} height={28} className="hdr-logo-img" priority />
             <span className="hdr-logo-text">3alamiy <em>Web3</em></span>
           </Link>
 

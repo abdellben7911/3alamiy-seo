@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 const ADMIN_PASSWORD = 'HALLAMADRID7911@123';
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -256,7 +257,7 @@ export default function AdminPage() {
         {/* Topbar */}
         <header className="adm-top">
           <div className="adm-logo">
-            <img src="/icon.svg" alt="" />
+            <Image src="/icon.svg" alt="" width={24} height={24} />
             <span className="adm-logo-name">Admin</span>
             <span className="adm-logo-tag">3alamiy.web3</span>
           </div>

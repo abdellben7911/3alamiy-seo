@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
@@ -67,7 +68,7 @@ function AirdropRow({ a }: { a: AirdropResult }) {
   return (
     <Link href={`/airdrops/${a.slug}`} style={{ display: 'flex', alignItems: 'center', gap: 14, background: cfg.bg, border: `1px solid ${cfg.border}`, borderRadius: 13, padding: '13px 18px', textDecoration: 'none', color: '#fff', transition: 'transform 0.12s' }}>
       {a.logo
-        ? <img src={a.logo} alt={a.name} width={36} height={36} style={{ borderRadius: 9, objectFit: 'cover', flexShrink: 0 }} />
+        ? <Image src={a.logo} alt={a.name} width={36} height={36} style={{ borderRadius: 9, objectFit: 'cover', flexShrink: 0 }} />
         : <div style={{ width: 36, height: 36, borderRadius: 9, background: '#1a2540', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 800, color: 'rgba(255,255,255,0.2)', flexShrink: 0 }}>{a.name?.[0]}</div>
       }
       <div style={{ flex: 1, minWidth: 0 }}>

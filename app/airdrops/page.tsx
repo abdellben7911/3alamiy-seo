@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import AirdropsClient from './AirdropsClient';
 
@@ -236,7 +237,7 @@ export default async function AirdropsPage() {
                     <Link key={a.slug} href={`/airdrops/${a.slug}`} className="al-feat-card">
                       <span className="al-feat-lbl">{a.featured_label || 'HOT PICK'}</span>
                       <div className="al-feat-id">
-                        {a.logo ? <img src={a.logo} alt={a.name} className="al-feat-logo" width={46} height={46} /> : <div className="al-feat-logo-fb">{a.name?.[0]}</div>}
+                        {a.logo ? <Image src={a.logo} alt={a.name} className="al-feat-logo" width={46} height={46} /> : <div className="al-feat-logo-fb">{a.name?.[0]}</div>}
                         <div>
                           <div className="al-feat-name">{a.name}</div>
                           <div className="al-feat-chain">{a.blockchain}</div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useAuth } from './auth/AuthProvider';
 import { createClient } from './auth/supabase';
@@ -248,7 +249,7 @@ export default function RecommendedForYou({ airdrops }: { airdrops: Airdrop[] })
 
               <div className="rfy-id">
                 {a.logo
-                  ? <img src={a.logo} alt={a.name} width={40} height={40} className="rfy-logo" />
+                  ? <Image src={a.logo} alt={a.name} width={40} height={40} className="rfy-logo" />
                   : <div className="rfy-logo-fb">{a.name?.[0]}</div>
                 }
                 <div>

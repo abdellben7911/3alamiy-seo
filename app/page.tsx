@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import EmailSignup from "./EmailSignup";
 import FilterBar from "./FilterBar";
 
@@ -468,7 +469,7 @@ export default async function Home() {
                 { name: 'Taiko', logo: '/chains/Taiko.png' },
               ]).map((c, i) => (
                 <div key={i} className="tk-card">
-                  <img src={c.logo} alt={c.name} width={32} height={32} className="tk-logo" />
+                  <Image src={c.logo} alt={c.name} width={32} height={32} className="tk-logo" />
                   <span className="tk-name">{c.name}</span>
                 </div>
               ))}
@@ -500,7 +501,7 @@ export default async function Home() {
                           <div className="starter-name">{a.name}</div>
                           <div className="starter-chain">{a.blockchain}</div>
                         </div>
-                        {a.logo && <img src={a.logo} alt={a.name} width={32} height={32} style={{ borderRadius: '8px', marginLeft: 'auto', border: '1px solid rgba(255,255,255,0.07)', objectFit: 'cover' }} />}
+                        {a.logo && <Image src={a.logo} alt={a.name} width={32} height={32} style={{ borderRadius: '8px', marginLeft: 'auto', border: '1px solid rgba(255,255,255,0.07)', objectFit: 'cover' }} />}
                       </div>
                       <p className="starter-desc">{a.description?.slice(0, 90)}…</p>
                       <div style={{ display: 'flex', gap: '6px' }}>
@@ -590,7 +591,7 @@ export default async function Home() {
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', paddingRight: '60px' }}>
                         {a.logo
-                          ? <img src={a.logo} alt={a.name} width={36} height={36} style={{ borderRadius: '10px', border: '1px solid rgba(255,255,255,0.07)', objectFit: 'cover', flexShrink: 0 }} />
+                          ? <Image src={a.logo} alt={a.name} width={36} height={36} style={{ borderRadius: '10px', border: '1px solid rgba(255,255,255,0.07)', objectFit: 'cover', flexShrink: 0 }} />
                           : <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: '#1a2540', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: 700, color: 'rgba(255,255,255,0.2)', flexShrink: 0 }}>{a.name?.[0]}</div>
                         }
                         <div style={{ minWidth: 0 }}>
