@@ -250,6 +250,16 @@ export default function MovementAirdropGuide() {
             </div>
           </div>
 
+
+          <div className="aff-box">
+            <p className="aff-label">🔗 Get MOVE / ETH on an exchange</p>
+            <div className="aff-links">
+              <a href="https://www.gate.io/signup/YOUR_GATE_REF" target="_blank" rel="noopener noreferrer sponsored" className="aff-btn aff-gate">Gate.io — Buy crypto →</a>
+              <a href="https://www.binance.com/en/register?ref=YOUR_BINANCE_REF" target="_blank" rel="noopener noreferrer sponsored" className="aff-btn aff-binance">Binance →</a>
+              <a href="https://www.bybit.com/en/sign-up?affiliate_id=YOUR_BYBIT_REF" target="_blank" rel="noopener noreferrer sponsored" className="aff-btn aff-bybit">Bybit →</a>
+            </div>
+            <p className="aff-note">Low fees · Supports ETH, USDC, all major chains · Instant deposits</p>
+          </div>
           <div className="mv-cta">
             <div style={{ fontSize:40, marginBottom:16 }}>🟣</div>
             <h3 style={{ fontSize:20, fontWeight:900, margin:'0 0 10px', letterSpacing:'-0.03em' }}>Check Your Movement Eligibility</h3>

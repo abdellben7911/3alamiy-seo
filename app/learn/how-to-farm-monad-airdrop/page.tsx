@@ -315,7 +315,18 @@ export default function MonadAirdropGuide() {
 
           {/* Related */}
           <div className="mon-section">
-            <h2 className="mon-h2">Related Guides</h2>
+            <h2 className="mon-h2">
+          <div className="aff-box">
+            <p className="aff-label">🔗 Get ETH / USDC to farm Monad</p>
+            <div className="aff-links">
+              <a href="https://www.gate.io/signup/YOUR_GATE_REF" target="_blank" rel="noopener noreferrer sponsored" className="aff-btn aff-gate">Gate.io — Buy crypto →</a>
+              <a href="https://www.binance.com/en/register?ref=YOUR_BINANCE_REF" target="_blank" rel="noopener noreferrer sponsored" className="aff-btn aff-binance">Binance →</a>
+              <a href="https://www.bybit.com/en/sign-up?affiliate_id=YOUR_BYBIT_REF" target="_blank" rel="noopener noreferrer sponsored" className="aff-btn aff-bybit">Bybit →</a>
+            </div>
+            <p className="aff-note">Low fees · Supports ETH, USDC, all major chains · Instant deposits</p>
+          </div>
+
+          Related Guides</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(220px,1fr))', gap: 10 }}>
               {[
                 { href: '/learn/how-to-farm-megaeth-airdrop', title: 'How to Farm MegaETH Airdrop', sub: 'Another high-hype EVM L1' },

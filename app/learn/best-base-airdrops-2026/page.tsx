@@ -252,6 +252,17 @@ export default function BestBaseAirdrops2026() {
             ))}
           </div>
 
+          <div className="aff-box">
+            <p className="aff-label">🔗 Get ETH for Base airdrops</p>
+            <div className="aff-links">
+              <a href="https://www.gate.io/signup/YOUR_GATE_REF" target="_blank" rel="noopener noreferrer sponsored" className="aff-btn aff-gate">Gate.io — Buy crypto →</a>
+              <a href="https://www.binance.com/en/register?ref=YOUR_BINANCE_REF" target="_blank" rel="noopener noreferrer sponsored" className="aff-btn aff-binance">Binance →</a>
+              <a href="https://www.bybit.com/en/sign-up?affiliate_id=YOUR_BYBIT_REF" target="_blank" rel="noopener noreferrer sponsored" className="aff-btn aff-bybit">Bybit →</a>
+            </div>
+            <p className="aff-note">Low fees · Supports ETH, USDC, all major chains · Instant deposits</p>
+          </div>
+
+
           <div style={{ background: 'linear-gradient(135deg,rgba(0,82,255,0.07),rgba(124,245,192,0.04))', border: '1px solid rgba(0,82,255,0.15)', borderRadius: 20, padding: '28px 32px', textAlign: 'center' }}>
             <div style={{ fontSize: 18, fontWeight: 800, color: '#fff', marginBottom: 8, letterSpacing: '-0.02em' }}>Check your Base wallet eligibility</div>
             <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.35)', marginBottom: 20 }}>Our wallet checker scans 9 chains including Base for airdrop eligibility.</div>

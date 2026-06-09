@@ -359,7 +359,18 @@ export default function HyperliquidSeason2AirdropDate() {
 
           {/* Related */}
           <section className="hl2-section">
-            <h2 className="hl2-h2" style={{ marginBottom: 16 }}>Related Guides</h2>
+            <h2 className="hl2-h2" style={{ marginBottom: 16 }}>
+          <div className="aff-box">
+            <p className="aff-label">🔗 Start earning HYPE on</p>
+            <div className="aff-links">
+              <a href="https://www.gate.io/signup/YOUR_GATE_REF" target="_blank" rel="noopener noreferrer sponsored" className="aff-btn aff-gate">Gate.io — Buy crypto →</a>
+              <a href="https://www.binance.com/en/register?ref=YOUR_BINANCE_REF" target="_blank" rel="noopener noreferrer sponsored" className="aff-btn aff-binance">Binance →</a>
+              <a href="https://www.bybit.com/en/sign-up?affiliate_id=YOUR_BYBIT_REF" target="_blank" rel="noopener noreferrer sponsored" className="aff-btn aff-bybit">Bybit →</a>
+            </div>
+            <p className="aff-note">Low fees · Supports ETH, USDC, all major chains · Instant deposits</p>
+          </div>
+
+          Related Guides</h2>
             <div className="hl2-related">
               {[
                 { slug: "hyperliquid-guide", title: "Hyperliquid Season 2 Full Farming Guide — HyperCore, HLP, HyperEVM" },
