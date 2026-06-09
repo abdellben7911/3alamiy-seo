@@ -364,8 +364,7 @@ export default function PolymarketAirdropGuide2026() {
             <p className="aff-label">🔗 Get USDC for Polymarket</p>
             <div className="aff-links">
               <a href="https://www.gate.com/share/xwvca1ha" target="_blank" rel="noopener noreferrer sponsored" className="aff-btn aff-gate">Gate.io — Buy crypto →</a>
-              <a href="https://www.binance.com/en/register?ref=YOUR_BINANCE_REF" target="_blank" rel="noopener noreferrer sponsored" className="aff-btn aff-binance">Binance →</a>
-              <a href="https://www.bybit.com/en/sign-up?affiliate_id=YOUR_BYBIT_REF" target="_blank" rel="noopener noreferrer sponsored" className="aff-btn aff-bybit">Bybit →</a>
+              <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_0JWES&utm_source=referral_entrance" target="_blank" rel="noopener noreferrer sponsored" className="aff-btn aff-binance">Binance →</a>
             </div>
             <p className="aff-note">Low fees · Supports ETH, USDC, all major chains · Instant deposits</p>
           </div>

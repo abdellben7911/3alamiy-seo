@@ -310,8 +310,7 @@ export default function FuelFarmingGuide() {
               <p className="fn-aff-label">⛽ Get ETH to bridge to Fuel</p>
               <div className="fn-aff-links">
                 <a href="https://www.gate.com/share/xwvca1ha" target="_blank" rel="noopener noreferrer sponsored" className="fn-aff-btn fn-aff-gate">Gate.io →</a>
-                <a href="https://www.binance.com/en/register?ref=YOUR_BINANCE_REF" target="_blank" rel="noopener noreferrer sponsored" className="fn-aff-btn fn-aff-binance">Binance →</a>
-                <a href="https://www.bybit.com/en/sign-up?affiliate_id=YOUR_BYBIT_REF" target="_blank" rel="noopener noreferrer sponsored" className="fn-aff-btn fn-aff-bybit">Bybit →</a>
+                <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_0JWES&utm_source=referral_entrance" target="_blank" rel="noopener noreferrer sponsored" className="fn-aff-btn fn-aff-binance">Binance →</a>
               </div>
               <p className="fn-aff-note">Buy ETH · Bridge to Fuel via app.fuel.network · Start earning points</p>
             </div>

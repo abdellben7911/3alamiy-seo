@@ -420,8 +420,7 @@ export default function KastCardReview() {
               <p className="kc-exc-label">💰 Buy USDC to top up KAST</p>
               <div className="kc-exc-links">
                 <a href="https://www.gate.com/share/xwvca1ha" target="_blank" rel="noopener noreferrer sponsored" className="kc-exc-btn kc-exc-gate">Gate.io →</a>
-                <a href="https://www.binance.com/en/register?ref=YOUR_BINANCE_REF" target="_blank" rel="noopener noreferrer sponsored" className="kc-exc-btn kc-exc-binance">Binance →</a>
-                <a href="https://www.bybit.com/en/sign-up?affiliate_id=YOUR_BYBIT_REF" target="_blank" rel="noopener noreferrer sponsored" className="kc-exc-btn kc-exc-bybit">Bybit →</a>
+                <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_0JWES&utm_source=referral_entrance" target="_blank" rel="noopener noreferrer sponsored" className="kc-exc-btn kc-exc-binance">Binance →</a>
               </div>
               <p className="kc-exc-note">Buy USDC with 0% stablecoin top-up fee on KAST · Instant activation</p>
             </div>
