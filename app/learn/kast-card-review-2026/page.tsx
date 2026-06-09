@@ -419,7 +419,7 @@ export default function KastCardReview() {
             <div className="kc-exc">
               <p className="kc-exc-label">💰 Buy USDC to top up KAST</p>
               <div className="kc-exc-links">
-                <a href="https://www.gate.io/signup/YOUR_GATE_REF" target="_blank" rel="noopener noreferrer sponsored" className="kc-exc-btn kc-exc-gate">Gate.io →</a>
+                <a href="https://www.gate.com/share/xwvca1ha" target="_blank" rel="noopener noreferrer sponsored" className="kc-exc-btn kc-exc-gate">Gate.io →</a>
                 <a href="https://www.binance.com/en/register?ref=YOUR_BINANCE_REF" target="_blank" rel="noopener noreferrer sponsored" className="kc-exc-btn kc-exc-binance">Binance →</a>
                 <a href="https://www.bybit.com/en/sign-up?affiliate_id=YOUR_BYBIT_REF" target="_blank" rel="noopener noreferrer sponsored" className="kc-exc-btn kc-exc-bybit">Bybit →</a>
               </div>
