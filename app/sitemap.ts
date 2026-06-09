@@ -9,6 +9,8 @@ const BASE = 'https://www.3alamiyweb3.com';
 const articles = [
   // — New articles (June 2026) — keep at top so they get re-crawled first
   'how-to-farm-unichain-airdrop',
+  'how-to-farm-abstract-airdrop',
+  'how-to-farm-movement-airdrop',
   'how-to-farm-megaeth-airdrop',
   'best-base-airdrops-2026',
   'best-hyperliquid-airdrops-2026',
@@ -92,6 +94,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Article publish/update dates — use real dates so Google trusts lastModified
   const ARTICLE_DATES: Record<string, string> = {
     'how-to-farm-unichain-airdrop':       '2026-06-09',
+    'how-to-farm-abstract-airdrop':       '2026-06-09',
+    'how-to-farm-movement-airdrop':       '2026-06-09',
     'how-to-farm-megaeth-airdrop':        '2026-06-09',
     'best-base-airdrops-2026':            '2026-06-09',
     'best-hyperliquid-airdrops-2026':     '2026-06-09',
@@ -128,7 +132,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${BASE}/learn/${slug}`,
       lastModified: ARTICLE_DATES[slug] ? new Date(ARTICLE_DATES[slug]) : new Date('2026-05-01'),
       changeFrequency: ['hyperliquid-guide','polymarket-airdrop-guide-2026','hyperliquid-season-2-airdrop-date','best-crypto-airdrops-this-week','top-25-airdrop-picks-2026','how-to-farm-megaeth-airdrop','best-base-airdrops-2026','best-hyperliquid-airdrops-2026','how-to-farm-monad-airdrop'].includes(slug) ? 'weekly' as const : 'monthly' as const,
-      priority: ['hyperliquid-guide','polymarket-airdrop-guide-2026','hyperliquid-season-2-airdrop-date','how-to-farm-megaeth-airdrop','best-hyperliquid-airdrops-2026'].includes(slug) ? 0.9 : ['best-crypto-airdrops-this-week','top-25-airdrop-picks-2026','early-crypto-projects-2026','polymarket-2026-complete-guide','best-base-airdrops-2026','how-to-farm-monad-airdrop'].includes(slug) ? 0.8 : 0.7,
-    })),
-  ];
-}
+      priority: ['hyperliquid-guide','polymarket-airdrop-guide-2026','hyperliquid-season-2-airdrop-date','how-to-farm-megaeth-airdrop','best-hype

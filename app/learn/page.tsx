@@ -57,6 +57,8 @@ const allArticles = [
   // Static folder pages
   // Hot / Trending
   { slug: 'how-to-farm-unichain-airdrop', title: 'How to Farm the Unichain Airdrop 2026', desc: 'Unichain is Uniswap\'s official L2 — the team behind $2T+ in DEX volume. No token yet. Full step-by-step farming guide.', cat: 'Hot', catColor: '#ff077a', time: '12 min' },
+  { slug: 'how-to-farm-abstract-airdrop', title: 'How to Farm the Abstract Chain Airdrop 2026', desc: 'Abstract is the consumer crypto chain backed by Pudgy Penguins. No token yet. Use Abstract Global Wallets, play games, and build qualifying history.', cat: 'Hot', catColor: '#00ff88', time: '10 min' },
+  { slug: 'how-to-farm-movement-airdrop', title: 'How to Farm the Movement Airdrop Season 2 (2026)', desc: 'MOVE launched Dec 2024. Season 2 farming is live — stake MOVE, use DeFi, and build monthly on-chain history for the next distribution.', cat: 'Season 2', catColor: '#a98fff', time: '12 min' },
   { slug: 'best-hyperliquid-airdrops-2026', title: 'Best Hyperliquid Airdrops 2026', desc: 'HyperEVM is live with $40B+ TVL. Top 8 protocols to farm in the Hyperliquid ecosystem — HyperSwap, HyperLend, Felix, and more.', cat: 'Hot', catColor: '#7CF5C0', time: '10 min' },
   { slug: 'how-to-farm-monad-airdrop', title: 'How to Farm the Monad Airdrop 2026', desc: 'Monad raised $225M and targets 10,000 TPS. Testnet is live with MonadPoints. Full step-by-step guide.', cat: 'Hot', catColor: '#a78bfa', time: '10 min' },
   { slug: 'best-base-airdrops-2026', title: 'Best Base Airdrops 2026', desc: 'Top 10 Base ecosystem airdrop opportunities — Seamless Protocol, Dackieswap, Grand Base, Morpho Blue, and more.', cat: 'Ecosystems', catColor: '#6494FF', time: '12 min' },
@@ -343,15 +345,4 @@ export default async function LearnPage() {
             <p className="lp-cta-sub">Browse {airdropCount}+ verified airdrops with step-by-step guides. Free, no paywall.</p>
             <div className="lp-cta-btns">
               <Link href="/airdrops" className="btn-lp-p">Browse Airdrops →</Link>
-              <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="btn-lp-s">
-                <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: 13, height: 13 }}><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-                Join Telegram
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </>
-  );
-}
+              <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="btn-
