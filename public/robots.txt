@@ -1,6 +1,6 @@
 # 3alamiy Web3 - robots.txt
 # Crypto Airdrop Tracker & GM Station
-# https://seo.3alamiyweb3.online
+# https://www.3alamiyweb3.com
 
 User-agent: *
 Allow: /
@@ -61,6 +61,6 @@ Allow: /
 Sitemap: https://www.3alamiyweb3.com/sitemap.xml
 
 # ── AI Reference Files ──
-# LLMs.txt:      https://seo.3alamiyweb3.online/llms.txt
-# LLMs-full.txt: https://seo.3alamiyweb3.online/llms-full.txt
-# Agents:        https://seo.3alamiyweb3.online/AGENTS.md
+# LLMs.txt:      https://www.3alamiyweb3.com/llms.txt
+# LLMs-full.txt: https://www.3alamiyweb3.com/llms-full.txt
+# Agents:        https://www.3alamiyweb3.com/AGENTS.md

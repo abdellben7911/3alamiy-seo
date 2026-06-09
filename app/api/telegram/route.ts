@@ -68,7 +68,7 @@ ${diffEmoji} <b>Difficulty:</b> ${a.difficulty}
 📊 <b>Status:</b> ${a.status}
 
 📖 <b>Step-by-step guide:</b>
-<a href="https://seo.3alamiyweb3.online/airdrops/${a.slug}">seo.3alamiyweb3.online/airdrops/${a.slug}</a>
+<a href="https://www.3alamiyweb3.com/airdrops/${a.slug}">www.3alamiyweb3.com/airdrops/${a.slug}</a>
 
 ${tags}
 
@@ -92,7 +92,7 @@ ${tags}
 export async function GET() {
   try {
     const result = await sendTelegramMessage(
-      '✅ 3alamiy Web3 Bot is connected and ready!\n\nNew airdrops will be posted here automatically. 🪂\n\nseo.3alamiyweb3.online'
+      '✅ 3alamiy Web3 Bot is connected and ready!\n\nNew airdrops will be posted here automatically. 🪂\n\nwww.3alamiyweb3.com'
     );
     return NextResponse.json({ success: true, result });
   } catch (error) {

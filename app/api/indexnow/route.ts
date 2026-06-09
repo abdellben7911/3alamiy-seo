@@ -49,7 +49,7 @@ async function notifyAirdrop(slug: string) {
 ${costEmoji} ${a.cost}  ${diffEmoji} ${a.difficulty}  ⛓ ${a.blockchain}
 💰 Reward: <b>${reward}</b>
 
-👉 <a href="https://seo.3alamiyweb3.online/airdrops/${a.slug}">View Full Guide</a>
+👉 <a href="https://www.3alamiyweb3.com/airdrops/${a.slug}">View Full Guide</a>
 
 ${tags}
 `.trim();
@@ -71,7 +71,7 @@ export async function GET(request: Request) {
 
     // No slug = test message
     const result = await sendTelegramMessage(
-      '✅ <b>3alamiy Web3 Bot</b> is connected and ready!\n\n🪂 New airdrops posted here daily.\n\n👉 <a href="https://seo.3alamiyweb3.online">seo.3alamiyweb3.online</a>'
+      '✅ <b>3alamiy Web3 Bot</b> is connected and ready!\n\n🪂 New airdrops posted here daily.\n\n👉 <a href="https://www.3alamiyweb3.com">www.3alamiyweb3.com</a>'
     );
     return NextResponse.json({ success: true, result });
   } catch (error) {

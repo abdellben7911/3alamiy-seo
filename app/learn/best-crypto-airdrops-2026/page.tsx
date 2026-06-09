@@ -5,12 +5,12 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'Best Crypto Airdrops 2026 — Free Verified Guides',
   description: 'The complete list of the best free crypto airdrops in 2026. Step-by-step guides for Arbitrum, Solana, Base, Monad, Hyperliquid and more. Updated daily — June 2026.',
-  url: 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-2026',
+  url: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-2026',
   datePublished: '2026-05-01',
   dateModified: '2026-05-20',
-  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online' },
-  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://seo.3alamiyweb3.online', logo: { '@type': 'ImageObject', url: 'https://seo.3alamiyweb3.online/icon.svg' } },
-  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-2026' },
+  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
+  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com', logo: { '@type': 'ImageObject', url: 'https://www.3alamiyweb3.com/icon.svg' } },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-2026' },
   about: [
     { '@type': 'Thing', name: 'Crypto Airdrops' },
     { '@type': 'Thing', name: 'Blockchain' },
@@ -38,9 +38,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://seo.3alamiyweb3.online' },
-    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://seo.3alamiyweb3.online/learn' },
-    { '@type': 'ListItem', position: 3, name: 'Best Crypto Airdrops 2026', item: 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-2026' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.3alamiyweb3.com' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://www.3alamiyweb3.com/learn' },
+    { '@type': 'ListItem', position: 3, name: 'Best Crypto Airdrops 2026', item: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-2026' },
   ],
 };
 
@@ -54,7 +54,7 @@ export const metadata = {
     type: 'article',
   },
   alternates: {
-    canonical: 'https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-2026',
+    canonical: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-2026',
   },
 };
 
@@ -279,15 +279,15 @@ export default function BestCryptoAirdrops2026() {
           "@type": "Article",
           "headline": "Best Crypto Airdrops 2026 — Free Step-by-Step Guides",
           "description": "The complete list of the best free crypto airdrops in 2026. Step-by-step guides for Arbitrum, Solana, Base, Monad and more.",
-          "url": "https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-2026",
+          "url": "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-2026",
           "datePublished": "2026-05-15",
           "dateModified": "2026-05-20",
           "publisher": {
             "@type": "Organization",
             "name": "3alamiy Web3",
-            "url": "https://seo.3alamiyweb3.online"
+            "url": "https://www.3alamiyweb3.com"
           },
-          "mainEntityOfPage": "https://seo.3alamiyweb3.online/learn/best-crypto-airdrops-2026",
+          "mainEntityOfPage": "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-2026",
           "keywords": ["crypto airdrops 2026", "free crypto airdrop", "best airdrops", "arbitrum airdrop", "solana airdrop"],
         })}}
       />
