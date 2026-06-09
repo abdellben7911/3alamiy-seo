@@ -8,6 +8,7 @@ const BASE = 'https://www.3alamiyweb3.com';
 // ✅ VALID slugs only — must exist in [slug]/page.tsx articles object OR as a folder
 const articles = [
   // — New articles (June 2026) — keep at top so they get re-crawled first
+  'how-to-farm-unichain-airdrop',
   'how-to-farm-megaeth-airdrop',
   'best-base-airdrops-2026',
   'best-hyperliquid-airdrops-2026',
@@ -90,6 +91,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Article publish/update dates — use real dates so Google trusts lastModified
   const ARTICLE_DATES: Record<string, string> = {
+    'how-to-farm-unichain-airdrop':       '2026-06-09',
     'how-to-farm-megaeth-airdrop':        '2026-06-09',
     'best-base-airdrops-2026':            '2026-06-09',
     'best-hyperliquid-airdrops-2026':     '2026-06-09',

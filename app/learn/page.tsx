@@ -56,6 +56,7 @@ const featuredArticles = [
 const allArticles = [
   // Static folder pages
   // Hot / Trending
+  { slug: 'how-to-farm-unichain-airdrop', title: 'How to Farm the Unichain Airdrop 2026', desc: 'Unichain is Uniswap\'s official L2 — the team behind $2T+ in DEX volume. No token yet. Full step-by-step farming guide.', cat: 'Hot', catColor: '#ff077a', time: '12 min' },
   { slug: 'best-hyperliquid-airdrops-2026', title: 'Best Hyperliquid Airdrops 2026', desc: 'HyperEVM is live with $40B+ TVL. Top 8 protocols to farm in the Hyperliquid ecosystem — HyperSwap, HyperLend, Felix, and more.', cat: 'Hot', catColor: '#7CF5C0', time: '10 min' },
   { slug: 'how-to-farm-monad-airdrop', title: 'How to Farm the Monad Airdrop 2026', desc: 'Monad raised $225M and targets 10,000 TPS. Testnet is live with MonadPoints. Full step-by-step guide.', cat: 'Hot', catColor: '#a78bfa', time: '10 min' },
   { slug: 'best-base-airdrops-2026', title: 'Best Base Airdrops 2026', desc: 'Top 10 Base ecosystem airdrop opportunities — Seamless Protocol, Dackieswap, Grand Base, Morpho Blue, and more.', cat: 'Ecosystems', catColor: '#6494FF', time: '12 min' },
