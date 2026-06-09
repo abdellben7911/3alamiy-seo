@@ -499,7 +499,7 @@ export default function GMPage() {
                       ) : (
                         <div style={{ display: 'flex', gap: '8px' }}>
                           <button onClick={openChainModal} style={{ background: 'rgba(124,245,192,0.06)', border: '1px solid rgba(124,245,192,0.15)', color: '#7CF5C0', padding: '10px 14px', borderRadius: '12px', fontSize: '12px', fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                            {chain.hasIcon && chain.iconUrl && <Image src={chain.iconUrl} alt={chain.name} width={16} height={16} style={{ borderRadius: '50%' }} />}
+                            {chain.hasIcon && chain.iconUrl && <img src={chain.iconUrl} alt={chain.name} width={16} height={16} style={{ borderRadius: '50%' }} />}
                             {chain.name}
                           </button>
                           <button onClick={openAccountModal} style={{ background: 'rgba(124,245,192,0.06)', border: '1px solid rgba(124,245,192,0.15)', color: '#7CF5C0', padding: '10px 16px', borderRadius: '12px', fontSize: '12px', fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
