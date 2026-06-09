@@ -11,24 +11,26 @@ async function createSupabase() {
   );
 }
 
-async function getProUser(supabase: any) {
+async function getUser(supabase: any) {
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return null;
+  return user ?? null;
+}
+
+async function getWalletLimit(supabase: any, userId: string): Promise<number> {
   const { data: sub } = await supabase
     .from('subscriptions')
     .select('status')
-    .eq('user_id', user.id)
+    .eq('user_id', userId)
     .in('status', ['active', 'trialing'])
     .maybeSingle();
-  if (!sub) return null;
-  return user;
+  return sub ? 5 : 1; // Pro: 5, Free: 1
 }
 
 // GET — list saved wallets
 export async function GET() {
   const supabase = await createSupabase();
-  const user = await getProUser(supabase);
-  if (!user) return NextResponse.json({ error: 'Pro required' }, { status: 403 });
+  const user = await getUser(supabase);
+  if (!user) return NextResponse.json({ error: 'Login required' }, { status: 401 });
 
   const { data, error } = await supabase
     .from('portfolio_wallets')
@@ -43,18 +45,24 @@ export async function GET() {
 // POST — add a wallet
 export async function POST(req: NextRequest) {
   const supabase = await createSupabase();
-  const user = await getProUser(supabase);
-  if (!user) return NextResponse.json({ error: 'Pro required' }, { status: 403 });
+  const user = await getUser(supabase);
+  if (!user) return NextResponse.json({ error: 'Login required' }, { status: 401 });
 
   const { address, nickname } = await req.json();
   if (!address) return NextResponse.json({ error: 'Address required' }, { status: 400 });
 
-  // Max 5 wallets per user
+  const limit = await getWalletLimit(supabase, user.id);
   const { count } = await supabase
     .from('portfolio_wallets')
     .select('*', { count: 'exact', head: true })
     .eq('user_id', user.id);
-  if ((count ?? 0) >= 5) return NextResponse.json({ error: 'Max 5 wallets per account' }, { status: 400 });
+
+  if ((count ?? 0) >= limit) {
+    const msg = limit === 1
+      ? 'Free plan allows 1 wallet. Upgrade to Pro for up to 5.'
+      : `Max ${limit} wallets per account`;
+    return NextResponse.json({ error: msg }, { status: 400 });
+  }
 
   const chain = address.startsWith('0x') ? 'evm' : address.length >= 32 ? 'solana' : 'evm';
 
@@ -74,8 +82,8 @@ export async function POST(req: NextRequest) {
 // DELETE — remove a wallet
 export async function DELETE(req: NextRequest) {
   const supabase = await createSupabase();
-  const user = await getProUser(supabase);
-  if (!user) return NextResponse.json({ error: 'Pro required' }, { status: 403 });
+  const user = await getUser(supabase);
+  if (!user) return NextResponse.json({ error: 'Login required' }, { status: 401 });
 
   const { id } = await req.json();
   const { error } = await supabase
