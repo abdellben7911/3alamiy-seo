@@ -102,6 +102,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Article publish/update dates — use real dates so Google trusts lastModified
   const ARTICLE_DATES: Record<string, string> = {
+    'how-to-get-crypto-airdrops-2026':        '2026-06-10',
+    'best-airdrop-farming-platforms-2026':    '2026-06-10',
     'kaito-airdrop-guide-2026':              '2026-06-10',
     'eclipse-airdrop-guide-2026':            '2026-06-10',
     'initia-airdrop-guide-2026':            '2026-06-10',

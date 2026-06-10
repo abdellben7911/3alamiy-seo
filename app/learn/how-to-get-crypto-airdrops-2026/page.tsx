@@ -1,222 +1,343 @@
 import Link from 'next/link';
+import { Metadata } from 'next';
 
-const articleSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'How to Get Crypto Airdrops in 2026 — Complete Beginner Guide',
-  description: 'Learn exactly how to get crypto airdrops in 2026. Step-by-step guide for beginners — wallets, chains, strategies, and which airdrops to farm first.',
-  url: 'https://www.3alamiyweb3.com/learn/how-to-get-crypto-airdrops-2026',
-  datePublished: '2026-05-16',
-  dateModified: '2026-05-20',
-  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
-  publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com', logo: { '@type': 'ImageObject', url: 'https://www.3alamiyweb3.com/icon.svg' } },
-  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/how-to-get-crypto-airdrops-2026' },
-  about: [{ '@type': 'Thing', name: 'Crypto Airdrops' }, { '@type': 'Thing', name: 'Blockchain' }, { '@type': 'Thing', name: 'Web3' }],
-  speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.article p:first-of-type'] },
-};
-
-const howToSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'HowTo',
-  name: 'How to Get Crypto Airdrops in 2026',
-  description: 'A complete beginner guide to getting crypto airdrops in 2026. Follow these steps to start earning free cryptocurrency.',
-  totalTime: 'PT30M',
-  estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: '0' },
-  step: [
-    { '@type': 'HowToStep', position: 1, name: 'Set Up a Crypto Wallet', text: 'Download MetaMask or Rabby Wallet (both free). Create a dedicated farming wallet — never use your main wallet. Write down your seed phrase and store it safely offline.' },
-    { '@type': 'HowToStep', position: 2, name: 'Get Some ETH for Gas', text: 'Buy $20–50 of ETH on Coinbase or Binance and send it to your wallet for transaction fees. Most testnet interactions are completely free.' },
-    { '@type': 'HowToStep', position: 3, name: 'Bridge to L2 Networks', text: 'Use the official Arbitrum Bridge or Base Bridge to move ETH to L2 networks where most 2026 airdrops are happening.' },
-    { '@type': 'HowToStep', position: 4, name: 'Pick Your First Airdrops', text: 'Start with 3–5 Easy, Free airdrops from 3alamiy Web3 tracker. Build confidence before moving to complex campaigns.' },
-    { '@type': 'HowToStep', position: 5, name: 'Complete Steps Consistently', text: 'Follow step-by-step guides for each airdrop. Return daily or weekly and keep building activity — one interaction is rarely enough to qualify.' },
-    { '@type': 'HowToStep', position: 6, name: 'Track Your Activity', text: 'Keep a log of which projects you have interacted with, what steps you have completed, and when to check back.' },
-  ],
-};
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    { '@type': 'Question', name: 'How do I get crypto airdrops in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'To get crypto airdrops in 2026: set up a MetaMask wallet, get some ETH for gas fees, browse verified airdrop guides on 3alamiy Web3, follow the step-by-step instructions for each airdrop, and interact with the protocols consistently over time. The key is starting early and being consistent.' } },
-    { '@type': 'Question', name: 'Do I need money to get crypto airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'Most airdrops are completely free. Some require small gas fees under $1 for testnet interactions. Never pay more than a few dollars to participate in any airdrop. Legitimate airdrops are always free to claim.' } },
-    { '@type': 'Question', name: 'How much can beginners earn from crypto airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'Beginners typically earn $50-$500 from their first few airdrops. As you gain experience and farm more projects consistently, earnings of $1,000-$5,000+ per year are realistic. The Hyperliquid airdrop paid average users over $10,000 in 2024.' } },
-    { '@type': 'Question', name: 'Which blockchain should I start with for airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'Start with Sui or Solana for free, easy airdrops with no gas cost. Then move to Arbitrum and Base for higher-reward DeFi airdrops. These are the most active chains for airdrops in 2026.' } },
-    { '@type': 'Question', name: 'Is airdrop farming safe?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, as long as you use a separate dedicated farming wallet and only connect to official project websites. Never share your seed phrase, never pay to claim an airdrop, and always verify links from the project\'s official Twitter or website.' } },
-  ],
-};
-
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.3alamiyweb3.com' },
-    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://www.3alamiyweb3.com/learn' },
-    { '@type': 'ListItem', position: 3, name: 'How to Get Crypto Airdrops 2026', item: 'https://www.3alamiyweb3.com/learn/how-to-get-crypto-airdrops-2026' },
-  ],
-};
-
-export const metadata = {
-  title: 'How to Get Crypto Airdrops in 2026 — Complete Beginner Guide | Updated June 2026 | 3alamiy Web3',
-  description: 'Learn exactly how to get crypto airdrops in 2026. Step-by-step guide for beginners — wallets, chains, strategies, and which airdrops to farm first.',
-  keywords: 'how to get crypto airdrops, how to get airdrops crypto, crypto airdrop guide beginners, how to qualify for airdrop, get free crypto 2026',
+export const metadata: Metadata = {
+  title: 'How to Get Crypto Airdrops in 2026 — Complete Step-by-Step Guide',
+  description: 'Learn exactly how to get crypto airdrops in 2026. Full beginner guide covering wallets, chains, strategies, Sybil detection, and which airdrops to farm first. Updated June 2026.',
+  keywords: 'how to get crypto airdrops, how to get airdrops crypto 2026, crypto airdrop guide beginners, how to qualify for airdrop, get free crypto 2026, airdrop farming guide',
+  alternates: { canonical: 'https://www.3alamiyweb3.com/learn/how-to-get-crypto-airdrops-2026' },
   openGraph: {
-    title: 'How to Get Crypto Airdrops in 2026 — Complete Beginner Guide | Updated June 2026',
-    description: 'Step-by-step guide for getting crypto airdrops in 2026. Free strategies that actually work.',
+    title: 'How to Get Crypto Airdrops in 2026 — Complete Step-by-Step Guide',
+    description: 'Full beginner guide to getting crypto airdrops in 2026. Updated June 2026.',
     type: 'article',
   },
-  alternates: { canonical: 'https://www.3alamiyweb3.com/learn/how-to-get-crypto-airdrops-2026' },
 };
+
+const schemas = [
+  {
+    '@context': 'https://schema.org', '@type': 'Article',
+    headline: 'How to Get Crypto Airdrops in 2026 — Complete Step-by-Step Guide',
+    description: 'Learn exactly how to get crypto airdrops in 2026. Full beginner guide covering wallets, chains, strategies, Sybil detection, and which airdrops to farm first.',
+    datePublished: '2026-05-16', dateModified: '2026-06-10',
+    author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
+    publisher: { '@type': 'Organization', name: '3alamiy Web3', logo: { '@type': 'ImageObject', url: 'https://www.3alamiyweb3.com/icon.svg' } },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/how-to-get-crypto-airdrops-2026' },
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'HowTo',
+    name: 'How to Get Crypto Airdrops in 2026',
+    description: 'Step-by-step guide to getting crypto airdrops in 2026 — from wallet setup to qualifying and claiming.',
+    totalTime: 'PT45M', estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: '0' },
+    step: [
+      { '@type': 'HowToStep', position: 1, name: 'Set up a dedicated farming wallet', text: 'Install MetaMask or Rabby Wallet. Create a brand new wallet used only for airdrop farming — never your main wallet. Store your seed phrase offline.' },
+      { '@type': 'HowToStep', position: 2, name: 'Fund with ETH for gas fees', text: 'Buy $20–50 ETH on Coinbase or Binance and transfer to your farming wallet. This covers gas fees on Ethereum L2s. Testnet farming is free.' },
+      { '@type': 'HowToStep', position: 3, name: 'Bridge to L2 networks', text: 'Use official bridges to move ETH to Arbitrum, Base, and Optimism where most 2026 airdrops are active. Gas is much cheaper on L2s.' },
+      { '@type': 'HowToStep', position: 4, name: 'Find verified airdrops', text: 'Browse 3alamiy Web3 airdrop tracker and filter by Active + Free + Easy. Start with 3–5 projects with strong VC backing and no token yet.' },
+      { '@type': 'HowToStep', position: 5, name: 'Complete on-chain tasks consistently', text: 'Follow the step-by-step guide for each airdrop. Return weekly to maintain activity — projects look for consistent users over time, not one-time interactions.' },
+      { '@type': 'HowToStep', position: 6, name: 'Build daily on-chain activity', text: 'Use a GM Station to send daily transactions across multiple chains. This builds genuine wallet history that separates real users from bots in snapshot analysis.' },
+      { '@type': 'HowToStep', position: 7, name: 'Track and manage your portfolio', text: 'Keep a log of every project you farm, when you last interacted, and what steps remain. Consistency over 3–6 months is what earns the biggest airdrops.' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'How do I get crypto airdrops in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'To get crypto airdrops in 2026: (1) Set up a dedicated MetaMask wallet for farming. (2) Get a small amount of ETH for gas fees. (3) Bridge to Arbitrum or Base L2 networks. (4) Find early-stage tokenless projects with VC backing. (5) Interact with their protocols consistently over weeks and months. (6) Build daily on-chain activity using a GM station. Consistency and genuine usage are what qualify you for the largest airdrops.' } },
+      { '@type': 'Question', name: 'Do I need money to get crypto airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'Most airdrops are free. You may need $10–30 for ETH to cover gas fees on mainnet or L2 transactions. Testnet interactions are always free. Never pay to participate in or claim an airdrop — legitimate airdrops are always free to claim.' } },
+      { '@type': 'Question', name: 'How much can I earn from crypto airdrops in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'Earnings vary widely. Beginners typically earn $100–$500 from their first few airdrops. Consistent farmers who started early on multiple projects earn $2,000–$20,000+ per year. The Hyperliquid airdrop alone paid average active users $10,000+ in 2024. Polymarket paid $500–$5,000 to qualifying users in 2026.' } },
+      { '@type': 'Question', name: 'What is Sybil detection and how do I avoid being flagged?', acceptedAnswer: { '@type': 'Answer', text: 'Sybil detection is the process projects use to identify and exclude fake/bot wallets. To avoid being flagged: use one wallet per person (not many wallets from the same IP), make real transactions not just token transfers, hold assets for weeks not hours, interact with multiple protocols not just one, and build genuine on-chain history over time.' } },
+      { '@type': 'Question', name: 'Which blockchain is best for airdrop farming in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'The best blockchains for airdrop farming in 2026 are: Arbitrum (highest reward DeFi airdrops), Base (Coinbase-backed ecosystem, low fees), Solana (fast and free, many DeFi/gaming airdrops), Sui (gasless testnet interactions), and Monad (new mainnet, ecosystem still farming). Start with Arbitrum or Base for the highest expected rewards.' } },
+      { '@type': 'Question', name: 'Is airdrop farming safe?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, if you follow basic security rules. Always use a dedicated farming wallet separate from your main funds. Only connect to official project websites. Never share your seed phrase. Never pay to claim an airdrop. Verify URLs from the project's official Twitter. Use a hardware wallet for any significant holdings.' } },
+      { '@type': 'Question', name: 'How long does it take to qualify for an airdrop?', acceptedAnswer: { '@type': 'Answer', text: 'Most airdrops take 2–6 months of consistent activity to properly qualify. Some retroactive airdrops reward 1+ year of on-chain history. Projects typically take a snapshot of user activity before the token launch, so the earlier you start the better your position.' } },
+      { '@type': 'Question', name: 'What is the difference between a testnet airdrop and a mainnet airdrop?', acceptedAnswer: { '@type': 'Answer', text: 'Testnet airdrops reward users who test a protocol before it launches on mainnet. These use fake tokens and are completely free. Mainnet airdrops reward users who interact with live protocols using real assets. Both can qualify you for real token distributions. Testnet farming is lower risk and often overlooked by competition.' } },
+    ],
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.3alamiyweb3.com' },
+      { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://www.3alamiyweb3.com/learn' },
+      { '@type': 'ListItem', position: 3, name: 'How to Get Crypto Airdrops 2026', item: 'https://www.3alamiyweb3.com/learn/how-to-get-crypto-airdrops-2026' },
+    ],
+  },
+];
 
 export default function HowToGetCryptoAirdrops() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      {schemas.map((s, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+      ))}
       <style>{`
-        .article { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; color: #e4e4e7; font-family: system-ui, -apple-system, sans-serif; }
-        .article h2 { font-size: 22px; font-weight: 800; color: #fff; margin: 44px 0 14px; letter-spacing: -0.02em; }
-        .article h3 { font-size: 17px; font-weight: 700; color: #f4f4f5; margin: 28px 0 10px; }
-        .article p { font-size: 15px; line-height: 1.8; color: #a1a1aa; margin: 0 0 16px; }
-        .article ul, .article ol { padding-left: 20px; margin: 0 0 16px; }
-        .article ul li, .article ol li { font-size: 15px; line-height: 1.8; color: #a1a1aa; margin-bottom: 8px; }
-        .article strong { color: #e4e4e7; }
-        .divider { height: 1px; background: linear-gradient(90deg, transparent, #1a1f2e 20%, #1a1f2e 80%, transparent); margin: 44px 0; }
-        .tip-box { background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.2); border-radius: 12px; padding: 18px 22px; margin: 24px 0; }
-        .tip-box p { color: #a1a1aa; margin: 0; font-size: 14px; line-height: 1.7; }
-        .tip-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #6366f1; margin: 0 0 6px; }
-        .step-card { background: #0d1117; border: 1px solid #1a1f2e; border-radius: 14px; padding: 20px; margin-bottom: 10px; display: flex; gap: 16px; align-items: flex-start; }
-        .step-num { width: 32px; height: 32px; background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 900; color: #818cf8; flex-shrink: 0; }
+        .hg { max-width: 800px; margin: 0 auto; padding: 48px 20px 80px; color: rgba(255,255,255,0.85); }
+        .hg-bc { font-size: 12px; color: rgba(255,255,255,0.3); margin-bottom: 28px; display: flex; gap: 6px; flex-wrap: wrap; }
+        .hg-bc a { color: rgba(255,255,255,0.3); text-decoration: none; }
+        .hg-bc a:hover { color: #7CF5C0; }
+        .hg-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #7CF5C0; margin-bottom: 12px; }
+        .hg-h1 { font-size: clamp(26px, 5vw, 38px); font-weight: 800; line-height: 1.15; margin: 0 0 16px; color: #fff; }
+        .hg-intro { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,0.6); margin-bottom: 12px; }
+        .hg-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
+        .hg-tag { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 99px; background: rgba(124,245,192,0.07); border: 1px solid rgba(124,245,192,0.18); color: #7CF5C0; }
+        .hg-tag.n { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.35); }
+        .hg-h2 { font-size: 22px; font-weight: 800; color: #fff; margin: 0 0 14px; }
+        .hg-h3 { font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.9); margin: 24px 0 8px; }
+        .hg-p { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.6); margin: 0 0 14px; }
+        .hg-div { height: 1px; background: rgba(255,255,255,0.05); margin: 40px 0; }
+        .hg-tip { background: rgba(124,245,192,0.06); border: 1px solid rgba(124,245,192,0.16); border-radius: 12px; padding: 16px 20px; margin: 20px 0; }
+        .hg-tip-lbl { font-size: 10px; font-weight: 800; color: #7CF5C0; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+        .hg-tip-body { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.65; margin: 0; }
+        .hg-warn { background: rgba(251,146,60,0.06); border: 1px solid rgba(251,146,60,0.18); border-radius: 12px; padding: 16px 20px; margin: 20px 0; }
+        .hg-warn-lbl { font-size: 10px; font-weight: 800; color: #fb923c; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+        .hg-warn-body { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.65; margin: 0; }
+        .hg-steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 8px; }
+        .hg-step { display: flex; gap: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 18px 20px; }
+        .hg-step-n { width: 32px; height: 32px; border-radius: 8px; background: rgba(124,245,192,0.08); border: 1px solid rgba(124,245,192,0.18); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 900; color: #7CF5C0; flex-shrink: 0; }
+        .hg-step-title { font-size: 14px; font-weight: 700; color: #fff; margin: 0 0 6px; }
+        .hg-step-text { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.65; margin: 0; }
+        .hg-chains { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 20px; }
+        .hg-chain { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 14px 16px; }
+        .hg-chain-name { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .hg-chain-sub { font-size: 11px; color: rgba(255,255,255,0.35); margin-bottom: 8px; }
+        .hg-chain-tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 99px; }
+        .hg-earnings { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin: 20px 0; }
+        .hg-earn { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 16px; text-align: center; }
+        .hg-earn-val { font-size: 20px; font-weight: 800; color: #7CF5C0; margin-bottom: 4px; }
+        .hg-earn-lbl { font-size: 11px; color: rgba(255,255,255,0.35); }
+        .hg-ul { padding-left: 0; list-style: none; margin: 0 0 16px; }
+        .hg-ul li { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; gap: 8px; }
+        .hg-ul li::before { content: "→"; color: #7CF5C0; flex-shrink: 0; }
+        .hg-avoid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+        .hg-avoid-item { display: flex; gap: 10px; align-items: flex-start; background: rgba(248,113,113,0.04); border: 1px solid rgba(248,113,113,0.1); border-radius: 10px; padding: 12px 14px; font-size: 13px; color: rgba(255,255,255,0.55); }
+        .hg-faq { display: flex; flex-direction: column; gap: 8px; }
+        .hg-faq-item { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 18px 20px; }
+        .hg-faq-q { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 8px; }
+        .hg-faq-a { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.65; margin: 0; }
+        .hg-cta { background: linear-gradient(135deg, rgba(124,245,192,0.07), rgba(99,102,241,0.04)); border: 1px solid rgba(124,245,192,0.15); border-radius: 16px; padding: 28px; text-align: center; margin-top: 48px; }
+        .hg-cta-title { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+        .hg-cta-sub { font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
+        .hg-btn-p { background: #7CF5C0; color: #060A12; font-size: 13px; font-weight: 800; padding: 11px 22px; border-radius: 99px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+        .hg-btn-s { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 700; padding: 11px 22px; border-radius: 99px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+        .hg-toc { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 20px 24px; margin-bottom: 40px; }
+        .hg-toc-title { font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+        .hg-toc a { display: block; font-size: 13px; color: #7CF5C0; text-decoration: none; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .hg-toc a:last-child { border-bottom: none; }
       `}</style>
 
-      {/* Hero */}
-      <section style={{ background: '#060910', padding: '56px 24px 40px', borderBottom: '1px solid #1a1f2e', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', top: '-80px', left: '50%', transform: 'translateX(-50%)', width: '600px', height: '400px', background: 'radial-gradient(ellipse, rgba(99,102,241,0.08) 0%, transparent 65%)', pointerEvents: 'none' }} />
-        <div style={{ maxWidth: '800px', margin: '0 auto', position: 'relative' }}>
-          <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', alignItems: 'center' }}>
-            <Link href="/learn" style={{ fontSize: '12px', color: '#52525b', textDecoration: 'none' }}>Learn</Link>
-            <span style={{ color: '#3f3f46', fontSize: '12px' }}>›</span>
-            <span style={{ fontSize: '12px', color: '#818cf8', fontWeight: 700 }}>Beginners</span>
+      <main className="hg">
+        <nav className="hg-bc">
+          <Link href="/">Home</Link><span>›</span>
+          <Link href="/learn">Learn</Link><span>›</span>
+          <span>How to Get Crypto Airdrops 2026</span>
+        </nav>
+
+        <div className="hg-label">Beginner Guide · Updated June 2026</div>
+        <h1 className="hg-h1">How to Get Crypto Airdrops in 2026 — Complete Guide</h1>
+        <div className="hg-meta">
+          <span className="hg-tag">Free to Start</span>
+          <span className="hg-tag">Step-by-Step</span>
+          <span className="hg-tag n">15 min read</span>
+          <span className="hg-tag n">Updated June 10, 2026</span>
+        </div>
+        <p className="hg-intro">Crypto airdrops are the most reliable way to earn free cryptocurrency in 2026. This guide covers everything — from setting up your first wallet to qualifying for the highest-value drops. No experience required.</p>
+
+        <div className="hg-toc">
+          <div className="hg-toc-title">Contents</div>
+          <a href="#what">What Are Crypto Airdrops?</a>
+          <a href="#earn">How Much Can You Earn?</a>
+          <a href="#steps">Step-by-Step: How to Get Started</a>
+          <a href="#chains">Which Blockchain to Use</a>
+          <a href="#qualify">How to Qualify for the Biggest Drops</a>
+          <a href="#sybil">Sybil Detection — What to Know</a>
+          <a href="#mistakes">Common Mistakes to Avoid</a>
+          <a href="#security">Security Guide</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <div className="hg-div" />
+
+        <section id="what">
+          <h2 className="hg-h2">What Are Crypto Airdrops?</h2>
+          <p className="hg-p">A crypto airdrop is when a blockchain project distributes free tokens to users who interacted with their protocol before the token launch. Projects do this to reward early adopters, build a decentralized community of token holders, and create genuine network effects.</p>
+          <p className="hg-p">In 2026, airdrops have evolved significantly. Projects no longer reward anyone who connects a wallet — they use sophisticated on-chain analysis to identify genuine users vs. bots. The good news: if you use protocols naturally and consistently, you will qualify. The era of "one click = airdrop" is over, but the era of real rewards for real users is very much alive.</p>
+          <div className="hg-tip">
+            <div className="hg-tip-lbl">💡 Why projects do airdrops</div>
+            <p className="hg-tip-body">A protocol launching a token needs real users holding it — not just exchanges and VCs. Distributing to active users creates immediate decentralization, generates word-of-mouth, and gives the token a broad holder base. It is in their interest to give tokens to real users.</p>
           </div>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', color: '#818cf8', padding: '4px 12px', borderRadius: '99px', fontSize: '10px', fontWeight: 800, marginBottom: '16px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-            Beginner Guide
+        </section>
+
+        <div className="hg-div" />
+
+        <section id="earn">
+          <h2 className="hg-h2">How Much Can You Earn from Airdrops?</h2>
+          <p className="hg-p">Real numbers from recent major airdrops:</p>
+          <div className="hg-earnings">
+            <div className="hg-earn"><div className="hg-earn-val">$10,000+</div><div className="hg-earn-lbl">Hyperliquid avg (2024)</div></div>
+            <div className="hg-earn"><div className="hg-earn-val">$2,000+</div><div className="hg-earn-lbl">Arbitrum avg (2023)</div></div>
+            <div className="hg-earn"><div className="hg-earn-val">$1,500+</div><div className="hg-earn-lbl">dYdX avg (2021)</div></div>
+            <div className="hg-earn"><div className="hg-earn-val">$500–$5K</div><div className="hg-earn-lbl">Polymarket POLY (2026)</div></div>
           </div>
-          <h1 style={{ fontSize: '38px', fontWeight: 900, color: '#fff', margin: '0 0 14px', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-            How to Get Crypto Airdrops<br />
-            <span style={{ background: 'linear-gradient(135deg, #818cf8, #6366f1)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>in 2026 — Full Guide</span>
-          </h1>
-          <p style={{ fontSize: '16px', color: '#71717a', margin: '0 0 24px', lineHeight: 1.7, maxWidth: '580px' }}>
-            A complete beginner's guide to getting crypto airdrops in 2026. Learn exactly what to do, which wallets to use, and which airdrops to farm first.
-          </p>
-        </div>
-      </section>
+          <p className="hg-p">Beginners farming 5–10 projects consistently typically earn $500–$3,000 per year from airdrops. Experienced farmers who started early on multiple high-potential projects earn $10,000–$50,000+ per year. The earlier you start, the larger your allocation.</p>
+        </section>
 
-      <div className="article" style={{ paddingTop: '48px' }}>
+        <div className="hg-div" />
 
-        <h2>What Are Crypto Airdrops?</h2>
-        <p>A crypto airdrop is when a blockchain project distributes free tokens to users who interact with their protocol. Projects do this to grow their user base, reward early supporters, and build a decentralized community of token holders.</p>
-        <p>In 2026, airdrops have become one of the most reliable ways to earn free cryptocurrency. The best airdrop farmers earn <strong>$5,000–$50,000+ per year</strong> — all from free interactions with new blockchain protocols.</p>
-
-        <div className="tip-box">
-          <p className="tip-label">Real Example</p>
-          <p>The Hyperliquid airdrop in 2024 paid average users over <strong>$10,000</strong> in tokens. Users who had been active for 6+ months received significantly more. The Arbitrum airdrop paid $2,000+ per wallet. These are real numbers from real projects.</p>
-        </div>
-
-        <div className="divider" />
-
-        <h2>How to Get Crypto Airdrops — Step by Step</h2>
-        <p>Here's the exact process to start getting crypto airdrops in 2026:</p>
-
-        {[
-          { n: '01', title: 'Set Up a Crypto Wallet', body: 'Download MetaMask or Rabby Wallet (both free). Create a new wallet specifically for airdrop farming — never use your main wallet. Write down your seed phrase and store it safely offline. Never share it with anyone.' },
-          { n: '02', title: 'Get Some ETH for Gas', body: 'Buy a small amount of ETH ($20–50) on Coinbase or Binance and send it to your wallet. You\'ll need this for transaction fees on Ethereum L2 networks. Most testnet interactions are completely free.' },
-          { n: '03', title: 'Bridge to L2 Networks', body: 'Use the official Arbitrum Bridge or Base Bridge to move your ETH to L2 networks. These are where most 2026 airdrops are happening. Gas fees are much lower than Ethereum mainnet.' },
-          { n: '04', title: 'Pick Your First Airdrops', body: 'Start with 3–5 active airdrops from our tracker. Focus on Easy difficulty, Free cost airdrops first. Build confidence before moving to more complex campaigns.' },
-          { n: '05', title: 'Complete the Steps Consistently', body: 'Follow the step-by-step guides for each airdrop. The key is consistency — come back daily or weekly and keep building activity. One interaction is rarely enough to qualify.' },
-          { n: '06', title: 'Track Your Activity', body: 'Keep a simple spreadsheet or use our tracker to log which projects you\'ve interacted with, what steps you\'ve completed, and when to check back.' },
-        ].map((s) => (
-          <div key={s.n} className="step-card">
-            <div className="step-num">{s.n}</div>
-            <div>
-              <p style={{ fontSize: '15px', fontWeight: 700, color: '#f4f4f5', margin: '0 0 6px' }}>{s.title}</p>
-              <p style={{ fontSize: '13px', color: '#71717a', margin: 0, lineHeight: 1.7 }}>{s.body}</p>
-            </div>
+        <section id="steps">
+          <h2 className="hg-h2">Step-by-Step: How to Get Crypto Airdrops</h2>
+          <div className="hg-steps">
+            {[
+              { n: '1', t: 'Set Up a Dedicated Farming Wallet', b: 'Install MetaMask (browser extension) or Rabby Wallet. Create a brand new wallet used only for airdrop farming — never mix with your main funds. Write your 12-word seed phrase on paper and store it somewhere safe offline. Never store it digitally or share it with anyone.' },
+              { n: '2', t: 'Get ETH for Gas Fees', b: 'Buy $20–50 of ETH on Coinbase, Binance, or Kraken. Transfer it to your new farming wallet address. You will use this for gas fees on L2 networks (usually $0.01–$0.10 per transaction). Testnet farming is always free — no ETH needed.' },
+              { n: '3', t: 'Bridge to Layer 2 Networks', b: 'Go to bridge.arbitrum.io or bridge.base.org and bridge your ETH to the L2 network. This costs a small one-time gas fee (~$2–5). Once bridged, all transactions on the L2 cost under $0.10. Most major airdrops in 2026 are on Arbitrum, Base, or Optimism.' },
+              { n: '4', t: 'Find Verified Airdrops to Farm', b: 'Go to 3alamiy Web3 and browse active airdrops. Filter by Status: Active, Cost: Free, Difficulty: Easy to start. Focus on projects backed by major VCs (a16z, Paradigm, Binance Labs) with no token yet. These have the highest expected airdrop values.' },
+              { n: '5', t: 'Follow the Step-by-Step Guides', b: 'Each airdrop has a guide with exact steps. Follow them in order. The key tasks are usually: bridge assets to the network, swap tokens on the project's DEX, use the protocol's main feature, join their Discord, and follow on X. Do each step at least once per week.' },
+              { n: '6', t: 'Build Daily On-Chain Activity', b: 'Use GM Station on 3alamiy Web3 to send a daily transaction across multiple chains. This builds genuine wallet history — projects look for wallets that were active consistently over time, not just once. 5 minutes per day is enough.' },
+              { n: '7', t: 'Track Your Progress and Stay Consistent', b: 'Keep a simple spreadsheet: project name, date of last interaction, steps completed, next action. Check each project weekly. Most snapshots capture 3–6 months of activity — the wallets that maintained consistent activity throughout earn the most.' },
+            ].map(s => (
+              <div key={s.n} className="hg-step">
+                <div className="hg-step-n">{s.n}</div>
+                <div>
+                  <div className="hg-step-title">{s.t}</div>
+                  <p className="hg-step-text">{s.b}</p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </section>
 
-        <div className="divider" />
+        <div className="hg-div" />
 
-        <h2>Best Airdrops for Beginners in 2026</h2>
-        <p>These are the easiest airdrops to get started with — all free, all beginner-friendly:</p>
-        <ul>
-          <li><strong>Beep AI (Sui)</strong> — Complete 3 Galxe quests. Takes 5 minutes. Free.</li>
-          <li><strong>Startale STAR Points</strong> — Daily check-ins and mini games. Very easy.</li>
-          <li><strong>xStocksFi OG Role</strong> — Suggest a stock in Discord. 2 minutes.</li>
-          <li><strong>nof1 Waitlist</strong> — Email signup only. Instant.</li>
-          <li><strong>Variational Testnet</strong> — Trade on testnet. Free testnet tokens from faucet.</li>
-        </ul>
-        <div style={{ marginTop: '20px' }}>
-          <Link href="/airdrops" style={{ background: 'linear-gradient(135deg, #6366f1, #4f46e5)', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 700, fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-            View All Beginner Airdrops →
-          </Link>
+        <section id="chains">
+          <h2 className="hg-h2">Which Blockchain to Use for Airdrops</h2>
+          <p className="hg-p">Different chains have different strengths. Here is where to focus in 2026:</p>
+          <div className="hg-chains">
+            {[
+              { name: 'Arbitrum', sub: 'Ethereum L2', tag: 'Highest Rewards', tagBg: 'rgba(124,245,192,0.1)', tagColor: '#7CF5C0', desc: 'Most DeFi protocols with confirmed upcoming tokens. Best for high-value farming. Gas ~$0.05.' },
+              { name: 'Base', sub: 'Coinbase L2', tag: 'Fast Growing', tagBg: 'rgba(99,102,241,0.1)', tagColor: '#818cf8', desc: 'Coinbase-backed ecosystem. Many tokenless protocols. Low gas, beginner-friendly.' },
+              { name: 'Solana', sub: 'Alternative L1', tag: 'No Gas Fees', tagBg: 'rgba(124,245,192,0.1)', tagColor: '#7CF5C0', desc: 'Free transactions, fast confirmations. Strong DeFi and gaming airdrop scene in 2026.' },
+              { name: 'Monad', sub: 'New Mainnet 2026', tag: 'Early Stage', tagBg: 'rgba(167,139,250,0.1)', tagColor: '#a78bfa', desc: 'Brand new mainnet launched in 2026. Ecosystem dApps still tokenless. Huge farming potential.' },
+              { name: 'Sui', sub: 'Move L1', tag: 'Free Testnet', tagBg: 'rgba(245,158,11,0.1)', tagColor: '#f59e0b', desc: 'Low competition, gas-free testnet. Great for beginners starting their first airdrop.' },
+              { name: 'Optimism', sub: 'Ethereum L2', tag: 'OP Ecosystem', tagBg: 'rgba(248,113,113,0.1)', tagColor: '#f87171', desc: 'Part of the Superchain. Projects building on OP often reward Optimism activity.' },
+            ].map(c => (
+              <div key={c.name} className="hg-chain">
+                <div className="hg-chain-name">{c.name}</div>
+                <div className="hg-chain-sub">{c.sub}</div>
+                <span className="hg-chain-tag" style={{ background: c.tagBg, color: c.tagColor, border: `1px solid ${c.tagColor}30`, marginBottom: '8px' }}>{c.tag}</span>
+                <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', margin: '8px 0 0', lineHeight: '1.5' }}>{c.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <div className="hg-div" />
+
+        <section id="qualify">
+          <h2 className="hg-h2">How to Qualify for the Biggest Airdrops</h2>
+          <p className="hg-p">The difference between a $100 airdrop and a $5,000 airdrop is usually how early and how consistently you used the protocol. Here is what projects look for:</p>
+
+          <h3 className="hg-h3">1. Start Early</h3>
+          <p className="hg-p">The single most important factor. Projects reward users who were active before the announcement. Once the airdrop is announced publicly, the farming window is usually over. Track tokenless projects with strong VC funding and start using them immediately — months before the token launch.</p>
+
+          <h3 className="hg-h3">2. Use the Protocol Genuinely</h3>
+          <p className="hg-p">Swap real tokens. Provide liquidity. Borrow and repay loans. Trade perpetuals. Projects analyze the economic value of your activity — wallets that used the protocol like a real user (not just the minimum to qualify) earn significantly more. A $500 swap beats ten $5 swaps in many allocation models.</p>
+
+          <h3 className="hg-h3">3. Be Consistent Over Time</h3>
+          <p className="hg-p">Spread your activity over weeks and months. A wallet with 50 transactions spread over 4 months earns 3–5× more than a wallet with 50 transactions in one day. Most protocols weight time-weighted activity in their allocation formulas.</p>
+
+          <h3 className="hg-h3">4. Use Multiple Features</h3>
+          <p className="hg-p">If a protocol has a DEX, a lending market, and a bridge — use all three. Projects reward breadth of usage. Using only one feature often puts you in the lowest allocation tier.</p>
+
+          <h3 className="hg-h3">5. Hold Assets On-Chain</h3>
+          <p className="hg-p">Protocols often look at asset holding periods. A wallet that held $1,000 in their protocol for 3 months is valued more than one that moved $10,000 in and out in a day.</p>
+        </section>
+
+        <div className="hg-div" />
+
+        <section id="sybil">
+          <h2 className="hg-h2">Sybil Detection — What You Need to Know</h2>
+          <p className="hg-p">Sybil attacks are when one person creates many wallets to get multiple airdrop allocations. Projects have become very sophisticated at detecting this. Here is how to make sure you are not flagged:</p>
+          <ul className="hg-ul">
+            <li>Use one wallet per person — multiple wallets from the same IP or device = immediate flag</li>
+            <li>Each wallet should have its own unique on-chain history — not all doing the same transactions</li>
+            <li>Fund each wallet from different sources (not all from the same CEX withdrawal)</li>
+            <li>Don't interact with your other wallets — avoid on-chain connections between farming wallets</li>
+            <li>Maintain activity across many protocols — genuine users use DeFi broadly, not just one protocol</li>
+            <li>Hold assets for weeks, not hours — bots in and out quickly; real users hold longer</li>
+          </ul>
+          <div className="hg-warn">
+            <div className="hg-warn-lbl">⚠️ Important</div>
+            <p className="hg-warn-body">Most major airdrops in 2026 use Nansen, Chainalysis, or custom ML models to detect Sybil wallets. Flagged wallets receive zero allocation. One genuine, well-maintained wallet beats ten Sybil wallets every time.</p>
+          </div>
+        </section>
+
+        <div className="hg-div" />
+
+        <section id="mistakes">
+          <h2 className="hg-h2">Common Mistakes to Avoid</h2>
+          <div className="hg-avoid">
+            {[
+              { emoji: '❌', title: 'Using your main wallet', desc: 'Always create a separate wallet for farming. If you interact with a malicious contract, you only lose the farming wallet funds.' },
+              { emoji: '❌', title: 'Doing everything in one day', desc: 'Projects look for consistent activity over time. 50 transactions in one day = Sybil flag.' },
+              { emoji: '❌', title: 'Paying to claim airdrops', desc: 'Legitimate airdrops are always free to claim. Any site asking for payment to release your tokens is a scam.' },
+              { emoji: '❌', title: 'Only doing the minimum', desc: 'The minimum interaction (one swap, one bridge) puts you in the lowest tier. Use the protocol genuinely.' },
+              { emoji: '❌', title: 'Waiting for the announcement', desc: 'By the time it is announced, farming is over. Track tokenless projects and start months early.' },
+              { emoji: '❌', title: 'Spreading too thin', desc: 'Better to farm 5–10 projects deeply than 50 projects with minimal activity on each.' },
+            ].map(m => (
+              <div key={m.title} className="hg-avoid-item">
+                <span style={{ fontSize: '16px', flexShrink: 0 }}>{m.emoji}</span>
+                <div><strong style={{ color: 'rgba(255,255,255,0.8)', display: 'block', marginBottom: '3px' }}>{m.title}</strong>{m.desc}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <div className="hg-div" />
+
+        <section id="security">
+          <h2 className="hg-h2">Security: Staying Safe While Farming</h2>
+          <p className="hg-p">Airdrop farming involves connecting your wallet to many new protocols. Here are the non-negotiable rules:</p>
+          <ul className="hg-ul">
+            <li>Never use your main wallet — keep farming funds separate</li>
+            <li>Always verify the URL before connecting — bookmark official links</li>
+            <li>Never share your seed phrase — no legitimate project ever asks for it</li>
+            <li>Revoke unused token approvals regularly at revoke.cash</li>
+            <li>Use a hardware wallet (Ledger/Trezor) if farming with more than $500</li>
+            <li>Check contract addresses on Etherscan before approving transactions</li>
+            <li>Never click airdrop links from DMs on Discord or Telegram</li>
+            <li>Verify official project links from their Twitter bio, not search results</li>
+          </ul>
+        </section>
+
+        <div className="hg-div" />
+
+        <section id="faq">
+          <h2 className="hg-h2">Frequently Asked Questions</h2>
+          <div className="hg-faq">
+            {[
+              { q: 'How do I get crypto airdrops in 2026?', a: 'Set up a dedicated MetaMask wallet, bridge ETH to Arbitrum or Base, find tokenless projects with strong VC backing on 3alamiy Web3, use those protocols consistently over weeks and months, and build daily on-chain activity. Consistency and genuine usage are what qualify you for the largest drops.' },
+              { q: 'Do I need money to get crypto airdrops?', a: 'Most airdrops are free. You may need $10–30 for ETH gas fees for L2 transactions. Testnet airdrops are always completely free. Never pay to claim an airdrop — legitimate ones are always free to claim.' },
+              { q: 'How much can I earn from airdrops?', a: 'Beginners earn $100–$1,000 from their first few airdrops. Consistent farmers with 5–10 projects earn $2,000–$10,000+ per year. The Hyperliquid airdrop paid average users $10,000+ in 2024. Early Arbitrum users earned $2,000+ per wallet.' },
+              { q: 'What is Sybil detection?', a: 'Sybil detection is how projects identify and exclude bot wallets trying to claim multiple allocations. To avoid being flagged: use one wallet per person, maintain genuine diverse on-chain activity, spread activity over time, and never connect your farming wallets to each other.' },
+              { q: 'Which blockchain should I start with?', a: 'Start with Base or Arbitrum for highest expected rewards, or Sui/Solana for free gas-less interactions. Monad mainnet launched in 2026 and its ecosystem is still in early farming stage — a great opportunity right now.' },
+              { q: 'How long does qualifying for an airdrop take?', a: 'Most airdrops require 2–6 months of consistent on-chain activity to fully qualify. Some retroactive airdrops look at 1+ year of history. Start farming tokenless projects immediately — the earlier you start, the larger your allocation.' },
+              { q: 'Is airdrop farming safe?', a: 'Yes, if you follow basic security rules: dedicated farming wallet, only official project websites, never share your seed phrase, revoke unused approvals. Airdrop farming itself is legal and safe — the risks are from scam sites that mimic legitimate projects.' },
+              { q: 'What is the best airdrop for beginners?', a: 'Start with Sui or Solana testnet airdrops — they are free and beginner-friendly. Then move to free Arbitrum/Base protocols. Browse 3alamiy Web3 and filter by Easy difficulty + Free cost to see the best beginner options available right now.' },
+            ].map((f, i) => (
+              <div key={i} className="hg-faq-item">
+                <div className="hg-faq-q">{f.q}</div>
+                <p className="hg-faq-a">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <div className="hg-cta">
+          <div className="hg-cta-title">Ready to start farming?</div>
+          <div className="hg-cta-sub">Browse 500+ verified airdrops with step-by-step guides. All free, updated daily.</div>
+          <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link href="/airdrops" className="hg-btn-p">Browse Airdrops →</Link>
+            <Link href="/upcoming" className="hg-btn-s">Upcoming Drops →</Link>
+          </div>
         </div>
-
-        <div className="divider" />
-
-        <h2>How to Maximize Your Airdrop Rewards</h2>
-
-        <h3>Start Early</h3>
-        <p>The single most important factor in airdrop farming is timing. Projects typically reward users who were active before the announcement. By the time everyone knows about it, the best farming window has usually closed. Use our tracker to find airdrops in their early stages.</p>
-
-        <h3>Be Consistent</h3>
-        <p>Most airdrop snapshots look at activity over time, not just a single interaction. A wallet with 30 transactions spread over 3 months will almost always receive more tokens than a wallet with 30 transactions in one day. Set aside 20 minutes per day for airdrop farming.</p>
-
-        <h3>Diversify Across Chains</h3>
-        <p>Don't focus on just one blockchain. Spread your activity across Arbitrum, Base, Solana, and emerging chains like Monad. This maximizes your chances of qualifying for multiple airdrops simultaneously.</p>
-
-        <h3>Use GM Station Daily</h3>
-        <p>Our <Link href="/gm" style={{ color: '#818cf8', textDecoration: 'none' }}>GM Station</Link> lets you build daily on-chain activity across 16+ EVM chains in one click. Sending a GM transaction daily costs almost nothing in gas but builds genuine wallet history that helps qualify for airdrops.</p>
-
-        <div className="divider" />
-
-        <h2>Common Mistakes to Avoid</h2>
-        <ul>
-          <li><strong>Using your main wallet</strong> — always use a dedicated farming wallet</li>
-          <li><strong>Doing everything in one day</strong> — spread activity over time</li>
-          <li><strong>Paying to claim airdrops</strong> — legitimate airdrops are always free</li>
-          <li><strong>Ignoring testnets</strong> — testnet activity is often the most rewarded</li>
-          <li><strong>Giving up too early</strong> — some airdrops take 6–12 months to distribute</li>
-        </ul>
-
-        <div className="divider" />
-
-        <h2>Frequently Asked Questions</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          {[
-            { q: 'Do I need money to get crypto airdrops?', a: 'Most airdrops are completely free. Some require small gas fees (under $1) for testnet interactions. Never pay more than a few dollars to participate in any airdrop.' },
-            { q: 'How long does it take to receive airdrop tokens?', a: 'It varies. Some airdrops distribute within days, others take months after the snapshot. Patience is essential — keep farming while you wait.' },
-            { q: 'How many airdrops should I farm at once?', a: 'Start with 3–5 and build up as you get comfortable. Experienced farmers track 10–20 projects simultaneously.' },
-            { q: 'Is airdrop farming safe?', a: 'Yes, as long as you use a separate farming wallet and only connect to official project websites. Never share your seed phrase and never pay to claim.' },
-          ].map((faq, i) => (
-            <div key={i} style={{ background: '#0d1117', border: '1px solid #1a1f2e', borderRadius: '12px', padding: '18px' }}>
-              <p style={{ fontSize: '14px', fontWeight: 700, color: '#f4f4f5', margin: '0 0 8px' }}>{faq.q}</p>
-              <p style={{ fontSize: '13px', color: '#71717a', margin: 0, lineHeight: 1.7 }}>{faq.a}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="divider" />
-        <p>Ready to start? Browse our complete list of verified airdrops with step-by-step guides — all free, all updated daily.</p>
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '16px' }}>
-          <Link href="/airdrops" style={{ background: 'linear-gradient(135deg, #6366f1, #4f46e5)', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 700, fontSize: '14px', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 6px 20px rgba(99,102,241,0.3)' }}>
-            Start Farming Now →
-          </Link>
-          <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" style={{ background: 'transparent', color: '#e4e4e7', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 600, fontSize: '14px', border: '1px solid #1a1f2e', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-            Join Telegram Alerts
-          </a>
-        </div>
-      </div>
-
+      </main>
     </>
   );
 }
