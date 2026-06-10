@@ -25,16 +25,18 @@ const schema1 = {
   mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/pumpfun-opensea-airdrop-2026' },
 };
 
+const FAQS = [
+  { q: 'Will Pump.fun launch a token?', a: 'Pump.fun has not officially announced a token launch date as of June 2026. The team has repeatedly hinted at a token but made no firm commitment. Given that Pump.fun has generated over $700 million in fees, a token is widely expected — but there is no confirmed timeline.' },
+  { q: 'When will OpenSea launch the SEA token?', a: 'OpenSea has not announced an official SEA token launch date as of June 2026. Despite operating since 2017 and processing billions in NFT volume, OpenSea has never launched a token. New CEO Devin Finzer has mentioned exploring a token but no date has been set.' },
+  { q: 'Should I still farm Pump.fun and OpenSea for airdrops?', a: 'If you already have activity on both platforms, maintaining it has low cost. However, prioritizing other platforms with clearer airdrop timelines is generally a better use of farming time. Do not pay significant fees specifically to chase these unconfirmed airdrops.' },
+  { q: 'How much has Pump.fun made in fees?', a: 'Pump.fun has generated over $700 million in protocol fees since its launch in January 2024, making it one of the most profitable crypto protocols ever built. All of this came from users trading memecoins on the platform.' },
+  { q: 'Has OpenSea ever promised a token?', a: 'OpenSea has not made an explicit public promise to launch a token, but has consistently signaled one through job postings mentioning tokenomics, community comments, and statements from leadership. The $SEA ticker has become widely anticipated based on these signals.' },
+];
+
 const schema2 = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: [
-    { '@type': 'Question', name: 'Will Pump.fun launch a token?', acceptedAnswer: { '@type': 'Answer', text: 'Pump.fun has not officially announced a token launch date as of June 2026. The team has repeatedly hinted at a token but made no firm commitment. Given that Pump.fun has generated over $700 million in fees, a token is widely expected — but there is no confirmed timeline.' } },
-    { '@type': 'Question', name: 'When will OpenSea launch the SEA token?', acceptedAnswer: { '@type': 'Answer', text: 'OpenSea has not announced an official SEA token launch date as of June 2026. Despite operating since 2017 and processing billions in NFT volume, OpenSea has never launched a token. New CEO Devin Finzer has mentioned exploring a token but no date has been set.' } },
-    { '@type': 'Question', name: 'Should I still farm Pump.fun and OpenSea for airdrops?', acceptedAnswer: { '@type': 'Answer', text: 'If you already have activity on both platforms, maintaining it has low cost. However, prioritizing other platforms with clearer airdrop timelines (like Ink, GRVT, or Phantom) is generally a better use of farming time. Do not pay significant fees specifically to chase these unconfirmed airdrops.' } },
-    { '@type': 'Question', name: 'How much has Pump.fun made in fees?', acceptedAnswer: { '@type': 'Answer', text: 'Pump.fun has generated over $700 million in protocol fees since its launch in January 2024, making it one of the most profitable crypto protocols ever built. All of this came from users trading memecoins on the platform.' } },
-    { '@type': 'Question', name: 'Has OpenSea ever promised a token?', acceptedAnswer: { '@type': 'Answer', text: 'OpenSea has not made an explicit public promise to launch a token, but has consistently hinted at one through job postings mentioning tokenomics, community comments, and statements from leadership. The $SEA ticker has become widely anticipated by the NFT community based on these signals.' } },
-  ],
+  mainEntity: FAQS.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
 
 const schema3 = {
@@ -291,13 +293,7 @@ export default function PumpfunOpenseaAirdrop() {
         <section>
           <h2 className="po-h2">Frequently Asked Questions</h2>
           <div className="po-faq">
-            {[
-              { q: 'Will Pump.fun launch a token?', a: 'Pump.fun has not officially announced a token launch date as of June 2026. The team has repeatedly hinted at a token but made no firm commitment. Given that Pump.fun has generated over $700 million in fees, a token is widely expected — but there is no confirmed timeline.' },
-              { q: 'When will OpenSea launch the SEA token?', a: 'OpenSea has not announced an official SEA token launch date as of June 2026. Despite operating since 2017 and processing billions in NFT volume, OpenSea has never launched a token. New CEO Devin Finzer has mentioned exploring a token but no date has been set.' },
-              { q: 'Should I still farm Pump.fun and OpenSea for airdrops?', a: 'If you already have activity on both platforms, maintaining it has low cost. However, prioritizing other platforms with clearer airdrop timelines is generally a better use of farming time. Do not pay significant fees specifically to chase these unconfirmed airdrops.' },
-              { q: 'How much has Pump.fun made in fees?', a: 'Pump.fun has generated over $700 million in protocol fees since its launch in January 2024, making it one of the most profitable crypto protocols ever built. All of this came from users trading memecoins on the platform.' },
-              { q: 'Has OpenSea ever promised a token?', a: 'OpenSea has not made an explicit public promise to launch a token, but has consistently signaled one through job postings mentioning tokenomics, community comments, and statements from leadership. The $SEA ticker has become widely anticipated based on these signals.' },
-            ].map((f, i) => (
+            {FAQS.map((f, i) => (
               <div key={i} className="po-faq-item">
                 <div className="po-faq-q">{f.q}</div>
                 <p className="po-faq-a">{f.a}</p>
