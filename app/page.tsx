@@ -467,7 +467,7 @@ export default async function Home() {
             <div className="upt-cards">
               {[
                 { name:'Monad',        icon:'🔷', chain:'EVM L1',      hype:98, reward:'$500–$5K+', color:'#7CF5C0' },
-                { name:'MegaETH',      icon:'⚡', chain:'Ethereum L2', hype:92, reward:'$200–$2K',  color:'#7CF5C0' },
+                { name:'Aztec Network', icon:'🛡️', chain:'Ethereum L2', hype:94, reward:'$500–$5K+', color:'#7CF5C0' },
                 { name:'Story Protocol',icon:'📖',chain:'EVM L1',      hype:89, reward:'$300–$3K',  color:'#f59e0b' },
                 { name:'Grass',        icon:'🌿', chain:'Solana',      hype:88, reward:'$200–$2K',  color:'#7CF5C0' },
                 { name:'Berachain Eco',icon:'🐻', chain:'EVM L1',      hype:87, reward:'$200–$3K',  color:'#7CF5C0' },
