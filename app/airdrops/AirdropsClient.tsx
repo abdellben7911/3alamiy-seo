@@ -53,11 +53,21 @@ const FILTERS = [
 
 export default function AirdropsClient({ airdrops }: { airdrops: any[] }) {
   const [active, setActive] = useState('all');
+  const [chain, setChain] = useState('all');
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
 
+  const chains = useMemo(() => {
+    const seen = new Set<string>();
+    airdrops.forEach((a: any) => { if (a.blockchain) seen.add(a.blockchain); });
+    return ['all', ...Array.from(seen).sort()];
+  }, [airdrops]);
+
   const filtered = useMemo(() => {
     let r = airdrops;
+    if (chain !== 'all') {
+      r = r.filter((a: any) => a.blockchain === chain);
+    }
     if (search.trim()) {
       const q = search.toLowerCase();
       r = r.filter((a: any) =>
@@ -76,7 +86,7 @@ export default function AirdropsClient({ airdrops }: { airdrops: any[] }) {
       case 'ended':     return r.filter((a: any) => a.status === 'Ended' || a.status === 'Claim');
       default:          return r;
     }
-  }, [airdrops, active, search]);
+  }, [airdrops, active, chain, search]);
 
   const totalPages = Math.ceil(filtered.length / PER_PAGE);
   const paginated = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
@@ -93,6 +103,7 @@ export default function AirdropsClient({ airdrops }: { airdrops: any[] }) {
 
   const go = (p: number) => { setPage(p); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const setFilter = (k: string) => { setActive(k); setPage(1); };
+  const setChainFilter = (c: string) => { setChain(c); setPage(1); };
   const setQ = (v: string) => { setSearch(v); setPage(1); };
 
   const pageRange = () => {
@@ -372,6 +383,39 @@ export default function AirdropsClient({ airdrops }: { airdrops: any[] }) {
           .ac2-name { font-size: 12px; }
         }
         @media (max-width: 400px) { .ac2-grid { grid-template-columns: 1fr; } }
+
+        /* Chain filter row */
+        .ac2-chains {
+          display: flex; align-items: center; gap: 6px;
+          flex-wrap: wrap; margin-bottom: 20px;
+        }
+        .ac2-chain-lbl {
+          font-size: 10px; font-weight: 700; text-transform: uppercase;
+          letter-spacing: 0.08em; color: rgba(255,255,255,0.2);
+          margin-right: 2px; white-space: nowrap;
+        }
+        .ac2-cpill {
+          display: inline-flex; align-items: center; gap: 4px;
+          padding: 4px 11px; border-radius: 99px;
+          border: 1px solid rgba(255,255,255,0.07);
+          background: transparent;
+          color: rgba(255,255,255,0.3);
+          font-size: 11px; font-weight: 600;
+          cursor: pointer; white-space: nowrap;
+          font-family: var(--font-space), system-ui, sans-serif;
+          transition: all 0.18s;
+        }
+        .ac2-cpill:hover { color: rgba(255,255,255,0.65); border-color: rgba(255,255,255,0.14); }
+        .ac2-cpill.on {
+          background: rgba(99,179,237,0.1);
+          border-color: rgba(99,179,237,0.28);
+          color: #63b3ed;
+        }
+        .ac2-cpill-dot {
+          width: 5px; height: 5px; border-radius: 50%;
+          background: currentColor; opacity: 0.6;
+          flex-shrink: 0;
+        }
       `}</style>
 
       <div className="ac2">
@@ -395,6 +439,17 @@ export default function AirdropsClient({ airdrops }: { airdrops: any[] }) {
           </div>
         </div>
 
+        {/* Chain filter */}
+        <div className="ac2-chains">
+          <span className="ac2-chain-lbl">Chain:</span>
+          {chains.map((c) => (
+            <button key={c} className={`ac2-cpill${chain === c ? ' on' : ''}`} onClick={() => setChainFilter(c)}>
+              {c !== 'all' && <span className="ac2-cpill-dot" />}
+              {c === 'all' ? 'All Chains' : c}
+            </button>
+          ))}
+        </div>
+
         {/* Results bar */}
         <div className="ac2-bar">
           <div className="ac2-bar-left">
@@ -412,7 +467,7 @@ export default function AirdropsClient({ airdrops }: { airdrops: any[] }) {
               <div className="ac2-empty-title">No airdrops found</div>
               <div className="ac2-empty-sub">
                 {search ? `No results for "${search}" — ` : ''}
-                <button onClick={() => { setQ(''); setFilter('all'); }} style={{ color: '#7CF5C0', background: 'none', border: 'none', cursor: 'pointer', fontSize: 'inherit' }}>
+                <button onClick={() => { setQ(''); setFilter('all'); setChainFilter('all'); }} style={{ color: '#7CF5C0', background: 'none', border: 'none', cursor: 'pointer', fontSize: 'inherit' }}>
                   Clear filters
                 </button>
               </div>
