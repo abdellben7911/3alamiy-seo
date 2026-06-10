@@ -365,7 +365,7 @@ export default async function Home() {
         .upt-card { background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:16px; text-decoration:none; color:inherit; display:flex; flex-direction:column; gap:10px; transition:border-color 0.2s,background 0.2s; }
         .upt-card:hover { border-color:rgba(245,158,11,0.25); background:rgba(245,158,11,0.04); }
         .upt-card-top { display:flex; align-items:center; gap:10px; }
-        .upt-card-icon { width:36px; height:36px; border-radius:10px; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+        .upt-card-icon { width:36px; height:36px; border-radius:10px; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; flex-shrink:0; overflow:hidden; padding:5px; }
         .upt-card-name { font-size:13px; font-weight:800; color:#fff; }
         .upt-card-chain { font-size:10px; color:rgba(255,255,255,0.3); margin-top:1px; }
         .upt-hype { display:flex; align-items:center; justify-content:space-between; }
@@ -466,16 +466,18 @@ export default async function Home() {
             </div>
             <div className="upt-cards">
               {[
-                { name:'Monad',        icon:'🔷', chain:'EVM L1',      hype:98, reward:'$500–$5K+', color:'#7CF5C0' },
-                { name:'Aztec Network', icon:'🛡️', chain:'Ethereum L2', hype:94, reward:'$500–$5K+', color:'#7CF5C0' },
-                { name:'Story Protocol',icon:'📖',chain:'EVM L1',      hype:89, reward:'$300–$3K',  color:'#f59e0b' },
-                { name:'Grass',        icon:'🌿', chain:'Solana',      hype:88, reward:'$200–$2K',  color:'#7CF5C0' },
-                { name:'Berachain Eco',icon:'🐻', chain:'EVM L1',      hype:87, reward:'$200–$3K',  color:'#7CF5C0' },
-                { name:'Initia',       icon:'🌀', chain:'Cosmos',      hype:84, reward:'$200–$2.5K',color:'#f59e0b' },
+                { name:'Monad',         domain:'monad.xyz',          chain:'EVM L1',      hype:91, reward:'$300–$3K',  color:'#7CF5C0' },
+                { name:'Aztec Network', domain:'aztec.network',      chain:'Ethereum L2', hype:94, reward:'$500–$5K+', color:'#7CF5C0' },
+                { name:'Story Protocol',domain:'story.foundation',   chain:'EVM L1',      hype:89, reward:'$300–$3K',  color:'#f59e0b' },
+                { name:'Grass',         domain:'getgrass.io',        chain:'Solana',      hype:88, reward:'$200–$2K',  color:'#7CF5C0' },
+                { name:'Berachain Eco', domain:'berachain.com',      chain:'EVM L1',      hype:87, reward:'$200–$3K',  color:'#7CF5C0' },
+                { name:'Initia',        domain:'initia.xyz',         chain:'Cosmos',      hype:84, reward:'$200–$2.5K',color:'#f59e0b' },
               ].map((p) => (
                 <a key={p.name} href="/upcoming" className="upt-card">
                   <div className="upt-card-top">
-                    <div className="upt-card-icon">{p.icon}</div>
+                    <div className="upt-card-icon">
+                      <img src={`https://www.google.com/s2/favicons?domain=${p.domain}&sz=64`} alt={p.name} width={24} height={24} style={{borderRadius:4}} />
+                    </div>
                     <div>
                       <div className="upt-card-name">{p.name}</div>
                       <div className="upt-card-chain">{p.chain}</div>

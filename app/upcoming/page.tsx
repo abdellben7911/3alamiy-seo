@@ -21,7 +21,7 @@ const PROJECTS = [
     slug: 'monad-ecosystem',
     chain: 'EVM L1',
     chainColor: '#627EEA',
-    logo: '🔷',
+    logo: 'monad.xyz',
     tagline: 'Monad mainnet is live (MON token exists). Ecosystem dApps — DEXes, lending, NFT — are still tokenless and farming-ready.',
     funding: '$244M',
     investors: 'Paradigm, a16z',
@@ -44,7 +44,7 @@ const PROJECTS = [
     slug: 'aztec',
     chain: 'Ethereum L2',
     chainColor: '#627EEA',
-    logo: '🛡️',
+    logo: 'aztec.network',
     tagline: 'Privacy-first zk-rollup on Ethereum. Smart contracts with encrypted state. $100M+ raised. TGE vote pending.',
     funding: '$119M',
     investors: 'a16z, Paradigm, Variant',
@@ -67,7 +67,7 @@ const PROJECTS = [
     slug: 'story-protocol',
     chain: 'EVM L1',
     chainColor: '#a855f7',
-    logo: '📖',
+    logo: 'story.foundation',
     tagline: 'IP blockchain — register and license intellectual property on-chain.',
     funding: '$140M',
     investors: 'a16z, Polychain',
@@ -90,7 +90,7 @@ const PROJECTS = [
     slug: 'movement-labs',
     chain: 'Move L2',
     chainColor: '#f97316',
-    logo: '🏃',
+    logo: 'movementnetwork.xyz',
     tagline: 'Move-based Ethereum L2. Fast finality, Aptos/Sui tech on Ethereum.',
     funding: '$38M',
     investors: 'Polychain, Binance Labs',
@@ -113,7 +113,7 @@ const PROJECTS = [
     slug: 'sophon',
     chain: 'ZK L2',
     chainColor: '#06b6d4',
-    logo: '🌐',
+    logo: 'sophon.xyz',
     tagline: 'ZK chain for consumer apps — gaming, entertainment, social.',
     funding: '$60M',
     investors: 'Paper Ventures, Robot Ventures',
@@ -136,7 +136,7 @@ const PROJECTS = [
     slug: 'espresso',
     chain: 'Ethereum',
     chainColor: '#627EEA',
-    logo: '☕',
+    logo: 'espressosys.com',
     tagline: 'Shared sequencer for rollups — decentralizes L2 ordering.',
     funding: '$100M',
     investors: 'a16z, Greylock',
@@ -158,7 +158,7 @@ const PROJECTS = [
     slug: 'nillion',
     chain: 'Cosmos SDK',
     chainColor: '#f59e0b',
-    logo: '🔒',
+    logo: 'nillion.com',
     tagline: 'Decentralized privacy-preserving computation network.',
     funding: '$25M',
     investors: 'HashKey, Distributed Global',
@@ -180,7 +180,7 @@ const PROJECTS = [
     slug: 'grass',
     chain: 'Solana',
     chainColor: '#9945FF',
-    logo: '🌿',
+    logo: 'getgrass.io',
     tagline: 'DePIN data network — sell your unused bandwidth for rewards.',
     funding: '$4.5M',
     investors: 'Polychain, Tribe Capital',
@@ -203,7 +203,7 @@ const PROJECTS = [
     slug: 'irys',
     chain: 'Ethereum',
     chainColor: '#627EEA',
-    logo: '💾',
+    logo: 'irys.xyz',
     tagline: 'Programmable data layer. Permanent on-chain storage for Web3.',
     funding: '$10M',
     investors: 'Multicoin Capital',
@@ -225,7 +225,7 @@ const PROJECTS = [
     slug: 'allora',
     chain: 'Cosmos SDK',
     chainColor: '#f59e0b',
-    logo: '🤖',
+    logo: 'allora.network',
     tagline: 'Decentralized AI network — crowdsourced machine learning inference.',
     funding: '$8M',
     investors: 'Multicoin, Delphi Digital',
@@ -247,7 +247,7 @@ const PROJECTS = [
     slug: 'initia',
     chain: 'Cosmos SDK',
     chainColor: '#ec4899',
-    logo: '🌀',
+    logo: 'initia.xyz',
     tagline: 'Modular L1 with interlinked rollups ("Minitias"). Cosmos-based.',
     funding: '$14.5M',
     investors: 'Binance Labs, Delphi',
@@ -270,7 +270,7 @@ const PROJECTS = [
     slug: 'kaito-ai',
     chain: 'Ethereum',
     chainColor: '#627EEA',
-    logo: '🧠',
+    logo: 'kaito.ai',
     tagline: 'Web3 intelligence layer — search, analytics, and crypto mindshare.',
     funding: '$10M',
     investors: 'Dragonfly, Spartan',
@@ -293,7 +293,7 @@ const PROJECTS = [
     slug: 'berachain-ecosystem',
     chain: 'EVM L1',
     chainColor: '#d97706',
-    logo: '🐻',
+    logo: 'berachain.com',
     tagline: 'BERA launched — but ecosystem tokens (DEX, lending, NFT) still coming.',
     funding: '$142M',
     investors: 'Polychain, Framework',
@@ -316,7 +316,7 @@ const PROJECTS = [
     slug: 'eclipse',
     chain: 'Solana SVM L2',
     chainColor: '#9945FF',
-    logo: '🌑',
+    logo: 'eclipse.xyz',
     tagline: 'Solana VM running as Ethereum L2. Best of both chains.',
     funding: '$65M',
     investors: 'Placeholder, Hack VC',
@@ -339,7 +339,7 @@ const PROJECTS = [
     slug: 'zora',
     chain: 'Base / OP Stack',
     chainColor: '#0052FF',
-    logo: '🎨',
+    logo: 'zora.co',
     tagline: 'NFT protocol and creator network. Massive Base ecosystem presence.',
     funding: '$60M',
     investors: 'Haun Ventures, Coinbase Ventures',
@@ -432,7 +432,7 @@ export default function UpcomingPage() {
         .up-card:hover { border-color:rgba(255,255,255,0.12); background:rgba(255,255,255,0.04); }
 
         .up-card-top { display:flex; align-items:center; gap:12px; }
-        .up-card-icon { width:44px; height:44px; border-radius:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+        .up-card-icon { width:44px; height:44px; border-radius:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; flex-shrink:0; overflow:hidden; padding:6px; }
         .up-card-meta { flex:1; min-width:0; }
         .up-card-name { font-size:15px; font-weight:900; color:#fff; letter-spacing:-0.02em; }
         .up-card-chain { font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-top:2px; }
@@ -535,7 +535,16 @@ export default function UpcomingPage() {
               >
                 {/* TOP */}
                 <div className="up-card-top">
-                  <div className="up-card-icon">{p.logo}</div>
+                  <div className="up-card-icon">
+                  <img
+                    src={`https://www.google.com/s2/favicons?domain=${p.logo}&sz=64`}
+                    alt={p.name}
+                    width={32}
+                    height={32}
+                    style={{ borderRadius: 6, objectFit: 'cover' }}
+                    onError={(e) => { (e.target as HTMLImageElement).style.display='none'; }}
+                  />
+                </div>
                   <div className="up-card-meta">
                     <div className="up-card-name">{p.name}</div>
                     <div className="up-card-chain" style={{ color: p.chainColor }}>{p.chain}</div>
