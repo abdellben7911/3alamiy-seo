@@ -9,6 +9,7 @@ const BASE = 'https://www.3alamiyweb3.com';
 const articles = [
   // — New articles (June 2026) — keep at top so they get re-crawled first
   'how-to-farm-unichain-airdrop',
+  'kaito-airdrop-guide-2026',
   'eclipse-airdrop-guide-2026',
   'initia-airdrop-guide-2026',
   'story-protocol-airdrop-guide-2026',
@@ -101,6 +102,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Article publish/update dates — use real dates so Google trusts lastModified
   const ARTICLE_DATES: Record<string, string> = {
+    'kaito-airdrop-guide-2026':              '2026-06-10',
     'eclipse-airdrop-guide-2026':            '2026-06-10',
     'initia-airdrop-guide-2026':            '2026-06-10',
     'story-protocol-airdrop-guide-2026':   '2026-06-10',
