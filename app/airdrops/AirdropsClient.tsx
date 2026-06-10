@@ -24,6 +24,31 @@ function seededJoined(slug: string): number {
   return base;
 }
 
+function hypeScore(a: any): number {
+  let score = 50;
+  if (a.status === 'Active') score += 15;
+  if (a.status === 'Ended' || a.status === 'Claim') score -= 20;
+  if (a.cost === 'Free') score += 10;
+  if (a.cost === 'Paid') score -= 5;
+  if (a.difficulty === 'Easy') score += 10;
+  if (a.difficulty === 'Hard') score -= 5;
+  if (Array.isArray(a.tags)) {
+    if (a.tags.some((t: string) => /confirmed/i.test(t))) score += 15;
+    if (a.tags.some((t: string) => /hot/i.test(t))) score += 10;
+    if (a.tags.some((t: string) => /testnet/i.test(t))) score -= 5;
+  }
+  if (a.reward_max && a.reward_max >= 1000) score += 10;
+  if (a.reward_max && a.reward_max >= 5000) score += 10;
+  return Math.min(99, Math.max(1, score));
+}
+
+function hypeLabel(score: number): { label: string; color: string; bg: string; border: string } {
+  if (score >= 80) return { label: '🔥 Hot',    color: '#f87171', bg: 'rgba(248,113,113,0.08)', border: 'rgba(248,113,113,0.2)' };
+  if (score >= 65) return { label: '⚡ High',   color: '#f59e0b', bg: 'rgba(245,158,11,0.08)',  border: 'rgba(245,158,11,0.2)' };
+  if (score >= 45) return { label: '📈 Medium', color: '#7CF5C0', bg: 'rgba(124,245,192,0.08)', border: 'rgba(124,245,192,0.2)' };
+  return                  { label: '🧊 Low',    color: '#6b7280', bg: 'rgba(107,114,128,0.08)', border: 'rgba(107,114,128,0.2)' };
+}
+
 function formatJoined(n: number): string {
   if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
   return `${n}`;
@@ -236,13 +261,7 @@ export default function AirdropsClient({ airdrops }: { airdrops: any[] }) {
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
         .ac2-dot.ended { background: #6b7280; box-shadow: none; animation: none; }
         .ac2-status-lbl { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.3); }
-        .ac2-rating {
-          font-size: 9px; font-weight: 800; text-transform: uppercase;
-          letter-spacing: 0.06em; padding: 2px 8px; border-radius: 99px;
-        }
-        .ac2-rating.strong { background: rgba(124,245,192,0.08); color: #7CF5C0; border: 1px solid rgba(124,245,192,0.18); }
-        .ac2-rating.normal { background: rgba(245,158,11,0.08); color: #f59e0b; border: 1px solid rgba(245,158,11,0.18); }
-        .ac2-rating.weak   { background: rgba(248,113,113,0.08); color: #f87171; border: 1px solid rgba(248,113,113,0.18); }
+
 
         /* Identity */
         .ac2-identity {
@@ -384,6 +403,17 @@ export default function AirdropsClient({ airdrops }: { airdrops: any[] }) {
         }
         @media (max-width: 400px) { .ac2-grid { grid-template-columns: 1fr; } }
 
+        /* Hype score badge */
+        .ac2-hype {
+          display: inline-flex; align-items: center; gap: 4px;
+          font-size: 9px; font-weight: 700; letter-spacing: 0.04em;
+          padding: 2px 8px; border-radius: 99px;
+        }
+        .ac2-hype-score {
+          font-size: 8px; font-weight: 800;
+          opacity: 0.7;
+        }
+
         /* Chain filter row */
         .ac2-chains {
           display: flex; align-items: center; gap: 6px;
@@ -480,10 +510,8 @@ export default function AirdropsClient({ airdrops }: { airdrops: any[] }) {
             const cost = COST_STYLE[a.cost] || { color: '#7CF5C0' };
             const isActive = a.status === 'Active';
             const joined = seededJoined(a.slug);
-            const isStrong = a.cost === 'Free' && a.difficulty === 'Easy';
-            const isWeak = a.difficulty === 'Hard';
-            const rating = isStrong ? 'strong' : isWeak ? 'weak' : 'normal';
-            const ratingLabel = isStrong ? 'Strong' : isWeak ? 'Weak' : 'Normal';
+            const score = hypeScore(a);
+            const hype = hypeLabel(score);
 
             return (
               <Link key={a.slug} href={`/airdrops/${a.slug}`} className="ac2-card">
@@ -494,7 +522,10 @@ export default function AirdropsClient({ airdrops }: { airdrops: any[] }) {
                     <span className={`ac2-dot${isActive ? '' : ' ended'}`} />
                     <span className="ac2-status-lbl">{a.status}</span>
                   </div>
-                  <span className={`ac2-rating ${rating}`}>{ratingLabel}</span>
+                  <span className="ac2-hype" style={{ background: hype.bg, border: `1px solid ${hype.border}`, color: hype.color }}>
+                    {hype.label}
+                    <span className="ac2-hype-score">{score}</span>
+                  </span>
                 </div>
 
                 {/* Identity */}
