@@ -38,6 +38,7 @@ const articles = [
   'bitmine-strategy-paper-losses-2026',
   'michael-saylor-2000-crash-bitcoin-history',
   'zcash-orchard-vulnerability-2026',
+  'pumpfun-opensea-airdrop-2026',
   'polymarket-willo2-500k-loss',
   'top-crypto-cards-by-volume-may-2026',
 
@@ -104,6 +105,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const ARTICLE_DATES: Record<string, string> = {
     'how-to-get-crypto-airdrops-2026':        '2026-06-10',
     'best-airdrop-farming-platforms-2026':    '2026-06-10',
+    'pumpfun-opensea-airdrop-2026':           '2026-06-10',
     'kaito-airdrop-guide-2026':              '2026-06-10',
     'eclipse-airdrop-guide-2026':            '2026-06-10',
     'initia-airdrop-guide-2026':            '2026-06-10',
