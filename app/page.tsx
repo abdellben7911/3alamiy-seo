@@ -349,6 +349,30 @@ export default async function Home() {
         .cc-btn-redot:hover { background:rgba(168,85,247,0.2); }
         .cc-disc { text-align:center; margin-top:10px; font-size:10px; color:rgba(255,255,255,0.15); }
         @media(max-width:560px){ .cc-cards { grid-template-columns:1fr; } }
+
+        /* Upcoming teaser */
+        .upt-section { padding:40px 24px; }
+        .upt-inner { max-width:1100px; margin:0 auto; }
+        .upt-hdr { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px; }
+        .upt-title-wrap { }
+        .upt-eyebrow { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#f59e0b; margin-bottom:4px; display:flex; align-items:center; gap:5px; }
+        .upt-eyebrow-dot { width:5px; height:5px; border-radius:50%; background:#f59e0b; }
+        .upt-title { font-size:clamp(17px,2.5vw,22px); font-weight:900; letter-spacing:-0.03em; color:#fff; }
+        .upt-sub { font-size:12px; color:rgba(255,255,255,0.3); margin-top:3px; }
+        .upt-view-all { font-size:12px; font-weight:700; color:#f59e0b; text-decoration:none; display:flex; align-items:center; gap:4px; white-space:nowrap; }
+        .upt-view-all:hover { color:#fcd34d; }
+        .upt-cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:10px; }
+        .upt-card { background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:16px; text-decoration:none; color:inherit; display:flex; flex-direction:column; gap:10px; transition:border-color 0.2s,background 0.2s; }
+        .upt-card:hover { border-color:rgba(245,158,11,0.25); background:rgba(245,158,11,0.04); }
+        .upt-card-top { display:flex; align-items:center; gap:10px; }
+        .upt-card-icon { width:36px; height:36px; border-radius:10px; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+        .upt-card-name { font-size:13px; font-weight:800; color:#fff; }
+        .upt-card-chain { font-size:10px; color:rgba(255,255,255,0.3); margin-top:1px; }
+        .upt-hype { display:flex; align-items:center; justify-content:space-between; }
+        .upt-hype-lbl { font-size:10px; color:rgba(255,255,255,0.3); }
+        .upt-hype-val { font-size:12px; font-weight:800; }
+        .upt-reward { font-size:11px; color:rgba(255,255,255,0.4); }
+        @media(max-width:560px){ .upt-cards { grid-template-columns:1fr 1fr; } }
         @media (max-width: 600px) {
           .hero { padding: 60px 16px 56px; }
           .section { padding: 48px 16px; }
@@ -427,6 +451,48 @@ export default async function Home() {
             ))}
           </div>
         </div>
+
+
+        {/* UPCOMING TOKENLESS TEASER */}
+        <div className="upt-section">
+          <div className="upt-inner">
+            <div className="upt-hdr">
+              <div className="upt-title-wrap">
+                <div className="upt-eyebrow"><span className="upt-eyebrow-dot" />Tokenless Projects</div>
+                <div className="upt-title">Upcoming Airdrops — Farm Now</div>
+                <div className="upt-sub">No token yet · Backed by top VCs · Highest reward potential</div>
+              </div>
+              <a href="/upcoming" className="upt-view-all">See all 15 projects →</a>
+            </div>
+            <div className="upt-cards">
+              {[
+                { name:'Monad',        icon:'🔷', chain:'EVM L1',      hype:98, reward:'$500–$5K+', color:'#7CF5C0' },
+                { name:'MegaETH',      icon:'⚡', chain:'Ethereum L2', hype:92, reward:'$200–$2K',  color:'#7CF5C0' },
+                { name:'Story Protocol',icon:'📖',chain:'EVM L1',      hype:89, reward:'$300–$3K',  color:'#f59e0b' },
+                { name:'Grass',        icon:'🌿', chain:'Solana',      hype:88, reward:'$200–$2K',  color:'#7CF5C0' },
+                { name:'Berachain Eco',icon:'🐻', chain:'EVM L1',      hype:87, reward:'$200–$3K',  color:'#7CF5C0' },
+                { name:'Initia',       icon:'🌀', chain:'Cosmos',      hype:84, reward:'$200–$2.5K',color:'#f59e0b' },
+              ].map((p) => (
+                <a key={p.name} href="/upcoming" className="upt-card">
+                  <div className="upt-card-top">
+                    <div className="upt-card-icon">{p.icon}</div>
+                    <div>
+                      <div className="upt-card-name">{p.name}</div>
+                      <div className="upt-card-chain">{p.chain}</div>
+                    </div>
+                  </div>
+                  <div className="upt-hype">
+                    <span className="upt-hype-lbl">Hype Score</span>
+                    <span className="upt-hype-val" style={{color:p.color}}>{p.hype}/100</span>
+                  </div>
+                  <div className="upt-reward">Est. reward: {p.reward}</div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="divider" />
 
         {/* ECOSYSTEM TICKER */}
         <div style={{ padding: '48px 0', borderTop: '1px solid rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.04)', background: 'linear-gradient(135deg, #060A12 0%, #0D1A2E 40%, #0A1628 60%, #060A12 100%)', position: 'relative' }}>

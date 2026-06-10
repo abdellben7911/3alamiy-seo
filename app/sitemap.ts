@@ -124,6 +124,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/learn`, lastModified: new Date('2026-06-09'), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE}/pro`, lastModified: new Date('2026-05-01'), changeFrequency: 'monthly', priority: 0.85 },
     { url: `${BASE}/wallet-checker`, lastModified: new Date('2026-06-01'), changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${BASE}/upcoming`, lastModified: new Date('2026-06-10'), changeFrequency: 'weekly', priority: 0.9 },
     { url: `${BASE}/gm`, lastModified: new Date('2026-05-01'), changeFrequency: 'weekly', priority: 0.7 },
     { url: `${BASE}/privacy`, lastModified: new Date('2026-01-01'), changeFrequency: 'monthly', priority: 0.3 },
 
