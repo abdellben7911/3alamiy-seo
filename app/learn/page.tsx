@@ -348,6 +348,17 @@ export default async function LearnPage() {
             ))}
           </div>
 
+          {/* Upcoming internal link */}
+          <div style={{ margin: '0 0 24px', background: 'linear-gradient(135deg,rgba(167,139,250,0.06) 0%,rgba(99,102,241,0.04) 100%)', border: '1px solid rgba(167,139,250,0.14)', borderRadius: 14, padding: '18px 22px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 800, color: '#fff', marginBottom: 3 }}>🚀 Tokenless projects launching soon</div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>Track Monad, MegaETH, Movement and more — with hype scores and farming tasks.</div>
+            </div>
+            <Link href="/upcoming" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(167,139,250,0.12)', border: '1px solid rgba(167,139,250,0.25)', color: '#a78bfa', fontSize: 12, fontWeight: 800, padding: '9px 18px', borderRadius: 9, textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>
+              View Upcoming →
+            </Link>
+          </div>
+
           {/* CTA */}
           <div className="lp-cta">
             <h2 className="lp-cta-title">Ready to Start Farming?</h2>

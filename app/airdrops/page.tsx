@@ -272,6 +272,22 @@ export default async function AirdropsPage() {
           {/* Client component handles filters + grid */}
           <AirdropsClient airdrops={airdrops} />
 
+          {/* ── Upcoming tokenless banner ── */}
+          <div style={{ margin: '32px 0 0', background: 'linear-gradient(135deg,rgba(167,139,250,0.06) 0%,rgba(99,102,241,0.04) 100%)', border: '1px solid rgba(167,139,250,0.14)', borderRadius: 16, padding: '20px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap', fontFamily: "var(--font-space),'Space Grotesk',system-ui,sans-serif" }}>
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 800, color: '#fff', marginBottom: 4 }}>
+                🚀 Looking for the <em>next</em> big drop?
+              </div>
+              <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', lineHeight: 1.5 }}>
+                Track tokenless projects before they launch — Monad, MegaETH, Movement and more with hype scores and farming tasks.
+              </div>
+            </div>
+            <Link href="/upcoming" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(167,139,250,0.12)', border: '1px solid rgba(167,139,250,0.25)', color: '#a78bfa', fontSize: 12, fontWeight: 800, padding: '10px 20px', borderRadius: 10, textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>
+              View Upcoming Airdrops
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </Link>
+          </div>
+
           {/* ── Pro upsell banner ── */}
           <div style={{ margin: '48px 0 8px', background: 'linear-gradient(135deg,rgba(124,245,192,0.06) 0%,rgba(99,102,241,0.04) 100%)', border: '1px solid rgba(124,245,192,0.14)', borderRadius: 20, padding: '28px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap', fontFamily: "var(--font-space),'Space Grotesk',system-ui,sans-serif" }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
