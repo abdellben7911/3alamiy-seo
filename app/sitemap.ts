@@ -9,6 +9,7 @@ const BASE = 'https://www.3alamiyweb3.com';
 const articles = [
   // — New articles (June 2026) — keep at top so they get re-crawled first
   'how-to-farm-unichain-airdrop',
+  'initia-airdrop-guide-2026',
   'story-protocol-airdrop-guide-2026',
   'aztec-network-airdrop-guide-2026',
   'polymarket-poly-airdrop-criteria-top-1-percent',
@@ -99,6 +100,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Article publish/update dates — use real dates so Google trusts lastModified
   const ARTICLE_DATES: Record<string, string> = {
+    'initia-airdrop-guide-2026':            '2026-06-10',
     'story-protocol-airdrop-guide-2026':   '2026-06-10',
     'aztec-network-airdrop-guide-2026':    '2026-06-10',
     'how-to-farm-unichain-airdrop':       '2026-06-09',
