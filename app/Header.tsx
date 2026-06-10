@@ -22,7 +22,7 @@ export default function Header() {
     { label: 'Upcoming',   href: '/upcoming',  badge: 'NEW',  badgeColor: '#f59e0b', badgeBg: 'rgba(245,158,11,0.1)' },
     { label: 'Learn',      href: '/learn',     badge: 'NEW',  badgeColor: '#7CF5C0', badgeBg: 'rgba(124,245,192,0.1)' },
     { label: 'GM Station', href: '/gm',        badge: null,   badgeColor: null,      badgeBg: null },
-    { label: 'Portfolio',  href: '/portfolio', badge: 'PRO',  badgeColor: '#7CF5C0', badgeBg: 'rgba(124,245,192,0.08)' },
+
   ];
 
   return (
@@ -42,7 +42,7 @@ export default function Header() {
           max-width: 1200px; margin: 0 auto;
           padding: 0 24px; height: 100%;
           display: flex; align-items: center;
-          justify-content: space-between; gap: 8px;
+          gap: 8px;
         }
 
         /* ── Logo ── */
@@ -60,7 +60,7 @@ export default function Header() {
         /* ── Nav (centred) ── */
         .hdr-nav {
           display: flex; align-items: center; gap: 2px;
-          position: absolute; left: 50%; transform: translateX(-50%);
+          flex: 1; justify-content: center;
         }
         .hdr-link {
           display: inline-flex; align-items: center; gap: 5px;
@@ -162,14 +162,14 @@ export default function Header() {
           .hdr-list-btn { display: none !important; }
           .hdr-pro-price { display: none; }
         }
-        @media (max-width: 740px) {
+        @media (max-width: 820px) {
           .hdr-nav { display: none !important; }
           .hdr-auth-desktop { display: none !important; }
           .hdr-pro-btn { display: none !important; }
           .hdr-sep { display: none !important; }
           .hdr-burger { display: flex !important; }
         }
-        @media (min-width: 741px) {
+        @media (min-width: 821px) {
           .hdr-burger { display: none !important; }
           .hdr-drawer { display: none !important; }
         }
