@@ -536,13 +536,13 @@ export default function UpcomingPage() {
                 {/* TOP */}
                 <div className="up-card-top">
                   <div className="up-card-icon">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`https://www.google.com/s2/favicons?domain=${p.logo}&sz=64`}
                     alt={p.name}
                     width={32}
                     height={32}
                     style={{ borderRadius: 6, objectFit: 'cover' }}
-                    onError={(e) => { (e.target as HTMLImageElement).style.display='none'; }}
                   />
                 </div>
                   <div className="up-card-meta">
