@@ -313,6 +313,44 @@ export default async function Home() {
           .cta-split { grid-template-columns: 1fr; }
           .sc-grid { grid-template-columns: repeat(2, 1fr); }
         }
+
+        /* Crypto Cards Section */
+        .cc-section { padding:56px 24px; background:rgba(255,255,255,0.01); border-top:1px solid rgba(255,255,255,0.04); border-bottom:1px solid rgba(255,255,255,0.04); }
+        .cc-inner { max-width:860px; margin:0 auto; }
+        .cc-hdr { text-align:center; margin-bottom:32px; }
+        .cc-tag { font-size:10px; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.22); margin-bottom:8px; }
+        .cc-title { font-size:clamp(20px,3vw,28px); font-weight:900; letter-spacing:-0.03em; color:#fff; margin-bottom:6px; }
+        .cc-sub { font-size:13px; color:rgba(255,255,255,0.35); }
+        .cc-cards { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+        .cc-card { border-radius:20px; padding:24px; position:relative; overflow:hidden; }
+        .cc-card-kast { background:linear-gradient(135deg,#0d1b3a 0%,#091428 100%); border:1px solid rgba(79,142,247,0.2); }
+        .cc-card-redot { background:linear-gradient(135deg,#1a0d2e 0%,#120820 100%); border:1px solid rgba(168,85,247,0.2); }
+        .cc-card-glow-kast { position:absolute; top:-40px; right:-40px; width:150px; height:150px; background:radial-gradient(circle,rgba(79,142,247,0.15) 0%,transparent 70%); border-radius:50%; pointer-events:none; }
+        .cc-card-glow-redot { position:absolute; top:-40px; right:-40px; width:150px; height:150px; background:radial-gradient(circle,rgba(168,85,247,0.15) 0%,transparent 70%); border-radius:50%; pointer-events:none; }
+        .cc-card-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+        .cc-card-name { font-size:16px; font-weight:900; letter-spacing:-0.02em; }
+        .cc-card-name-kast { color:#4f8ef7; }
+        .cc-card-name-redot { color:#a855f7; }
+        .cc-card-badge { font-size:9px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; padding:3px 8px; border-radius:99px; }
+        .cc-card-badge-kast { background:rgba(79,142,247,0.12); color:#4f8ef7; border:1px solid rgba(79,142,247,0.2); }
+        .cc-card-badge-redot { background:rgba(168,85,247,0.12); color:#a855f7; border:1px solid rgba(168,85,247,0.2); }
+        .cc-card-visual { width:100%; aspect-ratio:1.7; border-radius:12px; margin-bottom:16px; display:flex; flex-direction:column; justify-content:space-between; padding:14px 16px; }
+        .cc-card-visual-kast { background:linear-gradient(135deg,#1a2a4a 0%,#0d1830 100%); border:1px solid rgba(79,142,247,0.15); }
+        .cc-card-visual-redot { background:linear-gradient(135deg,#2a1040 0%,#1a0830 100%); border:1px solid rgba(168,85,247,0.15); }
+        .cc-visa { font-size:13px; font-weight:900; font-style:italic; color:rgba(255,255,255,0.7); }
+        .cc-chip { width:26px; height:20px; background:linear-gradient(135deg,#f59e0b,#d97706); border-radius:4px; }
+        .cc-num { font-size:10px; font-weight:600; letter-spacing:0.18em; color:rgba(255,255,255,0.4); }
+        .cc-perks { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
+        .cc-perk { display:flex; align-items:center; gap:8px; font-size:12px; color:rgba(255,255,255,0.6); }
+        .cc-perk-dot-kast { width:5px; height:5px; border-radius:50%; background:#4f8ef7; flex-shrink:0; }
+        .cc-perk-dot-redot { width:5px; height:5px; border-radius:50%; background:#a855f7; flex-shrink:0; }
+        .cc-cta-btn { display:block; text-align:center; font-size:13px; font-weight:800; padding:12px; border-radius:10px; text-decoration:none; transition:background 0.2s; }
+        .cc-cta-kast { background:rgba(79,142,247,0.15); border:1px solid rgba(79,142,247,0.3); color:#4f8ef7; }
+        .cc-cta-kast:hover { background:rgba(79,142,247,0.25); }
+        .cc-cta-redot { background:rgba(168,85,247,0.15); border:1px solid rgba(168,85,247,0.3); color:#a855f7; }
+        .cc-cta-redot:hover { background:rgba(168,85,247,0.25); }
+        .cc-footer { text-align:center; margin-top:14px; font-size:11px; color:rgba(255,255,255,0.18); }
+        @media(max-width:580px){ .cc-cards { grid-template-columns:1fr; } }
         @media (max-width: 600px) {
           .hero { padding: 60px 16px 56px; }
           .section { padding: 48px 16px; }
@@ -617,6 +655,75 @@ export default async function Home() {
         <div className="divider" />
 
         {/* ALL AIRDROPS */}
+
+        {/* Crypto Cards Section */}
+        <div className="cc-section">
+          <div className="cc-inner">
+            <div className="cc-hdr">
+              <p className="cc-tag">💳 Earn While You Spend</p>
+              <h2 className="cc-title">Get Your Crypto Card</h2>
+              <p className="cc-sub">Spend crypto anywhere in the world. Earn cashback on every purchase.</p>
+            </div>
+            <div className="cc-cards">
+
+              {/* KAST Card */}
+              <div className="cc-card cc-card-kast">
+                <div className="cc-card-glow-kast" />
+                <div className="cc-card-top">
+                  <span className="cc-card-name cc-card-name-kast">KAST Card</span>
+                  <span className="cc-card-badge cc-card-badge-kast">FREE TIER</span>
+                </div>
+                <div className="cc-card-visual cc-card-visual-kast">
+                  <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+                    <div className="cc-chip" />
+                    <span style={{ fontSize:10, fontWeight:700, color:'rgba(255,255,255,0.4)', letterSpacing:'0.06em' }}>KAST</span>
+                  </div>
+                  <div className="cc-num">•••• •••• •••• ••••</div>
+                  <div className="cc-visa">VISA</div>
+                </div>
+                <div className="cc-perks">
+                  <div className="cc-perk"><div className="cc-perk-dot-kast" /><span>Up to 3% USDC cashback</span></div>
+                  <div className="cc-perk"><div className="cc-perk-dot-kast" /><span>Up to 7% APY on idle balance</span></div>
+                  <div className="cc-perk"><div className="cc-perk-dot-kast" /><span>170+ countries · Apple & Google Pay</span></div>
+                  <div className="cc-perk"><div className="cc-perk-dot-kast" /><span>10 designs incl. Pudgy Penguins</span></div>
+                </div>
+                <a href="https://www.kast.xyz/?ref=3alamiy" target="_blank" rel="noopener noreferrer sponsored" className="cc-cta-btn cc-cta-kast">
+                  Get KAST Card Free →
+                </a>
+              </div>
+
+              {/* RedotPay Card */}
+              <div className="cc-card cc-card-redot">
+                <div className="cc-card-glow-redot" />
+                <div className="cc-card-top">
+                  <span className="cc-card-name cc-card-name-redot">RedotPay</span>
+                  <span className="cc-card-badge cc-card-badge-redot">TOP BY VOLUME</span>
+                </div>
+                <div className="cc-card-visual cc-card-visual-redot">
+                  <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+                    <div className="cc-chip" />
+                    <span style={{ fontSize:10, fontWeight:700, color:'rgba(255,255,255,0.4)', letterSpacing:'0.06em' }}>RedotPay</span>
+                  </div>
+                  <div className="cc-num">•••• •••• •••• ••••</div>
+                  <div className="cc-visa">VISA</div>
+                </div>
+                <div className="cc-perks">
+                  <div className="cc-perk"><div className="cc-perk-dot-redot" /><span>#1 by volume in May 2026 ($445M)</span></div>
+                  <div className="cc-perk"><div className="cc-perk-dot-redot" /><span>0% crypto top-up fee</span></div>
+                  <div className="cc-perk"><div className="cc-perk-dot-redot" /><span>Virtual card in minutes</span></div>
+                  <div className="cc-perk"><div className="cc-perk-dot-redot" /><span>BTC, ETH, USDT, USDC supported</span></div>
+                </div>
+                <a href="https://url.hk/i/en/xjrxm" target="_blank" rel="noopener noreferrer sponsored" className="cc-cta-btn cc-cta-redot">
+                  Get RedotPay Card →
+                </a>
+              </div>
+
+            </div>
+            <p className="cc-footer">Affiliate links — 3alamiy may earn a commission at no cost to you</p>
+          </div>
+        </div>
+
+
         <div className="content" style={{ paddingTop: '72px', paddingBottom: '72px' }}>
           <div style={{ marginBottom: '32px' }}>
             <div className="section-label">Full Database</div>
