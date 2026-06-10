@@ -8,79 +8,95 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.3alamiyweb3.com/learn/best-airdrop-farming-platforms-2026' },
   openGraph: {
     title: 'Best Airdrop Farming Platforms 2026 — Ranked and Reviewed',
-    description: 'Honest 2026 comparison of the top crypto airdrop farming platforms. Which platforms are worth your time?',
+    description: 'Honest 2026 comparison of the top crypto airdrop farming platforms.',
     type: 'article',
   },
 };
 
-const schemas = [
-  {
-    '@context': 'https://schema.org', '@type': 'Article',
-    headline: 'Best Airdrop Farming Platforms 2026 — Ranked and Reviewed',
-    description: 'Honest comparison of the best crypto airdrop farming platforms in 2026. We review 3alamiy Web3, Galxe, Layer3, Superboard, Zealy, and ZNS Connect.',
-    datePublished: '2026-04-01', dateModified: '2026-06-10',
-    author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
-    publisher: { '@type': 'Organization', name: '3alamiy Web3', logo: { '@type': 'ImageObject', url: 'https://www.3alamiyweb3.com/icon.svg' } },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/best-airdrop-farming-platforms-2026' },
-  },
-  {
-    '@context': 'https://schema.org', '@type': 'FAQPage',
-    mainEntity: [
-      { '@type': 'Question', name: 'What is the best airdrop farming platform in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'For finding and tracking airdrop opportunities, 3alamiy Web3 is the most comprehensive — it has 500+ verified airdrops with step-by-step guides and live tracking. For completing on-chain quest tasks from a single dashboard, Galxe OAT and Layer3 both have large ecosystems of available quests with real token rewards.' } },
-      { '@type': 'Question', name: 'Is Galxe still worth using in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, Galxe remains one of the largest quest platforms in 2026 with a credentialing system and GAL token rewards. However, its quests are now widely known and heavily farmed — competition is high. It works best as part of a broader strategy rather than a standalone farming platform.' } },
-      { '@type': 'Question', name: 'What is Layer3 and is it legit?', acceptedAnswer: { '@type': 'Answer', text: 'Layer3 is a legitimate quest and credentialing platform backed by major crypto VCs. It distributes its own LAYER token and also rewards users with project tokens, NFTs, and XP points. It is well-regarded in the airdrop farming community for having quality curated quests.' } },
-      { '@type': 'Question', name: 'Do I need to pay to use airdrop farming platforms?', acceptedAnswer: { '@type': 'Answer', text: 'No — all the platforms reviewed here are free to use. You may need small amounts of ETH or SOL for gas fees when completing on-chain tasks. Never pay a fee to join or claim on any of these platforms — that is a scam.' } },
-      { '@type': 'Question', name: 'How do Zealy and Superboard compare?', acceptedAnswer: { '@type': 'Answer', text: 'Zealy focuses on community engagement tasks (Discord activity, Twitter engagement) and gives XP scores. Superboard has stronger DeFi task infrastructure and is better for on-chain farming. Both have free tiers. Superboard is generally preferred by serious airdrop farmers; Zealy is better for community-focused quests.' } },
-      { '@type': 'Question', name: 'What is ZNS Connect?', acceptedAnswer: { '@type': 'Answer', text: 'ZNS Connect is a Web3 identity and domain platform with an active questing system. It distributes ZNS token rewards for completing profile and domain-related tasks. It is a lower-competition platform and good for building on-chain identity, which some airdrop projects look for in wallet analysis.' } },
-    ],
-  },
-  {
-    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.3alamiyweb3.com' },
-      { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://www.3alamiyweb3.com/learn' },
-      { '@type': 'ListItem', position: 3, name: 'Best Airdrop Farming Platforms 2026', item: 'https://www.3alamiyweb3.com/learn/best-airdrop-farming-platforms-2026' },
-    ],
-  },
-];
+const schema1 = {
+  '@context': 'https://schema.org', '@type': 'Article',
+  headline: 'Best Airdrop Farming Platforms 2026 — Ranked and Reviewed',
+  description: 'Honest comparison of the best crypto airdrop farming platforms in 2026.',
+  datePublished: '2026-04-01', dateModified: '2026-06-10',
+  author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
+  publisher: { '@type': 'Organization', name: '3alamiy Web3', logo: { '@type': 'ImageObject', url: 'https://www.3alamiyweb3.com/icon.svg' } },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/best-airdrop-farming-platforms-2026' },
+};
 
-const platforms = [
+const schema2 = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'What is the best airdrop farming platform in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'For finding and tracking airdrop opportunities, 3alamiy Web3 is the most comprehensive. For completing on-chain quest tasks, Galxe and Layer3 both have large ecosystems with real token rewards.' } },
+    { '@type': 'Question', name: 'Is Galxe still worth using in 2026?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, Galxe remains one of the largest quest platforms in 2026 with a credentialing system and GAL token rewards. Its quests are now widely farmed, so competition is high. It works best as part of a broader strategy.' } },
+    { '@type': 'Question', name: 'What is Layer3 and is it legit?', acceptedAnswer: { '@type': 'Answer', text: 'Layer3 is a legitimate quest and credentialing platform backed by major crypto VCs. It distributes LAYER token and rewards users with project tokens, NFTs, and XP points. It is well-regarded for quality curated quests.' } },
+    { '@type': 'Question', name: 'Do I need to pay to use airdrop farming platforms?', acceptedAnswer: { '@type': 'Answer', text: 'No — all platforms reviewed here are free to use. You may need small amounts of ETH or SOL for gas fees. Never pay a fee to join or claim on any of these platforms.' } },
+    { '@type': 'Question', name: 'How do Zealy and Superboard compare?', acceptedAnswer: { '@type': 'Answer', text: 'Zealy focuses on community engagement tasks and gives XP scores. Superboard has stronger DeFi task infrastructure. Superboard is preferred by serious airdrop farmers; Zealy is better for community-focused quests.' } },
+    { '@type': 'Question', name: 'What is ZNS Connect?', acceptedAnswer: { '@type': 'Answer', text: 'ZNS Connect is a Web3 identity and domain platform with an active questing system. It distributes ZNS token rewards and is good for building on-chain identity, which some airdrop projects look for in wallet analysis.' } },
+  ],
+};
+
+const schema3 = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.3alamiyweb3.com' },
+    { '@type': 'ListItem', position: 2, name: 'Learn', item: 'https://www.3alamiyweb3.com/learn' },
+    { '@type': 'ListItem', position: 3, name: 'Best Airdrop Farming Platforms 2026', item: 'https://www.3alamiyweb3.com/learn/best-airdrop-farming-platforms-2026' },
+  ],
+};
+
+type Platform = {
+  rank: number;
+  name: string;
+  tag: string;
+  tagColor: string;
+  tagBg: string;
+  score: number;
+  badge: string;
+  subtitle: string;
+  overview: string;
+  details: string[];
+  pros: string[];
+  cons: string[];
+  best_for: string;
+  taskType: string;
+  tokenRewards: string;
+};
+
+const PLATFORMS: Platform[] = [
   {
     rank: 1,
     name: '3alamiy Web3',
-    url: 'https://www.3alamiyweb3.com',
     tag: 'Best for Tracking',
     tagColor: '#7CF5C0',
     tagBg: 'rgba(124,245,192,0.1)',
     score: 9.4,
     badge: '#1 Airdrop Tracker',
-    badgeColor: '#7CF5C0',
     subtitle: 'The most comprehensive airdrop tracker and guide site',
-    overview: '3alamiy Web3 is a dedicated airdrop tracker with 500+ verified airdrops, step-by-step farming guides, and live status tracking. Unlike quest platforms that show generic social tasks, 3alamiy focuses on high-value airdrop opportunities with real token upside — each listed project is verified for legitimacy, funding, and airdrop potential.',
+    overview: '3alamiy Web3 is a dedicated airdrop tracker with 500+ verified airdrops, step-by-step farming guides, and live status tracking. Unlike quest platforms that show generic social tasks, 3alamiy focuses on high-value airdrop opportunities with real token upside. Each listed project is verified for legitimacy, funding, and airdrop potential.',
     details: [
       '500+ airdrops tracked with live status (Active, Testnet, Ended, Claim)',
-      'Step-by-step farming guides for each project — not just "go use the app"',
+      'Step-by-step farming guides for each project',
       'Hype scores and reward tier estimates for each airdrop',
-      'Upcoming tokenless tracker for projects before they launch tokens',
+      'Upcoming tokenless tracker for pre-token projects',
       'GM Station for building daily on-chain activity across chains',
       'Learn hub with chain-specific and project-specific guides',
     ],
     pros: ['Curated, high-value opportunities', 'Actual step-by-step guides', 'Covers tokenless upcoming projects', 'Free to use, no token required'],
     cons: ['No social quest tasks (by design)', 'Focused on tracking rather than task execution'],
     best_for: 'Farmers who want to know what to farm and exactly how to do it',
+    taskType: 'Tracking + Guides',
+    tokenRewards: 'Indirect (via tracked drops)',
   },
   {
     rank: 2,
     name: 'Galxe',
-    url: 'https://galxe.com',
     tag: 'Largest Quest Platform',
     tagColor: '#a78bfa',
     tagBg: 'rgba(167,139,250,0.1)',
     score: 8.1,
     badge: 'Credentialing Leader',
-    badgeColor: '#a78bfa',
-    subtitle: 'Web3's largest quest platform with 25M+ users',
-    overview: 'Galxe (formerly Project Galaxy) is the most widely used quest platform in Web3 — over 25 million registered users complete tasks for OAT NFTs, GAL token rewards, and project-specific tokens. It operates as a credential layer for blockchain projects, letting protocols issue verifiable on-chain credentials to users who complete tasks. This makes completing Galxe quests valuable beyond just the immediate reward — many airdrop projects use Galxe credential data in their snapshot analysis.',
+    subtitle: 'Web3 largest quest platform with 25M+ users',
+    overview: 'Galxe (formerly Project Galaxy) is the most widely used quest platform in Web3 with over 25 million registered users. It operates as a credential layer for blockchain projects, letting protocols issue verifiable on-chain credentials to users who complete tasks. Completing Galxe quests is valuable beyond the immediate reward — many airdrop projects use Galxe credential data in their snapshot analysis.',
     details: [
       '25M+ registered users, largest quest ecosystem in crypto',
       'OAT (On-chain Achievement Token) system — NFT credentials that prove participation',
@@ -90,21 +106,21 @@ const platforms = [
       'Loyalty points system for frequent users',
     ],
     pros: ['Most campaigns available', 'OATs count toward many airdrop snapshots', 'Official campaigns from top projects', 'Cross-chain support'],
-    cons: ['Very high competition — millions of wallets completing same tasks', 'Many campaigns are low-reward social tasks', 'Platform itself is now well-known — diminishing alpha'],
+    cons: ['Very high competition — millions of wallets farming the same tasks', 'Many campaigns are low-reward social tasks', 'Platform is now well-known — less alpha'],
     best_for: 'Users who want official on-chain credentials that count toward multiple project snapshots',
+    taskType: 'Social + On-chain',
+    tokenRewards: 'GAL + project tokens',
   },
   {
     rank: 3,
     name: 'Layer3',
-    url: 'https://layer3.xyz',
     tag: 'Curated Quests',
     tagColor: '#63b3ed',
     tagBg: 'rgba(99,179,237,0.1)',
     score: 8.3,
     badge: 'Top Quality Tasks',
-    badgeColor: '#63b3ed',
     subtitle: 'Curated quest platform with real token distributions',
-    overview: 'Layer3 positions itself as the quality layer of Web3 questing — it has fewer campaigns than Galxe but curates them more carefully. Each campaign typically involves genuinely using a protocol (real swaps, bridges, loans) rather than social media tasks. Layer3 distributes its own LAYER token to active users and coordinates real token distributions from partnered projects. Backed by major VCs including Electric Capital and Framework Ventures.',
+    overview: 'Layer3 positions itself as the quality layer of Web3 questing — it has fewer campaigns than Galxe but curates them more carefully. Each campaign typically involves genuinely using a protocol rather than social media tasks. Layer3 distributes its own LAYER token to active users and coordinates real token distributions from partnered projects. Backed by major VCs including Electric Capital and Framework Ventures.',
     details: [
       'LAYER token distributed to active platform users (ongoing)',
       'Cubed system: quests grouped into cubes that unlock larger rewards',
@@ -116,19 +132,19 @@ const platforms = [
     pros: ['Higher quality tasks than most platforms', 'LAYER token rewards still active', 'Streak system rewards consistent farmers', 'Good for building genuine DeFi history'],
     cons: ['Fewer campaigns than Galxe', 'Some campaigns have high gas cost', 'Streak maintenance can feel like a chore'],
     best_for: 'Farmers who want on-chain DeFi history and LAYER token exposure',
+    taskType: 'DeFi + Social',
+    tokenRewards: 'LAYER + project tokens',
   },
   {
     rank: 4,
     name: 'Superboard',
-    url: 'https://superboard.xyz',
     tag: 'DeFi Tasks',
     tagColor: '#f59e0b',
     tagBg: 'rgba(245,158,11,0.1)',
     score: 7.8,
     badge: 'Rising Platform',
-    badgeColor: '#f59e0b',
     subtitle: 'On-chain quest platform with strong DeFi task quality',
-    overview: 'Superboard is a growing quest platform known for requiring genuine on-chain DeFi interactions. Unlike platforms that accept tweet likes as proof of participation, Superboard verifies tasks on-chain — you actually have to bridge assets, add liquidity, or interact with the target protocol. This makes its quest completions more meaningful to projects using quest data in their airdrop analysis. Superboard is lower competition than Galxe, making it a good platform for serious farmers.',
+    overview: 'Superboard is a growing quest platform known for requiring genuine on-chain DeFi interactions. Unlike platforms that accept tweet likes as proof of participation, Superboard verifies tasks on-chain — you actually have to bridge assets, add liquidity, or interact with the target protocol. Superboard is lower competition than Galxe, making it a good platform for serious farmers who want their activity to stand out.',
     details: [
       'On-chain task verification — social media tasks limited',
       'Campaigns from emerging protocols often before token launch',
@@ -140,19 +156,19 @@ const platforms = [
     pros: ['Lower competition than big platforms', 'Genuine on-chain task verification', 'Good source of pre-token protocol campaigns', 'Points system with token upside'],
     cons: ['Smaller campaign catalog', 'Less brand recognition', 'Fewer chain integrations than Galxe'],
     best_for: 'Farmers looking for lower-competition on-chain tasks with DeFi protocol exposure',
+    taskType: 'On-chain DeFi',
+    tokenRewards: 'Points + future token',
   },
   {
     rank: 5,
     name: 'Zealy',
-    url: 'https://zealy.io',
     tag: 'Community Tasks',
     tagColor: '#f87171',
     tagBg: 'rgba(248,113,113,0.1)',
     score: 7.2,
     badge: 'Community Leader',
-    badgeColor: '#f87171',
     subtitle: 'Community questing platform for Discord and social tasks',
-    overview: 'Zealy (formerly Crew3) is the leading community quest platform. It specializes in Discord engagement, Twitter interactions, and content creation tasks rather than on-chain DeFi actions. Protocols use Zealy to grow their communities and identify engaged early supporters — many projects factor Zealy XP and leaderboard position into their airdrop criteria. It is best used alongside on-chain activity platforms rather than as a standalone farming tool.',
+    overview: 'Zealy (formerly Crew3) is the leading community quest platform. It specializes in Discord engagement, Twitter interactions, and content creation rather than on-chain DeFi actions. Protocols use Zealy to grow communities and identify engaged early supporters — many projects factor Zealy XP and leaderboard position into their airdrop criteria. It is best used alongside on-chain activity platforms.',
     details: [
       'Leading Discord community quest platform in Web3',
       'XP leaderboard system — top users often receive priority in airdrop allocations',
@@ -161,24 +177,24 @@ const platforms = [
       'Zealy Connect: on-chain verification of community participation',
       'Sprint system for periodic high-XP earning windows',
     ],
-    pros: ['Largest community quest ecosystem', 'Leaderboard position counts toward many airdrops', 'Good for projects that value community engagement', 'Free and easy to start'],
+    pros: ['Largest community quest ecosystem', 'Leaderboard position counts toward many airdrops', 'Good for community-focused projects', 'Free and easy to start'],
     cons: ['Mostly social tasks, not on-chain', 'Discord requirement for most tasks', 'XP alone rarely qualifies for high-value airdrops'],
     best_for: 'Farmers who want to build community standing alongside their on-chain activity',
+    taskType: 'Community/Social',
+    tokenRewards: 'XP + project tokens',
   },
   {
     rank: 6,
     name: 'ZNS Connect',
-    url: 'https://znsconnect.io',
     tag: 'Web3 Identity',
     tagColor: '#34d399',
     tagBg: 'rgba(52,211,153,0.1)',
     score: 7.0,
     badge: 'Identity + Quests',
-    badgeColor: '#34d399',
     subtitle: 'Web3 identity platform with questing and ZNS token rewards',
-    overview: 'ZNS Connect combines a Web3 naming/identity service (like ENS but multi-chain) with an active quest ecosystem that rewards ZNS token for participation. While it is a smaller platform than Galxe or Layer3, its lower competition and focus on identity-building tasks make it worth including in a farming stack. Building a Web3 identity profile (name, linked wallets, verified credentials) is increasingly a factor that some airdrop projects look for when analyzing wallet quality.',
+    overview: 'ZNS Connect combines a Web3 naming/identity service with an active quest ecosystem that rewards ZNS token for participation. Its lower competition and focus on identity-building tasks make it worth including in a farming stack. Building a Web3 identity profile (name, linked wallets, verified credentials) is increasingly a factor that airdrop projects look for when analyzing wallet quality.',
     details: [
-      'Multi-chain Web3 domain registration (like ENS)',
+      'Multi-chain Web3 domain registration (like ENS but multi-chain)',
       'Active quest system with ZNS token rewards',
       'Identity verification tasks that build wallet profile depth',
       'Lower competition = easier to rank on leaderboards',
@@ -187,16 +203,27 @@ const platforms = [
     ],
     pros: ['Low competition platform', 'ZNS token rewards have real value', 'Builds wallet identity profile', 'Multi-chain coverage'],
     cons: ['Smaller ecosystem', 'Less brand recognition', 'Domain registration has a cost'],
-    best_for: 'Farmers who want low-competition rewards and building on-chain identity credentials',
+    best_for: 'Farmers who want low-competition rewards and on-chain identity credentials',
+    taskType: 'Identity + Quests',
+    tokenRewards: 'ZNS token',
   },
+];
+
+const FAQS = [
+  { q: 'What is the best airdrop farming platform in 2026?', a: 'It depends on what you mean by farming. For finding and tracking high-value airdrop opportunities with step-by-step guides, 3alamiy Web3 is the most comprehensive. For completing on-chain quest tasks and earning credentials, Galxe and Layer3 are the largest ecosystems. Most serious farmers use all three in combination.' },
+  { q: 'Is Galxe still worth using in 2026?', a: 'Yes. Despite being well-known, Galxe OATs and credentials are still used by many projects in their snapshot analysis. The platform integrates with major L2 ecosystems including Arbitrum, Base, and Linea. The main downside is high competition — millions of wallets completing the same tasks.' },
+  { q: 'What is Layer3 and is it legit?', a: 'Layer3 is a legitimate and VC-backed quest platform. It distributes LAYER token to active users and offers curated DeFi quests that require genuine on-chain interaction. The streak system rewards consistent users, making it good for long-term farmers.' },
+  { q: 'Do I need to pay to use these platforms?', a: 'No — all six platforms reviewed here are free to use. You may need small amounts of ETH or SOL for gas fees when completing on-chain tasks. Never pay a fee to join or claim on any of these platforms.' },
+  { q: 'How do Zealy and Superboard compare?', a: 'They serve different needs. Zealy focuses on community tasks — Discord activity, Twitter engagement — and rewards XP. Superboard requires genuine on-chain DeFi interactions for task completion. Serious airdrop farmers prefer Superboard for on-chain farming; Zealy is better for building community presence.' },
+  { q: 'What is ZNS Connect?', a: 'ZNS Connect is a multi-chain Web3 identity platform. It offers domain/name registration and an active quest system that rewards ZNS token. Its main appeal for airdrop farmers is low competition and identity-building.' },
 ];
 
 export default function BestAirdropFarmingPlatforms() {
   return (
     <>
-      {schemas.map((s, i) => (
-        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
-      ))}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema1) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema2) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema3) }} />
       <style>{`
         .bp { max-width: 860px; margin: 0 auto; padding: 48px 20px 80px; color: rgba(255,255,255,0.85); }
         .bp-bc { font-size: 12px; color: rgba(255,255,255,0.3); margin-bottom: 28px; display: flex; gap: 6px; flex-wrap: wrap; }
@@ -235,13 +262,9 @@ export default function BestAirdropFarmingPlatforms() {
         .bp-detail-list { padding: 0; margin: 0; list-style: none; }
         .bp-detail-list li { font-size: 12px; color: rgba(255,255,255,0.5); padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; gap: 6px; }
         .bp-detail-list li:last-child { border-bottom: none; }
-        .bp-pos::before { content: "✓"; color: #7CF5C0; flex-shrink: 0; font-size: 11px; }
-        .bp-neg::before { content: "×"; color: #f87171; flex-shrink: 0; font-size: 13px; }
         .bp-best { background: rgba(124,245,192,0.05); border: 1px solid rgba(124,245,192,0.12); border-radius: 10px; padding: 10px 14px; font-size: 12px; color: rgba(255,255,255,0.5); }
-        .bp-best strong { color: #7CF5C0; }
         .bp-feature-list { list-style: none; padding: 0; margin: 0 0 16px; }
         .bp-feature-list li { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; gap: 8px; align-items: flex-start; }
-        .bp-feature-list li::before { content: "→"; color: #7CF5C0; flex-shrink: 0; }
         .bp-faq { display: flex; flex-direction: column; gap: 8px; }
         .bp-faq-item { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 18px 20px; }
         .bp-faq-q { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 8px; }
@@ -251,7 +274,6 @@ export default function BestAirdropFarmingPlatforms() {
         .bp-tip-body { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.65; margin: 0; }
         .bp-routine { display: flex; flex-direction: column; gap: 8px; margin: 16px 0; }
         .bp-routine-item { display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 12px 16px; }
-        .bp-routine-icon { font-size: 18px; flex-shrink: 0; }
         .bp-routine-title { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.85); margin-bottom: 3px; }
         .bp-routine-text { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; }
         .bp-cta { background: linear-gradient(135deg, rgba(124,245,192,0.07), rgba(99,102,241,0.04)); border: 1px solid rgba(124,245,192,0.15); border-radius: 16px; padding: 28px; text-align: center; margin-top: 48px; }
@@ -277,7 +299,7 @@ export default function BestAirdropFarmingPlatforms() {
           <span className="bp-tag n">Updated June 10, 2026</span>
         </div>
         <p className="bp-intro">There are dozens of platforms claiming to help you earn crypto airdrops. We tested six of the most-used platforms in 2026, evaluated their task quality, reward rates, and how much the activity actually matters to airdrop projects when they analyze wallet history.</p>
-        <p className="bp-intro">The summary: no single platform covers everything. Serious airdrop farmers use a combination — a tracker for finding opportunities, a quest platform for on-chain credentials, and a community platform for Discord standing. Here is how each stacks up.</p>
+        <p className="bp-intro">No single platform covers everything. Serious airdrop farmers use a combination — a tracker for finding opportunities, a quest platform for on-chain credentials, and a community platform for Discord standing.</p>
 
         <div className="bp-div" />
 
@@ -295,12 +317,12 @@ export default function BestAirdropFarmingPlatforms() {
                 </tr>
               </thead>
               <tbody>
-                {platforms.map(p => (
+                {PLATFORMS.map(p => (
                   <tr key={p.name}>
                     <td><strong style={{ color: '#fff' }}>{p.name}</strong></td>
                     <td>{p.tag}</td>
-                    <td>{p.name === '3alamiy Web3' ? 'Tracking + Guides' : p.name === 'Galxe' ? 'Social + On-chain' : p.name === 'Layer3' ? 'DeFi + Social' : p.name === 'Superboard' ? 'On-chain DeFi' : p.name === 'Zealy' ? 'Community/Social' : 'Identity + Quests'}</td>
-                    <td>{p.name === '3alamiy Web3' ? 'Indirect (via tracked drops)' : p.name === 'Galxe' ? 'GAL + project tokens' : p.name === 'Layer3' ? 'LAYER + project tokens' : p.name === 'Superboard' ? 'Points + future token' : p.name === 'Zealy' ? 'XP + project tokens' : 'ZNS token'}</td>
+                    <td>{p.taskType}</td>
+                    <td>{p.tokenRewards}</td>
                     <td><span className="bp-score">{p.score}/10</span></td>
                   </tr>
                 ))}
@@ -313,12 +335,12 @@ export default function BestAirdropFarmingPlatforms() {
 
         <section>
           <h2 className="bp-h2">Platform Deep Dives</h2>
-          <p className="bp-p">Here is what each platform actually offers, what it is good at, and where it falls short.</p>
+          <p className="bp-p">What each platform actually offers, what it is good at, and where it falls short.</p>
 
-          {platforms.map(p => (
+          {PLATFORMS.map(p => (
             <div key={p.name} className="bp-card">
               <div className="bp-card-top">
-                <div className="bp-rank" style={{ background: `${p.tagBg}`, border: `1px solid ${p.tagColor}30`, color: p.tagColor }}>
+                <div className="bp-rank" style={{ background: p.tagBg, border: `1px solid ${p.tagColor}30`, color: p.tagColor }}>
                   #{p.rank}
                 </div>
                 <div className="bp-card-info">
@@ -340,7 +362,9 @@ export default function BestAirdropFarmingPlatforms() {
               <div className="bp-detail-box" style={{ marginBottom: '12px' }}>
                 <div className="bp-detail-title">Key Features</div>
                 <ul className="bp-detail-list">
-                  {p.details.map(d => <li key={d}><span style={{ color: p.tagColor, flexShrink: 0 }}>→</span>{d}</li>)}
+                  {p.details.map(d => (
+                    <li key={d}><span style={{ color: p.tagColor, flexShrink: 0 }}>→</span>{d}</li>
+                  ))}
                 </ul>
               </div>
 
@@ -348,18 +372,22 @@ export default function BestAirdropFarmingPlatforms() {
                 <div className="bp-detail-box">
                   <div className="bp-detail-title">Pros</div>
                   <ul className="bp-detail-list">
-                    {p.pros.map(pro => <li key={pro} className="bp-pos">{pro}</li>)}
+                    {p.pros.map(pro => (
+                      <li key={pro}><span style={{ color: '#7CF5C0', flexShrink: 0 }}>✓</span>{pro}</li>
+                    ))}
                   </ul>
                 </div>
                 <div className="bp-detail-box">
                   <div className="bp-detail-title">Cons</div>
                   <ul className="bp-detail-list">
-                    {p.cons.map(con => <li key={con} className="bp-neg">{con}</li>)}
+                    {p.cons.map(con => (
+                      <li key={con}><span style={{ color: '#f87171', flexShrink: 0 }}>✕</span>{con}</li>
+                    ))}
                   </ul>
                 </div>
               </div>
 
-              <div className="bp-best"><strong>Best for: </strong>{p.best_for}</div>
+              <div className="bp-best"><strong style={{ color: '#7CF5C0' }}>Best for: </strong>{p.best_for}</div>
             </div>
           ))}
         </section>
@@ -368,15 +396,15 @@ export default function BestAirdropFarmingPlatforms() {
 
         <section>
           <h2 className="bp-h2">How to Use These Platforms Together</h2>
-          <p className="bp-p">The best airdrop farmers do not just use one platform — they build a stack. Here is the recommended daily and weekly routine used by serious farmers:</p>
+          <p className="bp-p">The best airdrop farmers do not just use one platform — they build a stack. Here is the recommended routine:</p>
           <div className="bp-routine">
             {[
-              { icon: '🌅', title: 'Daily (5–10 minutes)', text: 'GM Station on 3alamiy Web3 to build on-chain activity. Check 3alamiy for any new active airdrops. Complete Layer3 daily streak task.' },
-              { icon: '📅', title: 'Weekly (30–60 minutes)', text: 'Complete all active campaigns on Galxe and Superboard. Check Zealy leaderboard positions for top 2–3 projects you are farming. Bridge and interact with 1–2 new protocols from 3alamiy Upcoming page.' },
-              { icon: '📊', title: 'Monthly (2–3 hours)', text: 'Audit your farming list on 3alamiy — remove ended projects, add newly listed ones. Check your ZNS identity profile. Review your Layer3 cube progress. Revoke unused token approvals at revoke.cash.' },
+              { icon: '🌅', title: 'Daily (5-10 minutes)', text: 'GM Station on 3alamiy Web3 to build on-chain activity. Check 3alamiy for new active airdrops. Complete Layer3 daily streak task.' },
+              { icon: '📅', title: 'Weekly (30-60 minutes)', text: 'Complete active campaigns on Galxe and Superboard. Check Zealy leaderboard for top 2-3 projects you are farming. Bridge and interact with 1-2 new protocols from 3alamiy Upcoming page.' },
+              { icon: '📊', title: 'Monthly (2-3 hours)', text: 'Audit your farming list on 3alamiy — remove ended projects, add new ones. Review Layer3 cube progress. Revoke unused token approvals at revoke.cash.' },
             ].map(r => (
               <div key={r.title} className="bp-routine-item">
-                <div className="bp-routine-icon">{r.icon}</div>
+                <div style={{ fontSize: '18px', flexShrink: 0 }}>{r.icon}</div>
                 <div>
                   <div className="bp-routine-title">{r.title}</div>
                   <div className="bp-routine-text">{r.text}</div>
@@ -386,8 +414,8 @@ export default function BestAirdropFarmingPlatforms() {
           </div>
 
           <div className="bp-tip">
-            <div className="bp-tip-lbl">💡 The Core Insight</div>
-            <p className="bp-tip-body">Quest platforms (Galxe, Layer3) build on-chain credentials. Trackers (3alamiy Web3) show you what to farm. Community platforms (Zealy) build your social standing. Use all three — but prioritize on-chain actions over social tasks. Projects weight genuine protocol usage 10× more than Discord roles.</p>
+            <div className="bp-tip-lbl">The Core Insight</div>
+            <p className="bp-tip-body">Quest platforms (Galxe, Layer3) build on-chain credentials. Trackers (3alamiy Web3) show you what to farm. Community platforms (Zealy) build your social standing. Use all three — but prioritize on-chain actions over social tasks. Projects weight genuine protocol usage 10x more than Discord roles.</p>
           </div>
         </section>
 
@@ -395,14 +423,20 @@ export default function BestAirdropFarmingPlatforms() {
 
         <section>
           <h2 className="bp-h2">Which Platform Should You Start With?</h2>
-          <p className="bp-p">If you are new to airdrop farming, here is a simple decision guide:</p>
           <ul className="bp-feature-list">
-            <li>New to crypto and not sure where to start → <strong style={{ color: '#7CF5C0' }}>3alamiy Web3</strong> — browse the tracker, filter by Easy/Free, follow the guides</li>
-            <li>Want on-chain credentials that count toward multiple snapshots → <strong style={{ color: '#a78bfa' }}>Galxe</strong> — largest quest ecosystem, most coverage</li>
-            <li>Want to farm DeFi protocols consistently and earn LAYER token → <strong style={{ color: '#63b3ed' }}>Layer3</strong> — best streak system, quality curated tasks</li>
-            <li>Want lower competition with genuine on-chain verification → <strong style={{ color: '#f59e0b' }}>Superboard</strong> — fewer users farming same campaigns</li>
-            <li>Already farming on-chain but want community standing → <strong style={{ color: '#f87171' }}>Zealy</strong> — Discord community quests and XP leaderboards</li>
-            <li>Want to build Web3 identity profile and earn ZNS token → <strong style={{ color: '#34d399' }}>ZNS Connect</strong> — lowest competition, identity-focused</li>
+            {[
+              { text: 'New to crypto and not sure where to start', rec: '3alamiy Web3', color: '#7CF5C0' },
+              { text: 'Want on-chain credentials that count toward multiple snapshots', rec: 'Galxe', color: '#a78bfa' },
+              { text: 'Want to farm DeFi protocols consistently and earn LAYER token', rec: 'Layer3', color: '#63b3ed' },
+              { text: 'Want lower competition with genuine on-chain verification', rec: 'Superboard', color: '#f59e0b' },
+              { text: 'Already farming on-chain but want community standing', rec: 'Zealy', color: '#f87171' },
+              { text: 'Want to build Web3 identity profile and earn ZNS token', rec: 'ZNS Connect', color: '#34d399' },
+            ].map(item => (
+              <li key={item.rec}>
+                <span style={{ color: '#7CF5C0' }}>→</span>
+                <span>{item.text} → <strong style={{ color: item.color }}>{item.rec}</strong></span>
+              </li>
+            ))}
           </ul>
         </section>
 
@@ -411,14 +445,7 @@ export default function BestAirdropFarmingPlatforms() {
         <section>
           <h2 className="bp-h2">Frequently Asked Questions</h2>
           <div className="bp-faq">
-            {[
-              { q: 'What is the best airdrop farming platform in 2026?', a: 'It depends on what you mean by "farming." For finding and tracking high-value airdrop opportunities with step-by-step guides, 3alamiy Web3 is the most comprehensive. For completing on-chain quest tasks and earning credentials, Galxe and Layer3 are the largest ecosystems. Most serious farmers use all three in combination.' },
-              { q: 'Is Galxe still worth using in 2026?', a: 'Yes. Despite being well-known, Galxe OATs and credentials are still used by many projects in their snapshot analysis. The platform integrates with major L2 ecosystems including Arbitrum, Base, and Linea. The main downside is high competition — millions of wallets completing the same tasks — but the credentials themselves remain valuable.' },
-              { q: 'What is Layer3 and is it legit?', a: 'Layer3 is a legitimate and VC-backed quest platform. It distributes LAYER token to active users and offers curated DeFi quests that require genuine on-chain interaction. It is well-regarded in the farming community for task quality. The streak system rewards consistent users, making it good for long-term farmers.' },
-              { q: 'Do I need to pay to use these platforms?', a: 'No — all six platforms reviewed here are free to use. You may need small amounts of ETH or SOL for gas fees when completing on-chain tasks. Never pay a fee to join or claim on any of these platforms.' },
-              { q: 'How do Zealy and Superboard compare?', a: 'They serve different needs. Zealy focuses on community tasks — Discord activity, Twitter engagement — and rewards XP. Superboard requires genuine on-chain DeFi interactions for task completion. Serious airdrop farmers prefer Superboard for on-chain farming; Zealy is better for building community presence alongside on-chain activity.' },
-              { q: 'What is ZNS Connect?', a: 'ZNS Connect is a multi-chain Web3 identity platform. It offers domain/name registration and an active quest system that rewards ZNS token. Its main appeal for airdrop farmers is low competition and identity-building — some airdrop projects factor in wallet profile depth (domains, credentials, identity data) when doing snapshot analysis.' },
-            ].map((f, i) => (
+            {FAQS.map((f, i) => (
               <div key={i} className="bp-faq-item">
                 <div className="bp-faq-q">{f.q}</div>
                 <p className="bp-faq-a">{f.a}</p>
@@ -431,8 +458,8 @@ export default function BestAirdropFarmingPlatforms() {
           <div className="bp-cta-title">Find your next high-value airdrop</div>
           <div className="bp-cta-sub">500+ verified airdrops with step-by-step guides, live status, and reward estimates.</div>
           <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/airdrops" className="bp-btn-p">Browse Airdrops →</Link>
-            <Link href="/upcoming" className="bp-btn-s">Upcoming Drops →</Link>
+            <Link href="/airdrops" className="bp-btn-p">Browse Airdrops</Link>
+            <Link href="/upcoming" className="bp-btn-s">Upcoming Drops</Link>
           </div>
         </div>
       </main>
