@@ -8,6 +8,7 @@ const BASE = 'https://www.3alamiyweb3.com';
 // ✅ VALID slugs only — must exist in [slug]/page.tsx articles object OR as a folder
 const articles = [
   // — New articles (June 2026) — keep at top so they get re-crawled first
+  'phantom-airdrop-guide-2026',
   'metamask-airdrop-guide-2026',
   'how-to-farm-unichain-airdrop',
   'kaito-airdrop-guide-2026',
@@ -104,6 +105,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Article publish/update dates — use real dates so Google trusts lastModified
   const ARTICLE_DATES: Record<string, string> = {
+    'phantom-airdrop-guide-2026':             '2026-06-11',
     'metamask-airdrop-guide-2026':            '2026-06-10',
     'how-to-get-crypto-airdrops-2026':        '2026-06-10',
     'best-airdrop-farming-platforms-2026':    '2026-06-10',
