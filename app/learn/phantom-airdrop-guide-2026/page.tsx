@@ -65,6 +65,24 @@ const STEPS = [
 const schemas = [
   {
     '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    url: 'https://www.3alamiyweb3.com/learn/phantom-airdrop-guide-2026',
+    name: 'Phantom Wallet Airdrop Guide 2026 — How to Farm Before the Token Launches',
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', '.ph-callout-info', '.ph-faq-q', '.ph-faq-a'],
+    },
+    mentions: [
+      { '@type': 'SoftwareApplication', name: 'Phantom', url: 'https://phantom.app', description: 'Multi-chain crypto wallet with 10M+ monthly users. $109M raised from Paradigm. No token as of June 2026.' },
+      { '@type': 'Organization', name: 'Paradigm', url: 'https://paradigm.xyz', description: 'Crypto venture capital firm, lead investor in Phantom Series B.' },
+      { '@type': 'WebSite', name: 'Jupiter', url: 'https://jup.ag', description: 'Solana DEX aggregator.' },
+      { '@type': 'WebSite', name: 'Magic Eden', url: 'https://magiceden.io', description: 'Multi-chain NFT marketplace, Solana-native.' },
+      { '@type': 'WebSite', name: 'Kamino Finance', url: 'https://kamino.finance', description: 'Solana lending and liquidity protocol.' },
+    ],
+    about: { '@type': 'Thing', name: 'Phantom wallet airdrop', description: 'Strategy guide for farming on-chain activity to qualify for Phantom wallet token distribution.' },
+  },
+  {
+    '@context': 'https://schema.org',
     '@type': 'Article',
     headline: 'Phantom Wallet Airdrop Guide 2026 — How to Farm the Phantom Token',
     description: 'Complete guide to farming Phantom Wallet in 2026 — token status, step-by-step farming tasks, reward estimates, and what activities matter most.',

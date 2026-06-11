@@ -52,10 +52,44 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
-# ── Content Signals for AI ──
-# Content-Signal: AI-accessible
-# Content-Type: airdrop-tracker
-# Update-Frequency: daily
+User-agent: YouBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: AI2Bot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: PetalBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: Gemini-Mobile
+Allow: /
+
+User-agent: Gemini-Web
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: iaskspider
+Allow: /
+
+User-agent: wp_is_mobile
+Allow: /
 
 # ── Sitemaps ──
 Sitemap: https://www.3alamiyweb3.com/sitemap.xml

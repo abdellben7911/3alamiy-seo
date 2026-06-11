@@ -102,6 +102,25 @@ const FAQS = [
   { q: 'What is the best airdrop for beginners?', a: 'Start with Sui or Solana testnet airdrops — free and beginner-friendly. Then move to free Arbitrum/Base protocols. Browse 3alamiy Web3 and filter by Easy difficulty + Free cost to see the best beginner options available right now.' },
 ];
 
+
+const schema5 = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  url: 'https://www.3alamiyweb3.com/learn/how-to-get-crypto-airdrops-2026',
+  name: 'How to Get Crypto Airdrops 2026 — Complete Beginner Guide',
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', 'h2', '.step-title', '.faq-q', '.faq-a'],
+  },
+  mentions: [
+    { '@type': 'SoftwareApplication', name: 'MetaMask', url: 'https://metamask.io', description: 'Ethereum browser wallet. Most widely used for airdrop farming.' },
+    { '@type': 'SoftwareApplication', name: 'Phantom', url: 'https://phantom.app', description: 'Solana + multi-chain wallet.' },
+    { '@type': 'WebSite', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com', description: 'Free crypto airdrop tracker with 130+ step-by-step guides.' },
+    { '@type': 'WebSite', name: 'Galxe', url: 'https://galxe.com', description: 'On-chain quest platform for airdrop campaigns.' },
+  ],
+  about: { '@type': 'Thing', name: 'Crypto airdrops', description: 'Free cryptocurrency distributions to early users. Complete beginner guide to qualifying in 2026.' },
+};
+
 export default function HowToGetCryptoAirdrops() {
   return (
     <>
@@ -109,6 +128,7 @@ export default function HowToGetCryptoAirdrops() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema2) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema3) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema4) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema5) }} />
       <style>{`
         .hg { max-width: 800px; margin: 0 auto; padding: 48px 20px 80px; color: rgba(255,255,255,0.85); }
         .hg-bc { font-size: 12px; color: rgba(255,255,255,0.3); margin-bottom: 28px; display: flex; gap: 6px; flex-wrap: wrap; }

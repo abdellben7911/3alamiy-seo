@@ -32,12 +32,12 @@ async function getTestimonials() {
 }
 
 export const metadata = {
-  title: '3alamiy Web3 — Best Crypto Airdrop Tracker 2026 | 110+ Free Guides',
-  description: 'The best free crypto airdrop tracker in 2026. 110+ verified step-by-step guides for Ethereum, Solana, Hyperliquid, Sui, Base, Arbitrum and more. Updated daily.',
-  keywords: 'best crypto airdrops 2026, free crypto airdrop, airdrop tracker, ethereum airdrop, solana airdrop, hyperliquid airdrop, polymarket airdrop',
+  title: '3alamiy Web3 — Best Crypto Airdrop Tracker 2026 | 130+ Free Guides',
+  description: 'The best free crypto airdrop tracker in 2026. 130+ verified step-by-step guides for Ethereum, Solana, Hyperliquid, Sui, Base, Arbitrum and more. Updated daily.',
+  keywords: 'best crypto airdrops 2026, free crypto airdrop, airdrop tracker, ethereum airdrop, solana airdrop, hyperliquid airdrop, polymarket airdrop, metamask airdrop, phantom airdrop, soneium airdrop',
   openGraph: {
-    title: '3alamiy Web3 — Best Crypto Airdrop Tracker 2026 | 110+ Free Guides',
-    description: 'The best free crypto airdrop tracker in 2026. 110+ verified step-by-step guides for Ethereum, Solana, Hyperliquid, Sui, Base, Arbitrum and more. Updated daily.',
+    title: '3alamiy Web3 — Best Crypto Airdrop Tracker 2026 | 130+ Free Guides',
+    description: 'The best free crypto airdrop tracker in 2026. 130+ verified step-by-step guides for Ethereum, Solana, Hyperliquid, Sui, Base, Arbitrum and more. Updated daily.',
     url: 'https://www.3alamiyweb3.com',
     siteName: '3alamiy Web3',
     type: 'website',
@@ -104,6 +104,47 @@ export default async function Home() {
     .filter((a: any) => a.status === 'Active' && a.cost === 'Free' && a.difficulty === 'Easy')
     .slice(0, 3);
 
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: '3alamiy Web3',
+    url: 'https://www.3alamiyweb3.com',
+    logo: 'https://www.3alamiyweb3.com/icon.svg',
+    description: 'Free crypto airdrop tracker and guide platform. 130+ verified step-by-step guides for Ethereum, Solana, Hyperliquid, Base, Arbitrum and more. Updated daily.',
+    sameAs: [
+      'https://t.me/web33alamiy',
+      'https://x.com/3alamiyweb3',
+    ],
+    knowsAbout: [
+      'Crypto airdrops', 'Airdrop farming', 'DeFi protocols', 'Ethereum L2s',
+      'Solana ecosystem', 'Web3 wallets', 'Hyperliquid', 'Polymarket',
+      'MetaMask', 'Phantom wallet', 'Soneium', 'On-chain activity building',
+    ],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'contact@3alamiyweb3.com',
+      contactType: 'customer support',
+    },
+  };
+
+  const webSiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: '3alamiy Web3',
+    url: 'https://www.3alamiyweb3.com',
+    description: 'The best free crypto airdrop tracker in 2026. Step-by-step guides for 130+ verified airdrops. Updated daily.',
+    inLanguage: 'en',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: 'https://www.3alamiyweb3.com/airdrops?q={search_term_string}' },
+      'query-input': 'required name=search_term_string',
+    },
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', '.hp-tagline', '.hp-stat-val'],
+    },
+  };
+
   const datasetSchema = {
     '@context': 'https://schema.org',
     '@type': 'Dataset',
@@ -151,6 +192,8 @@ export default async function Home() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />

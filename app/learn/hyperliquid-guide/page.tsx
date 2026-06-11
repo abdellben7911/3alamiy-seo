@@ -25,6 +25,13 @@ const jsonLd = {
   dateModified: '2026-06-08',
   mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/hyperliquid-guide' },
   speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.hl-guide-intro'] },
+  mentions: [
+    { '@type': 'WebSite', name: 'Hyperliquid', url: 'https://hyperliquid.xyz', description: 'On-chain perpetual futures DEX. HYPE token launched. Season 2 has 38.8% supply reserved.' },
+    { '@type': 'Thing', name: 'HYPE token', description: 'Native governance and utility token of Hyperliquid.' },
+    { '@type': 'WebSite', name: 'HyperEVM', description: 'EVM-compatible chain on top of Hyperliquid. Mainnet live 2025.' },
+    { '@type': 'WebSite', name: 'HyperSwap', description: 'DEX on HyperEVM ecosystem.' },
+    { '@type': 'WebSite', name: 'HyperLend', description: 'Lending protocol on HyperEVM.' },
+  ],
 };
 
 const faqSchema = {

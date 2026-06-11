@@ -27,6 +27,23 @@ const FAQS = [
 const schemas = [
   {
     '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    url: 'https://www.3alamiyweb3.com/learn/metamask-airdrop-guide-2026',
+    name: 'MetaMask Airdrop Guide 2026 — How to Farm the MASK Token',
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', '.mm-callout-info', '.mm-faq-q', '.mm-faq-a'],
+    },
+    mentions: [
+      { '@type': 'Organization', name: 'MetaMask', url: 'https://metamask.io', description: 'Ethereum browser wallet with 30M+ monthly users. No token as of June 2026.' },
+      { '@type': 'Organization', name: 'ConsenSys', url: 'https://consensys.io', description: 'Blockchain software company, creator of MetaMask.' },
+      { '@type': 'SoftwareApplication', name: 'MetaMask Portfolio', url: 'https://portfolio.metamask.io', description: 'MetaMask multi-chain portfolio tracker.' },
+      { '@type': 'SoftwareApplication', name: 'MetaMask Bridge', description: 'MetaMask cross-chain bridge aggregator.' },
+    ],
+    about: { '@type': 'Thing', name: 'Crypto airdrop farming', description: 'On-chain activity strategies to qualify for MetaMask token airdrop.' },
+  },
+  {
+    '@context': 'https://schema.org',
     '@type': 'Article',
     headline: 'MetaMask Airdrop Guide 2026 — How to Farm the MASK Token',
     description: 'Complete guide to farming MetaMask in 2026 — token status, farming steps, reward estimates, and what activities matter most.',

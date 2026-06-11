@@ -60,6 +60,23 @@ const STEPS = [
 const schemas = [
   {
     '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    url: 'https://www.3alamiyweb3.com/learn/soneium-airdrop-guide-2026',
+    name: 'Soneium Airdrop Guide 2026 — How to Farm Sony\'s Ethereum L2',
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', '.sn-callout-info', '.sn-faq-q', '.sn-faq-a'],
+    },
+    mentions: [
+      { '@type': 'Corporation', name: 'Sony Group Corporation', url: 'https://sony.com', description: 'Japanese multinational conglomerate, parent company of Soneium.' },
+      { '@type': 'Organization', name: 'Startale Labs', description: 'Web3 company founded by Sota Watanabe, co-builder of Soneium.' },
+      { '@type': 'WebSite', name: 'Soneium', url: 'https://soneium.org', description: 'Ethereum L2 built by Sony Block Solutions Labs. Mainnet launched January 2025.' },
+      { '@type': 'WebSite', name: 'Optimism', url: 'https://optimism.io', description: 'Ethereum L2 and creator of the OP Stack used by Soneium.' },
+    ],
+    about: { '@type': 'Thing', name: 'Soneium airdrop farming', description: "Strategy guide for building on-chain history on Sony's Soneium L2 before a potential token distribution." },
+  },
+  {
+    '@context': 'https://schema.org',
     '@type': 'Article',
     headline: "Soneium Airdrop Guide 2026 — How to Farm Sony's Ethereum L2",
     description: "Complete guide to farming Soneium in 2026 — token status, step-by-step tasks, ecosystem overview, and what activities build the strongest airdrop profile.",

@@ -141,11 +141,29 @@ const signals = [
   { label: "KYC", desc: "No KYC confirmed — standard for DeFi prediction markets", likely: false },
 ];
 
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  url: 'https://www.3alamiyweb3.com/learn/polymarket-airdrop-guide-2026',
+  name: 'Polymarket POLY Airdrop Guide 2026',
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', 'h2', '.pm-callout', '.pm-faq-q', '.pm-faq-a'],
+  },
+  mentions: [
+    { '@type': 'WebSite', name: 'Polymarket', url: 'https://polymarket.com', description: 'Largest prediction market. $10.57B May 2026 volume. POLY token confirmed.' },
+    { '@type': 'Thing', name: 'POLY token', description: 'Upcoming governance token of Polymarket.' },
+    { '@type': 'Organization', name: 'UMA Protocol', description: 'Optimistic oracle used by Polymarket for market resolution.' },
+  ],
+  about: { '@type': 'Thing', name: 'Polymarket airdrop', description: 'Guide to qualifying for the POLY token distribution by trading on Polymarket prediction markets.' },
+};
+
 export default function PolymarketAirdropGuide2026() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
 
       <style>{`
         .pm * { box-sizing: border-box; }
