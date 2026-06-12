@@ -45,7 +45,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '3alamiy Web3 — Best Crypto Airdrop Tracker 2026',
-    description: 'The best free crypto airdrop tracker in 2026. 110+ verified step-by-step guides. Updated daily.',
+    description: 'The best free crypto airdrop tracker in 2026. 130+ verified step-by-step guides. Updated daily.',
     site: '@3alamiyweb3',
   },
   alternates: {
@@ -100,9 +100,11 @@ export default async function Home() {
   const activeCount = airdrops.filter((a: any) => a.status === 'Active').length;
   const freeCount = airdrops.filter((a: any) => a.cost === 'Free').length;
 
-  const starterAirdrops = airdrops
-    .filter((a: any) => a.status === 'Active' && a.cost === 'Free' && a.difficulty === 'Easy')
-    .slice(0, 3);
+  const BEGINNER_PRIORITY = ['Galxe', 'Hyperliquid', 'MetaMask', 'Phantom', 'LayerZero'];
+  const easyFreeActive = airdrops.filter((a: any) => a.status === 'Active' && a.cost === 'Free' && a.difficulty === 'Easy');
+  const preferred = BEGINNER_PRIORITY.map(n => easyFreeActive.find((a: any) => a.name === n)).filter(Boolean);
+  const rest = easyFreeActive.filter((a: any) => !BEGINNER_PRIORITY.includes(a.name));
+  const starterAirdrops = [...preferred, ...rest].slice(0, 3);
 
   const organizationSchema = {
     '@context': 'https://schema.org',
@@ -656,42 +658,6 @@ export default async function Home() {
 
         <div className="divider" />
 
-        {/* SOCIAL PROOF */}
-        <section className="section">
-          <div className="section-inner">
-            <div className="sec-hdr">
-              <div>
-                <div className="section-label">Proof, not promises</div>
-                <div className="section-title">From our Telegram community — real results, real people.</div>
-                <div className="section-sub">Members sharing their wins in our Telegram. Join 500+ farmers tracking airdrops daily.</div>
-              </div>
-              <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="view-all">Share yours →</a>
-            </div>
-            <div className="proof-grid">
-              {testimonials.map((p: any, i: number) => {
-                const color = proofColors[i % proofColors.length];
-                const av = p.avatar || p.handle?.[1]?.toUpperCase() || '?';
-                return (
-                  <div key={p.handle} className="proof-card" style={{ animationDelay: `${i * 0.1}s` }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <div className="proof-avatar" style={{ background: `${color}18`, border: `1px solid ${color}30`, color }}>{av}</div>
-                      <div>
-                        <div className="proof-handle">{p.handle}</div>
-                        <div className="proof-on">on 3alamiy Web3</div>
-                      </div>
-                    </div>
-                    <div className="proof-claim">Claimed {p.claim}</div>
-                    <p className="proof-text">"{p.text}"</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <div className="divider" />
-
-
         {/* Crypto Cards Section */}
         <div className="cc-section">
           <div className="cc-inner">
@@ -740,6 +706,42 @@ export default async function Home() {
           </div>
         </div>
 
+        <div className="divider" />
+
+        {/* SOCIAL PROOF */}
+        <section className="section">
+          <div className="section-inner">
+            <div className="sec-hdr">
+              <div>
+                <div className="section-label">Proof, not promises</div>
+                <div className="section-title">From our Telegram community — real results, real people.</div>
+                <div className="section-sub">Members sharing their wins in our Telegram. Join 500+ farmers tracking airdrops daily.</div>
+              </div>
+              <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer" className="view-all">Share yours →</a>
+            </div>
+            <div className="proof-grid">
+              {testimonials.map((p: any, i: number) => {
+                const color = proofColors[i % proofColors.length];
+                const av = p.avatar || p.handle?.[1]?.toUpperCase() || '?';
+                return (
+                  <div key={p.handle} className="proof-card" style={{ animationDelay: `${i * 0.1}s` }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <div className="proof-avatar" style={{ background: `${color}18`, border: `1px solid ${color}30`, color }}>{av}</div>
+                      <div>
+                        <div className="proof-handle">{p.handle}</div>
+                        <div className="proof-on">on 3alamiy Web3</div>
+                      </div>
+                    </div>
+                    <div className="proof-claim">Claimed {p.claim}</div>
+                    <p className="proof-text">"{p.text}"</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <div className="divider" />
 
         <div className="content" style={{ paddingTop: '72px', paddingBottom: '72px' }}>
           <div style={{ marginBottom: '32px' }}>
