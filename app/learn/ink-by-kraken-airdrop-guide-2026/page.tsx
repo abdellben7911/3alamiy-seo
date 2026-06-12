@@ -346,10 +346,12 @@ export default function InkKrakenAirdropGuide() {
             <div className="ik-related-title">Related OP Stack Guides</div>
             <div className="ik-related-grid">
               {[
-                { href: '/learn/soneium-airdrop-guide-2026', label: 'L2 Guide', title: "Soneium Airdrop Guide 2026" },
-                { href: '/learn/how-to-farm-unichain-airdrop', label: 'L2 Guide', title: 'Unichain Airdrop Guide 2026' },
+                { href: '/learn/soneium-airdrop-guide-2026', label: 'L2 Guide', title: 'Soneium Airdrop Guide 2026' },
+                { href: '/learn/metamask-airdrop-guide-2026', label: 'Wallet Guide', title: 'MetaMask Airdrop Guide 2026' },
+                { href: '/learn/hyperliquid-guide', label: 'DEX Guide', title: 'Hyperliquid — HYPE Season 2 Guide' },
                 { href: '/learn/best-wallet-airdrops-2026', label: 'Roundup', title: 'Best Wallet Airdrops 2026' },
-                { href: '/learn/best-base-airdrops-2026', label: 'Ecosystem', title: 'Best Base Airdrops 2026' },
+                { href: '/learn/best-crypto-airdrops-india-2026', label: 'India Guide', title: 'Best Crypto Airdrops for Indians 2026' },
+                { href: '/learn/best-crypto-airdrops-pakistan-2026', label: 'Pakistan Guide', title: 'Best Crypto Airdrops for Pakistanis 2026' },
               ].map(r => (
                 <Link key={r.href} href={r.href} className="ik-related-card">
                   <div className="ik-related-card-label">{r.label}</div>

@@ -363,8 +363,11 @@ export default function PhantomAirdropGuide() {
             <div className="ph-related-grid">
               {[
                 { href: '/learn/metamask-airdrop-guide-2026', label: 'Wallet Guide', title: 'MetaMask Airdrop Guide 2026 — Farm the MASK Token' },
+                { href: '/learn/hyperliquid-guide', label: 'DEX Guide', title: 'Hyperliquid Airdrop — HYPE Season 2 Farming Guide' },
                 { href: '/learn/best-solana-airdrops-2026', label: 'Ecosystem', title: 'Best Solana Airdrops 2026' },
-                { href: '/learn/best-airdrop-farming-platforms-2026', label: 'Platforms', title: 'Best Airdrop Farming Platforms 2026' },
+                { href: '/learn/best-crypto-airdrops-india-2026', label: 'India Guide', title: 'Best Crypto Airdrops for Indians 2026' },
+                { href: '/learn/best-crypto-airdrops-philippines-2026', label: 'Philippines Guide', title: 'Best Crypto Airdrops for Filipinos 2026' },
+                { href: '/learn/how-to-get-crypto-airdrops-2026', label: 'Beginner Guide', title: 'How to Get Crypto Airdrops in 2026 — Complete Guide' },
                 { href: '/upcoming', label: 'Tracker', title: '20+ Upcoming Tokenless Projects — Full List' },
               ].map(r => (
                 <Link key={r.href} href={r.href} className="ph-related-card">

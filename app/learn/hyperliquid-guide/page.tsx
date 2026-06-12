@@ -388,9 +388,13 @@ export default function HyperliquidGuide() {
             <Link href="/learn">← Back to Learn</Link>
             <Link href="/airdrops">Browse All Airdrops</Link>
             <Link href="/learn/best-crypto-airdrops-2026">Best Airdrops 2026</Link>
-            <Link href="/learn/early-crypto-projects-2026">Early Crypto Projects 2026</Link>
-            <Link href="/learn/crypto-airdrop-eligibility-requirements-2026">Eligibility Requirements</Link>
+            <Link href="/learn/metamask-airdrop-guide-2026">MetaMask Airdrop Guide</Link>
+            <Link href="/learn/phantom-airdrop-guide-2026">Phantom Airdrop Guide</Link>
             <Link href="/learn/polymarket-airdrop-guide-2026">Polymarket Guide</Link>
+            <Link href="/learn/how-to-get-crypto-airdrops-2026">How to Get Airdrops 2026</Link>
+            <Link href="/learn/best-crypto-airdrops-india-2026">Airdrops for Indians 2026</Link>
+            <Link href="/learn/best-crypto-airdrops-nigeria-2026">Airdrops for Nigerians 2026</Link>
+            <Link href="/learn/best-crypto-airdrops-egypt-2026">Airdrops for Egyptians 2026</Link>
             <Link href="/gm">GM Station</Link>
           </div>
 

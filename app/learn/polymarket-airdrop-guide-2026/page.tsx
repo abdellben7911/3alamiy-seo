@@ -389,11 +389,13 @@ export default function PolymarketAirdropGuide2026() {
 
             <div className="pm-related">
               {[
-                { slug: "how-to-build-onchain-activity-that-actually-matters", title: "How to Build On-Chain Activity That Actually Matters" },
+                { slug: "hyperliquid-guide", title: "Hyperliquid Airdrop — HYPE Season 2 Farming Guide" },
+                { slug: "metamask-airdrop-guide-2026", title: "MetaMask Airdrop Guide 2026" },
+                { slug: "phantom-airdrop-guide-2026", title: "Phantom Wallet Airdrop Guide 2026" },
+                { slug: "how-to-get-crypto-airdrops-2026", title: "How to Get Crypto Airdrops in 2026 — Complete Guide" },
+                { slug: "best-crypto-airdrops-india-2026", title: "Best Crypto Airdrops for Indians 2026" },
+                { slug: "best-crypto-airdrops-egypt-2026", title: "Best Crypto Airdrops for Egyptians 2026" },
                 { slug: "crypto-airdrop-eligibility-requirements-2026", title: "Crypto Airdrop Eligibility Requirements 2026" },
-                { slug: "how-to-avoid-crypto-airdrop-scams-2026", title: "How to Avoid Crypto Airdrop Scams 2026" },
-                { slug: "best-crypto-airdrop-websites-2026", title: "Best Crypto Airdrop Websites 2026" },
-                { slug: "how-to-find-airdrops-before-everyone-else", title: "How to Find Airdrops Before Everyone Else" },
               ].map((a) => (
                 <Link key={a.slug} href={`/learn/${a.slug}`} className="pm-related-link">
                   <span>{a.title}</span><span>→</span>

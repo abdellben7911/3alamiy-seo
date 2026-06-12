@@ -351,7 +351,10 @@ export default function SoneiumAirdropGuide() {
               {[
                 { href: '/learn/phantom-airdrop-guide-2026', label: 'Wallet Guide', title: 'Phantom Wallet Airdrop Guide 2026' },
                 { href: '/learn/metamask-airdrop-guide-2026', label: 'Wallet Guide', title: 'MetaMask Airdrop Guide 2026' },
-                { href: '/learn/aztec-network-airdrop-guide-2026', label: 'L2 Guide', title: 'Aztec Network Airdrop Guide 2026' },
+                { href: '/learn/ink-by-kraken-airdrop-guide-2026', label: 'L2 Guide', title: 'Ink by Kraken Airdrop Guide 2026' },
+                { href: '/learn/hyperliquid-guide', label: 'DEX Guide', title: 'Hyperliquid — HYPE Season 2 Guide' },
+                { href: '/learn/best-crypto-airdrops-india-2026', label: 'India Guide', title: 'Best Crypto Airdrops for Indians 2026' },
+                { href: '/learn/best-crypto-airdrops-philippines-2026', label: 'Philippines Guide', title: 'Best Crypto Airdrops for Filipinos 2026' },
                 { href: '/upcoming', label: 'Tracker', title: '20+ Upcoming Tokenless Projects' },
               ].map(r => (
                 <Link key={r.href} href={r.href} className="sn-related-card">

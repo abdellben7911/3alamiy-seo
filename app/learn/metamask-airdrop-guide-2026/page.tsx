@@ -385,9 +385,12 @@ export default function MetaMaskAirdropGuide() {
             <div className="mm-related-title">Related Guides</div>
             <div className="mm-related-grid">
               {[
-                { href: '/learn/pumpfun-opensea-airdrop-2026', label: 'Analysis', title: 'Pump.fun and OpenSea: Still Waiting for Airdrops' },
-                { href: '/learn/how-to-claim-airdrop-hacked-wallet', label: 'Security Guide', title: 'Claim an Airdrop From a Hacked Wallet' },
-                { href: '/learn/best-airdrop-farming-platforms-2026', label: 'Platforms Guide', title: 'Best Airdrop Farming Platforms 2026' },
+                { href: '/learn/phantom-airdrop-guide-2026', label: 'Wallet Guide', title: 'Phantom Airdrop Guide 2026 — Farm the Phantom Token' },
+                { href: '/learn/hyperliquid-guide', label: 'DEX Guide', title: 'Hyperliquid Airdrop — HYPE Season 2 Farming Guide' },
+                { href: '/learn/how-to-get-crypto-airdrops-2026', label: 'Beginner Guide', title: 'How to Get Crypto Airdrops in 2026 — Complete Guide' },
+                { href: '/learn/best-crypto-airdrops-india-2026', label: 'India Guide', title: 'Best Crypto Airdrops for Indians 2026' },
+                { href: '/learn/best-crypto-airdrops-pakistan-2026', label: 'Pakistan Guide', title: 'Best Crypto Airdrops for Pakistanis 2026' },
+                { href: '/learn/best-crypto-airdrops-nigeria-2026', label: 'Nigeria Guide', title: 'Best Crypto Airdrops for Nigerians 2026' },
                 { href: '/upcoming', label: 'Tracker', title: '20+ Upcoming Tokenless Projects — Full List' },
               ].map(r => (
                 <Link key={r.href} href={r.href} className="mm-related-card">

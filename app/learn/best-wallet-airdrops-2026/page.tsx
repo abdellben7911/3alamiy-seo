@@ -412,7 +412,10 @@ export default function BestWalletAirdrops2026() {
                 { href: '/learn/metamask-airdrop-guide-2026', label: 'Wallet Guide', title: 'MetaMask Airdrop Guide 2026' },
                 { href: '/learn/phantom-airdrop-guide-2026', label: 'Wallet Guide', title: 'Phantom Wallet Airdrop Guide 2026' },
                 { href: '/learn/soneium-airdrop-guide-2026', label: 'L2 Guide', title: 'Soneium Airdrop Guide 2026' },
-                { href: '/learn/top-25-airdrop-picks-2026', label: 'Strategy', title: 'Top 25 Airdrop Picks 2026' },
+                { href: '/learn/ink-by-kraken-airdrop-guide-2026', label: 'L2 Guide', title: 'Ink by Kraken Airdrop Guide 2026' },
+                { href: '/learn/how-to-get-crypto-airdrops-2026', label: 'Beginner Guide', title: 'How to Get Crypto Airdrops in 2026' },
+                { href: '/learn/best-crypto-airdrops-india-2026', label: 'India Guide', title: 'Best Crypto Airdrops for Indians 2026' },
+                { href: '/learn/best-crypto-airdrops-philippines-2026', label: 'Philippines Guide', title: 'Best Crypto Airdrops for Filipinos 2026' },
               ].map(r => (
                 <Link key={r.href} href={r.href} className="wa-related-card">
                   <div className="wa-related-card-lbl">{r.label}</div>

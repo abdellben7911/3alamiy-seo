@@ -354,6 +354,50 @@ export default function HowToGetCryptoAirdrops() {
           </div>
         </section>
 
+        <div className="hg-div" />
+
+        <section>
+          <h2 className="hg-h2">Guides by Country</h2>
+          <p className="hg-p">Step-by-step airdrop guides tailored for your country — local exchanges, payment methods, and regulatory context included.</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(220px,1fr))', gap: '10px', marginTop: '16px' }}>
+            {[
+              { href: '/learn/best-crypto-airdrops-india-2026', label: 'India', title: 'Best Crypto Airdrops for Indians 2026' },
+              { href: '/learn/best-crypto-airdrops-pakistan-2026', label: 'Pakistan', title: 'Best Crypto Airdrops for Pakistanis 2026' },
+              { href: '/learn/best-crypto-airdrops-philippines-2026', label: 'Philippines', title: 'Best Crypto Airdrops for Filipinos 2026' },
+              { href: '/learn/best-crypto-airdrops-egypt-2026', label: 'Egypt', title: 'Best Crypto Airdrops for Egyptians 2026' },
+              { href: '/learn/best-crypto-airdrops-nigeria-2026', label: 'Nigeria', title: 'Best Crypto Airdrops for Nigerians 2026' },
+            ].map(r => (
+              <Link key={r.href} href={r.href} style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '12px', padding: '14px 16px', textDecoration: 'none', color: 'inherit', display: 'block' }}>
+                <div style={{ fontSize: '10px', fontWeight: 700, color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase', marginBottom: '4px' }}>{r.label}</div>
+                <div style={{ fontSize: '13px', fontWeight: 700, color: '#e2e8f0' }}>{r.title}</div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <div className="hg-div" />
+
+        <section>
+          <h2 className="hg-h2">Top Airdrop Guides</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(220px,1fr))', gap: '10px', marginTop: '16px' }}>
+            {[
+              { href: '/learn/metamask-airdrop-guide-2026', label: 'Wallet', title: 'MetaMask Airdrop Guide 2026' },
+              { href: '/learn/phantom-airdrop-guide-2026', label: 'Wallet', title: 'Phantom Airdrop Guide 2026' },
+              { href: '/learn/hyperliquid-guide', label: 'DEX', title: 'Hyperliquid — HYPE Season 2 Guide' },
+              { href: '/learn/soneium-airdrop-guide-2026', label: 'Layer 2', title: 'Soneium (Sony L2) Airdrop Guide' },
+              { href: '/learn/ink-by-kraken-airdrop-guide-2026', label: 'Layer 2', title: 'Ink by Kraken Airdrop Guide' },
+              { href: '/learn/polymarket-airdrop-guide-2026', label: 'DeFi', title: 'Polymarket POLY Airdrop Guide' },
+            ].map(r => (
+              <Link key={r.href} href={r.href} style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '12px', padding: '14px 16px', textDecoration: 'none', color: 'inherit', display: 'block' }}>
+                <div style={{ fontSize: '10px', fontWeight: 700, color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase', marginBottom: '4px' }}>{r.label}</div>
+                <div style={{ fontSize: '13px', fontWeight: 700, color: '#e2e8f0' }}>{r.title}</div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <div className="hg-div" />
+
         <div className="hg-cta">
           <div className="hg-cta-title">Ready to start farming?</div>
           <div className="hg-cta-sub">Browse 500+ verified airdrops with step-by-step guides. All free, updated daily.</div>
