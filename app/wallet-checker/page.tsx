@@ -80,6 +80,15 @@ function AirdropRow({ a }: { a: AirdropResult }) {
   );
 }
 
+function getFavicon(url: string): string {
+  try {
+    const domain = new URL(url).hostname;
+    return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+  } catch {
+    return '';
+  }
+}
+
 // {addr} is replaced with the wallet address when available
 const MANUAL_LINKS = [
   { name: 'MegaETH Rewards',  url: 'https://terminal.megaeth.com/' },
@@ -618,8 +627,20 @@ function WalletCheckerInner() {
                   return (
                     <a key={link.name + i} href={resolveUrl(link.url, checkedAddress)} target="_blank" rel="noopener noreferrer" className="mc-card">
                       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                        <div className="mc-avatar" style={{ background: `${bg}15`, border: `1px solid ${bg}30`, color: bg }}>
-                          {link.name[0]}
+                        <div className="mc-avatar" style={{ background: `${bg}15`, border: `1px solid ${bg}30`, color: bg, overflow: 'hidden', padding: 0 }}>
+                          <img
+                            src={getFavicon(link.url)}
+                            alt={link.name}
+                            width={34}
+                            height={34}
+                            style={{ width: 34, height: 34, objectFit: 'cover', borderRadius: 8, display: 'block' }}
+                            onError={(e) => {
+                              const el = e.currentTarget;
+                              el.style.display = 'none';
+                              const parent = el.parentElement;
+                              if (parent) parent.textContent = link.name[0];
+                            }}
+                          />
                         </div>
                         <span className="mc-name">{link.name}</span>
                       </div>
@@ -721,8 +742,20 @@ function WalletCheckerInner() {
                   return (
                     <a key={link.name + i} href={resolveUrl(link.url, checkedAddress)} target="_blank" rel="noopener noreferrer" className="mc-card">
                       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                        <div className="mc-avatar" style={{ background: `${bg}15`, border: `1px solid ${bg}30`, color: bg }}>
-                          {link.name[0]}
+                        <div className="mc-avatar" style={{ background: `${bg}15`, border: `1px solid ${bg}30`, color: bg, overflow: 'hidden', padding: 0 }}>
+                          <img
+                            src={getFavicon(link.url)}
+                            alt={link.name}
+                            width={34}
+                            height={34}
+                            style={{ width: 34, height: 34, objectFit: 'cover', borderRadius: 8, display: 'block' }}
+                            onError={(e) => {
+                              const el = e.currentTarget;
+                              el.style.display = 'none';
+                              const parent = el.parentElement;
+                              if (parent) parent.textContent = link.name[0];
+                            }}
+                          />
                         </div>
                         <span className="mc-name">{link.name}</span>
                       </div>
