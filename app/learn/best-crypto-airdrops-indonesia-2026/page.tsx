@@ -150,7 +150,6 @@ export default function IndonesiaAirdrops2026() {
               </div>
             </div>
           </div>
-          </div>
           <div className="idn-answer-box">
             <div className="idn-answer-label">Quick Answer</div>
             <p>The best crypto airdrops in Indonesia 2026 are Hyperliquid, MetaMask, Phantom, Polymarket, Soneium, and Ink by Kraken. All are free, accessible from Indonesia without a VPN, and can be funded via Indodax or Tokocrypto. Indonesia has 270M+ population and is a top-10 global crypto market.</p>

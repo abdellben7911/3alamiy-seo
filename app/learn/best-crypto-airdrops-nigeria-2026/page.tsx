@@ -300,8 +300,6 @@ export default function NigeriaAirdrops2026() {
             </div>
           </div>
 
-          {/* Stats */}
-          </div>
           <div className="ng-answer-box">
             <div className="ng-answer-label">Quick Answer</div>
             <p>The best crypto airdrops in Nigeria 2026 are Hyperliquid, MetaMask, Phantom, Polymarket, Soneium, and Ink by Kraken. All are free, accessible from Nigeria without a VPN, and can be funded via Binance P2P with bank transfer. Nigeria is Africa's largest crypto market.</p>

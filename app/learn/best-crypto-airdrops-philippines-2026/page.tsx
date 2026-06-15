@@ -310,7 +310,6 @@ export default function PhilippinesAirdrops2026() {
             </div>
           </div>
 
-          </div>
           <div className="ph-answer-box">
             <div className="ph-answer-label">Quick Answer</div>
             <p>The best crypto airdrops in Philippines 2026 are Hyperliquid, MetaMask, Phantom, Polymarket, Soneium, and Ink by Kraken. All are free, accessible from the Philippines without a VPN, and can be funded via Coins.ph or Binance. Philippines ranks top 5 globally for crypto adoption.</p>

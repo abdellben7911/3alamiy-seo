@@ -319,8 +319,6 @@ export default function IndiaAirdrops2026() {
             </div>
           </div>
 
-          {/* Stats */}
-          </div>
           <div className="ind-answer-box">
             <div className="ind-answer-label">Quick Answer</div>
             <p>The best crypto airdrops in India 2026 are Hyperliquid, MetaMask, Phantom, Polymarket, Soneium, and Ink by Kraken. All are free, accessible from India without a VPN, and can be funded via WazirX, CoinDCX, or Binance. India has the world's highest crypto adoption rate.</p>

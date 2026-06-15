@@ -148,7 +148,6 @@ export default function BangladeshAirdrops2026() {
               </div>
             </div>
           </div>
-          </div>
           <div className="bd-answer-box">
             <div className="bd-answer-label">Quick Answer</div>
             <p>The best crypto airdrops in Bangladesh 2026 are Hyperliquid, MetaMask, Phantom, Polymarket, Soneium, and Ink by Kraken. All are free, accessible from Bangladesh without a VPN, and can be funded via Binance P2P with bKash or Nagad. Bangladesh has 170M+ population and ranks top 20 globally for crypto adoption.</p>

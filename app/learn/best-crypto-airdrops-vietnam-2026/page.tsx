@@ -145,7 +145,6 @@ export default function VietnamAirdrops2026() {
               </div>
             </div>
           </div>
-          </div>
           <div className="vn-answer-box">
             <div className="vn-answer-label">Quick Answer</div>
             <p>The best crypto airdrops in Vietnam 2026 are Hyperliquid, MetaMask, Phantom, Polymarket, Soneium, and Ink by Kraken. All are free, accessible from Vietnam without a VPN, and can be funded via Binance P2P with local bank transfer. Vietnam ranks top 5 globally for crypto adoption.</p>

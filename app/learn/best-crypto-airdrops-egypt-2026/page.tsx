@@ -310,7 +310,6 @@ export default function EgyptAirdrops2026() {
             </div>
           </div>
 
-          </div>
           <div className="eg-answer-box">
             <div className="eg-answer-label">Quick Answer</div>
             <p>The best crypto airdrops in Egypt 2026 are Hyperliquid, MetaMask, Phantom, Polymarket, Soneium, and Ink by Kraken. All are free, accessible from Egypt without a VPN, and can be funded via Binance P2P with Fawry or InstaPay. Egypt ranks top 10 globally for crypto adoption.</p>

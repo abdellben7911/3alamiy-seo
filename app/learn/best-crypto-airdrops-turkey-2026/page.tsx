@@ -151,7 +151,6 @@ export default function TurkeyAirdrops2026() {
               </div>
             </div>
           </div>
-          </div>
           <div className="tr-answer-box">
             <div className="tr-answer-label">Quick Answer</div>
             <p>The best crypto airdrops in Turkey 2026 are Hyperliquid, MetaMask, Phantom, Polymarket, Soneium, and Ink by Kraken. All are free, accessible from Turkey without a VPN, and can be funded via BtcTurk or Paribu. Turkey ranks top 10 globally for crypto adoption.</p>

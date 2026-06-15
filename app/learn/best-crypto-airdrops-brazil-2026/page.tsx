@@ -145,7 +145,6 @@ export default function BrazilAirdrops2026() {
               </div>
             </div>
           </div>
-          </div>
           <div className="br-answer-box">
             <div className="br-answer-label">Quick Answer</div>
             <p>The best crypto airdrops in Brazil 2026 are Hyperliquid, MetaMask, Phantom, Polymarket, Soneium, and Ink by Kraken. All are free, accessible from Brazil without a VPN, and can be funded via PIX through Mercado Bitcoin or Binance. Brazil is Latin America's largest crypto market.</p>
