@@ -23,6 +23,14 @@ const jsonLd = {
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
   datePublished: "2026-06-12", dateModified: "2026-06-12",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-indonesia-2026" },
+  areaServed: { "@type": "Country", name: "Indonesia", sameAs: "https://en.wikipedia.org/wiki/Indonesia" },
+  about: { "@type": "Thing", name: "Crypto Airdrops in Indonesia 2026" },
+};
+
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: [".id-answer-box", ".id-faq", ".id-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-indonesia-2026",
 };
 
 const faqJsonLd = {
@@ -59,6 +67,7 @@ export default function IndonesiaAirdrops2026() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }} />
       <style>{`
         .idn*{box-sizing:border-box}.idn{background:#060A12;min-height:100vh;color:#fff;font-family:var(--font-space),'Space Grotesk',system-ui,sans-serif}
         .idn-wrap{max-width:800px;margin:0 auto;padding:48px 20px 80px}
@@ -109,7 +118,15 @@ export default function IndonesiaAirdrops2026() {
         .idn-cta-box h2{font-size:22px;font-weight:700;color:#fff;margin-bottom:10px}
         .idn-cta-box p{font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7;max-width:420px;margin:0 auto 24px}
         .idn-cta-btn{display:inline-flex;align-items:center;gap:6px;background:#ef4444;color:#fff;font-weight:700;font-size:14px;padding:12px 28px;border-radius:99px;text-decoration:none}
+        
+        .idn-answer-box{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.18);border-radius:14px;padding:20px 22px;margin-bottom:40px}
+        .idn-answer-label{font-size:11px;font-weight:700;color:#ef4444;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px}
+        .idn-answer-box p{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.75;margin:0}
         .idn-note{font-size:11px;color:rgba(255,255,255,0.18);margin-top:16px}
+        
+        .id2-answer-box{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.18);border-radius:14px;padding:20px 22px;margin-bottom:40px}
+        .id2-answer-label{font-size:11px;font-weight:700;color:#ef4444;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px}
+        .id2-answer-box p{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.75;margin:0}
         @media(max-width:600px){.idn-wrap{padding:32px 16px 64px}.idn-stat-val{font-size:18px}.idn-cta-box{padding:28px 16px}}
       `}</style>
       <main className="idn">
@@ -132,6 +149,11 @@ export default function IndonesiaAirdrops2026() {
                 <div className="idn-byline-sub">Web3 Airdrop Research · <a href="https://www.3alamiyweb3.com">3alamiyweb3.com</a></div>
               </div>
             </div>
+          </div>
+          </div>
+          <div className="idn-answer-box">
+            <div className="idn-answer-label">Quick Answer</div>
+            <p>The best crypto airdrops in Indonesia 2026 are Hyperliquid, MetaMask, Phantom, Polymarket, Soneium, and Ink by Kraken. All are free, accessible from Indonesia without a VPN, and can be funded via Indodax or Tokocrypto. Indonesia has 270M+ population and is a top-10 global crypto market.</p>
           </div>
           <div className="idn-stats">
             {[{ val: "#5", lbl: "Global Crypto Adoption" }, { val: "275M+", lbl: "Population" }, { val: "Free", lbl: "All Airdrops Below" }].map(s => (

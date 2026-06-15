@@ -80,6 +80,12 @@ const jsonLd = {
   },
 };
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".kai-faq", ".kai-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/kaito-airdrop-guide-2026",
+};
+
 export default function KaitoAirdropGuide() {
   const accent = '#a78bfa';
   const accentBg = 'rgba(167,139,250,0.08)';

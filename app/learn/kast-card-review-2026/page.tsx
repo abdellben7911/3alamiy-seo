@@ -116,6 +116,12 @@ const TIERS = [
   },
 ];
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".kst-faq", ".kst-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/kast-card-review-2026",
+};
+
 export default function KastCardReview() {
   return (
     <>

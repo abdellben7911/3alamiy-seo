@@ -95,6 +95,12 @@ const ALLOCATION_TABLE = [
   { tier: 'D Tier', criteria: 'Bridge only or 1–4 tx', txns: '1–4', est: '0–50 MOVE' },
 ];
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".mv-faq", ".mv-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/how-to-farm-movement-airdrop",
+};
+
 export default function MovementAirdropGuide() {
   return (
     <>

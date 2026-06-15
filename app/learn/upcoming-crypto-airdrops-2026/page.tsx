@@ -241,6 +241,12 @@ projects.forEach(p => {
   categoryGroups[p.category].push(p);
 });
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".uca-faq", ".uca-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/upcoming-crypto-airdrops-2026",
+};
+
 export default function UpcomingAirdrops() {
   return (
     <>

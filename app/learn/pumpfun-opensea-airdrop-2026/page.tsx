@@ -49,6 +49,12 @@ const schema3 = {
   ],
 };
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".pum-faq", ".pum-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/pumpfun-opensea-airdrop-2026",
+};
+
 export default function PumpfunOpenseaAirdrop() {
   return (
     <>

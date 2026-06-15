@@ -8,6 +8,10 @@ const BASE = 'https://www.3alamiyweb3.com';
 // ✅ VALID slugs only — must exist in [slug]/page.tsx articles object OR as a folder
 const articles = [
   // — New articles (June 2026) — keep at top so they get re-crawled first
+  'best-crypto-airdrops-mexico-2026',
+  'best-crypto-airdrops-argentina-2026',
+  'best-crypto-airdrops-ukraine-2026',
+  'best-crypto-airdrops-kenya-2026',
   'phantom-airdrop-guide-2026',
   'best-crypto-airdrops-no-kyc-2026',
   'how-much-do-crypto-airdrops-pay-2026',
@@ -119,6 +123,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Article publish/update dates — use real dates so Google trusts lastModified
   const ARTICLE_DATES: Record<string, string> = {
+    'best-crypto-airdrops-mexico-2026':          '2026-06-15',
+    'best-crypto-airdrops-argentina-2026':       '2026-06-15',
+    'best-crypto-airdrops-ukraine-2026':         '2026-06-15',
+    'best-crypto-airdrops-kenya-2026':           '2026-06-15',
     'best-crypto-airdrops-no-kyc-2026':         '2026-06-15',
     'how-much-do-crypto-airdrops-pay-2026':     '2026-06-15',
     'best-crypto-airdrops-turkey-2026':         '2026-06-12',

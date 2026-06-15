@@ -32,6 +32,12 @@ const jsonLd = {
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/polymarket-willo2-500k-loss" },
 };
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", "h2", "p"] },
+  url: "https://www.3alamiyweb3.com/learn/polymarket-willo2-500k-loss",
+};
+
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -127,6 +133,7 @@ export default function PolymarketWillo2Article() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }} />
 
       <style>{`
         .pw * { box-sizing: border-box; }

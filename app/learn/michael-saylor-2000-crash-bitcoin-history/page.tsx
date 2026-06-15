@@ -32,6 +32,12 @@ const jsonLd = {
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/michael-saylor-2000-crash-bitcoin-history" },
 };
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", "h2", "p"] },
+  url: "https://www.3alamiyweb3.com/learn/michael-saylor-2000-crash-bitcoin-history",
+};
+
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -150,6 +156,7 @@ export default function SaylorHistoryArticle() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }} />
 
       <style>{`
         .ms * { box-sizing: border-box; }

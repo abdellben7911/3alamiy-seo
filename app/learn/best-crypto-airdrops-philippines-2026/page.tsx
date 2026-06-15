@@ -30,6 +30,14 @@ const jsonLd = {
   datePublished: "2026-06-11",
   dateModified: "2026-06-11",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-philippines-2026" },
+  areaServed: { "@type": "Country", name: "Philippines", sameAs: "https://en.wikipedia.org/wiki/Philippines" },
+  about: { "@type": "Thing", name: "Crypto Airdrops in Philippines 2026" },
+};
+
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: [".ph-answer-box", ".ph-faq", ".ph-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-philippines-2026",
 };
 
 const faqJsonLd = {
@@ -199,6 +207,7 @@ export default function PhilippinesAirdrops2026() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }} />
 
       <style>{`
         .ph * { box-sizing: border-box; }
@@ -263,6 +272,10 @@ export default function PhilippinesAirdrops2026() {
         .ph-cta-box h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; }
         .ph-cta-box p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 420px; margin: 0 auto 24px; }
         .ph-cta-btn { display: inline-flex; align-items: center; gap: 6px; background: #fcd34d; color: #060A12; font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: 99px; text-decoration: none; }
+        
+        .ph-answer-box{background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.18);border-radius:14px;padding:20px 22px;margin-bottom:40px}
+        .ph-answer-label{font-size:11px;font-weight:700;color:#f59e0b;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px}
+        .ph-answer-box p{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.75;margin:0}
         .ph-note { font-size: 11px; color: rgba(255,255,255,0.18); margin-top: 16px; }
 
         @media (max-width: 600px) {
@@ -297,6 +310,11 @@ export default function PhilippinesAirdrops2026() {
             </div>
           </div>
 
+          </div>
+          <div className="ph-answer-box">
+            <div className="ph-answer-label">Quick Answer</div>
+            <p>The best crypto airdrops in Philippines 2026 are Hyperliquid, MetaMask, Phantom, Polymarket, Soneium, and Ink by Kraken. All are free, accessible from the Philippines without a VPN, and can be funded via Coins.ph or Binance. Philippines ranks top 5 globally for crypto adoption.</p>
+          </div>
           <div className="ph-stats">
             {[
               { val: "Top 3", lbl: "Global Crypto Adoption" },

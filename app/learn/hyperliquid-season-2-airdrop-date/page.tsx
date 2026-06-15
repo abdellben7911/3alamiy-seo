@@ -32,6 +32,12 @@ const jsonLd = {
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/hyperliquid-season-2-airdrop-date" },
 };
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".hl2-faq", ".hl2-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/hyperliquid-season-2-airdrop-date",
+};
+
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -132,6 +138,7 @@ export default function HyperliquidSeason2AirdropDate() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }} />
 
       <style>{`
         .hl2 * { box-sizing: border-box; }
@@ -211,6 +218,10 @@ export default function HyperliquidSeason2AirdropDate() {
         .hl2-cta-btn { display: inline-flex; align-items: center; gap: 6px; background: #7CF5C0; color: #060A12; font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: 99px; text-decoration: none; }
         .hl2-note { font-size: 11px; color: rgba(255,255,255,0.18); margin-top: 16px; }
 
+        
+        .hl2-answer-box{background:rgba(124,245,192,0.06);border:1px solid rgba(124,245,192,0.18);border-radius:14px;padding:20px 22px;margin-bottom:32px}
+        .hl2-answer-label{font-size:11px;font-weight:700;color:#7CF5C0;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px}
+        .hl2-answer-box p{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.75;margin:0}
         @media (max-width: 600px) {
           .hl2-wrap { padding: 32px 16px 64px; }
           .hl2-stats { grid-template-columns: repeat(3, 1fr); }
@@ -247,6 +258,10 @@ export default function HyperliquidSeason2AirdropDate() {
           </div>
 
           {/* Alert */}
+          <div className="hl2-answer-box">
+            <div className="hl2-answer-label">Quick Answer</div>
+            <p>Hyperliquid Season 2 has no official snapshot date as of June 2026. Season 2 is actively accumulating points. The most likely snapshot window is Q3-Q4 2026, based on Season 1 patterns. To maximize your Season 2 allocation: trade on Hyperliquid daily, deposit in HLP vaults, refer friends, and maintain a high trading volume ranking.</p>
+          </div>
           <div className="hl2-alert">
             <span className="hl2-alert-icon">📅</span>
             <div>

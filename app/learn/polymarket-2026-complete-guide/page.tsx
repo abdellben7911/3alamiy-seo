@@ -31,6 +31,12 @@ const jsonLd = {
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/polymarket-2026-complete-guide" },
 };
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".pg-faq", ".pg-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/polymarket-2026-complete-guide",
+};
+
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -90,6 +96,7 @@ export default function Polymarket2026Guide() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }} />
 
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
@@ -405,6 +412,10 @@ export default function Polymarket2026Guide() {
         .p26-note { font-size: 11px; color: rgba(255,255,255,0.18); margin-top: 16px; }
 
         /* ── MOBILE ── */
+        
+        .p26-answer-box{background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.18);border-radius:14px;padding:20px 22px;margin-bottom:32px}
+        .p26-answer-label{font-size:11px;font-weight:700;color:#3b82f6;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px}
+        .p26-answer-box p{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.75;margin:0}
         @media (max-width: 640px) {
           .p26-stats { grid-template-columns: repeat(2, 1fr); }
           .p26-stat { padding: 16px 10px; }
@@ -461,6 +472,10 @@ export default function Polymarket2026Guide() {
         </header>
 
         {/* ── STATS BAND ── */}
+        <div className="p26-answer-box">
+          <div className="p26-answer-label">Quick Answer</div>
+          <p>Polymarket is the world's largest prediction market with $10.57B in 2026 volume. The POLY token is live. To earn POLY rewards: trade on Polymarket daily, hold positions in high-volume markets, and maintain high accuracy. Polymarket is accessible globally via Polygon network with USDC.</p>
+        </div>
         <div className="p26-stats">
           {[
             { val: "$10.57B", lbl: "March 2026 Volume", color: "var(--green)", glow: "rgba(124,245,192,0.5)" },

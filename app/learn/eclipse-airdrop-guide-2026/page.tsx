@@ -76,6 +76,12 @@ const jsonLd = {
   ],
 };
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".ecl-faq", ".ecl-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/eclipse-airdrop-guide-2026",
+};
+
 export default function EclipseGuide() {
   return (
     <>

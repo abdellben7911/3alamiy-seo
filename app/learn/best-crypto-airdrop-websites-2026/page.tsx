@@ -39,6 +39,12 @@ const jsonLd = {
   },
 };
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", "h2", "p"] },
+  url: "https://www.3alamiyweb3.com/learn/best-crypto-airdrop-websites-2026",
+};
+
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -235,6 +241,7 @@ export default function BestCryptoAirdropWebsites2026() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }} />
 
       <main style={{ background: "#060A12", minHeight: "100vh", color: "#fff" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", padding: "48px 20px 80px" }}>

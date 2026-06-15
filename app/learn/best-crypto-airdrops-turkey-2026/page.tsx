@@ -22,6 +22,14 @@ const jsonLd = {
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
   datePublished: "2026-06-12", dateModified: "2026-06-12",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-turkey-2026" },
+  areaServed: { "@type": "Country", name: "Turkey", sameAs: "https://en.wikipedia.org/wiki/Turkey" },
+  about: { "@type": "Thing", name: "Crypto Airdrops in Turkey 2026" },
+};
+
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: [".tr-answer-box", ".tr-faq", ".tr-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-turkey-2026",
 };
 
 const faqJsonLd = {
@@ -58,6 +66,7 @@ export default function TurkeyAirdrops2026() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }} />
       <style>{`
         .tr *{box-sizing:border-box}.tr{background:#060A12;min-height:100vh;color:#fff;font-family:var(--font-space),'Space Grotesk',system-ui,sans-serif}
         .tr-wrap{max-width:800px;margin:0 auto;padding:48px 20px 80px}
@@ -114,6 +123,10 @@ export default function TurkeyAirdrops2026() {
         .tr-cta-box h2{font-size:22px;font-weight:700;color:#fff;margin-bottom:10px}
         .tr-cta-box p{font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7;max-width:420px;margin:0 auto 24px}
         .tr-cta-btn{display:inline-flex;align-items:center;gap:6px;background:#f97316;color:#fff;font-weight:700;font-size:14px;padding:12px 28px;border-radius:99px;text-decoration:none}
+        
+        .tr-answer-box{background:rgba(249,115,22,0.06);border:1px solid rgba(249,115,22,0.18);border-radius:14px;padding:20px 22px;margin-bottom:40px}
+        .tr-answer-label{font-size:11px;font-weight:700;color:#f97316;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px}
+        .tr-answer-box p{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.75;margin:0}
         .tr-note{font-size:11px;color:rgba(255,255,255,0.18);margin-top:16px}
         @media(max-width:600px){.tr-wrap{padding:32px 16px 64px}.tr-stat-val{font-size:18px}.tr-lira-grid{grid-template-columns:1fr}.tr-cta-box{padding:28px 16px}}
       `}</style>
@@ -137,6 +150,11 @@ export default function TurkeyAirdrops2026() {
                 <div className="tr-byline-sub">Web3 Airdrop Research · <a href="https://www.3alamiyweb3.com">3alamiyweb3.com</a></div>
               </div>
             </div>
+          </div>
+          </div>
+          <div className="tr-answer-box">
+            <div className="tr-answer-label">Quick Answer</div>
+            <p>The best crypto airdrops in Turkey 2026 are Hyperliquid, MetaMask, Phantom, Polymarket, Soneium, and Ink by Kraken. All are free, accessible from Turkey without a VPN, and can be funded via BtcTurk or Paribu. Turkey ranks top 10 globally for crypto adoption.</p>
           </div>
           <div className="tr-stats">
             {[{ val: "Top 10", lbl: "Global Crypto Adoption" }, { val: "85M+", lbl: "Population" }, { val: "Free", lbl: "All Airdrops Below" }].map(s => (

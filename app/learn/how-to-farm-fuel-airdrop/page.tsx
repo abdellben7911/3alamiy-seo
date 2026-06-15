@@ -109,6 +109,12 @@ const STEPS = [
   { n: '06', title: 'Hold Balance at All Times', body: 'Never fully withdraw. Keeping even $20 of ETH or USDC on Fuel earns Passive Points every day. Over 6 months, Passive Points add up significantly — especially for wallets that consistently hold.' },
 ];
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".fl-faq", ".fl-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/how-to-farm-fuel-airdrop",
+};
+
 export default function FuelFarmingGuide() {
   return (
     <>

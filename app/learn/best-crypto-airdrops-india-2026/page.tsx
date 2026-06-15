@@ -30,6 +30,14 @@ const jsonLd = {
   datePublished: "2026-06-11",
   dateModified: "2026-06-11",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-india-2026" },
+  areaServed: { "@type": "Country", name: "India", sameAs: "https://en.wikipedia.org/wiki/India" },
+  about: { "@type": "Thing", name: "Crypto Airdrops in India 2026" },
+};
+
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: [".ind-answer-box", ".ind-faq", ".ind-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-india-2026",
 };
 
 const faqJsonLd = {
@@ -199,6 +207,7 @@ export default function IndiaAirdrops2026() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }} />
 
       <style>{`
         .ind * { box-sizing: border-box; }
@@ -263,6 +272,10 @@ export default function IndiaAirdrops2026() {
         .ind-cta-box h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; }
         .ind-cta-box p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 420px; margin: 0 auto 24px; }
         .ind-cta-btn { display: inline-flex; align-items: center; gap: 6px; background: #FF9933; color: #060A12; font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: 99px; text-decoration: none; }
+        
+        .ind-answer-box{background:rgba(255,153,51,0.06);border:1px solid rgba(255,153,51,0.18);border-radius:14px;padding:20px 22px;margin-bottom:40px}
+        .ind-answer-label{font-size:11px;font-weight:700;color:#FF9933;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px}
+        .ind-answer-box p{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.75;margin:0}
         .ind-note { font-size: 11px; color: rgba(255,255,255,0.18); margin-top: 16px; }
 
         .ind-tax-box { background: rgba(255,153,51,0.05); border: 1px solid rgba(255,153,51,0.15); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
@@ -307,6 +320,11 @@ export default function IndiaAirdrops2026() {
           </div>
 
           {/* Stats */}
+          </div>
+          <div className="ind-answer-box">
+            <div className="ind-answer-label">Quick Answer</div>
+            <p>The best crypto airdrops in India 2026 are Hyperliquid, MetaMask, Phantom, Polymarket, Soneium, and Ink by Kraken. All are free, accessible from India without a VPN, and can be funded via WazirX, CoinDCX, or Binance. India has the world's highest crypto adoption rate.</p>
+          </div>
           <div className="ind-stats">
             {[
               { val: "#1", lbl: "India in Global Crypto Adoption" },

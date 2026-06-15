@@ -15,6 +15,12 @@ export const metadata: Metadata = {
   },
 };
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".azt-faq", ".azt-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/aztec-network-airdrop-guide-2026",
+};
+
 export default function AztecGuide() {
   return (
     <>
@@ -152,6 +158,10 @@ export default function AztecGuide() {
         .an-related-card-label { font-size:10px; font-weight:700; color:rgba(255,255,255,0.25); text-transform:uppercase; margin-bottom:4px; }
         .an-related-card-title { font-size:13px; font-weight:700; color:#e2e8f0; }
 
+        
+        .an-answer-box{background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.18);border-radius:14px;padding:20px 22px;margin-bottom:32px}
+        .an-answer-label{font-size:11px;font-weight:700;color:#8b5cf6;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px}
+        .an-answer-box p{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.75;margin:0}
         @media(max-width:600px){
           .an-stats { grid-template-columns:1fr 1fr; }
           .an-cta-btns { flex-direction:column; align-items:center; }
@@ -188,6 +198,10 @@ export default function AztecGuide() {
         </div>
 
         {/* BODY */}
+        <div className="an-answer-box">
+          <div className="an-answer-label">Quick Answer</div>
+          <p>Aztec Network launched its token (AZT) in February 2026 after raising $119M. The adversarial testnet is still active. To earn ongoing Aztec rewards: run testnet nodes, deploy contracts, complete Aztec quests on Discord, and interact with the ecosystem. More airdrop phases may follow.</p>
+        </div>
         <div className="an-body">
 
           <div className="an-callout an-callout-warn">

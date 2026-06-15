@@ -30,6 +30,14 @@ const jsonLd = {
   datePublished: "2026-06-03",
   dateModified: "2026-06-03",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-nigeria-2026" },
+  areaServed: { "@type": "Country", name: "Nigeria", sameAs: "https://en.wikipedia.org/wiki/Nigeria" },
+  about: { "@type": "Thing", name: "Crypto Airdrops in Nigeria 2026" },
+};
+
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: [".ng-answer-box", ".ng-faq", ".ng-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-nigeria-2026",
 };
 
 const faqJsonLd = {
@@ -179,6 +187,7 @@ export default function NigeriaAirdrops2026() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }} />
 
       <style>{`
         .ng * { box-sizing: border-box; }
@@ -251,6 +260,10 @@ export default function NigeriaAirdrops2026() {
         .ng-cta-box h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; }
         .ng-cta-box p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 420px; margin: 0 auto 24px; }
         .ng-cta-btn { display: inline-flex; align-items: center; gap: 6px; background: #7CF5C0; color: #060A12; font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: 99px; text-decoration: none; }
+        
+        .ng-answer-box{background:rgba(22,163,74,0.06);border:1px solid rgba(22,163,74,0.18);border-radius:14px;padding:20px 22px;margin-bottom:40px}
+        .ng-answer-label{font-size:11px;font-weight:700;color:#16a34a;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px}
+        .ng-answer-box p{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.75;margin:0}
         .ng-note { font-size: 11px; color: rgba(255,255,255,0.18); margin-top: 16px; }
 
         @media (max-width: 600px) {
@@ -288,6 +301,11 @@ export default function NigeriaAirdrops2026() {
           </div>
 
           {/* Stats */}
+          </div>
+          <div className="ng-answer-box">
+            <div className="ng-answer-label">Quick Answer</div>
+            <p>The best crypto airdrops in Nigeria 2026 are Hyperliquid, MetaMask, Phantom, Polymarket, Soneium, and Ink by Kraken. All are free, accessible from Nigeria without a VPN, and can be funded via Binance P2P with bank transfer. Nigeria is Africa's largest crypto market.</p>
+          </div>
           <div className="ng-stats">
             {[
               { val: "#6", lbl: "Nigeria in Global Crypto Adoption" },

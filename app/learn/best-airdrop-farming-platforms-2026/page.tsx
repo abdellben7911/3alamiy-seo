@@ -218,6 +218,12 @@ const FAQS = [
   { q: 'What is ZNS Connect?', a: 'ZNS Connect is a multi-chain Web3 identity platform. It offers domain/name registration and an active quest system that rewards ZNS token. Its main appeal for airdrop farmers is low competition and identity-building.' },
 ];
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".afp-faq", ".afp-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/best-airdrop-farming-platforms-2026",
+};
+
 export default function BestAirdropFarmingPlatforms() {
   return (
     <>

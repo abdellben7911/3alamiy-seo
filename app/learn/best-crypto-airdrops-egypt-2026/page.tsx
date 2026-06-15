@@ -30,6 +30,14 @@ const jsonLd = {
   datePublished: "2026-06-11",
   dateModified: "2026-06-11",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-egypt-2026" },
+  areaServed: { "@type": "Country", name: "Egypt", sameAs: "https://en.wikipedia.org/wiki/Egypt" },
+  about: { "@type": "Thing", name: "Crypto Airdrops in Egypt 2026" },
+};
+
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: [".eg-answer-box", ".eg-faq", ".eg-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-egypt-2026",
 };
 
 const faqJsonLd = {
@@ -199,6 +207,7 @@ export default function EgyptAirdrops2026() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }} />
 
       <style>{`
         .eg * { box-sizing: border-box; }
@@ -263,6 +272,10 @@ export default function EgyptAirdrops2026() {
         .eg-cta-box h2 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; }
         .eg-cta-box p { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 420px; margin: 0 auto 24px; }
         .eg-cta-btn { display: inline-flex; align-items: center; gap: 6px; background: #fb923c; color: #060A12; font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: 99px; text-decoration: none; }
+        
+        .eg-answer-box{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.18);border-radius:14px;padding:20px 22px;margin-bottom:40px}
+        .eg-answer-label{font-size:11px;font-weight:700;color:#ef4444;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px}
+        .eg-answer-box p{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.75;margin:0}
         .eg-note { font-size: 11px; color: rgba(255,255,255,0.18); margin-top: 16px; }
 
         @media (max-width: 600px) {
@@ -297,6 +310,11 @@ export default function EgyptAirdrops2026() {
             </div>
           </div>
 
+          </div>
+          <div className="eg-answer-box">
+            <div className="eg-answer-label">Quick Answer</div>
+            <p>The best crypto airdrops in Egypt 2026 are Hyperliquid, MetaMask, Phantom, Polymarket, Soneium, and Ink by Kraken. All are free, accessible from Egypt without a VPN, and can be funded via Binance P2P with Fawry or InstaPay. Egypt ranks top 10 globally for crypto adoption.</p>
+          </div>
           <div className="eg-stats">
             {[
               { val: "Top 15", lbl: "Global Crypto Adoption" },

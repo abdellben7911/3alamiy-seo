@@ -132,6 +132,12 @@ const STEPS = [
   },
 ];
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".hw-faq", ".hw-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/how-to-claim-airdrop-hacked-wallet",
+};
+
 export default function HackedWalletAirdropGuide() {
   return (
     <>

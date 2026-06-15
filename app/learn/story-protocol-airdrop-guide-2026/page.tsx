@@ -77,6 +77,12 @@ const jsonLd = {
   ],
 };
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".stp-faq", ".stp-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/story-protocol-airdrop-guide-2026",
+};
+
 export default function StoryProtocolGuide() {
   return (
     <>

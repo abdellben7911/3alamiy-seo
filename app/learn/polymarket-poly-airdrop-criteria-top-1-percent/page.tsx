@@ -143,6 +143,12 @@ const TIERS = [
   { tier: 'Everyone else', volume: 'Under $1,000', markets: 'Under 10', age: '2025–2026', est: '$10–$100', color: 'rgba(255,255,255,0.3)' },
 ];
 
+const speakableJsonLd = {
+  "@context": "https://schema.org", "@type": "WebPage",
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".pp-faq", ".pp-faqs"] },
+  url: "https://www.3alamiyweb3.com/learn/polymarket-poly-airdrop-criteria-top-1-percent",
+};
+
 export default function PolymarketTop1Percent() {
   return (
     <>
