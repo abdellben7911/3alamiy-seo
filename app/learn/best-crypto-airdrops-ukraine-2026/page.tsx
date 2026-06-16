@@ -128,6 +128,12 @@ export default function UkraineAirdrops2026() {
         .ua-cta-btn{display:inline-flex;align-items:center;gap:6px;background:#fbbf24;color:#060A12;font-weight:700;font-size:14px;padding:12px 28px;border-radius:99px;text-decoration:none}
         .ua-note{font-size:11px;color:rgba(255,255,255,0.18);margin-top:16px}
         @media(max-width:600px){.ua-wrap{padding:32px 16px 64px}.ua-stat-val{font-size:18px}.ua-info-grid{grid-template-columns:1fr}.ua-cta-box{padding:28px 16px}}
+
+        .ua-aff-box{background:rgba(243,186,47,0.06);border:1px solid rgba(243,186,47,0.18);border-radius:14px;padding:20px 22px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+        .ua-aff-label{font-size:10px;font-weight:800;color:#f3ba2f;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+        .ua-aff-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px}
+        .ua-aff-sub{font-size:12px;color:rgba(255,255,255,0.4)}
+        .ua-aff-btn{display:inline-flex;align-items:center;gap:6px;background:#f3ba2f;color:#000;font-weight:800;font-size:13px;padding:10px 20px;border-radius:99px;text-decoration:none;flex-shrink:0}
       `}</style>
       <main className="ua">
         <div className="ua-wrap">
@@ -234,6 +240,14 @@ export default function UkraineAirdrops2026() {
               ))}
             </div>
           </section>
+          <div className="ua-aff-box">
+            <div>
+              <div className="ua-aff-label">Recommended Exchange</div>
+              <div className="ua-aff-title">Fund your wallet with Binance</div>
+              <div className="ua-aff-sub">Best on-ramp for Ukrainians · Kuna, Monobank, or Binance P2P</div>
+            </div>
+            <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_0JWES&utm_source=referral_entrance" target="_blank" rel="noopener noreferrer sponsored" className="ua-aff-btn">Open Binance →</a>
+          </div>
           <div className="ua-cta-box">
             <h2>Start Farming Airdrops Today</h2>
             <p>Browse 130+ verified airdrops on 3alamiy Web3 — all with full step-by-step guides. Updated daily. Always free.</p>

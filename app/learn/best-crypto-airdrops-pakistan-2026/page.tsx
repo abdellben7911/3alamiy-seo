@@ -284,6 +284,13 @@ export default function PakistanAirdrops2026() {
           .pk-stat-val { font-size: 18px; }
           .pk-cta-box { padding: 28px 16px; }
         }
+
+        .pk-aff-box { background: rgba(243,186,47,0.06); border: 1px solid rgba(243,186,47,0.18); border-radius: 14px; padding: 20px 22px; margin-bottom: 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+        .pk-aff-box-left { flex: 1; min-width: 200px; }
+        .pk-aff-label { font-size: 10px; font-weight: 800; color: #f3ba2f; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+        .pk-aff-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .pk-aff-sub { font-size: 12px; color: rgba(255,255,255,0.4); }
+        .pk-aff-btn { display: inline-flex; align-items: center; gap: 6px; background: #f3ba2f; color: #000; font-weight: 800; font-size: 13px; padding: 10px 20px; border-radius: 99px; text-decoration: none; flex-shrink: 0; }
       `}</style>
 
       <main className="pk">
@@ -461,6 +468,18 @@ export default function PakistanAirdrops2026() {
               ))}
             </div>
           </section>
+
+          {/* Binance Affiliate */}
+          <div className="pk-aff-box">
+            <div className="pk-aff-box-left">
+              <div className="pk-aff-label">Recommended Exchange</div>
+              <div className="pk-aff-title">Fund your wallet with Binance</div>
+              <div className="pk-aff-sub">Best on-ramp for Pakistanis · Binance P2P + EasyPaisa/JazzCash</div>
+            </div>
+            <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_0JWES&utm_source=referral_entrance" target="_blank" rel="noopener noreferrer sponsored" className="pk-aff-btn">
+              Open Binance →
+            </a>
+          </div>
 
           {/* CTA */}
           <div className="pk-cta-box">

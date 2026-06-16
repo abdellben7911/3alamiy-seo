@@ -272,6 +272,13 @@ export default function NigeriaAirdrops2026() {
           .ng-stat-val { font-size: 18px; }
           .ng-cta-box { padding: 28px 16px; }
         }
+
+        .ng-aff-box { background: rgba(243,186,47,0.06); border: 1px solid rgba(243,186,47,0.18); border-radius: 14px; padding: 20px 22px; margin-bottom: 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+        .ng-aff-box-left { flex: 1; min-width: 200px; }
+        .ng-aff-label { font-size: 10px; font-weight: 800; color: #f3ba2f; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+        .ng-aff-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+        .ng-aff-sub { font-size: 12px; color: rgba(255,255,255,0.4); }
+        .ng-aff-btn { display: inline-flex; align-items: center; gap: 6px; background: #f3ba2f; color: #000; font-weight: 800; font-size: 13px; padding: 10px 20px; border-radius: 99px; text-decoration: none; flex-shrink: 0; }
       `}</style>
 
       <main className="ng">
@@ -446,6 +453,18 @@ export default function NigeriaAirdrops2026() {
               ))}
             </div>
           </section>
+
+          {/* Binance Affiliate */}
+          <div className="ng-aff-box">
+            <div className="ng-aff-box-left">
+              <div className="ng-aff-label">Recommended Exchange</div>
+              <div className="ng-aff-title">Fund your wallet with Binance</div>
+              <div className="ng-aff-sub">Best on-ramp for Nigerians · Binance P2P + bank transfer</div>
+            </div>
+            <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_0JWES&utm_source=referral_entrance" target="_blank" rel="noopener noreferrer sponsored" className="ng-aff-btn">
+              Open Binance →
+            </a>
+          </div>
 
           {/* CTA */}
           <div className="ng-cta-box">

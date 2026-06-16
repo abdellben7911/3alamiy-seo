@@ -126,6 +126,12 @@ export default function BangladeshAirdrops2026() {
         .bd-answer-box p{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.75;margin:0}
         .bd-note{font-size:11px;color:rgba(255,255,255,0.18);margin-top:16px}
         @media(max-width:600px){.bd-wrap{padding:32px 16px 64px}.bd-stat-val{font-size:18px}.bd-cta-box{padding:28px 16px}}
+
+        .bd-aff-box{background:rgba(243,186,47,0.06);border:1px solid rgba(243,186,47,0.18);border-radius:14px;padding:20px 22px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+        .bd-aff-label{font-size:10px;font-weight:800;color:#f3ba2f;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+        .bd-aff-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px}
+        .bd-aff-sub{font-size:12px;color:rgba(255,255,255,0.4)}
+        .bd-aff-btn{display:inline-flex;align-items:center;gap:6px;background:#f3ba2f;color:#000;font-weight:800;font-size:13px;padding:10px 20px;border-radius:99px;text-decoration:none;flex-shrink:0}
       `}</style>
       <main className="bd">
         <div className="bd-wrap">
@@ -224,6 +230,14 @@ export default function BangladeshAirdrops2026() {
               ))}
             </div>
           </section>
+          <div className="bd-aff-box">
+            <div>
+              <div className="bd-aff-label">Recommended Exchange</div>
+              <div className="bd-aff-title">Fund your wallet with Binance</div>
+              <div className="bd-aff-sub">Best on-ramp for Bangladeshis · Binance P2P + bKash/Nagad</div>
+            </div>
+            <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_0JWES&utm_source=referral_entrance" target="_blank" rel="noopener noreferrer sponsored" className="bd-aff-btn">Open Binance →</a>
+          </div>
           <div className="bd-cta-box">
             <h2>Start Farming Airdrops Today</h2>
             <p>Browse 130+ verified airdrops on 3alamiy Web3 — all with full step-by-step guides. Updated daily. Always free.</p>

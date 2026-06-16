@@ -128,6 +128,12 @@ export default function IndonesiaAirdrops2026() {
         .id2-answer-label{font-size:11px;font-weight:700;color:#ef4444;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px}
         .id2-answer-box p{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.75;margin:0}
         @media(max-width:600px){.idn-wrap{padding:32px 16px 64px}.idn-stat-val{font-size:18px}.idn-cta-box{padding:28px 16px}}
+
+        .idn-aff-box{background:rgba(243,186,47,0.06);border:1px solid rgba(243,186,47,0.18);border-radius:14px;padding:20px 22px;margin-bottom:32px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+        .idn-aff-label{font-size:10px;font-weight:800;color:#f3ba2f;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px}
+        .idn-aff-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px}
+        .idn-aff-sub{font-size:12px;color:rgba(255,255,255,0.4)}
+        .idn-aff-btn{display:inline-flex;align-items:center;gap:6px;background:#f3ba2f;color:#000;font-weight:800;font-size:13px;padding:10px 20px;border-radius:99px;text-decoration:none;flex-shrink:0}
       `}</style>
       <main className="idn">
         <div className="idn-wrap">
@@ -240,6 +246,14 @@ export default function IndonesiaAirdrops2026() {
               ))}
             </div>
           </section>
+          <div className="idn-aff-box">
+            <div>
+              <div className="idn-aff-label">Recommended Exchange</div>
+              <div className="idn-aff-title">Fund your wallet with Binance</div>
+              <div className="idn-aff-sub">Best on-ramp for Indonesians · Indodax, Tokocrypto, or Binance P2P</div>
+            </div>
+            <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_0JWES&utm_source=referral_entrance" target="_blank" rel="noopener noreferrer sponsored" className="idn-aff-btn">Open Binance →</a>
+          </div>
           <div className="idn-cta-box">
             <h2>Start Farming Airdrops Today</h2>
             <p>Browse 130+ verified airdrops on 3alamiy Web3 — all with full step-by-step guides. Updated daily. Always free.</p>
