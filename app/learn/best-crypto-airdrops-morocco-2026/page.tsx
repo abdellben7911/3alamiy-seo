@@ -204,6 +204,15 @@ export default function MoroccoAirdrops2026() {
         .ma-btn-primary{background:#7CF5C0;color:#060A12;font-size:13px;font-weight:700;padding:10px 22px;border-radius:8px;text-decoration:none}
         .ma-btn-secondary{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);font-size:13px;font-weight:600;padding:10px 22px;border-radius:8px;text-decoration:none}
         @media(max-width:640px){.ma-wrap{padding:28px 16px 60px}.ma-card-top{flex-direction:column}.ma-cta-btns{flex-direction:column}.ma-aff-box{flex-direction:column}}
+
+        .ma-card-dual-box{display:flex;gap:10px;margin-bottom:32px;flex-wrap:wrap}
+        .ma-card-btn{flex:1;min-width:140px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 16px;text-decoration:none;transition:border-color .2s}
+        .ma-card-btn:hover{border-color:rgba(255,255,255,0.25)}
+        .ma-card-btn-left{text-align:left}
+        .ma-card-tag{font-size:9px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:3px}
+        .ma-card-name{font-size:13px;font-weight:700;color:#fff}
+        .ma-card-perk{font-size:11px;color:rgba(255,255,255,0.4);margin-top:1px}
+        .ma-card-arrow{font-size:14px;color:rgba(255,255,255,0.25);flex-shrink:0}
       `}</style>
 
       <div className="ma">
@@ -319,6 +328,24 @@ export default function MoroccoAirdrops2026() {
           <hr className="ma-divider" />
 
           {/* CTA */}
+          <div className="ma-card-dual-box">
+            <a href="https://app.kast.xyz/referral/M9F7SPDV" target="_blank" rel="noopener noreferrer sponsored" className="ma-card-btn">
+              <div className="ma-card-btn-left">
+                <div className="ma-card-tag">Crypto Card</div>
+                <div className="ma-card-name">KAST Card</div>
+                <div className="ma-card-perk">Up to 12% cashback</div>
+              </div>
+              <span className="ma-card-arrow">→</span>
+            </a>
+            <a href="https://url.hk/i/en/xjrxm" target="_blank" rel="noopener noreferrer sponsored" className="ma-card-btn">
+              <div className="ma-card-btn-left">
+                <div className="ma-card-tag">Crypto Card</div>
+                <div className="ma-card-name">RedotPay Card</div>
+                <div className="ma-card-perk">$445M volume · 6% cashback</div>
+              </div>
+              <span className="ma-card-arrow">→</span>
+            </a>
+          </div>
           <div className="ma-cta-box">
             <h2>Browse All 129+ Active Airdrops</h2>
             <p>View confirmed airdrops with step-by-step guides, eligibility tips, and wallet requirements.</p>

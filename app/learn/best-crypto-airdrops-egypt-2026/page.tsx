@@ -290,6 +290,15 @@ export default function EgyptAirdrops2026() {
         .eg-aff-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px}
         .eg-aff-sub{font-size:12px;color:rgba(255,255,255,0.4)}
         .eg-aff-btn{display:inline-flex;align-items:center;gap:6px;background:#f3ba2f;color:#000;font-weight:800;font-size:13px;padding:10px 20px;border-radius:99px;text-decoration:none;flex-shrink:0}
+
+        .eg-card-dual-box{display:flex;gap:10px;margin-bottom:32px;flex-wrap:wrap}
+        .eg-card-btn{flex:1;min-width:140px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 16px;text-decoration:none;transition:border-color .2s}
+        .eg-card-btn:hover{border-color:rgba(255,255,255,0.25)}
+        .eg-card-btn-left{text-align:left}
+        .eg-card-tag{font-size:9px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:3px}
+        .eg-card-name{font-size:13px;font-weight:700;color:#fff}
+        .eg-card-perk{font-size:11px;color:rgba(255,255,255,0.4);margin-top:1px}
+        .eg-card-arrow{font-size:14px;color:rgba(255,255,255,0.25);flex-shrink:0}
       `}</style>
 
       <main className="eg">
@@ -466,6 +475,24 @@ export default function EgyptAirdrops2026() {
               <div className="eg-aff-sub">Best on-ramp for Egyptians · Binance P2P + Fawry/InstaPay</div>
             </div>
             <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_0JWES&utm_source=referral_entrance" target="_blank" rel="noopener noreferrer sponsored" className="eg-aff-btn">Open Binance →</a>
+          </div>
+          <div className="eg-card-dual-box">
+            <a href="https://app.kast.xyz/referral/M9F7SPDV" target="_blank" rel="noopener noreferrer sponsored" className="eg-card-btn">
+              <div className="eg-card-btn-left">
+                <div className="eg-card-tag">Crypto Card</div>
+                <div className="eg-card-name">KAST Card</div>
+                <div className="eg-card-perk">Up to 12% cashback</div>
+              </div>
+              <span className="eg-card-arrow">→</span>
+            </a>
+            <a href="https://url.hk/i/en/xjrxm" target="_blank" rel="noopener noreferrer sponsored" className="eg-card-btn">
+              <div className="eg-card-btn-left">
+                <div className="eg-card-tag">Crypto Card</div>
+                <div className="eg-card-name">RedotPay Card</div>
+                <div className="eg-card-perk">$445M volume · 6% cashback</div>
+              </div>
+              <span className="eg-card-arrow">→</span>
+            </a>
           </div>
           <div className="eg-cta-box">
             <h2>Start Farming Airdrops Today</h2>

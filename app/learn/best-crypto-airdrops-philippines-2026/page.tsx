@@ -290,6 +290,15 @@ export default function PhilippinesAirdrops2026() {
         .ph-aff-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px}
         .ph-aff-sub{font-size:12px;color:rgba(255,255,255,0.4)}
         .ph-aff-btn{display:inline-flex;align-items:center;gap:6px;background:#f3ba2f;color:#000;font-weight:800;font-size:13px;padding:10px 20px;border-radius:99px;text-decoration:none;flex-shrink:0}
+
+        .ph-card-dual-box{display:flex;gap:10px;margin-bottom:32px;flex-wrap:wrap}
+        .ph-card-btn{flex:1;min-width:140px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 16px;text-decoration:none;transition:border-color .2s}
+        .ph-card-btn:hover{border-color:rgba(255,255,255,0.25)}
+        .ph-card-btn-left{text-align:left}
+        .ph-card-tag{font-size:9px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:3px}
+        .ph-card-name{font-size:13px;font-weight:700;color:#fff}
+        .ph-card-perk{font-size:11px;color:rgba(255,255,255,0.4);margin-top:1px}
+        .ph-card-arrow{font-size:14px;color:rgba(255,255,255,0.25);flex-shrink:0}
       `}</style>
 
       <main className="ph">
@@ -466,6 +475,24 @@ export default function PhilippinesAirdrops2026() {
               <div className="ph-aff-sub">Best on-ramp for Filipinos · Coins.ph or Binance P2P</div>
             </div>
             <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_0JWES&utm_source=referral_entrance" target="_blank" rel="noopener noreferrer sponsored" className="ph-aff-btn">Open Binance →</a>
+          </div>
+          <div className="ph-card-dual-box">
+            <a href="https://app.kast.xyz/referral/M9F7SPDV" target="_blank" rel="noopener noreferrer sponsored" className="ph-card-btn">
+              <div className="ph-card-btn-left">
+                <div className="ph-card-tag">Crypto Card</div>
+                <div className="ph-card-name">KAST Card</div>
+                <div className="ph-card-perk">Up to 12% cashback</div>
+              </div>
+              <span className="ph-card-arrow">→</span>
+            </a>
+            <a href="https://url.hk/i/en/xjrxm" target="_blank" rel="noopener noreferrer sponsored" className="ph-card-btn">
+              <div className="ph-card-btn-left">
+                <div className="ph-card-tag">Crypto Card</div>
+                <div className="ph-card-name">RedotPay Card</div>
+                <div className="ph-card-perk">$445M volume · 6% cashback</div>
+              </div>
+              <span className="ph-card-arrow">→</span>
+            </a>
           </div>
           <div className="ph-cta-box">
             <h2>Start Farming Airdrops Today</h2>

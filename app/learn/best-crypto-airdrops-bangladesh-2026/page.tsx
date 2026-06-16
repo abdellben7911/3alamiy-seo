@@ -132,6 +132,15 @@ export default function BangladeshAirdrops2026() {
         .bd-aff-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px}
         .bd-aff-sub{font-size:12px;color:rgba(255,255,255,0.4)}
         .bd-aff-btn{display:inline-flex;align-items:center;gap:6px;background:#f3ba2f;color:#000;font-weight:800;font-size:13px;padding:10px 20px;border-radius:99px;text-decoration:none;flex-shrink:0}
+
+        .bd-card-dual-box{display:flex;gap:10px;margin-bottom:32px;flex-wrap:wrap}
+        .bd-card-btn{flex:1;min-width:140px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 16px;text-decoration:none;transition:border-color .2s}
+        .bd-card-btn:hover{border-color:rgba(255,255,255,0.25)}
+        .bd-card-btn-left{text-align:left}
+        .bd-card-tag{font-size:9px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:3px}
+        .bd-card-name{font-size:13px;font-weight:700;color:#fff}
+        .bd-card-perk{font-size:11px;color:rgba(255,255,255,0.4);margin-top:1px}
+        .bd-card-arrow{font-size:14px;color:rgba(255,255,255,0.25);flex-shrink:0}
       `}</style>
       <main className="bd">
         <div className="bd-wrap">
@@ -237,6 +246,24 @@ export default function BangladeshAirdrops2026() {
               <div className="bd-aff-sub">Best on-ramp for Bangladeshis · Binance P2P + bKash/Nagad</div>
             </div>
             <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_0JWES&utm_source=referral_entrance" target="_blank" rel="noopener noreferrer sponsored" className="bd-aff-btn">Open Binance →</a>
+          </div>
+          <div className="bd-card-dual-box">
+            <a href="https://app.kast.xyz/referral/M9F7SPDV" target="_blank" rel="noopener noreferrer sponsored" className="bd-card-btn">
+              <div className="bd-card-btn-left">
+                <div className="bd-card-tag">Crypto Card</div>
+                <div className="bd-card-name">KAST Card</div>
+                <div className="bd-card-perk">Up to 12% cashback</div>
+              </div>
+              <span className="bd-card-arrow">→</span>
+            </a>
+            <a href="https://url.hk/i/en/xjrxm" target="_blank" rel="noopener noreferrer sponsored" className="bd-card-btn">
+              <div className="bd-card-btn-left">
+                <div className="bd-card-tag">Crypto Card</div>
+                <div className="bd-card-name">RedotPay Card</div>
+                <div className="bd-card-perk">$445M volume · 6% cashback</div>
+              </div>
+              <span className="bd-card-arrow">→</span>
+            </a>
           </div>
           <div className="bd-cta-box">
             <h2>Start Farming Airdrops Today</h2>

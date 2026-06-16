@@ -119,6 +119,14 @@ export default function HowMuchAirdropsPay2026() {
         .pay-cta-box p{font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7;max-width:420px;margin:0 auto 24px}
         .pay-cta-btn{display:inline-flex;align-items:center;gap:6px;background:#7CF5C0;color:#060A12;font-weight:700;font-size:14px;padding:12px 28px;border-radius:99px;text-decoration:none}
         @media(max-width:600px){.pay-wrap{padding:32px 16px 64px}.pay-stat-grid{grid-template-columns:1fr 1fr}.pay-tier-guide{grid-template-columns:1fr}.pay-cta-box{padding:28px 16px}}
+
+        .pay-card-dual-box{display:flex;gap:10px;margin:0 0 32px;flex-wrap:wrap}
+        .pay-card-btn{flex:1;min-width:140px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 16px;text-decoration:none;transition:border-color .2s}
+        .pay-card-btn:hover{border-color:rgba(255,255,255,0.25)}
+        .pay-card-tag{font-size:9px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:3px}
+        .pay-card-name{font-size:13px;font-weight:700;color:#fff}
+        .pay-card-perk{font-size:11px;color:rgba(255,255,255,0.4);margin-top:1px}
+        .pay-card-arrow{font-size:14px;color:rgba(255,255,255,0.25);flex-shrink:0}
       `}</style>
       <main className="pay">
         <div className="pay-wrap">
@@ -263,6 +271,24 @@ export default function HowMuchAirdropsPay2026() {
             </div>
           </section>
 
+          <div className="pay-card-dual-box">
+            <a href="https://app.kast.xyz/referral/M9F7SPDV" target="_blank" rel="noopener noreferrer sponsored" className="pay-card-btn">
+              <div>
+                <div className="pay-card-tag">Crypto Card</div>
+                <div className="pay-card-name">KAST Card</div>
+                <div className="pay-card-perk">Up to 12% cashback</div>
+              </div>
+              <span className="pay-card-arrow">→</span>
+            </a>
+            <a href="https://url.hk/i/en/xjrxm" target="_blank" rel="noopener noreferrer sponsored" className="pay-card-btn">
+              <div>
+                <div className="pay-card-tag">Crypto Card</div>
+                <div className="pay-card-name">RedotPay Card</div>
+                <div className="pay-card-perk">$445M volume · 6% cashback</div>
+              </div>
+              <span className="pay-card-arrow">→</span>
+            </a>
+          </div>
           <div className="pay-cta-box">
             <h2>Start Farming the Highest-Paying Airdrops</h2>
             <p>134+ verified airdrop guides with step-by-step instructions. Updated daily. Always free.</p>

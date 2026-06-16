@@ -298,6 +298,15 @@ export default function IndiaAirdrops2026() {
         .ind-aff-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 2px; }
         .ind-aff-sub { font-size: 12px; color: rgba(255,255,255,0.4); }
         .ind-aff-btn { display: inline-flex; align-items: center; gap: 6px; background: #f3ba2f; color: #000; font-weight: 800; font-size: 13px; padding: 10px 20px; border-radius: 99px; text-decoration: none; flex-shrink: 0; }
+
+        .ind-card-dual-box{display:flex;gap:10px;margin-bottom:32px;flex-wrap:wrap}
+        .ind-card-btn{flex:1;min-width:140px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 16px;text-decoration:none;transition:border-color .2s}
+        .ind-card-btn:hover{border-color:rgba(255,255,255,0.25)}
+        .ind-card-btn-left{text-align:left}
+        .ind-card-tag{font-size:9px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:3px}
+        .ind-card-name{font-size:13px;font-weight:700;color:#fff}
+        .ind-card-perk{font-size:11px;color:rgba(255,255,255,0.4);margin-top:1px}
+        .ind-card-arrow{font-size:14px;color:rgba(255,255,255,0.25);flex-shrink:0}
       `}</style>
 
       <main className="ind">
@@ -519,6 +528,24 @@ export default function IndiaAirdrops2026() {
           </div>
 
           {/* CTA */}
+          <div className="ind-card-dual-box">
+            <a href="https://app.kast.xyz/referral/M9F7SPDV" target="_blank" rel="noopener noreferrer sponsored" className="ind-card-btn">
+              <div className="ind-card-btn-left">
+                <div className="ind-card-tag">Crypto Card</div>
+                <div className="ind-card-name">KAST Card</div>
+                <div className="ind-card-perk">Up to 12% cashback</div>
+              </div>
+              <span className="ind-card-arrow">→</span>
+            </a>
+            <a href="https://url.hk/i/en/xjrxm" target="_blank" rel="noopener noreferrer sponsored" className="ind-card-btn">
+              <div className="ind-card-btn-left">
+                <div className="ind-card-tag">Crypto Card</div>
+                <div className="ind-card-name">RedotPay Card</div>
+                <div className="ind-card-perk">$445M volume · 6% cashback</div>
+              </div>
+              <span className="ind-card-arrow">→</span>
+            </a>
+          </div>
           <div className="ind-cta-box">
             <h2>Start Farming Airdrops Today</h2>
             <p>Browse 130+ verified airdrops on 3alamiy Web3 — all with full step-by-step guides. Updated daily. Always free.</p>
