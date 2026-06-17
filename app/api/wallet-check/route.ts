@@ -229,6 +229,12 @@ export async function GET(req: NextRequest) {
   };
 
   if (!isPro) {
+    // Show 2 real results as teasers — enough to prove value, not enough to skip paying
+    const previewItems = [
+      ...eligible.slice(0, 2).map(a => ({ name: a.name, logo: a.logo, blockchain: a.blockchain, tag: 'Eligible', color: '#7CF5C0' })),
+      ...missed.slice(0, Math.max(0, 2 - Math.min(2, eligible.length))).map(a => ({ name: a.name, logo: a.logo, blockchain: a.blockchain, tag: 'Missed', color: '#f87171' })),
+    ].slice(0, 2);
+
     return NextResponse.json({
       isPro: false,
       summary,
@@ -236,6 +242,7 @@ export async function GET(req: NextRequest) {
         eligibleCount: eligible.length,
         missedCount:   missed.length,
         activeCount:   active.length,
+        items: previewItems,
       },
     });
   }

@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        price_amount: 3,
+        price_amount: 5,
         price_currency: 'usd',
         order_id: wallet.toLowerCase(),
         order_description: '3alamiy Web3 — Wallet Checker Pro (30 days)',

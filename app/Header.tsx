@@ -209,7 +209,7 @@ export default function Header() {
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
               Go Pro
-              <span className="hdr-pro-price">$3/mo</span>
+              <span className="hdr-pro-price">$5/mo</span>
             </Link>
             <div className="hdr-sep" />
             <div className="hdr-auth-desktop"><AuthButton /></div>
@@ -243,7 +243,7 @@ export default function Header() {
         <hr className="hdr-drawer-divider" />
         <Link href="/pro" className="hdr-drawer-pro" onClick={() => setMenuOpen(false)}>
           <span>Go Pro — Full Airdrop Report</span>
-          <span style={{ fontSize: 14, fontWeight: 900 }}>$3/mo</span>
+          <span style={{ fontSize: 14, fontWeight: 900 }}>$5/mo</span>
         </Link>
         <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer"
           className="hdr-drawer-link" onClick={() => setMenuOpen(false)} style={{ marginTop: 4 }}>

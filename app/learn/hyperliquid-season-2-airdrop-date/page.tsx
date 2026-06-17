@@ -2,21 +2,21 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Hyperliquid Season 2 Airdrop Date & Snapshot — When Will HYPE Drop? | 3alamiy Web3",
+  title: "Hyperliquid Season 2 Airdrop Date 2026 — HLP 3x Multiplier, 38.8% HYPE Unreleased | 3alamiy Web3",
   description:
-    "When is the Hyperliquid Season 2 airdrop date? No official date announced yet. Full breakdown of what we know about the HYPE Season 2 snapshot, eligibility, and timeline.",
+    "Hyperliquid Season 2 snapshot date TBA — HLP vault depositors get a 3x multiplier and 38.8% of HYPE supply is still unreleased. Every signal pointing to when and how to position yourself now.",
   alternates: { canonical: "https://www.3alamiyweb3.com/learn/hyperliquid-season-2-airdrop-date" },
   openGraph: {
-    title: "Hyperliquid Season 2 Airdrop Date & Snapshot — When Will HYPE Drop?",
-    description: "No official date announced. Here's everything we know about the Hyperliquid Season 2 snapshot date, eligibility criteria, and how to farm before it drops.",
+    title: "Hyperliquid Season 2 Airdrop Date 2026 — HLP 3x Multiplier, 38.8% HYPE Unreleased",
+    description: "HLP vault = 3x multiplier. 38.8% HYPE unreleased. Snapshot date TBA — here's every signal and how to position before it drops.",
     url: "https://www.3alamiyweb3.com/learn/hyperliquid-season-2-airdrop-date",
     siteName: "3alamiy Web3",
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hyperliquid Season 2 Airdrop Date — When Is the Snapshot?",
-    description: "No official date. Here's everything we know about HYPE Season 2 timeline and eligibility.",
+    title: "Hyperliquid Season 2 Airdrop Date — HLP 3x Multiplier, 38.8% HYPE Unreleased",
+    description: "HLP vault depositors get 3x multiplier. 38.8% HYPE supply still unreleased. Snapshot date TBA — here's what we know.",
   },
 };
 

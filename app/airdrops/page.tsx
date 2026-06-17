@@ -7,13 +7,13 @@ const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 export const metadata: Metadata = {
-  title: '110+ Crypto Airdrops 2026 — Free Step-by-Step Guides | Updated Daily | 3alamiy Web3',
-  description: 'Browse 110+ active crypto airdrops in 2026. Every listing includes a full participation guide, wallet requirements, scam warnings, and eligibility criteria. Free, updated daily.',
-  keywords: 'crypto airdrops 2026, free crypto airdrops, best airdrops 2026, airdrop tracker, ethereum airdrops, solana airdrops, hyperliquid airdrop, free airdrop list 2026',
+  title: 'Best Crypto Airdrops 2026 — 110+ Active Campaigns with Free Guides | 3alamiy Web3',
+  description: 'Find the best crypto airdrops right now. 110+ verified campaigns — Hyperliquid, Polymarket, MetaMask, Phantom and more. Each listing has a step-by-step guide, eligibility checklist, and scam warning. Free, updated daily.',
+  keywords: 'crypto airdrops 2026, best airdrops right now, free crypto airdrops, airdrop tracker 2026, hyperliquid airdrop, polymarket airdrop, metamask airdrop, solana airdrops',
   alternates: { canonical: 'https://www.3alamiyweb3.com/airdrops' },
   openGraph: {
-    title: '110+ Crypto Airdrops 2026 — Free Step-by-Step Guides | Updated Daily',
-    description: 'Browse 110+ active crypto airdrops in 2026. Every listing includes a full participation guide, wallet requirements, scam warnings, and eligibility criteria. Free, updated daily.',
+    title: 'Best Crypto Airdrops 2026 — 110+ Active Campaigns with Free Guides',
+    description: '110+ verified crypto airdrop campaigns — Hyperliquid, Polymarket, MetaMask, Phantom. Step-by-step guides, eligibility checklists, scam warnings. Updated daily.',
     url: 'https://www.3alamiyweb3.com/airdrops',
     siteName: '3alamiy Web3',
     type: 'website',

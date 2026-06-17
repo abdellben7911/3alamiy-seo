@@ -7,7 +7,7 @@ const STATS = [
   { value: '125+', label: 'Airdrops Tracked' },
   { value: '9',    label: 'Chains Scanned' },
   { value: '$4.2K', label: 'Avg User Earnings' },
-  { value: '3 USDC', label: 'Per Month' },
+  { value: '5 USDC', label: 'Per Month' },
 ];
 
 const FEATURES = [
@@ -16,7 +16,7 @@ const FEATURES = [
   { title: 'Active Airdrop Alerts',               desc: 'Real-time list of live airdrops you can still claim right now, filtered to your active chains.' },
   { title: 'Monthly Re-Scans',                    desc: 'Your wallet is re-checked every 30 days automatically as new airdrops launch.' },
   { title: '125+ Verified Opportunities',         desc: 'Every airdrop in our database is manually researched and vetted — no scams, no noise.' },
-  { title: 'Pay with Crypto',                     desc: 'No credit card, no KYC. Pay 3 USDC from any wallet. Cancel any time.' },
+  { title: 'Pay with Crypto',                     desc: 'No credit card, no KYC. Pay 5 USDC from any wallet. Cancel any time.' },
 ];
 
 const PAST_WINS = [
@@ -31,7 +31,7 @@ const PAST_WINS = [
 const TESTIMONIALS = [
   { name: 'CryptoRaider',  period: '6 months',  text: 'Caught Scroll and zkSync from this tracker. Both dropped while I was active on-chain. This thing paid for itself 200×.' },
   { name: 'web3_amara',    period: '3 months',  text: 'The wallet checker told me I missed 4 airdrops. Fixed my on-chain habits immediately. Already qualified for 3 new ones.' },
-  { name: 'onchain_abdou', period: '1 year',    text: 'Best 3 USDC I spend every month. The airdrop database alone is worth it — everything is verified and updated constantly.' },
+  { name: 'onchain_abdou', period: '1 year',    text: 'Best 5 USDC I spend every month. The airdrop database alone is worth it — everything is verified and updated constantly.' },
 ];
 
 const FAQS = [
@@ -49,7 +49,7 @@ const FAQS = [
   },
   {
     q: 'How do I pay?',
-    a: 'You pay 3 USDC per month via NOWPayments — a crypto payment gateway that accepts 300+ coins. No credit card or KYC required.',
+    a: 'You pay 5 USDC per month via NOWPayments — a crypto payment gateway that accepts 300+ coins. No credit card or KYC required.',
   },
   {
     q: 'Can I check multiple wallets?',
@@ -128,7 +128,7 @@ export default function ProPageClient() {
             </h1>
 
             <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.4)', lineHeight: 1.8, maxWidth: 520, margin: '0 auto 48px' }}>
-              Scan any wallet across 9 chains, see every airdrop you qualified for, and get instant alerts on live drops — for 3 USDC a month.
+              Scan any wallet across 9 chains, see every airdrop you qualified for, and get instant alerts on live drops — for 5 USDC a month.
             </p>
 
             {/* Stats */}
@@ -152,7 +152,7 @@ export default function ProPageClient() {
               />
               {error && <div style={{ fontSize: 12, color: '#f87171' }}>{error}</div>}
               <button className="pro-btn-green" onClick={handleCheckout} disabled={loading} style={{ padding: '17px 24px', fontSize: 16, width: '100%' }}>
-                {loading ? 'Redirecting to payment...' : 'Unlock Pro — 3 USDC / month'}
+                {loading ? 'Redirecting to payment...' : 'Unlock Pro — 5 USDC / month'}
               </button>
               <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.18)', margin: 0 }}>
                 Crypto only · No credit card · No KYC · Cancel any time
@@ -279,7 +279,7 @@ export default function ProPageClient() {
                   />
                   {error && <div style={{ fontSize: 12, color: '#f87171' }}>{error}</div>}
                   <button className="pro-btn-green" onClick={handleCheckout} disabled={loading} style={{ padding: '17px 24px', fontSize: 15, width: '100%' }}>
-                    {loading ? 'Redirecting...' : 'Unlock Pro — 3 USDC / month'}
+                    {loading ? 'Redirecting...' : 'Unlock Pro — 5 USDC / month'}
                   </button>
                 </div>
 
@@ -309,7 +309,7 @@ export default function ProPageClient() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 16 }}>
             {[
               { step: '01', title: 'Paste your wallet',       desc: 'Enter any EVM address or Solana wallet. No sign-up or KYC.' },
-              { step: '02', title: 'Pay 3 USDC',              desc: 'Choose your crypto — BTC, ETH, USDT, USDC, SOL. Instant confirmation.' },
+              { step: '02', title: 'Pay 5 USDC',              desc: 'Choose your crypto — BTC, ETH, USDT, USDC, SOL. Instant confirmation.' },
               { step: '03', title: 'Get the full report',     desc: 'Your complete airdrop eligibility history unlocks immediately after payment.' },
               { step: '04', title: 'Stay updated monthly',    desc: 'Your wallet is re-scanned automatically every 30 days as new airdrops go live.' },
             ].map(({ step, title, desc }) => (
@@ -356,7 +356,7 @@ export default function ProPageClient() {
             Start hunting today
           </h2>
           <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.32)', marginBottom: 36, maxWidth: 420, margin: '0 auto 36px' }}>
-            3 USDC. No account. No KYC. Full wallet report in seconds.
+            5 USDC. No account. No KYC. Full wallet report in seconds.
           </p>
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
             <button className="pro-btn-green" onClick={() => document.querySelector<HTMLInputElement>('.pro-wallet-input')?.scrollIntoView({ behavior: 'smooth' })} style={{ padding: '15px 32px', fontSize: 15 }}>

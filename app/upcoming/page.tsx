@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Upcoming Crypto Airdrops 2026 — Tokenless Projects to Farm Now | 3alamiy Web3',
-  description: 'The best upcoming crypto airdrops in 2026. Curated tokenless projects with huge funding, step-by-step farming tasks, hype scores, and estimated reward tiers. Updated weekly.',
-  keywords: 'upcoming crypto airdrops 2026, metamask airdrop, opensea sea token, phantom wallet airdrop, soneium airdrop, ink kraken l2, grvt token, tokenless projects 2026, best airdrops to farm 2026',
+  title: 'Upcoming Crypto Airdrops 2026 — Best Tokenless Projects to Farm Before TGE | 3alamiy Web3',
+  description: 'The highest-potential upcoming airdrops in 2026: MetaMask, Phantom, MegaETH, Soneium, Ink by Kraken. Each project shows VC funding, farming tasks, hype score, and estimated reward tier. Start farming before the snapshot.',
+  keywords: 'upcoming crypto airdrops 2026, tokenless projects to farm 2026, metamask airdrop farming, phantom wallet airdrop, megaeth airdrop, soneium airdrop, best airdrops before tge 2026',
   alternates: { canonical: 'https://www.3alamiyweb3.com/upcoming' },
   openGraph: {
-    title: 'Upcoming Crypto Airdrops 2026 — Tokenless Projects to Farm Now',
-    description: 'Curated tokenless projects with huge VC funding, farming tasks, hype scores, and estimated rewards. Updated weekly.',
+    title: 'Upcoming Crypto Airdrops 2026 — Best Tokenless Projects to Farm Before TGE',
+    description: 'MetaMask, Phantom, MegaETH, Soneium, Ink by Kraken — farm before the snapshot. VC funding, hype scores, and step-by-step tasks for each project.',
     url: 'https://www.3alamiyweb3.com/upcoming',
     siteName: '3alamiy Web3',
     type: 'website',

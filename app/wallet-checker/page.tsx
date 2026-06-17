@@ -29,7 +29,7 @@ type AirdropResult = {
 type CheckResult = {
   isPro: boolean;
   summary: WalletSummary;
-  preview?: { eligibleCount: number; missedCount: number; activeCount: number };
+  preview?: { eligibleCount: number; missedCount: number; activeCount: number; items?: { name: string; logo: string; blockchain: string; tag: string; color: string }[] };
   results?: { eligible: AirdropResult[]; missed: AirdropResult[]; active: AirdropResult[] };
   stats?: { eligibleCount: number; missedCount: number; activeCount: number; totalChecked: number };
 };
@@ -528,19 +528,28 @@ function WalletCheckerInner() {
                   ))}
                 </div>
 
-                {/* Locked results preview */}
+                {/* Preview: real rows (visible) + blurred rows (locked) */}
                 <div style={{ position: 'relative', marginBottom: 8 }}>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
-                    {/* Fake blurred rows */}
+                    {/* Real visible rows */}
+                    {(result.preview?.items ?? []).map((item, i) => (
+                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, background: `${item.color}08`, border: `1px solid ${item.color}25`, borderRadius: 13, padding: '13px 18px' }}>
+                        <img src={`https://logo.clearbit.com/${item.logo}`} onError={(e) => { (e.target as HTMLImageElement).style.display='none' }} alt={item.name} style={{ width: 36, height: 36, borderRadius: 9, objectFit: 'cover', flexShrink: 0, background: '#1a2540' }} />
+                        <div style={{ flex: 1 }}>
+                          <div style={{ fontSize: 13, fontWeight: 700, color: '#fff' }}>{item.name}</div>
+                          <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', marginTop: 2 }}>{item.blockchain}</div>
+                        </div>
+                        <span style={{ fontSize: 10, fontWeight: 800, color: item.color, background: `${item.color}15`, border: `1px solid ${item.color}30`, padding: '3px 10px', borderRadius: 99, flexShrink: 0 }}>{item.tag}</span>
+                      </div>
+                    ))}
+                    {/* Blurred locked rows */}
                     {[
                       { color: '#7CF5C0', label: 'Eligible' },
                       { color: '#f87171', label: 'Missed'   },
                       { color: '#818cf8', label: 'Can Join' },
                       { color: '#7CF5C0', label: 'Eligible' },
-                      { color: '#f87171', label: 'Missed'   },
-                      { color: '#7CF5C0', label: 'Eligible' },
                     ].map((row, i) => (
-                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, background: `${row.color}08`, border: `1px solid ${row.color}15`, borderRadius: 13, padding: '13px 18px', filter: 'blur(4px)', userSelect: 'none', pointerEvents: 'none' }}>
+                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, background: `${row.color}08`, border: `1px solid ${row.color}15`, borderRadius: 13, padding: '13px 18px', filter: 'blur(5px)', userSelect: 'none', pointerEvents: 'none' }}>
                         <div style={{ width: 36, height: 36, borderRadius: 9, background: '#1a2540', flexShrink: 0 }} />
                         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6 }}>
                           <div style={{ width: `${45 + (i * 7) % 30}%`, height: 11, background: 'rgba(255,255,255,0.08)', borderRadius: 4 }} />
@@ -551,8 +560,8 @@ function WalletCheckerInner() {
                     ))}
                   </div>
 
-                  {/* Gradient fade */}
-                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 10%, #060A12 65%)', pointerEvents: 'none', borderRadius: 13 }} />
+                  {/* Gradient fade over blurred rows */}
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 35%, #060A12 72%)', pointerEvents: 'none', borderRadius: 13 }} />
                 </div>
 
                 {/* Paywall box */}
@@ -565,10 +574,10 @@ function WalletCheckerInner() {
                   </div>
 
                   <h2 style={{ fontSize: 'clamp(22px,4vw,32px)', fontWeight: 900, letterSpacing: '-0.04em', color: '#fff', marginBottom: 8, lineHeight: 1.2 }}>
-                    {eligibleCount} eligible · {missedCount} missed · {activeCount} can claim
+                    Your wallet qualifies for <span style={{ color: '#7CF5C0' }}>{eligibleCount} airdrop{eligibleCount !== 1 ? 's' : ''}</span>
                   </h2>
                   <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.3)', lineHeight: 1.75, marginBottom: 32, maxWidth: 380, margin: '0 auto 32px' }}>
-                    Unlock the full report to see every airdrop you qualified for, every one you missed, and every active drop you can still claim right now.
+                    You also missed {missedCount} and can still claim {activeCount} more. Unlock the full report to see every project, claim link, and step-by-step guide.
                   </p>
 
                   <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 28 }}>
