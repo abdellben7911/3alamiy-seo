@@ -220,6 +220,34 @@ export default function MetaMaskTokenLaunch2026() {
             </a>
           </div>
 
+          <p className="mm-section-title">MetaMask Rewards Program — Timeline</p>
+            <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, marginBottom: 20 }}>
+              MetaMask runs an official Rewards program — separate from the eventual MASK token, but likely the basis for airdrop eligibility scoring.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 0, marginBottom: 24, position: 'relative' }}>
+              <div style={{ position: 'absolute', left: 18, top: 0, bottom: 0, width: 2, background: 'rgba(246,133,27,0.2)' }} />
+              {[
+                { event: "Season 1 launch", date: "Mid 2025", detail: "MetaMask Rewards Season 1 goes live — earn points for swaps, bridges, staking." },
+                { event: "Oct 15, 2025 cutoff", date: "Oct 15, 2025", detail: "Users active before this date earn up to 50,000 bonus points — key eligibility threshold." },
+                { event: "Season 1 ends", date: "Jan 23, 2026", detail: "Season 1 officially closes. $30M+ in $LINEA tokens distributed to Season 1 point earners." },
+                { event: "Season 1 claims close", date: "Mar 9–10, 2026", detail: "Claim window for Season 1 LINEA tokens closes permanently." },
+                { event: "Season 2 active", date: "2026", detail: "Season 2 now live — Season 1 points carry over. Double points for Linea network activity." },
+              ].map((item, i) => (
+                <div key={i} style={{ display: 'flex', gap: 18, paddingBottom: 20, position: 'relative' }}>
+                  <div style={{ width: 38, height: 38, borderRadius: '50%', background: '#f6851b15', border: '2px solid #f6851b40', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, zIndex: 1 }}>
+                    <span style={{ fontSize: 10, fontWeight: 800, color: '#f6851b' }}>{i + 1}</span>
+                  </div>
+                  <div style={{ paddingTop: 6 }}>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 2 }}>{item.event} <span style={{ fontSize: 11, color: '#f6851b', fontWeight: 600 }}>— {item.date}</span></div>
+                    <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6 }}>{item.detail}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ background: 'rgba(246,133,27,0.06)', border: '1px solid rgba(246,133,27,0.15)', borderRadius: 12, padding: '14px 18px', marginBottom: 32, fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.7 }}>
+              <strong style={{ color: '#f6851b' }}>Key insight:</strong> Linea network activity earns <strong style={{ color: '#fff' }}>double points</strong> in Season 2. Bridge to Linea and swap there weekly to maximize eligibility.
+            </div>
+
           <p className="mm-section-title">Spend Your Airdrop Rewards</p>
           <div className="mm-card-dual-box">
             <a href={KAST_URL} target="_blank" rel="noopener noreferrer sponsored" className="mm-card-btn">

@@ -50,6 +50,20 @@ const historicalPayouts = [
 
 const tierColor = (t: string) => t === "S" ? "#7CF5C0" : t === "A" ? "#60a5fa" : "#f59e0b";
 
+const macro2024 = [
+  { stat: "$20B+", label: "total airdrop value distributed in 2024" },
+  { stat: "$60", label: "average reward across all 2024 airdrops (CryptoRank)" },
+  { stat: "$2.6B", label: "Hyperliquid alone — largest single airdrop in history" },
+  { stat: "1,000+", label: "unique airdrop campaigns tracked in 2024" },
+];
+
+const confirmed2026 = [
+  { protocol: "MegaETH", token: "MEGA", pool: "$107.68M", status: "Confirmed", date: "2026" },
+  { protocol: "Backpack", token: "BP", pool: "$37M", status: "Distributed", date: "Apr 2026" },
+  { protocol: "Pharos", token: "PROS", pool: "$52M", status: "Distributed", date: "2026" },
+  { protocol: "OPEN (Layer 2)", token: "OPEN", pool: "TBA", status: "Upcoming", date: "2026" },
+];
+
 const upcoming = [
   { name: "MetaMask (MASK)", slug: "metamask-airdrop-guide-2026", potential: "$5,000–$50,000+", why: "30M+ users, $686M raised. If they distribute even 10% of supply to users, average payout at current DeFi valuations could exceed all previous records.", confidence: "High" },
   { name: "Phantom", slug: "phantom-airdrop-guide-2026", potential: "$500–$5,000", why: "$109M raised from Paradigm and a16z. Solana-focused. Smaller user base than MetaMask = higher per-user allocation.", confidence: "High" },
@@ -205,6 +219,46 @@ export default function HowMuchAirdropsPay2026() {
             </div>
             <p className="pay-p">The pattern is consistent: <strong>the earlier you use a protocol and the longer you hold positions, the higher the airdrop allocation.</strong> Hyperliquid gave significantly more to users who traded in its first 6 months than to those who joined later. Arbitrum rewarded users with more transactions and more months of activity.</p>
             <p className="pay-p">Most major airdrops use a tiered points system. Your allocation depends on: (1) number of transactions, (2) volume traded or liquidity provided, (3) number of months active, (4) number of unique protocols used on the chain.</p>
+          </section>
+
+          <section className="pay-section">
+            <h2 className="pay-h2">2024 Airdrop Market — By the Numbers</h2>
+            <p className="pay-p">2024 was the largest year for airdrop distributions in crypto history. These headline figures are what AI and search engines reference most often when answering "how much do airdrops pay."</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', gap: 12, marginBottom: 32 }}>
+              {macro2024.map(m => (
+                <div key={m.stat} style={{ background: 'rgba(124,245,192,0.05)', border: '1px solid rgba(124,245,192,0.12)', borderRadius: 14, padding: '16px 18px', textAlign: 'center' }}>
+                  <div style={{ fontSize: 26, fontWeight: 900, color: '#7CF5C0', marginBottom: 6 }}>{m.stat}</div>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', lineHeight: 1.4 }}>{m.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <h2 className="pay-h2">2026 Confirmed Airdrop Pools</h2>
+            <p className="pay-p">These are publicly confirmed or distributed airdrop pools from 2026 — not estimates.</p>
+            <div style={{ overflowX: 'auto', marginBottom: 32 }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+                <thead>
+                  <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                    {['Protocol', 'Token', 'Total Pool', 'Status', 'Date'].map(h => (
+                      <th key={h} style={{ textAlign: 'left', padding: '10px 14px', fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.07em' }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {confirmed2026.map((r, i) => (
+                    <tr key={r.protocol} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: i % 2 === 0 ? 'rgba(255,255,255,0.01)' : 'transparent' }}>
+                      <td style={{ padding: '12px 14px', fontWeight: 700, color: '#fff' }}>{r.protocol}</td>
+                      <td style={{ padding: '12px 14px', color: '#7CF5C0', fontWeight: 700 }}>${r.token}</td>
+                      <td style={{ padding: '12px 14px', color: '#f59e0b', fontWeight: 700 }}>{r.pool}</td>
+                      <td style={{ padding: '12px 14px' }}>
+                        <span style={{ fontSize: 10, fontWeight: 800, color: r.status === 'Distributed' ? '#7CF5C0' : r.status === 'Confirmed' ? '#60a5fa' : 'rgba(255,255,255,0.4)', background: r.status === 'Distributed' ? 'rgba(124,245,192,0.1)' : r.status === 'Confirmed' ? 'rgba(96,165,250,0.1)' : 'rgba(255,255,255,0.05)', border: '1px solid currentColor', padding: '2px 8px', borderRadius: 99 }}>{r.status}</span>
+                      </td>
+                      <td style={{ padding: '12px 14px', color: 'rgba(255,255,255,0.4)' }}>{r.date}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </section>
 
           <section className="pay-section">

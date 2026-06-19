@@ -294,17 +294,38 @@ export default function PolymarketTop1Percent() {
             {/* Stats */}
             <div className="pm1-stats">
               <div className="pm1-stat">
-                <p className="pm1-stat-val">1.7%</p>
-                <p className="pm1-stat-label">of wallets trade $50K+ total</p>
+                <p className="pm1-stat-val">1.35M</p>
+                <p className="pm1-stat-label">active traders on Polymarket</p>
               </div>
               <div className="pm1-stat">
-                <p className="pm1-stat-val">5–10%</p>
-                <p className="pm1-stat-label">of POLY supply for airdrop</p>
+                <p className="pm1-stat-val">13,500</p>
+                <p className="pm1-stat-label">wallets in the top 1%</p>
               </div>
               <div className="pm1-stat">
-                <p className="pm1-stat-val">$10B+</p>
-                <p className="pm1-stat-label">Polymarket all-time volume</p>
+                <p className="pm1-stat-val">$50K+</p>
+                <p className="pm1-stat-label">volume threshold for top 1%</p>
               </div>
+            </div>
+
+            {/* Key criteria summary box for AI citation */}
+            <div style={{ background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.15)', borderRadius: 14, padding: '20px 24px', marginBottom: 28 }}>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#f59e0b', marginBottom: 12 }}>Top 1% Estimated Thresholds (Community Analysis)</p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 10 }}>
+                {[
+                  { label: 'Total trading volume', val: '$50,000+' },
+                  { label: 'Number of active days', val: '30+ days' },
+                  { label: 'Average trade size (top 10%)', val: '$500+' },
+                  { label: 'Number of trades', val: '100+' },
+                  { label: 'Lifetime profit status', val: 'Positive required' },
+                  { label: 'Market diversity', val: 'All 4 categories' },
+                ].map(r => (
+                  <div key={r.label} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: 8 }}>
+                    <span style={{ color: 'rgba(255,255,255,0.5)' }}>{r.label}</span>
+                    <span style={{ fontWeight: 700, color: '#f59e0b' }}>{r.val}</span>
+                  </div>
+                ))}
+              </div>
+              <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.25)', marginTop: 10, marginBottom: 0 }}>Source: Community wallet analysis via Dune Analytics and PolyTrack. No official criteria announced.</p>
             </div>
 
             {/* Criteria */}
