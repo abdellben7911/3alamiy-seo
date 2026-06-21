@@ -13,13 +13,27 @@ function isAuthorized(req: NextRequest): boolean {
 }
 
 async function getSubscribers(): Promise<string[]> {
-  const res = await fetch(
-    `${SUPABASE_URL}/rest/v1/newsletter_subscribers?select=email&status=neq.unsubscribed`,
-    { headers: { apikey: SUPABASE_SERVICE_KEY, Authorization: `Bearer ${SUPABASE_SERVICE_KEY}` } }
-  );
-  if (!res.ok) return [];
-  const data = await res.json();
-  return data.map((r: any) => r.email).filter(Boolean);
+  const emails: string[] = [];
+  let page = 1;
+  const perPage = 1000;
+
+  while (true) {
+    const res = await fetch(
+      `${SUPABASE_URL}/auth/v1/admin/users?page=${page}&per_page=${perPage}`,
+      { headers: { apikey: SUPABASE_SERVICE_KEY, Authorization: `Bearer ${SUPABASE_SERVICE_KEY}` } }
+    );
+    if (!res.ok) break;
+    const data = await res.json();
+    const users: any[] = data.users ?? data ?? [];
+    if (users.length === 0) break;
+    for (const u of users) {
+      if (u.email) emails.push(u.email);
+    }
+    if (users.length < perPage) break;
+    page++;
+  }
+
+  return emails;
 }
 
 function buildCampaignHtml(): string {
