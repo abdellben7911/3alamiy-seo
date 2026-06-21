@@ -56,6 +56,7 @@ const featuredArticles = [
 const allArticles = [
   // Static folder pages
   // Hot / Trending
+  { slug: 'base-airdrop-wallet-ranking-dashboard-2026', title: 'Base Airdrop Wallet Ranking Dashboard 2026 — Top 2.5M Wallets', desc: 'Only 2.5M of 250M+ Base wallets make the leaderboard. The exact criteria, metrics tracked, and how to improve your ranking before a $BASE airdrop.', cat: 'Hot', catColor: '#6494FF', time: '9 min', badge: 'New', badgeColor: '#6494FF' },
   { slug: 'how-to-farm-unichain-airdrop', title: 'How to Farm the Unichain Airdrop 2026', desc: 'Unichain is Uniswap\'s official L2 — the team behind $2T+ in DEX volume. No token yet. Full step-by-step farming guide.', cat: 'Hot', catColor: '#ff077a', time: '12 min' },
   { slug: 'how-to-farm-abstract-airdrop', title: 'How to Farm the Abstract Chain Airdrop 2026', desc: 'Abstract is the consumer crypto chain backed by Pudgy Penguins. No token yet. Use Abstract Global Wallets, play games, and build qualifying history.', cat: 'Hot', catColor: '#00ff88', time: '10 min' },
   { slug: 'how-to-farm-movement-airdrop', title: 'How to Farm the Movement Airdrop Season 2 (2026)', desc: 'MOVE launched Dec 2024. Season 2 farming is live — stake MOVE, use DeFi, and build monthly on-chain history for the next distribution.', cat: 'Season 2', catColor: '#a98fff', time: '12 min' },
