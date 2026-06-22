@@ -222,6 +222,13 @@ const MANUAL_LINKS = [
   { name: 'Enso',             url: 'https://drop.enso.build/claim' },
   { name: 'Lab',              url: 'https://lab.pro/wallet-connect' },
   { name: 'Caldera',          url: 'https://claim.caldera.foundation/' },
+  { name: 'Netrun',           url: 'https://app.netrun.xyz/airdrop' },
+  { name: 'SpiceNet',         url: 'https://portal.spicenet.io' },
+  { name: 'Re',               url: 'https://app.re.xyz/re' },
+  { name: 'Ethereal',         url: 'https://app.sablier.com/airdrops' },
+  { name: 'Collector Crypt',  url: 'https://claim.collectorcrypt.com' },
+  { name: 'Sign',             url: 'https://claim.tokentable.xyz/airdrop' },
+  { name: 'o1 Exchange',      url: 'https://o1.exchange/base/airdrop' },
 ];
 
 function resolveUrl(template: string, addr: string) {
