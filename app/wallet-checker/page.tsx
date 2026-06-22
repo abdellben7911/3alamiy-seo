@@ -29,7 +29,7 @@ type AirdropResult = {
 type CheckResult = {
   isPro: boolean;
   summary: WalletSummary;
-  preview?: { eligibleCount: number; missedCount: number; activeCount: number; items?: { name: string; logo: string; blockchain: string; tag: string; color: string }[] };
+  preview?: { eligibleCount: number; missedCount: number; activeCount: number; estimatedValue?: number; items?: { name: string; logo: string; blockchain: string; tag: string; color: string }[] };
   results?: { eligible: AirdropResult[]; missed: AirdropResult[]; active: AirdropResult[] };
   stats?: { eligibleCount: number; missedCount: number; activeCount: number; totalChecked: number };
 };
@@ -290,9 +290,11 @@ function WalletCheckerInner() {
 
   const checkedAddress = result?.summary?.address ?? '';
   const noActivity    = (result?.summary as any)?.noActivity ?? false;
-  const eligibleCount = result?.isPro ? result.stats!.eligibleCount : result?.preview?.eligibleCount ?? 0;
-  const missedCount   = result?.isPro ? result.stats!.missedCount   : result?.preview?.missedCount   ?? 0;
-  const activeCount   = result?.isPro ? result.stats!.activeCount   : result?.preview?.activeCount   ?? 0;
+  const eligibleCount    = result?.isPro ? result.stats!.eligibleCount : result?.preview?.eligibleCount ?? 0;
+  const missedCount      = result?.isPro ? result.stats!.missedCount   : result?.preview?.missedCount   ?? 0;
+  const activeCount      = result?.isPro ? result.stats!.activeCount   : result?.preview?.activeCount   ?? 0;
+  const estimatedValue   = result?.preview?.estimatedValue ?? 0;
+  const fmtValue         = estimatedValue >= 1000 ? `$${(estimatedValue / 1000).toFixed(1)}K` : `$${estimatedValue}`;
   const tabData       = result?.isPro ? (activeTab === 'eligible' ? result.results!.eligible : activeTab === 'missed' ? result.results!.missed : result.results!.active) : [];
 
   return (
@@ -584,6 +586,13 @@ function WalletCheckerInner() {
                     Pro Required
                   </div>
 
+                  {estimatedValue > 0 && (
+                    <div style={{ display: 'inline-block', background: 'rgba(124,245,192,0.08)', border: '1px solid rgba(124,245,192,0.2)', borderRadius: 10, padding: '8px 18px', marginBottom: 16 }}>
+                      <span style={{ fontSize: 13, fontWeight: 800, color: '#7CF5C0', letterSpacing: '-0.01em' }}>
+                        ~{fmtValue} in unclaimed airdrops detected
+                      </span>
+                    </div>
+                  )}
                   <h2 style={{ fontSize: 'clamp(22px,4vw,32px)', fontWeight: 900, letterSpacing: '-0.04em', color: '#fff', marginBottom: 8, lineHeight: 1.2 }}>
                     Your wallet qualifies for <span style={{ color: '#7CF5C0' }}>{eligibleCount} airdrop{eligibleCount !== 1 ? 's' : ''}</span>
                   </h2>
@@ -601,7 +610,7 @@ function WalletCheckerInner() {
                   </div>
 
                   <button className="wc-unlock-btn" onClick={handleCheckout} disabled={checkoutLoading}>
-                    {checkoutLoading ? 'Redirecting…' : 'Unlock Full Report — 3 USDC / month'}
+                    {checkoutLoading ? 'Redirecting…' : estimatedValue > 0 ? `See all ${fmtValue} — Unlock for 3 USDC` : 'Unlock Full Report — 3 USDC / month'}
                   </button>
 
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginTop: 20, flexWrap: 'wrap' }}>

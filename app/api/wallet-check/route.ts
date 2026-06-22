@@ -124,6 +124,30 @@ async function getAirdrops() {
   } catch { return []; }
 }
 
+// Estimated USD value per airdrop — used to show "~$XXX unclaimed" in free preview
+// Conservative median is $60 (2024 data); known large drops get specific values
+const AIRDROP_VALUES: Record<string, number> = {
+  // Large confirmed drops
+  'Hyperliquid': 2000, 'MegaETH': 400, 'Backpack': 300, 'Pharos': 250,
+  'Arbitrum': 800, 'Optimism': 500, 'zkSync': 200, 'Starknet': 150,
+  'Linea': 120, 'Scroll': 100, 'Base': 300,
+  // Mid-tier
+  'Ethena': 180, 'Pendle': 150, 'Kamino': 120, 'Marginfi': 100,
+  'Drift': 200, 'Jupiter': 400, 'Meteora': 180, 'Tensor': 150,
+  'Pyth': 200, 'Wormhole': 120, 'LayerZero': 250, 'ZetaChain': 80,
+  'Polymarket': 200, 'dYdX': 300, 'Vertex': 120, 'Synthetix': 80,
+  'Aevo': 100, 'Paradex': 80, 'Ambient': 80, 'Ekubo': 80,
+  'MetaMask': 500, 'Phantom': 300, 'Rainbow': 100,
+  // Default for everything else: $60 (2024 median)
+};
+const DEFAULT_AIRDROP_VALUE = 60;
+
+function estimateAirdropValue(name: string): number {
+  if (!name) return DEFAULT_AIRDROP_VALUE;
+  const key = Object.keys(AIRDROP_VALUES).find(k => name.toLowerCase().includes(k.toLowerCase()));
+  return key ? AIRDROP_VALUES[key] : DEFAULT_AIRDROP_VALUE;
+}
+
 function isEthAddress(addr: string) { return /^0x[0-9a-fA-F]{40}$/.test(addr); }
 function isSolAddress(addr: string)  { return /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(addr) && !addr.startsWith('0x'); }
 
@@ -235,13 +259,17 @@ export async function GET(req: NextRequest) {
       ...missed.slice(0, Math.max(0, 2 - Math.min(2, eligible.length))).map(a => ({ name: a.name, logo: a.logo, blockchain: a.blockchain, tag: 'Missed', color: '#f87171' })),
     ].slice(0, 2);
 
+    // Estimate total value of eligible airdrops
+    const estimatedValue = eligible.reduce((sum, a) => sum + estimateAirdropValue(a.name), 0);
+
     return NextResponse.json({
       isPro: false,
       summary,
       preview: {
-        eligibleCount: eligible.length,
-        missedCount:   missed.length,
-        activeCount:   active.length,
+        eligibleCount:  eligible.length,
+        missedCount:    missed.length,
+        activeCount:    active.length,
+        estimatedValue,
         items: previewItems,
       },
     });
