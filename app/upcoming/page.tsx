@@ -1,6 +1,18 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+// Re-render on every request so the shuffle is fresh each visit
+export const dynamic = 'force-dynamic';
+
+function shuffleArray<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export const metadata: Metadata = {
   title: 'Upcoming Crypto Airdrops 2026 — Best Tokenless Projects to Farm Before TGE | 3alamiy Web3',
   description: 'The highest-potential upcoming airdrops in 2026: MetaMask, Phantom, MegaETH, Soneium, Ink by Kraken. Each project shows VC funding, farming tasks, hype score, and estimated reward tier. Start farming before the snapshot.',
@@ -869,6 +881,8 @@ function HypeBar({ score }: { score: number }) {
 
 export default function UpcomingPage() {
   const totalFunding = '$2B+';
+  // Shuffle on every server render — each visitor sees a different order
+  const displayProjects = shuffleArray(PROJECTS);
 
   return (
     <>
@@ -1013,7 +1027,7 @@ export default function UpcomingPage() {
         {/* FILTER NOTE */}
         <div className="up-filter-wrap">
           <p className="up-filter-note">
-            💡 Sorted by Hype Score — highest expected reward potential first. 
+            💡 Order shuffled on every visit — refresh to discover different projects.
             Hype Score = VC funding × community size × tokenless duration × task complexity.
           </p>
         </div>
@@ -1021,7 +1035,7 @@ export default function UpcomingPage() {
         {/* GRID */}
         <div className="up-body">
           <div className="up-grid">
-            {PROJECTS.sort((a, b) => b.hypeScore - a.hypeScore).map((p, i) => (
+            {displayProjects.map((p, i) => (
               <div
                 key={p.slug}
                 className="up-card"
