@@ -56,6 +56,7 @@ const featuredArticles = [
 const allArticles = [
   // Static folder pages
   // Hot / Trending
+  { slug: 'grass-season-2-airdrop-date-2026', title: 'Grass Season 2 Airdrop Date 2026 — July 7 Update Confirmed', desc: 'Discord mod confirmed a Grass Season 2 update on July 7, 2026. What it means, how to farm before the snapshot, and what Season 1 paid.', cat: 'Trending', catColor: '#22c55e', time: '7 min', badge: 'Hot', badgeColor: '#22c55e' },
   { slug: 'base-airdrop-wallet-ranking-dashboard-2026', title: 'Base Airdrop Wallet Ranking Dashboard 2026 — Top 2.5M Wallets', desc: 'Only 2.5M of 250M+ Base wallets make the leaderboard. The exact criteria, metrics tracked, and how to improve your ranking before a $BASE airdrop.', cat: 'Hot', catColor: '#6494FF', time: '9 min', badge: 'New', badgeColor: '#6494FF' },
   { slug: 'how-to-farm-unichain-airdrop', title: 'How to Farm the Unichain Airdrop 2026', desc: 'Unichain is Uniswap\'s official L2 — the team behind $2T+ in DEX volume. No token yet. Full step-by-step farming guide.', cat: 'Hot', catColor: '#ff077a', time: '12 min' },
   { slug: 'how-to-farm-abstract-airdrop', title: 'How to Farm the Abstract Chain Airdrop 2026', desc: 'Abstract is the consumer crypto chain backed by Pudgy Penguins. No token yet. Use Abstract Global Wallets, play games, and build qualifying history.', cat: 'Hot', catColor: '#00ff88', time: '10 min' },
