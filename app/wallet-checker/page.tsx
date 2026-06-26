@@ -704,54 +704,6 @@ function WalletCheckerInner() {
               </div>
             )}
 
-            {/* ── MANUAL CHECKER LINKS ── */}
-            <div style={{ marginTop: 56 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
-                <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.06)' }} />
-                <div style={{ fontSize: 9, fontWeight: 800, color: 'rgba(255,255,255,0.2)', textTransform: 'uppercase', letterSpacing: '0.14em', whiteSpace: 'nowrap' }}>
-                  {MANUAL_LINKS.length} Manual Checker Links
-                </div>
-                <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.06)' }} />
-              </div>
-              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)', textAlign: 'center', marginBottom: 24, lineHeight: 1.7 }}>
-                Click any card to check your eligibility directly on the official site.{checkedAddress ? ' Your wallet address is pre-filled.' : ''}
-              </p>
-              <div className="mc-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(140px,1fr))', gap: 10 }}>
-                {MANUAL_LINKS.map((link, i) => {
-                  const colors = ['#7CF5C0','#818cf8','#f59e0b','#f87171','#38bdf8','#a78bfa','#fb923c'];
-                  const bg = colors[i % colors.length];
-                  return (
-                    <a key={link.name + i} href={resolveUrl(link.url, checkedAddress)} target="_blank" rel="noopener noreferrer" className="mc-card">
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                        <div className="mc-avatar" style={{ background: `${bg}15`, border: `1px solid ${bg}30`, color: bg, overflow: 'hidden', padding: 0 }}>
-                          <img
-                            src={getFavicon(link.url)}
-                            alt={link.name}
-                            width={34}
-                            height={34}
-                            style={{ width: 34, height: 34, objectFit: 'cover', borderRadius: 8, display: 'block' }}
-                            onError={(e) => {
-                              const el = e.currentTarget;
-                              el.style.display = 'none';
-                              const parent = el.parentElement;
-                              if (parent) parent.textContent = link.name[0];
-                            }}
-                          />
-                        </div>
-                        <span className="mc-name">{link.name}</span>
-                      </div>
-                      <div className="mc-btn">
-                        Check
-                        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                          <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-                        </svg>
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
 
           </div>
         )}
@@ -819,54 +771,6 @@ function WalletCheckerInner() {
               </div>
             </div>
 
-            {/* Manual Checker Links in empty state */}
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
-                <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.06)' }} />
-                <div style={{ fontSize: 9, fontWeight: 800, color: 'rgba(255,255,255,0.2)', textTransform: 'uppercase', letterSpacing: '0.14em', whiteSpace: 'nowrap' }}>
-                  {MANUAL_LINKS.length} Manual Checker Links
-                </div>
-                <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.06)' }} />
-              </div>
-              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)', textAlign: 'center', marginBottom: 24, lineHeight: 1.7 }}>
-                Check your eligibility directly on each protocol's official site.
-              </p>
-              <div className="mc-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(140px,1fr))', gap: 10 }}>
-                {MANUAL_LINKS.map((link, i) => {
-                  const colors = ['#7CF5C0','#818cf8','#f59e0b','#f87171','#38bdf8','#a78bfa','#fb923c'];
-                  const bg = colors[i % colors.length];
-                  return (
-                    <a key={link.name + i} href={resolveUrl(link.url, checkedAddress)} target="_blank" rel="noopener noreferrer" className="mc-card">
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                        <div className="mc-avatar" style={{ background: `${bg}15`, border: `1px solid ${bg}30`, color: bg, overflow: 'hidden', padding: 0 }}>
-                          <img
-                            src={getFavicon(link.url)}
-                            alt={link.name}
-                            width={34}
-                            height={34}
-                            style={{ width: 34, height: 34, objectFit: 'cover', borderRadius: 8, display: 'block' }}
-                            onError={(e) => {
-                              const el = e.currentTarget;
-                              el.style.display = 'none';
-                              const parent = el.parentElement;
-                              if (parent) parent.textContent = link.name[0];
-                            }}
-                          />
-                        </div>
-                        <span className="mc-name">{link.name}</span>
-                      </div>
-                      <div className="mc-btn">
-                        Check
-                        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                          <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-                        </svg>
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
 
           </div>
         )}
