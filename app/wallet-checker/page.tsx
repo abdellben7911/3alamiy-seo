@@ -501,7 +501,7 @@ function WalletCheckerInner() {
             </div>
 
             {/* ── PRO: full results — airdrop list removed, using manual checkers instead ── */}
-            {false && result.isPro && (
+            {false && result?.isPro && (
               <>
                 {/* Trial banner */}
                 {result.isTrial && (
