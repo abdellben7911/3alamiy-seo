@@ -162,12 +162,14 @@ export default function ProPageClient() {
                 className="pro-wallet-input"
                 value={wallet}
                 onChange={e => setWallet(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' && handleCheckout()}
-                placeholder="Paste your wallet address (EVM or Solana)"
+                onKeyDown={e => e.key === 'Enter' && wallet.trim() && (window.location.href = `/wallet-checker?wallet=${encodeURIComponent(wallet.trim())}`)}
+                placeholder="Or paste wallet to check directly"
               />
-              {error && <div style={{ fontSize: 12, color: '#f87171' }}>{error}</div>}
-              <button className="pro-btn-green" onClick={handleCheckout} disabled={loading} style={{ padding: '14px 24px', fontSize: 14, width: '100%', background: 'transparent', border: '1px solid rgba(124,245,192,0.3)', color: '#7CF5C0' }}>
-                {loading ? 'Redirecting...' : 'Unlock Pro — 5 USDC / month'}
+              <button
+                onClick={() => { if (wallet.trim()) window.location.href = `/wallet-checker?wallet=${encodeURIComponent(wallet.trim())}`; else window.location.href = '/wallet-checker'; }}
+                style={{ padding: '14px 24px', fontSize: 14, width: '100%', background: 'transparent', border: '1px solid rgba(124,245,192,0.3)', color: '#7CF5C0', borderRadius: 12, fontWeight: 700, cursor: 'pointer' }}
+              >
+                Check My Wallet Free
               </button>
             </div>
 
@@ -289,14 +291,17 @@ export default function ProPageClient() {
                     placeholder="Your wallet address"
                     style={{ textAlign: 'center' }}
                   />
-                  {error && <div style={{ fontSize: 12, color: '#f87171' }}>{error}</div>}
-                  <button className="pro-btn-green" onClick={handleCheckout} disabled={loading} style={{ padding: '17px 24px', fontSize: 15, width: '100%' }}>
-                    {loading ? 'Redirecting...' : 'Unlock Pro — 5 USDC / month'}
+                  <button
+                    className="pro-btn-green"
+                    onClick={() => { if (wallet.trim()) window.location.href = `/wallet-checker?wallet=${encodeURIComponent(wallet.trim())}`; else window.location.href = '/wallet-checker'; }}
+                    style={{ padding: '17px 24px', fontSize: 15, width: '100%' }}
+                  >
+                    Get Free Access
                   </button>
                 </div>
 
                 <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.18)', marginTop: 16, marginBottom: 0 }}>
-                  Pay once, active for 30 days · BTC, ETH, USDT, SOL accepted · No recurring charge
+                  Free until July 26 · Enter email to unlock · No payment needed
                 </p>
               </div>
 
@@ -368,12 +373,12 @@ export default function ProPageClient() {
             Start hunting today
           </h2>
           <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.32)', marginBottom: 36, maxWidth: 420, margin: '0 auto 36px' }}>
-            5 USDC. No account. No KYC. Full wallet report in seconds.
+            Free until July 26. Enter your email and get the full report in seconds.
           </p>
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button className="pro-btn-green" onClick={() => document.querySelector<HTMLInputElement>('.pro-wallet-input')?.scrollIntoView({ behavior: 'smooth' })} style={{ padding: '15px 32px', fontSize: 15 }}>
-              Get Started
-            </button>
+            <Link href="/wallet-checker" className="pro-btn-green" style={{ padding: '15px 32px', fontSize: 15, textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
+              Get Free Access
+            </Link>
             <Link href="/airdrops" style={{ display: 'inline-flex', alignItems: 'center', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)', color: 'rgba(255,255,255,0.55)', fontSize: 14, fontWeight: 600, padding: '14px 28px', borderRadius: 12, textDecoration: 'none', transition: 'background 0.15s' }}>
               Browse Airdrops Free
             </Link>
