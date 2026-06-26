@@ -266,4 +266,173 @@ const AIRDROP_VALUES: Record<string, number> = {
   'Pyth': 200, 'Wormhole': 120, 'LayerZero': 250, 'ZetaChain': 80,
   'Polymarket': 200, 'dYdX': 300, 'Vertex': 120, 'Synthetix': 80,
   'Aevo': 100, 'Paradex': 80, 'Ambient': 80, 'Ekubo': 80,
-  'M
+  'MetaMask': 500, 'Phantom': 300, 'Rainbow': 100,
+  // Default for everything else: $60 (2024 median)
+};
+const DEFAULT_AIRDROP_VALUE = 60;
+
+function estimateAirdropValue(name: string): number {
+  if (!name) return DEFAULT_AIRDROP_VALUE;
+  const key = Object.keys(AIRDROP_VALUES).find(k => name.toLowerCase().includes(k.toLowerCase()));
+  return key ? AIRDROP_VALUES[key] : DEFAULT_AIRDROP_VALUE;
+}
+
+function isEthAddress(addr: string) { return /^0x[0-9a-fA-F]{40}$/.test(addr); }
+function isSolAddress(addr: string)  { return /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(addr) && !addr.startsWith('0x'); }
+
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const address = searchParams.get('address')?.trim() || '';
+
+  if (!address) return NextResponse.json({ error: 'Address required' }, { status: 400 });
+
+  const isEvm = isEthAddress(address);
+  const isSol = !isEvm && isSolAddress(address);
+  if (!isEvm && !isSol) return NextResponse.json({ error: 'Invalid wallet address' }, { status: 400 });
+
+  // Trial: activated by giving email (client sends ?trial=1)
+  const hasTrial = searchParams.get('trial') === '1';
+
+  const [isProSubscriber, airdrops] = await Promise.all([checkSubscription(address), getAirdrops()]);
+  const isPro = isProSubscriber || hasTrial;
+  const isTrialActive = hasTrial && !isProSubscriber;
+
+  // ── Scan chains ──
+  let evmChains: ChainResult[] = [];
+  let solActivity: Activity | null = null;
+
+  if (isEvm) {
+    // 1️⃣ Try Covalent (fastest, all chains in one key)
+    if (COVALENT_KEY) {
+      evmChains = await getCovalentActivity(address);
+    }
+    // 2️⃣ Try public RPC eth_getTransactionCount — most reliable, official endpoints, no API key
+    if (evmChains.length === 0) {
+      evmChains = await getRPCActivity(address);
+    }
+    // 3️⃣ Still empty → try Blockscout (transaction history, free, no key)
+    if (evmChains.length === 0) {
+      evmChains = await getBlockscoutActivity(address);
+    }
+    // 4️⃣ Still empty → try Etherscan family
+    if (evmChains.length === 0) {
+      evmChains = await getEtherscanAllChains(address);
+    }
+    // 5️⃣ Still empty → try Ankr multichain RPC
+    if (evmChains.length === 0) {
+      evmChains = await getAnkrActivity(address);
+    }
+  } else {
+    solActivity = await getSolanaActivity(address);
+  }
+
+  // ── Build active chain name set ──
+  const activeChainNames = new Set<string>();
+  evmChains.forEach(c => c.dbNames.forEach(n => activeChainNames.add(n)));
+  if (solActivity) ['Solana', 'SOL'].forEach(n => activeChainNames.add(n));
+
+  // ── Wallet metrics ──
+  const timestamps = [
+    ...evmChains.map(c => c.activity.firstTxTimestamp),
+    ...(solActivity ? [solActivity.firstTxTimestamp] : []),
+  ].filter(Boolean);
+  const firstTx = timestamps.length ? Math.min(...timestamps) : null;
+  const totalTxs = evmChains.reduce((s, c) => s + c.activity.txCount, 0) + (solActivity?.txCount ?? 0);
+  const ageDays = firstTx ? Math.floor((Date.now() - firstTx) / 86400000) : null;
+  const ageYears = ageDays ? (ageDays / 365).toFixed(1) : null;
+
+  // ── Airdrop eligibility logic ──
+  // Eligibility is based on:
+  // 1. Is wallet active on the airdrop's chain?
+  // 2. Did wallet exist before the airdrop snapshot date?
+  // 3. Is the airdrop still active vs ended?
+
+  const now = Date.now();
+
+  const eligibilityResults = (airdrops as any[]).map(a => {
+    const airdropChain = a.blockchain?.trim();
+    const onChain = airdropChain ? (
+      activeChainNames.has(airdropChain) ||
+      [...activeChainNames].some(n => n.toLowerCase() === airdropChain.toLowerCase())
+    ) : false;
+
+    const airdropDate = a.created_at ? new Date(a.created_at).getTime() : now;
+    const isActive = a.status === 'Active';
+    const walletPredatesAirdrop = firstTx ? firstTx < airdropDate : false;
+
+    let eligibility: 'eligible' | 'missed' | 'active' | 'unknown';
+    if (isActive && onChain)                              eligibility = 'eligible';   // live airdrop, wallet on chain → go claim
+    else if (!isActive && onChain && walletPredatesAirdrop) eligibility = 'missed';    // ended, was on chain, existed before → missed
+    else if (isActive && !onChain)                        eligibility = 'active';     // live but wallet not on that chain → can join
+    else                                                  eligibility = 'unknown';
+
+    return {
+      slug: a.slug, name: a.name, logo: a.logo,
+      blockchain: a.blockchain, status: a.status,
+      difficulty: a.difficulty, cost: a.cost,
+      description: a.description?.slice(0, 120),
+      eligibility,
+    };
+  });
+
+  const eligible = eligibilityResults.filter(a => a.eligibility === 'eligible');
+  const missed   = eligibilityResults.filter(a => a.eligibility === 'missed');
+  const active   = eligibilityResults.filter(a => a.eligibility === 'active');
+
+  // ── Score (0–100) ──
+  const chainScore  = Math.min(30, evmChains.length * 5 + (solActivity ? 5 : 0));
+  const txScore     = Math.min(25, totalTxs > 500 ? 25 : totalTxs > 100 ? 18 : totalTxs > 20 ? 12 : totalTxs > 5 ? 7 : totalTxs > 0 ? 3 : 0);
+  const ageScore    = ageDays ? Math.min(25, Math.floor(ageDays / 30) * 2) : 0;
+  const eligScore   = Math.min(20, eligible.length * 4);
+  const score = Math.min(100, chainScore + txScore + ageScore + eligScore);
+
+  const noActivity = evmChains.length === 0 && !solActivity;
+
+  const summary = {
+    address,
+    addressType: isEvm ? 'EVM' : 'Solana',
+    activeChains: evmChains.map(c => c.name).concat(solActivity ? ['Solana'] : []),
+    totalTxs,
+    walletAge: ageYears ? `${ageYears} yrs` : ageDays ? `${ageDays} days` : 'No activity',
+    ageDays,
+    firstActivity: firstTx ? new Date(firstTx).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : 'No activity',
+    score,
+    noActivity,
+  };
+
+  if (!isPro) {
+    // Show 2 real results as teasers — enough to prove value, not enough to skip paying
+    const previewItems = [
+      ...eligible.slice(0, 2).map(a => ({ name: a.name, logo: a.logo, blockchain: a.blockchain, tag: 'Eligible', color: '#7CF5C0' })),
+      ...missed.slice(0, Math.max(0, 2 - Math.min(2, eligible.length))).map(a => ({ name: a.name, logo: a.logo, blockchain: a.blockchain, tag: 'Missed', color: '#f87171' })),
+    ].slice(0, 2);
+
+    // Estimate total value of eligible airdrops
+    const estimatedValue = eligible.reduce((sum, a) => sum + estimateAirdropValue(a.name), 0);
+
+    return NextResponse.json({
+      isPro: false,
+      summary,
+      preview: {
+        eligibleCount:  eligible.length,
+        missedCount:    missed.length,
+        activeCount:    active.length,
+        estimatedValue,
+        items: previewItems,
+      },
+    });
+  }
+
+  return NextResponse.json({
+    isPro: true,
+    isTrial: isTrialActive && !isProSubscriber,
+    summary,
+    results: { eligible, missed, active, all: eligibilityResults },
+    stats: {
+      eligibleCount: eligible.length,
+      missedCount:   missed.length,
+      activeCount:   active.length,
+      totalChecked:  airdrops.length,
+    },
+  });
+}
