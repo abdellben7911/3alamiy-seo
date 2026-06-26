@@ -500,8 +500,8 @@ function WalletCheckerInner() {
               </div>
             </div>
 
-            {/* ── PRO: full results — airdrop list removed, using manual checkers instead ── */}
-            {false && result?.isPro && (
+            {/* PRO airdrop list removed — using manual checkers only */}
+            {(false as boolean) && (result as any)?.isPro && (
               <>
                 {/* Trial banner */}
                 {result.isTrial && (
@@ -581,8 +581,8 @@ function WalletCheckerInner() {
               </div>
             )}
 
-            {/* ── FREE: hard paywall — hidden, using manual checkers instead ── */}
-            {false && !result.isPro && !noActivity && (
+            {/* FREE paywall removed — using manual checkers only */}
+            {(false as boolean) && !(result as any)?.isPro && !noActivity && (
               <div>
                 {/* Teaser stat row */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 24 }}>
