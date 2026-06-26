@@ -452,8 +452,8 @@ function WalletCheckerInner() {
         )}
 
         {/* ── RESULTS ── */}
-        {result && !loading && (
-          <div className="wc-wrap" style={{ paddingTop: 48, paddingBottom: 100 }}>
+        {result && !loading && (<>
+          <div className="wc-wrap" style={{ paddingTop: 48, paddingBottom: 48 }}>
 
             {/* Summary card */}
             <div className="wc-card" style={{ padding: '28px 28px', marginBottom: 20 }}>
@@ -706,13 +706,15 @@ function WalletCheckerInner() {
             )}
 
 
-            {/* ── Manual Checker Links after results ── */}
-            <div style={{ marginTop: 56, paddingBottom: 80, marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', paddingLeft: 'calc(50vw - 50% + 22px)', paddingRight: 'calc(50vw - 50% + 22px)' }}>
+          </div>{/* end wc-wrap */}
+
+          {/* ── Manual Checker Links after results ── */}
+          <div style={{ padding: '48px 28px 80px', maxWidth: 1280, margin: '0 auto' }}>
               <div style={{ textAlign: 'center', marginBottom: 32 }}>
                 <div style={{ fontSize: 22, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em', marginBottom: 8 }}>Manual Checker Links</div>
                 <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)' }}>Additional airdrop checkers — click to verify eligibility on the official site</div>
               </div>
-              <div style={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 14 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 14 }}>
                 {MANUAL_LINKS.map((link) => (
                   <a key={link.name} href={resolveUrl(link.url, checkedAddress)} target="_blank" rel="noopener noreferrer"
                     style={{ display: 'flex', flexDirection: 'column', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 14, padding: '18px 18px 14px', textDecoration: 'none', color: '#fff', transition: 'border-color 0.15s, background 0.15s' }}
@@ -742,8 +744,7 @@ function WalletCheckerInner() {
               </div>
             </div>
 
-          </div>
-        )}
+        </>)}
 
         {/* ── EMPTY STATE ── */}
         {!result && !loading && !error && (
