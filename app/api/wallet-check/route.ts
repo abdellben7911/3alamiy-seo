@@ -245,7 +245,7 @@ async function checkSubscription(address: string): Promise<boolean> {
 async function getAirdrops() {
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/airdrops?select=slug,name,logo,blockchain,status,difficulty,cost,description,created_at&order=created_at.desc`,
+      `${SUPABASE_URL}/rest/v1/airdrops?select=slug,name,logo,blockchain,status,difficulty,cost,description,links,created_at&order=created_at.desc`,
       { headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` }, next: { revalidate: 86400 } }
     );
     if (!res.ok) return [];
@@ -366,11 +366,16 @@ export async function GET(req: NextRequest) {
     else if (isActive && !onChain)                        eligibility = 'active';     // live but wallet not on that chain → can join
     else                                                  eligibility = 'unknown';
 
+    // Pick the best external link: app > website > first available key
+    const linksObj: Record<string, string> = (a.links && typeof a.links === 'object' && !Array.isArray(a.links)) ? a.links : {};
+    const externalLink = linksObj['app'] || linksObj['website'] || linksObj['dapp'] || Object.values(linksObj).find(v => typeof v === 'string' && v.startsWith('http')) || null;
+
     return {
       slug: a.slug, name: a.name, logo: a.logo,
       blockchain: a.blockchain, status: a.status,
       difficulty: a.difficulty, cost: a.cost,
       description: a.description?.slice(0, 120),
+      link: externalLink,
       eligibility,
     };
   });

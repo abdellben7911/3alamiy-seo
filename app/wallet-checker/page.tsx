@@ -23,6 +23,7 @@ type AirdropResult = {
   blockchain: string;
   status: string;
   difficulty: string;
+  link: string | null;
   eligibility: 'eligible' | 'missed' | 'active' | 'unknown';
 };
 
@@ -66,8 +67,12 @@ function AirdropRow({ a }: { a: AirdropResult }) {
     unknown:  { color: 'rgba(255,255,255,0.25)', bg: 'rgba(255,255,255,0.02)', border: 'rgba(255,255,255,0.07)', label: 'Unknown' },
   }[a.eligibility] || { color: 'rgba(255,255,255,0.25)', bg: 'rgba(255,255,255,0.02)', border: 'rgba(255,255,255,0.07)', label: '—' };
 
+  const href = a.link || `/airdrops/${a.slug}`;
+  const isExternal = !!a.link;
+
   return (
-    <Link href={`/airdrops/${a.slug}`} style={{ display: 'flex', alignItems: 'center', gap: 14, background: cfg.bg, border: `1px solid ${cfg.border}`, borderRadius: 13, padding: '13px 18px', textDecoration: 'none', color: '#fff', transition: 'transform 0.12s' }}>
+    <a href={href} target={isExternal ? '_blank' : '_self'} rel={isExternal ? 'noopener noreferrer' : undefined}
+      style={{ display: 'flex', alignItems: 'center', gap: 14, background: cfg.bg, border: `1px solid ${cfg.border}`, borderRadius: 13, padding: '13px 18px', textDecoration: 'none', color: '#fff', transition: 'transform 0.12s' }}>
       {a.logo
         ? <Image src={a.logo} alt={a.name} width={36} height={36} style={{ borderRadius: 9, objectFit: 'cover', flexShrink: 0 }} />
         : <div style={{ width: 36, height: 36, borderRadius: 9, background: '#1a2540', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 800, color: 'rgba(255,255,255,0.2)', flexShrink: 0 }}>{a.name?.[0]}</div>
@@ -77,7 +82,7 @@ function AirdropRow({ a }: { a: AirdropResult }) {
         <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.07em' }}>{a.blockchain}</div>
       </div>
       <span style={{ fontSize: 10, fontWeight: 800, color: cfg.color, background: `${cfg.color}15`, border: `1px solid ${cfg.border}`, padding: '3px 10px', borderRadius: 99, flexShrink: 0 }}>{cfg.label}</span>
-    </Link>
+    </a>
   );
 }
 
