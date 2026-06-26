@@ -7,7 +7,7 @@ const STATS = [
   { value: '125+', label: 'Airdrops Tracked' },
   { value: '9',    label: 'Chains Scanned' },
   { value: '$4.2K', label: 'Avg User Earnings' },
-  { value: '5 USDC', label: 'Per Month' },
+  { value: 'FREE', label: '30-Day Trial' },
 ];
 
 const FEATURES = [
@@ -127,9 +127,13 @@ export default function ProPageClient() {
               <span style={{ background: 'linear-gradient(135deg,#7CF5C0,#4ade80)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>airdrop again</span>
             </h1>
 
-            <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.4)', lineHeight: 1.8, maxWidth: 520, margin: '0 auto 48px' }}>
-              Scan any wallet across 9 chains, see every airdrop you qualified for, and get instant alerts on live drops — for 5 USDC a month.
+            <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.4)', lineHeight: 1.8, maxWidth: 520, margin: '0 auto 24px' }}>
+              Scan any wallet across 9 chains, see every airdrop you qualified for, and get instant alerts on live drops.
             </p>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(251,191,36,0.08)', border: '1px solid rgba(251,191,36,0.25)', borderRadius: 20, padding: '8px 18px', marginBottom: 40 }}>
+              <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#fbbf24', boxShadow: '0 0 6px rgba(251,191,36,0.8)', display: 'inline-block' }} />
+              <span style={{ fontSize: 13, fontWeight: 800, color: '#fbbf24' }}>30-Day Free Trial Active — Full access until July 26, no payment needed</span>
+            </div>
 
             {/* Stats */}
             <div className="pro-stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12, maxWidth: 680, margin: '0 auto 56px' }}>
@@ -143,6 +147,17 @@ export default function ProPageClient() {
 
             {/* CTA */}
             <div style={{ maxWidth: 480, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <Link href="/wallet-checker" style={{ display: 'block', background: 'linear-gradient(135deg,#7CF5C0,#4ade80)', color: '#060A12', border: 'none', borderRadius: 14, padding: '17px 24px', fontSize: 16, fontWeight: 800, textAlign: 'center', textDecoration: 'none', letterSpacing: '-0.01em' }}>
+                Try Free — Enter Your Email to Unlock
+              </Link>
+              <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.18)', margin: 0, textAlign: 'center' }}>
+                Free until July 26 · No payment needed · Full access
+              </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '4px 0' }}>
+                <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.07)' }} />
+                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)' }}>or pay directly</span>
+                <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.07)' }} />
+              </div>
               <input
                 className="pro-wallet-input"
                 value={wallet}
@@ -151,12 +166,9 @@ export default function ProPageClient() {
                 placeholder="Paste your wallet address (EVM or Solana)"
               />
               {error && <div style={{ fontSize: 12, color: '#f87171' }}>{error}</div>}
-              <button className="pro-btn-green" onClick={handleCheckout} disabled={loading} style={{ padding: '17px 24px', fontSize: 16, width: '100%' }}>
-                {loading ? 'Redirecting to payment...' : 'Unlock Pro — 5 USDC / month'}
+              <button className="pro-btn-green" onClick={handleCheckout} disabled={loading} style={{ padding: '14px 24px', fontSize: 14, width: '100%', background: 'transparent', border: '1px solid rgba(124,245,192,0.3)', color: '#7CF5C0' }}>
+                {loading ? 'Redirecting...' : 'Unlock Pro — 5 USDC / month'}
               </button>
-              <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.18)', margin: 0 }}>
-                Crypto only · No credit card · No KYC · Cancel any time
-              </p>
             </div>
 
           </div>
