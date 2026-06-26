@@ -342,7 +342,8 @@ function WalletCheckerInner() {
     <div style={{ background: '#060A12', minHeight: '100vh', color: '#fff', fontFamily: "var(--font-space),'Space Grotesk',system-ui,sans-serif" }}>
       <style>{`
         .wc * { box-sizing: border-box; }
-        .wc-wrap { max-width: 820px; margin: 0 auto; padding: 0 22px; }
+        .wc-wrap { max-width: 900px; margin: 0 auto; padding: 0 22px; }
+        .wc-wrap-wide { max-width: 1200px; margin: 0 auto; padding: 0 22px; }
         .wc-input { width: 100%; background: transparent; border: none; color: #fff; font-size: 14px; outline: none; font-family: monospace; height: 52px; }
         .wc-input::placeholder { color: rgba(255,255,255,0.18); font-family: var(--font-space),system-ui; font-size: 13px; }
         .wc-btn { background: linear-gradient(135deg,#7CF5C0,#4ade80); color: #060A12; border: none; padding: 0 26px; height: 44px; border-radius: 10px; font-size: 13px; font-weight: 800; cursor: pointer; font-family: inherit; white-space: nowrap; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(124,245,192,0.2); flex-shrink: 0; }
@@ -706,12 +707,12 @@ function WalletCheckerInner() {
 
 
             {/* ── Manual Checker Links after results ── */}
-            <div style={{ marginTop: 56 }}>
+            <div style={{ marginTop: 56, paddingBottom: 80, marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', paddingLeft: 'calc(50vw - 50% + 22px)', paddingRight: 'calc(50vw - 50% + 22px)' }}>
               <div style={{ textAlign: 'center', marginBottom: 32 }}>
                 <div style={{ fontSize: 22, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em', marginBottom: 8 }}>Manual Checker Links</div>
                 <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)' }}>Additional airdrop checkers — click to verify eligibility on the official site</div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 14 }}>
+              <div style={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 14 }}>
                 {MANUAL_LINKS.map((link) => (
                   <a key={link.name} href={resolveUrl(link.url, checkedAddress)} target="_blank" rel="noopener noreferrer"
                     style={{ display: 'flex', flexDirection: 'column', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 14, padding: '18px 18px 14px', textDecoration: 'none', color: '#fff', transition: 'border-color 0.15s, background 0.15s' }}
@@ -798,12 +799,12 @@ function WalletCheckerInner() {
             </div>
 
             {/* ── Manual Checker Links (Watchoor style) ── */}
-            <div style={{ marginBottom: 56 }}>
+            <div style={{ marginBottom: 56, marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', paddingLeft: 'calc(50vw - 50% + 22px)', paddingRight: 'calc(50vw - 50% + 22px)' }}>
               <div style={{ textAlign: 'center', marginBottom: 32 }}>
                 <div style={{ fontSize: 22, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em', marginBottom: 8 }}>Manual Checker Links</div>
                 <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)' }}>Additional airdrop checkers — click to verify eligibility on the official site</div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 14 }}>
+              <div style={{ maxWidth: 1200, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 14 }}>
                 {MANUAL_LINKS.map((link) => (
                   <a key={link.name} href={resolveUrl(link.url, checkedAddress)} target="_blank" rel="noopener noreferrer"
                     style={{ display: 'flex', flexDirection: 'column', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 14, padding: '18px 18px 14px', textDecoration: 'none', color: '#fff', transition: 'border-color 0.15s, background 0.15s' }}
