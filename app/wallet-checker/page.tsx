@@ -28,6 +28,7 @@ type AirdropResult = {
 
 type CheckResult = {
   isPro: boolean;
+  isTrial?: boolean;
   summary: WalletSummary;
   preview?: { eligibleCount: number; missedCount: number; activeCount: number; estimatedValue?: number; items?: { name: string; logo: string; blockchain: string; tag: string; color: string }[] };
   results?: { eligible: AirdropResult[]; missed: AirdropResult[]; active: AirdropResult[] };
@@ -361,12 +362,18 @@ function WalletCheckerInner() {
               </span>
             </div>
 
+            {/* Free trial badge */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(251,191,36,0.08)', border: '1px solid rgba(251,191,36,0.25)', borderRadius: 20, padding: '6px 14px', marginBottom: 18 }}>
+              <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#fbbf24', boxShadow: '0 0 6px rgba(251,191,36,0.8)', flexShrink: 0 }} />
+              <span style={{ fontSize: 12, fontWeight: 800, color: '#fbbf24' }}>30-Day Free Trial — Full access until July 26</span>
+            </div>
+
             <h1 style={{ fontSize: 'clamp(30px,5.5vw,52px)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1.08, marginBottom: 14 }}>
               Did you miss any<br />
               <span style={{ background: 'linear-gradient(135deg,#7CF5C0,#4ade80)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>crypto airdrops?</span>
             </h1>
             <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.35)', lineHeight: 1.8, maxWidth: 480, marginBottom: 36 }}>
-              Scan any EVM or Solana wallet against our database of 125+ verified airdrops. See what you qualified for, what you missed, and what you can still claim.
+              Scan any EVM or Solana wallet against our database of 125+ verified airdrops. See what you qualified for, what you missed, and what you can still claim. Full report free until July 26.
             </p>
 
             {/* Input */}
@@ -455,10 +462,20 @@ function WalletCheckerInner() {
             {/* ── PRO: full results ── */}
             {result.isPro && (
               <>
+                {/* Trial banner */}
+                {result.isTrial && (
+                  <div style={{ background: 'rgba(251,191,36,0.06)', border: '1px solid rgba(251,191,36,0.25)', borderRadius: 12, padding: '12px 18px', marginBottom: 14, display: 'flex', alignItems: 'center', gap: 12 }}>
+                    <span style={{ fontSize: 16 }}>🎁</span>
+                    <div>
+                      <span style={{ fontSize: 13, fontWeight: 800, color: '#fbbf24' }}>30-Day Free Trial Active</span>
+                      <span style={{ fontSize: 12, color: '#64748b', marginLeft: 8 }}>Full access until July 26, 2026 — no payment needed</span>
+                    </div>
+                  </div>
+                )}
                 <div style={{ background: 'rgba(124,245,192,0.04)', border: '1px solid rgba(124,245,192,0.14)', borderRadius: 14, padding: '16px 20px', marginBottom: 20 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="#7CF5C0"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <span style={{ fontSize: 13, fontWeight: 800, color: '#7CF5C0' }}>Pro Report Unlocked</span>
+                    <span style={{ fontSize: 13, fontWeight: 800, color: '#7CF5C0' }}>{result.isTrial ? 'Full Report — Free Trial' : 'Pro Report Unlocked'}</span>
                     <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginLeft: 'auto' }}>{result.stats!.totalChecked} airdrops scanned</span>
                   </div>
                   <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
