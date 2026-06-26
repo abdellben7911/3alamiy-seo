@@ -328,6 +328,7 @@ function WalletCheckerInner() {
   const tabData       = result?.isPro ? (activeTab === 'eligible' ? result.results!.eligible : activeTab === 'missed' ? result.results!.missed : result.results!.active) : [];
 
   return (
+    <>
     <div style={{ background: '#060A12', minHeight: '100vh', color: '#fff', fontFamily: "var(--font-space),'Space Grotesk',system-ui,sans-serif" }}>
       <style>{`
         .wc * { box-sizing: border-box; }
@@ -901,6 +902,7 @@ function WalletCheckerInner() {
         </div>
       </div>
     )}
+    </>
   );
 }
 
