@@ -705,6 +705,42 @@ function WalletCheckerInner() {
             )}
 
 
+            {/* ── Manual Checker Links after results ── */}
+            <div style={{ marginTop: 56 }}>
+              <div style={{ textAlign: 'center', marginBottom: 32 }}>
+                <div style={{ fontSize: 22, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em', marginBottom: 8 }}>Manual Checker Links</div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)' }}>Additional airdrop checkers — click to verify eligibility on the official site</div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 14 }}>
+                {MANUAL_LINKS.map((link) => (
+                  <a key={link.name} href={resolveUrl(link.url, checkedAddress)} target="_blank" rel="noopener noreferrer"
+                    style={{ display: 'flex', flexDirection: 'column', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 14, padding: '18px 18px 14px', textDecoration: 'none', color: '#fff', transition: 'border-color 0.15s, background 0.15s' }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.18)'; (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.055)'; }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)'; (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.03)'; }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+                      <div style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <img src={getFavicon(link.url)} alt={link.name} width={28} height={28}
+                          style={{ width: 28, height: 28, objectFit: 'contain', borderRadius: 6 }}
+                          onError={(e) => { const el = e.currentTarget; el.style.display = 'none'; const p = el.parentElement; if (p) { p.style.fontSize = '15px'; p.style.fontWeight = '800'; p.style.color = 'rgba(255,255,255,0.4)'; p.textContent = link.name[0]; } }}
+                        />
+                      </div>
+                      <div>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 2 }}>{link.name}</div>
+                        <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', fontWeight: 500 }}>External checker</div>
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 8, padding: '9px 0', fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,0.7)' }}>
+                      Check Eligibility
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                      </svg>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+
           </div>
         )}
 
@@ -758,6 +794,42 @@ function WalletCheckerInner() {
                 <Link href="/pro" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(124,245,192,0.07)', border: '1px solid rgba(124,245,192,0.18)', color: '#7CF5C0', fontSize: 13, fontWeight: 700, padding: '10px 20px', borderRadius: 10, textDecoration: 'none' }}>
                   See all benefits →
                 </Link>
+              </div>
+            </div>
+
+            {/* ── Manual Checker Links (Watchoor style) ── */}
+            <div style={{ marginBottom: 56 }}>
+              <div style={{ textAlign: 'center', marginBottom: 32 }}>
+                <div style={{ fontSize: 22, fontWeight: 800, color: '#fff', letterSpacing: '-0.03em', marginBottom: 8 }}>Manual Checker Links</div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)' }}>Additional airdrop checkers — click to verify eligibility on the official site</div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 14 }}>
+                {MANUAL_LINKS.map((link) => (
+                  <a key={link.name} href={resolveUrl(link.url, checkedAddress)} target="_blank" rel="noopener noreferrer"
+                    style={{ display: 'flex', flexDirection: 'column', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 14, padding: '18px 18px 14px', textDecoration: 'none', color: '#fff', transition: 'border-color 0.15s, background 0.15s' }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.18)'; (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.055)'; }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)'; (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.03)'; }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+                      <div style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', overflow: 'hidden', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <img src={getFavicon(link.url)} alt={link.name} width={28} height={28}
+                          style={{ width: 28, height: 28, objectFit: 'contain', borderRadius: 6 }}
+                          onError={(e) => { const el = e.currentTarget; el.style.display = 'none'; const p = el.parentElement; if (p) { p.style.fontSize = '15px'; p.style.fontWeight = '800'; p.style.color = 'rgba(255,255,255,0.4)'; p.textContent = link.name[0]; } }}
+                        />
+                      </div>
+                      <div>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 2 }}>{link.name}</div>
+                        <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', fontWeight: 500 }}>External checker</div>
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 8, padding: '9px 0', fontSize: 12, fontWeight: 700, color: 'rgba(255,255,255,0.7)' }}>
+                      Check Eligibility
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                      </svg>
+                    </div>
+                  </a>
+                ))}
               </div>
             </div>
 
