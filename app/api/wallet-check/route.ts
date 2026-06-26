@@ -57,7 +57,9 @@ async function getCovalentActivity(address: string): Promise<ChainResult[]> {
 // ── Etherscan fallback (one chain at a time, slower) ──
 async function getEtherscanActivity(address: string, chainApi: string): Promise<Activity | null> {
   try {
-    const url = `${chainApi}?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&sort=asc&page=1&offset=100&apikey=${ETHERSCAN_KEY}`;
+    // Works with or without an API key (rate-limited without)
+    const apikey = ETHERSCAN_KEY ? `&apikey=${ETHERSCAN_KEY}` : '';
+    const url = `${chainApi}?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&sort=asc&page=1&offset=100${apikey}`;
     const res = await fetch(url, { cache: 'no-store' });
     if (!res.ok) return null;
     const data = await res.json();
@@ -68,6 +70,54 @@ async function getEtherscanActivity(address: string, chainApi: string): Promise<
       active: true,
     };
   } catch { return null; }
+}
+
+// ── Ankr public RPC fallback — free, no key needed ──
+async function getAnkrActivity(address: string): Promise<ChainResult[]> {
+  try {
+    const res = await fetch('https://rpc.ankr.com/multichain', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        jsonrpc: '2.0', method: 'ankr_getTransactionsByAddress', id: 1,
+        params: {
+          address,
+          blockchain: ['eth', 'arbitrum', 'base', 'optimism', 'polygon', 'bsc', 'zksync_era', 'linea'],
+          pageSize: 50,
+        },
+      }),
+      cache: 'no-store',
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    const txs: any[] = data?.result?.transactions ?? [];
+    if (!txs.length) return [];
+
+    const chainMap: Record<string, { dbNames: string[]; txs: any[] }> = {
+      eth:       { dbNames: ['Ethereum','ETH'], txs: [] },
+      arbitrum:  { dbNames: ['Arbitrum','Arbitrum One'], txs: [] },
+      base:      { dbNames: ['Base'], txs: [] },
+      optimism:  { dbNames: ['Optimism','OP'], txs: [] },
+      polygon:   { dbNames: ['Polygon','MATIC'], txs: [] },
+      bsc:       { dbNames: ['BNB Chain','BSC','BNB'], txs: [] },
+      zksync_era:{ dbNames: ['zkSync','zkSync Era'], txs: [] },
+      linea:     { dbNames: ['Linea'], txs: [] },
+    };
+
+    for (const tx of txs) {
+      const bc = tx.blockchain;
+      if (chainMap[bc]) chainMap[bc].txs.push(tx);
+    }
+
+    const results: ChainResult[] = [];
+    for (const [, val] of Object.entries(chainMap)) {
+      if (!val.txs.length) continue;
+      const sorted = [...val.txs].sort((a, b) => (a.timestamp ?? 0) - (b.timestamp ?? 0));
+      const ts = (sorted[0].timestamp ?? 0) * 1000;
+      results.push({ name: val.dbNames[0], dbNames: val.dbNames, activity: { firstTxTimestamp: ts, txCount: val.txs.length, active: true } });
+    }
+    return results;
+  } catch { return []; }
 }
 
 async function getEtherscanAllChains(address: string): Promise<ChainResult[]> {
@@ -173,11 +223,17 @@ export async function GET(req: NextRequest) {
   let solActivity: Activity | null = null;
 
   if (isEvm) {
-    // Prefer Covalent (one key, all chains), fallback to Etherscan
+    // 1️⃣ Try Covalent (fastest, all chains in one key)
     if (COVALENT_KEY) {
       evmChains = await getCovalentActivity(address);
-    } else {
+    }
+    // 2️⃣ Covalent empty/failed → try Etherscan family
+    if (evmChains.length === 0) {
       evmChains = await getEtherscanAllChains(address);
+    }
+    // 3️⃣ Still empty → try Ankr public multichain RPC (no key needed)
+    if (evmChains.length === 0) {
+      evmChains = await getAnkrActivity(address);
     }
   } else {
     solActivity = await getSolanaActivity(address);
