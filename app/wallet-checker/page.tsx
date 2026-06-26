@@ -24,6 +24,7 @@ type AirdropResult = {
   status: string;
   difficulty: string;
   link: string | null;
+  hasChecker: boolean;
   eligibility: 'eligible' | 'missed' | 'active' | 'unknown';
 };
 
@@ -79,7 +80,12 @@ function AirdropRow({ a }: { a: AirdropResult }) {
       }
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontSize: 13, fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginBottom: 2 }}>{a.name}</div>
-        <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.07em' }}>{a.blockchain}</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 2 }}>
+          <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.07em' }}>{a.blockchain}</span>
+          {a.hasChecker && (
+            <span style={{ fontSize: 9, fontWeight: 700, color: '#7CF5C0', background: 'rgba(124,245,192,0.1)', border: '1px solid rgba(124,245,192,0.25)', padding: '1px 6px', borderRadius: 99, letterSpacing: '0.05em' }}>CHECKER</span>
+          )}
+        </div>
       </div>
       <span style={{ fontSize: 10, fontWeight: 800, color: cfg.color, background: `${cfg.color}15`, border: `1px solid ${cfg.border}`, padding: '3px 10px', borderRadius: 99, flexShrink: 0 }}>{cfg.label}</span>
     </a>
