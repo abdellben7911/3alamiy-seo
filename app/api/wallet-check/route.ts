@@ -18,6 +18,17 @@ const COVALENT_CHAINS = [
   { id: 59144,    name: 'Linea',     dbNames: ['Linea'] },
 ];
 
+// Blockscout public APIs — completely free, no API key needed, works on Vercel
+const BLOCKSCOUT_CHAINS = [
+  { name: 'Ethereum',  api: 'https://eth.blockscout.com',       dbNames: ['Ethereum','ETH'] },
+  { name: 'Base',      api: 'https://base.blockscout.com',      dbNames: ['Base'] },
+  { name: 'Optimism',  api: 'https://optimism.blockscout.com',  dbNames: ['Optimism','OP'] },
+  { name: 'Arbitrum',  api: 'https://arbitrum.blockscout.com',  dbNames: ['Arbitrum','Arbitrum One'] },
+  { name: 'Polygon',   api: 'https://polygon.blockscout.com',   dbNames: ['Polygon','MATIC'] },
+  { name: 'zkSync',    api: 'https://zksync.blockscout.com',    dbNames: ['zkSync','zkSync Era'] },
+  { name: 'Linea',     api: 'https://explorer.linea.build',     dbNames: ['Linea'] },
+];
+
 // Etherscan-family fallbacks (used when Covalent key is missing)
 const ETHERSCAN_CHAINS = [
   { name: 'Ethereum',  api: 'https://api.etherscan.io/api',             dbNames: ['Ethereum','ETH'] },
@@ -70,6 +81,29 @@ async function getEtherscanActivity(address: string, chainApi: string): Promise<
       active: true,
     };
   } catch { return null; }
+}
+
+// ── Blockscout public API — free, no key, reliable ──
+async function getBlockscoutActivity(address: string): Promise<ChainResult[]> {
+  const results = await Promise.allSettled(
+    BLOCKSCOUT_CHAINS.map(async chain => {
+      try {
+        const url = `${chain.api}/api/v2/addresses/${address}/transactions?filter=to%20%7C%20from`;
+        const res = await fetch(url, { cache: 'no-store', headers: { 'Accept': 'application/json' } });
+        if (!res.ok) return null;
+        const data = await res.json();
+        const items: any[] = data?.items ?? [];
+        if (!items.length) return null;
+        // Blockscout returns newest first — get oldest for firstTx
+        const oldest = items[items.length - 1];
+        const ts = oldest?.timestamp ? new Date(oldest.timestamp).getTime() : Date.now();
+        return { name: chain.name, dbNames: chain.dbNames, activity: { firstTxTimestamp: ts, txCount: items.length, active: true } };
+      } catch { return null; }
+    })
+  );
+  return results
+    .filter((r): r is PromiseFulfilledResult<ChainResult | null> => r.status === 'fulfilled' && r.value !== null)
+    .map(r => r.value!);
 }
 
 // ── Ankr public RPC fallback — free, no key needed ──
@@ -227,11 +261,15 @@ export async function GET(req: NextRequest) {
     if (COVALENT_KEY) {
       evmChains = await getCovalentActivity(address);
     }
-    // 2️⃣ Covalent empty/failed → try Etherscan family
+    // 2️⃣ Covalent empty/failed → try Blockscout (free, no key, reliable)
+    if (evmChains.length === 0) {
+      evmChains = await getBlockscoutActivity(address);
+    }
+    // 3️⃣ Still empty → try Etherscan family
     if (evmChains.length === 0) {
       evmChains = await getEtherscanAllChains(address);
     }
-    // 3️⃣ Still empty → try Ankr public multichain RPC (no key needed)
+    // 4️⃣ Still empty → try Ankr multichain RPC
     if (evmChains.length === 0) {
       evmChains = await getAnkrActivity(address);
     }
