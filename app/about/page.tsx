@@ -34,7 +34,7 @@ async function getAirdropCount() {
   try {
     const res = await fetch(`${SUPABASE_URL}/rest/v1/airdrops?select=id`, {
       headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
-      next: { revalidate: 3600 },
+      next: { revalidate: 86400 },
     });
     if (!res.ok) return 102;
     const data = await res.json();

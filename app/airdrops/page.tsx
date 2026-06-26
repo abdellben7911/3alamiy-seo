@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 async function getAllAirdrops() {
   const res = await fetch(`${SUPABASE_URL}/rest/v1/airdrops?select=*&order=created_at.desc`, {
     headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` },
-    next: { revalidate: 3600 },
+    next: { revalidate: 86400 },
   });
   if (!res.ok) return [];
   return res.json();

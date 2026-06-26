@@ -8,7 +8,7 @@ async function getAirdropCount() {
   try {
     const res = await fetch(`${SUPABASE_URL}/rest/v1/airdrops?select=id`, {
       headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`, 'Prefer': 'count=exact' },
-      next: { revalidate: 3600 },
+      next: { revalidate: 86400 },
     });
     if (!res.ok) return 100;
     const count = res.headers.get('content-range');
@@ -154,7 +154,7 @@ async function getDbArticles() {
       `${SB_URL}/rest/v1/articles?select=*&order=date.desc`,
       {
         headers: { apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}` },
-        next: { revalidate: 300 },
+        next: { revalidate: 86400 },
       }
     );
     if (!res.ok) return [];

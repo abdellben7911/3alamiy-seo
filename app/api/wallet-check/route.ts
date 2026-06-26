@@ -38,7 +38,7 @@ async function getCovalentActivity(address: string): Promise<ChainResult[]> {
   const results = await Promise.allSettled(
     COVALENT_CHAINS.map(async chain => {
       const url = `https://api.covalenthq.com/v1/${chain.id}/address/${address}/transactions_v3/?key=${COVALENT_KEY}&page-size=1000&no-logs=true`;
-      const res = await fetch(url, { next: { revalidate: 300 } });
+      const res = await fetch(url, { cache: 'no-store' });
       if (!res.ok) return null;
       const data = await res.json();
       const items: any[] = data?.data?.items ?? [];
@@ -58,7 +58,7 @@ async function getCovalentActivity(address: string): Promise<ChainResult[]> {
 async function getEtherscanActivity(address: string, chainApi: string): Promise<Activity | null> {
   try {
     const url = `${chainApi}?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&sort=asc&page=1&offset=100&apikey=${ETHERSCAN_KEY}`;
-    const res = await fetch(url, { next: { revalidate: 300 } });
+    const res = await fetch(url, { cache: 'no-store' });
     if (!res.ok) return null;
     const data = await res.json();
     if (data.status !== '1' || !Array.isArray(data.result) || !data.result.length) return null;
@@ -88,7 +88,7 @@ async function getSolanaActivity(address: string): Promise<Activity | null> {
   if (!HELIUS_KEY) return null;
   try {
     const url = `https://api.helius.xyz/v0/addresses/${address}/transactions?api-key=${HELIUS_KEY}&limit=100`;
-    const res = await fetch(url, { next: { revalidate: 300 } });
+    const res = await fetch(url, { cache: 'no-store' });
     if (!res.ok) return null;
     const data = await res.json();
     if (!Array.isArray(data) || !data.length) return null;
@@ -117,7 +117,7 @@ async function getAirdrops() {
   try {
     const res = await fetch(
       `${SUPABASE_URL}/rest/v1/airdrops?select=slug,name,logo,blockchain,status,difficulty,cost,description,created_at&order=created_at.desc`,
-      { headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` }, next: { revalidate: 3600 } }
+      { headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` }, next: { revalidate: 86400 } }
     );
     if (!res.ok) return [];
     return res.json();

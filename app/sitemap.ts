@@ -123,7 +123,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           'apikey': SUPABASE_ANON_KEY,
           'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
         },
-        next: { revalidate: 3600 },
+        next: { revalidate: 86400 },
       }
     );
     if (res.ok) airdrops = await res.json();
