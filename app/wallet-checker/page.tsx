@@ -248,6 +248,15 @@ function WalletCheckerInner() {
   const [error, setError] = useState('');
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<'eligible' | 'missed' | 'active'>('eligible');
+  const [showTrialModal, setShowTrialModal] = useState(false);
+  const [trialEmail, setTrialEmail] = useState('');
+  const [trialLoading, setTrialLoading] = useState(false);
+  const [trialError, setTrialError] = useState('');
+  const [hasTrial, setHasTrial] = useState(false);
+
+  useEffect(() => {
+    setHasTrial(localStorage.getItem('trial_activated') === '1');
+  }, []);
 
   useEffect(() => {
     const wallet = searchParams.get('wallet');
@@ -260,18 +269,38 @@ function WalletCheckerInner() {
     }
   }, []);
 
-  async function runCheck(addr?: string) {
+  async function runCheck(addr?: string, withTrial?: boolean) {
     const address = (addr || input).trim();
     if (!address) return;
     setLoading(true); setError(''); setResult(null);
     try {
-      const res = await fetch(`/api/wallet-check?address=${encodeURIComponent(address)}`);
+      const trial = withTrial ?? (localStorage.getItem('trial_activated') === '1');
+      const url = `/api/wallet-check?address=${encodeURIComponent(address)}${trial ? '&trial=1' : ''}`;
+      const res = await fetch(url);
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Check failed');
       setResult(data);
     } catch (e: any) {
       setError(e.message || 'Something went wrong.');
     } finally { setLoading(false); }
+  }
+
+  async function activateTrial() {
+    if (!trialEmail.includes('@')) { setTrialError('Enter a valid email'); return; }
+    setTrialLoading(true); setTrialError('');
+    try {
+      await fetch('/api/activate-trial', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: trialEmail }),
+      });
+      localStorage.setItem('trial_activated', '1');
+      setHasTrial(true);
+      setShowTrialModal(false);
+      // Re-run the check with trial access
+      runCheck(input.trim(), true);
+    } catch {
+      setTrialError('Something went wrong. Try again.');
+    } finally { setTrialLoading(false); }
   }
 
   async function handleCheckout() {
@@ -626,8 +655,18 @@ function WalletCheckerInner() {
                     ))}
                   </div>
 
-                  <button className="wc-unlock-btn" onClick={handleCheckout} disabled={checkoutLoading}>
-                    {checkoutLoading ? 'Redirecting…' : estimatedValue > 0 ? `See all ${fmtValue} — Unlock for 3 USDC` : 'Unlock Full Report — 3 USDC / month'}
+                  {/* Free trial CTA — email gated */}
+                  <button
+                    className="wc-unlock-btn"
+                    onClick={() => setShowTrialModal(true)}
+                    style={{ background: 'linear-gradient(135deg,#7CF5C0,#4ade80)', color: '#060A12', marginBottom: 12 }}
+                  >
+                    {estimatedValue > 0 ? `Get Free Access — See all ${fmtValue}` : 'Get Free Access — Unlock Full Report'}
+                  </button>
+                  <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginBottom: 16 }}>Enter your email to unlock — no payment needed</div>
+                  <div style={{ width: '100%', height: 1, background: 'rgba(255,255,255,0.06)', marginBottom: 16 }} />
+                  <button className="wc-unlock-btn" onClick={handleCheckout} disabled={checkoutLoading} style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.4)', fontSize: 12, padding: '10px 24px' }}>
+                    {checkoutLoading ? 'Redirecting…' : 'Skip — Unlock Pro for 5 USDC / month'}
                   </button>
 
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginTop: 20, flexWrap: 'wrap' }}>
@@ -718,7 +757,7 @@ function WalletCheckerInner() {
                   { n: '1', title: 'Paste wallet',     desc: 'Any EVM address or Solana wallet. No sign-up needed.' },
                   { n: '2', title: 'We scan 9 chains', desc: 'We query your on-chain history across all major networks simultaneously.' },
                   { n: '3', title: 'See your score',   desc: 'Get your free airdrop score + chain activity summary instantly.' },
-                  { n: '4', title: 'Unlock full report', desc: 'Pay 3 USDC to see every eligible, missed, and live airdrop for your wallet.' },
+                  { n: '4', title: 'Unlock full report', desc: 'Pay 5 USDC to see every eligible, missed, and live airdrop for your wallet.' },
                 ].map(({ n, title, desc }) => (
                   <div key={n} className="wc-card" style={{ padding: '24px 20px' }}>
                     <div style={{ width: 28, height: 28, borderRadius: 8, background: 'rgba(124,245,192,0.08)', border: '1px solid rgba(124,245,192,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 900, color: '#7CF5C0', marginBottom: 14 }}>{n}</div>
@@ -750,7 +789,7 @@ function WalletCheckerInner() {
               </div>
               <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', marginTop: 24, paddingTop: 20, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
                 <div>
-                  <span style={{ fontSize: 24, fontWeight: 900, color: '#7CF5C0', letterSpacing: '-0.04em' }}>3 USDC</span>
+                  <span style={{ fontSize: 24, fontWeight: 900, color: '#7CF5C0', letterSpacing: '-0.04em' }}>5 USDC</span>
                   <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)', marginLeft: 8 }}>/ month · any crypto accepted</span>
                 </div>
                 <Link href="/pro" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(124,245,192,0.07)', border: '1px solid rgba(124,245,192,0.18)', color: '#7CF5C0', fontSize: 13, fontWeight: 700, padding: '10px 20px', borderRadius: 10, textDecoration: 'none' }}>
@@ -823,6 +862,45 @@ function WalletCheckerInner() {
 
       </div>
     </div>
+
+    {/* ── Email trial modal ── */}
+    {showTrialModal && (
+      <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(6px)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }} onClick={() => setShowTrialModal(false)}>
+        <div style={{ background: '#0D1221', border: '1px solid rgba(124,245,192,0.2)', borderRadius: 20, padding: '40px 36px', maxWidth: 420, width: '100%', textAlign: 'center', position: 'relative' }} onClick={e => e.stopPropagation()}>
+          <button onClick={() => setShowTrialModal(false)} style={{ position: 'absolute', top: 16, right: 16, background: 'none', border: 'none', color: 'rgba(255,255,255,0.3)', cursor: 'pointer', fontSize: 20, lineHeight: 1 }}>×</button>
+
+          <div style={{ width: 52, height: 52, borderRadius: 14, background: 'rgba(124,245,192,0.08)', border: '1px solid rgba(124,245,192,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7CF5C0" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+
+          <h3 style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.03em', color: '#fff', marginBottom: 8 }}>Get your free full report</h3>
+          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)', lineHeight: 1.7, marginBottom: 28 }}>
+            Enter your email to unlock the full wallet report — every eligible airdrop, missed drop, and live claim link. Free, no payment needed.
+          </p>
+
+          <input
+            type="email"
+            placeholder="your@email.com"
+            value={trialEmail}
+            onChange={e => setTrialEmail(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && activateTrial()}
+            style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '14px 16px', color: '#fff', fontSize: 14, outline: 'none', marginBottom: 12, boxSizing: 'border-box' }}
+          />
+
+          {trialError && <div style={{ fontSize: 12, color: '#f87171', marginBottom: 10 }}>{trialError}</div>}
+
+          <button
+            onClick={activateTrial}
+            disabled={trialLoading}
+            style={{ width: '100%', background: 'linear-gradient(135deg,#7CF5C0,#4ade80)', color: '#060A12', border: 'none', borderRadius: 12, padding: '14px', fontSize: 14, fontWeight: 800, cursor: trialLoading ? 'wait' : 'pointer', letterSpacing: '-0.01em' }}
+          >
+            {trialLoading ? 'Activating…' : 'Unlock Free Report'}
+          </button>
+
+          <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginTop: 14 }}>No spam. We send airdrop alerts only.</p>
+        </div>
+      </div>
+    )}
   );
 }
 

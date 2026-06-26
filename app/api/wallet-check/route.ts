@@ -161,12 +161,12 @@ export async function GET(req: NextRequest) {
   const isSol = !isEvm && isSolAddress(address);
   if (!isEvm && !isSol) return NextResponse.json({ error: 'Invalid wallet address' }, { status: 400 });
 
-  // 30-day free trial — everyone gets Pro until July 26 2026
-  const TRIAL_UNTIL = new Date('2026-07-26T00:00:00Z');
-  const isTrialActive = new Date() < TRIAL_UNTIL;
+  // Trial: activated by giving email (client sends ?trial=1)
+  const hasTrial = searchParams.get('trial') === '1';
 
   const [isProSubscriber, airdrops] = await Promise.all([checkSubscription(address), getAirdrops()]);
-  const isPro = isProSubscriber || isTrialActive;
+  const isPro = isProSubscriber || hasTrial;
+  const isTrialActive = hasTrial && !isProSubscriber;
 
   // ── Scan chains ──
   let evmChains: ChainResult[] = [];
