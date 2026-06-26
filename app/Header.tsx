@@ -204,12 +204,12 @@ export default function Header() {
               List Project
             </a>
             <div className="hdr-sep" />
-            <Link href="/pro" className="hdr-pro-btn">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            <Link href="/wallet-checker" className="hdr-pro-btn">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
               </svg>
-              Go Pro
-              <span className="hdr-pro-price">$5/mo</span>
+              Check Wallet
+              <span className="hdr-pro-price">Free</span>
             </Link>
             <div className="hdr-sep" />
             <div className="hdr-auth-desktop"><AuthButton /></div>
@@ -242,7 +242,7 @@ export default function Header() {
         </Link>
         <hr className="hdr-drawer-divider" />
         <Link href="/pro" className="hdr-drawer-pro" onClick={() => setMenuOpen(false)}>
-          <span>Go Pro — Full Airdrop Report</span>
+          <span>Check Wallet — Free Airdrop Report</span>
           <span style={{ fontSize: 14, fontWeight: 900 }}>$5/mo</span>
         </Link>
         <a href="https://t.me/web33alamiy" target="_blank" rel="noopener noreferrer"
