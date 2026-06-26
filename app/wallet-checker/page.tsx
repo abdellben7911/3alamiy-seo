@@ -328,7 +328,6 @@ function WalletCheckerInner() {
   const tabData       = result?.isPro ? (activeTab === 'eligible' ? result.results!.eligible : activeTab === 'missed' ? result.results!.missed : result.results!.active) : [];
 
   return (
-    <>
     <div style={{ background: '#060A12', minHeight: '100vh', color: '#fff', fontFamily: "var(--font-space),'Space Grotesk',system-ui,sans-serif" }}>
       <style>{`
         .wc * { box-sizing: border-box; }
@@ -862,47 +861,46 @@ function WalletCheckerInner() {
         )}
 
       </div>
-    </div>
 
-    {/* ── Email trial modal ── */}
-    {showTrialModal && (
-      <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(6px)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }} onClick={() => setShowTrialModal(false)}>
-        <div style={{ background: '#0D1221', border: '1px solid rgba(124,245,192,0.2)', borderRadius: 20, padding: '40px 36px', maxWidth: 420, width: '100%', textAlign: 'center', position: 'relative' }} onClick={e => e.stopPropagation()}>
-          <button onClick={() => setShowTrialModal(false)} style={{ position: 'absolute', top: 16, right: 16, background: 'none', border: 'none', color: 'rgba(255,255,255,0.3)', cursor: 'pointer', fontSize: 20, lineHeight: 1 }}>×</button>
+      {/* ── Email trial modal ── */}
+      {showTrialModal && (
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(6px)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }} onClick={() => setShowTrialModal(false)}>
+          <div style={{ background: '#0D1221', border: '1px solid rgba(124,245,192,0.2)', borderRadius: 20, padding: '40px 36px', maxWidth: 420, width: '100%', textAlign: 'center', position: 'relative' }} onClick={e => e.stopPropagation()}>
+            <button onClick={() => setShowTrialModal(false)} style={{ position: 'absolute', top: 16, right: 16, background: 'none', border: 'none', color: 'rgba(255,255,255,0.3)', cursor: 'pointer', fontSize: 20, lineHeight: 1 }}>×</button>
 
-          <div style={{ width: 52, height: 52, borderRadius: 14, background: 'rgba(124,245,192,0.08)', border: '1px solid rgba(124,245,192,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7CF5C0" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div style={{ width: 52, height: 52, borderRadius: 14, background: 'rgba(124,245,192,0.08)', border: '1px solid rgba(124,245,192,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7CF5C0" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+
+            <h3 style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.03em', color: '#fff', marginBottom: 8 }}>Get your free full report</h3>
+            <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)', lineHeight: 1.7, marginBottom: 28 }}>
+              Enter your email to unlock the full wallet report — every eligible airdrop, missed drop, and live claim link. Free, no payment needed.
+            </p>
+
+            <input
+              type="email"
+              placeholder="your@email.com"
+              value={trialEmail}
+              onChange={e => setTrialEmail(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && activateTrial()}
+              style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '14px 16px', color: '#fff', fontSize: 14, outline: 'none', marginBottom: 12, boxSizing: 'border-box' }}
+            />
+
+            {trialError && <div style={{ fontSize: 12, color: '#f87171', marginBottom: 10 }}>{trialError}</div>}
+
+            <button
+              onClick={activateTrial}
+              disabled={trialLoading}
+              style={{ width: '100%', background: 'linear-gradient(135deg,#7CF5C0,#4ade80)', color: '#060A12', border: 'none', borderRadius: 12, padding: '14px', fontSize: 14, fontWeight: 800, cursor: trialLoading ? 'wait' : 'pointer', letterSpacing: '-0.01em' }}
+            >
+              {trialLoading ? 'Activating…' : 'Unlock Free Report'}
+            </button>
+
+            <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginTop: 14 }}>No spam. We send airdrop alerts only.</p>
           </div>
-
-          <h3 style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.03em', color: '#fff', marginBottom: 8 }}>Get your free full report</h3>
-          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)', lineHeight: 1.7, marginBottom: 28 }}>
-            Enter your email to unlock the full wallet report — every eligible airdrop, missed drop, and live claim link. Free, no payment needed.
-          </p>
-
-          <input
-            type="email"
-            placeholder="your@email.com"
-            value={trialEmail}
-            onChange={e => setTrialEmail(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && activateTrial()}
-            style={{ width: '100%', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '14px 16px', color: '#fff', fontSize: 14, outline: 'none', marginBottom: 12, boxSizing: 'border-box' }}
-          />
-
-          {trialError && <div style={{ fontSize: 12, color: '#f87171', marginBottom: 10 }}>{trialError}</div>}
-
-          <button
-            onClick={activateTrial}
-            disabled={trialLoading}
-            style={{ width: '100%', background: 'linear-gradient(135deg,#7CF5C0,#4ade80)', color: '#060A12', border: 'none', borderRadius: 12, padding: '14px', fontSize: 14, fontWeight: 800, cursor: trialLoading ? 'wait' : 'pointer', letterSpacing: '-0.01em' }}
-          >
-            {trialLoading ? 'Activating…' : 'Unlock Free Report'}
-          </button>
-
-          <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginTop: 14 }}>No spam. We send airdrop alerts only.</p>
         </div>
-      </div>
-    )}
-    </>
+      )}
+    </div>
   );
 }
 
