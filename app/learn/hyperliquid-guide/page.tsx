@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Hyperliquid Season 2 Farming Guide 2026 — How to Qualify for HYPE Airdrop | 3alamiy Web3',
-  description: 'Step-by-step guide to farm Hyperliquid Season 2: trade on HyperCore, deposit into HLP vault (3x multiplier bonus), and use HyperEVM protocols. 38.8% of HYPE supply still unreleased. Updated June 2026.',
+  title: 'Hyperliquid Season 2 Airdrop 2026 — Date, HLP Multiplier & How to Qualify',
+  description: 'No snapshot date yet but 38.8% of HYPE supply is reserved for Season 2. HLP vault gives a 3x point multiplier. Full farming guide: HyperCore, HLP, HYPE staking, HyperEVM. Updated June 2026.',
   keywords: 'hyperliquid season 2 farming guide, how to qualify hyperliquid airdrop 2026, HLP vault 3x multiplier, HyperCore trading guide, HyperEVM airdrop farming',
   alternates: { canonical: 'https://www.3alamiyweb3.com/learn/hyperliquid-guide' },
   openGraph: {
-    title: 'Hyperliquid Season 2 Farming Guide 2026 — How to Qualify for HYPE Airdrop',
-    description: 'Trade HyperCore, deposit HLP (3x multiplier), farm HyperEVM — 38.8% of HYPE supply still unreleased. Full step-by-step qualification guide.',
+    title: 'Hyperliquid Season 2 Airdrop 2026 — Date, HLP Multiplier & How to Qualify',
+    description: 'No snapshot date yet but 38.8% of HYPE supply is reserved for Season 2. HLP vault gives a 3x point multiplier. Full farming guide: HyperCore, HLP, HYPE staking, HyperEVM.',
     url: 'https://www.3alamiyweb3.com/learn/hyperliquid-guide',
     type: 'article',
   },

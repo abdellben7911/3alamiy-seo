@@ -14,8 +14,8 @@ function shuffleArray<T>(arr: T[]): T[] {
 }
 
 export const metadata: Metadata = {
-  title: 'Upcoming Crypto Airdrops 2026 — Best Tokenless Projects to Farm Before TGE | 3alamiy Web3',
-  description: 'The highest-potential upcoming airdrops in 2026: MetaMask, Phantom, MegaETH, Soneium, Ink by Kraken. Each project shows VC funding, farming tasks, hype score, and estimated reward tier. Start farming before the snapshot.',
+  title: 'Upcoming Crypto Airdrops 2026 — Pre-TGE Projects Worth Farming Right Now',
+  description: 'MetaMask, Phantom, MegaETH, Soneium, Ink by Kraken — no token yet but farming tasks are live. Updated weekly with VC funding, hype score, and reward tier estimates. Start early before the snapshot.',
   keywords: 'upcoming crypto airdrops 2026, tokenless projects to farm 2026, metamask airdrop farming, phantom wallet airdrop, megaeth airdrop, soneium airdrop, best airdrops before tge 2026',
   alternates: { canonical: 'https://www.3alamiyweb3.com/upcoming' },
   openGraph: {
