@@ -276,7 +276,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
 
         /* Stats strip */
         .dp-strip-wrap {
-          max-width: 1200px; margin: 0 auto; padding: 0 28px;
+          max-width: 1200px; margin: 0 auto; padding: 0 28px 28px;
         }
         .dp-strip {
           display: grid; grid-template-columns: repeat(3, 1fr);
@@ -302,7 +302,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
         .dp-body {
           display: grid; grid-template-columns: 1fr 300px; gap: 20px;
           max-width: 1200px; margin: 0 auto;
-          padding: 24px 28px 80px;
+          padding: 0 28px 80px;
           align-items: start;
         }
         .dp-main { display: flex; flex-direction: column; gap: 14px; }
@@ -519,8 +519,8 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
           .dp-title { font-size: 22px; }
           .dp-logo, .dp-logo-fb { width: 60px; height: 60px; border-radius: 14px; }
           .dp-logo-fb { font-size: 20px; }
-          .dp-strip-wrap { padding: 0 16px; }
-          .dp-body { grid-template-columns: 1fr; padding: 16px 16px 60px; gap: 14px; }
+          .dp-strip-wrap { padding: 0 16px 20px; }
+          .dp-body { grid-template-columns: 1fr; padding: 0 16px 60px; gap: 14px; }
           .dp-sidebar { position: static; order: -1; }
           .dp-main { order: 0; }
           .dp-related-grid { grid-template-columns: 1fr 1fr; }
