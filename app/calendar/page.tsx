@@ -86,7 +86,7 @@ export default async function CalendarPage() {
           color: #fff;
           font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
         }
-        .cal-wrap { max-width: 1100px; margin: 0 auto; padding: 48px 20px 80px; }
+        .cal-wrap { max-width: 1400px; margin: 0 auto; padding: 48px 20px 80px; }
 
         /* Breadcrumb */
         .cal-bc { font-size: 13px; color: rgba(255,255,255,0.25); margin-bottom: 32px; display: flex; align-items: center; gap: 8px; }

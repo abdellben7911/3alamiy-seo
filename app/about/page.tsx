@@ -85,7 +85,7 @@ export default async function AboutPage() {
           background: radial-gradient(ellipse, rgba(99,102,241,0.08) 0%, transparent 65%);
           pointer-events: none;
         }
-        .about-hero-inner { position: relative; max-width: 1200px; margin: 0 auto; }
+        .about-hero-inner { position: relative; max-width: 1400px; margin: 0 auto; }
         .about-label {
           font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
           text-transform: uppercase; color: rgba(255,255,255,0.25);
@@ -112,7 +112,7 @@ export default async function AboutPage() {
 
         /* CARDS GRID */
         .about-grid {
-          max-width: 1200px; margin: 0 auto;
+          max-width: 1400px; margin: 0 auto;
           padding: 40px 24px 0;
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -172,7 +172,7 @@ export default async function AboutPage() {
 
         /* EMAIL STRIP */
         .about-email-strip {
-          max-width: 1200px; margin: 12px auto 0;
+          max-width: 1400px; margin: 12px auto 0;
           padding: 0 24px;
         }
         .about-email-card {
@@ -201,7 +201,7 @@ export default async function AboutPage() {
 
         /* STATS ROW */
         .about-stats {
-          max-width: 1200px; margin: 40px auto 0;
+          max-width: 1400px; margin: 40px auto 0;
           padding: 0 24px;
           display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
         }

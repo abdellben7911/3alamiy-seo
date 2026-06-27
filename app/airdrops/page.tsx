@@ -69,7 +69,7 @@ export default async function AirdropsPage() {
         /* HERO */
         .al-hero { position: relative; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 44px 28px 0; overflow: hidden; }
         .al-hero-glow { position: absolute; top: 0; left: 0; right: 0; height: 300px; background: radial-gradient(ellipse 60% 50% at 20% 0%, rgba(124,245,192,0.05) 0%, transparent 70%); pointer-events: none; }
-        .al-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; }
+        .al-hero-inner { max-width: 1400px; margin: 0 auto; position: relative; }
         .al-bc { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.28); margin-bottom: 28px; }
         .al-bc a { color: rgba(255,255,255,0.38); text-decoration: none; }
         .al-bc-cur { color: #7CF5C0; }
@@ -88,7 +88,7 @@ export default async function AirdropsPage() {
         .al-stat-lbl { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: rgba(255,255,255,0.2); }
 
         /* MAIN */
-        .al-main { max-width: 1200px; margin: 0 auto; padding: 28px 28px 80px; }
+        .al-main { max-width: 1400px; margin: 0 auto; padding: 28px 28px 80px; }
 
         /* WHAT'S NEW */
         .al-whats-new { background: rgba(124,245,192,0.03); border: 1px solid rgba(124,245,192,0.1); border-radius: 14px; padding: 14px 18px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }

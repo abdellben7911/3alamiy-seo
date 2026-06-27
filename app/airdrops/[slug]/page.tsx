@@ -188,7 +188,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
           display: flex; align-items: center; gap: 6px;
           font-size: 12px; font-weight: 500;
           color: rgba(255,255,255,0.3);
-          max-width: 1200px; margin: 0 auto;
+          max-width: 1400px; margin: 0 auto;
         }
         .dp-bc a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.15s; }
         .dp-bc a:hover { color: rgba(255,255,255,0.75); }
@@ -197,7 +197,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
         /* Hero */
         .dp-hero {
           position: relative;
-          max-width: 1200px; margin: 0 auto;
+          max-width: 1400px; margin: 0 auto;
           padding: 40px 28px 32px;
         }
         .dp-hero-glow-r {
@@ -276,7 +276,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
 
         /* Stats strip */
         .dp-strip-wrap {
-          max-width: 1200px; margin: 0 auto; padding: 0 28px 28px;
+          max-width: 1400px; margin: 0 auto; padding: 0 28px 28px;
         }
         .dp-strip {
           display: grid; grid-template-columns: repeat(3, 1fr);
@@ -301,7 +301,7 @@ export default async function AirdropPage({ params }: { params: Promise<{ slug: 
         /* Body */
         .dp-body {
           display: grid; grid-template-columns: 1fr 300px; gap: 20px;
-          max-width: 1200px; margin: 0 auto;
+          max-width: 1400px; margin: 0 auto;
           padding: 0 28px 80px;
           align-items: start;
         }

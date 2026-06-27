@@ -241,7 +241,7 @@ export default async function Home() {
 
         /* STATS */
         .stats-bar { border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); padding: 0 24px; }
-        .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+        .stats-inner { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
         .stat-item { padding: 24px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,0.05); animation: counterUp 0.6s ease both; }
         .stat-item:last-child { border-right: none; }
         .stat-num { font-size: 32px; font-weight: 900; letter-spacing: -0.04em; line-height: 1; margin-bottom: 4px; }
@@ -256,7 +256,7 @@ export default async function Home() {
 
         /* SECTIONS */
         .section { padding: 72px 24px; }
-        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-inner { max-width: 1400px; margin: 0 auto; }
         .section-label { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 8px; }
         .section-title { font-size: clamp(24px, 4vw, 36px); font-weight: 900; letter-spacing: -0.03em; color: #fff; margin-bottom: 6px; }
         .section-sub { font-size: 14px; color: rgba(255,255,255,0.35); font-weight: 400; }
@@ -327,7 +327,7 @@ export default async function Home() {
         .btn-tg:hover { background: rgba(124,245,192,0.16); }
 
         /* MISC */
-        .content { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .content { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
         .divider { height: 1px; background: rgba(255,255,255,0.05); margin: 0 24px; }
         .sc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
         .sc-card { display: flex; align-items: center; gap: 12px; background: #0D1221; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 14px 16px; text-decoration: none; color: #fff; transition: border-color 0.15s, transform 0.15s; }

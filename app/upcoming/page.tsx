@@ -911,7 +911,7 @@ export default function UpcomingPage() {
         /* HERO */
         .up-hero { padding: 48px 24px 40px; border-bottom: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; }
         .up-hero::before { content:''; position:absolute; top:0; left:0; right:0; height:280px; background:radial-gradient(ellipse 70% 60% at 30% 0%, rgba(124,245,192,0.06) 0%, transparent 70%); pointer-events:none; }
-        .up-hero-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+        .up-hero-inner { max-width: 1400px; margin: 0 auto; position: relative; }
         .up-bc { display:flex; align-items:center; gap:6px; font-size:11px; color:rgba(255,255,255,0.28); margin-bottom:24px; }
         .up-bc a { color:rgba(255,255,255,0.38); text-decoration:none; }
         .up-bc a:hover { color:#7CF5C0; }

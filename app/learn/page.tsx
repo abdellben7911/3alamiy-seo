@@ -200,7 +200,7 @@ export default async function LearnPage() {
           width: 700px; height: 400px; pointer-events: none;
           background: radial-gradient(ellipse, rgba(99,102,241,0.07) 0%, transparent 65%);
         }
-        .lp-inner { max-width: 1200px; margin: 0 auto; position: relative; }
+        .lp-inner { max-width: 1400px; margin: 0 auto; position: relative; }
         .lp-bc {
           display: flex; align-items: center; gap: 6px;
           font-size: 12px; color: rgba(255,255,255,0.3);
@@ -217,7 +217,7 @@ export default async function LearnPage() {
         .lp-stat-val { font-weight: 700; font-size: 20px; letter-spacing: -0.02em; color: #7CF5C0; line-height: 1; margin-bottom: 3px; }
         .lp-stat-lbl { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.25); }
 
-        .lp-body { max-width: 1200px; margin: 0 auto; padding: 40px 28px 80px; }
+        .lp-body { max-width: 1400px; margin: 0 auto; padding: 40px 28px 80px; }
 
         .lp-sec-hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
         .lp-sec-title { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; color: #fff; }

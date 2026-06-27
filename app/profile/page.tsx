@@ -90,7 +90,7 @@ export default function ProfilePage() {
           background: radial-gradient(ellipse 600px 300px at 0% 0%, rgba(124,245,192,0.04) 0%, transparent 70%);
         }
         .pf-hero-inner {
-          max-width: 1200px; margin: 0 auto; position: relative;
+          max-width: 1400px; margin: 0 auto; position: relative;
           display: flex; align-items: center; justify-content: space-between;
           flex-wrap: wrap; gap: 20px;
         }
@@ -130,7 +130,7 @@ export default function ProfilePage() {
 
         /* Stats */
         .pf-stats {
-          max-width: 1200px; margin: 0 auto;
+          max-width: 1400px; margin: 0 auto;
           display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
           padding: 20px 28px; border-bottom: 1px solid rgba(255,255,255,0.05);
         }
@@ -149,7 +149,7 @@ export default function ProfilePage() {
 
         /* Layout */
         .pf-layout {
-          max-width: 1200px; margin: 0 auto;
+          max-width: 1400px; margin: 0 auto;
           display: grid; grid-template-columns: 280px 1fr; gap: 0;
           padding: 0 28px 60px;
         }
