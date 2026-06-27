@@ -184,7 +184,7 @@ export default function GMPage() {
           background: radial-gradient(ellipse, rgba(131,110,249,0.1) 0%, rgba(99,102,241,0.04) 40%, transparent 70%);
           pointer-events: none;
         }
-        .gm-hero-inner { position: relative; max-width: 1400px; margin: 0 auto; }
+        .gm-hero-inner { position: relative; max-width: 1600px; margin: 0 auto; }
         .gm-label {
           display: inline-flex; align-items: center; gap: 7px;
           font-size: 10px; font-weight: 800; text-transform: uppercase;
@@ -248,7 +248,7 @@ export default function GMPage() {
         /* HOW IT WORKS + STAT */
         .gm-cards {
           display: grid; grid-template-columns: 1fr 280px; gap: 16px;
-          max-width: 1400px; margin: 0 auto;
+          max-width: 1600px; margin: 0 auto;
           padding: 40px 24px 0;
         }
         .gm-how {
@@ -299,7 +299,7 @@ export default function GMPage() {
 
         /* CHAINS SECTION */
         .gm-chains-wrap {
-          max-width: 1400px; margin: 0 auto;
+          max-width: 1600px; margin: 0 auto;
           padding: 40px 24px 0;
         }
         .gm-chains-label {
@@ -339,7 +339,7 @@ export default function GMPage() {
 
         /* CONTROLS */
         .gm-controls {
-          max-width: 1400px; margin: 32px auto 0;
+          max-width: 1600px; margin: 32px auto 0;
           padding: 0 24px;
           display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
         }
@@ -353,7 +353,7 @@ export default function GMPage() {
 
         /* CHAIN DETAIL PANEL */
         .gm-detail {
-          max-width: 1400px; margin: 20px auto 0;
+          max-width: 1600px; margin: 20px auto 0;
           padding: 0 24px;
         }
         .gm-detail-inner {
@@ -390,7 +390,7 @@ export default function GMPage() {
 
         /* BOTTOM CTA */
         .gm-bottom {
-          max-width: 1400px; margin: 40px auto;
+          max-width: 1600px; margin: 40px auto;
           padding: 0 24px 60px;
           text-align: center;
         }
@@ -407,7 +407,7 @@ export default function GMPage() {
 
         /* ACTIVITY */
         .gm-activity {
-          max-width: 1400px; margin: 0 auto;
+          max-width: 1600px; margin: 0 auto;
           padding: 32px 24px 60px;
         }
         .act-item {
@@ -418,7 +418,7 @@ export default function GMPage() {
 
         /* NAV TABS */
         .gm-tabs {
-          max-width: 1400px; margin: 0 auto;
+          max-width: 1600px; margin: 0 auto;
           padding: 24px 24px 0;
           display: flex; gap: 4px;
           border-bottom: 1px solid rgba(255,255,255,0.05);

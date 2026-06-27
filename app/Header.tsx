@@ -39,7 +39,7 @@ export default function Header() {
           font-family: var(--font-space),'Space Grotesk',system-ui,sans-serif;
         }
         .hdr-inner {
-          max-width: 1400px; margin: 0 auto;
+          max-width: 1600px; margin: 0 auto;
           padding: 0 24px; height: 100%;
           display: flex; align-items: center;
           gap: 8px;

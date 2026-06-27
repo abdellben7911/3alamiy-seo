@@ -343,7 +343,7 @@ function WalletCheckerInner() {
       <style>{`
         .wc * { box-sizing: border-box; }
         .wc-wrap { max-width: 900px; margin: 0 auto; padding: 0 22px; }
-        .wc-wrap-wide { max-width: 1400px; margin: 0 auto; padding: 0 22px; }
+        .wc-wrap-wide { max-width: 1600px; margin: 0 auto; padding: 0 22px; }
         .wc-input { width: 100%; background: transparent; border: none; color: #fff; font-size: 14px; outline: none; font-family: monospace; height: 52px; }
         .wc-input::placeholder { color: rgba(255,255,255,0.18); font-family: var(--font-space),system-ui; font-size: 13px; }
         .wc-btn { background: linear-gradient(135deg,#7CF5C0,#4ade80); color: #060A12; border: none; padding: 0 26px; height: 44px; border-radius: 10px; font-size: 13px; font-weight: 800; cursor: pointer; font-family: inherit; white-space: nowrap; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(124,245,192,0.2); flex-shrink: 0; }

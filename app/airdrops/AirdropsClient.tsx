@@ -217,6 +217,7 @@ export default function AirdropsClient({ airdrops }: { airdrops: any[] }) {
           gap: 12px;
           margin-bottom: 36px;
         }
+        @media (min-width: 1600px) { .ac2-grid { grid-template-columns: repeat(4, 1fr); } }
 
         /* ── CARD ── */
         .ac2-card {

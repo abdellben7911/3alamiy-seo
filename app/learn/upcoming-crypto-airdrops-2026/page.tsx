@@ -283,7 +283,7 @@ export default function UpcomingAirdrops() {
           background: radial-gradient(ellipse, rgba(124,245,192,0.07) 0%, transparent 65%);
           pointer-events: none;
         }
-        .up-hero-inner { position: relative; max-width: 1400px; margin: 0 auto; }
+        .up-hero-inner { position: relative; max-width: 1600px; margin: 0 auto; }
         .up-breadcrumb {
           display: flex; align-items: center; gap: 8px;
           margin-bottom: 20px;
@@ -322,7 +322,7 @@ export default function UpcomingAirdrops() {
 
         /* LOGO GRID */
         .up-logo-grid {
-          max-width: 1400px; margin: 0 auto;
+          max-width: 1600px; margin: 0 auto;
           padding: 48px 24px;
           border-bottom: 1px solid rgba(255,255,255,0.05);
         }
@@ -346,7 +346,7 @@ export default function UpcomingAirdrops() {
 
         /* PROJECTS LIST */
         .up-projects {
-          max-width: 1400px; margin: 0 auto;
+          max-width: 1600px; margin: 0 auto;
           padding: 48px 24px 80px;
         }
         .up-section-hdr { margin-bottom: 24px; }
@@ -412,7 +412,7 @@ export default function UpcomingAirdrops() {
           border: 1px solid rgba(124,245,192,0.15);
           border-radius: 20px; padding: 40px;
           text-align: center; margin: 0 24px;
-          max-width: 1400px; margin: 0 auto 80px;
+          max-width: 1600px; margin: 0 auto 80px;
           position: relative; overflow: hidden;
         }
         .up-cta::before {

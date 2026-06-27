@@ -41,7 +41,7 @@ export default function Footer() {
           padding: 28px 28px;
         }
         .ft-strip-inner {
-          max-width: 1400px; margin: 0 auto;
+          max-width: 1600px; margin: 0 auto;
           display: flex; align-items: center; justify-content: space-between;
           gap: 16px; flex-wrap: wrap;
         }
@@ -68,7 +68,7 @@ export default function Footer() {
 
         /* Main */
         .ft-main {
-          max-width: 1400px; margin: 0 auto;
+          max-width: 1600px; margin: 0 auto;
           padding: 48px 28px 40px;
           display: grid;
           grid-template-columns: 2.2fr 1fr 1fr 1fr;
@@ -128,7 +128,7 @@ export default function Footer() {
           padding: 20px 28px;
         }
         .ft-bottom-inner {
-          max-width: 1400px; margin: 0 auto;
+          max-width: 1600px; margin: 0 auto;
           display: flex; align-items: center; justify-content: space-between;
           gap: 12px; flex-wrap: wrap;
         }
