@@ -26,8 +26,8 @@ const jsonLd = {
   description: "The best crypto airdrops available in Nigeria in 2026. Free, no investment required.",
   author: { "@type": "Organization", name: "3alamiy Web3" },
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
-  datePublished: "2026-06-03",
-  dateModified: "2026-06-03",
+  datePublished: "2026-07-01",
+  dateModified: "2026-07-01",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-nigeria-2026" },
   areaServed: { "@type": "Country", name: "Nigeria", sameAs: "https://en.wikipedia.org/wiki/Nigeria" },
   about: { "@type": "Thing", name: "Crypto Airdrops in Nigeria 2026" },
@@ -497,11 +497,3 @@ export default function NigeriaAirdrops2026() {
             <h2>Start Farming Airdrops Today 🇳🇬</h2>
             <p>Browse 115+ verified airdrops on 3alamiy Web3 — all with full step-by-step guides. Updated daily. Always free.</p>
             <Link href="/airdrops" className="ng-cta-btn">Browse All Airdrops →</Link>
-            <p className="ng-note">Last updated: June 3, 2026 · Reviewed weekly</p>
-          </div>
-
-        </div>
-      </main>
-    </>
-  );
-}

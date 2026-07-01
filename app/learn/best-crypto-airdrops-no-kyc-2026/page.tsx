@@ -21,7 +21,7 @@ const jsonLd = {
   description: "The best crypto airdrops that require no KYC verification in 2026.",
   author: { "@type": "Organization", name: "3alamiy Web3" },
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
-  datePublished: "2026-06-15", dateModified: "2026-06-15",
+  datePublished: "2026-07-01", dateModified: "2026-07-01",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-no-kyc-2026" },
   about: [
     { "@type": "Thing", name: "Crypto Airdrop" },

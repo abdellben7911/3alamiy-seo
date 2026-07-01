@@ -20,7 +20,7 @@ const jsonLd = {
   description: "The best crypto airdrops accessible from Morocco in 2026. Free, no investment required.",
   author: { "@type": "Organization", name: "3alamiy Web3" },
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
-  datePublished: "2026-06-15", dateModified: "2026-06-15",
+  datePublished: "2026-07-01", dateModified: "2026-07-01",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-morocco-2026" },
   areaServed: { "@type": "Country", name: "Morocco", sameAs: "https://en.wikipedia.org/wiki/Morocco" },
   about: { "@type": "Thing", name: "Crypto Airdrops in Morocco 2026" },

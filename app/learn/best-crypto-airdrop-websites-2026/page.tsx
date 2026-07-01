@@ -31,8 +31,8 @@ const jsonLd = {
   description: "We tested and ranked the top crypto airdrop websites in 2026 — from trackers to guide hubs.",
   author: { "@type": "Organization", name: "3alamiy Web3" },
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
-  datePublished: "2026-06-02",
-  dateModified: "2026-06-02",
+  datePublished: "2026-07-01",
+  dateModified: "2026-07-01",
   mainEntityOfPage: {
     "@type": "WebPage",
     "@id": "https://www.3alamiyweb3.com/learn/best-crypto-airdrop-websites-2026",

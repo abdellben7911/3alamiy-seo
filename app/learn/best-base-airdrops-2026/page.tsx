@@ -18,7 +18,7 @@ const articleSchema = {
   headline: 'Best Base Airdrops 2026 — Top 10 Picks from the Coinbase L2 Ecosystem',
   description: 'Comprehensive guide to the best airdrop opportunities on Base (Coinbase L2) in 2026, including farming strategies for Aerodrome, Seamless Protocol, and other top protocols.',
   url: 'https://www.3alamiyweb3.com/learn/best-base-airdrops-2026',
-  datePublished: '2026-06-08', dateModified: '2026-06-08',
+  datePublished: '2026-07-01', dateModified: '2026-07-01',
   author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.base-sub'] },

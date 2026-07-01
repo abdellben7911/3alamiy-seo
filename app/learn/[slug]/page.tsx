@@ -1024,7 +1024,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     description: a.excerpt,
     url: `https://www.3alamiyweb3.com/learn/${slug}`,
     datePublished: a.date ? new Date(a.date).toISOString().split('T')[0] : '2026-05-01',
-    dateModified: '2026-06-02',
+    dateModified: '2026-07-01',
     author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
     publisher: {
       '@type': 'Organization',

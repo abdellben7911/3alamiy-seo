@@ -27,8 +27,8 @@ const jsonLd = {
   description: "No official Hyperliquid Season 2 airdrop date announced. Full breakdown of what we know about HYPE Season 2 snapshot, eligibility, and how to farm before it drops.",
   author: { "@type": "Organization", name: "3alamiy Web3" },
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
-  datePublished: "2026-06-05",
-  dateModified: "2026-06-05",
+  datePublished: "2026-07-01",
+  dateModified: "2026-07-01",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/hyperliquid-season-2-airdrop-date" },
 };
 

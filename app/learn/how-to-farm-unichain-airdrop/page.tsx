@@ -17,8 +17,8 @@ const articleSchema = {
   '@type': 'Article',
   headline: 'How to Farm the Unichain Airdrop 2026: Complete Step-by-Step Guide',
   description: 'A complete guide to farming the potential Unichain airdrop in 2026 by bridging ETH, swapping on Uniswap v4, providing liquidity, and building on-chain history.',
-  datePublished: '2026-06-09',
-  dateModified: '2026-06-09',
+  datePublished: '2026-07-01',
+  dateModified: '2026-07-01',
   author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   publisher: {
     '@type': 'Organization',

@@ -22,7 +22,7 @@ const jsonLd = {
   author: { '@type': 'Organization', name: '3alamiy Web3' },
   publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   datePublished: '2026-05-01',
-  dateModified: '2026-06-08',
+  dateModified: '2026-07-01',
   mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/hyperliquid-guide' },
   speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.hl-guide-intro'] },
   mentions: [

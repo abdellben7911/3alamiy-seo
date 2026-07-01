@@ -7,7 +7,7 @@ const articleSchema = {
   description: 'The complete list of the best free crypto airdrops in 2026. Step-by-step guides for Arbitrum, Solana, Base, Monad, Hyperliquid and more. Updated daily — June 2026.',
   url: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-2026',
   datePublished: '2026-05-01',
-  dateModified: '2026-05-20',
+  dateModified: '2026-07-01',
   author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com', logo: { '@type': 'ImageObject', url: 'https://www.3alamiyweb3.com/icon.svg' } },
   mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-2026' },
@@ -291,7 +291,7 @@ export default function BestCryptoAirdrops2026() {
           "description": "The complete list of the best free crypto airdrops in 2026. Step-by-step guides for Arbitrum, Solana, Base, Monad and more.",
           "url": "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-2026",
           "datePublished": "2026-05-15",
-          "dateModified": "2026-05-20",
+          "dateModified": "2026-07-01",
           "publisher": {
             "@type": "Organization",
             "name": "3alamiy Web3",

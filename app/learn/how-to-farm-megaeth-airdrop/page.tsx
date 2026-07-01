@@ -18,7 +18,7 @@ const articleSchema = {
   headline: 'How to Farm the MegaETH Airdrop 2026 — Complete Guide',
   description: 'MegaETH is a 100,000 TPS EVM L1 with an active MEGAPoints testnet program. Full farming guide for the MegaETH airdrop.',
   url: 'https://www.3alamiyweb3.com/learn/how-to-farm-megaeth-airdrop',
-  datePublished: '2026-06-08', dateModified: '2026-06-08',
+  datePublished: '2026-07-01', dateModified: '2026-07-01',
   author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.mega-sub'] },

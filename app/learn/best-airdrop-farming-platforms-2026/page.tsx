@@ -17,7 +17,7 @@ const schema1 = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: 'Best Airdrop Farming Platforms 2026 — Ranked and Reviewed',
   description: 'Honest comparison of the best crypto airdrop farming platforms in 2026.',
-  datePublished: '2026-04-01', dateModified: '2026-06-10',
+  datePublished: '2026-04-01', dateModified: '2026-07-01',
   author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   publisher: { '@type': 'Organization', name: '3alamiy Web3', logo: { '@type': 'ImageObject', url: 'https://www.3alamiyweb3.com/icon.svg' } },
   mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/best-airdrop-farming-platforms-2026' },

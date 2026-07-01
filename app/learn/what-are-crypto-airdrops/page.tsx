@@ -7,7 +7,7 @@ const articleSchema = {
   description: 'What are crypto airdrops? How they work, how much you can earn, and how to get your first one in 2026. Complete beginner guide — updated June 2026.',
   url: 'https://www.3alamiyweb3.com/learn/what-are-crypto-airdrops',
   datePublished: '2026-05-16',
-  dateModified: '2026-05-20',
+  dateModified: '2026-07-01',
   author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com', logo: { '@type': 'ImageObject', url: 'https://www.3alamiyweb3.com/icon.svg' } },
   mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/what-are-crypto-airdrops' },

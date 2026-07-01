@@ -21,7 +21,7 @@ const jsonLd = {
   description: "Real historical payout data from the biggest crypto airdrops in 2026.",
   author: { "@type": "Organization", name: "3alamiy Web3" },
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
-  datePublished: "2026-06-15", dateModified: "2026-06-15",
+  datePublished: "2026-07-01", dateModified: "2026-07-01",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/how-much-do-crypto-airdrops-pay-2026" },
   about: [{ "@type": "Thing", name: "Crypto Airdrop" }, { "@type": "Thing", name: "DeFi" }],
   speakable: { "@type": "SpeakableSpecification", cssSelector: [".pay-answer-box", ".pay-table-wrap"] },

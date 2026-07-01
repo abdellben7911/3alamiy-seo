@@ -27,8 +27,8 @@ const jsonLd = {
   description: "Polymarket confirmed POLY token and airdrop. Step-by-step farming guide — eligibility requirements, how to qualify, volume strategy, and what to avoid. Updated June 2026.",
   author: { "@type": "Organization", name: "3alamiy Web3" },
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
-  datePublished: "2026-06-02",
-  dateModified: "2026-06-02",
+  datePublished: "2026-07-01",
+  dateModified: "2026-07-01",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/polymarket-airdrop-guide-2026" },
 };
 

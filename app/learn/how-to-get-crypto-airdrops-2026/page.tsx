@@ -17,7 +17,7 @@ const schema1 = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: 'How to Get Crypto Airdrops in 2026 — Complete Step-by-Step Guide',
   description: 'Learn exactly how to get crypto airdrops in 2026. Full beginner guide covering wallets, chains, strategies, Sybil detection, and which airdrops to farm first.',
-  datePublished: '2026-05-16', dateModified: '2026-06-10',
+  datePublished: '2026-05-16', dateModified: '2026-07-01',
   author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   publisher: { '@type': 'Organization', name: '3alamiy Web3', logo: { '@type': 'ImageObject', url: 'https://www.3alamiyweb3.com/icon.svg' } },
   mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/how-to-get-crypto-airdrops-2026' },

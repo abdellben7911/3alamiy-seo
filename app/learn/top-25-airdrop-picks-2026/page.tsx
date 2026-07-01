@@ -27,8 +27,8 @@ const jsonLd = {
   description: "25 high-potential crypto airdrop opportunities for 2026 — testnets, points programs, waitlists, and confirmed drops.",
   author: { "@type": "Organization", name: "3alamiy Web3" },
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
-  datePublished: "2026-06-02",
-  dateModified: "2026-06-08",
+  datePublished: "2026-07-01",
+  dateModified: "2026-07-01",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/top-25-airdrop-picks-2026" },
   speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", "h2"] },
 };

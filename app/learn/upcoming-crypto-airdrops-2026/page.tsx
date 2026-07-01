@@ -19,8 +19,8 @@ const articleSchema = {
   headline: 'Upcoming Crypto Airdrops 2026 — 18 Early Projects to Watch',
   description: 'The best upcoming crypto projects to watch in 2026 before they launch their tokens.',
   url: 'https://www.3alamiyweb3.com/learn/upcoming-crypto-airdrops-2026',
-  datePublished: '2026-05-25',
-  dateModified: '2026-05-25',
+  datePublished: '2026-07-01',
+  dateModified: '2026-07-01',
   author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
 };

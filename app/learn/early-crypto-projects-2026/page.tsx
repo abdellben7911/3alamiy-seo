@@ -26,8 +26,8 @@ const jsonLd = {
   description: "Discover the best early-stage crypto projects to farm in 2026 before they announce airdrops.",
   author: { "@type": "Organization", name: "3alamiy Web3" },
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
-  datePublished: "2026-06-02",
-  dateModified: "2026-06-02",
+  datePublished: "2026-07-01",
+  dateModified: "2026-07-01",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/early-crypto-projects-2026" },
 };
 
@@ -420,11 +420,4 @@ export default function EarlyCryptoProjects2026() {
             <h2>Track Early Airdrops Daily</h2>
             <p>3alamiy Web3 tracks 110+ active airdrops with full step-by-step guides. Be the first to know when early projects go live.</p>
             <Link href="/airdrops" className="ec-cta-btn">Browse All Airdrops →</Link>
-            <p className="ec-note">Last updated: June 2, 2026 · Reviewed weekly</p>
-          </div>
-
-        </div>
-      </main>
-    </>
-  );
-}
+            <p className="ec-note">Las

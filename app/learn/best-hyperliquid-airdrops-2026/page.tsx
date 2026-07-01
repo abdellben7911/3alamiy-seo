@@ -18,7 +18,7 @@ const articleSchema = {
   headline: 'Best Hyperliquid Airdrops 2026 — HyperEVM Ecosystem Guide',
   description: 'Full guide to the best airdrop opportunities in the Hyperliquid ecosystem in 2026, including HyperSwap, HyperLend, HyperBeat, Felix Protocol, and the Season 2 HYPE points strategy.',
   url: 'https://www.3alamiyweb3.com/learn/best-hyperliquid-airdrops-2026',
-  datePublished: '2026-06-08', dateModified: '2026-06-08',
+  datePublished: '2026-07-01', dateModified: '2026-07-01',
   author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', 'h2', '.hl-sub'] },

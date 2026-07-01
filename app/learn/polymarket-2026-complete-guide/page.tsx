@@ -26,8 +26,8 @@ const jsonLd = {
   description: "Polymarket hit $10.57B monthly volume in March 2026, partnered with MLS, and confirmed the POLY token.",
   author: { "@type": "Organization", name: "3alamiy Web3" },
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
-  datePublished: "2026-06-04",
-  dateModified: "2026-06-04",
+  datePublished: "2026-07-01",
+  dateModified: "2026-07-01",
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://www.3alamiyweb3.com/learn/polymarket-2026-complete-guide" },
 };
 
@@ -648,11 +648,4 @@ export default function Polymarket2026Guide() {
               Browse All Airdrops
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </Link>
-            <p className="p26-note">Last updated: June 4, 2026 · Reviewed weekly</p>
-          </div>
-
-        </div>
-      </article>
-    </>
-  );
-}
+      
