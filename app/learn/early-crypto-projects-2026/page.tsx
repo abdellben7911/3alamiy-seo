@@ -2,21 +2,20 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Best Early Crypto Projects to Farm in 2026 — Before Everyone Else | 3alamiy Web3",
-  description:
-    "Discover the best early-stage crypto projects to farm in 2026 before they announce airdrops. Tokenless protocols, testnets, and high-potential ecosystems worth positioning in now.",
+  title: "25 Early Crypto Projects With VC Backing & No Token Yet — 2026 Watchlist",
+  description: "Backed by Paradigm, a16z, Multicoin — but no token announced yet. 25 early-stage projects worth farming in 2026 before the snapshot. VC funding, team quality, and snapshot risk scored for each.",
   alternates: { canonical: "https://www.3alamiyweb3.com/learn/early-crypto-projects-2026" },
   openGraph: {
-    title: "Best Early Crypto Projects to Farm in 2026 — Before Everyone Else",
-    description: "Discover the best early-stage crypto projects to farm in 2026 before they announce airdrops.",
+    title: "25 Early Crypto Projects With VC Backing & No Token Yet — 2026 Watchlist",
+    description: "Backed by Paradigm, a16z, Multicoin — but no token announced yet. 25 early-stage projects worth farming in 2026 before the snapshot.",
     url: "https://www.3alamiyweb3.com/learn/early-crypto-projects-2026",
     siteName: "3alamiy Web3",
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Early Crypto Projects to Farm in 2026 — Before Everyone Else",
-    description: "Early-stage crypto projects worth farming in 2026 before the airdrop announcement.",
+    title: "25 Early Crypto Projects With VC Backing & No Token Yet — 2026 Watchlist",
+    description: "Backed by Paradigm, a16z, Multicoin — but no token yet. 25 projects to farm before the snapshot, with VC funding and team scores.",
   },
 };
 

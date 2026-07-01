@@ -2,21 +2,20 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Best Crypto Airdrops for Nigerians 2026 — Free Guides | 3alamiy Web3",
-  description:
-    "The best crypto airdrops available in Nigeria in 2026. Free, no investment required. Step-by-step guides, no KYC options, and exactly what works from Nigeria.",
+  title: "Best Crypto Airdrops for Nigerians 2026 — Free, No KYC, Works in Nigeria",
+  description: "Free crypto airdrops that actually work from Nigeria in 2026. No VPN needed, no investment, no KYC on most. Testnet farming, waitlists, and task-based programs — updated July 2026.",
   alternates: { canonical: "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-nigeria-2026" },
   openGraph: {
-    title: "Best Crypto Airdrops for Nigerians 2026 — Free Guides",
-    description: "The best crypto airdrops available in Nigeria in 2026. Free, no investment required.",
+    title: "Best Crypto Airdrops for Nigerians 2026 — Free, No KYC, Works in Nigeria",
+    description: "Free crypto airdrops that actually work from Nigeria in 2026. No VPN, no investment, no KYC on most. Updated July 2026.",
     url: "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-nigeria-2026",
     siteName: "3alamiy Web3",
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Crypto Airdrops for Nigerians 2026 — Free Guides",
-    description: "The best free crypto airdrops available in Nigeria in 2026. No investment required.",
+    title: "Best Crypto Airdrops for Nigerians 2026 — Free, No KYC",
+    description: "Free airdrops that work from Nigeria — no VPN, no investment, no KYC on most. Testnet farming, waitlists, and task-based programs. Updated July 2026.",
   },
 };
 

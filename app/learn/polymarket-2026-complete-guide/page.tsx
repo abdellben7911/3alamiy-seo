@@ -2,20 +2,20 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Polymarket in 2026 — Everything You Need to Know | 3alamiy Web3",
-  description: "Polymarket hit $10.57B monthly volume, relaunched in the US, partnered with MLS, and confirmed the POLY token. Full guide to what's happening on Polymarket right now.",
+  title: "Polymarket 2026 — POLY Token, $10B Volume, Active Markets & What's Next",
+  description: "Polymarket hit $10.57B monthly volume in 2026. POLY token confirmed, US relaunch live, MLS partnership active. Current hot markets, POLY farming guide, and the biggest changes in 2026.",
   alternates: { canonical: "https://www.3alamiyweb3.com/learn/polymarket-2026-complete-guide" },
   openGraph: {
-    title: "Polymarket in 2026 — Everything You Need to Know",
-    description: "Polymarket hit $10.57B monthly volume and confirmed the POLY token. Full guide to what's happening right now.",
+    title: "Polymarket 2026 — POLY Token, $10B Volume, Active Markets & What's Next",
+    description: "Polymarket hit $10.57B monthly volume. POLY token confirmed, US relaunch live. Current hot markets and full 2026 guide.",
     url: "https://www.3alamiyweb3.com/learn/polymarket-2026-complete-guide",
     siteName: "3alamiy Web3",
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Polymarket in 2026 — Everything You Need to Know",
-    description: "Polymarket hit $10.57B monthly volume and confirmed the POLY token.",
+    title: "Polymarket 2026 — POLY Token, $10B Volume & Active Markets",
+    description: "POLY token confirmed, US relaunch live, $10.57B monthly volume. Full guide to Polymarket in 2026 — current markets, farming, and what's next.",
   },
 };
 
