@@ -15,20 +15,20 @@ async function getAllAirdrops() {
 }
 
 export const metadata: Metadata = {
-  title: "Crypto Airdrop Calendar 2026 — Active & Upcoming Airdrops | 3alamiy Web3",
-  description: "Track all active and upcoming crypto airdrops in 2026. Filter by category, difficulty, and cost. Never miss a drop — updated daily.",
+  title: "Crypto Airdrop Calendar July 2026 — Active Drops by End Date, Chain & Cost",
+  description: "155+ active crypto airdrops with end dates, difficulty ratings, and step-by-step guides. Filter by chain, cost, and category. See which airdrops are ending soon — updated daily.",
   alternates: { canonical: "https://www.3alamiyweb3.com/calendar" },
   openGraph: {
-    title: "Crypto Airdrop Calendar 2026 — Active & Upcoming Airdrops",
-    description: "Track all active and upcoming crypto airdrops in 2026. Filter by category, difficulty, and cost. Never miss a drop.",
+    title: "Crypto Airdrop Calendar July 2026 — Active Drops by End Date, Chain & Cost",
+    description: "155+ active crypto airdrops with end dates and step-by-step guides. Filter by chain, cost, and category. Updated daily.",
     url: "https://www.3alamiyweb3.com/calendar",
     siteName: "3alamiy Web3",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Crypto Airdrop Calendar 2026",
-    description: "Track all active and upcoming crypto airdrops in 2026. Never miss a drop.",
+    title: "Crypto Airdrop Calendar July 2026 — Active Drops by End Date",
+    description: "155+ active crypto airdrops with end dates, difficulty, and step-by-step guides. Filter by chain and cost. Updated daily.",
   },
 };
 
