@@ -7,7 +7,9 @@ const BASE = 'https://www.3alamiyweb3.com';
 
 // ✅ VALID slugs only — must exist in [slug]/page.tsx articles object OR as a folder
 const articles = [
-  // — New articles (June 2026) — keep at top so they get re-crawled first
+  // — New articles (July 2026) — keep at top so they get re-crawled first
+  'best-crypto-airdrops-july-2026',
+  // — New articles (June 2026) —
   'best-crypto-airdrops-mexico-2026',
   'best-crypto-airdrops-argentina-2026',
   'best-crypto-airdrops-ukraine-2026',
@@ -135,6 +137,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Article publish/update dates — use real dates so Google trusts lastModified
   const ARTICLE_DATES: Record<string, string> = {
+    'best-crypto-airdrops-july-2026':            '2026-07-01',
     'best-crypto-airdrops-mexico-2026':          '2026-06-15',
     'best-crypto-airdrops-argentina-2026':       '2026-06-15',
     'best-crypto-airdrops-ukraine-2026':         '2026-06-15',
@@ -218,8 +221,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...uniqueArticles.map(slug => ({
       url: `${BASE}/learn/${slug}`,
       lastModified: ARTICLE_DATES[slug] ? new Date(ARTICLE_DATES[slug]) : new Date('2026-05-01'),
-      changeFrequency: ['berachain-ecosystem-farming-guide-2026','hyperliquid-season-2-airdrop-2026','hyperliquid-guide','polymarket-airdrop-guide-2026','hyperliquid-season-2-airdrop-date','best-crypto-airdrops-this-week','top-25-airdrop-picks-2026','how-to-farm-megaeth-airdrop','best-base-airdrops-2026','best-hyperliquid-airdrops-2026','how-to-farm-monad-airdrop'].includes(slug) ? 'weekly' as const : 'monthly' as const,
-      priority: ['berachain-ecosystem-farming-guide-2026','hyperliquid-season-2-airdrop-2026','hyperliquid-guide','polymarket-airdrop-guide-2026','hyperliquid-season-2-airdrop-date','how-to-farm-megaeth-airdrop','best-hyperliquid-airdrops-2026'].includes(slug) ? 0.9 : ['best-crypto-airdrops-this-week','top-25-airdrop-picks-2026','early-crypto-projects-2026','polymarket-2026-complete-guide','best-base-airdrops-2026','how-to-farm-monad-airdrop'].includes(slug) ? 0.8 : 0.7,
+      changeFrequency: ['best-crypto-airdrops-july-2026','berachain-ecosystem-farming-guide-2026','hyperliquid-season-2-airdrop-2026','hyperliquid-guide','polymarket-airdrop-guide-2026','hyperliquid-season-2-airdrop-date','best-crypto-airdrops-this-week','top-25-airdrop-picks-2026','how-to-farm-megaeth-airdrop','best-base-airdrops-2026','best-hyperliquid-airdrops-2026','how-to-farm-monad-airdrop'].includes(slug) ? 'weekly' as const : 'monthly' as const,
+      priority: ['best-crypto-airdrops-july-2026','berachain-ecosystem-farming-guide-2026','hyperliquid-season-2-airdrop-2026','hyperliquid-guide','polymarket-airdrop-guide-2026','hyperliquid-season-2-airdrop-date','how-to-farm-megaeth-airdrop','best-hyperliquid-airdrops-2026'].includes(slug) ? 0.9 : ['best-crypto-airdrops-this-week','top-25-airdrop-picks-2026','early-crypto-projects-2026','polymarket-2026-complete-guide','best-base-airdrops-2026','how-to-farm-monad-airdrop'].includes(slug) ? 0.8 : 0.7,
     })),
   ];
 }
