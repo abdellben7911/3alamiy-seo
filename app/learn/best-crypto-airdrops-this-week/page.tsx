@@ -3,11 +3,11 @@ import Link from 'next/link';
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'Best Crypto Airdrops This Week — June 9–15, 2026',
-  description: 'The best crypto airdrops to farm this week in June 2026. New drops, active campaigns, and high-reward opportunities updated every Monday.',
+  headline: 'Best Crypto Airdrops This Week — July 1–7, 2026',
+  description: 'The best crypto airdrops to farm this week in July 2026. New drops, active campaigns, and high-reward opportunities updated every Monday.',
   url: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week',
   datePublished: '2026-05-12',
-  dateModified: '2026-06-09',
+  dateModified: '2026-07-01',
   author: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com' },
   publisher: { '@type': 'Organization', name: '3alamiy Web3', url: 'https://www.3alamiyweb3.com', logo: { '@type': 'ImageObject', url: 'https://www.3alamiyweb3.com/icon.svg' } },
   mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week' },
@@ -22,17 +22,17 @@ const faqSchema = {
     {
       '@type': 'Question',
       name: 'What are the best crypto airdrops this week?',
-      acceptedAnswer: { '@type': 'Answer', text: 'The best crypto airdrops this week (June 9–15, 2026) are: Hyperliquid Season 2 (HyperEVM, High Priority, $1,000–$10,000+ est.), Polymarket POLY positioning (Polygon, High Priority, $200–$2,000 est.), Pod Network Testnet (Layer 1, High Priority, $500–$5,000 est.), ACI Testnet Airdrop (Ethereum Sepolia, High Priority, 30M ACI confirmed), and Aro Network Season 2 (Multi-chain, Medium Priority). Farm High Priority airdrops first.' }
+      acceptedAnswer: { '@type': 'Answer', text: 'The best crypto airdrops this week (July 1–7, 2026) are: Hyperliquid Season 2 (HyperEVM, High Priority, $1,000–$10,000+ est.), Berachain Ecosystem/Kodiak V3 (EVM L1, High Priority, BGT + potential KODI token), MegaETH MEGAPoints (EVM L2, High Priority, $500–$3,000 est.), Monad Testnet (Layer 1, High Priority, $500–$5,000 est.), and MetaMask MASK farming (EVM, Medium Priority, $200–$1,000 est.). Farm High Priority airdrops first.' }
     },
     {
       '@type': 'Question',
-      name: 'Which airdrops should I farm first this week in June 2026?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Start with Hyperliquid Season 2 — 38.8% of HYPE supply unreleased, no snapshot announced, trade HyperCore and interact with HyperEVM daily. Then farm ACI Testnet Airdrop — Phase 1 ends June 30, 30M ACI confirmed, completely free. Both take under 20 minutes daily and have the highest reward potential this week.' }
+      name: 'Which airdrops should I farm first this week in July 2026?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Start with Hyperliquid Season 2 — 38.8% of HYPE supply unreleased, no snapshot announced, trade HyperCore and stake HYPE daily. Then add Berachain/Kodiak V3 — provide liquidity in BGT-emitting pools on Kodiak and BEND. Both require daily activity and have the highest potential reward this week.' }
     },
     {
       '@type': 'Question',
-      name: 'Is Hyperliquid Season 2 still active in June 2026?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Yes. Hyperliquid Season 2 is actively accumulating points. The snapshot date has not been announced. Trading on HyperCore, staking HYPE, and interacting with HyperEVM protocols like HyperSwap and HyperLend all count toward your allocation. Start farming now — every day of activity matters.' }
+      name: 'Is Hyperliquid Season 2 still active in July 2026?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes. Hyperliquid Season 2 is actively accumulating points as of July 2026. The snapshot date has not been announced. Trading on HyperCore, staking HYPE (8 pts/token/day), and interacting with HyperEVM protocols like HyperSwap and HyperLend all count toward your allocation. Every day of activity matters.' }
     },
     {
       '@type': 'Question',
@@ -42,7 +42,7 @@ const faqSchema = {
     {
       '@type': 'Question',
       name: 'What is the easiest airdrop to farm this week?',
-      acceptedAnswer: { '@type': 'Answer', text: 'The easiest airdrop this week is Fast Portal Season 0 — complete free tasks on the AI shopping agent platform, takes under 5 minutes. Aro Network Season 2 is also very easy — install the Chrome extension and mine daily for confirmed $ARO rewards.' }
+      acceptedAnswer: { '@type': 'Answer', text: 'The easiest airdrop this week is MetaMask MASK farming — use MetaMask Swap and Bridge daily, takes under 2 minutes. Berachain/Kodiak V3 Island vaults are also easy — deposit once and auto-earn BGT without manual rebalancing.' }
     },
   ],
 };
@@ -60,42 +60,42 @@ const breadcrumbSchema = {
 const howToSchema = {
   '@context': 'https://schema.org',
   '@type': 'HowTo',
-  name: 'How to Farm the Best Crypto Airdrops This Week (June 2026)',
-  description: 'Step-by-step guide to farming the highest-priority crypto airdrops the week of June 9–15, 2026.',
+  name: 'How to Farm the Best Crypto Airdrops This Week (July 2026)',
+  description: 'Step-by-step guide to farming the highest-priority crypto airdrops the week of July 1–7, 2026.',
   step: [
-    { '@type': 'HowToStep', name: 'Farm Hyperliquid Season 2', text: 'Go to app.hyperliquid.xyz, trade perpetuals on HyperCore, stake HYPE (8 points/token/day), bridge to HyperEVM and interact with HyperSwap and HyperLend daily.' },
-    { '@type': 'HowToStep', name: 'Trade on Polymarket for POLY positioning', text: 'Go to polymarket.com, trade across multiple market categories (politics, crypto, sports), link your X account. Consistency over weeks matters most.' },
-    { '@type': 'HowToStep', name: 'Join Pod Network Testnet', text: 'Go to the Pod Network testnet, trade spot and perps, build Discord roles. $10M raised, backed by a16z CSX and 1kx.' },
-    { '@type': 'HowToStep', name: 'Complete ACI Testnet tasks', text: 'Go to the ACI testnet on Ethereum Sepolia, swap, stake, complete missions and Zealy quests before Phase 1 ends June 30. 30M ACI tokens confirmed.' },
-    { '@type': 'HowToStep', name: 'Install Aro Network Chrome extension', text: 'Install the Aro Network Chrome extension and mine daily for confirmed $ARO token rewards. $7.1M raised, Season 2 live.' },
+    { '@type': 'HowToStep', name: 'Farm Hyperliquid Season 2', text: 'Go to app.hyperliquid.xyz, trade perpetuals on HyperCore, stake HYPE (8 points/token/day), bridge to HyperEVM and interact with HyperSwap and HyperLend daily. No snapshot announced — farm every day.' },
+    { '@type': 'HowToStep', name: 'Farm Berachain/Kodiak V3', text: 'Go to app.kodiak.finance, add liquidity to a BGT-emitting pool (WBERA/HONEY or WBTC/WBERA), or deposit into a Kodiak Island vault for auto-rebalancing. Claim BGT and stake via Infrared for iBGT.' },
+    { '@type': 'HowToStep', name: 'Farm MegaETH MEGAPoints', text: 'Bridge to MegaETH testnet, interact with DeFi protocols, complete daily quests for MEGAPoints. $20M raised, Sequoia-backed.' },
+    { '@type': 'HowToStep', name: 'Run Monad Testnet tasks', text: 'Connect to Monad testnet, swap tokens, interact with native DeFi protocols. $225M raised from Paradigm — one of the highest-funded testnets ever.' },
+    { '@type': 'HowToStep', name: 'Use MetaMask daily for MASK farming', text: 'Use MetaMask Swap and Bridge at least once daily. Connect MetaMask to dApps, interact with the MetaMask DeFi portfolio. MASK token farming window is open.' },
   ],
 };
 
 export const metadata = {
-  title: 'Best Crypto Airdrops This Week — June 9–15, 2026 | 3alamiy Web3',
-  description: 'The best crypto airdrops to farm this week in June 2026. Hyperliquid Season 2, Polymarket POLY, Pod Network, ACI Testnet, and more. Updated every Monday.',
-  keywords: 'best crypto airdrops this week, crypto airdrops june 2026, new crypto airdrops, weekly airdrop list, best airdrops june 2026, hyperliquid season 2, polymarket airdrop',
+  title: 'Best Crypto Airdrops This Week — July 1–7, 2026 | 3alamiy Web3',
+  description: 'The best crypto airdrops to farm this week in July 2026. Hyperliquid Season 2, Berachain/Kodiak V3, MegaETH, Monad, MetaMask MASK. Updated every Monday.',
+  keywords: 'best crypto airdrops this week, crypto airdrops july 2026, new crypto airdrops, weekly airdrop list, best airdrops july 2026, hyperliquid season 2, berachain farming, kodiak v3',
   openGraph: {
-    title: 'Best Crypto Airdrops This Week — June 9–15, 2026',
-    description: 'The best crypto airdrops to farm this week. Hyperliquid Season 2, Polymarket POLY, Pod Network, ACI Testnet. Updated every Monday.',
+    title: 'Best Crypto Airdrops This Week — July 1–7, 2026',
+    description: 'The best crypto airdrops to farm this week. Hyperliquid Season 2, Berachain/Kodiak V3, MegaETH, Monad, MetaMask MASK. Updated every Monday.',
     type: 'article',
   },
   alternates: { canonical: 'https://www.3alamiyweb3.com/learn/best-crypto-airdrops-this-week' },
 };
 
 const thisWeekAirdrops = [
-  { name: 'Hyperliquid Season 2', chain: 'HyperEVM', priority: 'High', reward: '$1,000–$10,000+', slug: 'hyperliquid-guide', why: '38.8% of HYPE supply unreleased. Snapshot unannounced. Trade HyperCore, stake HYPE (8 pts/token/day), interact with HyperEVM daily. Most critical farm right now.' },
-  { name: 'Polymarket POLY', chain: 'Polygon', priority: 'High', reward: '$200–$2,000', slug: 'polymarket-airdrop-guide-2026', why: 'CMO confirmed token is coming. $10.57B May volume. Trade across multiple markets — politics, crypto, sports. Link your X account now.' },
-  { name: 'Pod Network Testnet', chain: 'Layer 1', priority: 'High', reward: '$500–$5,000', slug: 'pod-network-testnet', why: '$10M raised, backed by a16z CSX, 1kx, and Flashbots. Testnet live — trade spot and perps, build Discord roles.' },
-  { name: 'ACI Testnet Airdrop', chain: 'Ethereum Sepolia', priority: 'High', reward: '30M ACI confirmed', slug: 'aci-testnet-airdrop', why: 'Confirmed airdrop — Phase 1 ends June 30. Swap, stake, complete missions and Zealy quests. Deadline approaching fast.' },
-  { name: 'Aro Network Season 2', chain: 'Multi-chain', priority: 'Medium', reward: '$ARO token', slug: 'aro-network-season-2-testnet', why: '$7.1M raised, Season 2 live. Install Chrome extension and mine daily — confirmed $ARO rewards. Easiest daily task this week.' },
-  { name: 'Fast Portal Season 0', chain: 'Multi-chain', priority: 'Medium', reward: 'TBA', slug: 'fast-portal-season-0', why: 'AI-powered shopping agent. Pi Squared users get 1.1x multiplier. Free points for completing tasks — under 5 minutes.' },
+  { name: 'Hyperliquid Season 2', chain: 'HyperEVM', priority: 'High', reward: '$1,000–$10,000+', slug: 'hyperliquid-guide', why: '38.8% of HYPE supply unreleased. No snapshot announced. Trade HyperCore, stake HYPE (8 pts/token/day), interact with HyperEVM daily. The most critical farm in July.' },
+  { name: 'Berachain / Kodiak V3', chain: 'EVM L1', priority: 'High', reward: 'BGT + potential KODI', slug: 'berachain-ecosystem-farming-guide-2026', why: 'Kodiak V3 is live with concentrated liquidity. Provide liquidity in WBERA/HONEY or use Kodiak Island vaults to auto-earn BGT emissions. BEND lending also earns BGT. No Kodiak token announced yet — ideal window.' },
+  { name: 'MegaETH MEGAPoints', chain: 'EVM L2', priority: 'High', reward: '$500–$3,000', slug: 'how-to-farm-megaeth-airdrop', why: '$20M raised, Sequoia-backed. MEGAPoints testnet program is live. Interact with native dApps daily, complete quests, and hold referral positions.' },
+  { name: 'Monad Testnet', chain: 'Layer 1', priority: 'High', reward: '$500–$5,000', slug: 'how-to-farm-monad-airdrop', why: '$225M raised from Paradigm — one of the largest crypto raises ever. Testnet active: swap, provide liquidity, and build transaction history across native DeFi protocols.' },
+  { name: 'MetaMask MASK', chain: 'Multi-chain', priority: 'Medium', reward: '$200–$1,000', slug: 'metamask-franky-sbt', why: 'Use MetaMask Swap, Bridge, and Portfolio daily. Volume and diversity of activity are tracked. Free to farm — just use the wallet you probably already have.' },
+  { name: 'Ondo Perps Waitlist', chain: 'Ethereum', priority: 'Medium', reward: 'TBA', slug: 'ondo-perps-early-waitlist', why: 'Ondo Finance ($ONDO) is expanding to perps. Join the early waitlist and complete tasks — RWA protocol with strong institutional backing.' },
 ];
 
 const priorityColor = (p: string) => p === 'High' ? '#7CF5C0' : p === 'Medium' ? '#f59e0b' : '#6b7280';
 
 export default function BestAirdropsThisWeek() {
-  const weekOf = 'June 9–15, 2026';
+  const weekOf = 'July 1–7, 2026';
 
   return (
     <>
@@ -133,7 +133,7 @@ export default function BestAirdropsThisWeek() {
           </div>
           <h1 style={{ fontSize: '38px', fontWeight: 900, color: '#fff', margin: '0 0 14px', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
             Best Crypto Airdrops<br />
-            <span style={{ background: 'linear-gradient(135deg, #7CF5C0, #34d399)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>This Week — June 9–15</span>
+            <span style={{ background: 'linear-gradient(135deg, #7CF5C0, #34d399)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>This Week — July 1–7</span>
           </h1>
           <p style={{ fontSize: '16px', color: '#71717a', margin: '0 0 24px', lineHeight: 1.7, maxWidth: '580px' }}>
             The highest-priority airdrops to farm this week. Ranked by reward potential, effort required, and farming urgency.
@@ -199,10 +199,10 @@ export default function BestAirdropsThisWeek() {
         <h2>New Airdrops Added This Week</h2>
         <p>We added several new airdrops to the tracker this week. Here's what's new:</p>
         <ul>
-          <li><strong>Pod Network Testnet</strong> — $10M raised, a16z CSX + 1kx backed. Testnet live with spot and perp trading.</li>
-          <li><strong>ACI Testnet Airdrop</strong> — 30M ACI tokens confirmed. Phase 1 ends June 30 — swap, stake, complete missions.</li>
-          <li><strong>Fast Portal Season 0</strong> — AI shopping agent with free points program. Pi Squared users get 1.1x multiplier.</li>
-          <li><strong>Hyperliquid Season 2 airdrop date guide</strong> — New article covering snapshot timing and farming strategy.</li>
+          <li><strong>Berachain / Kodiak V3</strong> — Kodiak V3 concentrated liquidity is live on Berachain mainnet. BGT emissions active across Kodiak pools, BEND lending, Infrared vaults, and BEX. New full farming guide added.</li>
+          <li><strong>Ondo Perps Early Waitlist</strong> — Ondo Finance opening a perpetuals DEX with a points program for early signups. Backed by major TradFi investors.</li>
+          <li><strong>MetaMask MASK Token</strong> — MetaMask confirmed MASK token with Franky SBT as the snapshot mechanism. SBT mint is live and free.</li>
+          <li><strong>MegaETH MEGAPoints Season 2</strong> — Updated guide for Season 2 tasks including the new referral bonus structure.</li>
         </ul>
         <p>All new airdrops are available with full step-by-step guides on our tracker.</p>
 

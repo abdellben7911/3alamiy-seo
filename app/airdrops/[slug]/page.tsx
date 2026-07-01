@@ -36,25 +36,27 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const a = await getAirdropBySlug(slug);
   if (!a) return { title: 'Airdrop Not Found | 3alamiy Web3' };
   const year = new Date().getFullYear();
-  // Strip trailing "Airdrop" from name to avoid "Xeffy Airdrop Campaign Airdrop" duplicates
-  const cleanName = a.name.replace(/\s*Airdrop\s*$/i, '').trim();
+  // If name already contains "Airdrop" anywhere, don't append it again (avoids "Xeffy Airdrop Campaign Airdrop")
+  const nameHasAirdrop = /\bairdrop\b/i.test(a.name);
+  const titlePrefix = nameHasAirdrop ? a.name : `${a.name} Airdrop`;
+  const cleanName = a.name; // keep original for descriptions
   const reward = a.reward_min && a.reward_max ? `$${a.reward_min} - $${a.reward_max}` : a.reward_min ? `$${a.reward_min}+` : a.value || '';
   const rewardText = reward ? `Earn ${reward}.` : 'High reward potential.';
   const costText = a.cost === 'Free' ? 'Free to join.' : 'Low cost.';
   const desc = `${costText} ${a.difficulty} difficulty. ${rewardText} Step-by-step guide to qualify for the ${cleanName} airdrop on ${a.blockchain}. Updated ${year}.`.slice(0, 160);
   return {
-    title: `${cleanName} Airdrop — ${a.cost === 'Free' ? 'Free' : 'Low Cost'}, ${a.difficulty} Difficulty | How to Qualify ${year}`,
+    title: `${titlePrefix} — ${a.cost === 'Free' ? 'Free' : 'Low Cost'}, ${a.difficulty} Difficulty | How to Qualify ${year}`,
     description: desc,
     keywords: `${cleanName} airdrop, ${cleanName} airdrop guide, how to get ${cleanName} airdrop, ${a.blockchain} airdrop ${year}, free crypto airdrop`,
     openGraph: {
-      title: `${cleanName} Airdrop Guide ${year}`,
+      title: `${titlePrefix} Guide ${year}`,
       description: desc,
       url: `https://www.3alamiyweb3.com/airdrops/${slug}`,
       siteName: '3alamiy Web3',
-      images: a.logo ? [{ url: a.logo, width: 400, height: 400, alt: `${cleanName} airdrop logo` }] : [],
+      images: a.logo ? [{ url: a.logo, width: 400, height: 400, alt: `${cleanName} logo` }] : [],
       type: 'article',
     },
-    twitter: { card: 'summary_large_image', title: `${cleanName} Airdrop — Free Guide ${year}`, description: desc },
+    twitter: { card: 'summary_large_image', title: `${titlePrefix} — Free Guide ${year}`, description: desc },
     alternates: { canonical: `https://www.3alamiyweb3.com/airdrops/${slug}` },
     robots: a.status !== 'Active' ? { index: false, follow: true } : { index: true, follow: true },
   };
