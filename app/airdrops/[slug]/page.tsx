@@ -54,6 +54,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     },
     twitter: { card: 'summary_large_image', title: `${a.name} Airdrop — Free Guide ${year}`, description: desc },
     alternates: { canonical: `https://www.3alamiyweb3.com/airdrops/${slug}` },
+    robots: a.status !== 'Active' ? { index: false, follow: true } : { index: true, follow: true },
   };
 }
 
