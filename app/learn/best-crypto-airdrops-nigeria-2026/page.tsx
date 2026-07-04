@@ -497,3 +497,10 @@ export default function NigeriaAirdrops2026() {
             <h2>Start Farming Airdrops Today 🇳🇬</h2>
             <p>Browse 115+ verified airdrops on 3alamiy Web3 — all with full step-by-step guides. Updated daily. Always free.</p>
             <Link href="/airdrops" className="ng-cta-btn">Browse All Airdrops →</Link>
+
+          </div>
+        </div>
+      </main>
+    </>
+  );
+}

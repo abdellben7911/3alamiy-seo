@@ -420,4 +420,10 @@ export default function EarlyCryptoProjects2026() {
             <h2>Track Early Airdrops Daily</h2>
             <p>3alamiy Web3 tracks 110+ active airdrops with full step-by-step guides. Be the first to know when early projects go live.</p>
             <Link href="/airdrops" className="ec-cta-btn">Browse All Airdrops →</Link>
-            <p className="ec-note">Las
+            <p className="ec-note">Last updated: July 1, 2026</p>
+          </div>
+        </div>
+      </main>
+    </>
+  );
+}
