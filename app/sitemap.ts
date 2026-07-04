@@ -209,13 +209,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/gm`, lastModified: new Date('2026-05-01'), changeFrequency: 'weekly', priority: 0.7 },
     { url: `${BASE}/privacy`, lastModified: new Date('2026-01-01'), changeFrequency: 'monthly', priority: 0.3 },
 
-    // Airdrop detail pages
-    ...airdrops.map(a => ({
-      url: `${BASE}/airdrops/${a.slug}`,
-      lastModified: new Date(a.created_at || now),
-      changeFrequency: 'weekly' as const,
-      priority: 0.85,
-    })),
+    // Airdrop detail pages excluded from sitemap — all noindexed (thin template pages)
+    // Google finds them via internal links; excluding prevents crawl budget waste
 
     // Learn articles — high priority for hot pages
     ...uniqueArticles.map(slug => ({
