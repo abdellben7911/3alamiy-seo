@@ -9,6 +9,8 @@ const BASE = 'https://www.3alamiyweb3.com';
 const articles = [
   // — New articles (July 2026) — keep at top so they get re-crawled first
   'best-crypto-airdrops-july-2026',
+  'best-crypto-airdrops-south-africa-2026',
+  'best-crypto-airdrops-ghana-2026',
   // — New articles (June 2026) —
   'best-crypto-airdrops-mexico-2026',
   'best-crypto-airdrops-argentina-2026',
@@ -138,6 +140,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Article publish/update dates — use real dates so Google trusts lastModified
   const ARTICLE_DATES: Record<string, string> = {
     'best-crypto-airdrops-july-2026':            '2026-07-01',
+    'best-crypto-airdrops-south-africa-2026':    '2026-07-01',
+    'best-crypto-airdrops-ghana-2026':           '2026-07-01',
     'best-crypto-airdrops-mexico-2026':          '2026-06-15',
     'best-crypto-airdrops-argentina-2026':       '2026-06-15',
     'best-crypto-airdrops-ukraine-2026':         '2026-06-15',
