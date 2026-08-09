@@ -8,6 +8,7 @@ const BASE = 'https://www.3alamiyweb3.com';
 // ✅ VALID slugs only — must exist in [slug]/page.tsx articles object OR as a folder
 const articles = [
   // — New articles (August 2026) —
+  'ronaldo-wedding-prediction-markets-2026',
   'best-crypto-airdrops-august-2026',
   // — New articles (July 2026) — keep at top so they get re-crawled first
   'best-crypto-airdrops-july-2026',
@@ -141,6 +142,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Article publish/update dates — use real dates so Google trusts lastModified
   const ARTICLE_DATES: Record<string, string> = {
+    'ronaldo-wedding-prediction-markets-2026':   '2026-08-09',
     'best-crypto-airdrops-august-2026':          '2026-08-01',
     'best-crypto-airdrops-july-2026':            '2026-07-01',
     'best-crypto-airdrops-south-africa-2026':    '2026-07-01',
