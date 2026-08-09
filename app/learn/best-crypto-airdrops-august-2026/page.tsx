@@ -3,21 +3,21 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Best Crypto Airdrops August 2026 — 7 to Farm This Month | 3alamiy Web3",
-  description: "The best crypto airdrops to farm in August 2026. Grass Season 2 fully live, Hyperliquid S2 points running, MetaMask SBT window open, Monad testnet — ranked by reward potential.",
+  description: "The best crypto airdrops in August 2026. Grass S2 USDC claims open, Hyperliquid S2 points running, MetaMask SBT window open, Monad testnet — ranked by reward potential.",
   alternates: { canonical: "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-august-2026" },
   openGraph: {
     title: "Best Crypto Airdrops August 2026 — 7 to Farm This Month",
-    description: "Grass Season 2 live. Hyperliquid S2 ongoing. MetaMask Franky SBT still open. 7 top airdrops ranked by reward potential for August 2026.",
+    description: "Grass S2 USDC claims open. Hyperliquid S2 ongoing. MetaMask Franky SBT still open. 7 top airdrops ranked by reward potential for August 2026.",
     url: "https://www.3alamiyweb3.com/learn/best-crypto-airdrops-august-2026",
     siteName: "3alamiy Web3", type: "article",
   },
-  twitter: { card: "summary_large_image", title: "Best Crypto Airdrops August 2026 — 7 to Farm", description: "Grass S2 live. Hyperliquid S2 ongoing. 7 top picks ranked by reward." },
+  twitter: { card: "summary_large_image", title: "Best Crypto Airdrops August 2026 — 7 to Farm", description: "Grass S2 claims open. Hyperliquid S2 ongoing. 7 top picks ranked by reward." },
 };
 
 const jsonLd = {
   "@context": "https://schema.org", "@type": "Article",
   headline: "Best Crypto Airdrops August 2026 — 7 to Farm This Month",
-  description: "The best crypto airdrops to farm in August 2026. Grass Season 2 fully live, Hyperliquid S2 ongoing, MetaMask SBT still open — ranked by reward potential.",
+  description: "The best crypto airdrops in August 2026. Grass S2 USDC claims open, Hyperliquid S2 ongoing, MetaMask SBT still open — ranked by reward potential.",
   author: { "@type": "Organization", name: "3alamiy Web3" },
   publisher: { "@type": "Organization", name: "3alamiy Web3", url: "https://www.3alamiyweb3.com" },
   datePublished: "2026-08-01", dateModified: "2026-08-01",
@@ -36,17 +36,17 @@ const faqJsonLd = {
     {
       "@type": "Question",
       name: "What are the best crypto airdrops in August 2026?",
-      acceptedAnswer: { "@type": "Answer", text: "The best crypto airdrops to farm in August 2026 are: (1) Hyperliquid Season 2 — trade HyperCore daily, no KYC, no gas. Season 1 averaged $10,000+ per user. (2) Grass Season 2 — fully live after July 7 update, install Chrome extension and earn $GRASS passively. (3) MetaMask MASK — Franky SBT still mintable, continue weekly swap and bridge activity. (4) Monad Testnet — $225M raised, testnet active, weekly interaction required. (5) Berachain/Kodiak V3 — BGT gauge emissions live, provide liquidity. (6) Phantom Wallet — $109M raised, no token yet, use with Solana DeFi. (7) Backpack Exchange — $37M confirmed airdrop pool, trade and hold BONK." }
+      acceptedAnswer: { "@type": "Answer", text: "The best crypto airdrops to farm in August 2026 are: (1) Hyperliquid Season 2 — trade HyperCore daily, no KYC, no gas. Season 1 averaged $10,000+ per user. (2) Grass Season 2 claims — farming ended June 8, but the USDC claim window is open July 22, 2026 to January 22, 2027 for anyone who earned points. (3) MetaMask MASK — Franky SBT still mintable, continue weekly swap and bridge activity. (4) Monad Testnet — $225M raised, testnet active, weekly interaction required. (5) Berachain/Kodiak V3 — BGT gauge emissions live, provide liquidity. (6) Phantom Wallet — $109M raised, no token yet, use with Solana DeFi. (7) Backpack Exchange — $37M confirmed airdrop pool, trade and hold BONK." }
     },
     {
       "@type": "Question",
-      name: "Is Grass Season 2 live in August 2026?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes. Grass Season 2 is fully live following the July 7, 2026 update confirmed by the Discord team. The Grass extension continues to earn $GRASS points passively in the background — you do not need to do anything once installed beyond keeping the extension running. New users can install from the official Grass site and start earning immediately. Points accumulated in Season 2 are expected to convert to $GRASS tokens at the next distribution event." }
+      name: "Can I still claim the Grass Season 2 airdrop in August 2026?",
+      acceptedAnswer: { "@type": "Answer", text: "Yes. Grass Season 2 point farming ended June 8, 2026, but the claim window opened July 22, 2026 and runs until January 22, 2027. Rewards are paid in USDC from a roughly $3M pool funded by network revenue. Anyone credited with more than zero Network Points during Epochs 1-19 (October 2024 to June 2026) qualifies, except users in restricted jurisdictions. A separate distribution of roughly 170M GRASS tokens to network participants is also expected later in 2026." }
     },
     {
       "@type": "Question",
       name: "Which August 2026 airdrops are completely free with no investment?",
-      acceptedAnswer: { "@type": "Answer", text: "Completely free airdrops in August 2026: (1) Grass Season 2 — install extension, earn passively, no investment. (2) Hyperliquid Season 2 — trade HyperCore with no gas fees. (3) MetaMask Franky SBT — free to mint, still open. (4) Monad Testnet — free testnet tokens, no mainnet investment. Gas fees are needed for Berachain and Phantom interactions but cost under $2 per transaction." }
+      acceptedAnswer: { "@type": "Answer", text: "Completely free airdrops in August 2026: (1) Hyperliquid Season 2 — trade HyperCore with no gas fees. (2) MetaMask Franky SBT — free to mint, still open. (3) Monad Testnet — free testnet tokens, no mainnet investment. (4) Grass Season 2 USDC claims — free to claim if you earned points before June 8, 2026. Gas fees are needed for Berachain and Phantom interactions but cost under $2 per transaction." }
     },
     {
       "@type": "Question",
@@ -79,18 +79,18 @@ const airdrops = [
   },
   {
     rank: 2,
-    name: "Grass Season 2",
+    name: "Grass Season 2 Claims",
     slug: "grass-season-2-airdrop-date-2026",
-    status: "Season 2 Live",
-    statusColor: "#22c55e",
+    status: "Claims Open July 22",
+    statusColor: "#f59e0b",
     tier: "S",
     tierColor: "#22c55e",
     cost: "Free",
     raise: "VC-backed",
-    potential: "$100–$2,000+",
-    effort: "5 min setup, then passive",
-    why: "Grass Season 2 is fully live following the July 7 update. The Grass Chrome extension earns $GRASS points passively while you browse — zero daily effort after setup. Season 1 paid out hundreds of dollars to consistent users. New users can join now. Referrals earn 20% of your referred users' points. This is the most passive airdrop on the list — install once and let it run.",
-    tasks: ["Install the Grass extension from the official site — takes 2 minutes", "Keep the extension running whenever your browser is open (passive earning)", "Share your referral link to earn 20% bonus on your referrals' points"],
+    potential: "USDC share of $3M pool",
+    effort: "10 min to claim",
+    why: "Grass Season 2 point farming ended June 8, 2026 (Epochs 1-19). The claim window opened July 22 and runs until January 22, 2027 — rewards are paid in USDC from a roughly $3M pool funded by network revenue. Anyone with more than zero Network Points qualifies. If you ran the extension at any time since October 2024, check your allocation and claim before the deadline. A separate distribution of roughly 170M GRASS tokens to network participants is expected later in 2026 — keeping the extension running may count toward it, though Grass has not confirmed Season 3 officially.",
+    tasks: ["Check your Season 2 allocation on the official Grass app and claim your USDC before January 22, 2027", "Keep the extension running — a possible Season 3 (unconfirmed) may credit ongoing uptime", "Watch for the separate 170M GRASS token distribution expected in H2 2026"],
   },
   {
     rank: 3,
@@ -254,7 +254,7 @@ export default function BestAirdropsAugust2026() {
 
           <div>
             <span className="au-badge" style={{ background: "rgba(124,245,192,0.08)", color: "#7CF5C0", border: "1px solid rgba(124,245,192,0.2)" }}>August 2026</span>
-            <span className="au-badge" style={{ background: "rgba(34,197,94,0.08)", color: "#22c55e", border: "1px solid rgba(34,197,94,0.2)" }}>Grass S2 Live</span>
+            <span className="au-badge" style={{ background: "rgba(34,197,94,0.08)", color: "#22c55e", border: "1px solid rgba(34,197,94,0.2)" }}>Grass S2 Claims Open</span>
             <span className="au-badge" style={{ background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.1)" }}>Updated Weekly</span>
           </div>
 
@@ -262,7 +262,7 @@ export default function BestAirdropsAugust2026() {
             Best Crypto Airdrops <span>August 2026</span><br />7 to Farm This Month
           </h1>
           <p className="au-sub">
-            7 airdrops ranked by reward potential, effort, and signal strength. Updated weekly — August highlight: Grass Season 2 is now fully active and the most passive airdrop on the list.
+            7 airdrops ranked by reward potential, effort, and signal strength. Updated weekly — August highlight: Grass Season 2 USDC claims are open through January 22, 2027.
           </p>
           <p className="au-meta">
             <span>Last updated: August 1, 2026</span> · <span>7 airdrops</span>
@@ -271,14 +271,14 @@ export default function BestAirdropsAugust2026() {
           <div className="au-alert-box">
             <div className="au-alert-icon">!</div>
             <div className="au-alert-text">
-              <strong>August 2026 action item:</strong> Grass Season 2 is fully live. Install the Chrome extension in 2 minutes and earn $GRASS points passively every day — no ongoing effort required. This is the easiest airdrop on the list.
+              <strong>August 2026 action item:</strong> Grass Season 2 USDC claims are open now through January 22, 2027. If you ever ran the Grass extension between October 2024 and June 2026, check your allocation and claim your share of the $3M pool — it takes 10 minutes.
             </div>
           </div>
 
           <div className="au-answer-box">
             <h2>What is the best crypto airdrop to farm in August 2026?</h2>
             <p>
-              The best airdrop in August 2026 is still <strong>Hyperliquid Season 2</strong> — no gas, no KYC, Season 1 averaged $10,000+ per user. The easiest addition this month is <strong>Grass Season 2</strong>, which earns $GRASS points completely passively after a 2-minute install. <strong>MetaMask Franky SBT</strong> remains open — if you have not minted it yet, do it now. Backpack Exchange has a confirmed $37M pool making it the highest-conviction B-tier pick.
+              The best airdrop in August 2026 is still <strong>Hyperliquid Season 2</strong> — no gas, no KYC, Season 1 averaged $10,000+ per user. The most urgent action this month is claiming <strong>Grass Season 2</strong> rewards — the USDC claim window is open through January 22, 2027 for anyone who earned points before June 8. <strong>MetaMask Franky SBT</strong> remains open — if you have not minted it yet, do it now. Backpack Exchange has a confirmed $37M pool making it the highest-conviction B-tier pick.
             </p>
           </div>
 
